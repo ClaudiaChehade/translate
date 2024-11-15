@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Error State Extend Kalman Filter Study - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2074196616"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2074196616"> <span>Error State Extend Kalman Filter Study</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>Since the ESEKF is the basic of OpenVINS(MSCKF), this page will present my study notes about it. Again, I'll avoid the math deduction to keep the mind clean.</p>
+<p   
+></p>
+    <div class="section section-1" id="src-2074196616_ErrorStateExtendKalmanFilterStudy-WhyweneedESEKF">
+        <h1 class="heading "><span>Why we need ESEKF</span></h1>
+    <div class="section section-2" id="src-2074196616_ErrorStateExtendKalmanFilterStudy-LimitationsoftheEKF">
+        <h2 class="heading "><span>Limitations of the EKF</span></h2>
+<p   
+>The EKF works by linearizing the nonlinear motion and measurement models to update the mean and covariance of the state. The difference between the linear approximation and the nonlinear function is called linearization error.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-29_23-10-20-version-1-modificationdate-1640824409000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-29_23-10-20-version-1-modificationdate-1640824409000-api-v2.png" width="350"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-29_23-13-25-version-1-modificationdate-1640824409000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-29_23-13-25-version-1-modificationdate-1640824409000-api-v2.png" width="250"  />
+    </p>
+<p   
+>In general, linearization error depends on,</p>
+<ul class=" "><li class=" "><p   
+>How nonlinear the function is</p>
+</li><li class=" "><p   
+>How far away from the operating point the linear approximation is being used</p>
+</li></ul><p   
+>Hence, the EKF is prone to linearization error when,</p>
+<ul class=" "><li class=" "><p   
+>The system dynamics are highly nonlinear</p>
+</li><li class=" "><p   
+>The sensor sampling time is slow relative how fast the system is evolving</p>
+</li></ul><p   
+>This has two important consequences,</p>
+<ul class=" "><li class=" "><p   
+>The estimated mean state can become very different from the true state</p>
+</li><li class=" "><p   
+>The estimated state covariance can fail to capture the true uncertainty in the state</p>
+</li></ul>    <div  class="confbox admonition admonition-info">
+                    <p class="title">EKF Limits</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<ul class=" "><li class=" "><p   
+>The EKF uses analytical local linearization and, as a result, is sensitive to linearization errors</p>
+</li><li class=" "><p   
+>Linearization error can cause the estimator to be overconfident in a wrong answer!</p>
+</li></ul>        </div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2074196616_safe-id-RXJyb3JTdGF0ZUV4dGVuZEthbG1hbkZpbHRlclN0dWR5LVdoYXRpZndldXNlc21hbGxlcnJvcnN0YXRlPw">
+        <h2 class="heading "><span>What if we use small error state?</span></h2>
+<p   
+>    <span style="color: #333333;">
+EKF is not a perfect method to estimate and predict the state, it will always make mistakes when predicting. The longer the number of sequential predictions without updates, the bigger the accumulated error. One interesting common property of the errors is that they have less complex behavior than the state itself. This can be seen easier in the image below. While the behavior of the position is <u class=" "><strong class=" ">highly non-linear</strong></u>, the error (estimation - ground truth) behaves much <u class=" "><strong class=" ">closer to a linear behavior</strong></u>.    </span>
+</p>
+<p   
+>    <span style="color: #333333;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-30_8-41-19-version-1-modificationdate-1640824880000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-30_8-41-19-version-1-modificationdate-1640824880000-api-v2.png"  height="250" />
+    </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #333333;">
+Therefore modelling the error of the state (i.e. error-state) is more likely that will be model correctly by a linear model. We can avoid some noise coming from trying to model highly non-linear behavior by modelling the error-state.    </span>
+</p>
+<p   
+>We can think of the true state <strong class=" "> True value status variable </strong> as composed of two parts, the nominal state <strong class=" "> Name state variable </strong> and the error state <strong class=" "> Error state variable </strong>. We can continuously update the nominal state by integrating the motion model and modelling errors and process noise accumulate into the error state. And finally correct the nominal state with error state, then reset the error state to zero each time.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-29_23-27-25-version-1-modificationdate-1640824408000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-29_23-27-25-version-1-modificationdate-1640824408000-api-v2.png"  height="250" />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-29_23-26-24-version-1-modificationdate-1640824408000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-29_23-26-24-version-1-modificationdate-1640824408000-api-v2.png" width="250"  />
+    </p>
+<p   
+><br/></p>
+<p   
+>Advantages,</p>
+<ul class=" "><li class=" "><p   
+>The “small” error state is more amenable to linear filtering than the “large” nominal state, which can be integrated nonlinearly → Better performance compared to the vanilla EKF</p>
+</li><li class=" "><p   
+>easy to work with constrained quantities (e.g., rotations in 3D)</p>
+</li><li class=" "><p   
+>easy to work with Jacobian matrix (2nd order of error state can be ignored.)</p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-1" id="src-2074196616_ErrorStateExtendKalmanFilterStudy-Error-stateKinematicsforIMU-drivensystems">
+        <h1 class="heading "><span>Error-state Kinematics for IMU-driven systems</span></h1>
+<p   
+>Given the IMU measurement angle velocity <img  class="latexmath"  src="images/inline/f76bc4c70041aedc0b980d89a31ac0c2944e3901a6e2e294a5e8b3d406f17246.svg" alt="images/inline/f76bc4c70041aedc0b980d89a31ac0c2944e3901a6e2e294a5e8b3d406f17246.svg"   />
+ and linear acceleration <img  class="latexmath"  src="images/inline/3988692ced5c43ac9e0327b17198fc9c642f91410c05a3312c67d24c19d16af7.svg" alt="images/inline/3988692ced5c43ac9e0327b17198fc9c642f91410c05a3312c67d24c19d16af7.svg"   />
+, and GNSS, Video or Lidar measurement as complementary sensory data. We want to keep track of state <img  class="latexmath"  src="images/inline/cc00bd4c95839a829eb2996c8a10b1e9598dab8429c4fe2676a2e62690096308.svg" alt="images/inline/cc00bd4c95839a829eb2996c8a10b1e9598dab8429c4fe2676a2e62690096308.svg"   />
+. Then how to write the error-estate equations of the kinematics of an inertial system?</p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">Tips</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>T    <span style="color: #000000;">
+hese complementary data are quite important, otherwise we can never get the observation of the error-state for this IMU specific problem. Since we've already use the IMU measurement as input vector in the prediction function, the bias and noise should be corrected by other sensor observation so as to eliminate the IMU drifting problem.    </span>
+</p>
+<p   
+>However, it doesn't mean the error state of ESEKF must be estimated by other data source. If you have different problem, e.g. tracking the     <span style="color: #000000;">
+resistance of some electronic device or tracking the flying ball.    </span>
+</p>
+        </div>
+    </div>
+    <div class="section section-2" id="src-2074196616_safe-id-RXJyb3JTdGF0ZUV4dGVuZEthbG1hbkZpbHRlclN0dWR5LVN5c3RlbWtpbmVtYXRpY3NpbmNvbnRpbnVvdXN0aW1lKHRoZUV1bGVyYXBwcm94LmZvcm0p">
+        <h2 class="heading "><span>System kinematics in continuous time (the Euler approx. form)</span></h2>
+<p   
+>In order to write the state prediction function or state transition function, we should first study the kinematics equation of IMU.</p>
+<p   
+><u class=" "><strong class=" ">The true-state kinematics</strong></u></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-30_9-46-51-version-1-modificationdate-1640828811000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-30_9-46-51-version-1-modificationdate-1640828811000-api-v2.png"  height="250" />
+    </p>
+<p   
+>where this equation describes the relationship between IMU measurement and the state derivative against time, the subscript "t" means true state, the subscript "m" means measurement from IMU, the subscript "b" means bias, the subscript "w" means bias noise/stability and the subscript "n" means noise for acceleration or angles rate. We can get the true state with time integration quite easily. The gravity vector is considered so that we have reference frame for the IMU initial pose. The initial rotation is against the ground surface and we can set <img  class="latexmath"  src="images/inline/94a8e37b3f56349a2c1ba738068b89b5bc4ce4c5718b6aaa14ea37bd1da18e3c.svg" alt="images/inline/94a8e37b3f56349a2c1ba738068b89b5bc4ce4c5718b6aaa14ea37bd1da18e3c.svg"   />
+.</p>
+<p   
+><u class=" "><strong class=" ">The nominal-state kinematics</strong></u></p>
+<p   
+>The nominal-state kinematics corresponds to the modeled system without noises or perturbations → <u class=" ">bias and noise are zero.</u></p>
+<p   
+><u class=" "><strong class=" "><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_9-48-15-version-1-modificationdate-1640828895000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_9-48-15-version-1-modificationdate-1640828895000-api-v2.png"  height="250" />
+</strong></u></p>
+<p   
+><u class=" "><strong class=" ">The error-state kinematics</strong></u></p>
+<p   
+>The goal is to determine the linearized dynamics of the error-state. For each state equation, we simplify all second-order infinitesimals. We give here the full error-state dynamic system and ignore the proofs in case of getting lost in math. (see, Quaternion kinematics for the error-state Kalman Filter).</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-30_10-9-48-version-1-modificationdate-1640830188000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-30_10-9-48-version-1-modificationdate-1640830188000-api-v2.png"  height="250" />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2074196616_ErrorStateExtendKalmanFilterStudy-Systemkinematicsindiscretetime">
+        <h2 class="heading "><span>System kinematics in discrete time</span></h2>
+<p   
+>The differential equations above need to be integrated into differences equations to account for discrete time intervals <img  class="latexmath"  src="images/inline/3602af0ecdccdaa634cf8298e5c13e29e9a9f989417d7b83aef0a97b998f9a04.svg" alt="images/inline/3602af0ecdccdaa634cf8298e5c13e29e9a9f989417d7b83aef0a97b998f9a04.svg"   />
+. Integration needs to be done for the following sub-systems,</p>
+<ul class=" "><li class=" "><p   
+>The nominal state.</p>
+</li><li class=" "><p   
+>The error-state.</p>
+<ul class=" "><li class=" "><p   
+>The deterministic part: state dynamics and control.</p>
+</li><li class=" "><p   
+>The stochastic part: noise and perturbations.</p>
+</li></ul></li></ul><p   
+>We can write the differences equations of the <u class=" "><strong class=" ">nominal-state</strong></u> as,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-30_11-21-53-version-1-modificationdate-1640834513000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-30_11-21-53-version-1-modificationdate-1640834513000-api-v2.png" width="350"  />
+    </p>
+<p   
+>And the <u class=" "><strong class=" ">error-state kinematics</strong></u> as,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-30_14-27-44-version-1-modificationdate-1640845664000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-30_14-27-44-version-1-modificationdate-1640845664000-api-v2.png" width="500"  />
+    </p>
+<p   
+>where its deterministic part is integrated normally, and the integration of the stochastic part results in random impulses. Here <img  class="latexmath"  src="images/inline/1245e001a147c301844db982379624fc6abf98733033bb4037830fd245975304.svg" alt="images/inline/1245e001a147c301844db982379624fc6abf98733033bb4037830fd245975304.svg"   />
+, <img  class="latexmath"  src="images/inline/9875d4696a24b7014828c1e5ce509ad2735922cec5c9e3602857937eb0379b75.svg" alt="images/inline/9875d4696a24b7014828c1e5ce509ad2735922cec5c9e3602857937eb0379b75.svg"   />
+, <img  class="latexmath"  src="images/inline/623dacb81593b1814c726cec794e47444a4c34e944f3f4de5268d8f3642ba152.svg" alt="images/inline/623dacb81593b1814c726cec794e47444a4c34e944f3f4de5268d8f3642ba152.svg"   />
+, <img  class="latexmath"  src="images/inline/6d5edff08b7948984ba9d16ecf680f27018d80ea346184c49eb796962c991064.svg" alt="images/inline/6d5edff08b7948984ba9d16ecf680f27018d80ea346184c49eb796962c991064.svg"   />
+ are the random impulses applied to the velocity, orientation and bias estimates, modeled by white Gaussian processes. Their mean is zero, and their covariances matrices are obtained by integrating the covariances of <img  class="latexmath"  src="images/inline/e3718bfdf2741a7fcb52332f4a1daf403acb3b0f9ca9bf21a590086f40009f23.svg" alt="images/inline/e3718bfdf2741a7fcb52332f4a1daf403acb3b0f9ca9bf21a590086f40009f23.svg"   />
+, <img  class="latexmath"  src="images/inline/e32b7d0d73c5d0e85f7cd85654fe2c8f34b1fa8a1ae24a028d7ec33c96e18225.svg" alt="images/inline/e32b7d0d73c5d0e85f7cd85654fe2c8f34b1fa8a1ae24a028d7ec33c96e18225.svg"   />
+, <img  class="latexmath"  src="images/inline/9ed58bbad12cc8055efff5f8e264bc5b16a8ee576f29473ee1d6d856268b06fe.svg" alt="images/inline/9ed58bbad12cc8055efff5f8e264bc5b16a8ee576f29473ee1d6d856268b06fe.svg"   />
+ and <img  class="latexmath"  src="images/inline/a43d904408d9528131390dd5aaa786cf59b403c9b7b09b6732703d49b0d72829.svg" alt="images/inline/a43d904408d9528131390dd5aaa786cf59b403c9b7b09b6732703d49b0d72829.svg"   />
+. Hence, the ESEKF treats these noise as white noise gaussian distribution and won't be updated.</p>
+    </div>
+    <div class="section section-2" id="src-2074196616_ErrorStateExtendKalmanFilterStudy-ESEKFPredictionEquation">
+        <h2 class="heading "><span>ESEKF Prediction Equation</span></h2>
+<p   
+>Based on the error-state kinematics f(.) or F in discrete time above, we can write the motion equation or state transition equation of error state as,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-30_15-10-59-version-1-modificationdate-1640848259000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-30_15-10-59-version-1-modificationdate-1640848259000-api-v2.png" width="500"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-30_15-12-24-version-1-modificationdate-1640848345000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-30_15-12-24-version-1-modificationdate-1640848345000-api-v2.png" width="600"  />
+    </p>
+<p   
+>where <img  class="latexmath"  src="images/inline/7628322c7ae8ced98bdebbf79b29dabdebec35bc80ee17764bfe52f8b6c8d172.svg" alt="images/inline/7628322c7ae8ced98bdebbf79b29dabdebec35bc80ee17764bfe52f8b6c8d172.svg"   />
+ is input vector and vector i is the perturbation impulses. The ESKF prediction equations are written:</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_15-14-9-version-1-modificationdate-1640848449000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_15-14-9-version-1-modificationdate-1640848449000-api-v2.png" width="250"  />
+    </p>
+<p   
+>And actually we can ignore the equation of <img  class="latexmath"  src="images/inline/18fe8eeb9ad5d147674c8af57bc403f7c1d12f04c6964341c2cacf9d27fa23fb.svg" alt="images/inline/18fe8eeb9ad5d147674c8af57bc403f7c1d12f04c6964341c2cacf9d27fa23fb.svg"   />
+, because this error term will be reset after each update iteration. <u class=" ">So the mean estimation of the motion equation is useless</u>. However, the covariance estimation of motion equation is quite important, it will control the distribution of error estimation.</p>
+<p   
+>As mentioned earlier, our error-state kinematics has already dropped the second-order infinitesimals. Hence the function <img  class="latexmath"  src="images/inline/3e2e5f8c6e24eb69821de9c2919b6e7c5bd1bba0ef6a86e4fb957457ffc289a2.svg" alt="images/inline/3e2e5f8c6e24eb69821de9c2919b6e7c5bd1bba0ef6a86e4fb957457ffc289a2.svg"   />
+ is already the linearized Jacobian function of state between current and previous time.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-30_15-18-1-version-1-modificationdate-1640848681000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-30_15-18-1-version-1-modificationdate-1640848681000-api-v2.png" width="800"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-30_15-18-28-version-1-modificationdate-1640848708000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-30_15-18-28-version-1-modificationdate-1640848708000-api-v2.png" width="700"  />
+    </p>
+<p   
+>Tips:</p>
+<ul class=" "><li class=" "><p   
+>The Jacobian function Fx is different between EKF and ESEKF. EKF → <img  class="latexmath"  src="images/inline/51d5dcd70f089aaf3bca2441801bdb25c28e3f793107bdb372c79768978d8148.svg" alt="images/inline/51d5dcd70f089aaf3bca2441801bdb25c28e3f793107bdb372c79768978d8148.svg"   />
+, ESEKF → <img  class="latexmath"  src="images/inline/d3d3c69968073b05febe57eddf69bce4c1e399dc9e582eedfa0c68eef7348c86.svg" alt="images/inline/d3d3c69968073b05febe57eddf69bce4c1e399dc9e582eedfa0c68eef7348c86.svg"   />
+</p>
+</li><li class=" "><p   
+>The Jacobian function Hx is also different between EKF and ESEKF (see next section).</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-2074196616_safe-id-RXJyb3JTdGF0ZUV4dGVuZEthbG1hbkZpbHRlclN0dWR5LUVTRUtGVXBkYXRlRXF1YXRpb24od2l0aGNvbXBsZW1lbnRhcnlzZW5zb3J5ZGF0YSk">
+        <h2 class="heading "><span>ESEKF Update Equation (with complementary sensory data)</span></h2>
+<p   
+>At the arrival of other kind of information than IMU, such as GPS or vision, we proceed to correct the ESKF. In a well-designed system, this should render the IMU biases observable and allow the ESKF to correctly estimate them. While the IMU information has served so far to make predictions to the ESKF, this other information is used to correct the filter, and thus observe the IMU bias errors. The correction consists of three steps:</p>
+<ul class=" "><li class=" "><p   
+>observation of the error-state via filter correction</p>
+</li><li class=" "><p   
+>injection of the observed errors into the nominal state, and</p>
+</li><li class=" "><p   
+>reset of the error-state</p>
+</li></ul><p   
+>Suppose as usual that we have a sensor that delivers information that depends on the state, such as <img  class="latexmath"  src="images/inline/4701f5ae7347cf4f15f2e740ca760d4691ae04ce7cc51f72e853d155d0982f7b.svg" alt="images/inline/4701f5ae7347cf4f15f2e740ca760d4691ae04ce7cc51f72e853d155d0982f7b.svg"   />
+, where h(.) is a general nonlinear function of the system state (the true state), and v is a white Gaussian noise with covariance V, v~N(0,V).</p>
+<p   
+>Our filter is estimating the error state, and therefore the filter correction equations,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_22-41-56-version-1-modificationdate-1640875316000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_22-41-56-version-1-modificationdate-1640875316000-api-v2.png" width="300"  />
+    </p>
+<p   
+>where the measurement y of this IMU case comes from complementary sensory data, e.g. Lidar or GNSS or Video. Please pay attention to the Jacobian matrix H, it is defined with respect to the error state <img  class="latexmath"  src="images/inline/532741bac39316aec1cf867120b175782d2f1ebb23c1af8be984ac8d7d093390.svg" alt="images/inline/532741bac39316aec1cf867120b175782d2f1ebb23c1af8be984ac8d7d093390.svg"   />
+.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-30_22-49-4-version-1-modificationdate-1640875744000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-30_22-49-4-version-1-modificationdate-1640875744000-api-v2.png" width="400"  />
+    </p>
+<p   
+>Here, <img  class="latexmath"  src="images/inline/9b26e1fda7e2ad6770ea18e5d2a293ce60f704d0f07f2ce497f9838a32843cad.svg" alt="images/inline/9b26e1fda7e2ad6770ea18e5d2a293ce60f704d0f07f2ce497f9838a32843cad.svg"   />
+ is the standard Jacobian of h() with respect to its own argument. This first part <img  class="latexmath"  src="images/inline/9d673d900f93b1648e0c672cbd2a1b1bb97b5edd5a82ff5702780e021e5fb4c6.svg" alt="images/inline/9d673d900f93b1648e0c672cbd2a1b1bb97b5edd5a82ff5702780e021e5fb4c6.svg"   />
+ of the chain rule depends on the measurement function of the particular sensor used, and is not presented here. The second part <img  class="latexmath"  src="images/inline/da9a3d08a47456cd86bee72048a224274569e84a39ffcc4f7963f5a9971fcea1.svg" alt="images/inline/da9a3d08a47456cd86bee72048a224274569e84a39ffcc4f7963f5a9971fcea1.svg"   />
+ is the Jacobian of the true state with respect to the error state.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-30_23-2-35-version-1-modificationdate-1640876555000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-30_23-2-35-version-1-modificationdate-1640876555000-api-v2.png" width="700"  />
+    </p>
+<p   
+>which results in all identity 3x3 blocks e.g. <img  class="latexmath"  src="images/inline/1ad801dc071a1e3dbf0fbbf86aa7e81553ae8bf63ea387020c65f4023ec42d71.svg" alt="images/inline/1ad801dc071a1e3dbf0fbbf86aa7e81553ae8bf63ea387020c65f4023ec42d71.svg"   />
+, except for the 4x3 quaternion term.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-5-53-version-1-modificationdate-1640876753000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-5-53-version-1-modificationdate-1640876753000-api-v2.png" width="300"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-6-13-version-1-modificationdate-1640876773000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-6-13-version-1-modificationdate-1640876773000-api-v2.png" width="250"  />
+    </p>
+<p   
+>After the ESKF update, the nominal state gets updated with the observed error state using the appropriate compositions,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-7-0-version-1-modificationdate-1640876820000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-7-0-version-1-modificationdate-1640876820000-api-v2.png"  height="250" />
+    </p>
+<p   
+>After error injection into the nominal state, the error state mean <img  class="latexmath"  src="images/inline/18fe8eeb9ad5d147674c8af57bc403f7c1d12f04c6964341c2cacf9d27fa23fb2.svg" alt="images/inline/18fe8eeb9ad5d147674c8af57bc403f7c1d12f04c6964341c2cacf9d27fa23fb2.svg"   />
+     gets reset. The ESKF error reset operation is thus,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-9-58-version-1-modificationdate-1640876998000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-9-58-version-1-modificationdate-1640876998000-api-v2.png" width="150"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-10-14-version-1-modificationdate-1640877015000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-10-14-version-1-modificationdate-1640877015000-api-v2.png" width="250"  />
+    </p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2074196616_ErrorStateExtendKalmanFilterStudy-CompleteESEKFAlgorithmLoop">
+        <h1 class="heading "><span>Complete ESEKF Algorithm Loop</span></h1>
+<p   
+>Loop:</p>
+<p   
+>1. Update nominal state with motion model, depends on whether we've got measurement update or not, the p    <span style="color: #000000;">
+osterior or prior state estimation will be used in the motion equation. (This is not the prediction function of ESEKF, totally different!)    </span>
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-12-31-version-1-modificationdate-1640877152000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-12-31-version-1-modificationdate-1640877152000-api-v2.png" width="250"  />
+    </p>
+<p   
+>2.Error state uncertainty propagates, depends on whether we've got measurement update or not, the p    <span style="color: #000000;">
+osterior or prior covariance estimation will be used in the covariance estimation equation. Here the F is the linearized Jacobian about error state.    </span>
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-15-11-version-1-modificationdate-1640877312000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-15-11-version-1-modificationdate-1640877312000-api-v2.png" width="300"  />
+    </p>
+<p   
+>3.If the measurement is unavailable, go back to 1. otherwise,</p>
+<p   
+>3.1 Compute Kalman Gain</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-20-42-version-1-modificationdate-1640877643000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-20-42-version-1-modificationdate-1640877643000-api-v2.png" width="250"  />
+    </p>
+<p   
+>3.2 Compute error state, the measurement y of this IMU case comes from complementary sensor.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-21-46-version-1-modificationdate-1640877707000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-21-46-version-1-modificationdate-1640877707000-api-v2.png" width="250"  />
+    </p>
+<p   
+>3.3 Correct nominal state</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-22-9-version-1-modificationdate-1640877729000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-22-9-version-1-modificationdate-1640877729000-api-v2.png" width="150"  />
+    </p>
+<p   
+>3.4 Correct state covariance</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-22-33-version-1-modificationdate-1640877753000-api-v2.png" alt="images/confluence/download/thumbnails/2074196616/image2021-12-30_23-22-33-version-1-modificationdate-1640877753000-api-v2.png" width="200"  />
+    </p>
+<p   
+>3.5 Reset the error state → seems we don't need do anything, the error state will be overwritten for each update.</p>
+<p   
+>3.6 go back to step 1</p>
+    </div>
+    <div class="section section-1" id="src-2074196616_ErrorStateExtendKalmanFilterStudy-CodeStudy">
+        <h1 class="heading "><span>Code Study</span></h1>
+    <div class="section section-2" id="src-2074196616_ErrorStateExtendKalmanFilterStudy-IMUdemo">
+        <h2 class="heading "><span>IMU demo</span></h2>
+<p   
+>code link: <a  class="external-link" href="https://github.com/aipiano/ESEKF_IMU">aipiano/ESEKF_IMU: A python implemented error-state extended Kalman Filter. Suit for learning EKF and IMU integration. (github.com)</a></p>
+<p   
+>Task description:</p>
+<ul class=" "><li class=" "><p   
+>Given IMU measurement and complementary sensor data (replaced by ground truth trajectory for simplicity)</p>
+</li><li class=" "><p   
+>Keep track of [p, v, q, ba, bg, g]</p>
+</li></ul>    <div class="section section-3" id="src-2074196616_ErrorStateExtendKalmanFilterStudy-PredictionStep">
+        <h3 class="heading "><span>Prediction Step</span></h3>
+<p   
+>predict the nominal state and the error state covariance.</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">esekf prediction</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="esekf prediction" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">def</code><code class="plain"> predict(</code><code class="color1">self</code><code class="plain">, imu_measurement: np.array):</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">"""</code></div>
+<div class="line"><code class="comments">        :param imu_measurement: [t, w_m, a_m]</code></div>
+<div class="line"><code class="comments">        :return: </code></div>
+<div class="line"><code class="comments">        """</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.last_predict_time </code><code class="keyword">=</code><code class="keyword">=</code><code class="plain"> imu_measurement[</code><code class="value">0</code><code class="plain">]:</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">return</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># we predict error_covar first, because __predict_nominal_state will change the nominal state.</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.__predict_error_covar(imu_measurement)</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.__predict_nominal_state(imu_measurement)</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.last_predict_time </code><code class="keyword">=</code><code class="plain"> imu_measurement[</code><code class="value">0</code><code class="plain">]  </code><code class="comments"># update timestamp</code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+<p   
+>nominal state prediction (the motion function, without considering noise and bias)</p>
+<p   
+>see nominal state in system kinematics in discrete time section. however, the integration is based on    <span style="color: #000000;">
+ RK4 method rather than Euler method.    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">nominal state prediction</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="nominal state prediction" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">def</code><code class="plain"> __predict_nominal_state(</code><code class="color1">self</code><code class="plain">, imu_measurement: np.array):</code></div>
+<div class="line"><code class="plain">        p </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[:</code><code class="value">3</code><code class="plain">].reshape(</code><code class="keyword">-</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        q </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">3</code><code class="plain">:</code><code class="value">7</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        v </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">7</code><code class="plain">:</code><code class="value">10</code><code class="plain">].reshape(</code><code class="keyword">-</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        a_b </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">10</code><code class="plain">:</code><code class="value">13</code><code class="plain">].reshape(</code><code class="keyword">-</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        w_b </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">13</code><code class="plain">:</code><code class="value">16</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        g </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">16</code><code class="plain">:</code><code class="value">19</code><code class="plain">].reshape(</code><code class="keyword">-</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        w_m </code><code class="keyword">=</code><code class="plain"> imu_measurement[</code><code class="value">1</code><code class="plain">:</code><code class="value">4</code><code class="plain">].copy()</code></div>
+<div class="line"><code class="plain">        a_m </code><code class="keyword">=</code><code class="plain"> imu_measurement[</code><code class="value">4</code><code class="plain">:</code><code class="value">7</code><code class="plain">].reshape(</code><code class="keyword">-</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">).copy()</code></div>
+<div class="line"><code class="plain">        dt </code><code class="keyword">=</code><code class="plain"> imu_measurement[</code><code class="value">0</code><code class="plain">] </code><code class="keyword">-</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.last_predict_time</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        """</code></div>
+<div class="line"><code class="plain">        dp</code><code class="keyword">/</code><code class="plain">dt </code><code class="keyword">=</code><code class="plain"> v</code></div>
+<div class="line"><code class="plain">        dv</code><code class="keyword">/</code><code class="plain">dt </code><code class="keyword">=</code><code class="plain"> R(a_m </code><code class="keyword">-</code><code class="plain"> a_b) </code><code class="keyword">+</code><code class="plain"> g</code></div>
+<div class="line"><code class="plain">        dq</code><code class="keyword">/</code><code class="plain">dt </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.5</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> q x(quaternion product) (w_m </code><code class="keyword">-</code><code class="plain"> w_b)</code></div>
+<div class="line"><code class="plain">        </code></div>
+<div class="line"><code class="plain">        a_m </code><code class="keyword">and</code><code class="plain"> w_m are the measurements of IMU.</code></div>
+<div class="line"><code class="plain">        a_b </code><code class="keyword">and</code><code class="plain"> w_b are biases of acc </code><code class="keyword">and</code><code class="plain"> gyro, respectively.</code></div>
+<div class="line"><code class="plain">        R </code><code class="keyword">=</code><code class="plain"> R{q}, which bring the point </code><code class="keyword">from</code><code class="plain"> local coordinate to </code><code class="keyword">global</code><code class="plain"> coordinate.</code></div>
+<div class="line"><code class="plain">        """</code></div>
+<div class="line"><code class="plain">        w_m </code><code class="keyword">-</code><code class="keyword">=</code><code class="plain"> w_b</code></div>
+<div class="line"><code class="plain">        a_m </code><code class="keyword">-</code><code class="keyword">=</code><code class="plain"> a_b</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments"># use the zero-order integration to integrate the quaternion.</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># q_{n+1} = q_n x q{(w_m - w_b) * dt}</code></div>
+<div class="line"><code class="plain">        angle </code><code class="keyword">=</code><code class="plain"> la.norm(w_m)</code></div>
+<div class="line"><code class="plain">        axis </code><code class="keyword">=</code><code class="plain"> w_m </code><code class="keyword">/</code><code class="plain"> angle</code></div>
+<div class="line"><code class="plain">        R_w </code><code class="keyword">=</code><code class="plain"> tr.rotation_matrix(</code><code class="value">0.5</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> dt </code><code class="keyword">*</code><code class="plain"> angle, axis)</code></div>
+<div class="line"><code class="plain">        q_w </code><code class="keyword">=</code><code class="plain"> tr.quaternion_from_matrix(R_w, </code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        q_half_next </code><code class="keyword">=</code><code class="plain"> tr.quaternion_multiply(q, q_w)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        R_w </code><code class="keyword">=</code><code class="plain"> tr.rotation_matrix(dt </code><code class="keyword">*</code><code class="plain"> angle, axis)</code></div>
+<div class="line"><code class="plain">        q_w </code><code class="keyword">=</code><code class="plain"> tr.quaternion_from_matrix(R_w, </code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        q_next </code><code class="keyword">=</code><code class="plain"> tr.quaternion_multiply(q, q_w)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> q_next[</code><code class="value">0</code><code class="plain">] < </code><code class="value">0</code><code class="plain">:   </code><code class="comments"># force the quaternion has a positive real part.</code></div>
+<div class="line"><code class="plain">            q_next </code><code class="keyword">*</code><code class="keyword">=</code><code class="plain"> </code><code class="keyword">-</code><code class="value">1</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments"># use RK4 method to integration velocity and position.</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># integrate velocity first.</code></div>
+<div class="line"><code class="plain">        R </code><code class="keyword">=</code><code class="plain"> tr.quaternion_matrix(q)[:</code><code class="value">3</code><code class="plain">, :</code><code class="value">3</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        R_half_next </code><code class="keyword">=</code><code class="plain"> tr.quaternion_matrix(q_half_next)[:</code><code class="value">3</code><code class="plain">, :</code><code class="value">3</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        R_next </code><code class="keyword">=</code><code class="plain"> tr.quaternion_matrix(q_next)[:</code><code class="value">3</code><code class="plain">, :</code><code class="value">3</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        v_k1 </code><code class="keyword">=</code><code class="plain"> R @ a_m </code><code class="keyword">+</code><code class="plain"> g</code></div>
+<div class="line"><code class="plain">        v_k2 </code><code class="keyword">=</code><code class="plain"> R_half_next @ a_m </code><code class="keyword">+</code><code class="plain"> g</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># v_k3 = R_half_next @ a_m + g  # yes. v_k2 = v_k3.</code></div>
+<div class="line"><code class="plain">        v_k3 </code><code class="keyword">=</code><code class="plain"> v_k2</code></div>
+<div class="line"><code class="plain">        v_k4 </code><code class="keyword">=</code><code class="plain"> R_next @ a_m </code><code class="keyword">+</code><code class="plain"> g</code></div>
+<div class="line"><code class="plain">        v_next </code><code class="keyword">=</code><code class="plain"> v </code><code class="keyword">+</code><code class="plain"> dt </code><code class="keyword">*</code><code class="plain"> (v_k1 </code><code class="keyword">+</code><code class="plain"> </code><code class="value">2</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> v_k2 </code><code class="keyword">+</code><code class="plain"> </code><code class="value">2</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> v_k3 </code><code class="keyword">+</code><code class="plain"> v_k4) </code><code class="keyword">/</code><code class="plain"> </code><code class="value">6</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments"># integrate position</code></div>
+<div class="line"><code class="plain">        p_k1 </code><code class="keyword">=</code><code class="plain"> v</code></div>
+<div class="line"><code class="plain">        p_k2 </code><code class="keyword">=</code><code class="plain"> v </code><code class="keyword">+</code><code class="plain"> </code><code class="value">0.5</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> dt </code><code class="keyword">*</code><code class="plain"> v_k1  </code><code class="comments"># k2 = v_next_half = v + 0.5 * dt * v' = v + 0.5 * dt * v_k1(evaluate at t0)</code></div>
+<div class="line"><code class="plain">        p_k3 </code><code class="keyword">=</code><code class="plain"> v </code><code class="keyword">+</code><code class="plain"> </code><code class="value">0.5</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> dt </code><code class="keyword">*</code><code class="plain"> v_k2  </code><code class="comments"># v_k2 is evaluated at t0 + 0.5*delta</code></div>
+<div class="line"><code class="plain">        p_k4 </code><code class="keyword">=</code><code class="plain"> v </code><code class="keyword">+</code><code class="plain"> dt </code><code class="keyword">*</code><code class="plain"> v_k3</code></div>
+<div class="line"><code class="plain">        p_next </code><code class="keyword">=</code><code class="plain"> p </code><code class="keyword">+</code><code class="plain"> dt </code><code class="keyword">*</code><code class="plain"> (p_k1 </code><code class="keyword">+</code><code class="plain"> </code><code class="value">2</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> p_k2 </code><code class="keyword">+</code><code class="plain"> </code><code class="value">2</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> p_k3 </code><code class="keyword">+</code><code class="plain"> p_k4) </code><code class="keyword">/</code><code class="plain"> </code><code class="value">6</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.nominal_state[:</code><code class="value">3</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> p_next.reshape(</code><code class="value">3</code><code class="plain">,)</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">3</code><code class="plain">:</code><code class="value">7</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> q_next</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">7</code><code class="plain">:</code><code class="value">10</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> v_next.reshape(</code><code class="value">3</code><code class="plain">,)</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># print(q_next)</code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+<p   
+>predict the covariance of error state</p>
+<p   
+>see error state in system kinematics in discrete time section. however, the transition matrix F is calculated based on    <span style="color: #000000;">
+ 3rd-order truncated integration.    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">error state covariance</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="error state covariance" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">def</code><code class="plain"> __predict_error_covar(</code><code class="color1">self</code><code class="plain">, imu_measurement: np.array):</code></div>
+<div class="line"><code class="plain">        w_m </code><code class="keyword">=</code><code class="plain"> imu_measurement[</code><code class="value">1</code><code class="plain">:</code><code class="value">4</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        a_m </code><code class="keyword">=</code><code class="plain"> imu_measurement[</code><code class="value">4</code><code class="plain">:</code><code class="value">7</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        a_b </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">9</code><code class="plain">:</code><code class="value">12</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        w_b </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">12</code><code class="plain">:</code><code class="value">15</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        q </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">3</code><code class="plain">:</code><code class="value">7</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        R </code><code class="keyword">=</code><code class="plain"> tr.quaternion_matrix(q)[:</code><code class="value">3</code><code class="plain">, :</code><code class="value">3</code><code class="plain">]</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        F </code><code class="keyword">=</code><code class="plain"> np.zeros((</code><code class="value">18</code><code class="plain">, </code><code class="value">18</code><code class="plain">))</code></div>
+<div class="line"><code class="plain">        F[</code><code class="value">0</code><code class="plain">:</code><code class="value">3</code><code class="plain">, </code><code class="value">6</code><code class="plain">:</code><code class="value">9</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> np.eye(</code><code class="value">3</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        F[</code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">, </code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> </code><code class="keyword">-</code><code class="plain">tr.skew_matrix(w_m </code><code class="keyword">-</code><code class="plain"> w_b)</code></div>
+<div class="line"><code class="plain">        F[</code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">, </code><code class="value">12</code><code class="plain">:</code><code class="value">15</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> </code><code class="keyword">-</code><code class="plain">np.eye(</code><code class="value">3</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        F[</code><code class="value">6</code><code class="plain">:</code><code class="value">9</code><code class="plain">, </code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> </code><code class="keyword">-</code><code class="plain">R @ tr.skew_matrix(a_m </code><code class="keyword">-</code><code class="plain"> a_b)</code></div>
+<div class="line"><code class="plain">        F[</code><code class="value">6</code><code class="plain">:</code><code class="value">9</code><code class="plain">, </code><code class="value">9</code><code class="plain">:</code><code class="value">12</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> </code><code class="keyword">-</code><code class="plain">R</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments"># use 3rd-order truncated integration to compute transition matrix Phi.</code></div>
+<div class="line"><code class="plain">        dt </code><code class="keyword">=</code><code class="plain"> imu_measurement[</code><code class="value">0</code><code class="plain">] </code><code class="keyword">-</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.last_predict_time</code></div>
+<div class="line"><code class="plain">        Fdt </code><code class="keyword">=</code><code class="plain"> F </code><code class="keyword">*</code><code class="plain"> dt</code></div>
+<div class="line"><code class="plain">        Fdt2 </code><code class="keyword">=</code><code class="plain"> Fdt @ Fdt</code></div>
+<div class="line"><code class="plain">        Fdt3 </code><code class="keyword">=</code><code class="plain"> Fdt2 @ Fdt</code></div>
+<div class="line"><code class="plain">        Phi </code><code class="keyword">=</code><code class="plain"> np.eye(</code><code class="value">18</code><code class="plain">) </code><code class="keyword">+</code><code class="plain"> Fdt </code><code class="keyword">+</code><code class="plain"> </code><code class="value">0.5</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> Fdt2 </code><code class="keyword">+</code><code class="plain"> (</code><code class="value">1.</code><code class="plain"> </code><code class="keyword">/</code><code class="plain"> </code><code class="value">6.</code><code class="plain">) </code><code class="keyword">*</code><code class="plain"> Fdt3</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments">"""</code></div>
+<div class="line"><code class="comments">        use trapezoidal integration to integrate noise covariance:</code></div>
+<div class="line"><code class="comments">          Qd = 0.5 * dt * (Phi @ self.noise_covar @ Phi.T + self.noise_covar)</code></div>
+<div class="line"><code class="comments">          self.error_covar = Phi @ self.error_covar @ Phi.T + Qd</code></div>
+<div class="line"><code class="comments">          </code></div>
+<div class="line"><code class="comments">        operations above can be merged to the below for efficiency.</code></div>
+<div class="line"><code class="comments">        """</code></div>
+<div class="line"><code class="plain">        Qc_dt </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.5</code><code class="keyword">*</code><code class="plain">dt</code><code class="keyword">*</code><code class="color1">self</code><code class="plain">.noise_covar</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.error_covar </code><code class="keyword">=</code><code class="plain"> Phi @ (</code><code class="color1">self</code><code class="plain">.error_covar </code><code class="keyword">+</code><code class="plain"> Qc_dt) @ Phi.T </code><code class="keyword">+</code><code class="plain"> Qc_dt</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2074196616_ErrorStateExtendKalmanFilterStudy-MeasurementUpdateStep">
+        <h3 class="heading "><span>Measurement Update Step</span></h3>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+compute Kalman gain    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;">
+update error covariance matrix    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;">
+compute state errors → difference between gt and nominal state    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;">
+inject errors to the nominal state    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;">
+reset errors to zero and modify the error covariance matrix    </span>
+</p>
+</li></ul>    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">measurement update</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="measurement update" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">def</code><code class="plain"> update(</code><code class="color1">self</code><code class="plain">, gt_measurement: np.array, measurement_covar: np.array):</code></div>
+<div class="line"><code class="plain">        """</code></div>
+<div class="line"><code class="plain">        :param gt_measurement: [p, q], a </code><code class="value">7x1</code><code class="plain"> </code><code class="keyword">or</code><code class="plain"> </code><code class="value">1x7</code><code class="plain"> vector</code></div>
+<div class="line"><code class="plain">        :param measurement_covar: a </code><code class="value">6x6</code><code class="plain"> symmetrical matrix </code><code class="keyword">=</code><code class="plain"> diag{sigma_p^</code><code class="value">2</code><code class="plain">, sigma_theta^</code><code class="value">2</code><code class="plain">}</code></div>
+<div class="line"><code class="plain">        :</code><code class="keyword">return</code><code class="plain">: </code></div>
+<div class="line"><code class="plain">        </code><code class="comments">"""</code></div>
+<div class="line"><code class="comments">        """</code></div>
+<div class="line"><code class="plain">        we simulate a system that measure the errors between the nominal state </code><code class="keyword">and</code><code class="plain"> ground</code><code class="keyword">-</code><code class="plain">truth state directly,</code></div>
+<div class="line"><code class="plain">        so that we can avoid the direct subtracting of quaternions.</code></div>
+<div class="line"><code class="plain">        </code></div>
+<div class="line"><code class="plain">        we define q1 </code><code class="keyword">-</code><code class="plain"> q2 </code><code class="keyword">=</code><code class="plain"> conjugate(q2) x q1, so that q2 x (q1 </code><code class="keyword">-</code><code class="plain"> q2) </code><code class="keyword">=</code><code class="plain"> q1.</code></div>
+<div class="line"><code class="plain">        </code></div>
+<div class="line"><code class="plain">        ground_truth </code><code class="keyword">-</code><code class="plain"> nominal_state </code><code class="keyword">=</code><code class="plain"> delta </code><code class="keyword">=</code><code class="plain"> H @ error_state </code><code class="keyword">+</code><code class="plain"> noise</code></div>
+<div class="line"><code class="plain">        """</code></div>
+<div class="line"><code class="plain">        H </code><code class="keyword">=</code><code class="plain"> np.zeros((</code><code class="value">6</code><code class="plain">, </code><code class="value">18</code><code class="plain">))</code></div>
+<div class="line"><code class="plain">        H[</code><code class="value">0</code><code class="plain">:</code><code class="value">3</code><code class="plain">, </code><code class="value">0</code><code class="plain">:</code><code class="value">3</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> np.eye(</code><code class="value">3</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        H[</code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">, </code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> np.eye(</code><code class="value">3</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        PHt </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.error_covar @ H.T  </code><code class="comments"># 18x6</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># compute Kalman gain. HPH^T, project the error covariance to the measurement space.</code></div>
+<div class="line"><code class="plain">        K </code><code class="keyword">=</code><code class="plain"> PHt @ la.inv(H @ PHt </code><code class="keyword">+</code><code class="plain"> measurement_covar)  </code><code class="comments"># 18x6</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments"># update error covariance matrix</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.error_covar </code><code class="keyword">=</code><code class="plain"> (np.eye(</code><code class="value">18</code><code class="plain">) </code><code class="keyword">-</code><code class="plain"> K @ H) @ </code><code class="color1">self</code><code class="plain">.error_covar</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># force the error_covar to be a symmetrical matrix</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.error_covar </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.5</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> (</code><code class="color1">self</code><code class="plain">.error_covar </code><code class="keyword">+</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.error_covar.T)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments"># compute the measurements according to the nominal state and ground-truth state.</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> gt_measurement[</code><code class="value">3</code><code class="plain">] < </code><code class="value">0</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">            gt_measurement[</code><code class="value">3</code><code class="plain">:</code><code class="value">7</code><code class="plain">] </code><code class="keyword">*</code><code class="keyword">=</code><code class="plain"> </code><code class="keyword">-</code><code class="value">1</code></div>
+<div class="line"><code class="plain">        gt_p </code><code class="keyword">=</code><code class="plain"> gt_measurement[</code><code class="value">0</code><code class="plain">:</code><code class="value">3</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        gt_q </code><code class="keyword">=</code><code class="plain"> gt_measurement[</code><code class="value">3</code><code class="plain">:</code><code class="value">7</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        q </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">3</code><code class="plain">:</code><code class="value">7</code><code class="plain">]</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        delta </code><code class="keyword">=</code><code class="plain"> np.zeros((</code><code class="value">6</code><code class="plain">, </code><code class="value">1</code><code class="plain">))</code></div>
+<div class="line"><code class="plain">        delta[</code><code class="value">0</code><code class="plain">:</code><code class="value">3</code><code class="plain">, </code><code class="value">0</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> gt_p </code><code class="keyword">-</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">0</code><code class="plain">:</code><code class="value">3</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        delta_q </code><code class="keyword">=</code><code class="plain"> tr.quaternion_multiply(tr.quaternion_conjugate(q), gt_q)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> delta_q[</code><code class="value">0</code><code class="plain">] < </code><code class="value">0</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">            delta_q </code><code class="keyword">*</code><code class="keyword">=</code><code class="plain"> </code><code class="keyword">-</code><code class="value">1</code></div>
+<div class="line"><code class="plain">        angle </code><code class="keyword">=</code><code class="plain"> math.asin(la.norm(delta_q[</code><code class="value">1</code><code class="plain">:</code><code class="value">4</code><code class="plain">]))</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> math.isclose(angle, </code><code class="value">0</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">            axis </code><code class="keyword">=</code><code class="plain"> np.zeros(</code><code class="value">3</code><code class="plain">,)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">else</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">            axis </code><code class="keyword">=</code><code class="plain"> delta_q[</code><code class="value">1</code><code class="plain">:</code><code class="value">4</code><code class="plain">] </code><code class="keyword">/</code><code class="plain"> la.norm(delta_q[</code><code class="value">1</code><code class="plain">:</code><code class="value">4</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">        delta[</code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">, </code><code class="value">0</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> angle </code><code class="keyword">*</code><code class="plain"> axis</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments"># compute state errors.</code></div>
+<div class="line"><code class="plain">        errors </code><code class="keyword">=</code><code class="plain"> K @ delta</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments"># inject errors to the nominal state</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">0</code><code class="plain">:</code><code class="value">3</code><code class="plain">] </code><code class="keyword">+</code><code class="keyword">=</code><code class="plain"> errors[</code><code class="value">0</code><code class="plain">:</code><code class="value">3</code><code class="plain">, </code><code class="value">0</code><code class="plain">]  </code><code class="comments"># update position</code></div>
+<div class="line"><code class="plain">        dq </code><code class="keyword">=</code><code class="plain"> tr.quaternion_about_axis(la.norm(errors[</code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">, </code><code class="value">0</code><code class="plain">]), errors[</code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">, </code><code class="value">0</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># print(dq)</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">3</code><code class="plain">:</code><code class="value">7</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> tr.quaternion_multiply(q, dq)  </code><code class="comments"># update rotation</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">3</code><code class="plain">:</code><code class="value">7</code><code class="plain">] </code><code class="keyword">/</code><code class="keyword">=</code><code class="plain"> la.norm(</code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">3</code><code class="plain">:</code><code class="value">7</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">3</code><code class="plain">] < </code><code class="value">0</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">            </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">3</code><code class="plain">:</code><code class="value">7</code><code class="plain">] </code><code class="keyword">*</code><code class="keyword">=</code><code class="plain"> </code><code class="value">1</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.nominal_state[</code><code class="value">7</code><code class="plain">:] </code><code class="keyword">+</code><code class="keyword">=</code><code class="plain"> errors[</code><code class="value">6</code><code class="plain">:, </code><code class="value">0</code><code class="plain">]  </code><code class="comments"># update the rest.</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments">"""</code></div>
+<div class="line"><code class="comments">        reset errors to zero and modify the error covariance matrix.</code></div>
+<div class="line"><code class="comments">        we do nothing to the errors since we do not save them.</code></div>
+<div class="line"><code class="comments">        but we need to modify the error_covar according to P = GPG^T</code></div>
+<div class="line"><code class="comments">        """</code></div>
+<div class="line"><code class="plain">        G </code><code class="keyword">=</code><code class="plain"> np.eye(</code><code class="value">18</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        G[</code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">, </code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> np.eye(</code><code class="value">3</code><code class="plain">) </code><code class="keyword">-</code><code class="plain"> tr.skew_matrix(</code><code class="value">0.5</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> errors[</code><code class="value">3</code><code class="plain">:</code><code class="value">6</code><code class="plain">, </code><code class="value">0</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.error_covar </code><code class="keyword">=</code><code class="plain"> G @ </code><code class="color1">self</code><code class="plain">.error_covar @ G.T</code></div>
+</div>
+    </div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2074196616_safe-id-RXJyb3JTdGF0ZUV4dGVuZEthbG1hbkZpbHRlclN0dWR5LVNlbnNvcmZ1c2lvbmJldHdlZW5JTVUsR05TU2FuZExpZGFyKENvdXNlcmFIb21ld29yayk">
+        <h2 class="heading "><span>Sensor fusion between IMU, GNSS and Lidar (Cousera Homework)</span></h2>
+<p   
+><a  class="external-link" href="https://github.com/NekSfyris/ESEKF-IMU-GNSS-Lidar">NekSfyris/ESEKF-IMU-GNSS-Lidar: Sensor fusion between IMU, GNSS and Lidar data using an Error State Extended Kalman Filter. (github.com)</a></p>
+<p   
+>Assumptions:<br/>1. LIDAR provides positions in the same reference frame as GNSS (possible)<br/>2. IMU has no biases (not realistic!)<br/>3. State initialization is provided (realistic)<br/>4. Our sensors are spatially and temporally aligned (somewhat realistic)</p>
+<p   
+><br/></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-31_9-32-21-version-1-modificationdate-1640914341000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-31_9-32-21-version-1-modificationdate-1640914341000-api-v2.png"  height="400" />
+    </p>
+<p   
+><br/></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-31_9-33-23-version-1-modificationdate-1640914403000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-31_9-33-23-version-1-modificationdate-1640914403000-api-v2.png"  height="400" />
+    </p>
+<p   
+>This code will is based on loosely coupled solution, otherwise you have to deal with pseudo-range from satellites.</p>
+<p   
+>The IMU is corrected by GNSS or Lidar.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2074196616/image2021-12-31_9-34-24-version-1-modificationdate-1640914465000-api-v2.png" alt="images/confluence/download/attachments/2074196616/image2021-12-31_9-34-24-version-1-modificationdate-1640914465000-api-v2.png"  height="400" />
+    </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2080690720_Open_Dataset_Benchmark.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Open Dataset Benchmark</span>
+        </a>
+                <a href="2084531245_MSCKF_for_VINS_Study.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>MSCKF for VINS Study</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Apollo Auto Map Service Study - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2250883224"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2250883224"> <span>Apollo Auto Map Service Study</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>This page will show my study notes about Baidu Apollo map service. Later, it may help us to define the arch of wave3 map service.</p>
+<p   
+></p>
+    <div class="section section-1" id="src-2250883224_ApolloAutoMapServiceStudy-HDMapService">
+        <h1 class="heading "><span>HD Map Service</span></h1>
+    <div class="section section-2" id="src-2250883224_ApolloAutoMapServiceStudy-SoftwareArchitecture">
+        <h2 class="heading "><span>Software Architecture</span></h2>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/2250883224/apollo_hd_map_arch-version-2-modificationdate-1651648535000-api-v2.png" alt="images/confluence/download/attachments/2250883224/apollo_hd_map_arch-version-2-modificationdate-1651648535000-api-v2.png" width="979"  />
+    </p>
+<ul class=" "><li class=" "><p   
+>The Apollo map service will load the offline map file (OpenDrive xml) into memory and fill each map element structure defined in protobuf file.</p>
+</li><li class=" "><p   
+>The adapter will further organize map data as key-value unordered map format. The key is the same as the map element id defined in protobuf file.</p>
+</li><li class=" "><p   
+>The implement layer will build k-dimension binary tree for each map element so as to search data by range/position efficiently.</p>
+</li><li class=" "><p   
+>The interface layer will be invoked by routing module, planning module and dreamview module.</p>
+</li></ul><p   
+>Here are all the map interfaces for upper level application.</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">apollo hd map interface</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="apollo hd map interface" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">  LaneInfoConstPtr GetLaneById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  JunctionInfoConstPtr GetJunctionById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  SignalInfoConstPtr GetSignalById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  CrosswalkInfoConstPtr GetCrosswalkById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  StopSignInfoConstPtr GetStopSignById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  YieldSignInfoConstPtr GetYieldSignById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  ClearAreaInfoConstPtr GetClearAreaById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  SpeedBumpInfoConstPtr GetSpeedBumpById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  OverlapInfoConstPtr GetOverlapById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  RoadInfoConstPtr GetRoadById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  ParkingSpaceInfoConstPtr GetParkingSpaceById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  PNCJunctionInfoConstPtr GetPNCJunctionById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  RSUInfoConstPtr GetRSUById(</code><code class="keyword">const</code><code class="plain"> Id& id) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all lanes in certain range</code></div>
+<div class="line"><code class="comments">   * @param point the central point of the range</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param lanes store all lanes in target range</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetLanes(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">               std::vector<LaneInfoConstPtr>* lanes) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all junctions in certain range</code></div>
+<div class="line"><code class="comments">   * @param point the central point of the range</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param junctions store all junctions in target range</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetJunctions(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">                   std::vector<JunctionInfoConstPtr>* junctions) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all signals in certain range</code></div>
+<div class="line"><code class="comments">   * @param point the central point of the range</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param signals store all signals in target range</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetSignals(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">                 std::vector<SignalInfoConstPtr>* signals) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all crosswalks in certain range</code></div>
+<div class="line"><code class="comments">   * @param point the central point of the range</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param crosswalks store all crosswalks in target range</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetCrosswalks(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">                    std::vector<CrosswalkInfoConstPtr>* crosswalks) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all stop signs in certain range</code></div>
+<div class="line"><code class="comments">   * @param point the central point of the range</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param stop signs store all stop signs in target range</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetStopSigns(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">                   std::vector<StopSignInfoConstPtr>* stop_signs) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all yield signs in certain range</code></div>
+<div class="line"><code class="comments">   * @param point the central point of the range</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param yield signs store all yield signs in target range</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetYieldSigns(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">                    std::vector<YieldSignInfoConstPtr>* yield_signs) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all clear areas in certain range</code></div>
+<div class="line"><code class="comments">   * @param point the central point of the range</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param clear_areas store all clear areas in target range</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetClearAreas(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">                    std::vector<ClearAreaInfoConstPtr>* clear_areas) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all speed bumps in certain range</code></div>
+<div class="line"><code class="comments">   * @param point the central point of the range</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param speed_bumps store all speed bumps in target range</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetSpeedBumps(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">                    std::vector<SpeedBumpInfoConstPtr>* speed_bumps) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all roads in certain range</code></div>
+<div class="line"><code class="comments">   * @param point the central point of the range</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param roads store all roads in target range</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetRoads(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">               std::vector<RoadInfoConstPtr>* roads) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all parking spaces in certain range</code></div>
+<div class="line"><code class="comments">   * @param point the central point of the range</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param parking spaces store all clear areas in target range</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetParkingSpaces(</code></div>
+<div class="line"><code class="plain">      </code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">      std::vector<ParkingSpaceInfoConstPtr>* parking_spaces) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all pnc junctions in certain range</code></div>
+<div class="line"><code class="comments">   * @param point the central point of the range</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param junctions store all junctions in target range</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetPNCJunctions(</code></div>
+<div class="line"><code class="plain">      </code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">      std::vector<PNCJunctionInfoConstPtr>* pnc_junctions) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get nearest lane from target point,</code></div>
+<div class="line"><code class="comments">   * @param point the target point</code></div>
+<div class="line"><code class="comments">   * @param nearest_lane the nearest lane that match search conditions</code></div>
+<div class="line"><code class="comments">   * @param nearest_s the offset from lane start point along lane center line</code></div>
+<div class="line"><code class="comments">   * @param nearest_l the lateral offset from lane center line</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise, failed.</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetNearestLane(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point,</code></div>
+<div class="line"><code class="plain">                     LaneInfoConstPtr* nearest_lane, </code><code class="color1">double</code><code class="plain">* nearest_s,</code></div>
+<div class="line"><code class="plain">                     </code><code class="color1">double</code><code class="plain">* nearest_l) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get the nearest lane within a certain range by pose</code></div>
+<div class="line"><code class="comments">   * @param point the target position</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param central_heading the base heading</code></div>
+<div class="line"><code class="comments">   * @param max_heading_difference the heading range</code></div>
+<div class="line"><code class="comments">   * @param nearest_lane the nearest lane that match search conditions</code></div>
+<div class="line"><code class="comments">   * @param nearest_s the offset from lane start point along lane center line</code></div>
+<div class="line"><code class="comments">   * @param nearest_l the lateral offset from lane center line</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise, failed.</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetNearestLaneWithHeading(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point,</code></div>
+<div class="line"><code class="plain">                                </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">                                </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain"> central_heading,</code></div>
+<div class="line"><code class="plain">                                </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain"> max_heading_difference,</code></div>
+<div class="line"><code class="plain">                                LaneInfoConstPtr* nearest_lane,</code></div>
+<div class="line"><code class="plain">                                </code><code class="color1">double</code><code class="plain">* nearest_s, </code><code class="color1">double</code><code class="plain">* nearest_l) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all lanes within a certain range by pose</code></div>
+<div class="line"><code class="comments">   * @param point the target position</code></div>
+<div class="line"><code class="comments">   * @param distance the search radius</code></div>
+<div class="line"><code class="comments">   * @param central_heading the base heading</code></div>
+<div class="line"><code class="comments">   * @param max_heading_difference the heading range</code></div>
+<div class="line"><code class="comments">   * @param nearest_lane all lanes that match search conditions</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise, failed.</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetLanesWithHeading(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point,</code></div>
+<div class="line"><code class="plain">                          </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain"> distance, </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain"> central_heading,</code></div>
+<div class="line"><code class="plain">                          </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain"> max_heading_difference,</code></div>
+<div class="line"><code class="plain">                          std::vector<LaneInfoConstPtr>* lanes) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all road and junctions boundaries within certain range</code></div>
+<div class="line"><code class="comments">   * @param point the target position</code></div>
+<div class="line"><code class="comments">   * @param radius the search radius</code></div>
+<div class="line"><code class="comments">   * @param road_boundaries the roads' boundaries</code></div>
+<div class="line"><code class="comments">   * @param junctions the junctions' boundaries</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetRoadBoundaries(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> radius,</code></div>
+<div class="line"><code class="plain">                        std::vector<RoadROIBoundaryPtr>* road_boundaries,</code></div>
+<div class="line"><code class="plain">                        std::vector<JunctionBoundaryPtr>* junctions) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all road boundaries and junctions within certain range</code></div>
+<div class="line"><code class="comments">   * @param point the target position</code></div>
+<div class="line"><code class="comments">   * @param radius the search radius</code></div>
+<div class="line"><code class="comments">   * @param road_boundaries the roads' boundaries</code></div>
+<div class="line"><code class="comments">   * @param junctions the junctions</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetRoadBoundaries(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> radius,</code></div>
+<div class="line"><code class="plain">                        std::vector<RoadRoiPtr>* road_boundaries,</code></div>
+<div class="line"><code class="plain">                        std::vector<JunctionInfoConstPtr>* junctions) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get ROI within certain range</code></div>
+<div class="line"><code class="comments">   * @param point the target position</code></div>
+<div class="line"><code class="comments">   * @param radius the search radius</code></div>
+<div class="line"><code class="comments">   * @param roads_roi the roads' boundaries</code></div>
+<div class="line"><code class="comments">   * @param polygons_roi the junctions' boundaries</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetRoi(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="color1">double</code><code class="plain"> radius,</code></div>
+<div class="line"><code class="plain">             std::vector<RoadRoiPtr>* roads_roi,</code></div>
+<div class="line"><code class="plain">             std::vector<PolygonRoiPtr>* polygons_roi);</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get forward nearest signals within certain range on the lane</code></div>
+<div class="line"><code class="comments">   *        if there are two signals related to one stop line,</code></div>
+<div class="line"><code class="comments">   *        return both signals.</code></div>
+<div class="line"><code class="comments">   * @param point the target position</code></div>
+<div class="line"><code class="comments">   * @param distance the forward search distance</code></div>
+<div class="line"><code class="comments">   * @param signals all signals match conditions</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetForwardNearestSignalsOnLane(</code></div>
+<div class="line"><code class="plain">      </code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point, </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain"> distance,</code></div>
+<div class="line"><code class="plain">      std::vector<SignalInfoConstPtr>* signals) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all other stop signs associated with a stop sign</code></div>
+<div class="line"><code class="comments">   *        in the same junction</code></div>
+<div class="line"><code class="comments">   * @param id id of stop sign</code></div>
+<div class="line"><code class="comments">   * @param stop_signs stop signs associated</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetStopSignAssociatedStopSigns(</code></div>
+<div class="line"><code class="plain">      </code><code class="keyword">const</code><code class="plain"> Id& id, std::vector<StopSignInfoConstPtr>* stop_signs) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get all lanes associated with a stop sign in the same junction</code></div>
+<div class="line"><code class="comments">   * @param id id of stop sign</code></div>
+<div class="line"><code class="comments">   * @param lanes all lanes match conditions</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetStopSignAssociatedLanes(</code><code class="keyword">const</code><code class="plain"> Id& id,</code></div>
+<div class="line"><code class="plain">                                 std::vector<LaneInfoConstPtr>* lanes) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get a local map which is identical to the origin map except that all</code></div>
+<div class="line"><code class="comments">   * map elements without overlap with the given region are deleted.</code></div>
+<div class="line"><code class="comments">   * @param point the target position</code></div>
+<div class="line"><code class="comments">   * @param range the size of local map region, [width, height]</code></div>
+<div class="line"><code class="comments">   * @param local_map local map in proto format</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetLocalMap(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point,</code></div>
+<div class="line"><code class="plain">                  </code><code class="keyword">const</code><code class="plain"> std::pair<</code><code class="color1">double</code><code class="plain">, </code><code class="color1">double</code><code class="plain">>& range, Map* local_map) </code><code class="keyword">const</code><code class="plain">;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">/**</code></div>
+<div class="line"><code class="comments">   * @brief get forward nearest rsus within certain range</code></div>
+<div class="line"><code class="comments">   * @param point the target position</code></div>
+<div class="line"><code class="comments">   * @param distance the forward search distance</code></div>
+<div class="line"><code class="comments">   * @param central_heading the base heading</code></div>
+<div class="line"><code class="comments">   * @param max_heading_difference the heading range</code></div>
+<div class="line"><code class="comments">   * @param rsus all rsus that match search conditions</code></div>
+<div class="line"><code class="comments">   * @return 0:success, otherwise failed</code></div>
+<div class="line"><code class="comments">   */</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">int</code><code class="plain"> GetForwardNearestRSUs(</code><code class="keyword">const</code><code class="plain"> apollo::common::PointENU& point,</code></div>
+<div class="line"><code class="plain">                    </code><code class="color1">double</code><code class="plain"> distance, </code><code class="color1">double</code><code class="plain"> central_heading,</code></div>
+<div class="line"><code class="plain">                    </code><code class="color1">double</code><code class="plain"> max_heading_difference,</code></div>
+<div class="line"><code class="plain">                    std::vector<RSUInfoConstPtr>* rsus) </code><code class="keyword">const</code><code class="plain">;</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2250883224_ApolloAutoMapServiceStudy-ApolloHDMapElementDefinition">
+        <h2 class="heading "><span>Apollo HD Map Element Definition</span></h2>
+<p   
+>As for the original OpenDrive description, please find the <a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=2201110317"> OpenDrive (v1.6) Brief description -PJ -W3 -Per-docupedia (bosch.com) </a> created by <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8aba638a6d0a59c8016d1997a43f0034">user-66ee2</a>.</p>
+<p   
+>Here are the major improvements from Apollo,</p>
+<ul class=" "><li class=" "><p   
+>the shape format of map element</p>
+<ul class=" "><li class=" "><p   
+>the reference line in OpenDrive is defined with polynomial parameters. And its boundary could be described by some lateral offset.</p>
+</li><li class=" "><p   
+>the apollo will use map point(WGS84) to describe the road boundary and reference line. High storage cost for map supplier, but lower computation cost for client.</p>
+</li></ul></li><li class=" "><p   
+>extend map element type</p>
+<ul class=" "><li class=" "><p   
+>no parking zone, crosswalk, speed bump etc.</p>
+</li></ul></li><li class=" "><p   
+>extend the relationship between map element</p>
+<ul class=" "><li class=" "><p   
+>add association rule between junction and elements in junction</p>
+</li><li class=" "><p   
+>add association between traffic light and stop line</p>
+</li><li class=" "><p   
+>add distance between lane center line and road boundary</p>
+</li></ul></li></ul><p   
+>The apollo will store the opendrive data as xml file. Here is the main data structure.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2250883224/image2022-5-4_15-44-51-version-1-modificationdate-1651650292000-api-v2.png" alt="images/confluence/download/attachments/2250883224/image2022-5-4_15-44-51-version-1-modificationdate-1651650292000-api-v2.png"  height="400" />
+    </p>
+<p   
+>Here are the map message format defined in protobuf file.</p>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-HDMapOverall">
+        <h3 class="heading "><span>HD Map Overall</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map.proto</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map.proto" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">message Header {</code></div>
+<div class="line"><code class="plain">  optional bytes version = 1;   </code><code class="comments">// //Map version </code></div>
+<div class="line"><code class="plain">  optional bytes date = 2;      </code><code class="comments">// //Map time </code></div>
+<div class="line"><code class="plain">  optional Projection projection = 3; </code><code class="comments">// //Projection method </code></div>
+<div class="line"><code class="plain">  optional bytes district = 4;        </code><code class="comments">// //district </code></div>
+<div class="line"><code class="plain">  optional bytes generation = 5;      </code><code class="comments">//</code></div>
+<div class="line"><code class="plain">  optional bytes rev_major = 6;       </code><code class="comments">//</code></div>
+<div class="line"><code class="plain">  optional bytes rev_minor = 7;       </code><code class="comments">//</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> left = 8;           </code><code class="comments">// //Left </code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> top = 9;            </code><code class="comments">// //superior </code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> right = 10;         </code><code class="comments">// //right </code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> bottom = 11;        </code><code class="comments">// //end </code></div>
+<div class="line"><code class="plain">  optional bytes vendor = 12;         </code><code class="comments">// //supplier </code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"><code class="plain">message Map {</code></div>
+<div class="line"><code class="plain">  optional Header header = 1;        </code><code class="comments">// //superior 面所说的地图基本信息</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  repeated Crosswalk crosswalk = 2;  </code><code class="comments">// //pedestrian crossing </code></div>
+<div class="line"><code class="plain">  repeated Junction junction = 3;    </code><code class="comments">// //Intersection </code></div>
+<div class="line"><code class="plain">  repeated Lane lane = 4;           </code><code class="comments">// //Lane </code></div>
+<div class="line"><code class="plain">  repeated StopSign stop_sign = 5;  </code><code class="comments">// //parking 标志</code></div>
+<div class="line"><code class="plain">  repeated Signal </code><code class="functions">signal</code><code class="plain"> = 6;       </code><code class="comments">// //Signal lamp </code></div>
+<div class="line"><code class="plain">  repeated YieldSign yield = 7;     </code><code class="comments">// //Make a car logo </code></div>
+<div class="line"><code class="plain">  repeated Overlap overlap = 8;     </code><code class="comments">// //Overlapping area </code></div>
+<div class="line"><code class="plain">  repeated ClearArea clear_area = 9;  </code><code class="comments">// //Prohibit parking area </code></div>
+<div class="line"><code class="plain">  repeated SpeedBump speed_bump = 10;  </code><code class="comments">// //Deceleration zone </code></div>
+<div class="line"><code class="plain">  repeated Road road = 11;             </code><code class="comments">// //the way </code></div>
+<div class="line"><code class="plain">  repeated ParkingSpace parking_space = 12; </code><code class="comments">// //parking  //district 域</code></div>
+<div class="line"><code class="plain">  repeated Sidewalk sidewalk = 13;  </code><code class="comments">// //The roadside road, or the road where pedestrians are taking, the current version has been removed?But some other modules also have Sidewalk </code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-Crosswalk">
+        <h3 class="heading "><span>Crosswalk</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_crosswalk.proto</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_crosswalk.proto" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">message Crosswalk {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;        </code><code class="comments">// //serial number </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  optional Polygon polygon = 2;  </code><code class="comments">// //Polygonal </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  repeated Id overlap_id = 3;   </code><code class="comments">// //Fold ID </code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-Junction">
+        <h3 class="heading "><span>Junction</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_junction.proto </div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_junction.proto " data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">message Junction {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;    </code><code class="comments">// //serial number </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  optional Polygon polygon = 2;     </code><code class="comments">// //Polygonal </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  repeated Id overlap_id = 3;    </code><code class="comments">// //Fold ID </code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-Lane">
+        <h3 class="heading "><span>Lane</span></h3>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2250883224/image2022-5-4_15-53-11-version-1-modificationdate-1651650792000-api-v2.png" alt="images/confluence/download/attachments/2250883224/image2022-5-4_15-53-11-version-1-modificationdate-1651650792000-api-v2.png"  height="250" />
+    </p>
+<p   
+>The naming rule for Lane ID,</p>
+<ul class=" "><li class=" "><p   
+>ID=0 is for reference line</p>
+</li><li class=" "><p   
+>Lane ID is continuous</p>
+</li><li class=" "><p   
+>Lane ID in the same lane section shall be unique</p>
+</li><li class=" "><p   
+>Lane ID on the left side of reference line shall be increased along the t (lateral) axis.</p>
+</li><li class=" "><p   
+>Lane ID on the right side of reference line shall be decreased along the t (lateral) axis.</p>
+</li><li class=" "><p   
+>reference line shall be defined in center node in xml file.</p>
+</li></ul>    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map.lane.proto</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map.lane.proto" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">// A lane is part of a roadway, that is designated for use by a single line of vehicles.</code></div>
+<div class="line"><code class="comments">// Most public roads (include highways) have more than two lanes.</code></div>
+<div class="line"><code class="plain">message Lane {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;         </code><code class="comments">// //serial number </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Central lane as reference trajectory, not necessary to be the geometry central.</code></div>
+<div class="line"><code class="plain">  optional Curve central_curve = 2;     </code><code class="comments">// //Central curve </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Lane boundary curve.</code></div>
+<div class="line"><code class="plain">  optional LaneBoundary left_boundary = 3;          </code><code class="comments">// //Left 边界</code></div>
+<div class="line"><code class="plain">  optional LaneBoundary right_boundary = 4;         </code><code class="comments">// //Right boundary </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// in meters.</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> length = 5;                       </code><code class="comments">// //length </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Speed limit of the lane, in meters per second.</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> speed_limit = 6;           </code><code class="comments">// //Speed ​​limit </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  repeated Id overlap_id = 7;                </code><code class="comments">// //Overlapped area ID </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// All lanes can be driving into (or from).</code></div>
+<div class="line"><code class="plain">  repeated Id predecessor_id = 8;           </code><code class="comments">// //forward 任id</code></div>
+<div class="line"><code class="plain">  repeated Id successor_id = 9;             </code><code class="comments">// //Successor ID </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Neighbor lanes on the same direction.</code></div>
+<div class="line"><code class="plain">  repeated Id left_neighbor_forward_lane_id = 10;    </code><code class="comments">// //Left 边相邻 //forward 方 //Lane id</code></div>
+<div class="line"><code class="plain">  repeated Id right_neighbor_forward_lane_id = 11;   </code><code class="comments">// //right 相邻 //forward 方 //Lane id</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="keyword">enum</code><code class="plain"> LaneType {               </code><code class="comments">// //Lane 类型</code></div>
+<div class="line"><code class="plain">    NONE = 1;                  </code><code class="comments">// //none </code></div>
+<div class="line"><code class="plain">    CITY_DRIVING = 2;           </code><code class="comments">//城市 //the way </code></div>
+<div class="line"><code class="plain">    BIKING = 3;                 </code><code class="comments">// //bike </code></div>
+<div class="line"><code class="plain">    SIDEWALK = 4;               </code><code class="comments">// //sidewalk </code></div>
+<div class="line"><code class="plain">    PARKING = 5;                </code><code class="comments">// //parking </code></div>
+<div class="line"><code class="plain">  };</code></div>
+<div class="line"><code class="plain">  optional LaneType type = 12;         </code><code class="comments">// //Lane 类型</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="keyword">enum</code><code class="plain"> LaneTurn {</code></div>
+<div class="line"><code class="plain">    NO_TURN = 1;        </code><code class="comments">// //straight </code></div>
+<div class="line"><code class="plain">    LEFT_TURN = 2;      </code><code class="comments">// //Left 转弯</code></div>
+<div class="line"><code class="plain">    RIGHT_TURN = 3;     </code><code class="comments">// //Turn right </code></div>
+<div class="line"><code class="plain">    U_TURN = 4;         </code><code class="comments">// //Take ahead </code></div>
+<div class="line"><code class="plain">  };</code></div>
+<div class="line"><code class="plain">  optional LaneTurn turn = 13;          </code><code class="comments">// //Turning type </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  repeated Id left_neighbor_reverse_lane_id = 14;       </code><code class="comments">// //Advanced negative lane ID ID on the left </code></div>
+<div class="line"><code class="plain">  repeated Id right_neighbor_reverse_lane_id = 15;      </code><code class="comments">// //right 相邻反方向 //Lane id</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  optional Id junction_id = 16;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Association between central point to closest boundary.</code></div>
+<div class="line"><code class="plain">  repeated LaneSampleAssociation left_sample = 17;      </code><code class="comments">//中心点与最近 //Left 边界之间的关联</code></div>
+<div class="line"><code class="plain">  repeated LaneSampleAssociation right_sample = 18;     </code><code class="comments">//中心点与最近 //Right boundary 之间的关联</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="keyword">enum</code><code class="plain"> LaneDirection {</code></div>
+<div class="line"><code class="plain">    FORWARD = 1;     </code><code class="comments">// //forward </code></div>
+<div class="line"><code class="plain">    BACKWARD = 2;    </code><code class="comments">//后，潮汐 //Lane 借用的情况？</code></div>
+<div class="line"><code class="plain">    BIDIRECTION = 3;  </code><code class="comments">// //Two -way </code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"><code class="plain">  optional LaneDirection direction = 19;   </code><code class="comments">// //Lane </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Association between central point to closest road boundary.</code></div>
+<div class="line"><code class="plain">  repeated LaneSampleAssociation left_road_sample = 20;    </code><code class="comments">// //The relationship between the center point and the recent left boundary </code></div>
+<div class="line"><code class="plain">  repeated LaneSampleAssociation right_road_sample = 21;    </code><code class="comments">// //The relationship between the center point and the recent right boundary </code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-StopSign">
+        <h3 class="heading "><span>Stop Sign</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_stop_sign.proto</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_stop_sign.proto" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">message StopSign {</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  optional Id id = 1;         </code><code class="comments">// //serial number </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  repeated Curve stop_line = 2;    </code><code class="comments">// //Stop line, the CURVE curve should be the basic type </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  repeated Id overlap_id = 3;     </code><code class="comments">// //Fold ID </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="keyword">enum</code><code class="plain"> StopType {</code></div>
+<div class="line"><code class="plain">    UNKNOWN = 0;        </code><code class="comments">// //unknown </code></div>
+<div class="line"><code class="plain">    ONE_WAY = 1;        </code><code class="comments">// //There is only one lane to stop </code></div>
+<div class="line"><code class="plain">    TWO_WAY = 2;</code></div>
+<div class="line"><code class="plain">    THREE_WAY = 3;</code></div>
+<div class="line"><code class="plain">    FOUR_WAY = 4;</code></div>
+<div class="line"><code class="plain">    ALL_WAY = 5;</code></div>
+<div class="line"><code class="plain">  };</code></div>
+<div class="line"><code class="plain">  optional StopType type = 4;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-Trafficsign">
+        <h3 class="heading "><span>Traffic sign</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_signal.proto</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_signal.proto" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">message Subsignal {</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">enum</code><code class="plain"> Type {</code></div>
+<div class="line"><code class="plain">    UNKNOWN = 1;    </code><code class="comments">// //unknown </code></div>
+<div class="line"><code class="plain">    CIRCLE = 2;     </code><code class="comments">// //lock up??? </code></div>
+<div class="line"><code class="plain">    ARROW_LEFT = 3;  </code><code class="comments">// //Left 边</code></div>
+<div class="line"><code class="plain">    ARROW_FORWARD = 4;  </code><code class="comments">// //forward 面</code></div>
+<div class="line"><code class="plain">    ARROW_RIGHT = 5;    </code><code class="comments">// //right </code></div>
+<div class="line"><code class="plain">    ARROW_LEFT_AND_FORWARD = 6;   </code><code class="comments">// //Left  //forward </code></div>
+<div class="line"><code class="plain">    ARROW_RIGHT_AND_FORWARD = 7;  </code><code class="comments">// //right  //forward </code></div>
+<div class="line"><code class="plain">    ARROW_U_TURN = 8;   </code><code class="comments">// //Take ahead </code></div>
+<div class="line"><code class="plain">  };</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  optional Id id = 1;</code></div>
+<div class="line"><code class="plain">  optional Type type = 2;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Location of the center of the bulb. now no data support.</code></div>
+<div class="line"><code class="plain">  optional apollo.common.PointENU location = 3;    </code><code class="comments">// //Is it also the basic type? </code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">message Signal {</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">enum</code><code class="plain"> Type {</code></div>
+<div class="line"><code class="plain">    UNKNOWN = 1;</code></div>
+<div class="line"><code class="plain">    MIX_2_HORIZONTAL = 2;</code></div>
+<div class="line"><code class="plain">    MIX_2_VERTICAL = 3;</code></div>
+<div class="line"><code class="plain">    MIX_3_HORIZONTAL = 4;</code></div>
+<div class="line"><code class="plain">    MIX_3_VERTICAL = 5;</code></div>
+<div class="line"><code class="plain">    SINGLE = 6;</code></div>
+<div class="line"><code class="plain">  };</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  optional Id id = 1;</code></div>
+<div class="line"><code class="plain">  optional Polygon boundary = 2;    </code><code class="comments">// //Polygonal </code></div>
+<div class="line"><code class="plain">  repeated Subsignal subsignal = 3;   </code><code class="comments">// //Sub -signal </code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// TODO: add orientation. now no data support.</code></div>
+<div class="line"><code class="plain">  repeated Id overlap_id = 4;   </code><code class="comments">// //Fold ID </code></div>
+<div class="line"><code class="plain">  optional Type type = 5;      </code><code class="comments">// //The type here mainly refers to the number and location of the traffic logo?Intersection </code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// stop line</code></div>
+<div class="line"><code class="plain">  repeated Curve stop_line = 6;     </code><code class="comments">// //Where is the end ？</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_safe-id-QXBvbGxvQXV0b01hcFNlcnZpY2VTdHVkeS1ZaWVsZFNpZ24obm90ZXhpc3RpbkNOKQ">
+        <h3 class="heading "><span>Yield Sign (not exist in CN)</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_yield_sign.proto </div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_yield_sign.proto " data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">message YieldSign {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;       </code><code class="comments">// //serial number </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  repeated Curve stop_line = 2;    </code><code class="comments">// //Where is the end </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  repeated Id overlap_id = 3;     </code><code class="comments">// //Fold ID </code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-OverLap">
+        <h3 class="heading "><span>Over Lap</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_overlap.proto</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_overlap.proto" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">message LaneOverlapInfo {</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> start_s = 1;  </code><code class="comments">//position (s-coordinate)</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> end_s = 2;    </code><code class="comments">//position (s-coordinate)</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">bool</code><code class="plain"> is_merge = 3;</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"><code class="comments">// Information about one object in the overlap.</code></div>
+<div class="line"><code class="plain">message ObjectOverlapInfo {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  oneof overlap_info {</code></div>
+<div class="line"><code class="plain">    LaneOverlapInfo lane_overlap_info = 3;</code></div>
+<div class="line"><code class="plain">    SignalOverlapInfo signal_overlap_info = 4;</code></div>
+<div class="line"><code class="plain">    StopSignOverlapInfo stop_sign_overlap_info = 5;</code></div>
+<div class="line"><code class="plain">    CrosswalkOverlapInfo crosswalk_overlap_info = 6;</code></div>
+<div class="line"><code class="plain">    JunctionOverlapInfo junction_overlap_info = 7;</code></div>
+<div class="line"><code class="plain">    YieldOverlapInfo yield_sign_overlap_info = 8;</code></div>
+<div class="line"><code class="plain">    ClearAreaOverlapInfo clear_area_overlap_info = 9;</code></div>
+<div class="line"><code class="plain">    SpeedBumpOverlapInfo speed_bump_overlap_info = 10;</code></div>
+<div class="line"><code class="plain">    ParkingSpaceOverlapInfo parking_space_overlap_info = 11;</code></div>
+<div class="line"><code class="plain">    SidewalkOverlapInfo sidewalk_overlap_info = 12;</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// Here, the "overlap" includes any pair of objects on the map</code></div>
+<div class="line"><code class="comments">// (e.g. lanes, junctions, and crosswalks).</code></div>
+<div class="line"><code class="plain">message Overlap {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Information about one overlap, include all overlapped objects.</code></div>
+<div class="line"><code class="plain">  repeated ObjectOverlapInfo object = 2;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-Noparkingzone">
+        <h3 class="heading "><span>No parking zone</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_clear_area.proto </div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_clear_area.proto " data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">// A clear area means in which stopping car is prohibited</code></div>
+<div class="line"><code class="plain">message ClearArea {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;            </code><code class="comments">// //serial number </code></div>
+<div class="line"><code class="plain">  repeated Id overlap_id = 2;    </code><code class="comments">// //Fold ID </code></div>
+<div class="line"><code class="plain">  optional Polygon polygon = 3;  </code><code class="comments">// //Polygonal </code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-Speedbump">
+        <h3 class="heading "><span>Speed bump</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_speed_bump.proto </div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_speed_bump.proto " data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">message SpeedBump {</code></div>
+<div class="line"><code class="plain">    optional Id id = 1;          </code><code class="comments">// //serial number </code></div>
+<div class="line"><code class="plain">    repeated Id overlap_id = 2;   </code><code class="comments">// //Overlapping area </code></div>
+<div class="line"><code class="plain">    repeated Curve position = 3;  </code><code class="comments">// //Curve position </code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-Road">
+        <h3 class="heading "><span>Road</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_road.proto</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_road.proto" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">// road section defines a road cross-section, At least one section must be defined in order to</code></div>
+<div class="line"><code class="comments">// use a road, If multiple road sections are defined, they must be listed in order along the road</code></div>
+<div class="line"><code class="plain">message RoadSection {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// lanes contained in this section</code></div>
+<div class="line"><code class="plain">  repeated Id lane_id = 2;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// boundary of section</code></div>
+<div class="line"><code class="plain">  optional RoadBoundary boundary = 3;</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// The road is a collection of traffic elements, such as lanes, road boundary etc.</code></div>
+<div class="line"><code class="comments">// It provides general information about the road.</code></div>
+<div class="line"><code class="plain">message Road {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;</code></div>
+<div class="line"><code class="plain">  repeated RoadSection section = 2;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// if lane road not in the junction, junction id is null.</code></div>
+<div class="line"><code class="plain">  optional Id junction_id = 3;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-Parkingzone">
+        <h3 class="heading "><span>Parking zone</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_parking.proto </div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_parking.proto " data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">// ParkingSpace is a place designated to park a car.</code></div>
+<div class="line"><code class="plain">message ParkingSpace {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  optional Polygon polygon = 2;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  repeated Id overlap_id = 3;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> heading = 4;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-Sidewalk">
+        <h3 class="heading "><span>Side walk</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_sidewalk.proto</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_sidewalk.proto" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">// A sidewalk (American English) or pavement (British English), also known as a footpath or footway, is a path along the side of a road.</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">message Sidewalk {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;</code></div>
+<div class="line"><code class="plain">  repeated Id overlap_id = 2;</code></div>
+<div class="line"><code class="plain">  optional Polygon polygon = 3;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-Speedlimit">
+        <h3 class="heading "><span>Speed limit</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_speed_control.proto</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_speed_control.proto" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">message SpeedControl {</code></div>
+<div class="line"><code class="plain">  optional string name = 1;</code></div>
+<div class="line"><code class="plain">  optional apollo.hdmap.Polygon polygon = 2;</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> speed_limit = 3;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-mapbasicgeometry">
+        <h3 class="heading "><span>map basic geometry</span></h3>
+<p   
+>it will be referred by other map element</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_geometry.proto</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_geometry.proto" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">// Polygon, not necessary convex.</code></div>
+<div class="line"><code class="plain">message Polygon {</code></div>
+<div class="line"><code class="plain">  repeated apollo.common.PointENU point = 1;</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// Straight line segment.</code></div>
+<div class="line"><code class="plain">message LineSegment {</code></div>
+<div class="line"><code class="plain">  repeated apollo.common.PointENU point = 1;</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// Generalization of a line.</code></div>
+<div class="line"><code class="plain">message CurveSegment {</code></div>
+<div class="line"><code class="plain">  oneof curve_type {</code></div>
+<div class="line"><code class="plain">    LineSegment line_segment = 1;</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> s = 6;  </code><code class="comments">// start position (s-coordinate)</code></div>
+<div class="line"><code class="plain">  optional apollo.common.PointENU start_position = 7;</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> heading = 8;  </code><code class="comments">// start orientation</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> length = 9;</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// An object similar to a line but that need not be straight.</code></div>
+<div class="line"><code class="plain">message Curve {</code></div>
+<div class="line"><code class="plain">  repeated CurveSegment segment = 1;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-JunctionforPNCmap">
+        <h3 class="heading "><span>Junction for PNC map</span></h3>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2250883224/image2022-5-4_16-9-13-version-1-modificationdate-1651651753000-api-v2.png" alt="images/confluence/download/attachments/2250883224/image2022-5-4_16-9-13-version-1-modificationdate-1651651753000-api-v2.png"  height="400" />
+    </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map_pnc_junction.proto</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map_pnc_junction.proto" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">message PNCJunction {</code></div>
+<div class="line"><code class="plain">  optional Id id = 1;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  optional Polygon polygon = 2;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  repeated Id overlap_id = 3;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2250883224_ApolloAutoMapServiceStudy-OpenPoint">
+        <h2 class="heading "><span>Open Point</span></h2>
+<p   
+>The map supplier for wave3 will provide us with SDK or EHP/EHR. It's less likely we will load the whole map file when power on.</p>
+<p   
+>We shall keep the KD tree design and make our own adapter to parse/organize the EHR data or SDK data.</p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2250883224_safe-id-QXBvbGxvQXV0b01hcFNlcnZpY2VTdHVkeS1QTkMoUGxhbm5pbmdhbmRDb250cm9sKU1hcFNlcnZpY2U">
+        <h1 class="heading "><span>PNC (Planning and Control) Map Service</span></h1>
+<p   
+>Since the planning interface from map supplier is not clear so far, this section will only provide the general introduction and will not go through the details about the PNC map service. Let's assume the map supplier will at least provide us the route response. So this page will not cover the topo graph/map generation and usage.</p>
+<p   
+>For more details about PNC, please find the link (Chinese Only),</p>
+<ul class=" "><li class=" "><p   
+><a  class="external-link" href="https://paul.pub/apollo-reference-line/"> Analyze the reference line and trajectory of Baidu Apollo (Paul.pub) </a></p>
+</li><li class=" "><p   
+><a  class="external-link" href="https://github.com/YannZyl/Apollo-Note/blob/master/docs/planning/pnc_map.md">Apollo-Note/pnc_map.md at master · YannZyl/Apollo-Note (github.com)</a></p>
+</li></ul>    <div class="section section-2" id="src-2250883224_ApolloAutoMapServiceStudy-Background">
+        <h2 class="heading "><span>Background</span></h2>
+<p   
+>The planning and control map service (PNC) will accept and process the response from route module and provide a smooth and drivable path/trajectory + necessary driving attributes to the planning module so that the ReferenceLineProvider can generate the reference line to control/guide the vehicle. Hence, the PNC module is also the sub-module of planning. The PNC map is invoked in function "ReferenceLineProvider::CreateReferenceLine".</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2250883224/image2022-5-4_16-57-22-version-1-modificationdate-1651654643000-api-v2.png" alt="images/confluence/download/attachments/2250883224/image2022-5-4_16-57-22-version-1-modificationdate-1651654643000-api-v2.png" width="1200"  />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2250883224_ApolloAutoMapServiceStudy-InputandOutput">
+        <h2 class="heading "><span>Input and Output</span></h2>
+<p   
+>Input of PNC map:</p>
+<ul class=" "><li class=" "><p   
+>routing response from route module</p>
+</li><li class=" "><p   
+>hd map (lane)</p>
+</li><li class=" "><p   
+>vehicle state</p>
+</li></ul><p   
+>Output of PNC map:</p>
+<ul class=" "><li class=" "><p   
+>smooth and drivable path for short time planning (from ego position to next way point)<br/></p>
+<ul class=" "><li class=" "><p   
+>std::vector<common::math::LineSegment2d> segments_ (each LineSegment2d has 2     <span style="color: #24292f;">
+MapPathPoint    </span>
+)</p>
+</li></ul></li><li class=" "><p   
+>necessary driving attribute</p>
+</li></ul><p   
+>The route response is generated from A* algorithm over the topo map from routing module. Here is its message format,</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">route response</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="route response" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="preprocessor"># routing\proto\routing.proto</code></div>
+<div class="line"><code class="plain">message LaneWaypoint {</code></div>
+<div class="line"><code class="plain">  optional string id = 1;    # id of associated lane, it's string, not </code><code class="color1">int</code><code class="plain">!</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> s = 2;</code></div>
+<div class="line"><code class="plain">  optional apollo.common.PointENU pose = 3;</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// When the developer selects a point on the dreamview route editing</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// the direction can be specified by dragging the mouse</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// dreamview calculates the heading based on this to support construct lane way point with heading</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> heading = 4;</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">message LaneSegment {</code></div>
+<div class="line"><code class="plain">  optional string id = 1;       # id of lane, it's string, not </code><code class="color1">int</code><code class="plain">!</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> start_s = 2;</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> end_s = 3;</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">message Measurement {</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> distance = 1;</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">enum</code><code class="plain"> ChangeLaneType {</code></div>
+<div class="line"><code class="plain">  FORWARD = 0;</code></div>
+<div class="line"><code class="plain">  LEFT = 1;</code></div>
+<div class="line"><code class="plain">  RIGHT = 2;</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">message Passage {</code></div>
+<div class="line"><code class="plain">  repeated LaneSegment segment = 1;</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">bool</code><code class="plain"> can_exit = 2;</code></div>
+<div class="line"><code class="plain">  optional ChangeLaneType change_lane_type = 3 [</code><code class="keyword">default</code><code class="plain"> = FORWARD];</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">message RoadSegment {</code></div>
+<div class="line"><code class="plain">  optional string id = 1;</code></div>
+<div class="line"><code class="plain">  repeated Passage passage = 2;</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">message RoutingResponse {</code></div>
+<div class="line"><code class="plain">  optional apollo.common.Header header = 1;</code></div>
+<div class="line"><code class="plain">  repeated RoadSegment road = 2;</code></div>
+<div class="line"><code class="plain">  optional Measurement measurement = 3;</code></div>
+<div class="line"><code class="plain">  optional RoutingRequest routing_request = 4;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// the map version which is used to build road graph</code></div>
+<div class="line"><code class="plain">  optional bytes map_version = 5;</code></div>
+<div class="line"><code class="plain">  optional apollo.common.StatusPb status = 6;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+<p   
+>Here is an example of route response if it's parsed.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2250883224/image2022-5-4_17-26-52-version-1-modificationdate-1651656413000-api-v2.png" alt="images/confluence/download/attachments/2250883224/image2022-5-4_17-26-52-version-1-modificationdate-1651656413000-api-v2.png" width="600"  />
+    </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">route response example</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="route response example" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">all_lane_ids_: [</code><code class="string">'lane 1'</code><code class="plain">, </code><code class="string">'lane 1'</code><code class="plain">, </code><code class="string">'lane 1'</code><code class="plain">,       </code><code class="comments">// RoadSegment 0, Passage 0, LaneSegment 0-2</code></div>
+<div class="line"><code class="plain">                </code><code class="string">'lane 2'</code><code class="plain">, </code><code class="string">'lane 2'</code><code class="plain">, </code><code class="string">'lane 2'</code><code class="plain">,       </code><code class="comments">// RoadSegment 0, Passage 1, LaneSegment 0-2</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">                </code><code class="string">'lane 1'</code><code class="plain">, </code><code class="string">'lane 1'</code><code class="plain">, </code><code class="string">'lane 1'</code><code class="plain">,       </code><code class="comments">// RoadSegment 1, Passage 0, LaneSegment 0-2</code></div>
+<div class="line"><code class="plain">                </code><code class="string">'lane 2'</code><code class="plain">, </code><code class="string">'lane 2'</code><code class="plain">, </code><code class="string">'lane 2'</code><code class="plain">,       </code><code class="comments">// RoadSegment 1, Passage 1, LaneSegment 0-2</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">                </code><code class="string">'lane 1'</code><code class="plain">, </code><code class="string">'lane 1'</code><code class="plain">, </code><code class="string">'lane 1'</code><code class="plain">,       </code><code class="comments">// RoadSegment 2, Passage 0, LaneSegment 0-2</code></div>
+<div class="line"><code class="plain">                </code><code class="string">'lane 2'</code><code class="plain">, </code><code class="string">'lane 2'</code><code class="plain">, </code><code class="string">'lane 2'</code><code class="plain">,]      </code><code class="comments">// RoadSegment 2, Passage 1, LaneSegment 0-2</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">route_indices_: [LaneSegment{id: </code><code class="string">'lane 1'</code><code class="plain">, s: [100,110], index: [0,0,0]},     </code><code class="comments">// RoadSegment 0, Passage 0, LaneSegment 0</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 1'</code><code class="plain">, s: [110,120], index: [0,0,1]},     </code><code class="comments">// RoadSegment 0, Passage 0, LaneSegment 1</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 1'</code><code class="plain">, s: [120,130], index: [0,0,2]},     </code><code class="comments">// RoadSegment 0, Passage 0, LaneSegment 2</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 2'</code><code class="plain">, s: [240,250], index: [0,1,0]},     </code><code class="comments">// RoadSegment 0, Passage 1, LaneSegment 0</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 2'</code><code class="plain">, s: [250,260], index: [0,1,1]},     </code><code class="comments">// RoadSegment 0, Passage 1, LaneSegment 1</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 2'</code><code class="plain">, s: [260,270], index: [0,1,2]},     </code><code class="comments">// RoadSegment 0, Passage 1, LaneSegment 2</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 1'</code><code class="plain">, s: [130,140], index: [1,0,0]},     </code><code class="comments">// RoadSegment 1, Passage 0, LaneSegment 0</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 1'</code><code class="plain">, s: [140,150], index: [1,0,1]},     </code><code class="comments">// RoadSegment 1, Passage 0, LaneSegment 1</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 1'</code><code class="plain">, s: [150,160], index: [1,0,2]},     </code><code class="comments">// RoadSegment 1, Passage 0, LaneSegment 2</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 2'</code><code class="plain">, s: [270,280], index: [1,1,0]},     </code><code class="comments">// RoadSegment 1, Passage 1, LaneSegment 0</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 2'</code><code class="plain">, s: [280,290], index: [1,1,1]},     </code><code class="comments">// RoadSegment 1, Passage 1, LaneSegment 1</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 2'</code><code class="plain">, s: [290,300], index: [1,1,2]},     </code><code class="comments">// RoadSegment 1, Passage 1, LaneSegment 2</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 1'</code><code class="plain">, s: [160,170], index: [2,0,0]},     </code><code class="comments">// RoadSegment 2, Passage 0, LaneSegment 0</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 1'</code><code class="plain">, s: [170,180], index: [2,0,1]},     </code><code class="comments">// RoadSegment 2, Passage 0, LaneSegment 1</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 1'</code><code class="plain">, s: [180,190], index: [2,0,2]},     </code><code class="comments">// RoadSegment 2, Passage 0, LaneSegment 2</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 2'</code><code class="plain">, s: [300,310], index: [2,1,0]},     </code><code class="comments">// RoadSegment 2, Passage 1, LaneSegment 0</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 2'</code><code class="plain">, s: [310,320], index: [2,1,1]},     </code><code class="comments">// RoadSegment 2, Passage 1, LaneSegment 1</code></div>
+<div class="line"><code class="plain">                 LaneSegment{id: </code><code class="string">'lane 2'</code><code class="plain">, s: [320,330], index: [2,1,2]}]     </code><code class="comments">// RoadSegment 2, Passage 1, LaneSegment 2</code></div>
+</div>
+    </div>
+<p   
+>Here is another example for route response, more complicated. There are 7 road segments. The cyan bouding box is the first road segments.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2250883224/image2022-5-4_22-3-39-version-1-modificationdate-1651673019000-api-v2.png" alt="images/confluence/download/attachments/2250883224/image2022-5-4_22-3-39-version-1-modificationdate-1651673019000-api-v2.png" width="700"  />
+    </p>
+<p   
+>As for lane format in hd map, it's already mentioned in section HD map service.</p>
+<p   
+>As for the vehicle state, it describe the vehicle position, orientation, heading, speed and     <span style="color: #000000;">
+acceleration etc. Here is the vehicle state format,    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">vehicle state</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="vehicle state" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="preprocessor"># \common\vehicle_state\proto\vehicle_state.proto</code></div>
+<div class="line"><code class="plain">message VehicleState {</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> x = 1 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> y = 2 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> z = 3 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> timestamp = 4 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> roll = 5 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> pitch = 6 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> yaw = 7 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> heading = 8 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> kappa = 9 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> linear_velocity = 10 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> angular_velocity = 11 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> linear_acceleration = 12 [</code><code class="keyword">default</code><code class="plain"> = 0.0];</code></div>
+<div class="line"><code class="plain">  optional apollo.canbus.Chassis.GearPosition gear = 13;</code></div>
+<div class="line"><code class="plain">  optional apollo.canbus.Chassis.DrivingMode driving_mode = 14;</code></div>
+<div class="line"><code class="plain">  optional apollo.localization.Pose pose = 15;</code></div>
+<div class="line"><code class="plain">  optional </code><code class="color1">double</code><code class="plain"> steering_percentage = 16;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2250883224/image2022-5-4_17-34-15-version-1-modificationdate-1651656856000-api-v2.png" alt="images/confluence/download/attachments/2250883224/image2022-5-4_17-34-15-version-1-modificationdate-1651656856000-api-v2.png"  height="250" />
+    </p>
+<p   
+>As for the output,</p>
+<ul class=" "><li class=" "><p   
+>the smooth and drivable trajectory is described by the vector "    <span style="color: #24292f;">
+std::vector<common::math::LineSegment2d> segments_    </span>
+" and each "    <span style="color: #24292f;">
+LineSegment2d    </span>
+" contains 2 "    <span style="color: #24292f;">
+MapPathPoint    </span>
+".</p>
+</li><li class=" "><p   
+>other driving attributes for route segments,</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #1f2a39;">
+NextAction    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #1f2a39;">
+next driving action, e.g. straight, left turn, right turn    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #1f2a39;">
+CanExit    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #1f2a39;">
+whether current passage can be connected with next passage on the route    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #1f2a39;">
+IsOnSegment    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #1f2a39;">
+whether ego vehicle is on route segments    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #1f2a39;">
+StopForDestination    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #1f2a39;">
+whether the road segments is target place    </span>
+</p>
+</li></ul></li></ul></li></ul>    </div>
+    <div class="section section-2" id="src-2250883224_ApolloAutoMapServiceStudy-MainProcessStep">
+        <h2 class="heading "><span>Main Process Step</span></h2>
+<ul class=" "><li class=" "><p   
+>parse each incoming route response message</p>
+<ul class=" "><li class=" "><p   
+>extract the lane segment (from HD map, given idx) and the index of road, passage and lane segment</p>
+</li><li class=" "><p   
+>extract the lane segment covered request waypoint (start and end)</p>
+</li></ul></li><li class=" "><p   
+>based on current ego vehicle state, project the vehicle on the lane (HD map)</p>
+<ul class=" "><li class=" "><p   
+>get the associated lane and nearest lane point (    <span style="color: #24292f;">
+adc_waypoint_    </span>
+) from HD map (hdmap_    <span style="color: #777777;">
+->    </span>
+    <span style="color: #aa3731;">
+    <span style="color: #aa3731;">
+GetLanesWithHeading(...), ... , lane    <span style="color: #777777;">
+->    </span>
+    <span style="color: #aa3731;">
+GetNearestPoint    </span>
+    <span style="color: #777777;">
+(    </span>
+    <span style="color: #333333;">
+{    </span>
+    <span style="color: #7a3e9d;">
+point    </span>
+    <span style="color: #777777;">
+.    </span>
+    <span style="color: #aa3731;">
+x    </span>
+    <span style="color: #777777;">
+(),    </span>
+    <span style="color: #333333;">
+     </span>
+    <span style="color: #7a3e9d;">
+point    </span>
+    <span style="color: #777777;">
+.    </span>
+    <span style="color: #aa3731;">
+y    </span>
+    <span style="color: #777777;">
+()    </span>
+    <span style="color: #333333;">
+}    </span>
+    <span style="color: #777777;">
+,    </span>
+    <span style="color: #333333;">
+     </span>
+    <span style="color: #777777;">
+&    </span>
+    <span style="color: #333333;">
+distance    </span>
+    <span style="color: #777777;">
+);    </span>
+    </span>
+    </span>
+)</p>
+</li><li class=" "><p   
+>get the route index of associated lane (    <span style="color: #24292f;">
+adc_route_index_    </span>
+)</p>
+</li><li class=" "><p   
+>get the next route way point index (    <span style="color: #24292f;">
+next_routing_waypoint_index_    </span>
+)</p>
+</li></ul></li><li class=" "><p   
+>compute the drivable area between current vehicle position and next route way point as short time planning and output the drivable road segments</p>
+<ul class=" "><li class=" "><p   
+>based on current lane, find the neighboring passages (left/right) from HD map → also consider the position of next waypoint and target passage, maybe no need to change passage.</p>
+</li><li class=" "><p   
+>project vehicle position into passage</p>
+</li><li class=" "><p   
+>check whether the passage(current, left/right) can be achieved based on current position(waypoint)</p>
+</li><li class=" "><p   
+>extend the road segment along     <span style="color: #000000;">
+longitudinal direction with     </span>
+backward_length and forward_length distance</p>
+</li><li class=" "><p   
+>set driving attribute for the road segment</p>
+</li></ul></li><li class=" "><p   
+>generate smooth path/trajectory based on drivable road segment</p>
+<ul class=" "><li class=" "><p   
+>discretize the route segment to map path point (these points come from the lane of HD MAP, central_curve → line_segment → point)</p>
+</li><li class=" "><p   
+>connect each map path point and generate     <span style="color: #24292f;">
+LaneSegment2d    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #24292f;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2250883224/image2022-5-4_23-32-52-version-1-modificationdate-1651678373000-api-v2.png" alt="images/confluence/download/attachments/2250883224/image2022-5-4_23-32-52-version-1-modificationdate-1651678373000-api-v2.png" width="900"  />
+    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #24292f;">
+map point resample with fixed interval e.g. 0.25m    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #24292f;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2250883224/image2022-5-4_23-33-44-version-1-modificationdate-1651678425000-api-v2.png" alt="images/confluence/download/attachments/2250883224/image2022-5-4_23-33-44-version-1-modificationdate-1651678425000-api-v2.png"  height="400" />
+    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #24292f;">
+set overlap attribute between road segments    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #24292f;">
+e.g. junction, parking zone, cross walk    </span>
+</p>
+</li></ul></li></ul></li></ul><p   
+><br/></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2250883224_ApolloAutoMapServiceStudy-RelativeMap">
+        <h1 class="heading "><span>Relative Map</span></h1>
+<p   
+>Relative map module is a middle layer connecting HDMap/Perception module and planning module. This module generates real-time relative map in the body coordinate system (FLU) and a reference line for planning.</p>
+<p   
+>The inputs for relative map module have two parts: offline and online. The offline part is navigation line (human driving path) and the HDMap information on and near navigation line. And the online part is the traffic sign related information from perception module, e.g., lane marker, crosswalk, traffic light etc. The generation of relative map can leverage both online and offline parts. It also works with either online or offline part only.</p>
+    <div class="section section-2" id="src-2250883224_ApolloAutoMapServiceStudy-Inputs">
+        <h2 class="heading "><span>Inputs</span></h2>
+<ul class=" "><li class=" "><p   
+>NavigationInfo from dreamview module</p>
+</li><li class=" "><p   
+>LaneMarker from perception module</p>
+</li><li class=" "><p   
+>Localization from localization module</p>
+</li><li class=" "><p   
+>Chassis from Canbus module</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-2250883224_ApolloAutoMapServiceStudy-Output">
+        <h2 class="heading "><span>Output</span></h2>
+<ul class=" "><li class=" "><p   
+>Relative map follows map format defined in modules/map/proto/map.proto</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-2250883224_ApolloAutoMapServiceStudy-ModuleFrame">
+        <h2 class="heading "><span>Module Frame</span></h2>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/2250883224/relative_map_frame-version-1-modificationdate-1651760867000-api-v2.png" alt="images/confluence/download/attachments/2250883224/relative_map_frame-version-1-modificationdate-1651760867000-api-v2.png" width="121"  />
+    </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-2250883224_ApolloAutoMapServiceStudy-MainSteps">
+        <h2 class="heading "><span>Main Steps</span></h2>
+<p   
+><strong class=" "><strong class=" ">Initilization of message reader</strong></strong> <strong class=" ">(</strong>RelativeMapComponent::InitReaders() <strong class=" "><strong class=" ">)</strong></strong></p>
+<ul class=" "><li class=" "><p   
+>create the message reader for:<br/></p>
+<ul class=" "><li class=" "><p   
+>/apollo/navigation</p>
+</li><li class=" "><p   
+>/apollo/canbus/chassis</p>
+</li><li class=" "><p   
+>/apollo/localization/pose</p>
+</li><li class=" "><p   
+>/apollo/perception/obstacles</p>
+</li></ul></li><li class=" "><p   
+>create relative map writer</p>
+<ul class=" "><li class=" "><p   
+>the form of the message of relative map: <strong class=" ">MapMsg</strong></p>
+</li></ul></li></ul>    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">map message MapMsg</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="map message MapMsg" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">// The map message in transmission format.</code></div>
+<div class="line"><code class="plain">message MapMsg {</code></div>
+<div class="line"><code class="plain">  optional apollo.common.Header header = </code><code class="value">1</code><code class="plain">;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Coordination: FLU</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// x: Forward</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// y: Left</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// z: Up</code></div>
+<div class="line"><code class="plain">  optional apollo.hdmap.Map hdmap = </code><code class="value">2</code><code class="plain">;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// key: type string; the lane id in Map</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// value: Navigation path; the reference line of the lane</code></div>
+<div class="line"><code class="plain">  map<string, NavigationPath> navigation_path = </code><code class="value">3</code><code class="plain">;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// lane marker info from perception</code></div>
+<div class="line"><code class="plain">  optional apollo.perception.LaneMarkers lane_marker = </code><code class="value">4</code><code class="plain">;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// localization</code></div>
+<div class="line"><code class="plain">  optional apollo.localization.LocalizationEstimate localization = </code><code class="value">5</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-settingparametersforrelativemapcomponent">
+        <h3 class="heading "><span>setting parameters for relative map component</span></h3>
+<p   
+>The main parameters are related to lane. The detail of the config is show in below:</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">parameters for map</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="parameters for map" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">map_param {</code></div>
+<div class="line"><code class="plain">  default_left_width: </code><code class="value">1.875</code></div>
+<div class="line"><code class="plain">  default_right_width: </code><code class="value">1.875</code></div>
+<div class="line"><code class="plain">  default_speed_limit : </code><code class="value">29.06</code><code class="plain"> # </code><code class="value">65</code><code class="plain"> mph</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">navigation_lane {</code></div>
+<div class="line"><code class="plain">  min_lane_marker_quality: </code><code class="value">0.49</code></div>
+<div class="line"><code class="plain">  lane_source: OFFLINE_GENERATED</code></div>
+<div class="line"><code class="plain">  max_len_from_navigation_line: </code><code class="value">250.0</code></div>
+<div class="line"><code class="plain">  min_len_for_navigation_lane: </code><code class="value">150.0</code></div>
+<div class="line"><code class="plain">  max_len_for_navigation_lane: </code><code class="value">250.0</code></div>
+<div class="line"><code class="plain">  ratio_navigation_lane_len_to_speed: </code><code class="value">8.0</code></div>
+<div class="line"><code class="plain">  max_distance_to_navigation_line: </code><code class="value">15.0</code></div>
+<div class="line"><code class="plain">  min_view_range_to_use_lane_marker: </code><code class="value">0.5</code></div>
+<div class="line"><code class="plain">  min_lane_half_width: </code><code class="value">1.5</code></div>
+<div class="line"><code class="plain">  max_lane_half_width: </code><code class="value">2.0</code></div>
+<div class="line"><code class="plain">  lane_marker_weight: </code><code class="value">0.1</code><code class="plain"> </code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2250883224_ApolloAutoMapServiceStudy-Runprocessformapgeneration">
+        <h3 class="heading "><span>Run process for map generation</span></h3>
+<p   
+>The relative map generation run at a frequency of 10hz. And totally there are 3 steps in this process:</p>
+<ul class=" "><li class=" "><p   
+>update vehicle state from localization and chassis; update navigation lane from perception_obstacles</p>
+</li><li class=" "><p   
+>generate the navigation path in the with perception and navigation</p>
+</li><li class=" "><p   
+>create map proto from navigation path</p>
+</li></ul>    <div class="section section-4" id="src-2250883224_ApolloAutoMapServiceStudy-PathGeneration">
+        <h4 class="heading "><span>Path Generation</span></h4>
+<p   
+>There are mainly two sources to be used for generating the path: one is from NavigationLine, another is from Perception.</p>
+<p   
+>The priority of them: Merging > navigation > perception</p>
+<ul class=" "><li class=" "><p   
+>Offline (navigation):</p>
+<ul class=" "><li class=" "><p   
+>convert the paths in nagivation from ENU to FLU coordinate</p>
+</li><li class=" "><p   
+>order the navigation paths according to the y value in FLU from small to large</p>
+</li><li class=" "><p   
+>sort navigation paths from left to right according to the vehicle's direction. In the FLU, the y-coordinate on the left side of the vehicle is positive, and the right value is negative. The navigation paths can be sorted from left to right according to its y-coordinate.</p>
+</li><li class=" "><p   
+>get the navigation path which the vehicle is currently on.</p>
+</li><li class=" "><p   
+><strong class=" ">Merge</strong> current navigation path where the vehicle is located with perceived lane markers.<br/></p>
+<ul class=" "><li class=" "><p   
+>use the weight to calculate all the attributes of the points on two path( weight_1 * nagivation + weight_2 * perception)</p>
+</li></ul></li><li class=" "><p   
+>set the width for the navigation path which the vehicle is currently on</p>
+</li><li class=" "><p   
+>set the width between each navigation path and ist adjacent path</p>
+</li></ul></li><li class=" "><p   
+>perception</p>
+<ul class=" "><li class=" "><p   
+>use the perceived left and right lane marking to compute the coefficients of the driving path. (i.e. c0, c1, c2, c3, c4)</p>
+</li><li class=" "><p   
+>calculate the attributes of the points on the computed driving path.</p>
+</li><li class=" "><p   
+>set the width</p>
+</li></ul></li></ul><p   
+><br/></p>
+<p   
+>The attributes of the points on the path:</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>variable name</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>description</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>x</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>x-coordinate</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>y-coordinate</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>z</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>z-coordinate</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>theta</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>heading_angle</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>kappa</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>curvature</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>s</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>dkappa</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>derivative of kappa</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ddkappa</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>second derivative of kappa</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_id</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>id of the lane</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>x_derivative</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>derivative of x-coordinate</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>y_derivative</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>derivative of y-coordinate</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-4" id="src-2250883224_ApolloAutoMapServiceStudy-CreateMap">
+        <h4 class="heading "><span>CreateMap</span></h4>
+<p   
+>create map proto from navigation path. The following information for lane and road will be generated:</p>
+<p   
+>lane: id; type; turn; speed limit; center line; left/right boundary; left/right sample (association between central point to closest boundary)</p>
+<p   
+>road: id; section; boundary</p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2053780833_%5B%E7%BA%B5%E7%9B%AE%E7%A7%91%E6%8A%80%E8%B0%83%E7%A0%94%5DMulti-sensor_SLAM_Navigation_for_ZM%27s_AVP%26HPP_System.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> [Calligraphy Science and Technology Research] Multi-Sensor Slam Navigation for ZM's AVP & HPP System </span>
+        </a>
+                <a href="2069603815_Benchmark_Tooling_between_VINS-Mono_and_Open-VINS.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Benchmark Tooling between VINS-Mono and Open-VINS</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

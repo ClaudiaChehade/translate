@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LiteMap AD arch - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3168148159"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="3168148151_lite-map.html">lite-map</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3168148159"> <span>LiteMap AD arch</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3168148159_safe-id-TGl0ZU1hcEFEYXJjaC1Mb2NhbE1hcHBpbmcgU0RNYXDmlrnmoYg">
+        <h1 class="heading "><span> LOCAL MAPPING + SDMAP solution </span></h1>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3168148159_LiteMapADarch-Introduction">
+        <h1 class="heading "><span>Introduction</span></h1>
+<ul class=" "><li class=" "><p   
+> Local Mapping provides local detailed map information through local real -time maps </p>
+<ul class=" "><li class=" "><p   
+> VIPER provides sensory information such as Lane Line, Road Edge, Road Marker </p>
+</li><li class=" "><p   
+> LOC provides POSE information </p>
+</li><li class=" "><p   
+> Local Mapping uses the SLAM solution to integrate multi -frame perception information to provide local quasi -high -precision road element information </p>
+</li><li class=" "><p   
+> Local Mapping cannot provide reliable topology information </p>
+</li></ul></li><li class=" "><p   
+> SD MAP provides road -level navigation paths and topology information </p>
+<ul class=" "><li class=" "><p   
+> Including road -level topology links, road reference paths and lane quantity information </p>
+</li></ul></li><li class=" "><p   
+>Fusion</p>
+<ul class=" "><li class=" "><p   
+> Outside the intersection, directly based on the result of the Local Mapping, Lane Center Line is generated, and the vehicle is driving along the Center Line </p>
+</li><li class=" "><p   
+> In the intersection, the lanes are the front and back of the intersection according to the topology links and reference paths provided by SDMAP.The virtual reference line in the intersection is adjusted according to the reference path of the SDMAP. </p>
+</li></ul></li><li class=" "><p   
+>Scenario</p>
+<ul class=" "><li class=" "><p   
+>highway E2E</p>
+</li><li class=" "><p   
+>parking E2E</p>
+</li><li class=" "><p   
+>urban L2</p>
+</li></ul></li></ul><p   
+> question </p>
+<ul class=" "><li class=" "><p   
+> How to associate the lanes before and after the intersection? </p>
+</li><li class=" "><p   
+> Need Viper to provide enough FOV and Horizon </p>
+</li><li class=" "><p   
+> You can only handle simple intersections in the early stage </p>
+<ul class=" "><li class=" "><p   
+> The width of the intersection is less than 50M </p>
+</li><li class=" "><p   
+> The alignment of lanes before and after the intersection is better </p>
+</li><li class=" "><p   
+> When crossing the intersection, self -car vision is less obstructed </p>
+</li></ul></li></ul><p   
+><br/></p>
+<p   
+> Linhong Road-Fuquan North Road intersection </p>
+<p   
+>HD Map:</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3168148159/image-2023-6-25_17-22-18-version-1-modificationdate-1687684938000-api-v2.png" alt="images/confluence/download/attachments/3168148159/image-2023-6-25_17-22-18-version-1-modificationdate-1687684938000-api-v2.png" width="700"  />
+    </p>
+<p   
+>SD Map</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3168148159/image-2023-6-25_17-54-11-version-1-modificationdate-1687686851000-api-v2.png" alt="images/confluence/download/attachments/3168148159/image-2023-6-25_17-54-11-version-1-modificationdate-1687686851000-api-v2.png" width="700"  />
+    </p>
+<p   
+> The corresponding relationship of SDMAP on HDMAP </p>
+<ul class=" "><li class=" "><p   
+> The curve ABCD in the figure is the Reference Path of SD Map </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3168148159/image-2023-6-25_19-57-50-version-1-modificationdate-1687694270000-api-v2.png" alt="images/confluence/download/attachments/3168148159/image-2023-6-25_19-57-50-version-1-modificationdate-1687694270000-api-v2.png" width="700"  />
+    </p>
+    </div>
+    <div class="section section-1" id="src-3168148159_safe-id-TGl0ZU1hcEFEYXJjaC3mhJ_nn6XpnIDmsYI">
+        <h1 class="heading "><span> Perception </span></h1>
+<ul class=" "><li class=" "><p   
+> Element/category & attribute </p>
+<ul class=" "><li class=" "><p   
+>Lane boundary</p>
+</li><li class=" "><p   
+>road marker</p>
+</li><li class=" "><p   
+>road edge</p>
+</li><li class=" "><p   
+>Free-space</p>
+</li><li class=" "><p   
+>traffic light</p>
+</li><li class=" "><p   
+>traffic sign</p>
+</li></ul></li><li class=" "><p   
+>FOV</p>
+<ul class=" "><li class=" "><p   
+> Best 360 -degree vision </p>
+</li><li class=" "><p   
+> At least 180 degrees ahead </p>
+</li><li class=" "><p   
+>horizon:</p>
+<ul class=" "><li class=" "><p   
+> 100 meters ahead </p>
+</li><li class=" "><p   
+> Left and right: 50M </p>
+</li></ul></li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3168148159/image-2023-6-30_13-12-16-version-1-modificationdate-1688101936000-api-v2.png" alt="images/confluence/download/attachments/3168148159/image-2023-6-30_13-12-16-version-1-modificationdate-1688101936000-api-v2.png" width="700"  />
+    </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3168148159/image-2023-7-1_10-15-44-version-1-modificationdate-1688177744000-api-v2.png" alt="images/confluence/download/attachments/3168148159/image-2023-7-1_10-15-44-version-1-modificationdate-1688177744000-api-v2.png" width="700"  />
+    </p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3168148151_lite-map.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>lite-map</span>
+        </a>
+                <a href="3579408808_PER%2BSDMap.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>PER+SDMap</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>IMC::IMP - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2058656873"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                     <li><a href="2040895221_Image_Chain_System_Architecture.html">Image Chain System Architecture</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2058656873"> <span>IMC::IMP</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-2058656873_safe-id-SU1DOjpJTVAtQWJvdXQ">
+        <h1 class="heading "><span>About</span></h1>
+<p   
+>This page aims to collect the existing product's IMP(IMage Preparation) functions list, to determine what should be implemented into W3.</p>
+    </div>
+    <div class="section section-1" id="src-2058656873_safe-id-SU1DOjpJTVAtRmVhdHVyZXM">
+        <h1 class="heading "><span>Features</span></h1>
+    <div class="section section-2" id="src-2058656873_safe-id-SU1DOjpJTVAtRnJvbU5SQ1My">
+        <h2 class="heading "><span>From NRCS2 </span></h2>
+    <div class="section section-3" id="src-2058656873_safe-id-SU1DOjpJTVAtQmxpbmRuZXNzZGV0ZWN0aW9u">
+        <h3 class="heading "><span>Blindness detection</span></h3>
+<ul class=" "><li class=" "><p   
+>Check if the camera is blocked by dirt or something else</p>
+</li><li class=" "><p   
+>A lot of False Positive with current CV in Bosch products</p>
+</li><li class=" "><p   
+>Increased the precision by a tiny CNN</p>
+</li></ul>    </div>
+    <div class="section section-3" id="src-2058656873_safe-id-SU1DOjpJTVAtVGVtcG9yYWxOb2lzZUZpbHRlcg">
+        <h3 class="heading "><span>Temporal Noise Filter</span></h3>
+<ul class=" "><li class=" "><p   
+>Reduce pixel noise in the time domain, in low light conditions, or aliasing noise in daylights</p>
+</li></ul>    </div>
+    <div class="section section-3" id="src-2058656873_safe-id-SU1DOjpJTVAtU2hhcnBuZXNzaGFybW9uaXphdGlvbmZvcmZpc2gtZXllY2FtZXJhcw">
+        <h3 class="heading "><span>Sharpness harmonization for fish-eye cameras</span></h3>
+<ul class=" "><li class=" "><p   
+>Fish-eye camera is with relatively high pixel-density in center, but low pixel-density away from center</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2058656873/image2021-12-17_10-32-24-version-1-modificationdate-1639708344000-api-v2.png" alt="images/confluence/download/attachments/2058656873/image2021-12-17_10-32-24-version-1-modificationdate-1639708344000-api-v2.png"  height="250" />
+    </p>
+    </div>
+    <div class="section section-3" id="src-2058656873_safe-id-SU1DOjpJTVAtSW1hZ2VoYXJtb25pemF0aW9u">
+        <h3 class="heading "><span>Image harmonization </span></h3>
+<ul class=" "><li class=" "><p   
+>Y channel for luminance</p>
+</li><li class=" "><p   
+>UV channel for color</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2058656873/image2021-12-17_10-36-10-version-1-modificationdate-1639708570000-api-v2.png" alt="images/confluence/download/attachments/2058656873/image2021-12-17_10-36-10-version-1-modificationdate-1639708570000-api-v2.png"  height="250" />
+    </p>
+    </div>
+    <div class="section section-3" id="src-2058656873_safe-id-SU1DOjpJTVAtVG9uZW1hcGZvcmNvbnRyYXN0b3B0aW1pemF0aW9u">
+        <h3 class="heading "><span>Tone map for contrast optimization</span></h3>
+<ul class=" "><li class=" "><p   
+>contrast-optimized image and thus counteracts the reduced dynamic range due to the harmonization</p>
+</li></ul><p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/C_/Users/madcszh/AppData/Local/Temp/msohtmlclip1/02/clip_image001.png" alt="images/C_/Users/madcszh/AppData/Local/Temp/msohtmlclip1/02/clip_image001.png" width="1177" height="364" />
+    </p>
+    </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2058656873_safe-id-SU1DOjpJTVAtRnJvbU1QQzM">
+        <h1 class="heading "><span>From MPC3</span></h1>
+    <div class="section section-2" id="src-2058656873_safe-id-SU1DOjpJTVAtSUc6SW1hZ2VHZW5lcmF0aW9u">
+        <h2 class="heading "><span>IG: Image Generation</span></h2>
+<ul class=" "><li class=" "><p   
+>Meta data:</p>
+</li></ul><ul class=" "><li class=" "><p   
+>Image mode (LFM/HDR)</p>
+</li><li class=" "><p   
+>Exposure parameters (analog gains, dual conversion gains, subexposure times (in px and sec), lfm integration times, etc.)</p>
+</li><li class=" "><p   
+>244 bin histograms for ROI1-3 together with means/stddev/etc.</p>
+</li><li class=" "><p   
+>Imager temperature in Kelvin</p>
+</li></ul><ul class=" "><li class=" "><p   
+>ImagerMon: Error state for safety relevant monitoring</p>
+</li><li class=" "><p   
+>ISPControl:</p>
+</li></ul><ul class=" "><li class=" "><p   
+>Dynamic white point</p>
+</li><li class=" "><p   
+>Noise Level</p>
+</li></ul><ul class=" "><li class=" "><p   
+>ExposureControl</p>
+</li></ul><p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-2058656873_safe-id-SU1DOjpJTVAtU0NFOlNpZ2h0Q29uZGl0aW9uc0VzdGltYXRpb24">
+        <h2 class="heading "><span>SCE: Sight Conditions Estimation</span></h2>
+<ul class=" "><li class=" "><p   
+>CBL: percentile values representing physical scene brightness (in lux)</p>
+</li><li class=" "><p   
+>LumPatches: mean luminance values over defined rectangular image patches (see BMW Kafas offer)</p>
+</li><li class=" "><p   
+>Self-glare: indicator for being glared from the car's own high beam headlights in fog</p>
+</li><li class=" "><p   
+>Blindness: Contains the triple state (blind, not blind, and undecided) that represents the blindness information. Additionally also continuous values representing the blindness severity. Both for each measurement program specifically. This information is interpreted to temporary and permanent blindness.</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-2058656873_safe-id-SU1DOjpJTVAtSU1SOkltYWdlcmVjdGlmaWNhdGlvbg">
+        <h2 class="heading "><span>IMR: Image rectification</span></h2>
+<p   
+>The imrAdapter component is responsible for performing image rectification of the ispAdapter image outputs.</p>
+<p   
+>The input to the imrAdapter is the image output of ispAdapter. In general this contains of the following images:</p>
+<ul class=" "><li class=" "><p   
+>HDR left L and UV</p>
+</li><li class=" "><p   
+>HDR right L</p>
+</li><li class=" "><p   
+>LFM left L and UV</p>
+</li></ul><p   
+>The imrAdapter then produces several output images for the appropriate input images, e.g.:</p>
+<ul class=" "><li class=" "><p   
+>it will provide two different rectified views: far and wide view</p>
+</li><li class=" "><p   
+>it will also provide <strong class=" ">    <span style="color: #ff0000;">
+subsampled    </span>
+</strong> and transposed<strong class=" ">    <span style="color: #ff0000;">
+ image pyramids    </span>
+</strong> of the rectified images</p>
+</li></ul><p   
+>The image <strong class=" ">    <span style="color: #ff0000;">
+rectification    </span>
+ </strong>will be performed by a hardware block called IMR-Ext which provides several channels to parallely process the images. Two channels will finally be used for processing all required images.</p>
+<p   
+><br/></p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2130643681_Image_Chain_Application.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Image Chain Application</span>
+        </a>
+                <a href="2074189888_IMC__Nvidia_API_requirements.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>IMC::Nvidia API requirements</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

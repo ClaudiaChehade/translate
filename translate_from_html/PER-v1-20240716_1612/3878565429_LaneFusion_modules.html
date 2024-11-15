@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LaneFusion modules - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3878565429"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2495263431_Static_Fusion_-_PER.html">Static Fusion - PER</a></li>
+                                                                                     <li><a href="2782679446_SF-LaneModel.html">SF-LaneModel</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3878565429"> <span>LaneFusion modules</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+><br/></p>
+    <div class="section section-1" id="src-3878565429_LaneFusionmodules-LaneFusionmodules">
+        <h1 class="heading "><span>LaneFusion modules</span></h1>
+<ul class=" "><li class=" "><p   
+> Lane Fusion's main work is to integrate the information of VIPER and HDMAP to verify and complement the heresy signal </p>
+</li><li class=" "><p   
+> Viriication module is to verify the rationality of the input signal, and the effect of inhibiting the error data </p>
+</li><li class=" "><p   
+> Viper-Map Association module is the same lane lines and road elements in the same as VIPER and HDMAP </p>
+</li></ul><p   style="margin-left:30px;"
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3878565429/laneFusion_modules-version-7-modificationdate-1706666964000-api-v2.png" alt="images/confluence/download/attachments/3878565429/laneFusion_modules-version-7-modificationdate-1706666964000-api-v2.png" width="512"  />
+    </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3878565429_LaneFusionmodules-LaneMapper">
+        <h1 class="heading "><span>LaneMapper</span></h1>
+<ul class=" "><li class=" "><p   
+> Given that the position jitter and semantic attribute jumping of VIPER PERception cannot be solved, the LANEFUSION module has developed Lane Mapper's WorkAround function, making the function of LANE FUSION to meet subsystem requirements. </p>
+</li><li class=" "><p   
+> But the Lane Mapper module does not belong to the subsystem of Lane Fusion.The quality of VIPER perceive also requires the VIPER module to ensure. </p>
+</li><li class=" "><p   
+> Lanemapper uses SLAM technology to create a local map of Viper Lane; local maps are better than single -frame VIPER LANE's FOV and stability. </p>
+</li></ul><p   style="margin-left:30px;"
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3878565429/lane_mapper-version-6-modificationdate-1706667298000-api-v2.png" alt="images/confluence/download/attachments/3878565429/lane_mapper-version-6-modificationdate-1706667298000-api-v2.png" width="512"  />
+    </p>
+<ol class=" "><li class=" "><p   
+> Lanemapper online time: </p>
+<ol class=" "><li class=" "><p   
+> Preliminary version completion time: 20230526, <a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3_ALG/repos/lanemodel/commits/fde6014efcb814149edaf219d67a220e776cb72b">https://sourcecode01.de.bosch.com/projects/PJW3_ALG/repos/lanemodel/commits/fde6014efcb814149edaf219d67a220e776cb72b</a></p>
+</li><li class=" "><p   
+> Access to viper only: 20230728, <a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3_ALG/repos/lanemodel/commits/3ceb9ee0e073ee654c172261595682b25d7567b1#include/algo/laneMapper.hpp">https://sourcecode01.de.bosch.com/projects/PJW3_ALG/repos/lanemodel/commits/3ceb9ee0e073ee654c172261595682b25d7567b1#include/algo/laneMapper.hpp</a></p>
+</li><li class=" "><p   
+> Access with Rigid Alignment: 20230814, <a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3_ALG/repos/lanemodel/commits/14405e000414a4e954dd7b7e7cdb5921b393a79c#src/algo/laneFusion.cpp">https://sourcecode01.de.bosch.com/projects/PJW3_ALG/repos/lanemodel/commits/14405e000414a4e954dd7b7e7cdb5921b393a79c#src/algo/laneFusion.cpp</a></p>
+</li></ol></li><li class=" "><p   
+> Lanemapper Current Status: </p>
+<ol class=" "><li class=" "><p   
+> Including lane lines, Roaddge, multi -frame attributes and location fusion, central line calculation </p>
+</li><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3878565429/image-2024-1-25_14-19-14-version-1-modificationdate-1706167527000-api-v2.png" alt="images/confluence/download/attachments/3878565429/image-2024-1-25_14-19-14-version-1-modificationdate-1706167527000-api-v2.png"  height="400" />
+    </li><li class=" "><p   
+> Single -frame viper result </p>
+</li><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3878565429/image-2024-1-25_14-22-59-version-1-modificationdate-1706167528000-api-v2.png" alt="images/confluence/download/attachments/3878565429/image-2024-1-25_14-22-59-version-1-modificationdate-1706167528000-api-v2.png"  height="400" />
+    </li></ol></li><li class=" "><p   
+> Viper Rear's rear view of the lane line effect: </p>
+<ol class=" "><li class=" "><p   
+> In November 2023, the car lane points were made in November, and the effect was as follows: </p>
+</li><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3878565429/image-2024-1-25_14-25-59-version-1-modificationdate-1706167528000-api-v2.png" alt="images/confluence/download/attachments/3878565429/image-2024-1-25_14-25-59-version-1-modificationdate-1706167528000-api-v2.png"  height="400" />
+    </li><li class=" "><p   
+> But now it is closed, only the front car lane line </p>
+</li></ol></li></ol>    </div>
+    <div class="section section-1" id="src-3878565429_safe-id-TGFuZUZ1c2lvbm1vZHVsZXMt5a-5V1JWaXBlcueahOmcgOaxgg">
+        <h1 class="heading "><span> Demand for WR VIPER </span></h1>
+<p   
+><br/></p>
+<p   
+>230519</p>
+<p   
+><br/></p>
+<p   
+>WR Viper support</p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2782679446_SF-LaneModel.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>SF-LaneModel</span>
+        </a>
+                <a href="3865231860_SF_Cloudization.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>SF Cloudization</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

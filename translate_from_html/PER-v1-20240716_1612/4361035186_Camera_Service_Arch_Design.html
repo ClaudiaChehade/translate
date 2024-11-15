@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Camera Service Arch Design - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4361035186"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                     <li><a href="4328964141_J6E_Camera_Service.html">J6E Camera Service</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4361035186"> <span>Camera Service Arch Design</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24t5p625p6E5Zu-">
+        <h1 class="heading "><span> Architecture </span></h1>
+    <div class="section section-2" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24t5Yqf6IO95p625p6E5Zu-">
+        <h2 class="heading "><span> Function  Architecture </span></h2>
+<p   
+> For J6E -specific platforms, Camera Service should have the following functions, and the internal division of the sub -module is as follows. Camera Service design is temporarily considering the universality of other platforms. </p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="16.9269%"/>
+                                    <col  width="83.1033%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Module name </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Function </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Vio Driver</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Initialize VIO configuration (vio.json/cim.json) <br/> 2. Initialize each road camera (according to Camera_x.json) <br/> 3. Support hardware failure diagnosis </p>
+<p   
+> 4. Support hardware status query </p>
+<p   
+> 5. Support internal reference, SN read <br/> 6. Packaging VIO -related interface </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Image Encoder</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Support to encode the multi -way input image (H264/JPEG) <br/> 2. Support the internal number of bosch mini/code flow upload. </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Image Decoder</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Support the multi -way back irrigation image (H264/JPEG) </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Subscriber</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Subscribe to external data stream </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Diagnostic</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Provide Error Handler framework for each submissive <br/> 2. Support fault information collection, debonce, report to report </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ImageQueueManager</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Support multi -way camera timestamp alignment <br/> 2. Support numbers to use special time stamps to logic logically logic requirements <br/> 3 Responsible for storing image pointers, cache size, image life cycle management </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Iceoryx Publisher</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Support publishing image messages (HBMEM +IceoryX) </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Iceoryx Subscriber</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Support accepting image messages (HBMEM+IceoryX) </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Camera Service Manager</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Support the entire Camera Service Function, responsible for calling the interface of each module <br/> 2. Responsible for the creation of various threads, as well as the life cycle <br/><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/4361035186/Camera_Service_Feature_Level-version-10-modificationdate-1718951292000-api-v2.png" alt="images/confluence/download/attachments/4361035186/Camera_Service_Feature_Level-version-10-modificationdate-1718951292000-api-v2.png" width="1690"  />
+    </p>
+    </div>
+    <div class="section section-2" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24t5pWw5o2u5rWB5ZCR5Zu-">
+        <h2 class="heading "><span> Data flow diagram </span></h2>
+    <div class="section section-3" id="src-4361035186_CameraServiceArchDesign-online">
+        <h3 class="heading "><span>online</span></h3>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/4361035186/dataflow-version-1-modificationdate-1719818764000-api-v2.png" alt="images/confluence/download/attachments/4361035186/dataflow-version-1-modificationdate-1719818764000-api-v2.png" width="2051"  />
+    </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24t57G75Zu-">
+        <h2 class="heading "><span> Class Diagram </span></h2>
+    <div class="section section-3" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24t5pW05L2T57uT5p6E5Zu-">
+        <h3 class="heading "><span> Overall structure diagram </span></h3>
+<p   
+> Camera_service :: j6e :: xx <img  class="confluence-embedded-image"  src="images/confluence/download/export/plantuml17110923074031766986-contenttype-image-png.png" alt="images/confluence/download/export/plantuml17110923074031766986-contenttype-image-png.png"   />
+</p>
+    </div>
+    <div class="section section-3" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24t57uT5p6E5L2T5a6a5LmJ">
+        <h3 class="heading "><span> Structure definition </span></h3>
+<p   
+><br/><img  class="confluence-embedded-image"  src="images/confluence/download/export/plantuml7008681580158342567-contenttype-image-png.png" alt="images/confluence/download/export/plantuml7008681580158342567-contenttype-image-png.png"   />
+    </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24t5LuT5bqT">
+        <h2 class="heading "><span> storehouse </span></h2>
+    <div class="section section-3" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24t5LuT5bqT5Zyw5Z2A">
+        <h3 class="heading "><span> Storehouse address </span></h3>
+<p   
+><a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/MIDDLETRIM_XCCN/repos/camera_service/browse">https://sourcecode01.de.bosch.com/projects/MIDDLETRIM_XCCN/repos/camera_service/browse</a></p>
+    </div>
+    <div class="section section-3" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24t55uu5b2V57uT5p6E">
+        <h3 class="heading "><span> Directory Structure </span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">|-- camera_service</code></div>
+<div class="line"><code class="plain">|   |-- adapter</code></div>
+<div class="line"><code class="plain">|   |-- camera</code></div>
+<div class="line"><code class="plain">|   |-- camera_manager</code></div>
+<div class="line"><code class="plain">|   |-- decoder</code></div>
+<div class="line"><code class="plain">|   |-- encoder</code></div>
+<div class="line"><code class="plain">|   |-- paramter_manager</code></div>
+<div class="line"><code class="plain">|   |-- sa</code></div>
+<div class="line"><code class="plain">|   |-- utils</code></div>
+<div class="line"><code class="plain">|   `-- vio_driver</code></div>
+<div class="line"><code class="plain">|-- cmake</code></div>
+<div class="line"><code class="plain">|-- common</code></div>
+<div class="line"><code class="plain">|-- config</code></div>
+<div class="line"><code class="plain">|   |-- camera_service</code></div>
+<div class="line"><code class="plain">|   |   |-- adapter</code></div>
+<div class="line"><code class="plain">|   |   `-- camera</code></div>
+<div class="line"><code class="plain">|   `-- image_preprocess</code></div>
+<div class="line"><code class="plain">|-- examples</code></div>
+<div class="line"><code class="plain">|   `-- aos_adapter</code></div>
+<div class="line"><code class="plain">|       |-- basic_sample</code></div>
+<div class="line"><code class="plain">|       |-- common</code></div>
+<div class="line"><code class="plain">|       `-- graphic_sample</code></div>
+<div class="line"><code class="plain">|-- image_preprocess</code></div>
+<div class="line"><code class="plain">|-- scripts</code></div>
+<div class="line"><code class="plain">|-- third_party</code></div>
+<div class="line"><code class="plain">`-- unit_test</code></div>
+<div class="line"><code class="plain">    `-- aos_adapter</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24t5Luj56CB6KeE6IyD">
+        <h3 class="heading "><span> Code specification </span></h3>
+<p   
+><a  class="external-link" href="https://rb-artifactory.bosch.com/artifactory/xc-da-pjw3-binary-release-local/mw/W3-mw-specification/MWAOS_1.0.3.zip!/html/naming_conventions_and_coding_rules/cpp_general_formatting_style_guide.html">https://rb-artifactory.bosch.com/artifactory/xc-da-pjw3-binary-release-local/mw/W3-mw-specification/MWAOS_1.0.3.zip!/html/naming_conventions_and_coding_rules/cpp_general_formatting_style_guide.html</a></p>
+    </div>
+    <div class="section section-3" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24t57yW6K-R">
+        <h3 class="heading "><span> Compile </span></h3>
+    <div class="section section-4" id="src-4361035186_safe-id-Q2FtZXJhU2VydmljZUFyY2hEZXNpZ24tSjXnvJbor5E">
+        <h4 class="heading "><span>J5  Compile </span></h4>
+<p   
+> refer to <tt class=" ">camera_service</tt> Readme </p>
+<p   
+> Iceory related conan bag needs to be taken as follows. </p>
+<p   
+>\\<a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\00_DataExchange2\to_huidong</p>
+<p   
+> If you encounter an error in PIP Install, please refer to the following documents. </p>
+<p   
+><img    src="images/inline/5679447595539010750045e9e538a994d8810b725dd8e3cc17a5f53b509e3e6c.png" alt="images/inline/5679447595539010750045e9e538a994d8810b725dd8e3cc17a5f53b509e3e6c.png"  height="250" />
+</p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4328964141_J6E_Camera_Service.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>J6E Camera Service</span>
+        </a>
+                <a href="4427040595_01_CameraServiceManager_Design_V1.0.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>01 CameraServiceManager Design V1.0</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

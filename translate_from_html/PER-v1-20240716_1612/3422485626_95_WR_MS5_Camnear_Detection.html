@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>95_WR MS5 Camnear Detection - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3422485626"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="3422485372_95_WR_Delivery.html">95_WR Delivery</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485572_95_WR_MS5_%28T0%2B12%29_Check%2C_2023_5_24.html">95_WR_MS5 (T0+12) Check, 2023/5/24</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485576_95_WR_MS5_Algorithm_Reproduce.html">95_WR_MS5 Algorithm Reproduce</a></li>
+                                                                                     <li><a href="3422485578_95_WR_MS5_Detail_Design_Docs.html">95_WR MS5 Detail Design Docs</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3422485626"> <span>95_WR MS5 Camnear Detection</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3422485626_safe-id-aWQtOTVfV1JNUzVDYW1uZWFyRGV0ZWN0aW9uLeS4gOOAgeaooeWdl-S7u-WKoQ">
+        <h1 class="heading "><span> 1. Module task </span></h1>
+<ol class=" "><li class=" "><p   
+>3D object detection</p>
+</li><li class=" "><p   
+>free-space detection</p>
+</li></ol>    </div>
+    <div class="section section-1" id="src-3422485626_safe-id-aWQtOTVfV1JNUzVDYW1uZWFyRGV0ZWN0aW9uLeS6jOOAgeaooeWei-i-k-WFpQ">
+        <h1 class="heading "><span> 2. Model input </span></h1>
+<ul class=" "><li class=" "><p   
+>Input images</p>
+<ul class=" "><li class=" "><p   
+>shape：[Batch, Num_views, 384, 512, 3]</p>
+<ul class=" "><li class=" "><p   
+>Batch : 4 in training, 1 in testing;</p>
+</li><li class=" "><p   
+>Num_views: Less than 8</p>
+</li></ul></li><li class=" "><p   
+>Batched images of all cameras (except fisheyes), including:</p>
+<ul class=" "><li class=" "><p   
+>Front Wide</p>
+</li><li class=" "><p   
+>Front Tele</p>
+</li><li class=" "><p   
+>Front Left</p>
+</li><li class=" "><p   
+>Front Right</p>
+</li><li class=" "><p   
+>Back Left</p>
+</li><li class=" "><p   
+>Back Right</p>
+</li><li class=" "><p   
+>Back</p>
+</li></ul></li></ul></li><li class=" "><p   
+>Calibration parameters of all cameras</p>
+</li><li class=" "><p   
+>BEV Canvas</p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-3422485626_safe-id-aWQtOTVfV1JNUzVDYW1uZWFyRGV0ZWN0aW9uLeS4ieOAgeaVsOaNrg">
+        <h1 class="heading "><span> Three, data </span></h1>
+<ul class=" "><li class=" "><p   
+>GZU Stage A</p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-3422485626_safe-id-aWQtOTVfV1JNUzVDYW1uZWFyRGV0ZWN0aW9uLeWbm-OAgeaooeWei-iuvuiuoQ">
+        <h1 class="heading "><span> Fourth, model design </span></h1>
+    <div class="section section-2" id="src-3422485626_id-95_WRMS5CamnearDetection-1.Overview">
+        <h2 class="heading "><span> 1. Overview</span></h2>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3422485626/image-2023-6-26_15-52-46-version-1-modificationdate-1694153243000-api-v2.png" alt="images/confluence/download/thumbnails/3422485626/image-2023-6-26_15-52-46-version-1-modificationdate-1694153243000-api-v2.png"  height="250" />
+    </p>
+    </div>
+    <div class="section section-2" id="src-3422485626_id-95_WRMS5CamnearDetection-2.DeepLearningModelDesign">
+        <h2 class="heading "><span> 2. Deep Learning Model Design</span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485626/image-2023-6-26_15-54-27-version-1-modificationdate-1694153243000-api-v2.png" alt="images/confluence/download/attachments/3422485626/image-2023-6-26_15-54-27-version-1-modificationdate-1694153243000-api-v2.png"  height="400" />
+    </p>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3422485626/PPL-version-1-modificationdate-1694153242000-api-v2.png" alt="images/confluence/download/attachments/3422485626/PPL-version-1-modificationdate-1694153242000-api-v2.png" width="600"  />
+    </p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3422485626_safe-id-aWQtOTVfV1JNUzVDYW1uZWFyRGV0ZWN0aW9uLeS6lOOAgUtQSeWvueavlO-8mg">
+        <h1 class="heading "><span> 5. KPI comparison: </span></h1>
+    <div  class="tablewrap">
+        <table class="wrapped relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="10.7849%"/>
+                                    <col  width="21.6998%"/>
+                                    <col  width="7.01671%"/>
+                                    <col  width="15.0702%"/>
+                                    <col  width="15.8526%"/>
+                                    <col  width="14.6831%"/>
+                                    <col  width="14.813%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="2">
+    <p   
+>KPI</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>WR</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>exp1</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>exp2</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>exp3</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>exp4</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="7" colspan="1">
+    <p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+>detection</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Detection_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.810</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.809     <span style="color: #ff0000;">
+(-0.001)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.808    <span style="color: #ff0000;">
+ (-0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.810     <span style="color: #339966;">
+(+0.000)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.811    <span style="color: #339966;">
+(+0.001)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Detection_Precision_L</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.620</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.616     <span style="color: #ff0000;">
+(-0.004)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.615     <span style="color: #ff0000;">
+(-0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.617     <span style="color: #ff0000;">
+(-0.003)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.620    <span style="color: #339966;">
+(+0.000)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Detection_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.731</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.712     <span style="color: #ff0000;">
+(-0.019)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.710     <span style="color: #ff0000;">
+(-0.021)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.714     <span style="color: #ff0000;">
+(-0.017)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.712    <span style="color: #ff0000;">
+(-0.019)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AP</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.797</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.782     <span style="color: #ff0000;">
+(-0.015)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.779     <span style="color: #ff0000;">
+(-0.018)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.783     <span style="color: #ff0000;">
+(-0.014)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.782    <span style="color: #ff0000;">
+(-0.015)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>APL</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.646</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.633     <span style="color: #ff0000;">
+(-0.013)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.629     <span style="color: #ff0000;">
+(-0.017)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.632     <span style="color: #ff0000;">
+(-0.014)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.634    <span style="color: #ff0000;">
+(-0.012)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw4_Mean_Error</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.135</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.141    <span style="color: #ff0000;">
+ (+0.006)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.143     <span style="color: #ff0000;">
+(+0.008)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.140     <span style="color: #ff0000;">
+(+0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.143    <span style="color: #ff0000;">
+(+0.008)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw_Mean_Error</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.067</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.085     <span style="color: #ff0000;">
+(+0.018)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.090     <span style="color: #ff0000;">
+(+0.023)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.081     <span style="color: #ff0000;">
+(+0.014)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.089    <span style="color: #ff0000;">
+(+0.022)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="20" colspan="1">
+    <p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+>free-space</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AbsError_0.24_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.368</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.372     <span style="color: #339966;">
+(+0.004)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.370     <span style="color: #339966;">
+(+0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.373     <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.373    <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AbsError_0.24_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.498</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.498     <span style="color: #339966;">
+(+0.000)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.495     <span style="color: #ff0000;">
+(-0.003)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.499     <span style="color: #339966;">
+(+0.001)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.499    <span style="color: #339966;">
+(+0.001)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AbsError_0.6_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.520</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.525     <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.524     <span style="color: #339966;">
+(+0.004)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.525     <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.525    <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AbsError_0.6_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.702</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.702     <span style="color: #339966;">
+(+0.000)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.700     <span style="color: #ff0000;">
+(-0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.703     <span style="color: #339966;">
+(+0.001)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.702    <span style="color: #339966;">
+(+0.000)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AbsError_0.8_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.548</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.553     <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.553     <span style="color: #ff0000;">
+(-0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.554     <span style="color: #339966;">
+(+0.006)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.553    <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AbsError_0.8_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.741</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.740     <span style="color: #ff0000;">
+(-0.001)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.739     <span style="color: #ff0000;">
+(-0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.741     <span style="color: #339966;">
+(+0.000)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.740    <span style="color: #ff0000;">
+(-0.001)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AbsError_1.0_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.564</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.569     <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.568    <span style="color: #339966;">
+ (+0.004)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.569     <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.569    <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AbsError_1.0_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.762</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.761     <span style="color: #ff0000;">
+(-0.001)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.760     <span style="color: #ff0000;">
+(-0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.761     <span style="color: #ff0000;">
+(-0.001)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.761    <span style="color: #ff0000;">
+(-0.001)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AbsError_1.2_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.579</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.583     <span style="color: #339966;">
+(+0.004)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.583     <span style="color: #339966;">
+(+0.004)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.584     <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.584    <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AbsError_1.2_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.783</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.781    <span style="color: #ff0000;">
+ (-0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.780     <span style="color: #ff0000;">
+(-0.003)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.781     <span style="color: #ff0000;">
+(-0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.780    <span style="color: #ff0000;">
+(-0.003)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RelError_0.01_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.206</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.208    <span style="color: #339966;">
+ (+0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.207     <span style="color: #339966;">
+(+0.001)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.210     <span style="color: #339966;">
+(+0.004)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.208    <span style="color: #339966;">
+(+0.002)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RelError_0.01_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.279</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.279     <span style="color: #339966;">
+(+0.000)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.277     <span style="color: #ff0000;">
+(-0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.281     <span style="color: #339966;">
+(+0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.278    <span style="color: #ff0000;">
+(-0.001)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RelError_0.05_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.434</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.439     <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.437     <span style="color: #339966;">
+(+0.003)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.441     <span style="color: #339966;">
+(+0.007)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.439    <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RelError_0.05_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.586</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.588     <span style="color: #339966;">
+(+0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.583     <span style="color: #ff0000;">
+(-0.003)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.590     <span style="color: #339966;">
+(+0.004)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.587    <span style="color: #339966;">
+(+0.001)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RelError_0.1_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.551</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.560     <span style="color: #339966;">
+(+0.009)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.559     <span style="color: #339966;">
+(+0.008)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.561     <span style="color: #339966;">
+(+0.010)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.561    <span style="color: #339966;">
+(+0.010)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RelError_0.1_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.745</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.749     <span style="color: #339966;">
+(+0.004)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.747     <span style="color: #339966;">
+(+0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.751     <span style="color: #339966;">
+(+0.006)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.750    <span style="color: #339966;">
+(+0.005)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RelError_0.2_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.598</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.600     <span style="color: #339966;">
+(+0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.601     <span style="color: #339966;">
+(+0.003)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.601     <span style="color: #339966;">
+(+0.003)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.601    <span style="color: #339966;">
+(+0.003)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RelError_0.2_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.807</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.803     <span style="color: #ff0000;">
+(-0.004)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.803     <span style="color: #ff0000;">
+(-0.004)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.804     <span style="color: #ff0000;">
+(-0.003)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.804    <span style="color: #ff0000;">
+(-0.003)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RelError_0.25_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.607</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.609     <span style="color: #339966;">
+(+0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.609     <span style="color: #339966;">
+(+0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.609     <span style="color: #339966;">
+(+0.002)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.609    <span style="color: #339966;">
+(+0.002)    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RelError_0.25_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.820</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.814     <span style="color: #ff0000;">
+(-0.006)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.813     <span style="color: #ff0000;">
+(-0.007)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.815     <span style="color: #ff0000;">
+(-0.005)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.814    <span style="color: #ff0000;">
+(-0.006)    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-3422485626_safe-id-aWQtOTVfV1JNUzVDYW1uZWFyRGV0ZWN0aW9uLeWFreOAgemXrumimA">
+        <h1 class="heading "><span> Six, problems </span></h1>
+<ol class=" "><li class=" "><p   
+> What is the reason for the splitting of CAMNEAR mission?Task design strategy?-The vehicle detection effect is better.PETR. </p>
+</li><li class=" "><p   
+> The CAMNEAR module has no corresponding marking document; <span style="color: #ff0000;">
+<u class=" "> -Afuse other label documents, but lacks the corresponding relationship; </u>    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;"> Model turning TRT script is missing, <span style="color: #172b4d;"> No relevant introduction </span> ; </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;"> Make Package script is missing; </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #172b4d;"> Duplication indicator </span>
+    <span style="color: #172b4d;"> Compared with the index of the user manual, Detection Part: 1.7 points difference, 1.4 points for AP, 1.2 points for APL; </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+    <span style="color: #172b4d;"> AOS代码比对：比较2个branch (ms5_per vs. wr_develop) 的代码：（1）W3_WR/aos/perception/runnables/camnear存在差异：ms5_per 多了sub_class_id，少了一个状态判断；（2）W3_WR/ai/P8N/CAMNEAR/DTECTOR HAS DIFFERENCES: MS5_PER HAS More Sub_Class; </span>
+    </span>
+</p>
+</li><li class=" "><p   
+> WR0713 has updated the design document, increasing the explanation of LOSS and model output, and there are no changes in other parts; </p>
+</li><li class=" "><p  class="auto-cursor-target" 
+> Through comparison training code, in the 0713 design document, 4.3.3 lacks box_yaw4_loss; 4.3.5 only gives the weight of the detection related LOSS, and the weight of the freeSpace -related LOSS is not given; </p>
+    <div  class="tablewrap">
+        <table class="confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Module </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> document </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Code corresponding part </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Detection part </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485626/image-2023-7-31_16-41-51-version-1-modificationdate-1694153242000-api-v2.png" alt="images/confluence/download/attachments/3422485626/image-2023-7-31_16-41-51-version-1-modificationdate-1694153242000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485626/image-2023-7-31_16-36-12-version-1-modificationdate-1694153242000-api-v2.png" alt="images/confluence/download/attachments/3422485626/image-2023-7-31_16-36-12-version-1-modificationdate-1694153242000-api-v2.png"  height="226" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FreeSpace part </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> No corresponding description </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485626/image-2023-7-31_16-39-48-version-1-modificationdate-1694153242000-api-v2.png" alt="images/confluence/download/attachments/3422485626/image-2023-7-31_16-39-48-version-1-modificationdate-1694153242000-api-v2.png"  height="42" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+</li><li class=" "><p   
+> In the 0713 test report, FreeSpace's precision is only 0.714, and the recall is only 0.695, which does not meet the requirements of 0.95 greater than equal to 0.95; </p>
+</li></ol><p   
+>WR reply:</p>
+<p   
+><a  class="external-link" href="https://rbw3pmt.atlassian.net/wiki/spaces/W3RWC/pages/200146945/WR+Issue+0706">WR Issue 0706 - Wave 3 RB & WR Cooperation - Confluence (atlassian.net)</a></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3422485619_95_WR_MS5_Camera_Prediction.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS5 Camera Prediction</span>
+        </a>
+                <a href="3422485654_95_WR_MS5_Lane_Detection.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS5 Lane Detection</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

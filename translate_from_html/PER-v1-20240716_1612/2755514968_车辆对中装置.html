@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Vehicle -to -mid device -Wave 3 Development </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2755514968"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113873_xcalib_eng.html">xcalib_eng</a></li>
+                                                                                                         <li class="shortcut"><a href="2916353596_calibration_tool_release.html">calibration_tool_release</a></li>
+                                                                                     <li><a href="2759767640_V1.1.0.html">V1.1.0</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2755514968"> <span> Vehicle -to -middle device </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-2755514968_safe-id-aWQt6L2m6L6G5a-55Lit6KOF572uLeW5s-mdouW6puWIhuaekA">
+        <h1 class="heading "><span> Plane degree analysis </span></h1>
+<p   
+>why to do？</p>
+<p   
+> If Calibration Group and Vehice Positioning Plane are not level, it will lead to </p>
+<ul class=" "><li class=" "><p   
+> The external parameters of LIDAR and Camera to the vehicle coordinate system are not allowed </p>
+</li><li class=" "><p   
+> View camera BEV stitching abnormality </p>
+</li></ul><p   
+>how to do？</p>
+<ul class=" "><li class=" "><p   
+> Treatment of high -precision point clouds, divide the calibration floor and vehicle positioning plane </p>
+</li><li class=" "><p   
+> Plane fitting, algorithm vector, decompose pitch and roll </p>
+</li><li class=" "><p   
+> Direct measurement through cross lasers <a   href="attachments/2894682679/2/%E5%8D%9A%E4%B8%96%E5%AF%B9%E4%B8%AD%E6%9C%BA%E6%9E%84%E5%B9%B3%E9%9D%A2%E5%BA%A6%E6%A3%80%E6%B5%8B%E6%8A%A5%E5%91%8A.docx"> Bosch's plane test report on China institution </a><a   href="attachments/2894682713/1/%E5%8D%9A%E4%B8%96%E5%AF%B9%E4%B8%AD%E6%9C%BA%E6%9E%84%E5%B9%B3%E9%9D%A2%E5%BA%A6%E6%A3%80%E6%B5%8B%E5%9B%BE%E7%89%87.pdf">    <span style="color: #000000;">
+ +     </span> Bosch's plane detection picture .PDF </a></p>
+<ul class=" "><li class=" "><p   
+> Vehicle Four Wheel Center </p>
+</li><li class=" "><p   
+> Vehicle positioning plane </p>
+</li></ul></li></ul><p   
+>conclusion</p>
+<ul class=" "><li class=" "><p   
+> Calibration Group and Vehice Positioning Plane basic level, Delta_PITCH <span style="color: #000000;">
+= 0.02degree，delta_roll = 0.03degree    </span>
+</p>
+</li><li class=" "><p   
+> The flatness of the vehicle positioning plane is ± 5mm </p>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Calibration ground </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Vehicle positioning plane </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+> Plane fit +/-5mm </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image2023-3-7_19-41-50-version-1-modificationdate-1678189311000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image2023-3-7_19-41-50-version-1-modificationdate-1678189311000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image2023-3-7_19-46-22-version-1-modificationdate-1678189583000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image2023-3-7_19-46-22-version-1-modificationdate-1678189583000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image2023-3-7_19-42-34-version-1-modificationdate-1678189354000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image2023-3-7_19-42-34-version-1-modificationdate-1678189354000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image2023-3-7_19-45-53-version-1-modificationdate-1678189553000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image2023-3-7_19-45-53-version-1-modificationdate-1678189553000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>plane fitting RMS</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.004597</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.001744</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>normal</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.000190, 0.000097, 1.000000</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.000119, -0.000331, 1.000000</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A matrix that would make this plane horizontal</p>
+<p   
+>(normal towards Z+)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.999999940395 -0.000189730257 0.000189711762 0.000005245209</p>
+<p   
+>0.000189711747 1.000000000000 0.000097513199 0.000401601195</p>
+<p   
+>-0.000189730243 -0.000097513199 1.000000000000 -0.000398788368</p>
+<p   
+>0.000000000000 0.000000000000 0.000000000000 1.000000000000</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.999999880791 -0.000331337273 0.000118613243 0.000034332275</p>
+<p   
+>0.000331376592 0.999999880791 -0.000331337331 0.000857174397</p>
+<p   
+>-0.000118315220 0.000331376563 0.999999880791 -0.000340575003</p>
+<p   
+>0.000000000000 0.000000000000 0.000000000000 1.000000000000</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Rotation matrix</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[ 0.9999999, -0.0001897, 0.0001897;</p>
+<p   
+>0.0001897, 1.0000000, 0.0000975;</p>
+<p   
+>-0.0001897, -0.0000975, 1.0000000 ]</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[ 0.9999999, -0.0003313, 0.0001185;</p>
+<p   
+>0.0003314, 0.9999999, -0.0003313;</p>
+<p   
+>-0.0001184, 0.0003314, 0.9999999 ]</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XYZ Euler angles (degree)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[ x: -0.0055881, y: 0.0108697, z: 0.0108707 ]</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[ x: 0.0189842, y: 0.0067906, z: 0.0189842 ]</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ZYX Euler angles (degree)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[ x: -0.0055861, y: 0.0108707, z: 0.0108697 ]</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[ x: 0.0189865, y: 0.0067844, z: 0.0189865 ]</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="3">
+    <p   
+>delta Euler angles (degree) roll:0.0245744 pitch:-0.00408712 yaw:0.00811214<br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>height</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.00229494<br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0019251<br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>inlier ratio（5mm）</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>85.308661</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>96.743973</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>roll (degree)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0468272</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0779117</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>pitch (degree)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.00612319</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0259087</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="3">
+    <p   
+>delta_pitch = <strong class=" ">    <span style="color: #ff0000;">
+0.0197855    </span>
+</strong>degree / delta_roll =     <span style="color: #ff0000;">
+<strong class=" ">0.0310845</strong>    </span>
+degree<br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p  class="auto-cursor-target" 
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image2023-3-7_20-41-12-version-1-modificationdate-1678192874000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image2023-3-7_20-41-12-version-1-modificationdate-1678192874000-api-v2.png" width="600"  />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image2023-3-7_20-46-55-version-1-modificationdate-1678193216000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image2023-3-7_20-46-55-version-1-modificationdate-1678193216000-api-v2.png" width="800"  />
+</p>
+<p  class="auto-cursor-target" 
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image-2023-3-29_16-10-59-version-1-modificationdate-1680077460000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image-2023-3-29_16-10-59-version-1-modificationdate-1680077460000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2755514968/image-2023-3-21_22-53-31-version-1-modificationdate-1679410409000-api-v2.png" alt="images/confluence/download/thumbnails/2755514968/image-2023-3-21_22-53-31-version-1-modificationdate-1679410409000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image-2023-3-21_22-54-22-version-1-modificationdate-1679410460000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image-2023-3-21_22-54-22-version-1-modificationdate-1679410460000-api-v2.png"  height="250" />
+</p>
+    </div>
+    <div class="section section-1" id="src-2755514968_safe-id-aWQt6L2m6L6G5a-55Lit6KOF572uLeS4gOiHtOaAp-WIhuaekA">
+        <h1 class="heading "><span> Consistency analysis </span></h1>
+<p   
+>why to do？</p>
+<ul class=" "><li class=" "><p   
+> If the consistency of vehicle positioning is poor, the external parameters of the Lidar and Camera to the vehicle coordinate system will be inaccurate. </p>
+</li></ul><p   
+>how to do？</p>
+<ul class=" "><li class=" "><p   
+> Place the high -precision scanner on the left and right sides of the vehicle, and observe the front and rear wheels </p>
+</li><li class=" "><p   
+> Repeat the vehicle five times by repeating the vehicle by the Chinese agencies, and collect five sets of high -precision points cloud </p>
+</li><li class=" "><p   
+> Extract the wheel heart in the high precision point cloud, calculate YAW </p>
+</li></ul><p   
+>conclusion</p>
+<ul class=" "><li class=" "><p   
+> Good consistency, high repeated positioning accuracy </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image-2023-3-17_13-31-30-version-1-modificationdate-1679031090000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image-2023-3-17_13-31-30-version-1-modificationdate-1679031090000-api-v2.png" width="800"  />
+    </p>
+    </div>
+    <div class="section section-1" id="src-2755514968_safe-id-aWQt6L2m6L6G5a-55Lit6KOF572uLeiuoeeul-i9pui-huWdkOagh-ezu-WIsOagh-WumumXtOWdkOagh-ezu-eahOWPmOaNouefqemYtVRfdl93">
+        <h1 class="heading "><span> Calculate the transformation matrix of the vehicle coordinate system to the calibration coordinate system T_V_W </span></h1>
+<p   
+>why to do？</p>
+<ul class=" "><li class=" "><p   
+> The external parameters of Lidar and Camera are converted from the calibration coordinate system to the vehicle coordinate system </p>
+</li></ul><p   
+>how to do？</p>
+<ul class=" "><li class=" "><p   
+> Extract the four wheel hearts in the high precision point cloud </p>
+</li><li class=" "><p   
+> Calculate yaw and T_V_W </p>
+</li></ul><p   
+>conclusion</p>
+<ul class=" "><li class=" "><p   
+> The original point of the vehicle coordinate system is defined as <span style="color: #ff0000;"> The projection point from the center of the rear axis to the ground <span style="color: #003366;"> (For the front axis of the middle institutional card, the rear axis floats) </span>
+    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;">
+yaw    <span style="color: #000000;"> Corner deviation 0.3 Degree </span>
+    </span>
+</p>
+</li></ul><p  class="auto-cursor-target" 
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image-2023-3-17_13-26-29-version-1-modificationdate-1679030789000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image-2023-3-17_13-26-29-version-1-modificationdate-1679030789000-api-v2.png"  height="400" />
+    </p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="17.5796%"/>
+                                    <col  width="22.6173%"/>
+                                    <col  width="18.8147%"/>
+                                    <col  width="19.5341%"/>
+                                    <col  width="21.4868%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Left front wheel center </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Left rear wheel center </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Right front wheel center </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Right rear wheel center </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>scan sensor coordinate</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff9900;">
+<strong class=" ">-6.54787, -0.828905, -126.273</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>-3.6565, -0.812194, -126.27</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff9900;">
+-6.56539, 0.96816, -126.274    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>-3.76628, 0.983543, -126.278</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+> From the center point of the left and right front wheels under the Scan Sensor Coordinate, you can find the center axis center to the ground projection point: <strong class=" "> -6.55663,0.0696275, -126.618<br/> After multiple sets of data observations, the rotation vector of the two coordinate systems is yAW angle and not 180 °, but exists <span style="color: #ff0000;">
+0.3°     </span> One deviation <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image-2023-3-21_13-47-0-version-1-modificationdate-1679377620000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image-2023-3-21_13-47-0-version-1-modificationdate-1679377620000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2755514968/image-2023-3-21_13-49-28-version-1-modificationdate-1679377768000-api-v2.png" alt="images/confluence/download/attachments/2755514968/image-2023-3-21_13-49-28-version-1-modificationdate-1679377768000-api-v2.png"  height="400" />
+<br/><br/> After considering this 0.3 ° compensation, the world coordinate system is transferred to the car body coordinate system. <br/>    <span style="color: #569cd6;">
+T_Vehicle_World    </span>
+    <span style="color: #d4d4d4;">
+:     </span>
+</strong><strong class=" ">    <span style="color: #d4d4d4;">
+[     </span>
+    <span style="color: #b5cea8;">
+-0.9999863    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+-0.0052360    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+-6.55618    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+</strong><br/><strong class=" ">    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #b5cea8;">
+0.0052360    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+-0.9999863    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.103957    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+</strong><br/><strong class=" ">    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+1.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+126.618    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+</strong><br/><strong class=" ">    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+1    </span>
+    <span style="color: #d4d4d4;">
+]<br/>    </span>
+</strong>    <span style="color: #d4d4d4;">
+    <span style="color: #000000;"> Use this transform to convert the center point of the front and rear shafts to the coordinate system of the car ( <span style="color: #d4d4d4;">
+    <span style="color: #000000;"> Projection point from the center center to the ground to the ground </span>
+    </span> ) After that, they are: <br/>    <span style="color: #d4d4d4;">
+    <span style="color: #000000;"> The center point of the front axis (0, 0, 0.34) </span>
+    </span>
+<br/>    <span style="color: #d4d4d4;">
+    <span style="color: #000000;"> The center point of the rear axis (-2.84528, <strong class=" ">    <span style="color: #339966;">
+-0.00117472    </span>
+</strong>, 0.34）    </span>
+    </span>
+<br/>    </span>
+    </span>
+</p>
+<p   
+> Although the Y value of the center point of the rear axis is not 0, it is only 1.2mm considered that the bias is only 1.2mm, which is within the range allowed by the error. </p>
+<p   
+>    <span style="color: #d4d4d4;">
+    <span style="color: #000000;">
+<br/> *If you do not consider the bias of the yaw angle 0.3 °, the results calculated: </span>
+    </span>
+</p>
+<p   
+><strong class=" ">    <span style="color: #569cd6;">
+T_Vehicle_World_Bad_Yaw    </span>
+    <span style="color: #d4d4d4;">
+: [    </span>
+    <span style="color: #b5cea8;">
+-1.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+-6.55663    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+</strong><br/><strong class=" ">    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+-1.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0696275    </span>
+    <span style="color: #d4d4d4;">
+ ,    </span>
+</strong><br/><strong class=" ">    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+1.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+126.618    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+</strong><br/><strong class=" ">    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+0.0    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+1    </span>
+    <span style="color: #d4d4d4;">
+]<br/>    </span>
+</strong>    <span style="color: #d4d4d4;">
+    <span style="color: #000000;">
+    <span style="color: #d4d4d4;">
+    <span style="color: #000000;"> Use this transform to convert the center point of the front and rear shafts to the coordinate system of the car ( <span style="color: #d4d4d4;">
+    <span style="color: #000000;"> Projection point from the center center to the ground to the ground </span>
+    </span> ) After that, they are:     </span>
+    </span>
+<br/>    <span style="color: #d4d4d4;">
+    <span style="color: #000000;"> The center point of the front axis (0, 0, 0.34) </span>
+    </span>
+    </span>
+    </span>
+<strong class=" ">    <span style="color: #d4d4d4;">
+<br/>    </span>
+</strong>    <span style="color: #d4d4d4;">
+    <span style="color: #000000;">
+    <span style="color: #d4d4d4;">
+    <span style="color: #000000;">
+    <span style="color: #d4d4d4;">
+    <span style="color: #000000;"> Rear axis center point ( </span>
+    </span>
+-2.84523,     <span style="color: #ff0000;">
+<strong class=" ">-0.0160725</strong>    </span>
+, 0.34)<br/> It can be seen that there is one in the center of the rear axis in the direction of the y axis <strong class=" ">    <span style="color: #ff0000;">
+1cm    </span>
+</strong> Deviation </span>
+    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #d4d4d4;">
+    <span style="color: #000000;">
+    <span style="color: #d4d4d4;">
+    <span style="color: #000000;"> appendix: <a   href="attachments/2866404591/2/T_v_w-analyze.xlsx">T_v_w-analyze.xlsx</a>    </span>
+    </span>
+    </span>
+    </span>
+</p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2894682986_%E6%A0%87%E5%AE%9A%E6%B5%81%E7%A8%8B_V1.0.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Calibration process v1.0 </span>
+        </a>
+                <a href="3012883315_V1.2.0.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>V1.2.0</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

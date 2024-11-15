@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>95_WR MS4 IV-MTCNN - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3422485518"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="3422485372_95_WR_Delivery.html">95_WR Delivery</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485425_95_WR_MS4%28T0%2B9%29_Checks.html">95_WR_MS4(T0+9) Checks</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485430_95_WR_MS4_Algorithm_Reproduce%5B%E6%9C%80%E7%BB%88%E9%AA%8C%E6%94%B6%E6%8A%A5%E5%91%8A%5D.html"> 95_WR_MS4 Algorithm REPRODUCE [Final Acceptance Report] </a></li>
+                                                                                     <li><a href="3422485493_95_WR_MS4_Detail_Design_Docs.html">95_WR MS4 Detail Design Docs</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3422485518"> <span>95_WR MS4 IV-MTCNN</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLeaooeWdl-S7u-WKoQ">
+        <h1 class="heading "><span> Module task </span></h1>
+<ul class=" "><li class=" "><p   
+>Depth</p>
+</li><li class=" "><p   
+>Segmentation</p>
+</li><li class=" "><p   
+>Object detection</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;">
+Freesapce detection    </span>
+</p>
+</li></ul><p   
+>Note：    <span style="color: #993300;"> Didn't you read freeSpace -related content in the code?Intersection </span>
+</p>
+<p   
+>    <span style="color: #000000;"> FreeSpace Module renamed Drivable_head.py </span>
+</p>
+    </div>
+    <div class="section section-1" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLeaooeWei-i-k-WFpQ">
+        <h1 class="heading "><span> Model input </span></h1>
+<p   
+>Camera 2d image， include follow Cameras.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485518/image-2023-5-4_13-28-14-version-1-modificationdate-1694153235000-api-v2.png" alt="images/confluence/download/attachments/3422485518/image-2023-5-4_13-28-14-version-1-modificationdate-1694153235000-api-v2.png"  height="190" />
+    </p>
+    </div>
+    <div class="section section-1" id="src-3422485518_id-95_WRMS4IVMTCNN-Dataset">
+        <h1 class="heading "><span>Dataset</span></h1>
+    <div class="section section-2" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLeaVsOaNruaDheWGtQ">
+        <h2 class="heading "><span> Data situation </span></h2>
+<p   
+><strong class=" ">（1） Data ratio </strong></p>
+<p   
+> Multi -task Each Module Data Ratio </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Serial number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Module </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Data ratio </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Remark </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>detection</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>segmentation</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>depth</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>drivable</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+> In the aspect of the data balance, the multi -data set processing function of TF is not performed without complex processing. Here you can learn from it. </p>
+<p   
+>    <span style="color: #000000;">
+tf.data.experimental.sample_from_datasets    </span>
+</p>
+<p   
+><strong class=" ">    <span style="color: #000000;"> (2) Each task data category </span>
+</strong></p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="7.98776%"/>
+                                    <col  width="17.2797%"/>
+                                    <col  width="30.3027%"/>
+                                    <col  width="44.3402%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Serial number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Module </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Category/output </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Remark </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>detection</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>background:0</p>
+<p   
+>human:1</p>
+<p   
+>cyclist:2</p>
+<p   
+>three_wheel:3</p>
+<p   
+>car:4</p>
+<p   
+>truck:5</p>
+<p   
+>other:6</p>
+<p   
+>static_obstacle:7</p>
+<p   
+>traffic_cone:8</p>
+<p   
+>construction_area:9</p>
+<p   
+>traffic_light:10</p>
+<p   
+>temporary_light:11</p>
+<p   
+>traffic_triangle:12</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Category: 12 </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>segmentation</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> No detailed explanation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Three categories </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>depth</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>unlabeled</p>
+<p   
+>pedestrian</p>
+<p   
+>Cyclist</p>
+<p   
+>Tricycle</p>
+<p   
+>Car</p>
+<p   
+>Truck</p>
+<p   
+>other</p>
+<p   
+>Stationary</p>
+<p   
+>Ground</p>
+<p   
+>Unknow</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>drivable</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>/</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLeWbvuWDj-aVsOaNruS_oeaBrw">
+        <h2 class="heading "><span> Image data information </span></h2>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Serial number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Module </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>input size</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>output size</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Remark </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>detection</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>768*1024</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>768*1024</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>segmentation</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>768*1024</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>768*960</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>depth</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>768*1024</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>480*640</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>drivable</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>768*1024</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>/</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLUxvc3PmnYPph43mr5Tkvos">
+        <h2 class="heading "><span>Loss Proportion </span></h2>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Serial number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Module </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Proportion </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Module LOSS details </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>detection</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>segmentation</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>depth</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>depth:1.0</p>
+<p   
+>ground_depth:1.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>drivable</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<p   
+> Each task sets a fixed weight, and no special processing skills are found </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLeiuree7g-i2heWPgg">
+        <h2 class="heading "><span> Training super </span></h2>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Serial number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> project </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> parameter </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Remark </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>batchsize</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>learing rate</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3e-4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>momnetum</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.9</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>weight_decay</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0001</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>max step</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>60000</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>6</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>warmup_setps</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>maxstep*0.25</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>7</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>eval steps</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>50</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLU1vZGVsRGVzaWduJiZEQUc">
+        <h1 class="heading "><span>Model Design && DAG</span></h1>
+    <div class="section section-2" id="src-3422485518_id-95_WRMS4IVMTCNN-Overview">
+        <h2 class="heading "><span> Overview</span></h2>
+<p   
+>（1）simple</p>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3422485518/overView-version-1-modificationdate-1694153234000-api-v2.png" alt="images/confluence/download/attachments/3422485518/overView-version-1-modificationdate-1694153234000-api-v2.png" width="600"  />
+    </p>
+<p   
+>(2)detail</p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-3422485518_id-95_WRMS4IVMTCNN-Objectdetection">
+        <h2 class="heading "><span> Object detection</span></h2>
+    <div class="section section-3" id="src-3422485518_id-95_WRMS4IVMTCNN-DAG">
+        <h3 class="heading "><span>DAG</span></h3>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3422485518/IV_MTCANN_DETECTION-version-1-modificationdate-1694153234000-api-v2.png" alt="images/confluence/download/attachments/3422485518/IV_MTCANN_DETECTION-version-1-modificationdate-1694153234000-api-v2.png" width="600"  />
+    </p>
+    </div>
+    <div class="section section-3" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLVByZXByb2Nlc3M6">
+        <h3 class="heading "><span> Preprocess:</span></h3>
+<ul class=" "><li class=" "><p   
+>Resize: 1024*768     <span style="color: #ff0000;"> (Here will change the length and width ratio of the input image) </span>
+</p>
+</li><li class=" "><p   
+>Normalize</p>
+</li><li class=" "><p   
+>Standardize(mean/std)</p>
+</li></ul>    </div>
+    <div class="section section-3" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLVBvc3Rwcm9jZXNzOg">
+        <h3 class="heading "><span> Postprocess:</span></h3>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-3" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLUdUTGFiZWxzOg">
+        <h3 class="heading "><span>GT Labels:</span></h3>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485518/image-2023-5-4_10-52-10-version-1-modificationdate-1694153235000-api-v2.png" alt="images/confluence/download/attachments/3422485518/image-2023-5-4_10-52-10-version-1-modificationdate-1694153235000-api-v2.png"  height="250" />
+    </p>
+<p   
+> Note: The central point of 3D Center on the 2D diagram is directly calculated in GT, which decouples the training code and image imaging model. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485518/image-2023-5-5_14-31-2-version-1-modificationdate-1694153235000-api-v2.png" alt="images/confluence/download/attachments/3422485518/image-2023-5-5_14-31-2-version-1-modificationdate-1694153235000-api-v2.png" width="600"  />
+    </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-3" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLVN0YWdlQeaVsOaNrjo">
+        <h3 class="heading "><span> Stagea data: </span></h3>
+<p   
+>3d Label</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485518/image-2023-5-6_16-26-2-version-1-modificationdate-1694153234000-api-v2.png" alt="images/confluence/download/attachments/3422485518/image-2023-5-6_16-26-2-version-1-modificationdate-1694153234000-api-v2.png" width="500"  />
+    </p>
+<p   
+>2D Label</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485518/image-2023-5-6_16-28-8-version-1-modificationdate-1694153234000-api-v2.png" alt="images/confluence/download/attachments/3422485518/image-2023-5-6_16-28-8-version-1-modificationdate-1694153234000-api-v2.png" width="500"  />
+    </p>
+    </div>
+    <div class="section section-3" id="src-3422485518_safe-id-aWQtOTVfV1JNUzRJVk1UQ05OLVF1ZXN0aW9u77ya">
+        <h3 class="heading "><span> Question：</span></h3>
+<ol class=" "><li class=" "><p   
+> The document code does not correspond, the code lacks the FREESPACE module, and the detection network structure does not correspond to it. It requires updates to update detailed and accurate documents: <span style="color: #ff0000;">
+freespace（drivable_head）    </span>
+</p>
+</li><li class=" "><p   
+> Stagea data is not corresponding to the label format entered in the code network. It is required to provide a conversion script for label and image: <span style="color: #ff0000;"> There is no data training for SATGEA yet, the next delivery is provided </span>
+</p>
+</li><li class=" "><p   
+> The definition of Angle in label and which coordinate system is Box3D, you need to provide detailed description of the field of Label. <span style="color: #ff0000;"> BOX3D is a car body coordinate system </span>
+</p>
+</li><li class=" "><p   
+> Analysis of the coding method of the network output YAW? <span style="color: #ff0000;"> Yaw4 is to solve the problem of the return of some uncertain goals, no matter which direction is marked, the results of Round (yaw4/2pi)*2pi are the same </span>
+</p>
+</li><li class=" "><p   
+> What is the purpose of the Radius_depth output when is_depth_model = true? <span style="color: #ff0000;"> It is not used at present, it is just a useless head </span>
+</p>
+</li><li class=" "><p   
+> After the focus of depth_scale, it is coupled with img_size. What is the intention? <span style="color: #ff0000;"> In order to decoup up with Image Size </span>
+</p>
+</li><li class=" "><p   
+> Is there any additional data enhancement processing except for the Resize, Normalize and Standard in the code? <span style="color: #ff0000;"> No additional data enhancement </span>
+</p>
+</li></ol>    </div>
+    </div>
+    <div class="section section-2" id="src-3422485518_id-95_WRMS4IVMTCNN-SemanticSegmentationandDepthEstimation">
+        <h2 class="heading "><span> Semantic Segmentation and Depth Estimation</span></h2>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3422485518/seg-depth_DAG-version-1-modificationdate-1694153234000-api-v2.png" alt="images/confluence/download/attachments/3422485518/seg-depth_DAG-version-1-modificationdate-1694153234000-api-v2.png" width="600"  />
+    </p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3422485506_95_WR_MS4_CarNet.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS4 CarNet</span>
+        </a>
+                <a href="3422485535_95_WR_MS4_LanePAF.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS4 LanePAF</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

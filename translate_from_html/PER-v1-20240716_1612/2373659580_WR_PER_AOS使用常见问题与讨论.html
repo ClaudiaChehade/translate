@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> WR/PER AOS uses common problems and discussions -Wave 3 Development </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2373659580"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                     <li><a href="2373659577_WeRide%40BOSCH_Technique_exchange.html">WeRide@BOSCH Technique exchange</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2373659580"> <span> WR/PER AOS uses common problems and discussions </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<ul class=" "><li class=" "><p   
+>AOS PER</p>
+</li></ul><p   
+><br/></p>
+<p   
+> 18 AUG 2022 Participants: </p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~YNM2SZH">YIN Micheal (XC-AS/PJ-WIN-SWA2)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~XAU3SZH">XU Yang (XC-AS/PJ-WIN-MW2)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MAV1SZH">MA Sven (XC-AS/PJ-WIN-MW)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8a83a02c4a10e5f1014a11aa8b0236d6">user-2af43</a></p>
+<p   
+>cc <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8a83a02c6055c7f80160592303250014">user-a0389</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MYN1SZH">MENG Yafei (XC-AS/PJ-WIN-PMT)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8a83a02c5f4d2373015f52a63e9000b2">user-2f3e3</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MAI4SZH">MA Liang (BCSC/EPA1, XC-AS/PJ-WIN-PMT)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~CYI4SZH">CHENG Yin (XC-AS/PJ-WIN-PMT3)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WAT5SZH">WANG Tao (XC-AS/PJ-WIN-PMT2)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MAU2SGH">MA Jun (XC-AS/PJ-WIN-PMT1)</a></p>
+<p   
+><br/></p>
+<p   
+>2022/08/02</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="5.83044%"/>
+                                    <col  width="60.665%"/>
+                                    <col  width="24.5015%"/>
+                                    <col  width="9.02383%"/>
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Q & A</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Comments</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Questioner </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Q1</p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+> What are the upstream of the Perception module, what are the access methods? </p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Camera Gateway, Camera Gateway uses the data in the device buffer through the V4L2 API into AOS ROUDI MEMOMARY </p>
+            </td>
+                <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Colleagues who need PER to reply; <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8a83a02c5f4d2373015f52a63e9000b2">user-2f3e3</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Q2</p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Ibid, what data are needed for the output of Perception, and what formats and methods? </p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The custom interface, the Activity inside the AOS can access the interface of the interface. </p>
+<p   
+> AOS automatically emits Interface data through AOS ROS Gateway, so that the tools are convenient. </p>
+            </td>
+                <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The data content will be with Alg colleague Algin </p>
+<p   
+> Recommend VFC, </p>
+<p   
+> The next MS, the structure will be aligned 02 AUG 2022 </p>
+<p   
+> [20220818] WR hasn't got the interface yet, need a colleague of PER to reply?IntersectionNeed to clarify the problem; <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8a83a02c5f4d2373015f52a63e9000b2">user-2f3e3</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Q3</p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Activity needs to support the Device Buffer zero copy and pass. </p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> X86's engineering vehicle cannot be done for the time being. Orin can use NVSCI Wrapper to implement Zero-Copy. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> [20220818] For the email, MW has been clarified; </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Q4</p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RB's implementation scheme of the coordinate system conversion service/interface </p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Positioning information, as an input of VIPER 02 AUG 2022 </p>
+<p   
+> 【20220818】 Receive PER's reply; <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8a83a02c5f4d2373015f52a63e9000b2">user-2f3e3</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Q5</p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The definition of ThirdParty, such as EIGEN, CV :: MAT </p>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">Follow Q5 :</span>
+        </div>
+        <div class="scroll-expand-content">
+<p   
+> The definition of ThirdParty, such as EIGEN, CV :: MAT </p>
+<ol class=" "><li class=" "><p   
+> Can not be defined by Eigen OpenCV, such as the following definition, an error will be reported.EIGEN basically does not work. Previously, the answer said that it can be added to the CPP ROS Converter list, please provide an example </p>
+</li></ol><p   
+>C++</p>
+<p   
+>struct TestEigen {</p>
+<p   
+>Eigen::Vector3d vector;</p>
+<p   
+>Eigen::Matrix2d matrix;</p>
+<p   
+>};</p>
+<p   
+><br/></p>
+<p   
+>Plain Text</p>
+<p   
+>-- CPP ROS CONVERTER FAILED</p>
+<p   
+>CMake Error at /tmp/.conan/data/yaaa_cmake/0.6.0+bd89a2ea49/aos/dev/package/bbfc99379f5256b8fed292633728b3d6b1631242/generate_ros_cpp_messages.cmake:52 (message):</p>
+<p   
+>File "<frozen cpp_ros_converter.cpp_ros_converter_wrapper>", line 138, in main</p>
+<p   
+>File "<frozen cpp_ros_converter.cpp_ros_converter>", line 277, in main</p>
+<p   
+>File "<frozen cpp_ros_converter.ros_msg_generator>", line 174, in get_ros_msg</p>
+<p   
+>File "<frozen cpp_ros_converter.ros_msg_generator>", line 144, in get_ros_variables</p>
+<p   
+>File "<frozen cpp_ros_converter.ros_msg_generator>", line 83, in get_ros_variable</p>
+<p   
+>File "<frozen cpp_ros_converter.ros_msg_generator>", line 55, in get_ros_type</p>
+<p   
+>File "<frozen cpp_ros_converter.plugin_manager>", line 83, in get_responsible_plugin</p>
+<p   
+>File "<frozen cpp_ros_converter.plugins.plugin_base>", line 72, in __init__</p>
+<p   
+>File "<frozen cpp_ros_converter.plugins.vfc_tcarray>", line 90, in initialize</p>
+<p   
+><br/></p>
+<p   
+>Exception: Cannot convert c-array / vfc::TCArray with elements of type</p>
+<p   
+>"__attribute__((__vector_size__(4 * sizeof(float)))) float"</p>
+<p   
+><br/></p>
+        </div>
+    </div>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wang zheyu</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> EIGEN can be used. If the amount of data is small, the Copy price will not be too large. </p>
+<p   
+> CV :: MAT can specify a pointer for creation. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The EIGEN type data in the Activity Interface is that the CPP Ros Converter will report an error. </p>
+<p   
+> Passing data between Runnable can pass complex data, such as EIGEN, CVMAT and the like. </p>
+<p   
+> WR offers a section of Sample Code.@Zheyu (WR) </p>
+<p   
+> RB provides a section of Sample Code, showing how to control which structs can be transferred to Ros Meesage. </p>
+<p   
+> Can Activity use share_ptr? 02 AUG 2022 </p>
+<p   
+> [20220818] MW has sent an email to Cangqiong to clarify; </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Q6</p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The Gateway generated by the ROS Gateway Generator built by AOS, each occupies 100% each, and the occupation rate is too high </p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>done</p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The code generated by Ros Gateway is currently without ROS :: spin. This piece requires users to add manually; </p>
+<p   
+> [20220818] Ros Gateway Generator is no longer maintained; only supports the development of PC Level; </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Q7</p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+> How does Activity Input Filter improve Efficience? Is there any example? Perception currently ten inputs (including 8 Image). </p>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">Follow Q7:</span>
+        </div>
+        <div class="scroll-expand-content">
+<p   
+><strong class=" ">Q7 </strong><strong class=" "> Whether it can be improved </strong><strong class=" ">activity filter</strong><strong class=" "> efficiency </strong></p>
+<p   
+> For example, consider 8 Camera input and a positioning input. </p>
+<p   
+><strong class=" "> question </strong><strong class=" ">1.</strong></p>
+<p   
+> Will all the inputs in the car environment of Bosch be reached at the same time? If you arrive at the same time, there will be a memory/bandwidth pressure at the same time of reading and writing at the same time.Introduce the second question here </p>
+<p   
+><strong class=" "> question </strong><strong class=" ">2.</strong></p>
+<p   
+> Assuming that the entire DAG diagram of the Perception is an Activity, then if a model requires the 8 Camera Image, then the Activity of the Perception must achieve a Filter logic.The Filter logic must check all the input receipt of the Filter each time you receive an input and determine whether the input can meet the output conditions until it meets the demand that the entire Activity DAG diagram will be triggered.In this case, an additional input, such as positioning, enter this input, can this be triggered by Activity, and do you want to add Filter?If the Activity can be triggered, most nodes in the Activity will run empty. If you ca n’t be triggered, you must wait for the Camera to read.Effective eFICIENCY.If the Filter is added, the synchronous logic is more complicated each time the object is checked, and the synchronous logic is more complicated. </p>
+<p   
+><strong class=" "> question </strong><strong class=" ">3.</strong></p>
+<p   
+> Assuming that the Perception distinguishes Activity according to the internal module, each module that requires multiple Camera inputs must achieve an Activity and has a corresponding Filter.And according to the implementation of AOS implementation of the interface between Activity, the implementation of the CSTRUCT non -dynamic memory.Each module must do the memory copy of the IMAGE itself (copy to CV MAT, copy to GPU), is this expenses too large?If it is an Activity, the internal runnable allows the pointer.And each sub -module has an Activity design to introduce more uncertainty.When the execution time of each module is different, the downstream module is prone to the problem of not input data (referring to the source data of two inputs from the source data of different framesor). </p>
+<p   
+> For these questions.Whether Bosch has a recommended solution. </p>
+        </div>
+    </div>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wang zheyu</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Convenient to synchronize multiple signals as an input of another Activity, see 05_Activity_inbox_filters </p>
+<p   
+> [20220818] The customer can implement the timer by itself; it is not recommended to write a thread by itself; </p>
+<p   
+><br/></p>
+            </td>
+                <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+> When there are too many synchronous signals, the complexity increases and the time consumption increases.Whether RB has a better way to improve Efficience. </p>
+<p   
+>@zheyu (WR) 02 Aug 2022</p>
+<p   
+> [20220818] I hope WR can feedback the mechanism for timestamp management 22 AUG 2022 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Q8</p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Runable Unit test and interface test example</p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#eae6ff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RB provides Runnable UT 02 AUG 2022 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<ul class=" "><li class=" "><p   
+> Technical discussions </p>
+</li></ul>    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="5.7811%"/>
+                                    <col  width="61.4334%"/>
+                                    <col  width="24.4475%"/>
+                                    <col  width="8.35887%"/>
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Topic</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Comments</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T1</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Whether the AOS Interface can use Shared_PTR to use C Struct to transfer the data is too low, and the CSTRUCT data lacks some necessary methods.For example, those methods of EIGEN and OpenCV </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> AOS only supports data transmission in Shared Memory. The shared_ptr structure is on the pile. AOS cannot transmit across the Activity. Activity can be transmitted internally; </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The same question with the shared_ptr above.02 AUG 2022 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T2</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Runnable's state must implement operator = operation.Whether this can be removed, are some Non-Copyable things that cannot be placed in state </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> This logic is realized in MWALA, and there is no plan to modify it, and the requirements of the data placed by the Internet state are consistent with the data requirements in the Port port. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Global variables?Single -case member. </p>
+<p   
+> Can it be placed inside the Internet State and make a member variable?02 AUG 2022 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T3</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The Planning C Struct Interface given by RB can't compile in AOS. </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Before the way of patching, I have introduced it with Wenyuan. Specifically, there are any questions to pull relevant colleagues to see together; </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>==》follow up meeting! 02 Aug 2022</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T4</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Whether it can control the timestamp of the dial data </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Zhixian Ning</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The recorded timestamp is the time when IceoryX Tag to the corresponding MSG. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T5</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Whether it supports in In/OUT Gateway, there is another Service, using a third -party RPC library, can it be coded by code </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Zhixian Ning</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> I don't understand what is a separate service; Offline may be possible; </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T6</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+> What is the recommended method of conversion between ROSMSG and C-Struct?You need to provide a clear way to maintain long -term maintenance </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Zheyu Wang</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Recommended CPP_ROS_CONVERRER, which can only support the conversion from C-Struct to ROSMSG. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T7</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Runnable State seems to have a copy when initialization? What is the life cycle of the Runnable State, and whether it can ensure that there is only the only instance of the state of the entire operation. </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>done</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Jiayan Lin</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Runnable State is equivalent to global variables and is the only example; </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T8</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+> External input/output what is recommended by this information, how to ensure that the data is not lost </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Jiayan Lin</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> I don’t understand </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Same as Q1, colleagues who need Per to reply </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T9</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+> AOS supports the DAG in Activity to run automatically by frame by frame, and the needs are derived from Planning Simulation </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Run Xia</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> AOS provides <strong class=" "> TAPE (Static Replay) </strong> The tool meets the requirements, all runnables are played frame by frame </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fff0b3 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T10</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+> AOS supports the SIMULATION mode. This mode supports running each piece of data without timeout or loss of data. Use extended waiting time to exchange for the certainty of running </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Run Xia</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The TAPE tool provided by AOS meets this requirement. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<p   
+><br/></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2373659577_WeRide%40BOSCH_Technique_exchange.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>WeRide@BOSCH Technique exchange</span>
+        </a>
+                <a href="2385362347_Perception_tutorials.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Perception tutorials</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

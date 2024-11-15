@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>95_WR MS5 Camdetect - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3422485580"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="3422485372_95_WR_Delivery.html">95_WR Delivery</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485572_95_WR_MS5_%28T0%2B12%29_Check%2C_2023_5_24.html">95_WR_MS5 (T0+12) Check, 2023/5/24</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485576_95_WR_MS5_Algorithm_Reproduce.html">95_WR_MS5 Algorithm Reproduce</a></li>
+                                                                                     <li><a href="3422485578_95_WR_MS5_Detail_Design_Docs.html">95_WR MS5 Detail Design Docs</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3422485580"> <span>95_WR MS5 Camdetect</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+></p>
+    <div class="section section-1" id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5qih5Z2X5Yqf6IO9">
+        <h1 class="heading "><span> Module function </span></h1>
+<p   
+>including model design, data diversity analysis, code reproduction, testing and Q&A</p>
+<p   
+>3D object detection</p>
+<ul class=" "><li class=" "><p   
+> No merging multiple camera information, each camera is independent prediction </p>
+</li><li class=" "><p   
+> Based on the 2D detection model, add 3D attributes to return Head (FCOS3D) </p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5qih5Z6L6L6T5YWl">
+        <h1 class="heading "><span> Model input </span></h1>
+<ul class=" "><li class=" ">    <h3 id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt6L6T5YWl5Zu-5YOP" class="heading "><span> Enter image </span></h3>
+<ul class=" "><li class=" "><p   
+>size:1024x768</p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-6-29_16-41-59-version-1-modificationdate-1694153241000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-6-29_16-41-59-version-1-modificationdate-1694153241000-api-v2.png" width="400"  />
+    </p>
+<ul class=" "><li class=" ">    <h3 id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5omA5pyJ55u45py65qCH5a6a5Y-C5pWw" class="heading "><span> All camera calibration parameters </span></h3>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-6-29_17-1-27-version-1-modificationdate-1694153241000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-6-29_17-1-27-version-1-modificationdate-1694153241000-api-v2.png"  height="250" />
+    </p>
+    </div>
+    <div class="section section-1" id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5pWw5o2u">
+        <h1 class="heading "><span> data </span></h1>
+<ul class=" "><li class=" ">    <h3 id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5pWw6YeP" class="heading "><span> quantity </span></h3>
+</li></ul><p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3422485580/image-2023-6-30_15-20-9-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/thumbnails/3422485580/image-2023-6-30_15-20-9-version-1-modificationdate-1694153240000-api-v2.png" width="300"  />
+    </p>
+<ul class=" "><li class=" ">    <h3 id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3QtR1TnlJ_miJA" class="heading "><span> GT generation </span></h3>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> project </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> content </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Remark </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GT</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Two -dimensional box and 3D frame </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 3D related attributes are added to the 2D detection model </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Method of generating </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Algorithm </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> A 3D cubes per 3D <strong class=" "> Projection to two -dimensional plane </strong> , Calculate the IOU and central distance of each GT 2D box and the projection 2D box, calculate similarity scores, </p>
+<p   
+> select <strong class=" "> The most matched projection box is used as a matching box for 3D </strong> EssenceFor those 3D projection 2D boxes that are not matched, 3D regression loss is not calculated during training. </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5qih5Z6L6K6-6K6h">
+        <h1 class="heading "><span> Model design </span></h1>
+<p   
+> Monochrome 3D detection, based on common 2D detection model development, plus the added 3D attribute head.It first performs 2D target detection and then generates 3D information at the same time. </p>
+<p   
+> Camera parameters are only used for post -processing phase. </p>
+    <div class="section section-2" id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt572R57uc57uT5p6E">
+        <h2 class="heading "><span> Network structure </span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-6-29_18-25-49-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-6-29_18-25-49-version-1-modificationdate-1694153240000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+<ul class=" "><li class=" ">    <h4 id="src-3422485580_id-95_WRMS5Camdetect-backbone" class="heading "><span>backbone</span></h4>
+</li></ul><p   
+>    <span style="color: #000000;"> Use regnet (designing network design space) as BackBone, regnet blocks are similar to ResNet, </span>
+    <span style="color: #000000;"> Use shortcut to connect. </span>
+</p>
+<p   
+>    <span style="color: #000000;"> 3X3-Conv uses the same group convolution as Resone.However, the channel width remains unchanged in the regnet block, </span>
+    <span style="color: #000000;"> Bottleneck Conv is different from ResNet. </span>
+</p>
+<p   
+><br/></p>
+<p   
+> Use regnetx-800mf, the structure is as follows </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-6-29_18-26-20-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-6-29_18-26-20-version-1-modificationdate-1694153240000-api-v2.png" width="600"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-6-29_18-30-40-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-6-29_18-30-40-version-1-modificationdate-1694153240000-api-v2.png" width="600"  />
+    </p>
+<p   
+> block structure </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-6-29_18-33-50-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-6-29_18-33-50-version-1-modificationdate-1694153240000-api-v2.png" width="400"  />
+    </p>
+<ul class=" "><li class=" ">    <h4 id="src-3422485580_id-95_WRMS5Camdetect-neck" class="heading "><span>neck</span></h4>
+</li></ul><p   
+> The FPN characteristic pyramid structure has the characteristics of different resolution and semantics of different resilience and semantics of the lower body. </p>
+<p   
+> as the picture shows. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-6-29_18-36-54-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-6-29_18-36-54-version-1-modificationdate-1694153240000-api-v2.png" width="380"  />
+    </p>
+<p   
+><br/></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-6-29_18-37-23-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-6-29_18-37-23-version-1-modificationdate-1694153240000-api-v2.png" width="500"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3422485580/image-2023-6-29_18-43-56-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/thumbnails/3422485580/image-2023-6-29_18-43-56-version-1-modificationdate-1694153240000-api-v2.png"  height="228" />
+    </p>
+<ul class=" "><li class=" ">    <h4 id="src-3422485580_id-95_WRMS5Camdetect-head" class="heading "><span>head</span></h4>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>head</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> quantity </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> content </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Classification </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Quantity </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Each dimension represents the probability of a category </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2D</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> ANCHOR to 2D BBOX left, right, up, down, </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3D</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The offset (x, y) from the 3D projection center to the two -dimensional long square body center [2], </p>
+<p   
+> Deep [1], </p>
+<p   
+> 3D boundary frame size (length, width, height) [3] </p>
+<p   
+> Direction (return to partial flights respectively <strong class=" "> 4*partial flight, </strong> Use cos/sin to represent the direction) [4] </p>
+<p   
+> You can refer to FCOS 3D: <strong class=" "> (There is no Velocity in the picture) </strong></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_13-41-13-version-1-modificationdate-1694153239000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_13-41-13-version-1-modificationdate-1694153239000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<ul class=" "><li class=" ">    <h3 id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5q2j6LSf5qC35pys5YiG6YWN" class="heading "><span> Positive and negative sample allocation </span></h3>
+</li></ul><p   
+> Simota strategy proposed by YOLOX. </p>
+<p   
+>    <span style="color: #262626;"> Filter the high -quality positive and match GT BOX, thereby reducing the cost of this matching process (COST) </span>
+</p>
+<p   
+> (1) Calculate each (GT) box and prediction box, consisting of cross -entropy and iOU scores.For each GT, choose the first K prediction with the lowest cost in the fixed center area as its positive value </p>
+<p   
+> (2) The remaining grid settings are set to negative samples. </p>
+<p   
+><br/></p>
+<ul class=" "><li class=" ">    <h3 id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5o2f5aSx5Ye95pWw6K6-6K6h" class="heading "><span> Lost function design </span></h3>
+<ul class=" "><li class=" ">    <h3 id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5o2f5aSx5Ye95pWw" class="heading "><span> Loss function </span></h3>
+</li></ul></li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Task </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>loss</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Remark </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Classification </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>multi-class sigmoid focal loss</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2D</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>bbox:L1 smoothed loss</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3D</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>offset、radius,depth,3D Size ，orientation : L1 loss</p>
+<p   
+> DEPTH gives more weight at long -distance targets to ensure positioning accuracy </p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<ul class=" "><li class=" "><ul class=" "><li class=" ">    <h4 id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5o2f5aSx5Ye95pWw5p2D6YeN" class="heading "><span> Loss function weight </span></h4>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3422485580/image-2023-8-9_10-50-9-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/thumbnails/3422485580/image-2023-8-9_10-50-9-version-1-modificationdate-1694153240000-api-v2.png" width="300"  />
+    </p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt6K6t57uD562W55Wl5ZKM6LaF5Y-C">
+        <h1 class="heading "><span> Training strategy and ultra -reasons </span></h1>
+<p   
+><br/></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> project </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> content </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Remark </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Optimizer </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>weight decay 0.0001</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Preliminary learning rate </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.001</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>warmup steps</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10000</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>batchsize</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>16</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Long general training step </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 0000</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Other strategies </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The maximum limit of gradient is 10.0 (exceeding the use of CLIP) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5qih5Z6L6L6T5Ye65ZCO5aSE55CG">
+        <h1 class="heading "><span> Model output after processing </span></h1>
+<p   
+><br/></p>
+<p   
+> (1) All detected boxes apply IOU threshold 0.5 to perform NMS </p>
+<p   
+> (2) The output of the first 00 detection box for each image output to the downstream. </p>
+<p   
+> (3) For 3D boundary boxes, use prediction <strong class=" "> Metropolitania and depth of counter -projection </strong> , To determine the 3D position of the center of the object.Then, the camera external parameters changed their camera coordinates to the body coordinates. </p>
+    </div>
+    <div class="section section-1" id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt6K-E5Lu35oyH5qCH">
+        <h1 class="heading "><span> Evaluation indicator </span></h1>
+<p   
+> 2D side BBOX is generally not used, so it mainly focuses on the evaluation of the 3D boundary box. </p>
+<p   
+> Due to the uncertainty of the monocular depth estimation, it is impossible to obtain a more accurate 3D accuracy.Traditional 3D AP based on Bev IOU is not suitable for 3D object detection. </p>
+<p   
+> The use of LET-3D-AP proposed by Waymo as a 3D detection indicator is an indicator for evaluating 3D object detection performance in the autonomous driving scenario, emphasizing the importance of positioning accuracy. </p>
+<p   
+> It is a comprehensive quantity of the performance performance of the object location, which helps measure the effect of the model in the 3D object detection of TASK. </p>
+<p   
+>LET-3D-AP：Location Estimation in Three Dimensions Average Precision</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> project </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> content </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Remark </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> 3D boundary box position estimation </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Predicate the accuracy of the 3D boundary box position.Compare the distance between the predicted boundary box center and the actual boundary frame center. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Average accuracy (AP) </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Similar to the traditional target detection AP, the Let-3D-AP calculates the accuracy of a series of different iOU thresholds and average. </p>
+<p   
+> This helps to comprehensively consider the performance under different positioning accuracy requirements </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Location estimation weight </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The importance of objects of different sizes to 3D positioning may be different.Let-3D-AP allocate different weights for objects of different sizes to better evaluate different sizes of objects </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt6K6t57uD5a6e6aqM">
+        <h1 class="heading "><span> Training experiment </span></h1>
+<p   
+>15epoch,150Kstep</p>
+<p   
+>WR：</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-7-7_18-12-38-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-7-7_18-12-38-version-1-modificationdate-1694153240000-api-v2.png" width="600"  />
+    </p>
+<p   
+>OURS:</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>exp1</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>exp2</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>exp3</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>AP</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>33.746%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>APL</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>21.9792%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<p   
+>exp1-detail</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-7-7_18-15-35-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-7-7_18-15-35-version-1-modificationdate-1694153240000-api-v2.png" width="350"  />
+    </p>
+    </div>
+    <div class="section section-1" id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5Luj56CB5YiG5p6Q">
+        <h1 class="heading "><span> Code analysis </span></h1>
+<ul class=" "><li class=" ">    <h3 id="src-3422485580_safe-id-aWQtOTVfV1JNUzVDYW1kZXRlY3Qt5Luj56CB5bel56iL" class="heading "><span> Code engineering </span></h3>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-8_14-40-56-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-8_14-40-56-version-1-modificationdate-1694153240000-api-v2.png" width="400"  />
+    </p>
+<p   
+><br/></p>
+<ul class=" "><li class=" "><p   
+> Training configuration file </p>
+</li></ul><p   
+> Parameter configuration of Data, models, training, evaluation, and reasoning through Class </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3422485580/image-2023-8-9_13-0-13-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/thumbnails/3422485580/image-2023-8-9_13-0-13-version-1-modificationdate-1694153240000-api-v2.png"  height="250" />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> data configuration </p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_12-55-7-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_12-55-7-version-1-modificationdate-1694153240000-api-v2.png" width="500"  />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Training category </p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3422485580/image-2023-8-9_12-56-22-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/thumbnails/3422485580/image-2023-8-9_12-56-22-version-1-modificationdate-1694153240000-api-v2.png" width="300"  />
+    </p>
+<p   
+> Category mapping, involving merger categories: </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_12-58-6-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_12-58-6-version-1-modificationdate-1694153240000-api-v2.png"  height="250" />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Model configuration </p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_13-1-39-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_13-1-39-version-1-modificationdate-1694153240000-api-v2.png" width="400"  />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Training configuration </p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_13-2-37-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_13-2-37-version-1-modificationdate-1694153240000-api-v2.png"  height="250" />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Assessment configuration </p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_13-3-27-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_13-3-27-version-1-modificationdate-1694153240000-api-v2.png"  height="250" />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Inference configuration </p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_13-4-39-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_13-4-39-version-1-modificationdate-1694153240000-api-v2.png"  height="250" />
+    </p>
+<ul class=" "><li class=" "><p   
+> Training startup file </p>
+</li></ul><p   
+> More conventional, training, testing and turning onNX models </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_12-52-20-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_12-52-20-version-1-modificationdate-1694153240000-api-v2.png" width="400"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_12-53-3-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_12-53-3-version-1-modificationdate-1694153240000-api-v2.png" width="400"  />
+    </p>
+<p   
+><br/></p>
+<ul class=" "><li class=" "><p   
+>dataloder</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_13-13-35-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_13-13-35-version-1-modificationdate-1694153240000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+<ul class=" "><li class=" "><p   
+> Model and Loss function </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_13-7-5-version-1-modificationdate-1694153240000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_13-7-5-version-1-modificationdate-1694153240000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+<ul class=" "><li class=" "><p   
+> Other code </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485580/image-2023-8-9_13-31-23-version-1-modificationdate-1694153239000-api-v2.png" alt="images/confluence/download/attachments/3422485580/image-2023-8-9_13-31-23-version-1-modificationdate-1694153239000-api-v2.png" width="500"  />
+    </p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3422485578_95_WR_MS5_Detail_Design_Docs.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS5 Detail Design Docs</span>
+        </a>
+                <a href="3422485619_95_WR_MS5_Camera_Prediction.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS5 Camera Prediction</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

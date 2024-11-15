@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Question 1: LOC prompts to not receive map map -Wave 3 Development </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3471172535"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2375894193_02_xSLAM.html">02_xSLAM</a></li>
+                                                                                     <li><a href="2408781832_HPA-APA.html">HPA-APA</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3471172535"> <span> Question 1: LOC prompts to not receive map maps </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+> Method 0: First see if the HPA Map Service is Core Dump. </p>
+<p   
+> Method 1: Use foxglove to see/A/HPA_MAP_SERVICE/LOC_MAP_INFO_SENDERPORT. If there is a map display, it means that the map has been sent to LOC.For example: </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3471172535/image-2023-9-20_5-17-32-version-1-modificationdate-1695360041000-api-v2.png" alt="images/confluence/download/attachments/3471172535/image-2023-9-20_5-17-32-version-1-modificationdate-1695360041000-api-v2.png"  height="250" />
+    </p>
+<p   
+> Foxglove's layout file is as follows (directly open a new window to enter the topic name): </p>
+<p   
+><a   href="attachments/3464880672/1/hpa_map_service.json">https://inside-docupedia.bosch.com/confluence/download/attachments/3266708057/hpa_map_service.json?version=1&modificationDate=1695201412000&api=v2</a></p>
+<p   
+><br/></p>
+<p   
+> Method 2: If there is no map display, you can see the log file hpamapService_Activity.log.If there is no log in the following frame in the log, it means that the Load Path signal of FCT is not received. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3471172535/image-2023-9-22_1-30-15-version-1-modificationdate-1695360616000-api-v2.png" alt="images/confluence/download/attachments/3471172535/image-2023-9-22_1-30-15-version-1-modificationdate-1695360616000-api-v2.png"  height="244" />
+    </p>
+<p   
+> If all logs are as follows, there is no Load Path signal from FCT. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3471172535/image-2023-7-21_2-18-56-version-1-modificationdate-1695360765000-api-v2.png" alt="images/confluence/download/attachments/3471172535/image-2023-7-21_2-18-56-version-1-modificationdate-1695360765000-api-v2.png"  height="250" />
+    </p>
+<p   
+> Method 3: If there is no log.Check if there are/a/fct_hmi/chpa_hmi_output_senderport this topic, and CSCNEXTIF_REQTYPE is 5.If not, it means that the FCT does not send a Load Path signal. </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3471172535/image-2023-9-20_5-56-54-version-1-modificationdate-1695360824000-api-v2.png" alt="images/confluence/download/thumbnails/3471172535/image-2023-9-20_5-56-54-version-1-modificationdate-1695360824000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+>tips:</p>
+<p   
+> The topic required for the debugging problem with HPA MAP Service is as follows: </p>
+<p   
+>/A/fct_hmi/chpa_hmi_output_senderport</p>
+<p   
+>/A/loc_gateway/xper_global_loc_result_senderport</p>
+<p   
+>/A/viper_parking/xper_nrcs_super_point_senderport</p>
+<p   
+>/A/fct_state_machine/chpahsmto_map_senderport</p>
+<p   
+>/A/hpa_map_service/hpa_global_path_info_senderport</p>
+<p   
+>/A/hpa_map_service/loc_map_info_senderport</p>
+<p   
+>/A/hpa_map_service/parking_map_info_senderport</p>
+<p   
+>/A/hpa_map_service/planning_map_info_senderport</p>
+<p   
+>/A/hpa_map_service/base_map_info_senderport</p>
+<p   
+><br/></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3384953261_Feature_reloc_limitations.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Feature reloc limitations</span>
+        </a>
+                <a href="3355939478_Onboard_mapping_test.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Onboard mapping test</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

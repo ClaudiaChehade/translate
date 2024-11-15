@@ -1,0 +1,2383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> HPA laser map scheme review  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3606973206"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779718_00_Localization.html">00_Localization</a></li>
+                                                                                     <li><a href="3538655838_HPA.html">HPA</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3606973206"> <span> HPA laser map scheme review </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+></p>
+<p   
+><br/></p>
+    <div class="section section-1" id="src-3606973206_safe-id-SFBB5r-A5YWJ5Zyw5Zu-5pa55qGI6K-E5a6hLeaWueahiOiuvuiuoQ">
+        <h1 class="heading "><span> Design </span></h1>
+<p   
+><br/></p>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3606973206/Untitled_Diagram-version-1-modificationdate-1698895827000-api-v2.png" alt="images/confluence/download/attachments/3606973206/Untitled_Diagram-version-1-modificationdate-1698895827000-api-v2.png" width="1601"  />
+    </p>
+<p   
+><br/></p>
+<p   
+>key points：</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #003366;"> XLIO runs dependent on the FCT status machine, whether the status of the FCT is in line with expectations </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #003366;"> Architecture confirmation </span>
+</p>
+</li></ol></li><li class=" "><p   
+>    <span style="color: #003366;"> XLIO runs to 20Hz, and there may be a situation where 50ms processing a frame of data may be incomplete. </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #003366;"> Added a recursive buffer output </span>
+</p>
+</li></ol></li><li class=" "><p   
+>    <span style="color: #003366;"> Although the establishment of the current visual map and the coordinate system of laser maps is to receive the ENU coordinates of the chpahsmto_map_receiverport sending GNSS diverse positions at the same time, it cannot be strictly guaranteed to receive it at the same time, and the same INS location is selected, so a solution needs to be strictly unified. </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #003366;"> The XLIO output will have Origin Ins. The map uses the INS coordinate, and the result of the XLIO is used in the subsequent map. The coordinate system is uniform </span>
+</p>
+</li></ol></li><li class=" "><p   
+>    <span style="color: #003366;"> Visual map BA may cause visual and laser maps to be inconsistent </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #003366;"> This problem is compatible with the NONE method. At present, it seems that one of them can only be believed: Recommended POC version first based on laser positioning results, and offline verification BA's effectiveness and accuracy of BA </span>
+</p>
+</li></ol></li></ol><p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3606973206_safe-id-SFBB5r-A5YWJ5Zyw5Zu-5pa55qGI6K-E5a6hLeaWueahiOiuqOiuuibmnrbmnoTosIPmlbTvvIjnsonlrZfkuLrnu4jniYjvvIk">
+        <h1 class="heading "><span> Plan discussion & architecture adjustment (powder word is the final version) </span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="5.2374%"/>
+                                    <col  width="15.3206%"/>
+                                    <col  width="15.6143%"/>
+                                    <col  width="25.8443%"/>
+                                    <col  width="38.0323%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Module </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Problems </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Solution </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Refresh solution </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Architectural change decision </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+>XLIO</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> How to open a picture </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> XLIO keeps running in the whole scene </p>
+<ol class=" "><li class=" "><p   
+> In the high -precision map area (Driving) or Parking scenario and GNSS Type> = 2, XLIO is empty. </p>
+</li><li class=" "><p   
+> Parking scene GNSS TYPE <= 1， 则自动开始建图，等待用户点training</p>
+<ol class=" "><li class=" "><p   
+> If the user clicks Training, open the picture (the visual building is started) </p>
+</li><li class=" "><p   
+> If the user does not click Training, maintain a certain mileage/or GNSS TYPE> = 3, exit the map </p>
+</li></ol></li></ol></li></ol><p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff00ff;"> Start built maps: </span>
+</strong></p>
+<p   
+>    <span style="color: #ff00ff;"> 1) When the FCT-SM judgment GNSS disappears, the initial chart instruction trainingopmode = HPA_PATH_RECORD to xlio and onboardMapping </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 2) After the XLIO is received, the laser map is started, and Pose provides Pose for onboardMapping and GlobalLoc </span>
+</p>
+<p   
+>    <span style="color: #a5adba;">
+3）<del class=" "> OnboardMapping starts the DRPATH record, the recorded POSE sources prefer to use XLIO output, and the XLIO output uses LOCALMSF output when the output is invalid. </del>    </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 3) OnboardMapping directly replaces the function of the original DrpathRecord with the function output by XLIO <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HQI2SZH">HE Qiang (XC-AS/PJ-WIN-PER7)</a>    </span>
+</p>
+<p   
+><br/></p>
+<p   
+><strong class=" ">    <span style="color: #ff00ff;"> Cancellation of building maps: </span>
+</strong></p>
+<p   
+>    <span style="color: #ff00ff;"> 1) During the drawing process, if the driver cancels the building, the FCT-SM sends the trailingopmode = trailing_abort, XLIO and onboardMapping end the map, and there is no picture. </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 2) During the diagram program, if the FCT is affected by downgrade, then <span style="color: #ff0000;">
+    <span style="color: #ff00ff;"> FCT-SM Send OPMODE = Training_failure, but ObmAppping and XLIO will not process the Failure instructions, continue to save the graph </span>
+<a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HQI2SZH">HE Qiang (XC-AS/PJ-WIN-PER7)</a>    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;">
+    <span style="color: #ff0000;">
+    <span style="color: #a5adba;">
+<del class=" "> The Failure state in the Trainingopmode sent by PROPOSAL2: FCT-SM should not include the Training-FINISH stage. </del>    </span>
+    </span>
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;"> Arch change: FCT-SM-> XLIO newly adds Port: </span>
+    <span style="color: #ff00ff;">
+chpahsmto_map_receiverport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff00ff;"> PUB-Interface change: </span>
+    <span style="color: #ff00ff;"> HPA_PATH_RECORD was renamed HPA_PRE_TRAINING, HPA_STOP_PATH_RECORD was renamed HPA_STOP_PRE_TRAINING </span>
+</p>
+</li></ul><p   
+>    <span style="color: #ff00ff;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3606973206/image-2023-11-3_10-6-42-1-version-1-modificationdate-1698977202000-api-v2.png" alt="images/confluence/download/attachments/3606973206/image-2023-11-3_10-6-42-1-version-1-modificationdate-1698977202000-api-v2.png"  height="250" />
+    </span>
+</p>
+<p   
+> STOP_PRE_TRAINING will send out when the driver clicks to replay or drives out ODD. </p>
+<p   
+> Since XLIO must continue to work after the driver ordered the replay and stop working when driving out of ODD, these two situations should be distinguished: </p>
+<p   
+><strong class=" "> Option 1: XLIO needs to use additional ODD status judgment, and do not receive stop_pre_training. </strong> (Stop_pre_traying is mainly used for completing the Obmapping task when it is used for replay) </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3606973206/image-2023-12-18_14-32-13-version-1-modificationdate-1702881133000-api-v2.png" alt="images/confluence/download/attachments/3606973206/image-2023-12-18_14-32-13-version-1-modificationdate-1702881133000-api-v2.png"  height="250" />
+    </p>
+<p   
+> Option 2: When clicking replay, FCT does not send stop_pre_training to keep sending pre_training. At this time, Obmapping will continue to make effective judgments to the input of XLIO. Compared with the number of codes running in IDLE status after receiving the STOP instruction. </p>
+<p   
+><strong class=" "> 12.18 Discussion, select plan 1 </strong></p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #000000;"> Remark: </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Abort: During the Training process, the driver cancels the map/four -door and two blocks, one open/seat belt unlock/rearview mirror folding, and receives the MAP feedback of TrainingESP Security Function Activation Can Be Restored (May Be ISSUED in Training) </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Failure: The reaction ID of the soft-monitored by FCT itself is not recovered (maybe it may be issued in Pre-Trawing, Training, Training-FINISH, Guidance)) </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> When Abort and Failure, Obmapping and Obmapping and <del class=" ">XLIO</del> The processing method is the same: it is the cache that stops the map and clear the cache that has been built. </span>
+</p>
+</li><li class=" "><p   
+> Failure occurred during trailing, <span style="color: #000000;"> Directly refund the function, it will prompt the function abnormality </span>
+</p>
+</li></ul><p   
+><br/></p>
+<p   
+><strong class=" "> 2024.4.3 Change requirements: </strong></p>
+<p   
+> 1) If Obmapping fails during the construction program, it will feedback the Training Error to the FCT, and then the FCT retreats to the Training_abort status to avoid long -distance invalidation @zhang liang, and whether OTA2 can be evaluated if the development of OTA2 must be developed together </p>
+<p   
+> 2) Training_abort (such as the driver opened the door) and training_failure, hoping to support the driver to build a map again, XLIO will not stop building and clear the cache cache cache cache <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WGS5SGH">WANG Shiwei (XC-AS/PJ-WIN-PER3)</a> OTA2 </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> How to save maps and load maps </p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>    <span style="color: #003366;"> After the ending </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;"> XLIO will create a new Save_map_file_id under SLAVE/USR/DATA/HPA/LIDAR_MAP folder, and then save the map (at the same time, the visual map also preserves the same map_file_id) </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;"> When loading, receive the load signal and the map file name load_map_id (LOAD_MAP_ID, the result of the Map_hmap_ide_id (LOAD_MAP_ID. At this time, the laser chose a unified scene map) </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;"> Looking forward to sending the loading map of the FCT, before GNSS Type 2 changes to 1, XLIO directly loads the map, enter the RELOCALIZATION Init, wait for the initialization to complete the completion </span>
+</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff00ff;">
+<strong class=" "> End the map: </strong>    </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 1) When the driver is manually completed, the FCT-HMI sends a uniformly sends a drawing instruction Requesttype = Create and the map ID (m_scnid) to XLIO and onboardMapping </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 2) XLIO is newly built in SAVE/USR/Data/HPA/LIDAR_MAP folder, and then saves the map. </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 3) OnboardMapping is under the Master/XXX folder XXX and saves the map </span>
+</p>
+<p   
+><strong class=" ">    <span style="color: #ff00ff;"> XLIO built map feedback: </span>
+</strong></p>
+<ol class=" "><li class=" "><p   
+><del class=" ">    <span style="color: #a5adba;"> Proposal 1: In order not to affect the success rate of the overall HPA map, taking into account the scene without lidar configuration in the next platform, it determines that the laser deposit map is successful or fails to feedback to FCT-HMI. As long as the visual deposit map is successful, you can support the next Replay.(priority) </span>
+</del></p>
+</li><li class=" "><p   
+><del class=" ">    <span style="color: #a5adba;"> PROPOSAL 2: LOCMSF MAPPING MODE → You can need it as long as you succeed. </span>
+</del></p>
+</li></ol><p   
+>    <span style="color: #ff00ff;"> Only laser buildings are successful: feedback failed </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> The successful visual map deposit map is successful: the feedback failed </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> Successful laser building deposit map+visual map deposit map success: successful feedback </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> XLIO deposit picture duration: need <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WGS5SGH">WANG Shiwei (XC-AS/PJ-WIN-PER3)</a> After the actual measurement, give a specific value for Obmapping, wait within a long time, and when the threshold is beyond the threshold, ObmApping has failed to make a decision. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HQI2SZH">HE Qiang (XC-AS/PJ-WIN-PER7)</a>    </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> XLIO and OBMAPPING Map time is too long: if it exceeds min (conventional time, electricity time XXS), the reimbursement map fails </span>
+</p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;"> Local measured laser map is stored, one kilometer data (19M) is saved 0.22s, about 0.5s over two kilometers. It is recommended that Obmapping can <strong class=" "> Continuous inspection 2S </strong> Data (or 20 frames XLio Result) Does it return to success or failure.(( <strong class=" "> The real car test saving data time is about three times the local test, that is, about 2S, it is recommended to relax to 3S appropriately </strong>)    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff00ff;"> In addition, onboardMapping synchronous check <strong class=" "> Whether visual maps and laser maps are successfully preserved </strong> , It is better to ensure that the laser map is processed. <strong class=" "> </strong><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~SBG1SZH">WANG Shirley (XC-AS/PJ-WIN-SYS1)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HQI2SZH">HE Qiang (XC-AS/PJ-WIN-PER7)</a>    </span>
+</p>
+</li></ul></li></ul><p   
+><br/></p>
+<p   
+>    <span style="color: #ff00ff;">
+<strong class=" "> Load the map: </strong>    </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 1) FCT-HMI disappears at 3M at the GNSS (Hope to expand? POC testing phase is changed to <strong class=" ">5m</strong> Test) After matching within the range, send Requesttype = Load Path to XLIO and HPAMAPSERVICE </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 2) XLIO loaded the laser map file saved on the Slave, and Match, send the MATCH result to the GlobalMSF of Master </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 3) HPAMAPSERVIC </span>
+</p>
+<p   
+><br/></p>
+<p   
+><strong class=" ">    <span style="color: #ff00ff;"> Clear the Map of Load The Map: </span>
+</strong></p>
+<p   
+>    <span style="color: #ff00ff;"> Case1: After loading the map of XLIO and HPAMAPSERVICE, if the driver did not click on the replay, when the vehicle drove out of the basement, the FCT-HMI judged the non-Parking ODD and sent the EREQUESTTYPE == Req_quit_Service. MapService empty has been loaded by the map </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> Case2: After the map is loaded with XLIO and HPAMAPSERVICE, before the driver deletes the map, FCT-HMI first sends EREQUEQUESTTYPE == Req_quit_Map_Service once, waiting for minpservice feedback, 500MS) Again </span>
+    <span style="color: #ff00ff;"> Send EREQUESTTYPE == REQ_DELETE, inform Xlio and HPAMAPSERVICE clearing the map cache, and delete the map by Xlio and HPAMAPMANAGER to delete the map </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;">
+<strong class=" "> Delete the map: </strong>    </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> When the driver man handles the map on HU, FCT-HMI places the corresponding map ID status to delete </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 1) When XLIO is built next time, it is judged by the map ID status sent by FCT-HMI to judge that it has been deleted and covered here </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 2) HPAMAPSERVICE is loaded in empty, and HPAMAPDANAGER deletes all visual storage files (characteristic maps, semantic maps, meta, DRPATH) </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;">
+<strong class=" "> Map renamed: </strong>    </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> HPAMAPMANAGER completes map information management, does not require onboardMapping and XLIO to handle the map rename operation separately. </span>
+</p>
+<p   
+><strong class=" ">    <span style="color: #ff00ff;"> HPA path display: </span>
+</strong></p>
+<p   
+>    <span style="color: #ff00ff;"> When FCT-HMI sends Requesttype = Req_load_sn_list, HPAMAPMANAGER reads the Meta file of the Meta file that has been completed by OnboardMapping, and sends it to Fcthmi to HU. </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> Is XLIO's laser map display?(At present, you only need to display the visual semantic map and PATH, no additional laser map information is required, but the display result of the XLIO_RESULT on Foxglove </span>
+</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;"> Arch change: FCT-HMI-> XLIO newly added Port: chpa_hmi_output_receiverport </span>
+</p>
+</li></ul><p   
+>    <span style="color: #ff00ff;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3606973206/image-2023-11-3_10-6-54-1-version-1-modificationdate-1698977214000-api-v2.png" alt="images/confluence/download/attachments/3606973206/image-2023-11-3_10-6-54-1-version-1-modificationdate-1698977214000-api-v2.png"  height="250" />
+    </span>
+</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3606973206/image-2023-11-3_10-27-16-1-version-1-modificationdate-1698978436000-api-v2.png" alt="images/confluence/download/attachments/3606973206/image-2023-11-3_10-27-16-1-version-1-modificationdate-1698978436000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+<p   
+><strong class=" "> 12.18 Meeting discussion: </strong></p>
+<p   
+> The Wuhu test, because the disappearance point of the INS is near ± 5m, send <strong class=" ">load map</strong> It may still be in OUTDOOR when the instruction is issued. <strong class=" ">quit map service</strong> Therefore, the ODD condition is added to the Load Map instruction (GNSS Quality = weak & not on HDMAP) </p>
+<p   
+><br/></p>
+<p   
+> Current laser building version test, discovered <strong class=" "> First send pre-trailing, then send LOAD MAP </strong> , The middle time difference XXXMS may be: FCT-HMI is the Non-SafeTy module. Communication with Netcom needs to pass CrossGW; FCT-SM sends ODD to FCT-HMI through CrossGW, and the link is longer. </p>
+<p   
+> After the above -mentioned strategy is modified, the Loap Map instruction is sent later (only when only in Indoor). The assessment of the influence on the None of the visual map loading, the impact on the laser map loading NONE, maintaining the strategy unchanged, and then driven by the problem. </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Positioning information sending & interface changes </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> It is expected that the visual map is out of XLIO output, and there are a few reasons: </p>
+<ol class=" "><li class=" "><p   
+> Guarantee visual map and laser map positioning system unified </p>
+</li><li class=" "><p   
+> Can support cross -layer </p>
+</li></ol></li><li class=" "><p   
+> XLIO positioning the current output is 10Hz, and the highest can increase 20Hz (risk, there may be delayed sending) </p>
+</li><li class=" "><p   
+>xlio    <span style="color: #003366;"> Interface Modification of the output </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #003366;"> Add Mapping Mode and Localization State </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;"> Increase the Origin INS interface (GNSS disappearance point position) </span>
+</p>
+</li></ul></li></ol><p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff00ff;">
+<strong class=" "> position: </strong>    </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> In order to synchronize the visual map positioning and laser map positioning received by Global, the coordinate system of the visual map and laser map needs to be uniformly uniform; in order to support cross -layer parking lots, the Pitch information output from the XLIO output is sent to the visual map. </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 1) Send the Pose output from XLIO to onboardMapping, and output the origin of the laser map origin INS coordinates to globalmsf </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 2) OnboardMapping uses the valid POSE output from XLIO. When it is invalid, onboardMapping fails </span>
+</p>
+<p   
+><del class=" ">    <span style="color: #a5adba;"> 2) OnboardMapping At the beginning of the Training, priority uses the valid Pose (XLIO MAPPING MODE) output by XLIO, otherwise the Pose (LOCALMSF MAPPING MODE) output by LocalMSF: </span>
+</del></p>
+<p   
+><del class=" ">    <span style="color: #a5adba;"> In the case of entering XLIO MAPPING MODE, if the XLIO output results are downgraded (m_localization_state = invalid), onboardMapping (DrpathRecord and Visual Building)? </span>
+</del></p>
+<ol class=" "><li class=" "><ol class=" "><li class=" "><ol class=" "><li class=" "><p   
+><del class=" ">    <span style="color: #a5adba;"> Failure (priority) </span>
+</del></p>
+</li><li class=" "><p   
+><del class=" ">    <span style="color: #a5adba;"> Continue to use Delta Localmsf </span>
+</del></p>
+</li></ol></li></ol></li></ol><p   
+>    <span style="color: #ff00ff;">
+<strong class=" "> Dowager correlation: </strong>    </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 1) Report Invalid from XLIO (laser blocking/laser data disconnection/loss) to OBMAPPING processing, OBMAPPING can be fed back to FCT, which has been satisfied </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 2) Does the XLIO failure need to be soft monitoring?——Proster does not require the bottom of the softener to monitor the XLIO output separately. The reason is that signals such as laser hardware itself, XLIO input IMU/speed and other signals have a monitoring and downgrade mechanism. </span>
+</p>
+<p   
+>    <span style="color: #000000;"> During the Pre-Trawing process, when XLIO/POSE fails, Obmapping feeds on HPA_PATH_RECORD_FAIL to FCT-SM, FCT-SM will not allow the driver to activate "starting the map".(Satisfied) </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #ff00ff;"> 3) GOBALMSF is based on the Ins unified map provided by INS and onboardMapping provided by XLIO and integrates positioning </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> 4) Since the LocalmsF output is a 100Hz high -frequency signal, and the onboardMapping input evaluation requires a Pose of at least 20Hz frequency. There is a comparison selection as follows: </span>
+</p>
+<p   
+>    <span style="color: #a5adba;">
+OPL：    </span>
+</p>
+<p   
+>    <span style="color: #a5adba;"> Option 1: Demolition XLIO into two Runnable, schedule at 20Hz frequency, and two runnable processing the building (laser point cloud) and positioning (incense) </span>
+</p>
+<p   
+>    <span style="color: #a5adba;"> Option 2: Schedule XLIO to keep a runnable unchanged. With the frequency of 10Hz, the downstream OnboardMapping itself is interpolated by the output POSE of XLIO </span>
+</p>
+<p   
+>    <span style="color: #ff00ff;"> Option 3: XLIO adds the Prediction Pose between two laser frames, and 10ms interval to provide a Pose point (preferred) </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;"> PUB Change: Add Origin INS, LOC State, MAPPING MODE ... </span>
+</p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class="content-wrapper "><p  class="auto-cursor-target" 
+> The new interface is as follows: </p>
+</li><li class="content-wrapper ">    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="rdark syntaxhighlighter scroll-html-formatted-code" data-linenumbers="true" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXPerMapInfo</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// 0: default invalid map id</code></div>
+<div class="line"><code class="plain">    vfc::uint8_t m_map_id{0u};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// 0: default, 1: map_saved, 2: map_loaded </code></div>
+<div class="line"><code class="plain">    vfc::uint8_t m_map_operate_state{0u};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// lat/lon/alt</code></div>
+<div class="line"><code class="plain">    vfc::float64_t m_map_orgin_wgs84[3u]{0., 0., 0.};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    vfc::float64_t m_map_orgin_gcj02[3u]{0., 0., 0.};</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXPerLidarPose</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    vfc::uint64_t m_timestamp{0u};</code></div>
+<div class="line"><code class="plain">    </code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// position xyz, unit m</code></div>
+<div class="line"><code class="plain">    per::CXPerPoint3f m_position;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// quaternion of rotation xyzw</code></div>
+<div class="line"><code class="plain">    per::CXPerQuaternion m_orientation;</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXPerLidarPoseStd</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    vfc::float64_t m_positionStd[3u]{0.f, 0.f, 0.f};</code></div>
+<div class="line"><code class="plain">    vfc::float64_t m_rotationStd[3u]{0.f, 0.f, 0.f};</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXPerLioResult</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// timestamp</code></div>
+<div class="line"><code class="plain">    vfc::uint64_t m_timestamp{0u};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// 0: invalid, 1: valid</code></div>
+<div class="line"><code class="plain">    vfc::uint8_t m_localization_state{0u};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// 0: tracking, 1: mapping, 2: reloc </code></div>
+<div class="line"><code class="plain">    vfc::uint8_t m_mapping_mode{0u};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// map info</code></div>
+<div class="line"><code class="plain">    CXPerMapInfo m_map_info;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// lidar pose</code></div>
+<div class="line"><code class="plain">    CXPerLidarPose m_pose;</code></div>
+<div class="line"><code class="plain">    CXPerLidarPoseStd m_pose_std;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// prediction pose from last_pose_time -> current time</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CXPerLidarPose, 10u> m_prediction_poses;</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+</li></ul></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GlobalMsf</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> How to access XLIO input and use </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;"> ARCH change: XLio Port, who received from Localmsf <br/>    </span>
+</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Localmsf</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Forward XLIO PORT </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;"> Arch change: Localmsf increases forward → global local </span>
+</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Mapping</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> How to access XLIO input and use </p>
+</li><li class=" "><p   
+> How to display and use semantic maps </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Possible solutions in layered </p>
+<ol class=" "><li class=" "><p   
+> After the user click Training, based on the POSE of the first parking space, the subsequent parking space is flattened. </p>
+</li><li class=" "><p   
+> Detection cross -layer: </p>
+<ol class=" "><li class=" "><p   
+> There are high -end changes in the positioning output, and the parking space cannot be detected at this time → cross -layer </p>
+</li><li class=" "><p   
+> High -range smooth and detecting parking spaces → End cross -layer </p>
+</li></ol></li><li class=" "><p   
+> And based on the POSE as the benchmark at this time, take the flat and build the next layer of map </p>
+</li></ol></li></ol><p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;"> OPL: When cross -layer, visual map combines POSE and visual perception information to determine whether to cross the layer to build a global semantic map. The requirements and cooperation of visual maps and XLIO buildings to be discussed?(Not in SOP1 delivery, the architecture does not require special changes, but MAPPING needs to continue to take the current architecture to verify the cross -layer technical problems before 240130. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~OIY1SZH">LIU Yong (XC-AS/PJ-WIN-PER7)</a> ）    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;"> Arch change: </span>
+    <span style="color: #ff00ff;"> Netcom_Master-> Crossgateway sent to onboardmapping to onboardmapping </span>
+</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>FCT</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Interface modification </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff00ff;">
+<strong class=" "><br/></strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;">
+Pub-interface “    </span>
+    <span style="color: #ff00ff;">
+chpahsmto_map_receiverport    </span>
+    <span style="color: #ff00ff;"> "Change: Instruction HPA_PATH_RECORD is changed to HPA_PRE_MAPPING, instruction HPA_STOP_PATH_RECORD is changed to HPA_STOP_PRE_MAPPING </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3606973206/image-2023-11-3_10-6-42-1-version-1-modificationdate-1698977202000-api-v2.png" alt="images/confluence/download/attachments/3606973206/image-2023-11-3_10-6-42-1-version-1-modificationdate-1698977202000-api-v2.png"  height="250" />
+    </span>
+</p>
+</li></ul></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>NetCom</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Increase FCT related PORT cross -domain sending </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff00ff;">
+<strong class=" "><br/></strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;"> Arch change: chpahsmto_map_receiverport & chpa_hmi_output_receiverport → netcom master → netCon Slave → xlio </span>
+</p>
+</li></ul>            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    <div class="section section-2" id="src-3606973206_safe-id-SFBB5r-A5YWJ5Zyw5Zu-5pa55qGI6K-E5a6hLeS_oeWPt-S8oOi-k-Wkp-Wwj-ivhOS8sO-8mg">
+        <h2 class="heading "><span> Evaluation of signal transmission: </span></h2>
+<p   
+><strong class=" ">master→slave:</strong></p>
+<ul class=" "><li class=" "><p   
+>FCT_SM：    <span style="color: #0000ff;">
+chpahsmto_map_senderport，fct_hpahsm_to_map_if.hpp/    </span>
+    <span style="color: #000000;">
+     </span>
+    <span style="color: #0000ff;">
+struct    </span>
+    <span style="color: #000000;">
+     </span>
+    <span style="color: #2b91af;">
+CHPAHSMToMap    <span style="color: #000000;"> : The size of the structure is 10byte </span>
+    </span>
+</p>
+</li><li class=" "><p   
+>FCT_HMI：    <span style="color: #0000ff;">
+chpa_hmi_output_senderport，    </span>
+    <span style="color: #0000ff;">
+fct_hmi_out_if.hpp/     </span>
+    <span style="color: #0000ff;">
+struct    </span>
+    <span style="color: #000000;">
+     </span>
+    <span style="color: #2b91af;">
+CHpaHmiOutput    <span style="color: #000000;"> : The structure size is 92byte </span>
+    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #2b91af;">
+    <span style="color: #000000;">
+Odom：    </span>
+    </span>
+    <span style="color: #0000ff;">
+xodometry_result_senderport，xodometry_outputif.hpp/ struct     </span>
+    <span style="color: #2b91af;">
+CXOdometryResultInterface    <span style="color: #000000;"> : The size of the structure is 1691byte </span>
+    </span>
+</p>
+</li></ul><p   
+><strong class=" ">    <span style="color: #000000;">
+slave→master:    </span>
+</strong></p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+XLIO：    </span>
+    <span style="color: #0000ff;">
+xlio_output，    </span>
+    <span style="color: #0000ff;">
+xlio_outputif.hpp/ struct     </span>
+    <span style="color: #2b91af;">
+CXPerLioResult：    <span style="color: #000000;"> The structure increases 724-101 = 623byte </span>
+    </span>
+</p>
+</li></ul><p   
+>    <span style="color: #000000;">
+<strong class=" "> Evaluation of laser storage map: </strong>    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Most 10 pictures, each picture <100M，合计存图<1G。    </span>
+</p>
+</li></ul><p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-3606973206_safe-id-SFBB5r-A5YWJ5Zyw5Zu-5pa55qGI6K-E5a6hLeWcsOWbvuS_neWtmOaWueahiA">
+        <h2 class="heading "><span> Map saving plan </span></h2>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> How to store laser maps on SLAVE, do you need to re -open partition </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Another partition has a great impact. After evaluation, on SALVE, </span>
+    <span style="color: #ed5c57;"> /cache/update can leave 1.5g </span>
+    <span style="color: #000000;"> Space is used to store laser maps. At the same time, the files preserved in the map need to be independent folders under/cache/update, which cannot affect OTA </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Note: Laser map will be stored in </span>
+    <span style="color: #ed5c57;">
+/cache/update/    </span>
+    <span style="color: #6fc040;">
+hpa/lidar_map/    </span>
+    <span style="color: #000000;"> Below, when the laser map is stored, it will be self-inspected whether the map is currently saved whether the map exceeds the range (if the map is stored more than 150m (corresponding to the 4-5km of the XLIO building map, it is considered abnormal)abnormal <del class=" "> Or just store the oldest data </del>）    </span>
+</p>
+</li></ul></li></ul></li></ul><p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3606973206/Arch_Change_Lslam-version-31-modificationdate-1699611066000-api-v2.png" alt="images/confluence/download/attachments/3606973206/Arch_Change_Lslam-version-31-modificationdate-1699611066000-api-v2.png" width="1131"  />
+    </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-3606973206_safe-id-SFBB5r-A5YWJ5Zyw5Zu-5pa55qGI6K-E5a6hLeW8gOWPkeW3peS9nOmHj--8mg">
+        <h2 class="heading "><span> Development workload: </span></h2>
+<ul class=" "><li class=" "><p   
+> SWA: Modify ARCH and Pub-interface <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~SBG1SZH">WANG Shirley (XC-AS/PJ-WIN-SYS1)</a></p>
+</li><li class=" "><p   
+> XLIO: Develop laser building maps, regulating code, realize the operations of building, deposit, matching, etc., output XLIO information to the new PUB-Interface <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WGS5SGH">WANG Shiwei (XC-AS/PJ-WIN-PER3)</a></p>
+</li><li class=" "><p   
+> OnboardMapping: Receive XLIO_OUTPUT and use XLIO's Pose information (find one in 10 points). <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HQI2SZH">HE Qiang (XC-AS/PJ-WIN-PER7)</a></p>
+</li><li class=" "><p   
+> GlobalLOC: Receive Xlio_output, combine laser maps and visual maps for positioning <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~THA3SZH">TAN Haoxuan (XC-AS/PJ-WIN-PER3)</a></p>
+</li><li class=" "><p   
+> Localmsf: Forward xlio_output to Globalmsf <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WGS5SGH">WANG Shiwei (XC-AS/PJ-WIN-PER3)</a></p>
+</li><li class=" "><p   
+> Netcom: Forces XLIO_OUTPUT, CHA_HMI_OUTPUT, Chahsmto_MAP, ODOM information on Master and Slave <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AAD1SZH">MA Da (XC-CP/ESW2-CN)</a></p>
+</li><li class=" "><p   
+> FCT_SM, FCT_HMI: Except for PUB-Interface Enum name modification, there is no other modification demand this time </p>
+</li><li class=" "><p   
+> HPAMAPSERVICE, HPAMAPDAMANAGER: No modification demand this time </p>
+</li></ul><p   
+><br/></p>
+<p   
+><strong class=" ">    <span style="color: #ff00ff;"> The current XLIO is a relatively large -featured module. It is not the same as onboardMapping in the module responsibilities. It has not considered the benefits of disassembling HPAMAPSERVICE out of management files. There is a risk of reading and writing files under the POC stage!Intersection </span>
+</strong></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3606973206_safe-id-SFBB5r-A5YWJ5Zyw5Zu-5pa55qGI6K-E5a6hLeW8gOWPkeiuoeWIkg">
+        <h1 class="heading "><span> Development Plan </span></h1>
+    <div class="section section-2" id="src-3606973206_safe-id-SFBB5r-A5YWJ5Zyw5Zu-5pa55qGI6K-E5a6hLeW8gOWPkea1i-ivlUZsb3c">
+        <h2 class="heading "><span> Development test Flow </span></h2>
+<ol class=" "><li class=" "><p   
+><del class=" "> Architecture integration prepare Base Line, new architecture & Feature branch <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~SBG1SZH">WANG Shirley (XC-AS/PJ-WIN-SYS1)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MAY9SZH">MA Yun (VM/ESW2-CN)</a> 14 Nov 2023<br/></del></p>
+<ol class=" "><li class=" "><p   
+><del class=" "> It has been completed: PJ_ROOT BASE LINE branch: <span style="color: #00ffff;">
+     <span style="color: #0000ff;">
+feature/HPA_Lidar_Map_POC    </span>
+    </span>
+</del></p>
+</li></ol></li><li class=" "><p   
+><del class=" ">    <span style="color: #ff0000;"> FCT changes to the smallest, after adaption interface, get in the car for testing </span>
+    <span style="color: #ff0000;">
+<a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WHU4WX">WU Haochen (BCSC/EPA1, XC-AS/PJ-WIN-ASW4)</a><br/>    </span>
+</del></p>
+<ol class=" "><li class=" "><p   
+><del class=" "> Objective: Based on the current visual map architecture, debug the function of automatically selection & loading maps, and record the package to the downstream. In particular, the recording package includes automatic selection of the interactive data of the map in FCT HMI and the basic sensor data (Reference: <a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-67868?src=confmacro">CNWVIII-67868</a> - Jira issue doesn't exist or you don't have permission to view it. ）</del></p>
+</li><li class=" "><p   
+>17 Nov 2023<del class=" ">- </del>21 Nov 2023<del class=" "></del></p>
+</li></ol></li><li class=" "><p   
+><del class=" ">    <span style="color: #ff0000;"> Netcom development test <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AAD1SZH">MA Da (XC-CP/ESW2-CN)</a><br/>    </span>
+</del></p>
+<ol class=" "><li class=" "><p   
+><del class=" "> Netcom needs to develop the cross -domain forwarding function of the data, whether the debugging and forwarding are successful, and analyzing the frame/delay situation. The recording package is especially included in the data forwarding to the SLAVE </del></p>
+</li><li class=" "><p   
+>17 Nov 2023<del class=" ">- </del>24 Nov 2023<del class=" "></del></p>
+</li></ol></li><li class=" "><p   
+><del class=" "> XLIO & LocalMSF Development Test <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WGS5SGH">WANG Shiwei (XC-AS/PJ-WIN-PER3)</a></del><br/></p>
+<ol class=" "><li class=" "><p   
+><del class=" ">stage1</del><br/></p>
+<ol class=" "><li class=" "><p   
+><del class=" "> Before the FCT and Netcom did not complete the development test, the previously collected data was used for local debugging and recorded the XLio Result Bag to the GlobalMSF and MAPPING for local debugging. </del></p>
+</li><li class=" "><p   
+><del class=" "> XLIO completes local tests and tablets test </del></p>
+</li><li class=" "><p   
+><del class=" ">    <span style="color: #ff0000;"> XLIO gets on the car to test the map and replay, the evaluation function availability </span>
+ </del>24 Nov 2023<del class=" ">- </del>28 Nov 2023<del class=" "></del></p>
+</li><li class=" "><p   
+>17 Nov 2023<del class=" ">- </del>28 Nov 2023<del class=" "></del></p>
+</li></ol></li><li class=" "><p   
+>stage2</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;"> Joint </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff00ff;">
+28 Nov 2023 - 07 Dec 2023    </span>
+</p>
+</li></ol></li></ol></li><li class=" "><p   
+><del class=" ">Mapping <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~OIY1SZH">LIU Yong (XC-AS/PJ-WIN-PER7)</a></del><br/></p>
+<ol class=" "><li class=" "><p   
+><del class=" ">stage1    <span style="color: #ff0000;">
+<br/>    </span>
+</del></p>
+<ol class=" "><li class=" "><p   
+><del class=" "> Use XLIO Result Bag output with Xlio for local mapping debugging and development, and output maps for GlobalMSF for debugging </del></p>
+</li><li class=" "><p   
+><del class=" "> Develop and improve related strategies </del></p>
+</li><li class=" "><p   
+><del class=" "> Complete the tablet test </del></p>
+</li><li class=" "><p   
+>17 Nov 2023 - 28 Nov 2023</p>
+</li></ol></li><li class=" "><p   
+>stage2</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;"> Joint </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff00ff;">
+28 Nov 2023 - 07 Dec 2023    </span>
+</p>
+</li></ol></li></ol></li><li class=" "><p   
+> GlobalMSF development test <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~THA3SZH">TAN Haoxuan (XC-AS/PJ-WIN-PER3)</a></p>
+<ol class=" "><li class=" "><p   
+><del class=" ">stage1    <span style="color: #ff0000;">
+<br/>    </span>
+</del></p>
+<ol class=" "><li class=" "><p   
+><del class=" "> Use the local data output from XLIO, develop test fusion positioning output </del></p>
+</li><li class=" "><p   
+><del class=" "> Use map output maps to perform XLIO and MM fusion positioning output </del></p>
+</li><li class=" "><p   
+><del class=" "> Complete the tablet test </del></p>
+</li><li class=" "><p   
+>17 Nov 2023 - 28 Nov 2023</p>
+</li></ol></li><li class=" "><p   
+>stage2</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff00ff;"> Joint </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff00ff;">
+28 Nov 2023 - 07 Dec 2023    </span>
+</p>
+</li></ol></li></ol></li></ol><p   
+>    <span style="color: #000000;"> Note: </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+<strong class=" "> Test resource coordination <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~UAW2SZH">WU Alex (XC-AS/PJ-WIN-PER)</a> </strong><strong class=" "><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~PYN2SZH">PAN Yunfeng (XC-AS/PJ-WIN-SYS1)</a> @CHEN Xiaotong</strong>    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #ff0000;">
+<strong class=" "> The red part of work needs to ensure test resources and dependence </strong>    </span>
+</p>
+</li></ul></li></ul>    </div>
+    <div class="section section-2" id="src-3606973206_safe-id-SFBB5r-A5YWJ5Zyw5Zu-5pa55qGI6K-E5a6hLVN0YWdlLUE">
+        <h2 class="heading "><span>Stage-A</span></h2>
+<ul class=" "><li class=" "><p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-71717?src=confmacro">CNWVIII-71717</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+</li></ul>    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="8.54377%"/>
+                                    <col  width="18.8961%"/>
+                                    <col  width="9.2334%"/>
+                                    <col  width="14.2812%"/>
+                                    <col  width="16.651%"/>
+                                    <col  width="16.5886%"/>
+                                    <col  width="15.7779%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> date </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Architecture & integrated & TPM & test </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>FCT</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>NETCOM</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>XLIO & LocalMsf</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>GlobalMsf & MapMatch</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Mapping</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>16 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-70531?src=confmacro">CNWVIII-70531</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~SBG1SZH">WANG Shirley (XC-AS/PJ-WIN-SYS1)</a></p>
+<p   
+> Complete architecture modification & pull feature branch </p>
+<p   
+>    <span style="color: #ff0000;">
+<strong class=" "> POC version: </strong><br/>    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+<strong class=" "><a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/pj_w3-root/browse?at=refs%2Fheads%2Ffeature%2FHPA_Lidar_Map_POC">root: feature/HPA_Lidar_Map_POC</a></strong>    </span>
+</p>
+</li><li class=" "><p   
+><strong class=" ">interface: <a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/pull-requests/699/overview">https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/pull-requests/699/overview</a></strong></p>
+</li></ul><p   
+><br/></p>
+<p   
+><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-71735?src=confmacro">CNWVIII-71735</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WHU4WX">WU Haochen (BCSC/EPA1, XC-AS/PJ-WIN-ASW4)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-71739?src=confmacro">CNWVIII-71739</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AAD1SZH">MA Da (XC-CP/ESW2-CN)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~YEA4SGH">YAN Eason (XC-CP/ESW2-CN)</a></p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-71718?src=confmacro">CNWVIII-71718</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WGS5SGH">WANG Shiwei (XC-AS/PJ-WIN-PER3)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-71726?src=confmacro">CNWVIII-71726</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~THA3SZH">TAN Haoxuan (XC-AS/PJ-WIN-PER3)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8aba63998151769a01816f6f85af00d3">user-c49f6</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-71740?src=confmacro">CNWVIII-71740</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~ZALCSZH">ZHANG Liang (XC-DX/PJ-W3-PER</a></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>17 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class="content-wrapper "><p   
+> Arrange MAPPING data collection test resources </p>
+</li><li class="content-wrapper "><p   
+> Arrange the POC version of the real car smoking test, prepare FCT test resources </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Data collection </p>
+</li><li class=" "><p   
+> POC smoking test Block by POC version compile, solve </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class="content-wrapper "><p   
+> For interface changes, Adaptation Interface, submitted to the POC branch </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Completed adaptation modification </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class="content-wrapper "><p   
+> Develop data forwarding function </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Already clear development goals, start development </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class="content-wrapper "><p   
+> Based on old data, develop testing laser building map/deposit map remarks function </p>
+</li><li class="content-wrapper "><p   
+> Adaptation interface </p>
+</li><li class="content-wrapper "><p   
+> Provide Xlio Result Bag to develop and debug in GlobalMSF </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Laser building/deposit picture/regulating function is completed </p>
+</li><li class=" "><p   
+> Interface adaptation is complete </p>
+</li><li class=" "><p   
+> Provide 205 XLIO results to MAPPING </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Based on old data, develop XLIO single input fusion </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class="content-wrapper "><p   
+> New data collection needs </p>
+</li><li class="content-wrapper "><p   
+> Internal determination development plan and plan </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Submit new data collection requirements </p>
+</li><li class=" "><p   
+> Get the data of 205 and start the basic function development </p>
+</li></ol><p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Fix the POC version compilation problem <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~SBG1SZH">WANG Shirley (XC-AS/PJ-WIN-SYS1)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WGS5SGH">WANG Shiwei (XC-AS/PJ-WIN-PER3)</a></p>
+</li><li class=" "><p   
+> Data collection continues  <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WJG9SZH">WANG Jiaolong (XC-AS/PJ-WIN-VER1)</a></p>
+</li></ol><p   
+> progress ：</p>
+<ol class=" "><li class=" "><p   
+> LOC submits TMP repair for Interface modification </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ul class=" "><li class=" "><p   
+> Waiting for the POC version of smoking test </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Development </p>
+</li></ol><p   
+> progress ： Temporarily NON </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Provide 205 replay positioning data for Global-LOC debugging </p>
+</li><li class=" "><p   
+> Optimize map memory protection under abnormal conditions </p>
+</li><li class=" "><p   
+> Optimize rewrite the Calibration parameter reading and self -test </p>
+</li><li class=" "><p   
+> Adapt to NV-SDP-PROTOBUF </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+><del class=" "> Provide 205 replay positioning data for Global-LOC debugging </del></p>
+</li><li class=" "><p   
+><del class=" "> Optimize map memory protection under abnormal conditions </del></p>
+</li><li class=" "><p   
+> Optimize rewrite the Calibration parameter reading and self -test </p>
+</li><li class=" "><p   
+><del class=" "> Adapt to NV-SDP-PROTOBUF </del></p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> GlobalMSF development based on the initialization/fusion/output of the XLIO single input  – by 23 Nov 2023</p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Temporarily NON </p>
+</li></ol><p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Based on 205, starting basic function development </p>
+</li><li class=" "><p   
+> OK to get the time point for GlobalMSF visual map -by 23 nov 2023 </p>
+</li></ol><p   
+> progress ：</p>
+<ol class=" "><li class=" "><p   
+> Determine the development time point and map format feedback IO </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>21 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> Fix the POC version compile depending on the modification and submission of Netcom, the POC version of the smoke test pending </span>
+</p>
+</li><li class=" "><p   
+> Data collection continues  <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WJG9SZH">WANG Jiaolong (XC-AS/PJ-WIN-VER1)</a></p>
+</li></ol><p   
+> progress </p>
+<ul class=" "><li class=" "><p   
+> none </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Development </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Temporarily NON </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Add file -related operating functions, create/size inspection, etc. </p>
+</li><li class=" "><p   
+> Optimize rewrite the Calibration parameter reading and self -test </p>
+</li><li class=" "><p   
+> XLIO visualization problem </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> XLIO visualization problem and mentioning PMT </p>
+</li><li class=" "><p   
+> Communicate the file operation with Joe </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> GlobalMSF development based on the initialization/fusion/output of the XLIO single input  – by 23 Nov 2023</p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Temporarily NON </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Give Globalmsf Visual Map -by 24 Nov 2023 </p>
+</li><li class=" "><p   
+> Internal logic development and self -test </p>
+</li></ol><p   
+><br/></p>
+<p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Adapted the FCT interface change.The architecture update can be compiled and approved. </p>
+</li><li class=" "><p   
+> Remove the code of the previous Trajectory Recorder.Use Xlio Origin. </p>
+</li><li class=" "><p   
+> Training Check check whether the XLIO POSE is valid. </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>22 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> Fix the POC version compile depending on the modification and submission of Netcom, the POC version of the smoke test pending </span>
+</p>
+</li><li class=" "><p   
+> Data collection continues </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #000000;"> In development, it is expected that the version can be submitted on Friday </span>
+</p>
+</li></ol><p   
+> progress ：</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Add file -related operating functions, create/size inspection, etc. </p>
+</li><li class=" "><p   
+> Optimize rewrite the Calibration parameter reading and self -test </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+><del class=" "> Add file -related operating functions, create/size inspection, etc. </del></p>
+</li><li class=" "><p   
+> Add the Motion Mode signal to the XLIO interface and give the downstream data test based on the new interface </p>
+</li></ol><p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> GlobalMSF development based on the initialization/fusion/output of the XLIO single input  – by 23 Nov 2023</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Give Globalmsf Visual Map -by 23 Nov 2023 </p>
+</li><li class=" "><p   
+> Internal logic development and self -test </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>23 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> POC version compile depends on NETCOM modification and submission, POC version smoking test pending </span>
+</p>
+</li><li class=" "><p   
+> Data collection to be processed </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #000000;"> In development, it is expected that the version can be submitted on Friday </span>
+</p>
+</li></ol><p   
+> progress ：</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Develop LocalmsF forwarding XLIO PORT </p>
+</li><li class=" "><p   
+> Complete the LOC warehouse adapted POC architecture </p>
+</li><li class=" "><p   
+> Submit LOC warehouse to root, the first version of Release Local Loc + XLIO </p>
+</li><li class=" "><p   
+> Optimize rewrite the Calibration parameter reading and self -test </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #0000ff;"> Complete the development of LOCALMSF forwarding XLIO PORT </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #0000ff;"> Complete the LOC warehouse adapted POC architecture </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #0000ff;"> Complete the submission of the LOC warehouse to root, the first version of the Release Local Loc + XLIO </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #0000ff;"> Complete the optimization rewrite Calibration parameter reading and self -test </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #0000ff;"> Continue self -test and optimization </span>
+</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> GlobalMSF development based on the initialization/fusion/output of the XLIO single input  – by 24 Nov 2023</p>
+</li><li class=" "><p   
+> Synchronized development needs and Progress with Guoze, the first edition of the Release single xlio input </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Give Globalmsf Visual Map -by 24 Nov 2023 </p>
+</li><li class=" "><p   
+> Internal logic development and self -test </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>24 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Development, it is expected to be developed on Saturday. </span>
+</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Function Module Self -Test and Optimization && Follow the Overall Progress </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> GlobalMSF development based on the initialization/fusion/output of the XLIO single input </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Development map preservation and sending </p>
+</li><li class=" "><p   
+> Develop and save map response logic </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>25 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+><del class=" ">    <span style="color: #ff0000;"> Based on Netcom submitting, out of Big Bag, self -testing for Netcom tablets and testing on the 26th </span>
+</del></p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><del class=" ">    <span style="color: #ff0000;"> Development is completed & tablets self -test completion </span>
+</del></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Function Module Self -Test and Optimization && Follow the Overall Progress </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+><strong class=" "> Big bag compilation passes and completes node one debugging </strong></p>
+<ul class=" "><li class=" "><p   
+><a  class="external-link" href="https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/One_Click_Int/job/W3_SOC/424/">https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/One_Click_Int/job/W3_SOC/424/</a></p>
+</li></ul></li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #0000ff;"> Complete the module development and preliminary test pass </span>
+</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Function Module Self -Test and Optimization && Follow the Overall Progress </p>
+</li><li class=" "><p   
+> Real car running linkage link </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>27 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Analysis and testing the problem of real car, the problem of sending training-abort after Pre-TRAINING </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Merge related FIX to POC branch </p>
+</li><li class=" "><p   
+> Waiting for real car joint </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Analysis data, internal test passes, the Release version to the POC branch </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #0000ff;">
+released    </span>
+</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Function Module Self -Test and Optimization && Follow the Overall Progress </p>
+</li><li class=" "><p   
+> Modify stop building/stop replay -related FCT interaction response </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;"> The first version of the development is completed & submitted version </span>
+</p>
+<p   
+>    <span style="color: #ff0000;">
+ progress     </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> The functional development is completed, because of the joint affairs, there is no test and release </span>
+</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> The first version of the development is complete & self -test completion & submission version </span>
+</p>
+<p   
+>    <span style="color: #000000;"> progress: </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #000000;"> The first version of Release is complete </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;">
+ Waiting for real car joint     </span>
+</p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>28 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Big bag </p>
+<ul class=" "><li class=" "><p   
+><a  class="external-link" href="https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/One_Click_Int/job/W3_SOC/427/">https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/One_Click_Int/job/W3_SOC/427/</a></p>
+</li></ul></li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Real car joint and analysis </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Function Module Self -Test and Optimization && Follow the Overall Progress </p>
+</li><li class=" "><p   
+> Real car test support </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+TODO    </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> Test single xlio Enter the overall link and the real car joint </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> Development fusion visual map poly source positioning </span>
+</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Real car joint and analysis </p>
+</li><li class=" "><p   
+> Continue to improve visual map function development </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>29 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Processing the problem of the real car test trailing abort, submitted version to the POC branch </p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> It is recommended to turn off the slope detection function in the POC version. Local analysis of the slope detection whether it meets the expectations. </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> Speed ​​threshold is recommended to be enlarged to 20kph </span>
+</p>
+</li></ol></li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Function Module Self -Test and Optimization && Follow the Overall Progress </p>
+</li></ol><p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Function Module Self -Test and Optimization && Follow the Overall Progress </p>
+</li><li class=" "><p   
+> Developed map visualization tools </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+TODO    </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> Test single xlio Enter the overall link and the real car joint </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> Development fusion visual map poly source positioning </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> Prepare single data source version real car test </span>
+</p>
+</li></ol><p   
+>    <span style="color: #ff0000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Continue to improve the development of the visual map function, submit the Release version </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>30 Nov 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class="content-wrapper "><p   
+> Big bag version: <br/></p>
+<ul class=" "><li class="content-wrapper "><p   
+><a  class="external-link" href="https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/One_Click_Int/job/W3_SOC/432/">https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/One_Click_Int/job/W3_SOC/432/</a></p>
+</li></ul></li></ul><p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> After dealing with the slope problem, submitted the version to the POC branch, and submitted the problem of multiple trading of the same entrance at the same time </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+<p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;">
+<strong class=" "> Real car joint </strong>    </span>
+</p>
+</li></ol><p   
+>    <span style="color: #000000;">
+ progress     </span>
+</p>
+<ol class=" "><li class=" "><p   
+> XLIO + MAPPING is normal, preserving maps and loading maps normal </p>
+</li><li class=" "><p   
+> Manually load the map, XLIO's positioning is normal </p>
+</li><li class=" "><p   
+> There is a situation where the map cannot be loaded while replay. After analysis of HAOCHEN, the reason may be that the INS coordinates of the visual map given to the FCT are high. </p>
+</li><li class=" "><p   
+> In addition, I found that the FCT did not send the QUIT MAP Service after the ground was out of the ground, wait for Haochen to confirm </p>
+</li><li class=" "><p   
+> Data upload to: \\ \ <a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\00_DataExchange\to_shiwei\1130</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+TODO    </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> Test single xlio Enter the overall link and the real car joint </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> Development fusion visual map poly source positioning </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> Prepare single data source version real car test </span>
+</p>
+</li></ol><p   
+>    <span style="color: #003366;">
+ progress     </span>
+</p>
+<ol class=" "><li class=" "><p   
+> Increase the judgment of XLIO State and Mode into update </p>
+</li><li class=" "><p   
+> Add XLIO's ROS TEST code </p>
+</li><li class=" "><p   
+> Test ROS offline data pipeline is normal, but because of the problem of non -synchronization of multiple ROS BAG time, the results of Global MSF fusion XLIO and LOCAL LOC have errors. </p>
+</li><li class=" "><p   
+> MAP BAG's interface version number is wrong, wait to re -test the link of Map Matching </p>
+</li></ol><p   
+><br/></p>
+<p   
+>    <span style="color: #ff0000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Improve functional development </p>
+<ol class=" "><li class=" "><p   
+> The storage phase will wait for the XLIO MAP whether to save it, waiting for 5 seconds.Planning's optimization path waiting has also changed from 10 seconds to 5 seconds. </p>
+</li><li class=" "><p   
+> When obtaining Xlio Origin, two values ​​will be checked.Whether the Pose is effective, whether Mapping Mode is in MAPPING_START. </p>
+</li></ol></li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>01 Dec 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class="content-wrapper "><p   
+> Big bag <br/></p>
+<ul class=" "><li class="content-wrapper "><p   
+><a  class="external-link" href="https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/ASW_SOC/33392/">W3_ASW » NEWBUILD » ASW_SOC #33392 TASK_DualOrin_QNX_BUILD: Chery_Camera_Debug_Safety Integrate [Jenkins] (bosch.com)</a></p>
+</li></ul></li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> Function Module Self -Test and Optimization && Follow the Overall Progress </p>
+</li><li class=" "><p   
+> Real car test support </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+TODO<br/>    </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> Development fusion visual map poly source positioning </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> Prepare single data source version real car test </span>
+</p>
+</li></ol><p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> progress </p>
+<ol class=" "><li class=" "><p   
+> INS coordinate sending of FIX interacting with FCT </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#c1c7d0 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" "> Joint </strong>    </span>
+</p>
+            </td>
+                <td  class="highlight-#c1c7d0 confluenceTd" rowspan="1" colspan="6">
+    <p   
+><strong class=" "> Progress and problem analysis </strong></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><del class=" ">    <span style="color: #000000;"> Node one </span>
+</del></p>
+<p   
+>    <span style="color: #000000;">
+26 Nov 2023    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="6">
+    <p   
+><del class=" ">    <span style="color: #000000;">
+<strong class=" "> POC HPA basic test (whether basic function/signal is normal) + NETCOM new feature test package + FCT test <a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-72861?src=confmacro">CNWVIII-72861</a> - Jira issue doesn't exist or you don't have permission to view it.<br/></strong>    </span>
+</del></p>
+<p   
+>    <span style="color: #000000;">
+<strong class=" "> progress ：</strong>    </span>
+</p>
+<ol class=" "><li class=" "><p   
+> Several TOPICs reposted by NetCOM are initially seen that it is normal, and no problems such as delay are found at present. </p>
+</li><li class=" "><p   
+> Fct/ODOM -> Netcom Master/SLAVE-> XLIO link is normal </p>
+</li><li class=" "><p   
+> XLIO POC 1.0.1 Normal operation meets expectations </p>
+<ol class=" "><li class=" "><p   
+> The XLIO result was compared to the latter time stamp with Localmsf, and the time lags <span style="color: #ff0000;">
+100-250ms    </span>
+</p>
+</li></ol></li><li class=" "><p   
+>    <span style="color: #ff0000;"> One thing is abnormal. In the first Training Bag 2023-11-26-14-37-54.bag, after the Pre track, FCT sent the Training Abort, causing XLIOBCSC-EPA1, XC-DX/PJ-W3-ASW4) </span>
+</p>
+</li></ol><p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><del class=" ">    <span style="color: #000000;"> Node two </span>
+</del></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="6">
+    <p   
+><del class=" ">    <span style="color: #000000;">
+<strong class=" "> XLIO single module function self -test self -test </strong>    </span>
+</del></p>
+<p   
+><del class=" ">    <span style="color: #000000;">
+<strong class=" "> progress ：</strong>    </span>
+</del></p>
+<ol class=" "><li class=" "><p   
+><del class=" ">    <span style="color: #000000;"> Links can be built normally, because the dependence of MAPPING FCT has not completely measured the preservation map and replay <br/>    </span>
+</del></p>
+</li><li class=" "><p   
+><del class=" ">    <span style="color: #000000;"> Save map and load map test </span>
+</del></p>
+</li><li class=" "><p   
+><del class=" ">    <span style="color: #000000;"> Laser regulatory initialization test passes </span>
+</del></p>
+</li></ol><p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Node three </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+28 Nov 2023 - 01 Dec 2023    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="6">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" "> Full functional joint </strong>    </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+<strong class=" "><del class=" "> XLIO + MAPPING + FCT joint </del> 28 Nov 2023 <a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-73222?src=confmacro">CNWVIII-73222</a> - Jira issue doesn't exist or you don't have permission to view it.</strong>    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+<strong class=" ">TODO<br/></strong>    </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Verification test FCT issued train abort problem <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WHU4WX">WU Haochen (BCSC/EPA1, XC-AS/PJ-WIN-ASW4)</a>    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Verification test MAPPING's response/overall channel/map storage and loading <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~ZALCSZH">ZHANG Liang (XC-AS/PJ-W3-PER7)</a>    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Verification test testing/loading/regulation of the XLIO map and response to the FCT signal <strong class=" "><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WGS5SGH">WANG Shiwei (XC-AS/PJ-WIN-PER3)</a></strong>    </span>
+</p>
+</li></ol></li><li class=" "><p   
+>    <span style="color: #000000;">
+<strong class=" "> progress </strong>    </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #000000;"> FCT has issued many times many times, and the problem of many times still exists. The main reason is that the slope overrun and speed overrun need to be further analyzed. </span>
+<del class=" ">（    <span style="color: #ff0000;"> It is recommended to analyze various scenarios to test the slope accuracy results and then function. The speed threshold is recommended to enlarge to 20kph </span>
+）</del></p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> XLIO + MAPPING Building/Save Map/Loading Map function is normal. Due to ROS Convert, it is impossible </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> 1130 Debug PROGRESS: Save the map and laser RELOC normal / <span style="color: #ff0000;"> FCT cannot load the map because the MAP origin was swapped at the latitude and longitude position. After the update version continues to test / manually loading the map, the outlet will not send the Quit Map Service (to be decided) </span>
+    </span>
+</p>
+</li></ol></li></ul></li><li class=" "><p   
+>    <span style="color: #000000;">
+<strong class=" "> GlobalMSF + RELPLAY Joint 04 DEC 2023-07 DEC 2023 <br/></strong>    </span>
+</p>
+</li></ol><ul class=" "><li class=" "><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> 1201 big bag: <a  class="external-link" href="https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/ASW_SOC/33392/">W3_ASW » NEWBUILD » ASW_SOC #33392 TASK_DualOrin_QNX_BUILD: Chery_Camera_Debug_Safety Integrate [Jenkins] (bosch.com)</a></p>
+<ul class=" "><li class=" "><p   
+> OBMAPPING Modification of the INS coordinates interacting with FCT is Jingwei High </p>
+</li><li class=" "><p   
+> XLIO conducts an inspection and rejuvenation for the abnormal state machine </p>
+</li></ul></li></ul></li></ul></li></ul><p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-3606973206_safe-id-SFBB5r-A5YWJ5Zyw5Zu-5pa55qGI6K-E5a6hLVN0YWdlLUI">
+        <h2 class="heading "><span>Stage-B</span></h2>
+<ul class=" "><li class=" "><p   
+><strong class=" "><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-74661?src=confmacro">CNWVIII-74661</a> - Jira issue doesn't exist or you don't have permission to view it.<br/></strong></p>
+</li></ul>    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="7.61048%"/>
+                                    <col  width="16.8319%"/>
+                                    <col  width="18.8318%"/>
+                                    <col  width="19.7206%"/>
+                                    <col  width="20.2205%"/>
+                                    <col  width="16.7764%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> date </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Architecture & integrated & TPM & test </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>FCT</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>XLIO&LocalMsf</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>GlobalMsf & MapMatch</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Mapping</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-70531?src=confmacro">CNWVIII-70531</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~SBG1SZH">WANG Shirley (XC-AS/PJ-WIN-SYS1)</a></p>
+<p   
+>    <span style="color: #000000;">
+<strong class=" "><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~PYN2SZH">PAN Yunfeng (XC-AS/PJ-WIN-SYS1)</a> @CHEN Xiaotong</strong>    </span>
+</p>
+<p   
+><br/></p>
+<p   
+> Complete architecture modification & pull feature branch </p>
+<p   
+>    <span style="color: #ff0000;">
+    <span style="color: #0000ff;">
+<strong class=" "> POC version: </strong>    </span>
+<br/>    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+<strong class=" "><a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/pj_w3-root/browse?at=refs%2Fheads%2Ffeature%2FHPA_Lidar_Map_POC">root: feature/HPA_Lidar_Map_POC</a></strong>    </span>
+</p>
+</li><li class=" "><p   
+><strong class=" ">interface: <a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/pull-requests/699/overview">https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/pull-requests/699/overview</a></strong></p>
+</li></ul><p   
+><br/></p>
+<p   
+><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WHU4WX">WU Haochen (BCSC/EPA1, XC-AS/PJ-WIN-ASW4)</a> <a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-74665?src=confmacro">CNWVIII-74665</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WGS5SGH">WANG Shiwei (XC-AS/PJ-WIN-PER3)</a></p>
+<p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-74662?src=confmacro">CNWVIII-74662</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~THA3SZH">TAN Haoxuan (XC-AS/PJ-WIN-PER3)</a></p>
+<p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-74664?src=confmacro">CNWVIII-74664</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~ZALCSZH">ZHANG Liang (XC-DX/PJ-W3-PER</a></p>
+<p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-74663?src=confmacro">CNWVIII-74663</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>04 Dec 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> To solve the problem of LCM, provide test resources </span>
+</p>
+</li></ol><p   
+><br/></p>
+<p   
+>    <span style="color: #ff0000;">
+ Big bag version:     </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #ff0000;">
+<a  class="external-link" href="https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/One_Click_Int/job/W3_SOC/446/">https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/One_Click_Int/job/W3_SOC/446/</a>    </span>
+</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Function Module Self -Test and Optimization && Follow the Overall Progress </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> Real car test and tuning </span>
+</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Function module self -test and optimization </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>05 Dec 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Function Module Self -Test and Optimization && Follow the Overall Progress </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> Real car test and tuning </span>
+</p>
+</li></ol><p   
+>    <span style="color: #000000;">
+ progress     </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Complete the real car debugging, the current Global Loc output is normal, in line with expectations </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> If there is an unable to shake hands, after preliminary analysis, the status of the Planning back to the FCT and the Traj Type abnormalities need to continue to analyze Planning </span>
+</p>
+</li></ol><p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Function module self -test and optimization </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>06 Dec 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Promote the analysis of Planning test problems and provide test resources </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Function Module Self -Test and Optimization && Follow the Overall Progress </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Follow up Planning analysis progress, assist in testing and analysis </p>
+</li><li class=" "><p   
+> Optimize GLOBALMSF and Mapmatch function modules </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>TODO</p>
+<ol class=" "><li class=" "><p   
+> Function module self -test and optimization </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>07 Dec 2023</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="5">
+    <ul class=" "><li class=" "><p   
+> After testing and analysis, the current POC branch function meets expectations and believes that it meets CCB conditions </p>
+</li><li class=" "><p   
+> Waiting for architecture/integration/TPM to provide the next step & test plan </p>
+</li></ul><p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>08 Dec 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>11 Dec 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="5">
+    <ul class=" "><li class=" "><p   
+><a  class="external-link" href="https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/One_Click_Int/job/W3_SOC/474/">https://szh103l.apac.bosch.com/job/W3_ASW/job/NEWBUILD/job/One_Click_Int/job/W3_SOC/474/</a></p>
+</li><li class=" "><p   
+> Coordinate the test vehicle to the Jinqiao, and conduct a centralized special test </p>
+</li></ul><p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Dec 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="5">
+    <ul class=" "><li class=" "><p   
+><strong class=" "> Already integrated to root main branch </strong></p>
+</li></ul><p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3538655861_HPA%E5%BB%BA%E5%9B%BE%E5%92%8C%E5%AE%9A%E4%BD%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E6%A1%88.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> HPA building map and positioning initialization solution </span>
+        </a>
+                <a href="4454815653_HVM_VHM_Odom_LocalMsf_pipeline.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>HVM/VHM/Odom/LocalMsf pipeline</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

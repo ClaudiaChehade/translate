@@ -1,0 +1,2613 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> 95_WR_MS4 Algorithm REPRODUCE [Final Acceptance Report] -Wave 3 Development </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3422485430"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="3422485372_95_WR_Delivery.html">95_WR Delivery</a></li>
+                                                                                     <li><a href="3422485425_95_WR_MS4%28T0%2B9%29_Checks.html">95_WR_MS4(T0+9) Checks</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3422485430"> <span> 95_WR_MS4 Algorithm REPRODUCE [Final Acceptance Report] </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tODAu566X5rOV6aqM5pS25oyH5a-8RnJvbVdS">
+        <h1 class="heading "><span> 80. Algorithm acceptance guidance from WR </span></h1>
+<p   
+> For Training Code, because WR's verification is under/workspace, this mounting is specifically targeted at WR, and RB Per cannot be accessed.When RB Per's classmates are referenced and using the data address under this folder according to the user manual reappearing training code, the method of modifying the data address in the article has been given. </p>
+<ol class="ak-ol "><li class=" "><p   
+> Package the training code of the corresponding module on BitBucket </p>
+</li><li class=" "><p   
+> Copy to your own duplication address </p>
+</li><li class=" "><p   
+> Modify the path of subset datasets in the corresponding file </p>
+</li><li class=" "><p   
+> Training and testing according to Manual </p>
+</li><li class=" "><p   
+> Compare test results for acceptance and acceptance </p>
+</li><li class=" "><p   
+> Different from the delivery with MS3 has been pointed out in the article, please pay attention to view </p>
+</li></ol><p   
+> Zone code: Commit 7009EBFC63C9C6BE45873727E26813E7D8DFA4 </p>
+    </div>
+    <div class="section section-1" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMS5EaXZpc2lvbm5hbWVsaXN0">
+        <h1 class="heading auto-cursor-target"><span>1. Division name list</span></h1>
+    <div  class="tablewrap">
+        <table class="wrapped relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="15.7301%"/>
+                                    <col  width="25.0252%"/>
+                                    <col  width="32.8903%"/>
+                                    <col  width="11.3508%"/>
+                                    <col  width="14.9258%"/>
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Task</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>stackholders</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>MS4 Key Update</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>start time</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="13" colspan="1">
+    <p   
+>Model Train/Test Code</p>
+<p   
+>White-Box Code</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Image View MTCNN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>@Wu Hairan @Ma Jinfeng    <span style="color: #ff0000;">
+<strong class=" "> @Sun Yangyang</strong>    </span>
+     <span style="color: #ff0000;">
+<strong class=" ">@Wang Yanan</strong>    </span> (Pay attention to how 3DHead is designed) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wang yanan: 4/24</p>
+<p   
+>    <span style="color: #000000;">
+Sun Yangyang: 4/24    </span>
+</p>
+<p   
+>    <span style="color: #000000;"> Wu hairan: to be determined </span>
+</p>
+<p   
+>    <span style="color: #000000;"> Ma Jinfeng: To be determined </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>BEV/Camera Prediction</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+<strong class=" ">@Ge Shuyu</strong>    </span>
+ @Deng Zhonghao</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ge shuyu: 4/25</p>
+<p   
+> deng zhonghao: to be determined </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+Lane Detection    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>@Yan Cheng     <span style="color: #ff0000;">
+<strong class=" ">@Wen Haoran</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>No Update</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wen haoran: 4/25</p>
+<p   
+> yan Cheng: To be determined </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#ffc400 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>BEV/Lane Prediction</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>@Li Tianyi     <span style="color: #ff0000;">
+<strong class=" ">@</strong><strong class=" ">Zhu Xuanyu</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>zhu xuanyu: 4/27</p>
+<p   
+> li tianyi: to be determined </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Traffic Light</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff0000;">
+@Shang Yan    </span>
+</strong> @Guo Dashan</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Shang Yan: 4/26</p>
+<p   
+> Guo dashan: to be determined </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Traffic sign</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+<strong class=" ">@wang cong @Li Chen</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wang cong: 4/18</p>
+<p   
+>li chen: 4/24</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>CarNet</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+<strong class=" ">@Guo Dashan</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>data and code no update</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>guo dashan: 4/24</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Road Marker</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>@Yang Chen<strong class=" ">     <span style="color: #ff0000;">
+@Wang Cong    </span>
+</strong> (Traffic Sign Keypoint)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wang cong: 4/18</p>
+<p   
+> yang chen: to be determined </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#ffc400 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Image ODD</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff0000;">
+@Yang Junyan    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yang junyan: 4/27</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3D tracking</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>@Xia Sijun</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>No Update</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xia sijun: 4/25</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Liper withebox 3D/Freespace</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>@cheng changhao @Bi Yanguang /@Wang binyu</p>
+<p   
+> (Main attention to Stagea & StageB full data training) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Code No Update</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Lidar_ODD</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>@cheng changhao @Bi Yanguang /@Wang binyu</p>
+<p   
+> (Main attention to Stagea & StageB full data training) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Code Black Box, Can not be checked</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Error Monitor Handling</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>No Update</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Design Doc</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Low Level Design(same/update/new)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #101214;">
+@all stakeholders    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #101214;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #101214;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Labeling Doc</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Labeling Requirements(same/update/new)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #101214;">
+@all stakeholders    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #101214;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #101214;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi7pqozmlLbmiqXlkYo">
+        <h1 class="heading auto-cursor-target"><span> 2. Acceptance report </span></h1>
+    <div class="section section-2" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi4xLkltYWdlVmlld01UQ05O">
+        <h2 class="heading "><span>2.1. Image View MTCNN</span></h2>
+<ul class=" "><li class=" "><p   
+>reported by <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~USY2SZH">SUN Yangyang (XC-AS/PJ-WIN-PER2)</a></p>
+</li><li class=" "><p   
+> Acceptance situation </p>
+</li><li class=" "><p   
+> Duplication indicator </p>
+<ul class=" "><li class=" "><p   
+> Target detection index </p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485430/image-2023-5-29_16-27-0-version-1-modificationdate-1694153229000-api-v2.png" alt="images/confluence/download/attachments/3422485430/image-2023-5-29_16-27-0-version-1-modificationdate-1694153229000-api-v2.png" width="500"  />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Freespace indicator </p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485430/image-2023-5-29_16-33-12-version-1-modificationdate-1694153229000-api-v2.png" alt="images/confluence/download/attachments/3422485430/image-2023-5-29_16-33-12-version-1-modificationdate-1694153229000-api-v2.png" width="400"  />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Segmentation indicator </p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485430/image-2023-5-29_16-36-22-version-1-modificationdate-1694153229000-api-v2.png" alt="images/confluence/download/attachments/3422485430/image-2023-5-29_16-36-22-version-1-modificationdate-1694153229000-api-v2.png" width="400"  />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Deep estimation indicator </p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485430/image-2023-5-29_16-40-28-version-1-modificationdate-1694153229000-api-v2.png" alt="images/confluence/download/attachments/3422485430/image-2023-5-29_16-40-28-version-1-modificationdate-1694153229000-api-v2.png" width="400"  />
+    </p>
+<ul class=" "><li class=" "><p   
+> The acceptance conclusion does not pass: </p>
+<ul class=" "><li class=" "><p   
+> Due to the excessive acceptance data, the experimental results fluctuate </p>
+</li><li class=" "><p   
+> Design documents and instructions are not complete </p>
+</li><li class=" "><p   
+> Code running </p>
+</li></ul></li><li class=" "><p   
+> suggestion </p>
+<ul class=" "><li class=" "><p   
+> Model design document needs to be consistent with the code </p>
+</li><li class=" "><p   
+> The model design document needs a detailed instructions for the model processing of the model </p>
+</li><li class=" "><p   
+> The operation of the instruction manual can be realized </p>
+</li></ul></li></ul>    </div>
+    <div class="section section-2" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi4yLkJFVi9DYW1lcmFQcmVkaWN0aW9u">
+        <h2 class="heading "><span>2.2. BEV/Camera Prediction</span></h2>
+<ul class=" "><li class=" "><p   
+>Reported by <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8aba6399819a35ac0181a404ae4c000e">user-42e3d</a></p>
+</li><li class=" "><p  class="auto-cursor-target" 
+> Duplication indicator </p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Metric</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="5">
+    <p   
+>WR_Reported</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="5">
+    <p   style="text-align:center;"
+>Reproduced</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   style="text-align:center;"
+><br/></p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td   rowspan="1" colspan="1">
+                </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">exp-1</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">exp-2</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">exp-3</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">exp-4</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">avg</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">exp-1</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">exp-2</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">exp-3</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">exp-4</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">avg</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> AVG indicator difference (%) </strong></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Detection_Precision</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7112</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7094</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7064</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7070</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.7085</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7085</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7078</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7080</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7064</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.7077</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>-0.11</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Detection_Precision_L</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4700</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4688</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4668</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4670</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.4682</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4685</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4675</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4679</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4676</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.4679</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>-0.06</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Detection_Recall</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7299</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7276</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7255</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7267</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.7274</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7288</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7282</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7286</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7256</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.7278</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>+0.05</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ap</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6728</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6695</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6662</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6697</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.6695</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6683</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6702</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6692</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6680</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.6689</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>-0.09</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>apl</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4679</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4654</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4630</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4658</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.4655</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4646</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4652</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4649</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.4650</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.4649</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>-0.13</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Velocity_Mean_Error</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.7861</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.8772</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.8231</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.8891</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">1.8439</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.8125</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.8952</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.9927</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.8470</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">1.8867</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
++2.32    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Velocity_Speed_Mean_Error</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.5386</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.6199</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.5763</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.6372</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">1.5930</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.5571</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.6392</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.7369</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.5917</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">1.6312</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
++2.40    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Velocity_Heading_Mean_Error</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.3269</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.3385</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.3229</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.3350</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.3308</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.3316</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.3350</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.3408</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.3313</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.3347</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
++1.18    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw4_Mean_Error</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2456</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2461</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2465</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2469</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.2463</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2464</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2465</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2473</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2464</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.2467</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>+0.16</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw_Mean_Error</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0901</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0902</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0900</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0911</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.0904</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0915</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0905</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0910</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0922</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">0.0913</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>+0.99</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+> Analysis: The average value of the A100 reappeared 4 times is compared with the various indicators of WR_Reported's 4 average. Except for Velocity_mean_Error, Velocity_Speed_mean_Error, Velocity_Mean_ERROR, the absolute error is higher than 1%. All within 1 percentage pointEssence </p>
+<p   
+><strong class=" "> Experimental results: </strong> Small data set indicators can reproduce. </p>
+</li><li class=" "><p   
+><strong class=" "> Acceptance conclusion: <span style="color: #ff0000;"> Fail </span>
+</strong></p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #003366;"> The document is inconsistent with the code (for example: 40 in the number of input channels, 41 in the training code, and 29 in AOS code) </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;"> The code can be executed and can reproduce the small data set indicator, but the stagea data cannot be reproduced </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;"> Code and MS3 No update </span>
+</p>
+</li></ul></li></ul>    </div>
+    <div class="section section-2" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi4zLkxhbmVkZXRlY3Rpb24">
+        <h2 class="heading "><span>2.3. Lane detection</span></h2>
+<ul class=" "><li class=" "><p   
+>Reported by <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WEA4SGH">WEN Haoran (XC/PRM-CN)</a></p>
+</li><li class=" "><p   
+> Duplication indicator </p>
+</li><li class=" "><img  class="confluence-embedded-image cp-img confluence-external-resource"  src="images/download/attachments/2979005063/image-2023-4-28_16-52-11-version-1-modificationdate-1682671932000-api-v2.png" alt="images/download/attachments/2979005063/image-2023-4-28_16-52-11-version-1-modificationdate-1682671932000-api-v2.png"   />
+    </li><li class=" "><p   
+> Experimental conclusions: Stable in LANE and CURB task indicators can be recovered, and the recall rate in some tasks is low </p>
+</li><li class=" "><p   
+> The acceptance conclusion passed: </p>
+<ul class=" "><li class=" "><p   
+> Due to excessive acceptance data, the experimental results fluctuated, and the subsequent large -scale data results of Reappear's evaluation are prevailing (DeCIDED by Lei) </p>
+</li><li class=" "><p   
+> The code is consistent with the document description, and it is exactly the same as the MS3 </p>
+</li><li class=" "><p   
+> Code running </p>
+</li></ul></li></ul>    </div>
+    <div class="section section-2" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi40LkJFVi9MYW5lUHJlZGljdGlvbg">
+        <h2 class="heading "><span>2.4. BEV/Lane Prediction</span></h2>
+<ul class=" "><li class=" "><p   
+>Reported by <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8aba638a835e242d01836947748a0096">user-a0cc3</a></p>
+</li><li class=" "><p  class="auto-cursor-target" 
+> Duplication indicator </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>exp</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>precision</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>recall</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>mean endpoint error</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>mean classification accuracy</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>average presicion</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wr_1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7060</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6183</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4.865</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7393</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.5732</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wr_2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7098</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6162</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4.747</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7655</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.5800</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wr_3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7094</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6153</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4.853</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7441</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.5800</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rb</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7016</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.6147</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4.877</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.7344</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.5689</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+</li><li class=" "><p   
+> Experimental conclusions: Basically, the indicators provided by the document can be reappeared. Each indicator is low, which may be caused by different card training BATCHSIZE, but the amplitude is small </p>
+</li><li class=" "><p   
+> Acceptance conclusions and acceptance passed </p>
+<ul class=" "><li class=" "><p   
+> Code running: Training code can run. </p>
+</li><li class=" "><p   
+> Document and code consistency: Design doc and code are basically consistent </p>
+</li><li class=" "><p   
+> Duplication INDICATOR: Due to excessive acceptance data, the experimental results fluctuate, and the subsequent large -scale data results of Reappear are subject to </p>
+</li></ul></li></ul>    </div>
+    <div class="section section-2" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi41LlRyYWZmaWNMaWdodA">
+        <h2 class="heading "><span>2.5. Traffic Light</span></h2>
+<ul class=" "><li class=" "><p   
+>Reported By <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~SAA4SZH">SHANG Yan (XC-AS/PJ-WIN-PER2)</a></p>
+<ul class=" "><li class=" "><p   
+> Reappear </p>
+</li><li class=" ">    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>model</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Exp Results</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Comments</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>tl_detector</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+        <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Exp</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Color Accuracy</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Shape Accuracy</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Digit type Accuracy</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Digit Accuracy</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Bulb color Accuracy</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Bulb shape Accuracy</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>By Weride</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>97.88%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>89.62%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>99.4%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>85.71%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>90.32%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>55.96%</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Exp1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>97.63%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>88.51%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>98.9%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>82.14%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>90.7%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>54.77%</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Exp2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>97.46%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>88.85%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>98.98%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>85.71%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>90.61%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>57.64%</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Exp3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>97.63%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>89.53%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>98.65%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>82.14%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>90.01%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>57.68%</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>tl_decider</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+        <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Exp</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Accuracy</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>By Weride</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>93.54%</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Exp1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>93.80%</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Exp2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>93.54%</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Exp3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>93.64%</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Stage B</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+</li></ul></li><li class=" "><p   
+> in conclusion: <span style="color: #ff0000;"> Acceptance </span>
+</p>
+<ul class=" "><li class=" "><p   
+> Consistency of documents and code: The design doc and code are roughly consistent, and they are roughly consistent after being modified by Weride. </p>
+</li><li class=" "><p   
+> Code running: Training code can run. </p>
+</li><li class=" "><p   
+> Index of code reaping: The code reaping indicator has fluctuated, and the fluctuation is within the acceptable range. The specific differences are shown in the table. </p>
+</li></ul></li></ul>    </div>
+    <div class="section section-2" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi42LlRyYWZmaWNTaWdu">
+        <h2 class="heading "><span>2.6. Traffic Sign</span></h2>
+<ul class=" "><li class=" "><p   
+>Reported By <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong (BCSC/EPA1, XC-AS/PJ-WIN-PER2)</a></p>
+<ol class=" "><li class=" "><p  class="auto-cursor-target" 
+> Reappear </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> data set </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Exp Results</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Comments</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Subset Dataset (5k/2k)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+        <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Exp</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Accuracy</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>AP</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>AR</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Average F1</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>By Weride</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>92.51%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>82.6%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>71.9%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>74.73%</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Exp1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>92.08%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>84%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>70.35%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>73.17%</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Exp2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>92.88%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>89.73%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>75.76%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>79.65%</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Exp3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>92.78%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>85.72%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>75.1%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>77.91%</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Stage A</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Stage B</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+</li><li class=" "><p   
+> Model design and DAG: <a   href="3422485564_95_WR_MS4_TrafficSign_Classification.html">95_WR MS4 TrafficSign Classification</a></p>
+</li><li class=" "><p   
+> Existence ：<a   href="3422485439_95_Issuses%5B%E9%AA%8C%E6%94%B6%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%5D.html"> 95_issuses [Record of acceptance issues] </a></p>
+</li></ol></li><li class=" "><p   
+> in conclusion: <span style="color: #ff0000;"> Can't pass the acceptance </span>
+</p>
+<ul class=" "><li class=" "><p   
+> Consistency of documents and code: DESIGN DOC and code are inconsistent, and there are still inconsistencies after modification by Weride. </p>
+</li><li class=" "><p   
+> Code running: Training code can run. </p>
+</li><li class=" "><p   
+> Index of code reaping: The code reproduction indicator fluctuates.The specific differences are shown in the table. </p>
+</li></ul></li></ul>    </div>
+    <div class="section section-2" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi43LkNhck5ldA">
+        <h2 class="heading "><span>2.7. CarNet</span></h2>
+<ul class=" "><li class=" "><p   
+> Because Carnet@MS4 code itself is not updated, it is essentially a few experiments, and the results given in the document: </p>
+<ul class=" "><li class=" "><p   
+> For specific indicators, you can directly read the MS3 acceptance report <a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=2602605261">WR_MS3(T0+6) Checks - PJ-W3-PER - Docupedia (bosch.com)</a>；</p>
+</li><li class=" "><p   
+> Although the indicator of the MS4 code can be aligned with the previous MS3 results, it has little significance; </p>
+</li></ul></li><li class=" "><p   
+> The model design part (such as the classification HEAD) in the document is not exactly the same as the code, and the meeting has been communicated before; </p>
+<ul class=" "><li class=" "><p   
+> The problem has been recorded <a  class="external-link" href="https://rbw3pmt.atlassian.net/wiki/spaces/W3RWC/pages/166527097/20230506?atlOrigin=eyJpIjoiZmY4ZGQwZGItYTJkNC05NTlkLTI3NTItODUwN2YxNTI2NGY5IiwicCI6ImMifQ">20230506 - Wave 3 RB & WR Cooperation - Confluence (atlassian.net)</a>；</p>
+</li><li class=" "><p   
+> It also includes parts with inconsistencies after AOS. Wen Yuan replied uniformly in the next MS5 to give a consistent version; </p>
+</li></ul></li><li class=" "><p   
+> So the conclusion of this acceptance: <span style="color: #ff0000;"> No pass! </span>
+</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi44LlJvYWRNYXJrZXI">
+        <h2 class="heading "><span>2.8. Road Marker</span></h2>
+<ul class=" "><li class=" "><p   
+>Reported By <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong (BCSC/EPA1, XC-AS/PJ-WIN-PER2)</a></p>
+<ol class=" "><li class=" "><p  class="auto-cursor-target" 
+> Reappear </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> data set </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Exp Results</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Comments</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Subset Dataset (4k/1k)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+        <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Exp</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>mean-iou</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>01_iou</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>02_iou</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>03_iou</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>04_iou</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>05_iou</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>06_iou</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>07_iou</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>08_iou</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>By Weride</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.346</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.533</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.630</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.333</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.476</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.222</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.013</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.369</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.190</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.339</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.526</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.625</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.325</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.441</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.158</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.001</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.365</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.271</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.356</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.525</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.630</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.321</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.491</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.192</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.004</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.365</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.317</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Exp1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.348</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.530</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.625</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.314</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.465</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.175</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.007</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.351</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.315</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Exp2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.359</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.531</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.632</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.324</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.473</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.204</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.054</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.333</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.324</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Stage A</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Stage B</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+</li><li class=" "><p   
+> Model design and DAG: <a   href="3422485544_95_WR_MS4_Road_Marker.html">95_WR MS4 Road Marker</a></p>
+</li><li class=" "><p   
+> Existence ：<a   href="3422485439_95_Issuses%5B%E9%AA%8C%E6%94%B6%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%5D.html"> 95_issuses [Record of acceptance issues] </a></p>
+</li></ol></li><li class=" "><p   
+> in conclusion: <span style="color: #ff0000;"> Can't pass the acceptance </span>
+</p>
+<ul class=" "><li class=" "><p   
+> Document and code consistency: Weride does not provide verification set indicators for the DETECTION mission. </p>
+</li><li class=" "><p   
+> Code running: semantic segmentation code can run, the Detection module Evaluation code cannot be operated. </p>
+</li><li class=" "><p   
+> Index of code reaping: The code reproduction indicator fluctuates.The specific differences are shown in the table. </p>
+</li></ul></li></ul>    </div>
+    <div class="section section-2" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi45LkltYWdlT0RE">
+        <h2 class="heading "><span>2.9. Image ODD</span></h2>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~UNJ1SZH">YANG Junyan (XC-AS/PJ-WIN-PER1)</a></p>
+<ol class=" "><li class=" "><p   
+> Reappear </p>
+<ol class=" "><li class=" ">    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="0.0978948%"/>
+                                    <col  width="6.21632%"/>
+                                    <col  width="4.50316%"/>
+                                    <col  width="3.08369%"/>
+                                    <col  width="4.50316%"/>
+                                    <col  width="3.76895%"/>
+                                    <col  width="4.50316%"/>
+                                    <col  width="4.50316%"/>
+                                    <col  width="4.50316%"/>
+                                    <col  width="2.69211%"/>
+                                    <col  width="5.38422%"/>
+                                    <col  width="4.50316%"/>
+                                    <col  width="4.06264%"/>
+                                    <col  width="2.64316%"/>
+                                    <col  width="5.72685%"/>
+                                    <col  width="5.04158%"/>
+                                    <col  width="4.69895%"/>
+                                    <col  width="5.13948%"/>
+                                    <col  width="5.09053%"/>
+                                    <col  width="4.45421%"/>
+                                    <col  width="4.50316%"/>
+                                    <col  width="4.20948%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>normal_weather</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>rainy</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>snowy</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>foggy</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>light</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>sunlight</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>carlight</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>water</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>snow</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>overexposure</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>dark</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>occlusion</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>fog</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>moving_blurry</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>other_blurry</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>roadtype</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>water_splash</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>construction</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>trafficlight</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>obstacal</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>pavement</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rb_local</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.634102</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.22220664</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.19045985</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.267328</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.21051158</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.17542382</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.23807935</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.20124306</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.25755876</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.41666597</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.19606413</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.48175174</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2167341</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.23021503</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.1634505</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wr_exp1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.68</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.58</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.19</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.447</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.27</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.1754</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2380</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.19</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.257</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.344</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.333</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.27</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.226</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.279</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2254</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.29</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.203</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+</li></ol></li><li class=" "><p   
+> Existence <a   href="3422485439_95_Issuses%5B%E9%AA%8C%E6%94%B6%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%5D.html"> 95_issuses [Record of acceptance issues] </a></p>
+</li><li class=" "><p   
+> Conclusion: The acceptance cannot be passed </p>
+<ol class=" "><li class=" "><p   
+> Code running </p>
+</li><li class=" "><p   
+> The indicator is not right </p>
+</li><li class=" "><p   
+> Some key attributes RB and WR test F1 are 0, not acceptable. </p>
+</li></ol></li></ol>    </div>
+    <div class="section section-2" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi4xMC5MaXBlcjNEV2hpdGVib3g">
+        <h2 class="heading "><span>2.10. Liper3D Whitebox</span></h2>
+<p   
+>Reported by <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~NHE1SZH">CHENG Changhao (XC-AS/PJ-WIN-PER2)</a></p>
+<ul class=" "><li class=" "><p   
+> LIPER3D WhiteBox code is not updated, CODE acceptance conclusion is the same as MS3 acceptance report <a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=2602605261">WR_MS3(T0+6) Checks - PJ-W3-PER - Docupedia (bosch.com)</a>；</p>
+</li><li class=" "><p   
+> Stagea data: 0525 can be available after the subcontracting. The total delivery amount is unknown. It cannot be used directly for white box model training. </p>
+</li><li class=" "><p   
+> Conclusion of acceptance: If Stagea data is trained as the standard for this acceptance, then <span style="color: #ff0000;"> Can't pass. </span>
+</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-3422485430_safe-id-aWQtOTVfV1JfTVM0QWxnb3JpdGhtUmVwcm9kdWNlW-acgOe7iOmqjOaUtuaKpeWRil0tMi4xMS4zRHRyYWNraW5n">
+        <h2 class="heading "><span>2.11. 3D tracking</span></h2>
+<ol class=" "><li class=" "><p   
+> Tracking currently does not have a mirror that can be run, there is no acceptance indicator, and the MS5 is provided by MS5. </p>
+</li><li class=" "><p   
+> Model design and DAG: <a   href="3422485494_95_WR_MS4_3D_tracking.html">95_WR MS4 3D tracking</a></p>
+</li><li class=" "><p   
+> Conclusion: The acceptance cannot be passed </p>
+<ol class=" "><li class=" "><p   
+> Code cannot be running </p>
+</li><li class=" "><p   
+> No corresponding indicators </p>
+</li></ol></li></ol><p   
+><br/></p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3422485425_95_WR_MS4%28T0%2B9%29_Checks.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR_MS4(T0+9) Checks</span>
+        </a>
+                <a href="3422485439_95_Issuses%5B%E9%AA%8C%E6%94%B6%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%5D.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> 95_issuses [Record of acceptance issues] </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

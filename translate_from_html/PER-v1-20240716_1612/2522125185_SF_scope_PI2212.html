@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SF scope PI2212 - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2522125185"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2495263431_Static_Fusion_-_PER.html">Static Fusion - PER</a></li>
+                                                                                     <li><a href="2522125164_SF-Plan.html">SF-Plan</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2522125185"> <span>SF scope PI2212</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+><strong class=" "> Plan summary: </strong></p>
+<ul class=" "><li class=" "><p   
+>Lane model</p>
+<ul class=" "><li class=" "><p   
+>total MM: 4</p>
+</li><li class=" "><p   
+> Parking: 1mm, MS2 has been connected, and MS3 will not be updated. </p>
+</li><li class=" "><p   
+> Driving: 3mm, MS3's first edition is available for debugging. </p>
+</li><li class=" "><p   
+> Impact on MS3 </p>
+<ul class=" "><li class=" "><p   
+> Parking MS3 can support the signal required by the Environment Model, PNC can be adjusted </p>
+</li></ul></li><li class=" "><p   
+> SOP effect </p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #993300;">
+<strong class=" "> MS3 stage without surplus manpower continuously developing a SOP solution </strong>    </span>
+</p>
+</li></ul></li></ul></li><li class=" "><p   
+>Free space</p>
+<ul class=" "><li class=" "><p   
+>total MM: 2</p>
+</li><li class=" "><p   
+> Parking: 0.5mm, MS2 PolyLine version integrated Downship, but it is not the Enter that PNC wants.MS3 will be updated as manpower. </p>
+</li><li class=" "><p   
+> Driving: 1.5mm, MS3's first edition is available for debugging </p>
+</li><li class=" "><p   
+> Impact on MS3 ：</p>
+<ul class=" "><li class=" "><p   
+> Parking: Debugging at RBCN venue is not affected.All in the RoadDge can be considered as Free Space. </p>
+</li></ul></li></ul></li><li class=" "><p   
+>contours (APA)</p>
+<ul class=" "><li class=" "><p   
+>total MM: 0</p>
+</li><li class=" "><p   
+> Parking: MS2 uses MS1 version, MS3 also uses MS1 version. </p>
+</li><li class=" "><p   
+> Impact on MS3: </p>
+<ul class=" "><li class=" "><p   
+> FCT, APA Planner can first use the UPER Object signal </p>
+</li></ul></li></ul></li><li class=" "><p   
+>PSS (APA)</p>
+<ul class=" "><li class=" "><p   
+>total MM: 2</p>
+</li><li class=" "><p   
+>Parking:</p>
+<ul class=" "><li class=" "><p   
+> 1.5mm, MS2 to debug, MS3 is not updated. </p>
+</li><li class=" "><p   
+> 0.5mm, MS3's remaining time is used to develop a new version of PSS 3.0. </p>
+</li></ul></li><li class=" "><p   
+> Impact on MS3 ：</p>
+<ul class=" "><li class=" "><p   
+> MS3 does not support space parking spaces, but only supports line parking spaces. </p>
+</li></ul></li></ul></li><li class=" "><p   
+>Traffic regulatory</p>
+<ul class=" "><li class=" "><p   
+>total MM: 0</p>
+</li><li class=" "><p   
+> Driving: WR has no complete signal Enter, MS3 is not supported. </p>
+</li></ul></li></ul><p   
+><strong class=" ">comment:</strong></p>
+<ul class=" "><li class=" "><p   
+> Ms3 early SF debug ms2 feature, 11/07-12/05 </p>
+</li><li class=" "><p   
+> MS3's late SF is mainly invested on Driving Feature </p>
+</li><li class=" "><p   
+><strong class=" ">HC</strong></p>
+<ul class=" "><li class=" "><p   
+><strong class=" "> As a module near the downstream, SF will spend a lot of time on each MS on the joint traffic meeting.The real time for development is not too much. In the case of insufficient manpower, the development of the SOP solution is even slower. </strong></p>
+</li><li class=" "><p   
+><strong class=" "> At present, it can be expected that there will be people climbing from 2023 to February. At present, there are 4 people in the team. The team size needs to be maintained at 2023/01-2023/07 to be expected to complete the SOP FULL Feature in 2023/07 to complete the SOP FULL Feature.Essence </strong></p>
+</li><li class=" "><p   
+> Members need to have the experience of Static Fusion, Slam, Non-Linear Optimization. </p>
+</li><li class=" "><p   
+> There are currently 4 people to send offer, 1 person to be interviewed.HC needs to help maintain the intention of candidates. </p>
+</li></ul></li></ul>    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="5.02784%"/>
+                                    <col  width="7.18301%"/>
+                                    <col  width="25.4301%"/>
+                                    <col  width="18.8173%"/>
+                                    <col  width="16.303%"/>
+                                    <col  width="17.7389%"/>
+                                    <col  width="9.48545%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>MS3</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> scope adjustment </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>story point</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>MS3 update</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Comments</p>
+<p   
+> (Is it updated in MS3) </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+>HPA<br/><br/><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>Lane model</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> enter </p>
+<ol class=" "><li class=" "><p   
+>Viper (FV): lane, road edge.</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> Limited by training data, PER-1 feedback 12-30 can train a version available model </span>
+</p>
+</li></ol></li><li class=" "><p   
+>HPA Map: lane, road-edge；</p>
+</li><li class=" "><p   
+>xLoc: local pose, global pose; ready</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>No Viper input</p>
+</li><li class=" "><p   
+> HPA MAP Input: RBCN's HPAMAP data analyzed from Navinfo HDMAP (ENTER of HPA MAPPING is also influenced by Viper Enter) </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>    <span style="color: #c1c7d0;"> Debug MS2 version. 10 </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #c1c7d0;"> Alignment and demand: 3 </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #c1c7d0;"> Development and debug MS3 version: 25 </span>
+</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <ol class=" "><li class=" "><p   
+> MS2 has been on the car </p>
+</li><li class=" "><p   
+> MS3 No Feature Update </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <ul class="inline-task-list "><li class="checked "><p   
+>MS2</p>
+</li><li class=" "><p   
+>MS3</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Output </p>
+<ol class=" "><li class=" "><p   
+>lane-line</p>
+</li><li class=" "><p   
+>road-edge</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Output <strong class=" ">HPA Map only</strong> Results (Pass Through) </p>
+</li><li class=" "><p   
+> Actually lane-line output depends on the effect of building map </p>
+</li></ol><p   
+> Remark: </p>
+<ol class=" "><li class=" "><p   
+><strong class=" "> HPA MAPPING is also limited by Viper Input, so the Lane information of HPA MAP is introduced to manual editors. </strong></p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>free-space</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> enter ：</p>
+<ol class=" "><li class=" "><p   
+>FV wide: convex hull , DD: TBD</p>
+</li><li class=" "><p   
+>IPM: convex hull, DD: TBD</p>
+</li><li class=" "><p   
+>Liper: convex hull, DD: TBD</p>
+</li><li class=" "><p   
+>xLoc: ready</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> All Enter's Convex Hull is not distinguished from FIED OBSTACLE and Dynamic Object </p>
+</li><li class=" "><p   
+> PER-1 strives to provide semantic categories that can provide each Convex Hull. </p>
+</li><li class=" "><p   
+> Whether it can be submitted in MS3, you need to see Per-1 ENTER </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> MS2 Development-Integrated-Debug: 6 </p>
+</li><li class=" "><p   
+> MS3 interface alignment and demand: 2 </p>
+</li><li class=" "><p   
+> MS3 Development-Integrated-Test: 15 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <ol class=" "><li class=" "><p   
+> MS2 has been integrated on the car, but there is no joint adjustment. PNC does not use the Polyline Enter. </p>
+</li><li class=" "><p   
+> MS3 tries the output of Convex Hull. </p>
+</li></ol><p   
+><strong class=" "> Remark: Because in the RBCN parking lot, the Road Edge is Drivable Space, so there is no Free-Space Enter, only Dynamic Fusion, which does not affect PNC obstacles. </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <ul class="inline-task-list "><li class=" "><p   
+>MS2</p>
+</li><li class=" "><p   
+>MS3</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>fused convex hull</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+>APA<br/><br/><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>contours</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> enter ：</p>
+<ol class=" "><li class=" "><p   
+>Uper object</p>
+</li><li class=" "><p   
+>Viper: semantic seg</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>No update</p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><br/></p>
+<ul class="inline-task-list "><li class="checked "><p   
+>MS1</p>
+</li><li class=" "><p   
+>MS2</p>
+</li><li class=" "><p   
+>MS3</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Output ：</p>
+<ol class=" "><li class=" "><p   
+>contours</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+><strong class=" "> Drive UPER Object </strong></p>
+</li><li class=" "><p   
+> Only on both sides of the target parking space will do simple OBSTACLE information fusion </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>    <span style="color: #c1c7d0;"> Development of SOP basic fusion scheme: 20 </span>
+</p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>PSS</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> enter ：</p>
+<ol class=" "><li class=" "><p   
+>Uper pure space PS： <strong class=" ">DD: 11-20</strong></p>
+<ol class=" "><li class=" "><p   
+><strong class=" "> Full data links are not connected </strong> : W1 UPER in the form of Canned Output data ready, <span style="color: #ff0000;">
+<strong class=" "> AOS format data is not ready </strong>    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> The transformation of the Can-> AOS of Valeo Enter also needs communication and implementation-maintenance-maintenance </span>
+</p>
+</li></ol></li><li class=" "><p   
+>line PS (from apa-slam): ready</p>
+</li><li class=" "><p   
+>xLoc: ready</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Give up the W1 PSS framework (90,000 lines of code) -Mico PSS 2.0 </p>
+</li><li class=" "><p   
+><strong class=" "> Design & Development of a new PSS fusion framework PSS 3.0, the framework is the SOP architecture (Valeo UPER Input) and RB PSD. </strong></p>
+</li><li class=" "><p   
+><strong class=" "> Pure Space PS Enter signal from W1 UPER BOX Enter (Valeo-Alike).The data link needs to be adjusted and tested. </strong></p>
+</li><li class=" "><p   
+><strong class=" "> UPER ENTER signal is still discussing with Valeo </strong></p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Plan:</strong></p>
+<p   
+><strong class=" ">Need 2 members</strong></p>
+<ol class=" "><li class=" "><p   
+> Maintenance PSS 1.0 (SOP RB) alone </p>
+</li><li class=" "><p   
+> One person develops and updates SOP Valeo </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <ul class="inline-task-list "><li class="checked "><p   
+>MS2</p>
+</li><li class=" "><p   
+>MS3</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Output ：</p>
+<ol class=" "><li class=" "><p   
+> OUTPUT interface signal pruning: </p>
+<ol class=" "><li class=" "><p   
+><strong class=" "> At present, there are more than 2,000 lines, reducing the invalid signal field, only the signal required by the APA Planner </strong></p>
+</li></ol></li><li class=" "><p   
+> Search stage: detect PS </p>
+</li><li class=" "><p   
+> Guidance stage: Correct PS </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Output ：</p>
+<ol class=" "><li class=" "><p   
+> Search phase: less changes </p>
+</li><li class=" "><p   
+> Guidance stage: greater changes and greater risks. </p>
+</li></ol><p   
+><br/></p>
+<p   
+>    <span style="color: #ff6600;">
+<strong class=" "> It is recommended to develop PSS3.0 after debugging by MS2; if PSS 3.0 cannot be downgraded in time, the MS3 will not update Feature. </strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+><strong class=" "> MS2's PSS 2.0 joint: 10 + 10 (more) --RISK </strong></p>
+</li><li class=" "><p   
+> Align the PSS 3.0 interface and demand (with valeo, W1): 10 </p>
+</li><li class=" "><p   
+> Output signal branches: 3 </p>
+</li><li class=" "><p   
+><strong class=" "> Develop a new PSS 3.0 function (simplified version): 20 -RISK </strong></p>
+</li><li class=" "><p   
+><strong class=" "> Integrated and debug (the first time the new version is on the car): 20 </strong></p>
+</li><li class=" "><p   
+><strong class=" "> Yang liu: The new plan is to be confirmed, how is value, SOP stability; </strong></p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+><strong class=" "> Use MS2 PSS 2.0 version. </strong></p>
+</li><li class=" "><p   
+><strong class=" "> The remaining energy, develop PSS 3.0 </strong></p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="5" colspan="1">
+    <p   
+><strong class=" ">Driving</strong><br/><br/><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>Lane model</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> enter </p>
+<ol class=" "><li class=" "><p   
+>WR Viper (FVx2): lane, road edge.</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> MS3 provides lane lines, ROAD-EDGE? <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~XRO3SGH">XU Rocky (BCSC/EPA1, XC-AS/PJ-WIN-PER7)</a>    </span>
+</p>
+</li></ol></li><li class=" "><p   
+> HD Map: Lane, Road-Edge; To be integrated </p>
+</li><li class=" "><p   
+> XLOC: LOCAL POSE, Global Pose; </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Adapt to the new MS3 PER new interface (more elements): 4 </p>
+</li><li class=" "><p   
+> Development and debug MS3 Driving (get on the first time): 30 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>First joint-test</p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <ul class="inline-task-list "><li class="checked "><p   
+>MS3</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Priority to ensure the basic version: </p>
+<ol class=" "><li class=" "><p   
+><strong class=" "> HDMAP PARSING MODE: Use VIPER information to supplement and check HD Map Lanes. </strong></p>
+</li></ol></li><li class=" "><p   
+> Viper-only mode: not support </p>
+</li><li class=" "><p   
+> HDMAP/VIPER TIGHTLY FUSION MODE: No support </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>free-space</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> enter ：</p>
+<ol class=" "><li class=" "><p   
+>WR FV(wide cam?): polyline, convex-hull , DD:</p>
+</li><li class=" "><p   
+>WR Liper: convex hull, DD:</p>
+</li><li class=" "><p   
+>RB xLoc: DD:</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>WR Output polyline & convex hull (MS3)</p>
+</li><li class=" "><p   
+> FREE-SPACE is defined in VIPER, LIPER in MS4 separation (the information provided by VIPER/LIPER is different, WR is recommended to be separated)) </p>
+</li><li class=" "><p   
+>Viper convex-hull & liper convex-hull <strong class=" "> Independent output of two -way signal </strong> Give ENVIRONMENT MODEL. </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+<ol class=" "><li class=" "><p   
+> WR PER interface alignment and demand: 2 </p>
+</li><li class=" "><p   
+> MS3 Development-Integrated-Test: 20 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>First join-test</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class="checked "><p   
+>MS3</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>traffic regulatory</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> VIPER + HD MAP fusion development (HW, Urban, Parking): 2mm </p>
+<p   
+>Input:</p>
+<ol class=" "><li class=" "><p   
+>traffic light：</p>
+</li><li class=" "><p   
+>traffic sign:</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>traffic light</p>
+<ol class=" "><li class=" "><p   
+> No location information, only light status information. </p>
+</li><li class=" "><p   
+><strong class=" "> Will output light information </strong></p>
+</li></ol></li><li class=" "><p   
+>traffic sign</p>
+<ol class=" "><li class=" "><p   
+> MS3 has no output, (no location information). </p>
+</li><li class=" "><p   
+> SF non -human Cover Traffic Sign </p>
+</li><li class=" "><p   
+><strong class=" "> FCT will first support the Traffic Sign for E2E Function.Already confirmed with yang liu </strong>。</p>
+</li></ol></li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>First joint test</p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <ul class="inline-task-list "><li class="checked "><p   
+>MS3</p>
+</li></ul><p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Output ：</p>
+<ol class=" "><li class=" "><p   
+>traffic light.</p>
+<ol class=" "><li class=" "><p   
+><strong class=" ">fused light if HDMap is available.</strong></p>
+</li><li class=" "><p   
+>Not combined to Lane if viper-only input.</p>
+</li></ol></li><li class=" "><p   
+>traffic sign:</p>
+<ol class=" "><li class=" "><p   
+>fused sign if HDMap is available.</p>
+</li><li class=" "><p   
+>basic framework, support E2E</p>
+</li></ol></li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+traffic light:    </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #000000;"> WR interface adaptation: 2 </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;">
+ MS3 Development-Integrated-Test: 20     </span>
+</p>
+</li></ol><p   
+>    <span style="color: #000000;">
+traffic sign:    </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #000000;"> WR interface adaptation: 2 </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> MS3 Development-Integrated-Test: <strong class=" ">30 ？</strong>(FCT confirm)    </span>
+</p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2522125164_SF-Plan.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>SF-Plan</span>
+        </a>
+                <a href="3355939490_SF-test.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>SF-test</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

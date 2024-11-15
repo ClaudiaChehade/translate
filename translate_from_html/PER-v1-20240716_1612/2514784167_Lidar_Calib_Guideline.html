@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lidar Calib Guideline - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2514784167"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113873_xcalib_eng.html">xcalib_eng</a></li>
+                                                                                     <li><a href="2916353596_calibration_tool_release.html">calibration_tool_release</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2514784167"> <span>Lidar Calib Guideline</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-2514784167_safe-id-TGlkYXJDYWxpYkd1aWRlbGluZS1TdGVwMS7mlbDmja7ph4fpm4Y">
+        <h1 class="heading "><span> Step1. Data collection </span></h1>
+<ul class=" "><li class=" "><p   
+><strong class=" "> Calibration data collection </strong><br/> After stopping the vehicle to the specified position, the calibration data (camera+lidar) is collected after the calibration. </p>
+</li><li class=" "><p   
+><strong class=" "> Verify data collection </strong><br/> Collect LIDAR data outdoors to verify the calibration results, <strong class=" ">    <span style="color: #ff6600;"> Make at least 3 sets of verification data for each calibration </span>
+</strong> Select the right location to keep the vehicle static, and avoid dynamic objects with more surrounding environments as much as possible. Verifying data contains the data of objects such as light rods, traffic signals, signal signs, etc. <br/> Example: </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>original</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>projected</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2022-11-14_13-59-21-version-1-modificationdate-1669002061000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2022-11-14_13-59-21-version-1-modificationdate-1669002061000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2022-11-14_13-59-7-version-1-modificationdate-1669002061000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2022-11-14_13-59-7-version-1-modificationdate-1669002061000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2022-11-14_14-1-56-version-1-modificationdate-1669002061000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2022-11-14_14-1-56-version-1-modificationdate-1669002061000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2022-11-14_14-1-40-version-1-modificationdate-1669002061000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2022-11-14_14-1-40-version-1-modificationdate-1669002061000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2022-11-14_14-3-7-version-1-modificationdate-1669002061000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2022-11-14_14-3-7-version-1-modificationdate-1669002061000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2022-11-14_14-2-46-version-1-modificationdate-1669002061000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2022-11-14_14-2-46-version-1-modificationdate-1669002061000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/><br/></p>
+</li></ul>    <blockquote>
+<p   
+>    <span style="color: #ff6600;">
+<strong class=" "> Note: In order to ensure the synchronization of data, the collection time interval of calibration data and verification data should not exceed two days </strong>    </span>
+</p>
+        </blockquote>
+    </div>
+    <div class="section section-1" id="src-2514784167_safe-id-TGlkYXJDYWxpYkd1aWRlbGluZS1TdGVwMi7lj4LmlbDmoIflrpo">
+        <h1 class="heading "><span> Step2. Parameter calibration </span></h1>
+<ul class=" "><li class=" "><p   
+><strong class=" "> Calibration data structure </strong><br/> Taking the data collected on September 19, 2022 as an example of the 9884C (engineering vehicle No. 2) as an example, please store the data according to the following level structure: <br/></p>
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2022-11-14_13-24-50-version-1-modificationdate-1669002061000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2022-11-14_13-24-50-version-1-modificationdate-1669002061000-api-v2.png"  height="250" />
+    <p   
+><br/> The correspondence between file name and lidar: <br/> main → Ruby 360 ° 128 Line lidar <br/>front → M1 front<br/>right → M1 right<br/>left → M1 left</p>
+</li><li class=" "><p   
+><strong class=" "> Calibration tool 1 </strong><br/> At the same time, calibrate all lidarlidar (multi_lidar_calib). See Readme for specific usage methods <br/>    <span style="color: #003366;"> V1.2.0 has begun to add the function of quality inspection and noise filtering for M1 calibration data. At present, it is only applicable to calibration tool 1. For details, please refer to: </span>
+<a   href="2894683047_M1_lidar_calibration.html">M1 lidar calibration</a></p>
+<p  class="with-breadcrumbs" 
+><br/></p>
+</li><li class=" "><p   
+><strong class=" "> Calibration tool 2 </strong><br/> Single_lidar_calib) <br/> Suitable for calibrating a single LIDAR, see Readme </p>
+</li><li class=" "><p   
+><strong class=" "> External parameter format </strong><br/> After the calibration is completed, the T_W_L matrix will be provided, which represents the position of the laser coordinate system when the calibration system ( <u class=" "> After the positioning of the positioning device is in place, it will be changed to the car body coordinate system </u> ), The correspondence between matrix and lidar is as follows: <br/></p>
+<p   
+>    <span style="color: #003366;">
+T_x_l0: main    </span>
+<br/>    <span style="color: #003366;">
+T_x_l1: m1 front    </span>
+<br/>    <span style="color: #003366;">
+T_x_l2: m1 left    </span>
+<br/>    <span style="color: #003366;">
+T_x_l3: m1 right    </span>
+<br/>    <span style="color: #003366;">
+T_x_l4: bp01    </span>
+<br/>    <span style="color: #003366;">
+T_x_l5: bp02    </span>
+<br/>    <span style="color: #003366;">
+T_x_l6: he01    </span>
+<br/>    <span style="color: #003366;">
+T_x_l7: he02    </span>
+<br/>    <span style="color: #003366;">
+T_x_l8: he03    </span>
+<br/>    <span style="color: #003366;">
+T_x_l9: he04    </span>
+<br/>    <span style="color: #003366;">
+T_x_l10: he05    </span>
+<br/>    <span style="color: #003366;">
+T_x_l11: qt128_front    </span>
+<br/>    <span style="color: #003366;">
+T_x_l12: qt128_right    </span>
+<br/>    <span style="color: #003366;">
+T_x_l13: qt128_rear    </span>
+<br/>    <span style="color: #003366;">
+T_x_l14: qt128_left    </span>
+</p>
+</li><li class=" "><p   
+><strong class=" ">Error code<br/></strong> After the calibration is completed, check the error code in the call_log.txt to confirm the calibration <br/>    <span style="color: #339966;">
+    <span style="color: #3366ff;">
+<strong class=" ">NO_ERROR </strong>    </span>
+<i class=" "> // Normal calibration </i>    </span>
+<br/>    <span style="color: #339966;">
+    <span style="color: #3366ff;">
+<strong class=" ">LARGE_DEVIATION </strong>    </span>
+<i class=" "> // The calibration result and design value exceed the threshold <br/></i>    <span style="color: #3366ff;">
+<strong class=" ">CALIB_DATA_NOT_FOUND</strong>    </span>
+<i class=" ">    <span style="color: #3366ff;">
+     </span> // No valid calibration data is found <br/></i>    <span style="color: #000000;">
+<strong class=" ">    <span style="color: #3366ff;">
+CALIB_DATA_INTRINSIC_ERROR    </span>
+ </strong>    <span style="color: #339966;"> // There is a problem with LIDAR's internal parameters (RS M1 Lidar has the problem of incoming five sectors, if the difference will affect the calibration accuracy) </span>
+    </span>
+    </span>
+</p>
+</li></ul>    <blockquote>
+<p   
+><strong class=" ">    <span style="color: #ff6600;"> Note: It is recommended to use Calibration Tool 1, no need to enter too much instructions.Convenient and efficient.When Step3 is verified, if a certain lidar external parameter result is not timely, use Calibration Tool 2 to calibrate the specified LIDAR. </span>
+</strong></p>
+        </blockquote>
+    </div>
+    <div class="section section-1" id="src-2514784167_safe-id-TGlkYXJDYWxpYkd1aWRlbGluZS1TdGVwMy7nu5Pmnpzpqozor4E">
+        <h1 class="heading "><span> Step3. Result verification </span></h1>
+<ul class=" "><li class=" "><p   
+><strong class=" "> Quantitative indicators </strong><br/> After the calibration is completed, you can view the data in the Calib_log.txt. To a certain extent, you can reflect the accuracy of the calibration data ( <strong class=" "> Can't be used as an absolute reference </strong>)<br/>    <span style="color: #3366ff;">
+<strong class=" ">inlier_rmse</strong>    </span> : The balance of the matching point, the smaller the better.Unless the results are poor, it will not be higher than 0.5 under normal circumstances </p>
+</li><li class=" "><p   
+><strong class=" "> Projection diagram (main verification method) </strong><br/> Use the projection tool (Link) to combine the inside and outside of the camera and the external parameters of Lidar.Project the point cloud data on the image, and judge the effect of lidar external parameter calibration based on the degree of matching </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Original</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Good case</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Bad case</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Comment</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/front_wide-version-1-modificationdate-1669002061000-api-v2.jpg" alt="images/confluence/download/attachments/2514784167/front_wide-version-1-modificationdate-1669002061000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/kb8_main_lidar2front_wide-version-1-modificationdate-1669002061000-api-v2.jpg" alt="images/confluence/download/attachments/2514784167/kb8_main_lidar2front_wide-version-1-modificationdate-1669002061000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/bad_case-version-1-modificationdate-1669002061000-api-v2.jpg" alt="images/confluence/download/attachments/2514784167/bad_case-version-1-modificationdate-1669002061000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Dianyun is obviously high <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2022-11-14_15-48-39-version-1-modificationdate-1669002061000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2022-11-14_15-48-39-version-1-modificationdate-1669002061000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p  class="auto-cursor-target" 
+><strong class=" ">For Main lidar</strong><br/> Mainly Pay Attention to Street Light Poles, traffic signal sign, street signs, trunk, fences nearby, and the projection of the distribution box can be achieved <strong class=" ">    <span style="color: #ff6600;">
+95%    </span>
+</strong> The above area reunite <br/> Focus on the projection of five cameras: Front_wide/Front_Right_RONT_LEAT_LEAR_LEFT/Rear_right/Rear <br/>front_wide:<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-12-9-version-1-modificationdate-1678097530000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-12-9-version-1-modificationdate-1678097530000-api-v2.png"  height="250" />
+    <br/>front_right:<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-19-43-version-1-modificationdate-1678097984000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-19-43-version-1-modificationdate-1678097984000-api-v2.png"  height="250" />
+    <br/>front_left:<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-17-50-version-1-modificationdate-1678097872000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-17-50-version-1-modificationdate-1678097872000-api-v2.png"  height="250" />
+    <br/>rear_right:<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-31-26-version-1-modificationdate-1678098687000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-31-26-version-1-modificationdate-1678098687000-api-v2.png"  height="250" />
+    <br/>rear_left:<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-32-1-version-1-modificationdate-1678098722000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-32-1-version-1-modificationdate-1678098722000-api-v2.png"  height="250" />
+    <br/>rear:<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-15-34-version-1-modificationdate-1678097735000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-15-34-version-1-modificationdate-1678097735000-api-v2.png"  height="250" />
+    <br/><br/><strong class=" ">For M1<br/></strong></p>
+<p   
+> Mainly Pay Attention to Street Light Poles, traffic signal sign, street signs, trunk, fences nearby, and the projection of the distribution box can be achieved <strong class=" ">    <span style="color: #ff6600;">
+90%    </span>
+</strong> The above area reunite </p>
+<p   
+> Focus on the projection of five cameras: front_wide/front_right_right_left_left <br/>front_wide<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-36-33-version-1-modificationdate-1678098994000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-36-33-version-1-modificationdate-1678098994000-api-v2.png"  height="250" />
+    <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-40-40-version-1-modificationdate-1678099240000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-40-40-version-1-modificationdate-1678099240000-api-v2.png"  height="250" />
+    <br/>front_right<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-38-36-version-1-modificationdate-1678099116000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-38-36-version-1-modificationdate-1678099116000-api-v2.png"  height="250" />
+    <br/>front_left<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-37-21-version-1-modificationdate-1678099042000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-37-21-version-1-modificationdate-1678099042000-api-v2.png"  height="250" />
+    </p>
+<p  class="auto-cursor-target" 
+><br/><strong class=" "> For filling blind lidar <br/></strong></p>
+<p   
+> Mainly pay attention to street light poles, <strong class=" "> Road along the road </strong> Can the projection of 95%of the regional re -coincidence </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-42-33-version-1-modificationdate-1678099355000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-42-33-version-1-modificationdate-1678099355000-api-v2.png"  height="250" />
+    <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-43-46-version-1-modificationdate-1678099426000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-43-46-version-1-modificationdate-1678099426000-api-v2.png"  height="250" />
+    <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-45-1-version-1-modificationdate-1678099502000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-45-1-version-1-modificationdate-1678099502000-api-v2.png"  height="250" />
+    <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-48-42-version-1-modificationdate-1678099722000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-48-42-version-1-modificationdate-1678099722000-api-v2.png"  height="250" />
+    <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2514784167/image2023-3-6_18-49-18-version-1-modificationdate-1678099759000-api-v2.png" alt="images/confluence/download/attachments/2514784167/image2023-3-6_18-49-18-version-1-modificationdate-1678099759000-api-v2.png"  height="250" />
+    </p>
+</li></ul><p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+>reference : <a  class="createlink" href="/confluence/pages/createpage.action?spaceKey=wave3&title=%E6%A0%87%E5%AE%9A%E7%BB%93%E6%9E%9C%E8%AF%B4%E6%98%8E&linkCreation=true&fromPageId=2514784167"> Determine description </a><br/><img    src="images/inline/a6d8b1e1f747e5936f4981abaca7af8105dc0b962cadf646e7b6d8f80b99e95a.png" alt="images/inline/a6d8b1e1f747e5936f4981abaca7af8105dc0b962cadf646e7b6d8f80b99e95a.png"  height="150" />
+<img    src="images/inline/01a06f3a62ccf2abf0c51ea0f19fa23824d2226b530830acc4446dba60acb925.png" alt="images/inline/01a06f3a62ccf2abf0c51ea0f19fa23824d2226b530830acc4446dba60acb925.png"  height="150" />
+</p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2514784177_Camera_Calib_Guideline.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Camera Calib Guideline</span>
+        </a>
+                <a href="2759767640_V1.1.0.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>V1.1.0</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

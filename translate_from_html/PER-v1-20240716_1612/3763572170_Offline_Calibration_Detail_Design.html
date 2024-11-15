@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Offline Calibration Detail Design - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3763572170"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                     <li><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3763572170"> <span>Offline Calibration Detail Design</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3763572170_safe-id-T2ZmbGluZUNhbGlicmF0aW9uRGV0YWlsRGVzaWduLeWKn-iDveaooeWdlw">
+        <h1 class="heading "><span> functional module </span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="11.8723%"/>
+                                    <col  width="43.9277%"/>
+                                    <col  width="46.9699%"/>
+                                    <col  width="36.2106%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="highlight-grey confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>EOL calibration</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>after-sales calibration</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Solve the problem </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Calculation of vehicles offline </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Sensor changes or abnormal external governing </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Function description </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Initialized sensor external parameters </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Fix the calibration parameter (4S shop) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" "> Precautions <br/></strong><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+> Triggered by the diagnostic instrument </p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+> Triggered by the diagnostic instrument </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> input Output </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   style="text-align:center;"
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3763572170/image-2023-5-17_11-32-40-version-1-modificationdate-1702473535000-api-v2.png" alt="images/confluence/download/attachments/3763572170/image-2023-5-17_11-32-40-version-1-modificationdate-1702473535000-api-v2.png"  height="400" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Related dependencies </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Support read all the internal reference of the camera </p>
+</li><li class=" "><p   
+> Support read sensor installation design value </p>
+</li><li class=" "><p   
+> Support reading target 3D true value </p>
+</li><li class=" "><p   
+> Support to obtain vehicle information </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> After changing the camera, you need to read the internal reference again </p>
+</li><li class=" "><p   
+> Read historical calibration parameters </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Run mode <br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   
+> Factory mode </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Deployment <br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   
+> You need to pass the original point cloud to the master end through Netcom </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-3763572170_OfflineCalibrationDetailDesign-pipeline">
+        <h1 class="heading "><span>pipeline</span></h1>
+<p   
+><strong class=" ">EOL calibration</strong></p>
+<p   
+><strong class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3763572170/image2022-8-11_15-24-27-version-1-modificationdate-1702473535000-api-v2.png" alt="images/confluence/download/attachments/3763572170/image2022-8-11_15-24-27-version-1-modificationdate-1702473535000-api-v2.png" width="600"  />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3763572170/image2022-10-20_16-39-45-version-1-modificationdate-1702473535000-api-v2.png" alt="images/confluence/download/attachments/3763572170/image2022-10-20_16-39-45-version-1-modificationdate-1702473535000-api-v2.png" width="800"  />
+</strong></p>
+<p   
+><strong class=" ">after-sales calibration</strong></p>
+<p   
+><strong class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3763572170/image-2023-5-15_18-34-53-version-1-modificationdate-1702473535000-api-v2.png" alt="images/confluence/download/attachments/3763572170/image-2023-5-15_18-34-53-version-1-modificationdate-1702473535000-api-v2.png" width="500"  />
+</strong></p>
+    </div>
+    <div class="section section-1" id="src-3763572170_OfflineCalibrationDetailDesign-EOLcalibration">
+        <h1 class="heading "><span>EOL calibration</span></h1>
+    <div class="section section-2" id="src-3763572170_OfflineCalibrationDetailDesign-cameracalibrationalgorithm">
+        <h2 class="heading "><span>camera calibration algorithm</span></h2>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">Input</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+calib image + camera intrinsic + apriltag 3D groundtruth    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">Output</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+camera extrinsic    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">Algorithm</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Extract the Apriltag angle point in the image </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> PNP minimize 3D → 2D heavy projection error, optimize Camera external parameters <br/>    </span>
+</p>
+</li></ul><p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image confluence-external-resource"  src="images/rb-tracker.bosch.com/tracker08/secure/attachment/2214109/detect_result_front_wide.jpg" alt="images/rb-tracker.bosch.com/tracker08/secure/attachment/2214109/detect_result_front_wide.jpg" width="400"  />
+    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-3763572170_OfflineCalibrationDetailDesign-lidarcalibrationalgorithm">
+        <h2 class="heading "><span>lidar calibration algorithm</span></h2>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="11.9095%"/>
+                                    <col  width="88.055%"/>
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">Input</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Lidar Calib Data (add Gaussian noise) <br/>GT cloud poi    </span>
+nt (High-precision scanner)    <span style="color: #000000;">
+<br/>circle center 3D groundtruth    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">Output</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+lidar extrinsic    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">Algorithm</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>    <span style="color: #000000;"> According to the design value of the LIDAR installation location, the point cloud is converted to the coordinate system of approximate car body, and ROI filtering is performed to retain the point cloud near the designated board area </span>
+</p>
+</li><li class=" "><p   
+> Using ICP, the standard point cloud and the true value of the point cloud are in the initial standard, and the initial exogenous parameters are calculated </p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> After the clustering class is divided into multiple planes, use RANSCA to fit plane and calculate the method of a plane <br/><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3763572170/image2023-1-6_8-52-41-version-1-modificationdate-1702473296000-api-v2.png" alt="images/confluence/download/thumbnails/3763572170/image2023-1-6_8-52-41-version-1-modificationdate-1702473296000-api-v2.png" width="300"  />
+<br/>    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Treatment of each plane, extract the edge of the round hole, combine the plane method vector to calculate the center of the circle <br/> According to the vertical resolution of the lidar, the line beam is divided by the point cloud, and then the point clouds in each beam are sorted in the bias of the horizontal direction. The distance of the adjacent point cloud is calculated.When setting the threshold, judge the point cloud at the edge of the round hole <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3763572170/image2022-12-5_15-20-39-version-1-modificationdate-1702473296000-api-v2.png" alt="images/confluence/download/attachments/3763572170/image2022-12-5_15-20-39-version-1-modificationdate-1702473296000-api-v2.png" width="330"  />
+<br/><br/> In contrast to the 3D point of the real value, a classification of the extracted edge point cloud is classified <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3763572170/image-2023-5-16_18-8-12-version-1-modificationdate-1702473296000-api-v2.png" alt="images/confluence/download/attachments/3763572170/image-2023-5-16_18-8-12-version-1-modificationdate-1702473296000-api-v2.png" width="330"  />
+<br/><br/>    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Select 1 point as the benchmark, check the distance from several other rounds to ensure that the relative position is in line with the actual scene <br/><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3763572170/image2023-1-6_11-20-3-version-1-modificationdate-1702473296000-api-v2.png" alt="images/confluence/download/thumbnails/3763572170/image2023-1-6_11-20-3-version-1-modificationdate-1702473296000-api-v2.png" width="300"  />
+<br/><br/>    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> 3D-> 3D point cloud standard, minimize errors, optimize lidar external parameters </span>
+</p>
+</li></ol><p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3763572170_OfflineCalibrationDetailDesign-after-salesCalibration">
+        <h1 class="heading "><span>after-sales Calibration</span></h1>
+    <div class="section section-2" id="src-3763572170_safe-id-T2ZmbGluZUNhbGlicmF0aW9uRGV0YWlsRGVzaWduLeWUruWQjuagh-WumuiuvuWkhw">
+        <h2 class="heading "><span> After -sales calibration equipment </span></h2>
+<p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3763572170/image2023-2-3_16-8-13-version-1-modificationdate-1702473296000-api-v2.png" alt="images/confluence/download/attachments/3763572170/image2023-2-3_16-8-13-version-1-modificationdate-1702473296000-api-v2.png" width="800"  />
+    </span>
+</p>
+    </div>
+    <div class="section section-2" id="src-3763572170_OfflineCalibrationDetailDesign-surround-view-camera">
+        <h2 class="heading "><span>surround-view-camera</span></h2>
+<p   
+> Camera according to the need to calibrate the ring target at the corresponding position </p>
+<p   
+><img  class="confluence-embedded-image cp-img panning confluence-external-resource"  src="images/download/attachments/2754798455/image2023-2-7_13-31-3-version-1-modificationdate-1676536016000-api-v2.png" alt="images/download/attachments/2754798455/image2023-2-7_13-31-3-version-1-modificationdate-1676536016000-api-v2.png" width="1000"  />
+    </p>
+<p   
+>    <span style="color: #000000;"> (1) There is no need to see the same TAG in adjacent viewing. You only need to see the different parts of the same target. </span>
+</p>
+<p   
+>    <span style="color: #000000;"> (2) If there are multiple calibration boards, you can place it at one time; if there is only one calibration board, you can also place multiple frames for place </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #000000;"> Algorithm description, <strong class=" ">    <span style="color: #0000ff;"> The right picture above is an example </span>
+</strong>：    </span>
+</p>
+<p   
+>    <span style="color: #000000;"> (1) Starting from the required calibration camera (right environment), according to its internal and external participation and calibration boards that are placed on the flat ground, it is estimated that the position of the two targets he sees (PNP) he sees </span>
+</p>
+<p   
+>    <span style="color: #000000;"> (2) According to the position of the two targets estimated, the chain recurs the initial location of the remaining surrounding cameras and targets (if the target position obtained according to the observation is obviously not on the ground, report an error)) </span>
+</p>
+<p   
+>    <span style="color: #000000;"> (3) Calculate an optimization problem with ground constraints, and solve the external parameters of each target and to be treated by the standard. </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #000000;"> Note: <strong class=" ">    <span style="color: #0000ff;"> When the 4 -view camera needs to be calibrated after -sales, </span>
+</strong> , Need to know the accurate location of a calibration board for the center of the rear axis of the vehicle </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+<a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=2630145173"> Participate in the standard after -sale </a>    </span>
+</p>
+    </div>
+    <div class="section section-2" id="src-3763572170_safe-id-T2ZmbGluZUNhbGlicmF0aW9uRGV0YWlsRGVzaWduLWZyb250L3JlYXIvc2lkZS12aWV3LWNhbWVyYQ">
+        <h2 class="heading "><span>front/rear/side-view-camera</span></h2>
+<p   
+> The overall thinking is the same as the after -sales calibration of the surrounding view. The camera that exists in the area with the camera to be determined to be determined to calibrate it. </p>
+<p   
+>    <span style="color: #000000;"> Example: For example, if we need to mark the front week to view, we will use (1) to look at the wide -angle (2) front of the front (3) right environmental view </span>
+</p>
+<p   
+>    <span style="color: #000000;"> You need to mark which weekly camera, just place the target at the corresponding site in its FOV to perform data collection </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3763572170/2023-05-08_11h07_43-version-1-modificationdate-1702473297000-api-v2.png" alt="images/confluence/download/attachments/3763572170/2023-05-08_11h07_43-version-1-modificationdate-1702473297000-api-v2.png" width="400"  />
+    </span>
+</p>
+<p   
+><br/></p>
+<p   
+> The following is some of our preset positioning and simulation results of our vertical target </p>
+<p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3763572170/image-2023-5-2_15-14-5-version-1-modificationdate-1702473297000-api-v2.png" alt="images/confluence/download/attachments/3763572170/image-2023-5-2_15-14-5-version-1-modificationdate-1702473297000-api-v2.png" width="1200"  />
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;"> In the later improvement direction: For the large camera with a large FOV, we can put the scarcity of the target. For the small camera with a smaller FOV, the target is more dense </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #000000;"> Because the X Y coordinates of each vertical target of 4S shoppers are too abstract, it is not easy to place accurately </span>
+</p>
+<p   
+>    <span style="color: #000000;"> So the following is the instruction cloth of the target places we planned to make.Because the overall overall is too large, we are divided into 4 parts, and the front axis of the vehicle is based on the stitching </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3763572170/MicrosoftTeams-image_%2816%29-version-1-modificationdate-1702473297000-api-v2.png" alt="images/confluence/download/attachments/3763572170/MicrosoftTeams-image_%2816%29-version-1-modificationdate-1702473297000-api-v2.png" width="400"  />
+    </span>
+</p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2515113871_09_Release.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>09 Release</span>
+        </a>
+                <a href="2716338005_w3_trans_helper.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>w3_trans_helper</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Safety norm plugin benchmark test - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3197948845"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="4288512465_xPER_safety_build.html">xPER safety build</a></li>
+                                                                                     <li><a href="3082341986_xPER_safety_op_develop.html">xPER safety op develop</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3197948845"> <span>Safety norm plugin benchmark test</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>    <span style="color: #172b4d;">
+ONNX model standard VS safety:    </span>
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3197948845/image-2023-6-30_22-3-20-version-1-modificationdate-1688133800000-api-v2.png" alt="images/confluence/download/thumbnails/3197948845/image-2023-6-30_22-3-20-version-1-modificationdate-1688133800000-api-v2.png"  height="250" />
+ <img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3197948845/image-2023-6-30_22-3-33-version-1-modificationdate-1688133813000-api-v2.png" alt="images/confluence/download/thumbnails/3197948845/image-2023-6-30_22-3-33-version-1-modificationdate-1688133813000-api-v2.png"  height="243" />
+</p>
+<p   
+>    <span style="color: #172b4d;">
+Command:    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">Benchmark</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="Benchmark" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="functions">cd</code><code class="plain"> </code><code class="plain">/home/wvy1szh/</code></div>
+<div class="line"><code class="plain">.</code><code class="plain">/bin/safe_plugin_build</code><code class="plain"> --onnx=.</code><code class="plain">/res/SafetyNormPlugin</code><code class="plain">.onnx --saveEngine=.</code><code class="plain">/res/SafetyNormPlugin</code><code class="plain">.engine</code></div>
+<div class="line"><code class="plain">.</code><code class="plain">/bin/safe_plugin_infer</code><code class="plain"> --loadEngine=.</code><code class="plain">/res/SafetyNormPlugin</code><code class="plain">.engine --bmp=.</code><code class="plain">/res/input</code><code class="plain">.bmp --dumpInTensor=.</code><code class="plain">/res/input_norm</code><code class="plain">.tensor --dumpOutTensor=.</code><code class="plain">/res/output_norm</code><code class="plain">.tensor</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">output:</code></div>
+<div class="line"><code class="plain">input tensor size = {1x3x1024x1024x}</code></div>
+<div class="line"><code class="plain">iterators: 1, total </code><code class="functions">time</code><code class="plain">: 0.5332 msec, Time= 0.533 msec</code></div>
+<div class="line"><code class="plain">cudacudacudacuda errorID: 0, no error, fun doInference, line 474</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">.</code><code class="plain">/bin/trtexec</code><code class="plain"> --onnx=.</code><code class="plain">/res/LpNormalization</code><code class="plain">.onnx  --loadInputs=X:.</code><code class="plain">/res/input_norm</code><code class="plain">.tensor --exportOutput=.</code><code class="plain">/res/trtexec_output_norm</code><code class="plain">.json --dumpProfile --saveEngine=.</code><code class="plain">/res/trtexec_norm</code><code class="plain">.engine</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">output:</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/11/1970-12</code><code class="plain">:41:13] [I] === Profile (2879 iterations ) ===</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/11/1970-12</code><code class="plain">:41:13] [I]                                                                   Layer   Time (ms)   Avg. Time (ms)   Median Time (ms)   Time %</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/11/1970-12</code><code class="plain">:41:13] [I]  {ForeignNode[tmp_weight + (Unnamed Layer* 1) [Shuffle]...node_of_Y_4]}     1674.01           0.5815             0.5813    100.0</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/11/1970-12</code><code class="plain">:41:13] [I]                                                                   Total     1674.01           0.5815             0.5813    100.0</code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #172b4d;">
+tensor accuracy:    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">tensor accuracy</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="tensor accuracy" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">python3 compare_tensor.py --safety_tensor output_norm.tensor  --standard_tensor trtexec_output_norm.json --precision 0.000001</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">arrarysize=3145728</code></div>
+<div class="line"><code class="plain">+--------------------+---------+</code></div>
+<div class="line"><code class="plain">|   Compare Status   | Success |</code></div>
+<div class="line"><code class="plain">+--------------------+---------+</code></div>
+<div class="line"><code class="plain">| Total </code><code class="functions">diff</code><code class="plain"> num     |    0    |</code></div>
+<div class="line"><code class="plain">| > 10E-1 percentage | 0.000 % |</code></div>
+<div class="line"><code class="plain">| > 10E-2 percentage | 0.000 % |</code></div>
+<div class="line"><code class="plain">| > 10E-3 percentage | 0.000 % |</code></div>
+<div class="line"><code class="plain">| > 10E-4 percentage | 0.000 % |</code></div>
+<div class="line"><code class="plain">| > 10E-5 percentage | 0.000 % |</code></div>
+<div class="line"><code class="plain">| > 10E-6 percentage | 0.000 % |</code></div>
+<div class="line"><code class="plain">+--------------------+---------+</code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #172b4d;">
+Performance on input tensor shape 3*1024*1024    </span>
+</p>
+    <div  class="tablewrap">
+        <table class="confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Item</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Average time(ms)</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>standard     <span style="color: #172b4d;">
+trtexec    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.5815</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;">
+safety infer    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.5332</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3154758079_Safety_neg_plugin_performance_test.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Safety neg plugin performance test</span>
+        </a>
+                <a href="3137670727_Safety_round_plugin_benchmark_test.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Safety round plugin benchmark test</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

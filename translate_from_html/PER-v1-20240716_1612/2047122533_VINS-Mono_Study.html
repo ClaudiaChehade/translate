@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VINS-Mono Study - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2047122533"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2047122533"> <span>VINS-Mono Study</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>This page is intended to present my study note from the paper "VINS-Mono: A Robust and Versatile Monocular Visual-Inertial State Estimator". And it will also be one of the key components in localization architecture in Wave3 project. This document will list all my thinking and answer rather than go through the math equation detailly.</p>
+<p   
+></p>
+    <div class="section section-1" id="src-2047122533_VINSMonoStudy-WhyweneedtofusethevisualinformationwithInertialmeasurement">
+        <h1 class="heading "><span>Why we need to fuse the visual information with Inertial measurement</span></h1>
+<p   
+>The table below compares the localization solution between IMU and Visual Odometry,</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Advantage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Disadvantage</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>IMU</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>quick response for motion estimation</p>
+</li><li class=" "><p   
+>absolute scale</p>
+</li><li class=" "><p   
+>accurate angle velocity</p>
+</li><li class=" "><p   
+>no dependency for camera</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>suffer from bias,     <span style="color: #000000;">
+temperature, vibration    <span style="color: #000000;">
+    </span>
+    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>after dead reckoning, big drift for cheap IMU</p>
+</li><li class=" "><p   
+>small drift for expensive IMU, e.g. <20cm in 10s</p>
+</li></ul></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Visual Odometry</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>no drift for rotation</p>
+</li><li class=" "><p   
+>rotation and translation without     <span style="color: #000000;">
+integral    </span>
+    <span style="color: #000000;">
+    </span>
+</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>sensitive to image quality</p>
+<ul class=" "><li class=" "><p   
+>light condition, quick motion → blur</p>
+</li><li class=" "><p   
+>texture-less scene</p>
+</li></ul></li><li class=" "><p   
+>dynamic object and occlusion</p>
+</li><li class=" "><p   
+>unknown scaling factor (m    <span style="color: #000000;">
+onocular camera)    </span>
+</p>
+</li><li class=" "><p   
+>unable to handle rotation only motion</p>
+</li></ul>            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+>In general,</p>
+<ul class=" "><li class=" "><p   
+>IMU is suitable for quick motion estimation in short time.</p>
+</li><li class=" "><p   
+>VO is suitable for slow motion estimation in long time.</p>
+</li></ul><p   
+>So we can fuse the VO and IMU information to improve the robustness of localization system. The bias of IMU could be estimated with visual localization so that we can control the accumulated error/drift for motion estimation. And also we can use IMU to improve the VO localization robustness for quick motion case.</p>
+<p   
+>Actually, there are two ways to fuse the video and IMU information for localization purpose.</p>
+<p   
+><strong class=" "><u class=" ">Loosely coupled solution</u></strong></p>
+<p   
+>It will fuse the localization result from both IMU and Video with post processing. And this kind of fusion operation will not optimize the result/state from IMU and Video. The Kalman filter and its variants are the most popular solution.</p>
+<p   
+>As figure below, the position, rotation and velocity from IMU or video will not be optimized.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-11_14-11-24-version-1-modificationdate-1639203084000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-11_14-11-24-version-1-modificationdate-1639203084000-api-v2.png"  height="250" />
+    </p>
+<p   
+><u class=" "><strong class=" ">Tightly coupled solution</strong></u></p>
+<p   
+>The tightly coupled fusion will jointly optimize the parameter/state from sensors and localization result. So it will not only output the localization result and also optimize the bias for IMU and scaling factor + feature locations for video. The MSCKF (    <span style="color: #222222;">
+Multi-State Constraint Kalman Filter    </span>
+) and non-linear least square optimization are most famous. Of course, VINS-Mono adopts tightly coupled solution with non-linear square optimization.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-11_14-19-44-version-1-modificationdate-1639203584000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-11_14-19-44-version-1-modificationdate-1639203584000-api-v2.png"  height="250" />
+    </p>
+<p   
+>why we need tightly coupled solution,</p>
+<ul class=" "><li class=" "><p   
+>both VO and IMU are not able to provide robust pose estimation. e.g. bias → IMU, scale factor → mono camera</p>
+</li><li class=" "><p   
+>Even if after bundle adjustment, the pose from purely video odometry(without IMU information) is not globally optimal or accurate enough.</p>
+</li><li class=" "><p   
+>With tightly coupled solution, all measurement and motion parameters can be optimized at the same time. and there is high chance to get better localization performance.</p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-2047122533_VINSMonoStudy-WhatisthescopeofVINS-Mono">
+        <h1 class="heading "><span>What is the scope of VINS-Mono</span></h1>
+<p   
+>Here is the full pipeline of VINS-Mono.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-11_14-39-0-version-1-modificationdate-1639204741000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-11_14-39-0-version-1-modificationdate-1639204741000-api-v2.png" width="700"  />
+    </p>
+<ul class=" "><li class=" "><p   
+>The system starts with measurement preprocessing (see Section IV)</p>
+<ul class=" "><li class=" "><p   
+>extract image and parse IMU measurement info</p>
+</li><li class=" "><p   
+>prepare tracked feature points</p>
+</li><li class=" "><p   
+>compute the motion between current and previous time stamp</p>
+</li></ul></li><li class=" "><p   
+>The initialization procedure (see Section V) provides all necessary values for bootstrapping the subsequent nonlinear optimization-based VIO.</p>
+<ul class=" "><li class=" "><p   
+>calibrate the gyroscope bias for IMU with video correction</p>
+</li><li class=" "><p   
+>compute the scale factor for video with IMU correction, each 3D landmarks from video will be under the meter unit now.</p>
+</li><li class=" "><p   
+>estimate the gravity in camera coordinate at time 0 so that we can align the camera coordinate with body(IMU) coordinate.</p>
+</li></ul></li><li class=" "><p   
+>The VIO with re-localization modules (see Sections VI and VII) tightly fuses pre-integrated IMU measurements, feature observations, and re-detected features from the loop closure.</p>
+<ul class=" "><li class=" "><p   
+>with m    <span style="color: #000000;">
+arginalization operation, it     </span>
+maintain a sliding window to control the computation consumption</p>
+</li><li class=" "><p   
+>based on common vision between map/history and current observation, the loop closure constraints will be established with visual feature dictionary → eliminate drift in sliding window</p>
+</li><li class=" "><p   
+>fix all parameters outside the window, and execute the nonlinear optimization inside the sliding window to get the localization result which is locally consistent.</p>
+</li><li class=" "><p   
+>the keyframe is selected by checking the parallax of tracked feature points among nearby images in time sequence.</p>
+</li></ul></li><li class=" "><p   
+>Finally, the pose graph module (see Section VIII) performs global optimization to eliminate drift and achieve reuse purpose.</p>
+<ul class=" "><li class=" "><p   
+>with this step, it could support offline mapping + online localization now.</p>
+</li><li class=" "><p   
+>The global pose graph(outside the sliding window) will be optimized with constraints</p>
+<ul class=" "><li class=" "><p   
+>Sequential Edge → relative pose transformation of nearby vertex in time sequence, provided by VIO (see Sections VI and VII, localization result inside the sliding window)</p>
+</li><li class=" "><p   
+>Loop-Closure Edge → relative pose transformation of nearby vertex in space (common vision), provided by loop closure detection (see Sections VI and VII)</p>
+</li></ul></li><li class=" "><p   
+>save the pose graph + feature point descriptors</p>
+</li></ul></li></ul>    </div>
+    <div class="section section-1" id="src-2047122533_safe-id-VklOU01vbm9TdHVkeS1XaGF0J3NJTVVQcmUtaW50ZWdyYXRpb25hbmRkaWZmZXJlbmNlYWdhaW5zdHRyYWRpdGlvbmFsSU1VdXNhZ2U">
+        <h1 class="heading "><span>What's IMU Pre-integration and difference against traditional IMU usage</span></h1>
+<p   
+>Let's say there is a 6-axis IMU working at 100hz, it measures rotation velocity(roll, pitch, yaw) and linear acceleration(x, y, z) of body frame. So every 10ms, we can get the rotation velocity and linear acceleration. If we want to estimate the motion (position <strong class=" ">p</strong>, velocity <strong class=" ">v</strong> and rotation <strong class=" ">q</strong>) between different time stamp, we have to use the integrate them with time interval. The equation below shows the relative motion of keyframe at time k+1 and k.</p>
+<p   
+>Please be noted</p>
+<ul class=" "><li class=" "><p   
+><u class=" ">there are many IMU measurements indexed by t between k to k+1</u></p>
+</li><li class=" "><p   
+><u class=" ">the motion state of k+1 is based on k</u></p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-11_16-14-49-version-1-modificationdate-1639210489000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-11_16-14-49-version-1-modificationdate-1639210489000-api-v2.png" width="600"  />
+    </p>
+<p   
+><br/></p>
+<p   
+>The images below shows different rates for IMU and camera.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-11_15-27-44-version-1-modificationdate-1639207664000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-11_15-27-44-version-1-modificationdate-1639207664000-api-v2.png" width="500"  />
+    </p>
+<p   
+>We can see from the image, there are many IMU measurements between two keyframe from camera. Since the VINS-Mono is a tightly coupled fusion solution, it will estimate the pose of key frame and the velocity, position, rotation, bias for IMU simultaneously. And there is constraint (I call it "motion residual"→ pre-integration residual in paper) between keyframe pose and motion measurement from IMU. After the optimization, the error between keyframe pose and IMU measurement will be minimized.</p>
+<p   
+>    <span style="color: #000000;">
+Theoretically    </span>
+, for every time of optimization iteration, there is a small shift happened on keyframe pose at time k, we need to re-compute the IMU motion measurement <u class=" "><strong class=" ">at time k+1</strong></u>. because its initial state of <u class=" "><strong class=" ">time k</strong></u> is changed. So they are tightly coupled.</p>
+<p   
+>In addition to the high frequency of IMU, it's infeasible to compute the state of IMU motion measurement with propagation/r    <span style="color: #000000;">
+ecursion    </span>
+    <span style="color: #000000;">
+     </span>
+method during optimization iteration. That will be a huge computation burden.</p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">example</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>E.g. if there are 100 iteration in nonlinear optimization, we need to compute the IMU motion measurement 100 times. and each time there are many IMU sensor readings.</p>
+        </div>
+    </div>
+<p   
+>Can we separate the IMU motion measurement from its initial state so as to save our CPU? We don't want to waste computation power for optimization iteration.</p>
+<p   
+>Yes. That's why we use the pre-integration. It's defined as below and has no psychical description. Now, there is only one "virtual" motion observation between keyframe k and k+1 with lowest frequency.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-11_16-34-58-version-1-modificationdate-1639211699000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-11_16-34-58-version-1-modificationdate-1639211699000-api-v2.png" width="300"  />
+    </p>
+<p   
+>And the relationship between pre-integration and previous IMU motion is as followed.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-11_16-37-1-version-1-modificationdate-1639211821000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-11_16-37-1-version-1-modificationdate-1639211821000-api-v2.png" width="450"  />
+    </p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">how to use IMU in bosch road signature</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>For loosely coupled solution in "<a   href="https://inside-docupedia.bosch.com/confluence/display/MFAD/Hands-On+Experience+of+Maploc+Pipeline+on+MRR+in+Suzhou">Bosch Radar Road Signature</a>", the IMU and wheel speed will be fused as odometry with EKF. This odometry will be treated as relative transform constraint between nearby body frames. And after the global optimization, the odometry itself will not be optimized at the same time. As for odometry calibration in post processing, it's another story out of this scope.</p>
+        </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2047122533_VINSMonoStudy-HowtointerpretthecostfunctionofVINS-Monoanditsresidualitem">
+        <h1 class="heading "><span>How to interpret the cost function of VINS-Mono and its residual item</span></h1>
+<p   
+>During localization, the VINS-Mono will optimize the three items inside the sliding window simultaneously (tightly coupled). Let's assume there is no map before. So the re-localization is invalid at the beginning.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_15-15-18-version-1-modificationdate-1639293319000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_15-15-18-version-1-modificationdate-1639293319000-api-v2.png" width="600"  />
+    </p>
+<p   
+>To be evaluated,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_15-27-2-version-1-modificationdate-1639294022000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_15-27-2-version-1-modificationdate-1639294022000-api-v2.png" width="350"  />
+    </p>
+<p   
+>where <img  class="latexmath"  src="images/inline/4213ae69ae5c2f429cf6ffd1c891dfddd40308635f953f35f715f6832b9fb080.svg" alt="images/inline/4213ae69ae5c2f429cf6ffd1c891dfddd40308635f953f35f715f6832b9fb080.svg"   />
+ is the state of keyframe at time k, including position, velocity, rotation, linear accelerate bias and gyroscope bias. <img  class="latexmath"  src="images/inline/2d924d4721991dc9e87afabf9b66c4ee9b11eae5d4322d0c6e068332e865d51f.svg" alt="images/inline/2d924d4721991dc9e87afabf9b66c4ee9b11eae5d4322d0c6e068332e865d51f.svg"   />
+ is the inverse depth of 3D landmark in map. <img  class="latexmath"  src="images/inline/7ee4581177920b05b3282eaa0b438f90cf57d6c9f6c15389899ed4e537dd4003.svg" alt="images/inline/7ee4581177920b05b3282eaa0b438f90cf57d6c9f6c15389899ed4e537dd4003.svg"   />
+ is the relative transformation between IMU sensor and camera.</p>
+<p   
+>All these residual will be discussed later. Here is some gotta feeling.</p>
+<p   
+><u class=" "><strong class=" ">Prior Constraint</strong></u></p>
+<p   
+>The sliding window has a fixed length, the observation and pose estimation at previous time stamp will be margined (removed) finally. This prior constraint will make sure the optimization at late time will not forget the previous information (e.g. the landmark i observed by camera j should be at place xxx. if a new landmark i+1 which is near i, after optimization should not be far away from the place xxx). After the m    <span style="color: #000000;">
+arginalization    </span>
+, the rest "prior residual" should also be minimized although its previous observation and pose is not existed.</p>
+<p   
+><u class=" "><strong class=" ">IMU pre-integration residual constraint</strong></u></p>
+<p   
+>The state estimation <img  class="latexmath"  src="images/inline/4213ae69ae5c2f429cf6ffd1c891dfddd40308635f953f35f715f6832b9fb080.svg" alt="images/inline/4213ae69ae5c2f429cf6ffd1c891dfddd40308635f953f35f715f6832b9fb080.svg"   />
+ inside window should be consistent with the IMU measurement. treated as some kind of odometry.</p>
+<p   
+><u class=" "><strong class=" ">Visual reprojection residual constraint</strong></u></p>
+<p   
+>The state estimation camera pose (position + rotation) and inverse depth should be consistent with the visual reprojection error (ray direction error) of common vision.</p>
+<p   
+><br/></p>
+<p   
+>If we solve the problem with Gaussian-Newton, we should compute the first order Taylor expansion for each item. Then construct the "HΔx=b" format. Let's look at the IMU pre-integration residual,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_15-22-29-version-1-modificationdate-1639293749000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_15-22-29-version-1-modificationdate-1639293749000-api-v2.png" width="500"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_15-23-13-version-1-modificationdate-1639293793000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_15-23-13-version-1-modificationdate-1639293793000-api-v2.png" width="350"  />
+    </p>
+<p   
+>For complete version,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_15-24-14-version-1-modificationdate-1639293854000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_15-24-14-version-1-modificationdate-1639293854000-api-v2.png" width="350"  />
+    </p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">tips</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>The information matrix for prior constraint is not calculated as <img  class="latexmath"  src="images/inline/d12615e10414f285ae7e847d4f92eb5131f4ed8a6ffa1925cd28defb4ad93e84.svg" alt="images/inline/d12615e10414f285ae7e847d4f92eb5131f4ed8a6ffa1925cd28defb4ad93e84.svg"   />
+ format. more details will be discussed later.</p>
+        </div>
+    </div>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2047122533_VINSMonoStudy-Howtointerpretthemarginalizationoperationduringslidingwindow">
+        <h1 class="heading "><span>How to interpret the marginalization operation during sliding window</span></h1>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+In order to control the optimization computation scale, VINS-Mono has adopt the sliding window otherwise the new feature points and pose will generate lots of residual items. →     </span>
+    </span>
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+The information matrix <img  class="latexmath"  src="images/inline/5bd8bb09ec5079c9b19c571be6f0cf57cb2bab777839d85f1d140a4092a6dbc5.svg" alt="images/inline/5bd8bb09ec5079c9b19c571be6f0cf57cb2bab777839d85f1d140a4092a6dbc5.svg"   />
+ will be super large and hard to calculate its inverse matrix.    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+Then the problem would be how to remove its previous pose and feature points. We can't remove these old data directly. otherwise, the new estimation will be inconsistent with or total different from the previous observation outside the sliding window.     <span style="color: #000000;">
+Let's start from the state before marginalization <img  class="latexmath"  src="images/inline/3b71cbbe1ab588c19bca9b55e79dcb3e62bfd4dbd2c04ecb79d3c427690ac86e.svg" alt="images/inline/3b71cbbe1ab588c19bca9b55e79dcb3e62bfd4dbd2c04ecb79d3c427690ac86e.svg"   />
+. if we want to remove the state <img  class="latexmath"  src="images/inline/18557da6ba013fd78a9bd3a104fcab3dd9a8b7e8915a28e948ca5c23f4063df5.svg" alt="images/inline/18557da6ba013fd78a9bd3a104fcab3dd9a8b7e8915a28e948ca5c23f4063df5.svg"   />
+ and add new state <img  class="latexmath"  src="images/inline/610cd02904b89352cf74fa50d3d34a19f02db1cca6432739c0a4a35126981510.svg" alt="images/inline/610cd02904b89352cf74fa50d3d34a19f02db1cca6432739c0a4a35126981510.svg"   />
+ as figure below.    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-12_16-18-33-version-1-modificationdate-1639297114000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-12_16-18-33-version-1-modificationdate-1639297114000-api-v2.png"  height="250" />
+    </span>
+    </span>
+</p>
+<p   
+>Then the information matrix     <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="latexmath"  src="images/inline/5bd8bb09ec5079c9b19c571be6f0cf57cb2bab777839d85f1d140a4092a6dbc5.svg" alt="images/inline/5bd8bb09ec5079c9b19c571be6f0cf57cb2bab777839d85f1d140a4092a6dbc5.svg"   />
+    </span>
+    </span>
+ will be updated with Schur Complement,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_16-23-34-version-1-modificationdate-1639297417000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_16-23-34-version-1-modificationdate-1639297417000-api-v2.png" width="750"  />
+    </p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+After marginalization, the old observation and old state are gone. The Jacobian matrix and error function are fixed. So the <img  class="latexmath"  src="images/inline/f6bf62241e0be4f03c1c43e2b03c45b7410b9defbc48057ba8bfa0eca8ee10e4.svg" alt="images/inline/f6bf62241e0be4f03c1c43e2b03c45b7410b9defbc48057ba8bfa0eca8ee10e4.svg"   />
+ and <img  class="latexmath"  src="images/inline/b2627ca6c5a751f936370f1429c5d690c156f13efd240a2ef2576aa0d6d4cc2b.svg" alt="images/inline/b2627ca6c5a751f936370f1429c5d690c156f13efd240a2ef2576aa0d6d4cc2b.svg"   />
+ are fixed from now on. However, the rest state <img  class="latexmath"  src="images/inline/f62a540f7fc07cac9c30e7c843c3ac20963f4a7e799f0472637e17c6690cea22.svg" alt="images/inline/f62a540f7fc07cac9c30e7c843c3ac20963f4a7e799f0472637e17c6690cea22.svg"   />
+ will be updated with the new state     <span style="color: #000000;">
+<img  class="latexmath"  src="images/inline/610cd02904b89352cf74fa50d3d34a19f02db1cca6432739c0a4a35126981510.svg" alt="images/inline/610cd02904b89352cf74fa50d3d34a19f02db1cca6432739c0a4a35126981510.svg"   />
+. Then the equation <img  class="latexmath"  src="images/inline/c549bd8ca05f54c38e435a9c7859c77b699e08a27af7c6c9d5ed8fca969c4622.svg" alt="images/inline/c549bd8ca05f54c38e435a9c7859c77b699e08a27af7c6c9d5ed8fca969c4622.svg"   />
+ will cause the optimization solver broken. At least, we need the <img  class="latexmath"  src="images/inline/b2627ca6c5a751f936370f1429c5d690c156f13efd240a2ef2576aa0d6d4cc2b.svg" alt="images/inline/b2627ca6c5a751f936370f1429c5d690c156f13efd240a2ef2576aa0d6d4cc2b.svg"   />
+ update at the same time. Actually, VINS-Mono choose to minimize the <img  class="latexmath"  src="images/inline/b2627ca6c5a751f936370f1429c5d690c156f13efd240a2ef2576aa0d6d4cc2b.svg" alt="images/inline/b2627ca6c5a751f936370f1429c5d690c156f13efd240a2ef2576aa0d6d4cc2b.svg"   />
+. Let's check the first Taylor expansion of <img  class="latexmath"  src="images/inline/b2627ca6c5a751f936370f1429c5d690c156f13efd240a2ef2576aa0d6d4cc2b.svg" alt="images/inline/b2627ca6c5a751f936370f1429c5d690c156f13efd240a2ef2576aa0d6d4cc2b.svg"   />
+,    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="latexmath"  src="images/inline/2881ed935dc59a9cd869f74b7bbc908975028d2c8b1f6bae88cd0d153c5ea587.svg" alt="images/inline/2881ed935dc59a9cd869f74b7bbc908975028d2c8b1f6bae88cd0d153c5ea587.svg"   />
+    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="latexmath"  src="images/inline/ea075a9006c6e0e003d42dc35d6bd1c0e796daf24e7ed595a861496999a70381.svg" alt="images/inline/ea075a9006c6e0e003d42dc35d6bd1c0e796daf24e7ed595a861496999a70381.svg"   />
+    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+we know the Jacobian and covariance matrix from prior are fixed constant.    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="latexmath"  src="images/inline/6cbf0bcc4349b1e204fd55faf9016df8bb58c077c2f4187575400a1035e79d00.svg" alt="images/inline/6cbf0bcc4349b1e204fd55faf9016df8bb58c077c2f4187575400a1035e79d00.svg"   />
+    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+Let's look at the prior constraint <img  class="latexmath"  src="images/inline/6734588ed23cde93be8584ba1f3d033cc2af231da4d6fd27a80664e742e2060a.svg" alt="images/inline/6734588ed23cde93be8584ba1f3d033cc2af231da4d6fd27a80664e742e2060a.svg"   />
+ . Again, the Jacobian and covariance matrix from prior are fixed constant.    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="latexmath"  src="images/inline/c09f2f0309394615b99f738f882cca6d8a00c5955b61bb63200813e90c20157f.svg" alt="images/inline/c09f2f0309394615b99f738f882cca6d8a00c5955b61bb63200813e90c20157f.svg"   />
+    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="latexmath"  src="images/inline/ef58ed17d3cc744fc98abda3c67e7d755914f7555ca5f6b4cf99879f885b3ef6.svg" alt="images/inline/ef58ed17d3cc744fc98abda3c67e7d755914f7555ca5f6b4cf99879f885b3ef6.svg"   />
+    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+Then we found prior constraint in cost function will minimize the <img  class="latexmath"  src="images/inline/b2627ca6c5a751f936370f1429c5d690c156f13efd240a2ef2576aa0d6d4cc2b.svg" alt="images/inline/b2627ca6c5a751f936370f1429c5d690c156f13efd240a2ef2576aa0d6d4cc2b.svg"   />
+. We can also prove it inside the code.     </span>
+    </span>
+    </span>
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+In order to meet the requirement of "Ceres solver" interface,    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="latexmath"  src="images/inline/0fab9a72eb801574d9f824786509cd457a0396b9a6785ff5a3c105b87d89db95.svg" alt="images/inline/0fab9a72eb801574d9f824786509cd457a0396b9a6785ff5a3c105b87d89db95.svg"   />
+    </span>
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="latexmath"  src="images/inline/238185aa96d23b1203e86be949df6b156ed7cf3d46411ac40fa6e47e2bc2accc.svg" alt="images/inline/238185aa96d23b1203e86be949df6b156ed7cf3d46411ac40fa6e47e2bc2accc.svg"   />
+<br/>    </span>
+    </span>
+    </span>
+</p>
+<p   
+>the error prior will be added to the total cost function so that the optimization will make the current estimation consistent with previous "removed" observation.</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">prior constraint</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="prior constraint" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">// Problem::Marginalize</code></div>
+<div class="line"><code class="plain">err_prior_ = -Jt_prior_inv_ * b_prior_;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// this err term will be added to total cost to control the optimization process in LM solver</code></div>
+<div class="line"><code class="comments">// Problem::IsGoodStepInLM</code></div>
+<div class="line"><code class="plain">tempChi += err_prior_.norm();</code></div>
+<div class="line"><code class="color1">double</code><code class="plain"> rho = (currentChi_ - tempChi) / scale;</code></div>
+<div class="line"><code class="keyword">if</code><code class="plain"> (rho > 0 && isfinite(tempChi))</code></div>
+<div class="line"><code class="plain">{...}</code></div>
+</div>
+    </div>
+<p   
+>Beside that, the VINS-Mono will update the information matrix     <span style="color: #000000;">
+<img  class="latexmath"  src="images/inline/5bd8bb09ec5079c9b19c571be6f0cf57cb2bab777839d85f1d140a4092a6dbc5.svg" alt="images/inline/5bd8bb09ec5079c9b19c571be6f0cf57cb2bab777839d85f1d140a4092a6dbc5.svg"   />
+     </span>
+with new state     <span style="color: #000000;">
+<img  class="latexmath"  src="images/inline/610cd02904b89352cf74fa50d3d34a19f02db1cca6432739c0a4a35126981510.svg" alt="images/inline/610cd02904b89352cf74fa50d3d34a19f02db1cca6432739c0a4a35126981510.svg"   />
+ by first expanding the dimension of <img  class="latexmath"  src="images/inline/5bd8bb09ec5079c9b19c571be6f0cf57cb2bab777839d85f1d140a4092a6dbc5.svg" alt="images/inline/5bd8bb09ec5079c9b19c571be6f0cf57cb2bab777839d85f1d140a4092a6dbc5.svg"   />
+ and then adding it with new <img  class="latexmath"  src="images/inline/446b9f74aeac3d8dbd8c9792ad480227103cca0cc517569b7327f48a50a94be5.svg" alt="images/inline/446b9f74aeac3d8dbd8c9792ad480227103cca0cc517569b7327f48a50a94be5.svg"   />
+    </span>
+. The previous component will also be propagate to the later frame to     <span style="color: #000000;">
+make the current estimation consistent with previous "removed" observation.    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_17-40-4-version-1-modificationdate-1639302004000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_17-40-4-version-1-modificationdate-1639302004000-api-v2.png" width="500"  />
+<br/>    </span>
+    </span>
+</p>
+    </div>
+    <div class="section section-1" id="src-2047122533_safe-id-VklOU01vbm9TdHVkeS1Ib3d0b2RlYWx3aXRoSU1VcHJlLWludGVncmF0aW9ucmVzaWR1YWxhbmRiaWFzL25vaXNl">
+        <h1 class="heading "><span>How to deal with IMU pre-integration residual and bias/noise</span></h1>
+<p   
+>The IMU pre-integration residual from keyframe k to k+1 (contains many IMU measurements) is defined as below. The optimization process will make the estimated PVQ consistent with IMU measurement (pre-integration),</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_21-55-45-version-1-modificationdate-1639317346000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_21-55-45-version-1-modificationdate-1639317346000-api-v2.png" width="700"  />
+    </p>
+<p   
+>The optimized parameters can be categorized into 4 class, PVQ, bias for acceleration and gyroscope at time k and k+1.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_22-0-2-version-1-modificationdate-1639317602000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_22-0-2-version-1-modificationdate-1639317602000-api-v2.png" width="500"  />
+    </p>
+<p   
+>please be aware of the dimension of the Jacobian matrix of <img  class="latexmath"  src="images/inline/1a18e2ff04805ff5a2aa0f6190a926b2b8e6f18f2690bc2a7554f56df64eac87.svg" alt="images/inline/1a18e2ff04805ff5a2aa0f6190a926b2b8e6f18f2690bc2a7554f56df64eac87.svg"   />
+, J:15*32?? , see code in "    <span style="color: #aa3731;">
+EdgeImu    </span>
+    <span style="color: #aa3731;">
+::    </span>
+    <span style="color: #aa3731;">
+ComputeJacobians    </span>
+    <span style="color: #777777;">
+()    </span>
+"</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-12_22-3-38-version-1-modificationdate-1639317819000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-12_22-3-38-version-1-modificationdate-1639317819000-api-v2.png" width="200"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-12_22-4-5-version-1-modificationdate-1639317845000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-12_22-4-5-version-1-modificationdate-1639317845000-api-v2.png" width="250"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-12_22-4-26-version-1-modificationdate-1639317867000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-12_22-4-26-version-1-modificationdate-1639317867000-api-v2.png" width="200"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-12_22-4-52-version-1-modificationdate-1639317892000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-12_22-4-52-version-1-modificationdate-1639317892000-api-v2.png" width="250"  />
+    </p>
+<p   
+>Then let's see how to define the uncertainty/covariance matrix of IMU pre-integration between keyframe k and k+1. It will be used in LM/Gaussian-Newton nonlinear least square optimization.</p>
+<p   
+>Before we've got lost in lots of math equations, let's think how to define the error propagation for any nonlinear system from previous time to current time.</p>
+<p   
+>Given an nonlinear function <img  class="latexmath"  src="images/inline/e1a66e9cb2a17fe3245882849aa4adcaeee4282fc404f5d7ab249187f1d5a937.svg" alt="images/inline/e1a66e9cb2a17fe3245882849aa4adcaeee4282fc404f5d7ab249187f1d5a937.svg"   />
+ to describe the transform from state <img  class="latexmath"  src="images/inline/91be77e2ff925db68938a6f168898661d065a8186e97e11146b8c837a1d09e05.svg" alt="images/inline/91be77e2ff925db68938a6f168898661d065a8186e97e11146b8c837a1d09e05.svg"   />
+ to state <img  class="latexmath"  src="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg" alt="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg"   />
+, and <img  class="latexmath"  src="images/inline/9bfd2ec8123fd196db911cc229e4f6441361ed290c94110501f2a44c7ce27790.svg" alt="images/inline/9bfd2ec8123fd196db911cc229e4f6441361ed290c94110501f2a44c7ce27790.svg"   />
+ is system control vector. If we've got the covariance matrix for <img  class="latexmath"  src="images/inline/91be77e2ff925db68938a6f168898661d065a8186e97e11146b8c837a1d09e05.svg" alt="images/inline/91be77e2ff925db68938a6f168898661d065a8186e97e11146b8c837a1d09e05.svg"   />
+, how to compute the covariance matrix for <img  class="latexmath"  src="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg" alt="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg"   />
+? Let's use first order Taylor expansion again.</p>
+<p   
+>Suppose state <img  class="latexmath"  src="images/inline/9f0d3de5a48a2a16087570affa3f0b654870cce40c82b89d757831692ff97178.svg" alt="images/inline/9f0d3de5a48a2a16087570affa3f0b654870cce40c82b89d757831692ff97178.svg"   />
+, <img  class="latexmath"  src="images/inline/c0f00704e6929d6918eaf544cbc11b64ef14a254e07c829108e183f0bcc9cda7.svg" alt="images/inline/c0f00704e6929d6918eaf544cbc11b64ef14a254e07c829108e183f0bcc9cda7.svg"   />
+ is ground truth and <img  class="latexmath"  src="images/inline/532741bac39316aec1cf867120b175782d2f1ebb23c1af8be984ac8d7d093390.svg" alt="images/inline/532741bac39316aec1cf867120b175782d2f1ebb23c1af8be984ac8d7d093390.svg"   />
+ is error term, the noise for control vector <img  class="latexmath"  src="images/inline/44c3180a10c794cef03048ce031762b2e5b202a63bacd31b4feda25fd5df4d86.svg" alt="images/inline/44c3180a10c794cef03048ce031762b2e5b202a63bacd31b4feda25fd5df4d86.svg"   />
+ is <img  class="latexmath"  src="images/inline/b313b6607ac6e57fb1912f9b3cf7ae813e2ea6627ae24029840f29d96fb52957.svg" alt="images/inline/b313b6607ac6e57fb1912f9b3cf7ae813e2ea6627ae24029840f29d96fb52957.svg"   />
+.</p>
+<p   
+>We can compute the error term <img  class="latexmath"  src="images/inline/98d552ee94f6fc08401a74a564d9826c9d0a4ded7ceca135186228530d027730.svg" alt="images/inline/98d552ee94f6fc08401a74a564d9826c9d0a4ded7ceca135186228530d027730.svg"   />
+ from previous error term <img  class="latexmath"  src="images/inline/d04fdce84b22689797ec72d3be38e81f2a9307014c6f514a4b58e000897561dc.svg" alt="images/inline/d04fdce84b22689797ec72d3be38e81f2a9307014c6f514a4b58e000897561dc.svg"   />
+ with <img  class="latexmath"  src="images/inline/034ce94416685bf1fa836758797fab67d5dd3e9fe00c20b0bbb59af356d41d15.svg" alt="images/inline/034ce94416685bf1fa836758797fab67d5dd3e9fe00c20b0bbb59af356d41d15.svg"   />
+, where F is the Jacobian matrix of state <img  class="latexmath"  src="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg" alt="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg"   />
+ against <img  class="latexmath"  src="images/inline/91be77e2ff925db68938a6f168898661d065a8186e97e11146b8c837a1d09e05.svg" alt="images/inline/91be77e2ff925db68938a6f168898661d065a8186e97e11146b8c837a1d09e05.svg"   />
+, G is the Jacobian matrix of state <img  class="latexmath"  src="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg" alt="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg"   />
+ against <img  class="latexmath"  src="images/inline/9bfd2ec8123fd196db911cc229e4f6441361ed290c94110501f2a44c7ce27790.svg" alt="images/inline/9bfd2ec8123fd196db911cc229e4f6441361ed290c94110501f2a44c7ce27790.svg"   />
+.</p>
+<p   
+>Here is a prove step,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_22-52-33-version-1-modificationdate-1639320753000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_22-52-33-version-1-modificationdate-1639320753000-api-v2.png" width="500"  />
+    </p>
+<p   
+>Once we have the error propagation equation from state <img  class="latexmath"  src="images/inline/91be77e2ff925db68938a6f168898661d065a8186e97e11146b8c837a1d09e05.svg" alt="images/inline/91be77e2ff925db68938a6f168898661d065a8186e97e11146b8c837a1d09e05.svg"   />
+ to state <img  class="latexmath"  src="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg" alt="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg"   />
+, we can write the covariance of state <img  class="latexmath"  src="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg" alt="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg"   />
+ as <img  class="latexmath"  src="images/inline/3a293fd6c304bea5431469ecbf9c692e164d9bedcede2a512729aeb607a65151.svg" alt="images/inline/3a293fd6c304bea5431469ecbf9c692e164d9bedcede2a512729aeb607a65151.svg"   />
+, where initial <img  class="latexmath"  src="images/inline/248c89574c1b44ab4e8afd7199868c7956e47fa403ab6a54d89637f2fadcad12.svg" alt="images/inline/248c89574c1b44ab4e8afd7199868c7956e47fa403ab6a54d89637f2fadcad12.svg"   />
+ and the Q is noise covariance matrix.</p>
+<p   
+>Now let's go back to our problem how to compute the covariance matrix of the IMU pre-integration term <img  class="latexmath"  src="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg" alt="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg"   />
+,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_23-2-8-version-1-modificationdate-1639321328000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_23-2-8-version-1-modificationdate-1639321328000-api-v2.png"  height="250" />
+    </p>
+<p   
+>The math detail of F is shit and we can ignore it. We can get the covariance matrix of the IMU pre-integration term <img  class="latexmath"  src="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg" alt="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg"   />
+ as</p>
+<p   
+><img  class="latexmath"  src="images/inline/bc5a7c110a9ebf172de31fe0a5eafb71228837902896c438051291fc135a9283.svg" alt="images/inline/bc5a7c110a9ebf172de31fe0a5eafb71228837902896c438051291fc135a9283.svg"   />
+    </p>
+<p   
+>where Q is as, the noise is already known.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-12_23-7-15-version-1-modificationdate-1639321635000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-12_23-7-15-version-1-modificationdate-1639321635000-api-v2.png" width="250"  />
+    </p>
+<p   
+>In addition, we can also get the propagation equation <img  class="latexmath"  src="images/inline/db8009b15f1df14ff11645540eaa2cd4e0594eca563a2e29bcb160bd846c97f7.svg" alt="images/inline/db8009b15f1df14ff11645540eaa2cd4e0594eca563a2e29bcb160bd846c97f7.svg"   />
+ for Jacobian matrix of <img  class="latexmath"  src="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg" alt="images/inline/ead26d8d367f66a554d97aa467168c90627624a7a3c7b1a904583124f399e37d.svg"   />
+ from <img  class="latexmath"  src="images/inline/91be77e2ff925db68938a6f168898661d065a8186e97e11146b8c837a1d09e05.svg" alt="images/inline/91be77e2ff925db68938a6f168898661d065a8186e97e11146b8c837a1d09e05.svg"   />
+, if we compute the Jacobian of (PVQ, ba, bg) over the error state propagation equation for <u class=" "><strong class=" ">both left and right side</strong></u>.</p>
+<p   
+>With the propagation Jacobian matrix, the optimization will be faster. The initial value <img  class="latexmath"  src="images/inline/bf4663eff01167785b1cbe6b3108672860a2d2698b43b3bef62403b3118a181a.svg" alt="images/inline/bf4663eff01167785b1cbe6b3108672860a2d2698b43b3bef62403b3118a181a.svg"   />
+.</p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">tips</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>The Jacobian here is different from the Jacobian defined in the cost function.</p>
+<ul class=" "><li class=" "><p   
+>in cost function, the Jacobian is <img  class="latexmath"  src="images/inline/0cb1371e36eacd1e95ad3ddd7bbecc91a217c44583d0d247e3a007d31aa3598d.svg" alt="images/inline/0cb1371e36eacd1e95ad3ddd7bbecc91a217c44583d0d247e3a007d31aa3598d.svg"   />
+</p>
+</li><li class=" "><p   
+>here, the Jacobian is <img  class="latexmath"  src="images/inline/688164c9d5c14b5cf7787571aa1458a1f7578142100ee50da30fe303aafcb2b1.svg" alt="images/inline/688164c9d5c14b5cf7787571aa1458a1f7578142100ee50da30fe303aafcb2b1.svg"   />
+</p>
+</li><li class=" "><p   
+>the is <img  class="latexmath"  src="images/inline/2ab979cd6bb3bdb90f4207bf94875e0cb57f253ded81d5d03d0d622d82855058.svg" alt="images/inline/2ab979cd6bb3bdb90f4207bf94875e0cb57f253ded81d5d03d0d622d82855058.svg"   />
+</p>
+</li></ul>        </div>
+    </div>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">jacobian and covariance update</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="jacobian and covariance update" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">            </code><code class="comments">// include\factor\integration_base.h::midPointIntegration</code></div>
+<div class="line"><code class="plain">            Vector3d w_x = 0.5 * (_gyr_0 + _gyr_1) - linearized_bg;</code></div>
+<div class="line"><code class="plain">            Vector3d a_0_x = _acc_0 - linearized_ba;</code></div>
+<div class="line"><code class="plain">            Vector3d a_1_x = _acc_1 - linearized_ba;</code></div>
+<div class="line"><code class="plain">            Matrix3d R_w_x, R_a_0_x, R_a_1_x;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            R_w_x<<0, -w_x(2), w_x(1),</code></div>
+<div class="line"><code class="plain">                w_x(2), 0, -w_x(0),</code></div>
+<div class="line"><code class="plain">                -w_x(1), w_x(0), 0;</code></div>
+<div class="line"><code class="plain">            R_a_0_x<<0, -a_0_x(2), a_0_x(1),</code></div>
+<div class="line"><code class="plain">                a_0_x(2), 0, -a_0_x(0),</code></div>
+<div class="line"><code class="plain">                -a_0_x(1), a_0_x(0), 0;</code></div>
+<div class="line"><code class="plain">            R_a_1_x<<0, -a_1_x(2), a_1_x(1),</code></div>
+<div class="line"><code class="plain">                a_1_x(2), 0, -a_1_x(0),</code></div>
+<div class="line"><code class="plain">                -a_1_x(1), a_1_x(0), 0;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            MatrixXd F = MatrixXd::Zero(15, 15);</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(0, 0) = Matrix3d::Identity();</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(0, 3) = -0.25 * delta_q.toRotationMatrix() * R_a_0_x * _dt * _dt + </code></div>
+<div class="line"><code class="plain">                                  -0.25 * result_delta_q.toRotationMatrix() * R_a_1_x * (Matrix3d::Identity() - R_w_x * _dt) * _dt * _dt;</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(0, 6) = MatrixXd::Identity(3,3) * _dt;</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(0, 9) = -0.25 * (delta_q.toRotationMatrix() + result_delta_q.toRotationMatrix()) * _dt * _dt;</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(0, 12) = -0.25 * result_delta_q.toRotationMatrix() * R_a_1_x * _dt * _dt * -_dt;</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(3, 3) = Matrix3d::Identity() - R_w_x * _dt;</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(3, 12) = -1.0 * MatrixXd::Identity(3,3) * _dt;</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(6, 3) = -0.5 * delta_q.toRotationMatrix() * R_a_0_x * _dt + </code></div>
+<div class="line"><code class="plain">                                  -0.5 * result_delta_q.toRotationMatrix() * R_a_1_x * (Matrix3d::Identity() - R_w_x * _dt) * _dt;</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(6, 6) = Matrix3d::Identity();</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(6, 9) = -0.5 * (delta_q.toRotationMatrix() + result_delta_q.toRotationMatrix()) * _dt;</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(6, 12) = -0.5 * result_delta_q.toRotationMatrix() * R_a_1_x * _dt * -_dt;</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(9, 9) = Matrix3d::Identity();</code></div>
+<div class="line"><code class="plain">            F.block<3, 3>(12, 12) = Matrix3d::Identity();</code></div>
+<div class="line"><code class="plain">            </code><code class="comments">//cout<<"A"<<endl<<A<<endl;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            MatrixXd V = MatrixXd::Zero(15,18);</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(0, 0) =  0.25 * delta_q.toRotationMatrix() * _dt * _dt;</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(0, 3) =  0.25 * -result_delta_q.toRotationMatrix() * R_a_1_x  * _dt * _dt * 0.5 * _dt;</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(0, 6) =  0.25 * result_delta_q.toRotationMatrix() * _dt * _dt;</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(0, 9) =  V.block<3, 3>(0, 3);</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(3, 3) =  0.5 * MatrixXd::Identity(3,3) * _dt;</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(3, 9) =  0.5 * MatrixXd::Identity(3,3) * _dt;</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(6, 0) =  0.5 * delta_q.toRotationMatrix() * _dt;</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(6, 3) =  0.5 * -result_delta_q.toRotationMatrix() * R_a_1_x  * _dt * 0.5 * _dt;</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(6, 6) =  0.5 * result_delta_q.toRotationMatrix() * _dt;</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(6, 9) =  V.block<3, 3>(6, 3);</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(9, 12) = MatrixXd::Identity(3,3) * _dt;</code></div>
+<div class="line"><code class="plain">            V.block<3, 3>(12, 15) = MatrixXd::Identity(3,3) * _dt;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            </code><code class="comments">//step_jacobian = F;</code></div>
+<div class="line"><code class="plain">            </code><code class="comments">//step_V = V;</code></div>
+<div class="line"><code class="plain">            jacobian = F * jacobian;</code></div>
+<div class="line"><code class="plain">            covariance = F * covariance * F.transpose() + V * noise * V.transpose();</code></div>
+</div>
+    </div>
+<p   
+>There is one more thing that the IMU pre-integration is based on the assumption the bias of acceleration and rotation is fixed between keyframe k+1 and k. We can see the optimization will also change the bias, it seems we need to repropagate the pre-integration term. That's a lot of computation.</p>
+<p   
+>Let's approximate the new pre-integration with first order Taylor expansion of bias. We think the bias changes are small so that we can use linear approximation of bias.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_23-56-44-version-1-modificationdate-1639324605000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_23-56-44-version-1-modificationdate-1639324605000-api-v2.png" width="350"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_23-57-22-version-1-modificationdate-1639324642000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_23-57-22-version-1-modificationdate-1639324642000-api-v2.png" width="600"  />
+    </p>
+<p   
+>The Jacobian matrix of bias comes from "propagation equation" of Jacobian matrix mentioned above. Actually, the pre-integration correction is happened during computing residual.</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">correct IMU pre-integration with new bias</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="correct IMU pre-integration with new bias" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">     </code><code class="comments">// called in EdgeImu::ComputeResidual</code></div>
+<div class="line"><code class="plain">     Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 15, 1> evaluate(</code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d &Pi, </code><code class="keyword">const</code><code class="plain"> Eigen::Quaterniond &Qi, </code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d &Vi, </code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d &Bai, </code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d &Bgi,</code></div>
+<div class="line"><code class="plain">                                          </code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d &Pj, </code><code class="keyword">const</code><code class="plain"> Eigen::Quaterniond &Qj, </code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d &Vj, </code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d &Baj, </code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d &Bgj)</code></div>
+<div class="line"><code class="plain">    {</code></div>
+<div class="line"><code class="plain">        Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 15, 1> residuals;</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">// //Yako score </code></div>
+<div class="line"><code class="plain">        </code><code class="comments"> // 1. Get the PQV vector of the pre -accumulated point to the gyroscope and the accelerated Jacques matrix </code></div>
+<div class="line"><code class="plain">        Eigen::Matrix3d dp_dba = jacobian.block<3, 3>(O_P, O_BA);</code></div>
+<div class="line"><code class="plain">        Eigen::Matrix3d dp_dbg = jacobian.block<3, 3>(O_P, O_BG);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        Eigen::Matrix3d dq_dbg = jacobian.block<3, 3>(O_R, O_BG);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        Eigen::Matrix3d dv_dba = jacobian.block<3, 3>(O_V, O_BA);</code></div>
+<div class="line"><code class="plain">        Eigen::Matrix3d dv_dbg = jacobian.block<3, 3>(O_V, O_BG);</code></div>
+<div class="line"><code class="plain">        </code></div>
+<div class="line"><code class="plain">        </code><code class="comments"> // 2. Calculate the change of bias </code></div>
+<div class="line"><code class="plain">        Eigen::Vector3d dba = Bai - linearized_ba;</code></div>
+<div class="line"><code class="plain">        Eigen::Vector3d dbg = Bgi - linearized_bg;</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"> // 3. Correct the value of the pre -accumulation based on the update of the bias, similar to the first -order Taylor </code></div>
+<div class="line"><code class="plain">        Eigen::Quaterniond corrected_delta_q = delta_q * Utility::deltaQ(dq_dbg * dbg);</code></div>
+<div class="line"><code class="plain">        Eigen::Vector3d corrected_delta_v = delta_v + dv_dba * dba + dv_dbg * dbg;</code></div>
+<div class="line"><code class="plain">        Eigen::Vector3d corrected_delta_p = delta_p + dp_dba * dba + dp_dbg * dbg;</code></div>
+<div class="line"><code class="plain">         </code><code class="comments"> // 4. Calculation of residues </code></div>
+<div class="line"><code class="plain">        </code><code class="comments"> // Decrease according to the pre -accumulation value corresponding to the current estimation of the current estimation. </code></div>
+<div class="line"><code class="plain">        residuals.block<3, 1>(O_P, 0) = Qi.inverse() * (0.5 * G * sum_dt * sum_dt + Pj - Pi - Vi * sum_dt) - corrected_delta_p;</code></div>
+<div class="line"><code class="plain">        residuals.block<3, 1>(O_R, 0) = 2 * (corrected_delta_q.inverse() * (Qi.inverse() * Qj)).vec();</code></div>
+<div class="line"><code class="plain">        residuals.block<3, 1>(O_V, 0) = Qi.inverse() * (G * sum_dt + Vj - Vi) - corrected_delta_v;</code></div>
+<div class="line"><code class="plain">        residuals.block<3, 1>(O_BA, 0) = Baj - Bai;</code></div>
+<div class="line"><code class="plain">        residuals.block<3, 1>(O_BG, 0) = Bgj - Bgi;</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> residuals;</code></div>
+<div class="line"><code class="plain">    }</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2047122533_VINSMonoStudy-Howtodealwithvisualreprojectionresidual">
+        <h1 class="heading "><span>How to deal with visual reprojection residual</span></h1>
+<p   
+>The visual reprojection residual will constraint the estimated state to be consistent with the motion observed from visual information (reprojection residual between two keyframes).</p>
+<p   
+>In order to fit the optics for different types of camera, including wide-angle, fisheye, or omnidirectional cameras, the reprojection residual can be modeled as a deviations between unit ray connecting the surface of a unit sphere rather than on a generalized image plane for traditional pinhole camera.</p>
+<p   
+>Tips, point of n    <span style="color: #202124;">
+ormalized camera coordinates can be treated as ray direction. With h    <span style="color: #000000;">
+omogeneous coordinate description, the ray direction between normalized camera coordinates and unit vector should be the same.    </span>
+    </span>
+</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_9-52-31-version-1-modificationdate-1639360351000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_9-52-31-version-1-modificationdate-1639360351000-api-v2.png" width="350"  />
+    </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">tangent space</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="tangent space" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">ProjectionFactor::ProjectionFactor(</code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d &_pts_i, </code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d &_pts_j) : pts_i(_pts_i), pts_j(_pts_j)</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="preprocessor">#ifdef UNIT_SPHERE_ERROR</code></div>
+<div class="line"><code class="plain">    Eigen::Vector3d b1, b2;</code></div>
+<div class="line"><code class="plain">    Eigen::Vector3d a = pts_j.normalized();</code></div>
+<div class="line"><code class="plain">    Eigen::Vector3d tmp(0, 0, 1);</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">if</code><code class="plain">(a == tmp)</code></div>
+<div class="line"><code class="plain">        tmp << 1, 0, 0;</code></div>
+<div class="line"><code class="plain">    b1 = (tmp - a * (a.transpose() * tmp)).normalized();</code></div>
+<div class="line"><code class="plain">    b2 = a.cross(b1);</code></div>
+<div class="line"><code class="plain">    tangent_base.block<1, 3>(0, 0) = b1.transpose();</code></div>
+<div class="line"><code class="plain">    tangent_base.block<1, 3>(1, 0) = b2.transpose();</code></div>
+<div class="line"><code class="preprocessor">#endif</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+<p   
+>Here is our reprojection problem,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_9-38-3-version-1-modificationdate-1639359483000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_9-38-3-version-1-modificationdate-1639359483000-api-v2.png" width="500"  />
+    </p>
+<p   
+>The reprojection residual between the l-th landmark P observed in camera i and its transformed position in camera j is defined as,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-13_9-46-1-version-1-modificationdate-1639359961000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-13_9-46-1-version-1-modificationdate-1639359961000-api-v2.png" width="300"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-13_9-46-37-version-1-modificationdate-1639359997000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-13_9-46-37-version-1-modificationdate-1639359997000-api-v2.png" width="150"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_9-47-1-version-1-modificationdate-1639360021000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_9-47-1-version-1-modificationdate-1639360021000-api-v2.png" width="500"  />
+    </p>
+<p   
+>To be evaluated,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-13_9-47-42-version-1-modificationdate-1639360062000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-13_9-47-42-version-1-modificationdate-1639360062000-api-v2.png" width="300"  />
+    </p>
+<p   
+>They are the camera pose of i-th and j-th camera, external calibration/relative transformation between IMU and camera, and the l-th inverse depth (more robust on numerical stability) of landmark.</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">projection residual</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="projection residual" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">    </code><code class="comments">// ProjectionFactor::Evaluate</code></div>
+<div class="line"><code class="plain">    Eigen::Vector3d pts_camera_i = pts_i / inv_dep_i;</code></div>
+<div class="line"><code class="plain">    Eigen::Vector3d pts_imu_i = qic * pts_camera_i + tic;</code></div>
+<div class="line"><code class="plain">    Eigen::Vector3d pts_w = Qi * pts_imu_i + Pi;</code></div>
+<div class="line"><code class="plain">    Eigen::Vector3d pts_imu_j = Qj.inverse() * (pts_w - Pj);</code></div>
+<div class="line"><code class="plain">    Eigen::Vector3d pts_camera_j = qic.inverse() * (pts_imu_j - tic);</code></div>
+<div class="line"><code class="plain">    Eigen::Map<Eigen::Vector2d> residual(residuals);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="preprocessor">#ifdef UNIT_SPHERE_ERROR </code></div>
+<div class="line"><code class="plain">    residual =  tangent_base * (pts_camera_j.normalized() - pts_j.normalized());</code></div>
+<div class="line"><code class="preprocessor">#else</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">double</code><code class="plain"> dep_j = pts_camera_j.z();</code></div>
+<div class="line"><code class="plain">    residual = (pts_camera_j / dep_j).head<2>() - pts_j.head<2>();</code></div>
+<div class="line"><code class="preprocessor">#endif</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    residual = sqrt_info * residual;</code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+<p   
+>please be aware of the dimension of the Jacobian matrix of <img  class="latexmath"  src="images/inline/5bef31c79c0054d82b7f71261db2b1a0c323e0a18a527c062f874fa4086352b3.svg" alt="images/inline/5bef31c79c0054d82b7f71261db2b1a0c323e0a18a527c062f874fa4086352b3.svg"   />
+ , see code "    <span style="color: #aa3731;">
+EdgeReprojection    </span>
+    <span style="color: #aa3731;">
+::    </span>
+    <span style="color: #aa3731;">
+ComputeJacobians    </span>
+    <span style="color: #777777;">
+()    </span>
+".</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_10-0-15-version-1-modificationdate-1639360815000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_10-0-15-version-1-modificationdate-1639360815000-api-v2.png" width="600"  />
+    </p>
+<p   
+>The covariance matrix of visual residual is defined as the shift of some pixels under normalized camera coordinate. Here the code uses 1.5 pixel.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-13_10-5-56-version-1-modificationdate-1639361157000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-13_10-5-56-version-1-modificationdate-1639361157000-api-v2.png" width="300"  />
+    </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">projection covariance</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="projection covariance" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">// Estimator::setParameter</code></div>
+<div class="line"><code class="plain">project_sqrt_info_ = FOCAL_LENGTH / 1.5 * Matrix2d::Identity();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// Estimator::problemSolve</code></div>
+<div class="line"><code class="plain">edge->SetInformation(project_sqrt_info_.transpose() * project_sqrt_info_);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2047122533_VINSMonoStudy-Howtosolvethescalingfactorofvisualinformationandalignthevisualinformationwithrealworld">
+        <h1 class="heading "><span>How to solve the scaling factor of visual information and align the visual information with real world</span></h1>
+<p   
+>The vision-only SfM (structure from motion) can only estimate a graph of up-to-scale camera poses and feature positions. The unit distance of camera coordinate is not clear. VINS-Mono will estimate the scaling factor of visual information with IMU pre-integration. And then it will estimate the gravity of the first camera pose. Finally, we can recover the depth of 3D landmarks and align the camera coordinate with IMU body frame. This step only happens during VINS initialization. We assume the relative transformation or external calibration between IMU and camera is fixed and known.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-11_23-52-8-version-1-modificationdate-1639237929000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-11_23-52-8-version-1-modificationdate-1639237929000-api-v2.png" width="500"  />
+    </p>
+<p   
+><u class=" "><strong class=" ">scaling factor estimation</strong></u></p>
+<p   
+>Given the relative poses from Sfm, if they have multiply the scaling value, they should be consistent with the IMU pre-integration value between keyframes. Let's define the residual/error function between sfm pose and IMU pre-integration at keyframe k+1 and k. Ideally, the error function should be zero.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-11_23-55-26-version-1-modificationdate-1639238126000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-11_23-55-26-version-1-modificationdate-1639238126000-api-v2.png" width="600"  />
+    </p>
+<p   
+>Based on the known/observation value from IMU pre-integration value (α means position, β means velocity), we'd like to estimate,</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="16.287%"/>
+                                    <col  width="65.6881%"/>
+                                    <col  width="18.0384%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>description</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>dimension</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="latexmath"  src="images/inline/9fdfe40f1ce6eeb087241032e8ab7ea146a1fb6b3f79aad8e69815b12646aca9.svg" alt="images/inline/9fdfe40f1ce6eeb087241032e8ab7ea146a1fb6b3f79aad8e69815b12646aca9.svg"   />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>linear velocity of IMU body frame when taking keyframe image at time k</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3*1</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="latexmath"  src="images/inline/bd7b185e606753661b8eb5efa693c678aa108fdd5f8b158899843bc28c07d7f2.svg" alt="images/inline/bd7b185e606753661b8eb5efa693c678aa108fdd5f8b158899843bc28c07d7f2.svg"   />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>linear velocity of IMU body frame when taking keyframe image at time k+1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3*1</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="latexmath"  src="images/inline/afd97ba87855ba8aa7435ee731df09ab31d0f96dd9f4c624dc3c219b345f56b9.svg" alt="images/inline/afd97ba87855ba8aa7435ee731df09ab31d0f96dd9f4c624dc3c219b345f56b9.svg"   />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>gravity vector at camera coordinate for first camera</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3*1</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="latexmath"  src="images/inline/a4d5714f52cbd5d2fe22f0bdac0fcf35ab5cf4d0b175cd911d148601d87b430f.svg" alt="images/inline/a4d5714f52cbd5d2fe22f0bdac0fcf35ab5cf4d0b175cd911d148601d87b430f.svg"   />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>scale factor</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1*1</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+>Given the position and velocity info from IMU, there are two equations as followed, and can be solved with Cholesky decomposition (Hx=b format, H:6*10, x: 10*1)</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_0-11-42-version-1-modificationdate-1639239103000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_0-11-42-version-1-modificationdate-1639239103000-api-v2.png" width="600"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_0-12-3-version-1-modificationdate-1639239124000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_0-12-3-version-1-modificationdate-1639239124000-api-v2.png" width="600"  />
+    </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">init v,s,g</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="init v,s,g" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">     </code><code class="comments"> // 2. Construction AX = B and other formulas </code></div>
+<div class="line"><code class="plain">    </code><code class="color1">int</code><code class="plain"> i = 0;</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">for</code><code class="plain"> (frame_i = all_image_frame.begin(); next(frame_i) != all_image_frame.end(); frame_i++, i++)</code></div>
+<div class="line"><code class="plain">    {</code></div>
+<div class="line"><code class="plain">        frame_j = next(frame_i);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        MatrixXd tmp_A(6, 10);</code></div>
+<div class="line"><code class="plain">        tmp_A.setZero();</code></div>
+<div class="line"><code class="plain">        VectorXd tmp_b(6);</code></div>
+<div class="line"><code class="plain">        tmp_b.setZero();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="color1">double</code><code class="plain"> dt = frame_j->second.pre_integration->sum_dt;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        tmp_A.block<3, 3>(0, 0) = -dt * Matrix3d::Identity();</code></div>
+<div class="line"><code class="plain">        tmp_A.block<3, 3>(0, 6) = frame_i->second.R.transpose() * dt * dt / 2 * Matrix3d::Identity();</code></div>
+<div class="line"><code class="plain">        tmp_A.block<3, 1>(0, 9) = frame_i->second.R.transpose() * (frame_j->second.T - frame_i->second.T) / 100.0;     </code></div>
+<div class="line"><code class="plain">        tmp_b.block<3, 1>(0, 0) = frame_j->second.pre_integration->delta_p + frame_i->second.R.transpose() * frame_j->second.R * TIC[0] - TIC[0];</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">//cout << "delta_p   " << frame_j->second.pre_integration->delta_p.transpose() << endl;</code></div>
+<div class="line"><code class="plain">        tmp_A.block<3, 3>(3, 0) = -Matrix3d::Identity();</code></div>
+<div class="line"><code class="plain">        tmp_A.block<3, 3>(3, 3) = frame_i->second.R.transpose() * frame_j->second.R;</code></div>
+<div class="line"><code class="plain">        tmp_A.block<3, 3>(3, 6) = frame_i->second.R.transpose() * dt * Matrix3d::Identity();</code></div>
+<div class="line"><code class="plain">        tmp_b.block<3, 1>(3, 0) = frame_j->second.pre_integration->delta_v;</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">//cout << "delta_v   " << frame_j->second.pre_integration->delta_v.transpose() << endl;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments"> // Add information matrix cov_inv </code></div>
+<div class="line"><code class="plain">        Matrix<</code><code class="color1">double</code><code class="plain">, 6, 6> cov_inv = Matrix<</code><code class="color1">double</code><code class="plain">, 6, 6>::Zero();</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">//cov.block<6, 6>(0, 0) = IMU_cov[i + 1];</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">//MatrixXd cov_inv = cov.inverse();</code></div>
+<div class="line"><code class="plain">        cov_inv.setIdentity();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        MatrixXd r_A = tmp_A.transpose() * cov_inv * tmp_A;</code></div>
+<div class="line"><code class="plain">        VectorXd r_b = tmp_A.transpose() * cov_inv * tmp_b;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        </code><code class="comments">// //Put in all frames A, B; superimposed operation </code></div>
+<div class="line"><code class="plain">        A.block<6, 6>(i * 3, i * 3) += r_A.topLeftCorner<6, 6>();</code></div>
+<div class="line"><code class="plain">        b.segment<6>(i * 3) += r_b.head<6>();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        A.bottomRightCorner<4, 4>() += r_A.bottomRightCorner<4, 4>();</code></div>
+<div class="line"><code class="plain">        b.tail<4>() += r_b.tail<4>();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        A.block<6, 4>(i * 3, n_state - 4) += r_A.topRightCorner<6, 4>();</code></div>
+<div class="line"><code class="plain">        A.block<4, 6>(n_state - 4, i * 3) += r_A.bottomLeftCorner<4, 6>();</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">    A = A * 1000.0;</code></div>
+<div class="line"><code class="plain">    b = b * 1000.0;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments"> // 3. LDLT decomposition, get the initial value of the scale and G, and judge with the priority </code></div>
+<div class="line"><code class="plain">    x = A.ldlt().solve(b);</code></div>
+<div class="line"><code class="plain">    </code><code class="comments"> // Remove the last side scale s from the X -direction of the solution </code></div>
+<div class="line"><code class="plain">    </code><code class="color1">double</code><code class="plain"> s = x(n_state - 1) / 100.0;</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// ROS_DEBUG("estimated scale: %f", s);</code></div>
+<div class="line"><code class="plain">    </code><code class="comments"> // Take out the calculation value of gravity vector G </code></div>
+<div class="line"><code class="plain">    g = x.segment<3>(n_state - 4);</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// ROS_DEBUG_STREAM(" result g     " << g.norm() << " " << g.transpose());</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">if</code><code class="plain">(</code><code class="functions">fabs</code><code class="plain">(g.norm() - G.norm()) > 1.0 || s < 0)</code></div>
+<div class="line"><code class="plain">    {</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"> // If the gravity acceleration is too large or the reference value is too large or the scale is negative, the calculation is incorrect </code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> </code><code class="keyword">false</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">    }</code></div>
+</div>
+    </div>
+<p   
+>After the linear optimization above, the gravity from equation hasn't considered the "known magnitude 9.81" constraint. VINS Mono will refine the gravity vector estimation by replacing <img  class="latexmath"  src="images/inline/afd97ba87855ba8aa7435ee731df09ab31d0f96dd9f4c624dc3c219b345f56b92.svg" alt="images/inline/afd97ba87855ba8aa7435ee731df09ab31d0f96dd9f4c624dc3c219b345f56b92.svg"   />
+ with <img  class="latexmath"  src="images/inline/3681556b9d5003a838ae19ec8de9269adfbc9040a701fe3f21646fb416aa34d1.svg" alt="images/inline/3681556b9d5003a838ae19ec8de9269adfbc9040a701fe3f21646fb416aa34d1.svg"   />
+.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-12_14-33-16-version-1-modificationdate-1639290796000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-12_14-33-16-version-1-modificationdate-1639290796000-api-v2.png" width="250"  />
+    </p>
+<p   
+>where g(.) is the known magnitude of the gravity, <img  class="latexmath"  src="images/inline/3405f412b7e45abd4f3e98de1459ebb6aaf9b99799d73d6b41275d5cc20abf2a.svg" alt="images/inline/3405f412b7e45abd4f3e98de1459ebb6aaf9b99799d73d6b41275d5cc20abf2a.svg"   />
+ is the unit vector representing the gravity direction <img  class="latexmath"  src="images/inline/697d22aa9cd45a58d7e2dfadaaa9aa5f50c7f45d387c3e7c140dac83a445a9ef.svg" alt="images/inline/697d22aa9cd45a58d7e2dfadaaa9aa5f50c7f45d387c3e7c140dac83a445a9ef.svg"   />
+ which has been optimized in previous step. And <img  class="latexmath"  src="images/inline/aec54e6309e74e07191944650137a8a8d58147fb64460fac4ba917c368cdf909.svg" alt="images/inline/aec54e6309e74e07191944650137a8a8d58147fb64460fac4ba917c368cdf909.svg"   />
+ acts as small perturbation item. <img  class="latexmath"  src="images/inline/653644a409b2440e7cb3795cc71a319b2be85d98fc2ffc3a70296e95fdaa2a4b.svg" alt="images/inline/653644a409b2440e7cb3795cc71a319b2be85d98fc2ffc3a70296e95fdaa2a4b.svg"   />
+ and <img  class="latexmath"  src="images/inline/dce4e675664c22058c8ac442643ef1d36bc8dcb8aa6dfd5481f2f33aa4758af9.svg" alt="images/inline/dce4e675664c22058c8ac442643ef1d36bc8dcb8aa6dfd5481f2f33aa4758af9.svg"   />
+ are two orthogonal basis spanning the tangent plane. With the new gravity format, we can optimize the initial velocity, scaling factor and gravity again. Now, the direction of new estimated gravity(which is described by <img  class="latexmath"  src="images/inline/093d4a491a6c32e428e6a6a6a6937e8ca246343fb7e22a84b9fa79e2c6afe9a3.svg" alt="images/inline/093d4a491a6c32e428e6a6a6a6937e8ca246343fb7e22a84b9fa79e2c6afe9a3.svg"   />
+ and <img  class="latexmath"  src="images/inline/84c8b301dd36fa60a78a899b51222abb1e447038a39cc6dd966b408947bf6346.svg" alt="images/inline/84c8b301dd36fa60a78a899b51222abb1e447038a39cc6dd966b408947bf6346.svg"   />
+) should have small adjustment around its prior <img  class="latexmath"  src="images/inline/3405f412b7e45abd4f3e98de1459ebb6aaf9b99799d73d6b41275d5cc20abf2a.svg" alt="images/inline/3405f412b7e45abd4f3e98de1459ebb6aaf9b99799d73d6b41275d5cc20abf2a.svg"   />
+ and the magnitude should be close 9.81</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_14-46-14-version-1-modificationdate-1639291574000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_14-46-14-version-1-modificationdate-1639291574000-api-v2.png" width="500"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-12_14-50-50-version-1-modificationdate-1639291850000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-12_14-50-50-version-1-modificationdate-1639291850000-api-v2.png" width="250"  />
+    </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">gravity refinement</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="gravity refinement" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">void</code><code class="plain"> RefineGravity(map<</code><code class="color1">double</code><code class="plain">, ImageFrame> &all_image_frame, Vector3d &g, VectorXd &x)</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    </code><code class="comments"> // (1) The passing of the parameters and the definition of the container </code></div>
+<div class="line"><code class="plain">    </code><code class="comments"> // Add the mold length limit to the G0 </code></div>
+<div class="line"><code class="plain">    Vector3d g0 = g.normalized() * G.norm(); </code><code class="comments"> // norm (): Fan Digital, G's mold length, it is known, from the calculation of Lineralalignment </code></div>
+<div class="line"><code class="plain">    Vector3d lx, ly;</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">//VectorXd x;</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">int</code><code class="plain"> all_frame_count = all_image_frame.size();</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">int</code><code class="plain"> n_state = all_frame_count * 3 + 2 + 1;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    MatrixXd A{n_state, n_state};</code></div>
+<div class="line"><code class="plain">    A.setZero();</code></div>
+<div class="line"><code class="plain">    VectorXd b{n_state};</code></div>
+<div class="line"><code class="plain">    b.setZero();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    map<</code><code class="color1">double</code><code class="plain">, ImageFrame>::iterator frame_i;</code></div>
+<div class="line"><code class="plain">    map<</code><code class="color1">double</code><code class="plain">, ImageFrame>::iterator frame_j;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments"> // (2) iterates a total of four solutions and build a cut space </code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">for</code><code class="plain">(</code><code class="color1">int</code><code class="plain"> k = 0; k < 4; k++)</code></div>
+<div class="line"><code class="plain">    {</code></div>
+<div class="line"><code class="plain">        MatrixXd lxly(3, 2);</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"> // Cut the space to the space and return to B1, B2 in the formula; put the code in the BC matrix </code></div>
+<div class="line"><code class="plain">        lxly = TangentBasis(g0);</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">int</code><code class="plain"> i = 0;</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">for</code><code class="plain"> (frame_i = all_image_frame.begin(); next(frame_i) != all_image_frame.end(); frame_i++, i++)</code></div>
+<div class="line"><code class="plain">        {</code></div>
+<div class="line"><code class="plain">            frame_j = next(frame_i);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            MatrixXd tmp_A(6, 9);</code></div>
+<div class="line"><code class="plain">            tmp_A.setZero();</code></div>
+<div class="line"><code class="plain">            VectorXd tmp_b(6);</code></div>
+<div class="line"><code class="plain">            tmp_b.setZero();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            </code><code class="color1">double</code><code class="plain"> dt = frame_j->second.pre_integration->sum_dt;</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            tmp_A.block<3, 3>(0, 0) = -dt * Matrix3d::Identity();</code></div>
+<div class="line"><code class="plain">            tmp_A.block<3, 2>(0, 6) = frame_i->second.R.transpose() * dt * dt / 2 * Matrix3d::Identity() * lxly;</code></div>
+<div class="line"><code class="plain">            tmp_A.block<3, 1>(0, 8) = frame_i->second.R.transpose() * (frame_j->second.T - frame_i->second.T) / 100.0;     </code></div>
+<div class="line"><code class="plain">            </code><code class="comments"> // G0 known </code></div>
+<div class="line"><code class="plain">            tmp_b.block<3, 1>(0, 0) = frame_j->second.pre_integration->delta_p + frame_i->second.R.transpose() * frame_j->second.R * TIC[0] - TIC[0] - frame_i->second.R.transpose() * dt * dt / 2 * g0;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            tmp_A.block<3, 3>(3, 0) = -Matrix3d::Identity();</code></div>
+<div class="line"><code class="plain">            tmp_A.block<3, 3>(3, 3) = frame_i->second.R.transpose() * frame_j->second.R;</code></div>
+<div class="line"><code class="plain">            tmp_A.block<3, 2>(3, 6) = frame_i->second.R.transpose() * dt * Matrix3d::Identity() * lxly;</code></div>
+<div class="line"><code class="plain">            tmp_b.block<3, 1>(3, 0) = frame_j->second.pre_integration->delta_v - frame_i->second.R.transpose() * dt * Matrix3d::Identity() * g0;</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            Matrix<</code><code class="color1">double</code><code class="plain">, 6, 6> cov_inv = Matrix<</code><code class="color1">double</code><code class="plain">, 6, 6>::Zero();</code></div>
+<div class="line"><code class="plain">            </code><code class="comments">//cov.block<6, 6>(0, 0) = IMU_cov[i + 1];</code></div>
+<div class="line"><code class="plain">            </code><code class="comments">//MatrixXd cov_inv = cov.inverse();</code></div>
+<div class="line"><code class="plain">            cov_inv.setIdentity();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            MatrixXd r_A = tmp_A.transpose() * cov_inv * tmp_A;</code></div>
+<div class="line"><code class="plain">            VectorXd r_b = tmp_A.transpose() * cov_inv * tmp_b;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            A.block<6, 6>(i * 3, i * 3) += r_A.topLeftCorner<6, 6>();</code></div>
+<div class="line"><code class="plain">            b.segment<6>(i * 3) += r_b.head<6>();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            A.bottomRightCorner<3, 3>() += r_A.bottomRightCorner<3, 3>();</code></div>
+<div class="line"><code class="plain">            b.tail<3>() += r_b.tail<3>();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">            A.block<6, 3>(i * 3, n_state - 3) += r_A.topRightCorner<6, 3>();</code></div>
+<div class="line"><code class="plain">            A.block<3, 6>(n_state - 3, i * 3) += r_A.bottomLeftCorner<3, 6>();</code></div>
+<div class="line"><code class="plain">        }</code></div>
+<div class="line"><code class="plain">            A = A * 1000.0;</code></div>
+<div class="line"><code class="plain">            b = b * 1000.0;</code></div>
+<div class="line"><code class="plain">            x = A.ldlt().solve(b);</code></div>
+<div class="line"><code class="plain">            VectorXd dg = x.segment<2>(n_state - 3);</code></div>
+<div class="line"><code class="plain">            g0 = (g0 + lxly * dg).normalized() * G.norm();</code></div>
+<div class="line"><code class="plain">            </code><code class="comments">//double s = x(n_state - 1);</code></div>
+<div class="line"><code class="plain">    }   </code></div>
+<div class="line"><code class="plain">    g = g0;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+<p   
+>Once we've got the gravity vector for the first camera, all camera frame can be align with IMU coordinate by comparing the gravity difference between IMU measurement and Camera estimation.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-12_14-58-27-version-1-modificationdate-1639292307000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-12_14-58-27-version-1-modificationdate-1639292307000-api-v2.png" width="400"  />
+    </p>
+<p   
+>The rotation matrix transform from C0 to body(world) frame as,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-12_15-0-2-version-1-modificationdate-1639292402000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-12_15-0-2-version-1-modificationdate-1639292402000-api-v2.png" width="150"  />
+    </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">Visual IMU Alignment</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="Visual IMU Alignment" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">    </code><code class="comments"> // RS is the rotation of the L frame of the image in the IMU K frame to the sliding window </code></div>
+<div class="line"><code class="plain">    </code><code class="comments"> // R0 Rotate the reference coordinate system to the Z axis vertically upward </code></div>
+<div class="line"><code class="plain">    </code><code class="comments"> // R2YPR: Rotating matrix or four yuan to Euler Korn </code></div>
+<div class="line"><code class="plain">    </code><code class="comments"> // YPR2R: Euler Horing to Rotating Matrix or Four yuan </code></div>
+<div class="line"><code class="plain">    Matrix3d R0 = Utility::g2R(g);</code></div>
+<div class="line"><code class="plain">    </code><code class="comments"> // R0 rotates the Y -axis of the reference system to the IMU of the 0 frame. At this time, the X -axis determines to the right </code></div>
+<div class="line"><code class="plain">    </code><code class="color1">double</code><code class="plain"> yaw = Utility::R2ypr(R0 * Rs[0]).x();</code></div>
+<div class="line"><code class="plain">    </code><code class="comments"> // The rotating matrix R0 of the camera system to the world coordinate system </code></div>
+<div class="line"><code class="plain">    R0 = Utility::ypr2R(Eigen::Vector3d{-yaw, 0, 0}) * R0; </code><code class="comments"> // Just consider the impact of the polar angle </code></div>
+<div class="line"><code class="plain">    g = R0 * g;</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">//Matrix3d rot_diff = R0 * Rs[0].transpose();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments"> // 7. All variables rotate from the reference coordinate system C_L to the world coordinate system W </code></div>
+<div class="line"><code class="plain">    Matrix3d rot_diff = R0;</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">for</code><code class="plain"> (</code><code class="color1">int</code><code class="plain"> i = 0; i <= frame_count; i++)</code></div>
+<div class="line"><code class="plain">    {</code></div>
+<div class="line"><code class="plain">        Ps[i] = rot_diff * Ps[i];</code></div>
+<div class="line"><code class="plain">        Rs[i] = rot_diff * Rs[i];</code></div>
+<div class="line"><code class="plain">        Vs[i] = rot_diff * Vs[i];</code></div>
+<div class="line"><code class="plain">    }</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2047122533_VINSMonoStudy-Howtosupportofflinemappingandonlinelocalization">
+        <h1 class="heading "><span>How to support offline mapping and online localization</span></h1>
+<p   
+><u class=" "><strong class=" ">Online Localization (Relocalization)</strong></u></p>
+<p   
+>Let's assume the map has already been built, if the localizer has visited the place inside the map, how to get the constraint from the map? We call it Loop Closure constraint in VINS-Mono. With loop closure constraint, we can eliminate the accumulated error of sliding window.</p>
+<p   
+>The process of loop closure,</p>
+<ul class=" "><li class=" "><p   
+>loop closure detection by feature matching with DBOW2 + Brief feature descriptors.</p>
+</li><li class=" "><p   
+>relative motion estimation <img  class="latexmath"  src="images/inline/70f294923ccf8ffa64c18c9a2740fa86178bf1b7383c30867590caa904abb12c.svg" alt="images/inline/70f294923ccf8ffa64c18c9a2740fa86178bf1b7383c30867590caa904abb12c.svg"   />
+ between loop closure keyframe with PnP+Ransac algorithm.</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_10-28-2-version-1-modificationdate-1639362482000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_10-28-2-version-1-modificationdate-1639362482000-api-v2.png" width="500"  />
+    </p>
+<p   
+>It starts with VIO-only pose estimates (blue in sliding window). Past states are recorded (green, map data). If a loop is detected for the newest keyframe, as shown by the red line in the second plot, a relocalization occurred. Note that due to the use of feature-level correspondences for relocalization, we are able to incorporate loop-closure constraints from multiple past keyframes, as indicated in the last three plots.</p>
+<p   
+>Now we can use the loop closure constraint to further improve our sliding window optimization and the localization result will be more accurate.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_10-27-2-version-1-modificationdate-1639362422000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_10-27-2-version-1-modificationdate-1639362422000-api-v2.png" width="500"  />
+    </p>
+<p   
+>Where <img  class="latexmath"  src="images/inline/f5563f629a679bb35cf48fb1add85cdcb615e8be11a91cc3ec33abb83da1d0c3.svg" alt="images/inline/f5563f629a679bb35cf48fb1add85cdcb615e8be11a91cc3ec33abb83da1d0c3.svg"   />
+ and <img  class="latexmath"  src="images/inline/ad3134ccb438bfe948ca2f9cddbab1fc967ee681e498ddddc9810b55d07e07b9.svg" alt="images/inline/ad3134ccb438bfe948ca2f9cddbab1fc967ee681e498ddddc9810b55d07e07b9.svg"   />
+ are pose of two loop closure frame taken from map (pose graph). The <img  class="latexmath"  src="images/inline/70f294923ccf8ffa64c18c9a2740fa86178bf1b7383c30867590caa904abb12c.svg" alt="images/inline/70f294923ccf8ffa64c18c9a2740fa86178bf1b7383c30867590caa904abb12c.svg"   />
+ is the relative motion constraint between two loop closure frame. They are all known and constant.</p>
+<p   
+>The optimizer will constraint the estimated state <img  class="latexmath"  src="images/inline/ecbf9b0ab943e27778f26e68f144069d05201430a22337bc2532d6e31a93811f.svg" alt="images/inline/ecbf9b0ab943e27778f26e68f144069d05201430a22337bc2532d6e31a93811f.svg"   />
+ so that the relative motion constraint <img  class="latexmath"  src="images/inline/70f294923ccf8ffa64c18c9a2740fa86178bf1b7383c30867590caa904abb12c.svg" alt="images/inline/70f294923ccf8ffa64c18c9a2740fa86178bf1b7383c30867590caa904abb12c.svg"   />
+ which depends on state <img  class="latexmath"  src="images/inline/ecbf9b0ab943e27778f26e68f144069d05201430a22337bc2532d6e31a93811f.svg" alt="images/inline/ecbf9b0ab943e27778f26e68f144069d05201430a22337bc2532d6e31a93811f.svg"   />
+ will be consistent with the map data <img  class="latexmath"  src="images/inline/f5563f629a679bb35cf48fb1add85cdcb615e8be11a91cc3ec33abb83da1d0c3.svg" alt="images/inline/f5563f629a679bb35cf48fb1add85cdcb615e8be11a91cc3ec33abb83da1d0c3.svg"   />
+ and <img  class="latexmath"  src="images/inline/ad3134ccb438bfe948ca2f9cddbab1fc967ee681e498ddddc9810b55d07e07b9.svg" alt="images/inline/ad3134ccb438bfe948ca2f9cddbab1fc967ee681e498ddddc9810b55d07e07b9.svg"   />
+ .</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">loop closure residual</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="loop closure residual" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="color1">bool</code><code class="plain"> PoseLocalParameterization::Plus(</code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain"> *x, </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain"> *delta, </code><code class="color1">double</code><code class="plain"> *x_plus_delta) </code><code class="keyword">const</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    Eigen::Map<</code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d> _p(x);</code></div>
+<div class="line"><code class="plain">    Eigen::Map<</code><code class="keyword">const</code><code class="plain"> Eigen::Quaterniond> _q(x + 3);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    Eigen::Map<</code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d> dp(delta);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    Eigen::Quaterniond dq = Utility::deltaQ(Eigen::Map<</code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d>(delta + 3));</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    Eigen::Map<Eigen::Vector3d> p(x_plus_delta);</code></div>
+<div class="line"><code class="plain">    Eigen::Map<Eigen::Quaterniond> q(x_plus_delta + 3);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    p = _p + dp;</code></div>
+<div class="line"><code class="plain">    q = (_q * dq).normalized();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">return</code><code class="plain"> </code><code class="keyword">true</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// Estimator::optimization</code></div>
+<div class="line"><code class="plain">Vector3d pts_j = Vector3d(match_points[retrive_feature_index].x(), match_points[retrive_feature_index].y(), 1.0);</code></div>
+<div class="line"><code class="plain">Vector3d pts_i = it_per_id.feature_per_frame[0].point;</code></div>
+<div class="line"><code class="plain">                    </code></div>
+<div class="line"><code class="plain">ProjectionFactor *f = </code><code class="keyword">new</code><code class="plain"> ProjectionFactor(pts_i, pts_j);</code></div>
+<div class="line"><code class="plain">problem.AddResidualBlock(f, loss_function, para_Pose[start], relo_Pose, para_Ex_Pose[0], para_Feature[feature_index]);</code></div>
+<div class="line"><code class="plain">retrive_feature_index++;</code></div>
+</div>
+    </div>
+<p   
+>The Jacobian matrix and covariance matrix is Identity.</p>
+<p   
+><u class=" "><strong class=" ">Offline Mapping</strong></u></p>
+<p   
+>We will add the vertex which is removed/margianlized from sliding window into map and make sure this new added vertex will be consistent globally.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_11-2-59-version-1-modificationdate-1639364579000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_11-2-59-version-1-modificationdate-1639364579000-api-v2.png" width="600"  />
+    </p>
+<p   
+>Here is the steps for global pose graph optimization.</p>
+<p   
+>A keyframe is added into the pose graph when it is marginalized out from the sliding window. If there is a loop between this keyframe and any other past keyframes, the loop-closure constraints, formulated as 4-DOF relative rigid body transforms, will also be added to the pose graph. The pose graph is optimized using all relative pose constraints n a separate thread, and the relocalization module always runs with respect to the newest pose graph configuration.</p>
+<p   
+>VINS-Mono has defined two type of edges to optimize the pose graph.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_11-6-9-version-1-modificationdate-1639364769000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_11-6-9-version-1-modificationdate-1639364769000-api-v2.png" width="400"  />
+    </p>
+<ul class=" "><li class=" "><p   
+>Sequential Edge</p>
+</li></ul><p   style="margin-left:30px;"
+>sequential edge represents the relative transformation between two keyframes, which is taken directly from VIO in sliding window.</p>
+<p   style="margin-left:30px;"
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-13_11-8-27-version-1-modificationdate-1639364907000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-13_11-8-27-version-1-modificationdate-1639364907000-api-v2.png" width="250"  />
+    </p>
+<ul class=" "><li class=" "><p   
+>Loop-Closure Edge</p>
+</li></ul><p   style="margin-left:30px;"
+>If the keyframe has a loop connection, it connects the loop-closure frame by a loop-closure edge in the pose graph. Similarly, the loop-closure edge only contains a 4-DOF relative pose transform that is defined the same as Sequential Edge. The value of the loop-closure edge is obtained using results from relocalization.</p>
+<p   
+>pose graph residual definition,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_11-10-39-version-1-modificationdate-1639365039000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_11-10-39-version-1-modificationdate-1639365039000-api-v2.png" width="500"  />
+    </p>
+<p   
+>here is the cost function regrading pose graph, we want the pose graph to be consistent with sequential edge S and loop closure edge L. see code "    <span style="color: #7a3e9d;">
+PoseGraph    </span>
+    <span style="color: #777777;">
+::    </span>
+    <span style="color: #aa3731;">
+optimize4DoF    </span>
+"</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2047122533/image2021-12-13_12-15-22-version-1-modificationdate-1639368922000-api-v2.png" alt="images/confluence/download/thumbnails/2047122533/image2021-12-13_12-15-22-version-1-modificationdate-1639368922000-api-v2.png" width="300"  />
+    </p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">tips</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>Once the gravity is determined, the roll and pitch is observable. So the pose angle of object can only rotate on the horizontal plane. Hence the vertex of pose graph has 4 Degree of Freedom.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_12-13-19-version-1-modificationdate-1639368799000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_12-13-19-version-1-modificationdate-1639368799000-api-v2.png"  height="250" />
+    </p>
+        </div>
+    </div>
+<p   
+><u class=" "><strong class=" ">Saved Map Format</strong></u></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_12-19-50-version-1-modificationdate-1639369190000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_12-19-50-version-1-modificationdate-1639369190000-api-v2.png" width="400"  />
+    </p>
+<ul class=" "><li class=" "><p   
+>frame idx</p>
+</li><li class=" "><p   
+>vertex pose position and rotation</p>
+</li><li class=" "><p   
+>loop closure frame idx</p>
+</li><li class=" "><p   
+>relative position and yaw angle between loop closure frame</p>
+</li><li class=" "><p   
+>2D feature location + brief feature descriptors</p>
+</li></ul>    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">save map into txt file</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="save map into txt file" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">pFile = </code><code class="functions">fopen</code><code class="plain"> (file_path.c_str(),</code><code class="string">"w"</code><code class="plain">);</code></div>
+<div class="line"><code class="functions">fprintf</code><code class="plain"> (pFile, </code><code class="string">" %d %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %d %f %f %f %f %f %f %f %f %d\n"</code><code class="plain">,(*it)->index, (*it)->time_stamp, </code></div>
+<div class="line"><code class="plain">                                    VIO_tmp_T.x(), VIO_tmp_T.y(), VIO_tmp_T.z(), </code></div>
+<div class="line"><code class="plain">                                    PG_tmp_T.x(), PG_tmp_T.y(), PG_tmp_T.z(), </code></div>
+<div class="line"><code class="plain">                                    VIO_tmp_Q.w(), VIO_tmp_Q.x(), VIO_tmp_Q.y(), VIO_tmp_Q.z(), </code></div>
+<div class="line"><code class="plain">                                    PG_tmp_Q.w(), PG_tmp_Q.x(), PG_tmp_Q.y(), PG_tmp_Q.z(), </code></div>
+<div class="line"><code class="plain">                                    (*it)->loop_index, </code></div>
+<div class="line"><code class="plain">                                    (*it)->loop_info(0), (*it)->loop_info(1), (*it)->loop_info(2), (*it)->loop_info(3),</code></div>
+<div class="line"><code class="plain">                                    (*it)->loop_info(4), (*it)->loop_info(5), (*it)->loop_info(6), (*it)->loop_info(7),</code></div>
+<div class="line"><code class="plain">                                    (</code><code class="color1">int</code><code class="plain">)(*it)->keypoints.size());</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2047122533_VINSMonoStudy-HowtodealwiththedelaybetweencameraandIMU">
+        <h1 class="heading "><span>How to deal with the delay between camera and IMU</span></h1>
+<p   
+>see another paper "Online Temporal Calibration for Monocular Visual-Inertial Systems".</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2047122533/image2021-12-13_12-32-44-version-1-modificationdate-1639369964000-api-v2.png" alt="images/confluence/download/attachments/2047122533/image2021-12-13_12-32-44-version-1-modificationdate-1639369964000-api-v2.png" width="500"  />
+    </p>
+<p   
+>Assume the temporal offset between IMU and Camera is constant but unknown value.</p>
+    </div>
+    <div class="section section-1" id="src-2047122533_safe-id-VklOU01vbm9TdHVkeS1Lbm93bklzc3VlQ29sbGVjdGlvbihDb250aW51YWxseXVwZGF0ZWQp">
+        <h1 class="heading "><span>Known Issue Collection (Continually updated )</span></h1>
+<ul class=" "><li class=" "><p   
+>usually, the vehicle will move on a flat plane, there is no activation from IMU (hard to tell bias or noise from constant acceleration and rotation) → the VIN will get degradation.</p>
+</li><li class=" "><p   
+>the latency between camera and IMU should be less than 5ms.</p>
+</li><li class=" "><p   
+>VINS-Mono depends on lots of feature points would be computational expensive for embedded device.</p>
+</li></ul><p   
+><br/></p>
+<p   
+>    <span style="color: #000000;">
+    </span>
+</p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2069605453_Trajectory_Evaluation_Study.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Trajectory Evaluation Study</span>
+        </a>
+                <a href="4204906139_VNC_%E9%85%8D%E7%BD%AE.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> VNC configuration </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

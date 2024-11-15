@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pub Interface feadback - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2515435434"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                     <li><a href="1903588502_Design_decisions.html">Design decisions</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2515435434"> <span>Pub Interface feadback</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<ol class=" "><li class=" "><p   
+>MS3 Feedback<br/></p>
+<ol class=" "><li class=" "><p   
+>Viper</p>
+<ul class=" "><li class=" "><p   
+><del class=" ">FrontViewPixelMultitask – OK</del></p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="13.101%"/>
+                                    <col  width="22.6008%"/>
+                                    <col  width="40.74%"/>
+                                    <col  width="23.5401%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> document /signal</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Previous version </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> MS3 version </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Doubt </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wv3_xper_free_space.hpp/</p>
+<p   
+>    <span style="color: #4ec9b0;">
+CXPerFreeSpaceOutput    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+struct CXPerFreeSpaceOutput    </span>
+<br/>    <span style="color: #000000;">
+{    </span>
+<br/>    <span style="color: #000000;">
+ CXPerFrameInfo m_frame_info;    </span>
+    <span style="color: #000000;">
+ vfc::TFixedVector<per::CXPerPoint2i, FREESPACE_MAX_POINT_NUM> m_points;    </span>
+<br/>    <span style="color: #000000;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+struct CXPerFreeSpaceConvexHull    </span>
+<br/>    <span style="color: #000000;">
+{    </span>
+<br/>    <span style="color: #000000;">
+ vfc::TFixedVector<CXPerFreeSpacePoint, CONVEX_HULL_MAX_POINT_NUM> m_points;    </span>
+<br/>    <span style="color: #000000;">
+};    </span>
+    <span style="color: #000000;">
+struct CXPerFreeSpaceOutput    </span>
+<br/>    <span style="color: #000000;">
+{    </span>
+<br/>    <span style="color: #000000;">
+ CXPerFrameInfo m_frame_info;    </span>
+<br/>    <span style="color: #000000;">
+ per::EXPerCoordinateType m_coord_type{per::EXPerCoordinateType::COORD_CAMERA};    </span>
+<br/>    <span style="color: #000000;">
+ vfc::uint32_t m_image_width{960u};    </span>
+<br/>    <span style="color: #000000;">
+ vfc::uint32_t m_image_height{540u};    </span>
+<br/><br/>    <span style="color: #000000;">
+ vfc::TFixedVector<CXPerFreeSpacePoint, FREESPACE_MAX_POINT_NUM> m_points;    </span>
+<br/>    <span style="color: #000000;">
+    <span style="color: #ff0000;">
+ vfc::TFixedVector<CXPerFreeSpaceConvexHull, MAX_FREESPACE_CONVEX_HULL_NUM> m_convexhull    </span>
+;    </span>
+<br/>    <span style="color: #000000;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #339966;"> New Field: Vector of CxperfreespaceconvexHull, you need to confirm that the algorithm will be used by the algorithm </span>
+</p>
+<p   
+>    <span style="color: #339966;">
+<a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WHA7SGH">WANG He (XC-AS/PJ-WIN-PER5)</a>    </span>
+</p>
+<p   
+>    <span style="color: #339966;"> After confirming with FreeSpace task colleagues, MS3 will use the two structures of M_Convexhull and M_POINTS to send perception results to the same structure.// Updated by Wang He </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+</li><li class=" "><p   
+><del class=" ">BevMultiTaskCnn. — OK</del></p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="13.101%"/>
+                                    <col  width="22.6008%"/>
+                                    <col  width="40.74%"/>
+                                    <col  width="23.5401%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> document /signal</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Previous version </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> MS3 version </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Doubt </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wv3_xper_road_marker.hpp/</p>
+<p   
+>    <span style="color: #4ec9b0;">
+CXPerRoadMarkerOutput    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #569cd6;">
+struct    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+CXPerRoadMarkerOutput    </span>
+<br/>    <span style="color: #d4d4d4;">
+{    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+CXPerFrameInfo    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_frame_info    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/>    <span style="color: #6a9955;">
+ // union    </span>
+<br/>    <span style="color: #6a9955;">
+ // {    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+struct    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+CXPerRoadMarkerInfo    </span>
+<br/>    <span style="color: #d4d4d4;">
+ {    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+per    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+EXPerCoordinateType    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_coord_type    </span>
+    <span style="color: #d4d4d4;">
+{    </span>
+    <span style="color: #4ec9b0;">
+per    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+EXPerCoordinateType    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4fc1ff;">
+COORD_IMAGE    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+per    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+CXPerPoint2f    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_coord_origin    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+uint32_t    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_image_width    </span>
+    <span style="color: #d4d4d4;">
+{    </span>
+    <span style="color: #b5cea8;">
+600u    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+uint32_t    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_image_height    </span>
+    <span style="color: #d4d4d4;">
+{    </span>
+    <span style="color: #b5cea8;">
+600u    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+<br/><br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+TFixedVector    </span>
+    <span style="color: #d4d4d4;">
+<    </span>
+    <span style="color: #4ec9b0;">
+CXPerArrowInfo    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #9cdcfe;">
+XPER_ARROW_INFO_MAX_N    </span>
+    <span style="color: #d4d4d4;">
+>     </span>
+    <span style="color: #9cdcfe;">
+m_arrows    </span>
+    <span style="color: #d4d4d4;">
+{};    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+TFixedVector    </span>
+    <span style="color: #d4d4d4;">
+<    </span>
+    <span style="color: #4ec9b0;">
+CXPerOuterLineInfo    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #9cdcfe;">
+XPER_OUTER_LINE_INFO_MAX_N    </span>
+    <span style="color: #d4d4d4;">
+>     </span>
+    <span style="color: #9cdcfe;">
+m_outer_lines    </span>
+    <span style="color: #d4d4d4;">
+{};    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+TFixedVector    </span>
+    <span style="color: #d4d4d4;">
+<    </span>
+    <span style="color: #4ec9b0;">
+CXPerRotationBboxInfo    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #9cdcfe;">
+XPER_ROTATION_BBOX_INFO_MAX_N    </span>
+    <span style="color: #d4d4d4;">
+>     </span>
+    <span style="color: #9cdcfe;">
+m_rbboxs    </span>
+    <span style="color: #d4d4d4;">
+{};    </span>
+<br/>    <span style="color: #6a9955;">
+ // Key point means the points we defined on parking gate which can help us determining the gate is open or not    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+TFixedVector    </span>
+    <span style="color: #d4d4d4;">
+<    </span>
+    <span style="color: #4ec9b0;">
+CXPerKeyPointInfo    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+10    </span>
+    <span style="color: #d4d4d4;">
+>     </span>
+    <span style="color: #9cdcfe;">
+m_key_points    </span>
+    <span style="color: #d4d4d4;">
+{};    </span>
+<br/>    <span style="color: #d4d4d4;">
+ }     </span>
+    <span style="color: #9cdcfe;">
+m_road_marker_infos    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/>    <span style="color: #6a9955;">
+ // };    </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>// road marker output for map location<br/>struct CXPerRoadMarkerOutput<br/>{<br/>    <span style="color: #000000;">
+ CXPerFrameInfo m_frame_info;    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+bool m_has_road_markers{false}; // whether has m_road_markers    </span>
+<br/>    <span style="color: #000000;">
+ bool m_has_road_marker_infos{false}; // whether has m_road_marker_infos    </span>
+</p>
+<p   
+>    <span style="color: #ff0000;">
+// union    </span>
+<br/>    <span style="color: #ff0000;">
+ // {    </span>
+<br/>    <span style="color: #ff0000;">
+ // road marker output for staic fusion    </span>
+<br/>    <span style="color: #ff0000;">
+ struct CXPerRoadMarker    </span>
+<br/>    <span style="color: #ff0000;">
+ {    </span>
+<br/>    <span style="color: #ff0000;">
+ per::EXPerCoordinateType m_coord_type{per::EXPerCoordinateType::COORD_CAMERA};    </span>
+<br/>    <span style="color: #ff0000;">
+ vfc::TFixedVector<CXPerArrow, XPER_ARROW_INFO_MAX_N> m_arrows{};    </span>
+<br/>    <span style="color: #ff0000;">
+ vfc::TFixedVector<CXPerCrosswalk, XPER_CROSSWALK_MAX_N> m_crosswalks{};    </span>
+<br/>    <span style="color: #ff0000;">
+ vfc::TFixedVector<CXPerStopLine, XPER_STOPLINE_MAX_N> m_stoplines{};    </span>
+<br/>    <span style="color: #ff0000;">
+ vfc::TFixedVector<CXPerDecelerate, XPER_DECELERATE_MAX_N> m_decelerates{};    </span>
+<br/>    <span style="color: #ff0000;">
+ vfc::TFixedVector<CXPerNoStopArea, XPER_NOSTOPAREA_MAX_N> m_nostoparea{};    </span>
+<br/>    <span style="color: #ff0000;">
+ } m_road_markers;    </span>
+</p>
+<p   
+><br/></p>
+<p   
+>struct CXPerRoadMarkerInfo<br/>{<br/>// road marker output for xloc<br/>per::EXPerCoordinateType m_coord_type{per::EXPerCoordinateType::COORD_IMAGE};<br/>vfc::uint32_t m_image_width{600u};<br/>vfc::uint32_t m_image_height{600u};</p>
+<p   
+>vfc::TFixedVector<CXPerArrowInfo, XPER_ARROW_INFO_MAX_N> m_arrows{};<br/>vfc::TFixedVector<CXPerOuterLineInfo, XPER_OUTER_LINE_INFO_MAX_N> m_outer_lines{};<br/>vfc::TFixedVector<CXPerRotationBboxInfo, XPER_ROTATION_BBOX_INFO_MAX_N> m_rbboxs{};<br/>// Key point means the points we defined on parking gate which can help us determining the gate is open or not<br/>vfc::TFixedVector<CXPerKeyPointInfo, 10> m_key_points{};<br/>} m_road_marker_infos;<br/>// };<br/>};</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> New Field <span style="color: #ff0000;"> The CXPERROADMARKER section needs to be confirmed by the personnel personnel. </span>
+</p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">Alg feedback</span>
+        </div>
+        <div class="scroll-expand-content">
+<p   
+>[15:34] YANG Chen (XC-DX/PJ-W3-PER1)</p>
+<p   
+> Shi Yan (XC-DX/PJ-W3-PER5) Shi Bo, this part is the interface of the system colleagues who want me to add to Driving, which has nothing to do with NRCS </p>
+<p   
+><br/></p>
+<p   
+>[15:36] SHI Yan (XC-DX/PJ-W3-PER5)</p>
+<p   
+> So the MS3 Parking function, we won't fill in the content here, right? </p>
+<p   
+><br/></p>
+<p   
+>[15:36] YANG Chen (XC-DX/PJ-W3-PER1)</p>
+<p   
+> Yes </p>
+<p   
+><br/></p>
+<p   
+>[15:37] YANG Chen (XC-DX/PJ-W3-PER1)</p>
+<p   
+> The interface used is the structure of the INFOS suffix </p>
+        </div>
+    </div>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>wv3_xper_free_space.hpp/</p>
+<p   
+>    <span style="color: #4ec9b0;">
+CXPerFreeSpaceOutput    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+struct CXPerFreeSpaceOutput    </span>
+<br/>    <span style="color: #000000;">
+{    </span>
+<br/>    <span style="color: #000000;">
+ CXPerFrameInfo m_frame_info;    </span>
+<br/>    <span style="color: #000000;">
+ vfc::TFixedVector<per::CXPerPoint2i, FREESPACE_MAX_POINT_NUM> m_points;    </span>
+<br/>    <span style="color: #000000;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+struct CXPerFreeSpaceConvexHull    </span>
+<br/>    <span style="color: #000000;">
+{    </span>
+<br/>    <span style="color: #000000;">
+ vfc::TFixedVector<CXPerFreeSpacePoint, CONVEX_HULL_MAX_POINT_NUM> m_points;    </span>
+<br/>    <span style="color: #000000;">
+};    </span>
+<br/>    <span style="color: #000000;">
+struct CXPerFreeSpaceOutput    </span>
+<br/>    <span style="color: #000000;">
+{    </span>
+<br/>    <span style="color: #000000;">
+ CXPerFrameInfo m_frame_info;    </span>
+<br/>    <span style="color: #000000;">
+ per::EXPerCoordinateType m_coord_type{per::EXPerCoordinateType::COORD_CAMERA};    </span>
+<br/>    <span style="color: #000000;">
+ vfc::uint32_t m_image_width{960u};    </span>
+<br/>    <span style="color: #000000;">
+ vfc::uint32_t m_image_height{540u};    </span>
+<br/><br/>    <span style="color: #000000;">
+ vfc::TFixedVector<CXPerFreeSpacePoint, FREESPACE_MAX_POINT_NUM> m_points;    </span>
+<br/>    <span style="color: #000000;">
+    <span style="color: #ff0000;">
+ vfc::TFixedVector<CXPerFreeSpaceConvexHull, MAX_FREESPACE_CONVEX_HULL_NUM> m_convexhull    </span>
+;    </span>
+<br/>    <span style="color: #000000;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> New Field: Vector of <span style="color: #ff0000;"> CXPERFREESPACECONVEXHULL, you need the algorithm to confirm that it will be used by the algorithm </span>
+</p>
+<p   
+>    <span style="color: #ff0000;">
+<a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WHA7SGH">WANG He (XC-AS/PJ-WIN-PER5)</a>    </span>
+</p>
+<p   
+>    <span style="color: #ff0000;"> After confirming with FreeSpace task colleagues, MS3 will use the two structures of M_Convexhull and M_POINTS to send perception results to the same structure. </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+</li><li class=" "><p   
+> Fvview3dobjmot — see the last </p>
+</li></ul></li></ol></li></ol><ol class=" "><li class=" "><ol class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Fvview3dobjmot — see the last </p>
+</li><li class=" "><p   
+> NRCS3DMOT -see the last </p>
+</li></ul></li><li class=" "><p   
+>Liper<br/>i. Liper</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="13.4861%"/>
+                                    <col  width="27.445%"/>
+                                    <col  width="42.0815%"/>
+                                    <col  width="16.9874%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> document </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> MS3 version </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Previous version </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> question </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>pub_liper/wv3_xper_point_cloud.hpp</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #569cd6;">
+struct    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+CXPerPoint    </span>
+<br/>    <span style="color: #d4d4d4;">
+{    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #569cd6;">
+uint64_t    </span>
+    <span style="color: #d4d4d4;">
+ m_capture_ts{    </span>
+    <span style="color: #b5cea8;">
+0u    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+    <span style="color: #6a9955;">
+ // unit is ns    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #569cd6;">
+uint8_t    </span>
+    <span style="color: #d4d4d4;">
+ m_intensity{    </span>
+    <span style="color: #b5cea8;">
+0u    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #569cd6;">
+uint16_t    </span>
+    <span style="color: #d4d4d4;">
+ m_ring{    </span>
+    <span style="color: #b5cea8;">
+0u    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+per    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+CXPerPoint3f    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_point    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #569cd6;">
+struct    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+PointT    </span>
+<br/>    <span style="color: #d4d4d4;">
+{    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+float    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+x    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+float    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+y    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+float    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+z    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+uint8_t    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+intensity    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+uint16_t    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+ring    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+double    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+timestamp    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;"> It has been communicated with Wang Albert, which indicates that the MW+ Gateway Lidar input will directly use the newly defined interface of MS3. </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+<a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-22733?src=confmacro">CNWVIII-22733</a> - Jira issue doesn't exist or you don't have permission to view it.    </span>
+</p>
+<p   
+><br/></p>
+<p   
+><del class=" ">    <span style="color: #000000;"> The m_capture_ts in CXPERPOINT should be Double type, the unit is S </span>
+</del></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>pub_liper/wv3_xper_object.hpp</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #569cd6;">
+struct    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+CXPer3DBBox    </span>
+<br/>    <span style="color: #d4d4d4;">
+{    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+EXPerObjType    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_type    </span>
+    <span style="color: #d4d4d4;">
+{    </span>
+    <span style="color: #4ec9b0;">
+EXPerObjType    </span>
+    <span style="color: #d4d4d4;">
+::OBJ_TYPE_UNKNOWN};    </span>
+    <span style="color: #6a9955;">
+ // liper object type    </span>
+<br/><br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+per    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+CXPerPoint3f    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_point_center    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // Center Point in Camera Coordinate    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+float32_t    </span>
+    <span style="color: #d4d4d4;">
+ m_yaw{    </span>
+    <span style="color: #b5cea8;">
+0.0f    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+    <span style="color: #6a9955;">
+ // Rotation ry around T-axis in Camera Coordinate    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+float32_t    </span>
+    <span style="color: #d4d4d4;">
+ m_length{    </span>
+    <span style="color: #b5cea8;">
+0.0f    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+    <span style="color: #6a9955;">
+ // X-Axis length    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+float32_t    </span>
+    <span style="color: #d4d4d4;">
+ m_width{    </span>
+    <span style="color: #b5cea8;">
+0.0f    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+    <span style="color: #6a9955;">
+ // Y-Axis length    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+float32_t    </span>
+    <span style="color: #d4d4d4;">
+ m_height{    </span>
+    <span style="color: #b5cea8;">
+0.0f    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+    <span style="color: #6a9955;">
+ // Z-Axis length    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+float32_t    </span>
+    <span style="color: #d4d4d4;">
+ m_confidence{    </span>
+    <span style="color: #b5cea8;">
+0.0f    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+    <span style="color: #6a9955;">
+ // confidence    </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #569cd6;">
+struct    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+LIPER_BBOX    </span>
+    <span style="color: #d4d4d4;">
+ {    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+cv    </span>
+    <span style="color: #d4d4d4;">
+::Point3f point_center;    </span>
+    <span style="color: #6a9955;">
+ // Center Point in Camera Coordinate    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+float    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+length    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // X-Axis length    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+float    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+width    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // Y-Axis length    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+float    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+height    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // Z-Axis length    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+float    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vx    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // velocity x-axis    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+float    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vy    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // velocity y-axis    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+float    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+yaw    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // clockwise x+ axis around Y-axis in Camera Coordinate, countclockwise x+ axis around Z-axis in Lidar Coordinate    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #569cd6;">
+float    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+conf    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // confidence    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+LIPER_OBJ_TYPE    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+label    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // LIPER_OBJ_TYPE    </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;"> The new version has been added by Bi Yanguan in the new version </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+<a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/commits/e16bf31fd3f125ba6d31609b09f8a844a64c88b3">https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/commits/e16bf31fd3f125ba6d31609b09f8a844a64c88b3</a>    </span>
+</p>
+<p   
+>    <span style="color: #000000;"> The Velocity field is missing in CXPER3DBOX </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>pub_liper/wv3_xper_object.hpp</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #569cd6;">
+enum    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+EXPerObjType    </span>
+    <span style="color: #d4d4d4;">
+ :     </span>
+    <span style="color: #4ec9b0;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #569cd6;">
+uint32_t    </span>
+<br/>    <span style="color: #d4d4d4;">
+{    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_UNKNOWN    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Init Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_BUS    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x11    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Bus Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_TRUCK    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x12    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Truck Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_TRAILER    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x13    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Trailer Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_CONS_VEHICLE    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x14    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Construction vehicle type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_VEHICLE    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x20    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Vehicle Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_MOTOR    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x30    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Motor Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_CYCLIST    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x31    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Cyclist Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_TRICYCLE    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x32    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Tricycle Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_HUMAN    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x40    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Human or Bicycle    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_ROAD_SIGN    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x50    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Road Signs, Including Speed limit, Weight Limit, etc    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_TRAFFIC_LIGHT    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x60    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Traffic Light    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_TRAFFIC_CONE    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x61    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Traffic Cone    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_GENERAL    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x70    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // General obstacles    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+OBJ_TYPE_BARRIER    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x71    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Barrier type    </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #569cd6;">
+enum    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+LIPER_OBJ_TYPE    </span>
+    <span style="color: #d4d4d4;">
+ {    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIPER_OBJ_UNKNOWN    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Init Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIPER_OBJ_BUS    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x11    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Bus Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIPER_OBJ_TRUCK    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x12    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Truck Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIPER_OBJ_VEHICLE    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x20    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Vehicle Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIPER_OBJ_LIPEROR    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x30    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // LIPERor Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIPER_OBJ_CYCLIST    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x31    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Cyclist Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIPER_OBJ_TRICYCLE    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x32    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Tricycle Type    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIPER_OBJ_HUMAN    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x40    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Human or Bicycle or Pedestrians    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIPER_OBJ_ROADSIGN    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x50    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Road Signs, Including Speed limit, Weight Limit, etc    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIPER_OBJ_TRAFFICLIGTH    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x60    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ // Traffic Light    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIPER_OBJ_GENERAL    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x70    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #6a9955;">
+// General obstacles    </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;"> The new version has been aligned by Bi Yanguan </span>
+</p>
+<p   
+>    <span style="color: #ff0000;">
+<a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/commits/9cb78e0d25cffb69358cf03a93e6aa64a7f25020">https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/commits/9cb78e0d25cffb69358cf03a93e6aa64a7f25020</a>    </span>
+</p>
+<p   
+>    <span style="color: #000000;"> Laperor Type in ExperObjtype </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>pub_liper/wv3_xper_object.hpp</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #569cd6;">
+struct    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+CXPerObjectOutput    </span>
+<br/>    <span style="color: #d4d4d4;">
+{    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+CXPerFrameInfo    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_frame_info    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/><br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::TFixedVector<CXPer3DBBox, XPER_OBJ_3D_MAX_N> m_obj_3d;    </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #569cd6;">
+struct    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+LIPER_DETECTION    </span>
+    <span style="color: #d4d4d4;">
+ {    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+std    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+vector    </span>
+    <span style="color: #d4d4d4;">
+<    </span>
+    <span style="color: #4ec9b0;">
+LIPER_BBOX    </span>
+    <span style="color: #d4d4d4;">
+>     </span>
+    <span style="color: #9cdcfe;">
+liper_bboxes    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // detection results of liper mdoel    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+uint64_t    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+timestamp    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // the timestamp of current pointcloud frame, which is defined by upstream as the timestamp of last point    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+LIPER_COORD_TYPE    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+liper_coord_type    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+    <span style="color: #6a9955;">
+ // base coordinates of detected bboxes     </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</p>
+<p   
+>    <span style="color: #569cd6;">
+enum    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+LIPER_COORD_TYPE    </span>
+    <span style="color: #d4d4d4;">
+ {    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+WORLD    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ //global coordinates    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+LIDAR    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x10    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ //lidar coordinates    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+CAMERA    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x20    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ //camera coordinates    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4fc1ff;">
+EGO    </span>
+    <span style="color: #d4d4d4;">
+ =     </span>
+    <span style="color: #b5cea8;">
+0x30    </span>
+    <span style="color: #d4d4d4;">
+,    </span>
+    <span style="color: #6a9955;">
+ //ego car coordinates    </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;"> The new version has been added by Bi Yanguan in the new version </span>
+</p>
+<p   
+>    <span style="color: #ff0000;">
+    <span style="color: #000000;">
+<a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/commits/e16bf31fd3f125ba6d31609b09f8a844a64c88b3">https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/commits/e16bf31fd3f125ba6d31609b09f8a844a64c88b3</a>    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;"> No coordinate system definition in CXPEROBJECTOUTPUT </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/>ii. Mot</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> document </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> MS3 version </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Previous version </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> question </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>pub_common/wv3_xper_object_tracking.hpp</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #6a9955;">
+// MOT Output Information    </span>
+<br/>    <span style="color: #569cd6;">
+struct    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+CXperMotOutput    </span>
+<br/>    <span style="color: #d4d4d4;">
+{    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #569cd6;">
+uint64_t    </span>
+    <span style="color: #d4d4d4;">
+ m_time_stamp{    </span>
+    <span style="color: #b5cea8;">
+0u    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #569cd6;">
+uint32_t    </span>
+    <span style="color: #d4d4d4;">
+ m_frame_number{    </span>
+    <span style="color: #b5cea8;">
+0u    </span>
+    <span style="color: #d4d4d4;">
+};    </span>
+<br/><br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+per    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+EXPerCoordinateType    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_3d_coord_type    </span>
+    <span style="color: #d4d4d4;">
+{    </span>
+    <span style="color: #4ec9b0;">
+per    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+EXPerCoordinateType    </span>
+    <span style="color: #d4d4d4;">
+::COORD_CAMERA};    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+EXPerSensorType    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_sensor_type    </span>
+    <span style="color: #d4d4d4;">
+{    </span>
+    <span style="color: #4ec9b0;">
+EXPerSensorType    </span>
+    <span style="color: #d4d4d4;">
+::SENSOR_UNKNOWN};    </span>
+<br/><br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::TFixedVector<CXPerMotObjInfo, MOT_OBJ_MAX_N> m_mot_obj_list;    </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #6a9955;">
+// MOT Output Information    </span>
+<br/>    <span style="color: #569cd6;">
+struct    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+CMotOutputInfo    </span>
+<br/>    <span style="color: #d4d4d4;">
+{    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #569cd6;">
+uint64_t    </span>
+    <span style="color: #d4d4d4;">
+ m_timestamp;    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #569cd6;">
+uint32_t    </span>
+    <span style="color: #d4d4d4;">
+ m_seq_number;    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #4ec9b0;">
+EMotSensorName    </span>
+    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+m_sen_name    </span>
+    <span style="color: #d4d4d4;">
+;    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::TFixedVector<    </span>
+    <span style="color: #4ec9b0;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::    </span>
+    <span style="color: #4ec9b0;">
+float64_t    </span>
+    <span style="color: #d4d4d4;">
+,     </span>
+    <span style="color: #b5cea8;">
+16    </span>
+    <span style="color: #d4d4d4;">
+> m_t_b_c;    </span>
+    <span style="color: #6a9955;">
+ // Transition from body to cam    </span>
+<br/>    <span style="color: #d4d4d4;">
+     </span>
+    <span style="color: #9cdcfe;">
+vfc    </span>
+    <span style="color: #d4d4d4;">
+::TFixedVector<CMotOutputObjInfo,     </span>
+    <span style="color: #b5cea8;">
+100    </span>
+    <span style="color: #d4d4d4;">
+> m_mot_obj_list;    </span>
+<br/>    <span style="color: #d4d4d4;">
+};    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;"> It has been confirmed with XIA Sijun, which means that the MOT interface does not require this field </span>
+</p>
+<p   
+><del class=" ">    <span style="color: #000000;"> The lack of the transfer matrix in CXPERMOTOUTPUT </span>
+</del></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+</li></ol></li></ol>        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3385595524_Persistency_Data_Handling_for_Calibration_of_Parking_VIPER_LIPER.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Persistency Data Handling for Calibration of Parking VIPER LIPER</span>
+        </a>
+                <a href="1903589266_Lidar_and_fusion_architecture.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Lidar and fusion architecture</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

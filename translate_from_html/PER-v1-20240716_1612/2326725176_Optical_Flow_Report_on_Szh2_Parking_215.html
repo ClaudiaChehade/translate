@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Optical Flow Report on Szh2 Parking 215 - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2326725176"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                                         <li class="shortcut"><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                                                     <li><a href="2132608655_Orb-Slamv3_Front-End_Improvement_Study.html">Orb-Slamv3 Front-End Improvement Study</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2326725176"> <span>Optical Flow Report on Szh2 Parking 215</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-2326725176_OpticalFlowReportonSzh2Parking215-MainIdea">
+        <h1 class="heading "><span>Main Idea</span></h1>
+<ul class=" "><li class=" "><p   
+>init stage: no difference with onboard_mapping</p>
+</li><li class=" "><p   
+>non-keyframe tracking (no additional feature points extraction and map points creation)</p>
+<ul class=" "><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2326725176/image2022-6-23_10-42-7-version-1-modificationdate-1655952127000-api-v2.png" alt="images/confluence/download/attachments/2326725176/image2022-6-23_10-42-7-version-1-modificationdate-1655952127000-api-v2.png"  height="250" />
+    </li><li class=" "><p   
+>given reference keyframe(KF) pose and its map points, for each non-keyframe (current frame)</p>
+<ul class=" "><li class=" "><p   
+>predict the camera pose of non-keyframe with constant speed model or IMU prediction</p>
+</li><li class=" "><p   
+>project the map points of reference KF to current frame with predicted pose and identify the map points of current frame based on optical flow tracking, these map points all come from reference KF</p>
+</li><li class=" "><p   
+>for the next non keyframe, project the map points of its last non keyframe to current frame with predicted pose and identify the map points of current frame based on optical flow tracking, these map points all come from reference KF.</p>
+<ul class=" "><li class=" "><p   
+>for optical flow tracking, the map points are filtered by circle-mask (like vins-mono) and each tracked candidate shall be check by epipoloar    <span style="color: #333333;">
+ constraint.    </span>
+</p>
+</li><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2326725176/image2022-6-23_14-34-52-version-1-modificationdate-1655966093000-api-v2.png" alt="images/confluence/download/attachments/2326725176/image2022-6-23_14-34-52-version-1-modificationdate-1655966093000-api-v2.png"  height="400" />
+    </li></ul></li><li class=" "><p   
+>execute PnP algorithm to optimize the pose of current frame (optimization may contains IMU constraints depends on IMU init state)</p>
+</li></ul></li></ul></li><li class=" "><p   
+>Key frame Creation Timing: no big difference</p>
+<ul class=" "><li class=" "><p   
+>mMinFrames: control the total number of KF and map points</p>
+</li><li class=" "><p   
+>    <span style="color: #333333;">
+thRefRatio: control the total number of KF and map points    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #333333;">
+add near point checking, if there is not enough near points, an new keyframe shall be created.    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #333333;">
+Key frame Creation    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #333333;">
+extract the ORB feature and its descriptor of current frame    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #333333;">
+project the map points from local map to current frame    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #333333;">
+find the map points of current frame from local map by compare their BOW    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #333333;">
+if the map points for current frame is not enough, then a relocalization process will be executed    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #333333;">
+execute track local map function, to optimize the pose and map points of current frame    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #333333;">
+create new keyframe from current frame.    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #333333;">
+local mapping and loop closure no change.    </span>
+</p>
+</li></ul><p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2326725176_OpticalFlowReportonSzh2Parking215-TestPerformance">
+        <h1 class="heading "><span>Test Performance</span></h1>
+<p   
+><u class=" "><strong class=" ">Dataset 1:</strong></u></p>
+<p   
+>8328C_20220318155622</p>
+<p   
+><u class=" "><strong class=" ">Video Record:</strong></u></p>
+<p   
+>\\<a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\04_PER\05_maploc\00_dataset\optical_flow_onboardmapping\8328C_20220318155622.mp4</p>
+<p   
+><u class=" "><strong class=" ">Trajectory Comparison:</strong></u></p>
+<p   
+>Keyframe pose comparison between ORB3(orange) and Optical Flow(blue). Left figure is not aligned, right figure below is aligned(ORB3 is GT).</p>
+<p   
+>Tips:</p>
+<p   
+>since the timestamp of keyframe between ORB3 and optical flow is not matched well, the aligned trajectory of right figure is not smooth → issue of evaluation tooling.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2326725176/image2022-6-23_8-47-31-version-1-modificationdate-1655945935000-api-v2.png" alt="images/confluence/download/attachments/2326725176/image2022-6-23_8-47-31-version-1-modificationdate-1655945935000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2326725176/image2022-6-23_8-49-16-version-1-modificationdate-1655945935000-api-v2.png" alt="images/confluence/download/attachments/2326725176/image2022-6-23_8-49-16-version-1-modificationdate-1655945935000-api-v2.png"  height="400" />
+</p>
+<p   
+><u class=" "><strong class=" ">Absolute Trajectory Error(ATE) and Relative Error(RE)</strong></u></p>
+<p   
+>In general, the performance of optical flow is quite similar as ORB3.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2326725176/image2022-6-23_8-54-39-version-1-modificationdate-1655945935000-api-v2.png" alt="images/confluence/download/attachments/2326725176/image2022-6-23_8-54-39-version-1-modificationdate-1655945935000-api-v2.png" width="450"  />
+    </p>
+<p   
+>Based on this fine-tuned version, it will generate less KF and map points which will improve the total computation speed under same accuracy performance.</p>
+<p   
+>Total image: 8988</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="11.245%"/>
+                                    <col  width="39.759%"/>
+                                    <col  width="48.996%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Key Frame Total Count</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Map Points Total Count</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ORB3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;">
+2103    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;">
+65304    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>FLK</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;">
+833    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;">
+22324    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<p   
+><u class=" "><strong class=" ">Dataset2:</strong></u></p>
+<p   
+>7185C_20220421110011</p>
+<p   
+><u class=" "><strong class=" ">Video Record:</strong></u></p>
+<p   
+>\\<a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\04_PER\05_maploc\00_dataset\optical_flow_onboardmapping\7185C_20220421110011.mp4</p>
+<p   
+><u class=" "><strong class=" ">Trajectory Comparison:</strong></u></p>
+<p   
+>Keyframe pose comparison between ORB3(orange) and Optical Flow(blue). Left figure is not aligned, right figure below is aligned(ORB3 is GT).</p>
+<p   
+>Tips:</p>
+<p   
+>since the timestamp of keyframe between ORB3 and optical flow is not matched well, the aligned trajectory of right figure is not smooth → issue of evaluation tooling.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2326725176/image2022-6-23_15-3-40-version-1-modificationdate-1655967821000-api-v2.png" alt="images/confluence/download/attachments/2326725176/image2022-6-23_15-3-40-version-1-modificationdate-1655967821000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2326725176/image2022-6-23_15-3-52-version-1-modificationdate-1655967833000-api-v2.png" alt="images/confluence/download/attachments/2326725176/image2022-6-23_15-3-52-version-1-modificationdate-1655967833000-api-v2.png"  height="400" />
+</p>
+<p   
+><u class=" "><strong class=" ">Absolute Trajectory Error(ATE) and Relative Error(RE)</strong></u></p>
+<p   
+>In general, the performance of optical flow is quite similar as ORB3.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2326725176/image2022-6-23_15-4-19-version-1-modificationdate-1655967860000-api-v2.png" alt="images/confluence/download/attachments/2326725176/image2022-6-23_15-4-19-version-1-modificationdate-1655967860000-api-v2.png"  height="250" />
+    </p>
+<p   
+>Based on this fine-tuned version, it will generate less KF and map points which will improve the total computation speed under same accuracy performance.</p>
+<p   
+>Total image: 9046</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="11.245%"/>
+                                    <col  width="39.759%"/>
+                                    <col  width="48.996%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Key Frame Total Count</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Map Points Total Count</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ORB3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2370</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>73905</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>FLK</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1886</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>54082</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2204679021_Front-End_Benchmark_Optical_Flow_vs._ORB3.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Front-End Benchmark Optical Flow vs. ORB3</span>
+        </a>
+                <a href="2234222800_Outliers_Removal_in_Visual_Odometry_for_High-speed_Automotive_Applications.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Outliers Removal in Visual Odometry for High-speed Automotive Applications</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

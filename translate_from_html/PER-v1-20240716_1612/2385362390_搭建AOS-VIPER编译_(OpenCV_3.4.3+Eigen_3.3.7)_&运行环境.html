@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Build AOS -VIPER compilation (OpenCV 3.4.3+EIGEN 3.3.7) & operating environment -Wave 3 Development </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2385362390"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                     <li><a href="2385362347_Perception_tutorials.html">Perception tutorials</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2385362390"> <span> Establish AOS-VIPER compilation (OpenCV 3.4.3+EIGEN 3.3.7) & operating environment </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+> Hardware environment: <strong class=" ">HP Z2 G5</strong> <a   href="https://inside-docupedia.bosch.com/confluence/display/fleetmgmt/Performance+Desktop">Performance Desktop - Fleetmanagement - Docupedia (bosch.com)</a></p>
+<p   
+> Software environment: bosch osd6 / ubuntu 20.04 AOS 0.12.0 </p>
+<p   
+><br/></p>
+<p   
+><strong class=" ">AOS-VIPER</strong></p>
+<ol class=" "><li class=" "><p   
+> according to <a  class="external-link" href="https://aos.de.bosch.com/releases">Releases - Middleware and Development Tools for next-gen. Driving Applications (bosch.com)</a> After finishing <strong class=" ">Install system dependences</strong> and <strong class=" ">Install ROS</strong> Two steps, install ROS Noteic for Ubuntu 20.04 </p>
+</li></ol><p   
+>2.  according to <a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=2233960014">MW Release Note [Quick Start] - wave 3 development - Docupedia (bosch.com)</a> Version <strong class=" ">    <span style="color: #172b4d;">
+AOS_2207.2.0     </span>
+</strong>    <span style="color: #172b4d;"> Four steps of Note, install AOS 0.12.0 related compilation environment </span>
+</p>
+<p   
+>    <span style="color: #172b4d;"> (Code warehouse address use: <a  class="external-link" href="https://sourcecode01.de.bosch.com/scm/pjw3/aos-workspace.git">https://sourcecode01.de.bosch.com/scm/pjw3/aos-workspace.git</a>）    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;"> 3. Add the AOS warehouse of the WAVE3 project and set the account password information </span>
+</p>
+<p   
+>conan remote add w3-dev <a  class="external-link" href="https://rb-artifactory.bosch.com/artifactory/api/conan/xc-da-pjw3-dev-local">https://rb-artifactory.bosch.com/artifactory/api/conan/xc-da-pjw3-dev-local</a></p>
+<p   
+>conan user <username> -p <password> -r w3-dev</p>
+<p   
+>4. <tt class="bash plain "> Pull down the Browse PJ_W3 / PJ_W3-ROOT-SOURCE CODE 01 (bosch.com) code, and the W3-up1-PUB-Gateway, W3-UP1-PEB-PER-VIPERPull the code one by one </tt></p>
+<p   
+> (You can also replace all the SSH address prefix in the .git/Config for the corresponding address of the HTTPS prefix in the previous step, git submodule update --Init -recursive to update all Submodule code) </p>
+<p   
+> 5. Install the dependent library necessary for modules such as w3_localization to prevent subsequent compilation from finding the problems and link errors (see the figure below); if related problems are followed, install the corresponding lack of libraries. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2385362390/MicrosoftTeams-image-version-1-modificationdate-1660205764000-api-v2.png" alt="images/confluence/download/attachments/2385362390/MicrosoftTeams-image-version-1-modificationdate-1660205764000-api-v2.png"  height="250" />
+    <img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2385362390/MicrosoftTeams-image_%281%29-version-1-modificationdate-1660205764000-api-v2.png" alt="images/confluence/download/thumbnails/2385362390/MicrosoftTeams-image_%281%29-version-1-modificationdate-1660205764000-api-v2.png"  height="250" />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Flann/GLEW/BOOST header file cannot be found: </p>
+</li></ul></li></ul><p   
+>sudo apt-get install libglew-dev libboost-dev libboost-thread-dev libboost-filesystem-dev libflann-dev</p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> OpenCV-Jasper/Openni/VTK link error: </p>
+</li></ul></li></ul><p   
+>sudo add-apt-repository "deb <a  class="external-link" href="http://security.ubuntu.com/ubuntu">http://security.ubuntu.com/ubuntu</a> xenial-security main"</p>
+<p   
+>sudo apt install libjasper1 libjasper-dev</p>
+<p   
+>sudo apt install libopenni2-dev libvtk7-dev</p>
+<p   
+> 6. Get the dependent library PER_LIB of the 191 machine, and the path is under/mnt/sdb; after copying </p>
+<p   
+> 7. Modify all the relevant correspondence of the environment in the script, and set the effectiveness </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>source w3-up1-per-viper/prepare_ws.sh</p>
+</li></ul></li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>source per_lib/set_gpu_env.sh</p>
+</li></ul></li></ul><p   
+> 8. Switch to the directory W3-Up1-Per-Viper, run the script per_build_release.sh compile viper release, per_build.sh compile viper debug </p>
+<p   
+> Note: After compiling AOS for the first time to generate related files, compile again can add parameters -F to avoid generating speeding up again. For example: ./ per_build_release.sh -F </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2385362390/Screenshot_from_2022-08-11_10-37-05-version-1-modificationdate-1660205764000-api-v2.png" alt="images/confluence/download/thumbnails/2385362390/Screenshot_from_2022-08-11_10-37-05-version-1-modificationdate-1660205764000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2385362347_Perception_tutorials.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Perception tutorials</span>
+        </a>
+                <a href="2411028348_Sync_with_X-departments.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Sync with X-departments</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

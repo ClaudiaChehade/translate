@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>00_GNSS_Module_HW_Selection - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=1834196297"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                     <li><a href="1834779718_00_Localization.html">00_Localization</a></li>
+                                                            </ul>
+</div>            <h1 id="src-1834196297"> <span>00_GNSS_Module_HW_Selection</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+><strong class=" "><i class=" "><img  class="emoticon emoticon-warning"  src="images/confluence/s/cmfhca/9012/ly29vq/_/images/icons/emoticons/warning.svg" alt="images/confluence/s/cmfhca/9012/ly29vq/_/images/icons/emoticons/warning.svg"   />
+     <span style="color: #000000;">
+Compliance Disclaimer: <img  class="emoticon emoticon-warning"  src="images/confluence/s/cmfhca/9012/ly29vq/_/images/icons/emoticons/warning.svg" alt="images/confluence/s/cmfhca/9012/ly29vq/_/images/icons/emoticons/warning.svg"   />
+    </span>
+</i></strong></p>
+<ul class=" "><li class=" "><p   
+><strong class=" "><i class=" ">    <span style="color: #000000;">
+This page intended to contain general information only and is based on the experiences, research and discussion. If you find any information questionable, please immediately report it to the site owner!    </span>
+</i></strong></p>
+</li></ul><p   
+><strong class=" ">V0.1 (Draft information collection based on market investigation,only from information sharing, not official questionnaire.)<br/></strong></p>
+    <div  class="tablewrap">
+        <table class="wrapped relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="10.7159%"/>
+                                    <col  width="24.686%"/>
+                                    <col  width="13.428%"/>
+                                    <col  width="16.3672%"/>
+                                    <col  width="18.3022%"/>
+                                    <col  width="16.5342%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Category</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Items</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Novatel PMI222A</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>M1/M2 @ ByNav</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>F9K@U-Blox</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>VMPS Distributed System (A9) ?@ BOSCH</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>HW Picture</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/1834196297/image2021-7-14_13-49-57-version-1-modificationdate-1626241797000-api-v2.png" alt="images/confluence/download/thumbnails/1834196297/image2021-7-14_13-49-57-version-1-modificationdate-1626241797000-api-v2.png"  height="121" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/1834196297/image2021-9-2_10-59-54-version-1-modificationdate-1630551594000-api-v2.png" alt="images/confluence/download/thumbnails/1834196297/image2021-9-2_10-59-54-version-1-modificationdate-1630551594000-api-v2.png"  height="151" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/1834196297/image2021-7-14_13-50-5-version-1-modificationdate-1626241806000-api-v2.png" alt="images/confluence/download/thumbnails/1834196297/image2021-7-14_13-50-5-version-1-modificationdate-1626241806000-api-v2.png"  height="147" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+>Timeline & Cost</p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+                <td  class="highlight-#abf5d1 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Maturity</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1DOS + 1 planned.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Ongoing.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1DOS+1 planned.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#abf5d1 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Time plan</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>MP@2020.Q4.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>A sample available.</p>
+<p   
+>SOP @ Mar 2022.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>MP w/ industrial IMU.</p>
+<p   
+>2022.Q1 w/automotive grade IMU.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>VMPS MP @M. 2022</p>
+<p   
+>Distribute system on going</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#abf5d1 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Draft piece price based on 10kpcs (unofficial, information sharing only)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>75usd; +10usd for ASIL B.</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>490RMB (22kpcs/year, Tax Exluded)</p>
+<p   
+>No big development cost.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>50usd</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#abf5d1 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Development Cost</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>No big development cost.</p>
+<p   
+>(10w wthin 3years)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Additional cost for external IMU integration</p>
+</li><li class=" "><p   
+>Additional cost for providing fusion algorithms as library and running in DASY</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="8" colspan="1">
+    <p   
+>Performance<br/></p>
+<p   
+><br/></p>
+<p   
+><br/><br/></p>
+<p   
+><br/></p>
+            </td>
+                <td  class="highlight-#abf5d1 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Localization accuracy(CEP68 & CEP95)<br/>in Opensky,Urban,Dense Urban.</p>
+<p   
+><i class=" ">Please attache test report if available.</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Opensky: 0.03m CEP68</p>
+<p   
+>Urban:0.11m CEP68</p>
+<p   
+> DENSE (Lujiazui): 0.22M CEP68 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Urban:0.0303m CEP95</p>
+<p   
+>Dense: 0.3748m CEP95</p>
+<p   
+>Under bridge: 0.2557m CEP95</p>
+<p   
+>Car Park: 0.6593m CEP95</p>
+<p   
+>Highway Tunnel: 17.2544m CEP95</p>
+<p   
+>Low speed Tunnel: 3.2044m CEP95</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Open Highway: CEP68: 0.072m CEP95: 0.13m</p>
+<p   
+>Urban: CEP68: 0.852m CEP95: 1.838m</p>
+<p   
+>Dense Urban: CEP68: 1.11m CEP95: 1.70m</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>All Environment: <0.5 m@1σ (typical:15 cm)</p>
+<p   
+>High way: ~0.15m@1σ</p>
+<p   
+>Urban: ~0.2m@1σ</p>
+<p   
+>Urban canyon: ~0.4@1σ</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Time accuracy 1sigma</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ns</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>30ns</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>30ns</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Heading accuracy /1sigma</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Open-sky: 0.09°</p>
+<p   
+>Urban:0.15°</p>
+<p   
+> DENSE (Lujiazui): 0.13 ° </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>~ 0.1°</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2° (Pitch:0.3°, Roll:0.5°)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2°</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Velocity accuracy /1 sigma</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.055m/s(typical)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.03m/s</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.05m/s(typical)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.03m/s</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Output Rate</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Position: 50HZ; Next 100Hz @ E.2021.</p>
+<p   
+>IMU:@104Hz.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GNSS 5hz;</p>
+<p   
+>INS 100/125/200hz</p>
+<p   
+>IMU 100/125hz</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Position: 30HZ;</p>
+<p   
+>IMU:@100Hz,</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GNSS: 50HZ</p>
+<p   
+>IMU: 100HZ</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>DR bridge time</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10s within 0.2m</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The error is 0.1 ~ 0.3%*driving distance </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20s</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Time to Fix</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Cold start < 50 s (typical)</p>
+<p   
+>Warm start < 35 s (typical)</p>
+<p   
+>Hot start< 15s (typical)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Cold start ≤ 60s ;</p>
+<p   
+>Hot start ≤ 40s;?</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Cold start 26 s (typical)</p>
+<p   
+>Hot start 2s (typical)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:center;"
+>Availability? Which criteria ?</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>(horizontal deviation < 0.29M & height deviation < 1.4m & azimuth deviation < 1.5 ° data) / total number</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>Safety</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="highlight-#abf5d1 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Safety plan</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Module:AEC-Q104;</p>
+<p   
+>ASIL-B. TBD ongoing. upgrade w/o HW PIN change.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Stand alone X2:ASIL B in progress, expected to pass by E.2021;</p>
+<p   
+>ISO 26262 FSM(Under progress, expected certified in Feb 2022).</p>
+<p   
+>ASPICE L2 in progress, expected certified in Mar 2022.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Not planned.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ASIL-B (ISO26262 & IEC61508)</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#abf5d1 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Integrity / SOTIF</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes, detailed can be further discussed.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes, detailed can be further discussed.(ISO21448 2021.Q3 start) Current Alert Level: 1m.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>no</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes (ISO/PAS 21448)</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+>Constellations</p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+                <td  class="highlight-#abf5d1 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>BDS & single BDS work</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Can support BDS</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Constellation</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GPS/Galileo/Beidou</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GPS/GLONASS/BDS/Galileo</p>
+<p   
+>QZSS/IRNSS/LBAND</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GPS,GLONASS,Galileo,BeiDou,SBAS,QZSS</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GPS/GAL/GLO // BDS</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Frequency band</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Dual</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Triple</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Dual</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Dual</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="6" colspan="1">
+    <p   style="text-align:center;"
+>Functions</p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RTK,PPP,PPP-SSR</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RTK and FastPPP.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RTK, and FastPPP.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Only RTK in CN.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>SSR</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Fusion in module(e.g. GNSS IMU WSS…)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>WSS input</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>PPS</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Not yet</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#abf5d1 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>External IMU input</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>No</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes, may support</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>IMU raw data output</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Yes</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+>Hardware</p>
+            </td>
+                <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+>HW Size</p>
+<p   
+>(to be confirmed with HW team)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>35mm*42mm*4.2mm</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>30*40*4.5mm</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>22mm * 17mm * 2.4mm</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Refer to A9 + D9 see data sheet</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GNSS &IMU Chips</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GNSS:ST Teseo 8100, further 9100 w/ ASIL B.</p>
+<p   
+>IMU:ST ASM-330-LHH(can be replaced)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GNSS chip: self developed, 26262 ASIL-B</p>
+<p   
+>IMU: ST ASM330, 26262 ASIL-B (Need to be calibrated one by one to achieve specified performance)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GNSS:u-blox F9 platform chips.</p>
+<p   
+>IMU:Bosch BMI160 for industry grade.</p>
+<p   
+>Automotive grade ongoing.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GNSS: U-blox A9940</p>
+<p   
+>PPP: U-blox D9740</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>PIN definition</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Available</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Available</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Available</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Integration manual</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Under NDA.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Available</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Available</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Comments</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>External IMU sensor signals can be as input, and tunning within 1~2 months.</p>
+</li><li class=" "><p   
+>Novatel's fusion technology is in the first level in the world.</p>
+</li><li class=" "><p   
+>Function safety plan is ongoing, available time depends on customer project.</p>
+</li><li class=" "><p   
+>Upgrade w/o HW PIN change for function safety.</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>Flexible due to Chinese manufacturer.</p>
+</li><li class=" "><p   
+>Performance good.</p>
+</li><li class=" "><p   
+>Function safety planned.</p>
+</li><li class=" "><p   
+>low price.</p>
+</li><li class=" "><p   
+>module sample available, but fast development in China style.</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>Performance is not good.</p>
+</li><li class=" "><p   
+>no function safety plan.</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+>Notes:</p>
+<ol class=" "><li class=" "><p   
+>Bison of Trimble only supports Trimble RTX fast service, but RTX fast service is not available in China, so it should be excluded.</p>
+</li></ol>        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="1834779718_00_Localization.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>00_Localization</span>
+        </a>
+                <a href="1909425415_01_GNSS_IMU_Key_Information_Collection.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>01_GNSS/IMU Key Information Collection</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

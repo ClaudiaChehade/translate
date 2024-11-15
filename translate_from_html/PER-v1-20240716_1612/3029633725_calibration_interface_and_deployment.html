@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>calibration interface and deployment - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3029633725"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                     <li><a href="2754796745_xcalib_prod.html">xcalib_prod</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3029633725"> <span>calibration interface and deployment</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p  class="x_MsoNormal" 
+>    <span style="color: #000000;">
+<strong class=" "></strong>    </span>
+</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Retract </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="2">
+    <p   
+> Full name </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Function </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>SN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Serial Number</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Product Serial Number </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>VIN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Vehicle Identification Number</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Vehicle recognition code/frame number </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>DTC</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Diagnostic Trouble Codes</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Diagnostic failure code </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Read the fault code through the diagnostic instrument, quickly position the fault, and the fault code is cleared after the failure is eliminated </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OBD</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>On Board Diagnostics</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Self -diagnosis </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Real -time monitoring of the production line and after -sales calibration status. </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>UDS</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Unified Diagnostic Services</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Unified diagnosis service </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Direct communication based on interactive protocols (Request/Response) </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>SID</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Service Identifier</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Service identifier </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Data transmission function unit </p>
+<ul class=" "><li class=" "><p   
+> 22 Read Data by Identifier read data through ID </p>
+</li><li class=" "><p   
+> 23 Read Memory by Address reads memory via an address </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>DID</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Data Identifier</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Data identifier </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>FID</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Function Identifier</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Functional identifier </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>DEM</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Diagnostic Event Manager</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Diagnostic incident management </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Treatment and storage diagnostic events (error) and associated data </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>FIM</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Function Inhibition Manager</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Functional prohibited manager </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Report the fault EVENT to the DEM module, notify the FIM module, and make the corresponding relegation behavior through FID </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>persistency</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Provide permanent storage for (read only) configuration data </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ara::com</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Communication management </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> For service -oriented middleware, dynamically create communication paths during the operation, providing the foundation for service -based communication between applications and platform services </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+    <div class="section section-1" id="src-3029633725_safe-id-Y2FsaWJyYXRpb25pbnRlcmZhY2VhbmRkZXBsb3ltZW50LemHj-S6p-agh-WumuWQhOWKn-iDveaooeWdlw">
+        <h1 class="heading x_MsoNormal"><span> Each functional module of mass production calibration </span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="6.13409%"/>
+                                    <col  width="22.7532%"/>
+                                    <col  width="24.3224%"/>
+                                    <col  width="28.0314%"/>
+                                    <col  width="18.7589%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="highlight-grey confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>EOL calibration</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>after-sales calibration</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>online monitor</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>online calibration</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Solve the problem </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Calculation of vehicles offline </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Sensor changes or abnormal external governing </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   
+> During the vehicle driving process, due to the sudden changes in temperature and mechanical vibration, the sensor installation of the bracket deformation, the screw loose, the sensor installation angle changes, the external parameters deviate from </p>
+<ul class=" "><li class=" "><p   
+> Mild: correction through online calibration </p>
+</li><li class=" "><p   
+> Severe: triggers the downgrade of the relevant autonomous driving function from the perspective of functional security, and prompts users to go to the 4S shop for after -sales calibration </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Function description </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Initialized sensor external parameters </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Fix the calibration parameter (4S shop) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Monitor the changes in the installation angle of the sensor </p>
+<ul class=" "><li class=" "><p   
+> Downside function downgrade </p>
+</li><li class=" "><p   
+> Touch after sale and online calibration </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Multi -sensor combined calibration </p>
+<ul class=" "><li class=" "><p   
+> Based on feature information </p>
+</li><li class=" "><p   
+> Based on sports trajectory Odometry </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" "> Precautions <br/></strong><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+> Triggered by the diagnostic instrument </p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+> Triggered by the diagnostic instrument </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   
+> 1. Online detection and online calibration for rotation volume, not for translation </p>
+<p   
+> 2. The following scene is not suitable for online monitoring and online calibration </p>
+<ul class=" "><li class=" "><p   
+> Morning and evening peaks, vehicles are congested before and after </p>
+</li><li class=" "><p   
+> Rain and snow, heavy fog, night, etc. </p>
+</li><li class=" "><p   
+> Non -urban road conditions, the roads in front of the vehicle are uneven, and the bumps are obvious </p>
+</li><li class=" "><p   
+> PARKING LOT </p>
+</li><li class=" "><p   
+> The lane line is not clear </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Online monitoring depends on the output result of LIPER & VIPER. Real -time in real time? </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> If a single power -on cycle cannot accumulate enough data, you need to save the intermediate result for a breakpoint to renew </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> input Output </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   style="text-align:center;"
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3029633725/online-version-8-modificationdate-1684912550000-api-v2.png" alt="images/confluence/download/attachments/3029633725/online-version-8-modificationdate-1684912550000-api-v2.png" width="600"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   style="text-align:center;"
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3029633725/dynamic-version-4-modificationdate-1683882441000-api-v2.png" alt="images/confluence/download/attachments/3029633725/dynamic-version-4-modificationdate-1683882441000-api-v2.png" width="600"  />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Related dependencies </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Support read all the internal reference of the camera </p>
+</li><li class=" "><p   
+> Support read sensor installation design value </p>
+</li><li class=" "><p   
+> Support reading target 3D true value </p>
+</li><li class=" "><p   
+> Support to obtain vehicle information </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> After changing the camera, you need to read the internal reference again </p>
+</li><li class=" "><p   
+> Read historical calibration parameters </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <ul class=" "><li class=" "><p   
+> Multi -sensor time synchronization < 5ms</p>
+</li><li class=" "><p   
+> Camera Intrinsic & IMU Extrinsic is determined by the supply of supply and supports reading </p>
+</li><li class=" "><p   
+> Dispelging images & deprive motion distortion point cloud (LIPER & VIPER also needs to prepare data. It is recommended to process the front -end data module uniformly?) </p>
+</li><li class=" "><p   
+> In real output fusion of the vehicle position posture </p>
+</li><li class=" "><p   
+> LIPER real -time output ground point cloud segmentation results (non -required) </p>
+</li><li class=" "><p   
+> VIPER real-time output lane and BOONDING-BOX detection results </p>
+</li><li class=" "><p   
+> VHM output vehicle speed and steering wheel corner corner </p>
+</li><li class=" "><p   
+> CAN real -time output suspension height changes </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Run mode <br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   
+> Factory mode </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   
+> Normal function mode </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Deployment <br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   
+> You need to pass the original point cloud to the master end through Netcom </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   
+> No need to pass the original point cloud to the master end </p>
+<p   
+>    <span style="color: #ff0000;"> Dianyun data pre -processing module </span> Arranged on the slave end, and passed the processing results to the Master terminal through Netcom </p>
+<p   
+> Remarks: SOP1 is equipped with 1 lidar, SOP2 is equipped with 3 lidar </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-3029633725_safe-id-Y2FsaWJyYXRpb25pbnRlcmZhY2VhbmRkZXBsb3ltZW50LXNsYXZl4oaSbWFzdGVy5pWw5o2u5Lyg6YCS55qEcHViX2NhbGli55u45YWz5a6a5LmJ">
+        <h1 class="heading x_MsoNormal"><span> SLAVE → Master data transmitted PUB_CALIB -related definition </span></h1>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Perform the point cloud data pre -processing in Slave, and pass the single -frame pre -processing result to Master for LIDAR online monitoring/calibration </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Considering that SOP2 is equipped with 3 LIDAR, in order to reduce the Master load, the LIDAR online monitoring/calibration is performed directly on SLAVE, and the online monitoring results are passed to Master Downside Function Downgrade, or the online calibration results are passed to Master for storage </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Online monitoring/calibration only consider rotation, regardless of the translation volume </span>
+</p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-3029633725_safe-id-Y2FsaWJyYXRpb25pbnRlcmZhY2VhbmRkZXBsb3ltZW50LW1hc3RlciZzYWx2Zeagh-WumuWPguaVsOWtmOWCqOWSjOS9v-eUqA">
+        <h1 class="heading x_MsoNormal"><span> Master & SALVE calibration parameter storage and use </span></h1>
+<p   
+>    <span style="color: #000000;">
+<strong class=" ">xxtrinsic user</strong>    </span>
+</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>module</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>activity/gateway</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>runnable</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="4" colspan="1">
+    <p   
+>Loc</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LocalMsf</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LocalMsf</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xlio</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xlio</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>MapMatcherViperPreprocessor</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>MapMatcherViperPreprocessor</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ApaSlam</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ApaSlam</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Calib</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Calibration</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Calibration</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Map</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OnboardingMapping</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OnboardingMapping</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>HpaMapService</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>HpaReloc</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+>Liper</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LiperParking (or LiperSlave)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LiperDet</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LiperParking</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LiperSemseg</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><strong class=" ">EoL calibration scene</strong></p>
+<p   
+><img  class="confluence-embedded-image cp-img panning confluence-external-resource"  src="images/download/attachments/2929168071/image-2023-4-24_15-50-54-version-1-modificationdate-1682322655000-api-v2.png" alt="images/download/attachments/2929168071/image-2023-4-24_15-50-54-version-1-modificationdate-1682322655000-api-v2.png"  height="400" />
+    </p>
+<p   
+><strong class=" ">xPer&ASW use calibration parameter scene</strong></p>
+<p   
+><img  class="confluence-embedded-image cp-img panning confluence-external-resource"  src="images/download/attachments/2929168071/image-2023-4-24_15-51-29-version-1-modificationdate-1682322689000-api-v2.png" alt="images/download/attachments/2929168071/image-2023-4-24_15-51-29-version-1-modificationdate-1682322689000-api-v2.png"  height="400" />
+    </p>
+<ul class=" "><li class=" "><p   
+> Camera Intrinsic is obtained by Camera_Provide-GW </p>
+</li><li class=" "><p   
+> Camera Intrinsic & Camera Extrinsic & Lidar EXRINSIC is saved as Persistency File </p>
+</li><li class=" "><p   
+> Trans_helper reads the calibration parameters in Persistency File through ARA :: COW. </p>
+</li><li class=" "><p   
+> Persistency ensure the CRC integrity check, encryption, access right control and backup mechanism of the CRC of the calibration parameter </p>
+</li><li class=" "><p   
+> Provide a unified interface: The production line calibration and after -sales calibration does not require ASW startup, online calibration needs </p>
+</li><li class=" "><p   
+> Each power-on cycle ARA :: COM-GW reads only the calibration parameters in Persistency once. The online calibration cannot be modified before the valid parameters are not received. After receiving itPower -powered cycle use </p>
+</li></ul><p   
+><a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=2972729913">Follow up meeting of camera intrinsic&extrinsic and lidar extrinsic storage manner Solution</a></p>
+    </div>
+    <div class="section section-1" id="src-3029633725_safe-id-Y2FsaWJyYXRpb25pbnRlcmZhY2VhbmRkZXBsb3ltZW50Leagh-WumuaVsOaNruS6keerr3VwbG9hZCZkb3dubG9hZA">
+        <h1 class="heading x_MsoNormal"><span> Calibration data cloud upload & download </span></h1>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #ff0000;"> Mass production calibration data (Shadow Mode) link: ADCC car side → chery Baidu cloud (customer cloud) → bosch Tencent cloud (platform cloud </span>
+    <span style="color: #ff0000;">
+) → calibration algorithm    </span>
+<strong class=" ">    <span style="color: #ff0000;">
+<br/>    </span>
+</strong>    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+    <span style="color: #ff0000;">
+    <span style="color: #000000;"> The upload link has been opened, <span style="color: #ff0000;"> It's hard to complete the Link Link SOP1 </span> , Confirm with customers </span>
+    </span>
+    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;">
+    <span style="color: #ff0000;">
+    <span style="color: #000000;"> The definition of alignment with customers has not yet been aligned: </span>
+    </span>
+    </span>
+    <span style="color: #000000;">
+    <span style="color: #ff0000;">
+    <span style="color: #000000;"> ADCC → Customer Cloud, </span>
+    </span>
+    </span>
+    <span style="color: #000000;">
+    <span style="color: #ff0000;">
+    <span style="color: #000000;"> Customer cloud → platform cloud ( <span style="color: #ff0000;"> Calibration Algorithm cannot be based on the cloud module interface, refine the definition of calibration parameter interface that needs to be uploaded/sent, </span>
+）    </span>
+    </span>
+    </span>
+</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3029633725/image-2023-5-15_13-56-53-version-1-modificationdate-1684224844000-api-v2.png" alt="images/confluence/download/attachments/3029633725/image-2023-5-15_13-56-53-version-1-modificationdate-1684224844000-api-v2.png" width="800"  />
+    </p>
+<p  class="x_MsoNormal" 
+><strong class=" ">    <span style="color: #000000;"> The calibration data needed for upload/sent down </span>
+</strong></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="highlight-grey confluenceTh" rowspan="1" colspan="1">
+    <p   
+>calibration module</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>xxtrinsic</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>calibration_log</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Trigger condition (statistical event) </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>eol calibration</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>YES</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>YES</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Calibration complete </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>after-sales calibration</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>YES</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>YES</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Calibration complete </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>online monitor</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>NO</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> YES needs a rotary rotation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Monitor the abnormal </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>online calibration</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>YES</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> YES needs a rotary rotation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Calibration complete </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=3029420466">Calibration parameter upload/download via Cloud</a></p>
+    </div>
+    <div class="section section-1" id="src-3029633725_safe-id-Y2FsaWJyYXRpb25pbnRlcmZhY2VhbmRkZXBsb3ltZW50LWlucHV0Jm91dHB1dG9mb25saW5lbW9uaXRvciZjYWxpYnJhdGlvbg">
+        <h1 class="heading x_MsoNormal"><span>input&output of online monitor&calibration </span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="9.89948%"/>
+                                    <col  width="7.99728%"/>
+                                    <col  width="34.2287%"/>
+                                    <col  width="29.3629%"/>
+                                    <col  width="18.5126%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Deployment location and calibration module </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Dependence </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Related structure definition </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Status quo description </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Calibration demand <br/>    </span>
+</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="2" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">slave : </strong><strong class=" ">calib_preprocess</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+netcom gateway    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Original Cloud </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+pub_loc    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Remove some cloud movement distortion </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+struct CXPerLocalLocalizationResult    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #003366;">
+struct CXPerLocalPose    </span>
+</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="14" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">master : </strong><strong class=" ">online_calib</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+calib progress    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Extract the features such as plane points, edge points, divide the ground point cloud and extract the method vector </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+struct OnlineCalibSingleFrame    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="5" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+pub_viper<br/>    </span>
+    <span style="color: #003366;">
+<br/>    </span>
+    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+wv3_xper_image_odd.hpp    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+struct CXPerImageOdd    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #003366;">
+weather    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+camera quality    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+ground status    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+scenario attribute    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+lighting quality    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+road    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+has lighting attribute    </span>
+</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+wv3_xper_lane_edge.hpp    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXPerLaneOutput</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    per::CXPerFrameInfo m_frame_info;</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_sensor_type{per::XPER_SENSOR_TYPE_UNKNOWN};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="color1">bool</code><code class="plain"> m_has_lanes{</code><code class="keyword">false</code><code class="plain">};       </code><code class="comments">// whether has m_lanes</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">bool</code><code class="plain"> m_has_lane_points{</code><code class="keyword">false</code><code class="plain">}; </code><code class="comments">// whether has m_lane_points</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// union</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// {</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// output for static fusion</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">struct</code><code class="plain"> CXPerLaneSegments</code></div>
+<div class="line"><code class="plain">    {</code></div>
+<div class="line"><code class="plain">        per::EXPerCoordinateType m_coord_type{per::EXPerCoordinateType::COORD_EGO};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        vfc::TFixedVector<CXPerLaneSegment, XPER_LANE_MAX_SEGMENT_N> m_segments;</code></div>
+<div class="line"><code class="plain">    } m_lanes;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// output for xloc</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">struct</code><code class="plain"> CXPerLanePointsSegments</code></div>
+<div class="line"><code class="plain">    {</code></div>
+<div class="line"><code class="plain">        per::EXPerCoordinateType m_coord_type{per::EXPerCoordinateType::COORD_IMAGE};</code></div>
+<div class="line"><code class="plain">        vfc::uint32_t m_image_width{600u};</code></div>
+<div class="line"><code class="plain">        vfc::uint32_t m_image_height{600u};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        vfc::TFixedVector<CXPerLanePointsSegment, XPER_LANE_MAX_SEGMENT_N> m_segments;</code></div>
+<div class="line"><code class="plain">    } m_lane_points, m_lane_points_tele, m_lane_points_rear;</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// }</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"><code class="plain"> </code></div>
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXPerRoadEdgeOutput</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    per::CXPerFrameInfo m_frame_info;</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_sensor_type{per::XPER_SENSOR_TYPE_UNKNOWN};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="color1">bool</code><code class="plain"> m_has_road_edges{</code><code class="keyword">false</code><code class="plain">};       </code><code class="comments">// whether has m_has_road_edges</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">bool</code><code class="plain"> m_has_road_edge_points{</code><code class="keyword">false</code><code class="plain">}; </code><code class="comments">// whether has m_has_road_edge_points</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// output for static fusion</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">struct</code><code class="plain"> CXPerRoadEdgeSegments</code></div>
+<div class="line"><code class="plain">    {</code></div>
+<div class="line"><code class="plain">        per::EXPerCoordinateType m_coord_type{per::EXPerCoordinateType::COORD_EGO};</code></div>
+<div class="line"><code class="plain">        vfc::TFixedVector<CXPerRoadEdgeSegment, XPER_ROAD_EDGE_MAX_N> m_segments;</code></div>
+<div class="line"><code class="plain">    } m_road_edges;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// output for xloc</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">struct</code><code class="plain"> CXPerRoadedgePointsSegments</code></div>
+<div class="line"><code class="plain">    {</code></div>
+<div class="line"><code class="plain">        per::EXPerCoordinateType m_coord_type{per::EXPerCoordinateType::COORD_IMAGE};</code></div>
+<div class="line"><code class="plain">        vfc::uint32_t m_image_width{960u};</code></div>
+<div class="line"><code class="plain">        vfc::uint32_t m_image_height{540u};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        vfc::TFixedVector<CXPerRoadedgePointsSegment, XPER_LANE_MAX_SEGMENT_N> m_segments;</code></div>
+<div class="line"><code class="plain">    } m_road_edge_points, m_road_edge_points_tele, m_road_edge_points_rear;</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> The lane line and road (Image Coordinates) of a single camera </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #003366;">
+front wide camera    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+front tele camera    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;"> Rear Camera (not guaranteed for the time being) </span>
+</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p  class="auto-cursor-target" 
+>    <span style="color: #003366;">
+wv3_xper_super_point.hpp    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> VisionFeatureInterface</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    per::CXPerFrameInfo m_frame_info; </code><code class="comments">/* sensor capture timestamp */</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_sensor_type{per::XPER_SENSOR_TYPE_UNKNOWN}; </code><code class="comments">/* the typer of cameras(Frontcam or Fishcams)*/</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_valid=0u;         </code><code class="comments">/* valid flag */</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_width=0u;         </code><code class="comments">/* image width of pyramid level 0 */</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_height=0u;        </code><code class="comments">/* image height of pyramid level 0 */</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_levels=0u;        </code><code class="comments">/* pyramid level */</code></div>
+<div class="line"><code class="plain">    vfc::float32_t m_scaleFactor=0u;  </code><code class="comments">/* pyramid scale */</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_keypoint_num=0u;  </code><code class="comments">/* keypoint number */</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">struct</code><code class="plain"> KeyPoint m_keypoints[VIPER_SUPERPOINT_MAX_FEATURE_PTS];</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_desRow=0u; </code><code class="comments">/* descriptors matrix row(m_keypoint_num)*/</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_desCol=0u; </code><code class="comments">/* descriptors matrix col(DESCTIPTOR_LEN)*/</code></div>
+<div class="line"><code class="plain">    vfc::float32_t m_descriptors[VIPER_SUPERPOINT_MAX_FEATURE_PTS * VIPER_SUPERPOINT_MAX_DESCTIPTOR_LEN]; </code><code class="comments">/* descriptors matrix */</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">struct</code><code class="plain"> MultiVisionFeatureInterface</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    EFeatureType m_featureType=EFeatureType::FEATURE_SUPERPOINT;</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_cam_num=0u; </code><code class="comments">/*valid camera number*/</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">struct</code><code class="plain"> VisionFeatureInterface m_cam_features[VIPER_SUPERPOINT_FEV_CAMERA_NUM];</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> SUPER POINT (Image Coordinates) of a single camera </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #003366;">
+surround view camera    </span>
+</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+wv3_xper_viper_object.hpp    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXPer2DBBox</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_sensor_type{per::XPER_SENSOR_TYPE_UNKNOWN}; </code><code class="comments">// only WR supported</code></div>
+<div class="line"><code class="plain">    CXper2dObject m_obj;</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CXper2dObject, VIPER_SUB_OBJ_MAX_N> m_sub_obj_list;</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXPer3DBBox</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    EXPerObjType m_type{EXPerObjType::OBJ_TYPE_UNKNOWN}; </code><code class="comments">// liper object type</code></div>
+<div class="line"><code class="plain">    per::CXPerPoint3f m_point_center;  </code><code class="comments">// Center Point in Camera Coordinate</code></div>
+<div class="line"><code class="plain">    vfc::float32_t m_yaw{0.0f};        </code><code class="comments">// Rotation ry around T-axis in Camera Coordinate</code></div>
+<div class="line"><code class="plain">    vfc::float32_t m_length{0.0f};     </code><code class="comments">// X-Axis length</code></div>
+<div class="line"><code class="plain">    vfc::float32_t m_width{0.0f};      </code><code class="comments">// Y-Axis length</code></div>
+<div class="line"><code class="plain">    vfc::float32_t m_height{0.0f};     </code><code class="comments">// Z-Axis length</code></div>
+<div class="line"><code class="plain">    vfc::float32_t m_confidence{0.0f}; </code><code class="comments">// confidence</code></div>
+<div class="line"><code class="plain">    vfc::float32_t m_vx{0.0f};         </code><code class="comments">// X-Axis velo</code></div>
+<div class="line"><code class="plain">    vfc::float32_t m_vy{0.0f};         </code><code class="comments">// Y-Axis velo</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXPerViperObjectOutput</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    per::CXPerFrameInfo m_frame_info;</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_sensor_type{per::XPER_SENSOR_TYPE_UNKNOWN};</code></div>
+<div class="line"><code class="plain">    per::EXPerCoordinateType m_coord_type{per::EXPerCoordinateType::COORD_EGO};</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<liper::CXPer3DBBox, liper::XPER_OBJ_3D_MAX_N> m_obj_3d;</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CXPer2DBBox, liper::XPER_OBJ_3D_MAX_N> m_obj_2d;</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> CXPER2DBOX of a single camera </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #003366;">
+front wide camera（ego car coordinates）    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+surround view camera（ego car coordinates）    </span>
+</p>
+</li></ul><p   
+>    <span style="color: #003366;"> CXPER3DBOX (fusion result, according to external projection to various cameras) </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #003366;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3029633725/image-2023-7-7_15-5-43-version-1-modificationdate-1688713544000-api-v2.png" alt="images/confluence/download/thumbnails/3029633725/image-2023-7-7_15-5-43-version-1-modificationdate-1688713544000-api-v2.png" width="150"  />
+    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3029633725/image-2023-7-7_15-6-13-version-1-modificationdate-1688713574000-api-v2.png" alt="images/confluence/download/attachments/3029633725/image-2023-7-7_15-6-13-version-1-modificationdate-1688713574000-api-v2.png" width="500"  />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p  class="auto-cursor-target" 
+>    <span style="color: #003366;"> CXPER2DBOX of a single camera </span>
+</p>
+<ul class=" "><li class="auto-cursor-target "><p   
+>    <span style="color: #003366;"> Require VIPER new iMage Coordinates output </span>
+</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+wv3_xper_pillar_pole.hpp    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXPerLaneImagePole</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_sensor_type{per::XPER_SENSOR_TYPE_UNKNOWN};  </code><code class="comments">// only WR supported</code></div>
+<div class="line"><code class="plain">    EXPerPoleType m_pole_type{EXPerPoleType::XPER_POLE_UNKOWN};</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<per::CXPerPoint2f, XPER_POLE_POINT_MAX_N> m_points_2d;</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXPerPoleOutput</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    per::CXPerFrameInfo m_frame_info;</code></div>
+<div class="line"><code class="plain">    vfc::uint32_t m_sensor_type{per::XPER_SENSOR_TYPE_UNKNOWN};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">struct</code><code class="plain"> CXPerLaneImagePoles</code></div>
+<div class="line"><code class="plain">    {</code></div>
+<div class="line"><code class="plain">        per::EXPerCoordinateType m_coord_type{per::EXPerCoordinateType::COORD_IMAGE};</code></div>
+<div class="line"><code class="plain">        vfc::uint32_t m_image_width{600u};</code></div>
+<div class="line"><code class="plain">        vfc::uint32_t m_image_height{600u};</code></div>
+<div class="line"><code class="plain">        vfc::TFixedVector<CXPerLaneImagePole, XPER_POLE_MAX_N> m_poles;</code></div>
+<div class="line"><code class="plain">    } m_image_poles;</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> CXPERLANEIMAGEPOLE of the single camera <br/>    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #003366;">
+front wide camera（image coordinates）    </span>
+</p>
+</li></ul><p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p  class="auto-cursor-target" 
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+pub_loc<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+xper_loc_outputif.hpp    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+struct CXPerLocalLocalizationResult    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #003366;">
+struct CXPerLocalPose    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+CXPerPoint3f m_linearVelocity    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+struct CXPerMotionMode    </span>
+</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+xodometry_outputif.hpp    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+struct CXOdometryOutput    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #003366;">
+EVehicleMoveDirection    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+per::CXPerPoint3f m_velocity    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #003366;">
+struct CPose    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #003366;">
+m_yaw_angle    </span>
+</p>
+</li></ul></li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+pub_fct    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+fct_overall_if.hpp    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+pub_degrade<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Downside function downgrade <br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+camera provider    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+image & intrinsic    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ara::com gateway    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+sensor_xxtrinsic    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+CAN    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Whether the suspension is in normal state (four -wheel suspension height) </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+Eth SOME/IP    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Whether the rearview mirror is folded, </span>
+    <span style="color: #003366;"> Whether the tire pressure is normal </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3029633725/image-2023-7-25_16-23-7-version-1-modificationdate-1690273388000-api-v2.png" alt="images/confluence/download/attachments/3029633725/image-2023-7-25_16-23-7-version-1-modificationdate-1690273388000-api-v2.png" width="1000"  />
+    </p>
+<p   
+><a  class="external-link" href="https://sites.inside-share4.bosch.com/sites/154667/_layouts/15/WopiFrame2.aspx?sourcedoc=%7Bec1a74df-72b8-4777-98b8-84d8640db150%7D&action=view&activeCell=%27%20%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E9%9C%80%E6%B1%82%E5%88%97%E8%A1%A8%27!A33&wdInitialSession=8250b5a0-8334-f029-eabe-2e07b23ec4ad&wdRldC=1">E0X ADCC diagnostic requiremet investigation list_V2.0_20230425_BOSCH</a> <strong class=" "> Software configuration requirements list </strong></p>
+<p   
+><a  class="external-link" href="https://sites.inside-share4.bosch.com/sites/154667/_layouts/15/WopiFrame2.aspx?sourcedoc=%7Bc936c94a-5576-49af-b3e4-f52e2b55c57e%7D">Vehicle Key information_template(draft)-20230510</a></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4139983603_%E5%94%AE%E5%90%8E%E6%A0%87%E5%AE%9A_VS_%E4%B8%8B%E7%BA%BF%E6%A0%87%E5%AE%9A_%EF%BC%88%E5%8D%9A%E4%B8%96%E6%A0%87%E5%AE%9A%E9%97%B4%E6%A0%87%E5%AE%9A%EF%BC%89%E5%AF%B9%E6%AF%94%E6%B5%8B%E8%AF%95.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> After -sales calibration VS offline calibration (Bosch standard intermediate calibration) comparison test </span>
+        </a>
+                <a href="3274474741_calibration_to-do_list.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>calibration to-do list</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>calib UT - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3600697837"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                     <li><a href="3515778253_02_Calib_Test.html">02 Calib Test</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3600697837"> <span>calib UT</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+></p>
+<p   
+>    <span style="color: #ff0000;">
+<strong class=" "> Note that you need to turn off VM_STATE during UT test </strong>    </span> Otherwise, it is impossible to call the initialization API due to VM State </p>
+<p   
+><br/><a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=3711460945"> Real car VM problem check -Wave 3 Development -DOCUPEDIA (bosch.com) </a></p>
+<p   
+><br/></p>
+    <div class="section section-1" id="src-3600697837_safe-id-Y2FsaWJVVC3og4zmma8">
+        <h1 class="heading "><span> background </span></h1>
+<p   
+><br/> When the Calib program is used, the relevant library of NVSCI is called. In the normal code logic, this code is implemented by MW HWA and packaged in YAAC automatically. The Camera Gateway data is collected through the IPC communication of NVSCI., And it is a blocking initialization, so when the interface/AOS version is not matched, there will be a cardless phenomenon without LOG/COREDUMP <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3600697837/image-2023-11-1_10-0-50-version-1-modificationdate-1698804050000-api-v2.png" alt="images/confluence/download/attachments/3600697837/image-2023-11-1_10-0-50-version-1-modificationdate-1698804050000-api-v2.png"  height="250" />
+    <br/> NVIPCDST is a blocking IPC thread that can replace the library file provided by the following NV to implement the naming of the thread. <br/><img    src="images/inline/51fb15123c799f0fbbc7823ec610c6984155b09742525305844b8247c9b3955e.png" alt="images/inline/51fb15123c799f0fbbc7823ec610c6984155b09742525305844b8247c9b3955e.png"  height="250" />
+    </p>
+<p   
+> Limitation 1: The existing Chery tablet is scarce and the current Camera Gateway is given to Calib a Gateway with strong coupling with ROUDI. The actual calibration is a single picture, which can be obtained directly from the file system. </p>
+<p   
+><br/><strong class=" "> So when doing unit tests, onupdate and oninit need to run on the board. At the same time, only the Camera Gateway of the push -flowing function is required to provide a set of Camera Gateway cameras. </strong><br/><br/></p>
+    </div>
+    <div class="section section-1" id="src-3600697837_calibUT-cameragateway">
+        <h1 class="heading "><span>camera gateway</span></h1>
+<p   
+> NVSCI during communication to configure the VIPER/CALIBTION/Record at the EndPoint to configure the receiving/send point to maintain different Endpoint <br/> Different Config </p>
+<p   
+> The JSON file is maintained in the Camera side by asw/MW/Camera/Board/Config to generate a different BIN when it is generated when compile </p>
+<p   
+> At the same time, in order to ensure time synchronization Camera Provider only outflows when all Endpoints are connected, so you need to ensure that the Endpoint of the 11th camera has only one <br/><img  class="confluence-embedded-image confluence-external-resource"  src="images/developer.nvidia.com/docs/drive/drive-os/6.0.8.1/public/drive-os-linux-sdk/common/graphics/nvsci/nvsci_nvscistream_image4.png" alt="images/developer.nvidia.com/docs/drive/drive-os/6.0.8.1/public/drive-os-linux-sdk/common/graphics/nvsci/nvsci_nvscistream_image4.png"   />
+    </p>
+<p   
+> Change as follows </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">diff --git a/conanfile_org.py b/conanfile_org.py</code></div>
+<div class="line"><code class="plain">index daa69da..534f285 100644</code></div>
+<div class="line"><code class="color3">--- a/conanfile_org.py</code></div>
+<div class="line"><code class="string">+++ b/conanfile_org.py</code></div>
+<div class="line"><code class="plain">@@ -167,7 +167,7 @@ class CameraProvider(ConanFile):</code></div>
+<div class="line"><code class="color1">             cmake.definitions['PACKETS'] = 8</code></div>
+<div class="line"><code class="color1">             cmake.definitions['ELEMENTS'] = 2</code></div>
+<div class="line"><code class="color1">             cmake.definitions['MULTICAST'] = self.getParkingMulticast()</code></div>
+<div class="line"><code class="color3">-            cmake.definitions['MULTICAST_VAR'] = 2</code></div>
+<div class="line"><code class="string">+</code></div>
+<div class="line"><code class="color1">         else:</code></div>
+<div class="line"><code class="color1">             cmake.definitions['PACKETS'] = 8</code></div>
+<div class="line"><code class="color1">             cmake.definitions['ELEMENTS'] = 2</code></div>
+<div class="line"><code class="plain">diff --git a/config/long-term/B-Sample/Viper/provider_config_b.json b/config/long-term/B-Sample/Viper/provider_config_b.json</code></div>
+<div class="line"><code class="plain">index 2a6d38e..2e6dc25 100644</code></div>
+<div class="line"><code class="color3">--- a/config/long-term/B-Sample/Viper/provider_config_b.json</code></div>
+<div class="line"><code class="string">+++ b/config/long-term/B-Sample/Viper/provider_config_b.json</code></div>
+<div class="line"><code class="variable">@@ -90,10 +90,8 @@</code></div>
+<div class="line"><code class="color1">     "sensors": [</code></div>
+<div class="line"><code class="color1">         {</code></div>
+<div class="line"><code class="color1">             "id": "1",</code></div>
+<div class="line"><code class="color3">-            "multicast-varient": "yes",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_FR_WIDE_D_INFER1_SP",</code></div>
+<div class="line"><code class="color3">-                "CAM_FR_WIDE_P_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_FR_WIDE_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "BOSCH_WAVE3_PF-B0",</code></div>
+<div class="line"><code class="variable">@@ -108,7 +106,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "2",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_FR_TELE_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_FR_TELE_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "BOSCH_WAVE3_PF-B0",</code></div>
+<div class="line"><code class="variable">@@ -122,7 +120,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "3",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_REAR_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_REAR_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "BOSCH_WAVE3_PF-B0",</code></div>
+<div class="line"><code class="variable">@@ -136,7 +134,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "4",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_WING_LR_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_WING_LR_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "BOSCH_WAVE3_PF-B0",</code></div>
+<div class="line"><code class="variable">@@ -150,7 +148,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "5",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_WING_RR_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_WING_RR_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "BOSCH_WAVE3_PF-B0",</code></div>
+<div class="line"><code class="variable">@@ -164,7 +162,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "6",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_WING_LF_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_WING_LF_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "BOSCH_WAVE3_PF-B0",</code></div>
+<div class="line"><code class="variable">@@ -178,7 +176,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "7",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_WING_RF_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_WING_RF_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "BOSCH_WAVE3_PF-B0",</code></div>
+<div class="line"><code class="variable">@@ -192,7 +190,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "8",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_NRCS_FRONT_P_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_NRCS_FRONT_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "BOSCH_WAVE3_PF-B0",</code></div>
+<div class="line"><code class="variable">@@ -206,7 +204,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "9",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_NRCS_REAR_P_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_NRCS_REAR_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "BOSCH_WAVE3_PF-B0",</code></div>
+<div class="line"><code class="variable">@@ -220,7 +218,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "10",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_NRCS_LEFT_P_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_NRCS_LEFT_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "BOSCH_WAVE3_PF-B0",</code></div>
+<div class="line"><code class="variable">@@ -234,7 +232,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "11",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_NRCS_RIGHT_P_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_NRCS_RIGHT_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "BOSCH_WAVE3_PF-B0",</code></div>
+<div class="line"><code class="plain">diff --git a/config/long-term/B-Sample/Viper/provider_config_chery.json b/config/long-term/B-Sample/Viper/provider_config_chery.json</code></div>
+<div class="line"><code class="plain">index 8d25ba1..f5760d6 100644</code></div>
+<div class="line"><code class="color3">--- a/config/long-term/B-Sample/Viper/provider_config_chery.json</code></div>
+<div class="line"><code class="string">+++ b/config/long-term/B-Sample/Viper/provider_config_chery.json</code></div>
+<div class="line"><code class="variable">@@ -102,10 +102,8 @@</code></div>
+<div class="line"><code class="color1">     "sensors": [</code></div>
+<div class="line"><code class="color1">         {</code></div>
+<div class="line"><code class="color1">             "id": "1",</code></div>
+<div class="line"><code class="color3">-            "multicast-varient": "yes",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_FR_WIDE_D_INFER1_SP",</code></div>
+<div class="line"><code class="color3">-                "CAM_FR_WIDE_P_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_FR_WIDE_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "CHERY_E03-B0",</code></div>
+<div class="line"><code class="variable">@@ -120,7 +118,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "2",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_FR_TELE_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_FR_TELE_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "CHERY_E03-B0",</code></div>
+<div class="line"><code class="variable">@@ -134,7 +132,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "3",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_REAR_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_REAR_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "CHERY_E03-B0",</code></div>
+<div class="line"><code class="variable">@@ -148,7 +146,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "4",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_WING_LR_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_WING_LR_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "CHERY_E03-B0",</code></div>
+<div class="line"><code class="variable">@@ -162,7 +160,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "5",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_WING_RR_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_WING_RR_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "CHERY_E03-B0",</code></div>
+<div class="line"><code class="variable">@@ -176,7 +174,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "6",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_WING_LF_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_WING_LF_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "CHERY_E03-B0",</code></div>
+<div class="line"><code class="variable">@@ -190,7 +188,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "7",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_WING_RF_D_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_WING_RF_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "CHERY_E03-B0",</code></div>
+<div class="line"><code class="variable">@@ -204,7 +202,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "8",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_NRCS_FRONT_P_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_NRCS_FRONT_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "CHERY_E03-B0",</code></div>
+<div class="line"><code class="variable">@@ -218,7 +216,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "9",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_NRCS_REAR_P_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_NRCS_REAR_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "CHERY_E03-B0",</code></div>
+<div class="line"><code class="variable">@@ -232,7 +230,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "10",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_NRCS_LEFT_P_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_NRCS_LEFT_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "CHERY_E03-B0",</code></div>
+<div class="line"><code class="variable">@@ -246,7 +244,7 @@</code></div>
+<div class="line"><code class="color1"> 		{</code></div>
+<div class="line"><code class="color1">             "id": "11",</code></div>
+<div class="line"><code class="color1">             "endpoint": [</code></div>
+<div class="line"><code class="color3">-                "CAM_NRCS_RIGHT_P_INFER1_SP"</code></div>
+<div class="line"><code class="string">+                "CAM_NRCS_RIGHT_CALIB_SP"</code></div>
+<div class="line"><code class="color1">             ],</code></div>
+<div class="line"><code class="color1">             "camera": {</code></div>
+<div class="line"><code class="color1">                 "platform-config": "CHERY_E03-B0",</code></div>
+<div class="line"><code class="color1"> </code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+<p   
+> Through the branches Develop_2309, pass ./build.sh -m SafeTy. <br/><img    src="images/inline/f9b5167dd980b8c9e5bb501e85a4994eb968ccd0d04a78546a5645be595720f4.png" alt="images/inline/f9b5167dd980b8c9e5bb501e85a4994eb968ccd0d04a78546a5645be595720f4.png"  height="250" />
+<img    src="images/inline/95b701ca48a3662823ed78e199e496d15536398045826af51e053767d896368a.png" alt="images/inline/95b701ca48a3662823ed78e199e496d15536398045826af51e053767d896368a.png"  height="250" />
+<br/></p>
+<p   
+> -v chery | bosch specifies the camera version -A specifies log level (consistent with AOS) <br/><br/></p>
+    </div>
+    <div class="section section-1" id="src-3600697837_safe-id-Y2FsaWJVVC1jYWxpYnJhdGlvblVU6K6-6K6h">
+        <h1 class="heading "><span> Calibration UT design </span></h1>
+    <div class="section section-2" id="src-3600697837_safe-id-Y2FsaWJVVC3nvJbor5E">
+        <h2 class="heading "><span> Compile </span></h2>
+<p   
+> The project requires the use of GTEST+COCO as a tool for UT+coverage. Because COCO needs to be separated by a separate License <br/> TODO: Use COCO to generate X86 UT using the following CMAKE configuration <br/></p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">if</code><code class="plain">($ENV{COCO_ENABLE} MATCHES </code><code class="string">"True"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">  set(CMAKE_C_FLAGS </code><code class="string">"${CMAKE_C_FLAGS} -g -fprofile-arcs -ftest-coverage"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">  set(CMAKE_CXX_FLAGS </code><code class="string">"${CMAKE_CXX_FLAGS} -g -fprofile-arcs -ftest-coverage"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">  SET(CMAKE_C_COMPILER /opt/coco-6.1.0/wrapper/bin/gcc)</code></div>
+<div class="line"><code class="plain">  SET(CMAKE_CXX_COMPILER /opt/coco-6.1.0/wrapper/bin/g++)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  SET(CMAKE_BUILD_TYPE COVERAGE)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  SET(COVERAGE_FLAGS </code><code class="string">"--cs-on --cs-decision --cs-combine-switch-cases --cs-combine-switch-cases --cs-exclude-file-abs-wildcard=*.hpp --cs-exclude-file-abs-wildcard=*.h --cs-exclude-file-abs-wildcard=*.inl --cs-exclude-file-abs-wildcard=*test.cpp"</code><code class="plain"> )</code></div>
+<div class="line"><code class="plain">  SET(CMAKE_CXX_FLAGS_COVERAGE</code></div>
+<div class="line"><code class="plain">      </code><code class="string">"${CMAKE_CXX_FLAGS_RELEASE} ${COVERAGE_FLAGS}"</code><code class="plain"> CACHE STRING</code></div>
+<div class="line"><code class="plain">      </code><code class="string">"Flags used by the C++ compiler during coverage builds."</code></div>
+<div class="line"><code class="plain">      FORCE )</code></div>
+<div class="line"><code class="plain">  SET(CMAKE_C_FLAGS_COVERAGE</code></div>
+<div class="line"><code class="plain">      </code><code class="string">"${CMAKE_C_FLAGS_RELEASE} ${COVERAGE_FLAGS}"</code><code class="plain"> CACHE STRING</code></div>
+<div class="line"><code class="plain">      </code><code class="string">"Flags used by the C compiler during coverage builds."</code></div>
+<div class="line"><code class="plain">      FORCE )</code></div>
+<div class="line"><code class="plain">  SET(CMAKE_EXE_LINKER_FLAGS_COVERAGE</code></div>
+<div class="line"><code class="plain">      </code><code class="string">"${CMAKE_EXE_LINKER_FLAGS_RELEASE} ${COVERAGE_FLAGS}"</code><code class="plain"> CACHE STRING</code></div>
+<div class="line"><code class="plain">      </code><code class="string">"Flags used for linking binaries during coverage builds."</code></div>
+<div class="line"><code class="plain">      FORCE )</code></div>
+<div class="line"><code class="plain">  SET(CMAKE_SHARED_LINKER_FLAGS_COVERAGE</code></div>
+<div class="line"><code class="plain">      </code><code class="string">"${CMAKE_SHARED_LINKER_FLAGS_RELEASE} ${COVERAGE_FLAGS}"</code><code class="plain"> CACHE STRING</code></div>
+<div class="line"><code class="plain">      </code><code class="string">"Flags used by the shared libraries linker during coverage builds."</code></div>
+<div class="line"><code class="plain">      FORCE )</code></div>
+<div class="line"><code class="plain">  SET( CMAKE_STATIC_LINKER_FLAGS_COVERAGE</code></div>
+<div class="line"><code class="plain">      </code><code class="string">"${CMAKE_STATIC_LINKER_FLAGS_RELEASE} ${COVERAGE_FLAGS}"</code><code class="plain"> CACHE STRING</code></div>
+<div class="line"><code class="plain">      </code><code class="string">"Flags used by the static libraries linker during coverage builds."</code></div>
+<div class="line"><code class="plain">      FORCE )</code></div>
+<div class="line"><code class="plain">  MARK_AS_ADVANCED(</code></div>
+<div class="line"><code class="plain">      CMAKE_CXX_FLAGS_COVERAGE</code></div>
+<div class="line"><code class="plain">      CMAKE_C_FLAGS_COVERAGE</code></div>
+<div class="line"><code class="plain">      CMAKE_EXE_LINKER_FLAGS_COVERAGE</code></div>
+<div class="line"><code class="plain">      CMAKE_SHARED_LINKER_FLAGS_COVERAGE</code></div>
+<div class="line"><code class="plain">      CMAKE_STATIC_LINKER_FLAGS_COVERAGE</code></div>
+<div class="line"><code class="plain">      COMPILE_DEFINITIONS_COVERAGE</code></div>
+<div class="line"><code class="plain">  )</code></div>
+<div class="line"><code class="plain">endif()</code></div>
+</div>
+    </div>
+<p   
+> COCO installation: <br/></p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="functions">echo</code><code class="plain"> </code><code class="string">"deb [trusted=yes] https://rb-artifactory.bosch.com/artifactory/tcc-deb-local $(cat /etc/lsb-release | sed -n -E 's|DISTRIB_CODENAME=(.*)|\1|;T;p') main"</code><code class="plain"> | </code><code class="functions">sudo</code><code class="plain"> </code><code class="functions">tee</code><code class="plain"> </code><code class="plain">/etc/apt/sources</code><code class="plain">.list.d</code><code class="plain">/tcc</code><code class="plain">.list</code></div>
+<div class="line"> </div>
+<div class="line"><code class="functions">sudo</code><code class="plain"> apt-get update && </code><code class="functions">sudo</code><code class="plain"> apt-get upgrade && </code><code class="functions">sudo</code><code class="plain"> apt-get </code><code class="functions">install</code><code class="plain"> coco-6.1.0</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">/opt/coco-6</code><code class="plain">.1.0</code><code class="plain">/bin/cocolic</code><code class="plain"> --license-server=rb-lic-coco.de.bosch.com:49344</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">/opt/coco-6</code><code class="plain">.1.0</code><code class="plain">/bin/cocolic</code><code class="plain">  --check</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3600697837_safe-id-Y2FsaWJVVC3nu5PmnoTliJLliIY">
+        <h2 class="heading "><span> Structure </span></h2>
+<p   
+> OfflineCalibrationIntest (); ——The initialization structure <br/> virtual ~ OfflineCalibrationIntest (); —— Device <br/> Static void SetupTestCase (); -Setup Runs Before First Case Add to the initialization logic of AOS LOG <br/>static void TearDownTestCase();——TearDown runs after last case.<br/>void SetUp() override;——SetUp runs before each case<br/>void TearDown() override;——TearDown runs after each case.<br/> void Initout (OfflineCalibration_outStruct & Out); ——The initialization of AOS out <br/> void oninit (); -The test onInit and onInit Port as the time onupdate <br/> void onupdate_eol (); ——The tests of the two models of EOL tested both <br/> void onupdate_aFTERSALES (); ——The tested the calibration of Aftersale from RI_TARGET_INQUIRE SI_SIDE_VIEW_CAMERA_FRONT_TELE → RI_TARGET_CAPTURE 1 2 36-> RI_AFTERSALES_CALIBRATION </p>
+    </div>
+    <div class="section section-2" id="src-3600697837_safe-id-Y2FsaWJVVC3mtYvor5XmtYHnqIs">
+        <h2 class="heading "><span> Test process </span></h2>
+<p   
+> Compile UT ./per_build.sh -o qnx -u COCO （safety -q）</p>
+<p   
+> Copy lib config carera_in_gateway offline_calib_qnx_unittest office_calib_qnx_unittest.csmes to board </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">in host</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="in host" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">sshpass -p </code><code class="string">"root"</code><code class="plain"> scp -r $BUILD_DIR/lib root</code><code class="color1">@$TARGERT_IP</code><code class="plain">:$TARGET_DIR/</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">sshpass -p </code><code class="string">"root"</code><code class="plain"> scp -r config/config/* root</code><code class="color1">@$TARGERT_IP</code><code class="plain">:/data/calib/</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">sshpass -p </code><code class="string">"root"</code><code class="plain"> scp Camera_in_gateway root</code><code class="color1">@$TARGERT_IP</code><code class="plain">:$TARGET_DIR/</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">sshpass -p </code><code class="string">"root"</code><code class="plain"> scp $BUILD_DIR/bin/offline_calib_qnx_unittest root</code><code class="color1">@$TARGERT_IP</code><code class="plain">:$TARGET_DIR/</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">sshpass -p </code><code class="string">"root"</code><code class="plain"> scp $BUILD_DIR/bin/offline_calib_qnx_unittest.csmes root</code><code class="color1">@$TARGERT_IP</code><code class="plain">:$TARGET_DIR/</code></div>
+</div>
+    </div>
+<p   
+> run </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">in board 1</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="in board 1" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="functions">export</code><code class="plain"> LD_LIBRARY_PATH=</code><code class="plain">/cache/update/lwe7sgh/lib/</code><code class="plain">:</code><code class="plain">/usr/libnvidia/</code><code class="plain">:</code><code class="plain">/opt/vrte/lib/</code><code class="plain">:</code><code class="plain">/opt/app/lib/</code><code class="plain">:$LD_LIBRARY_PATH</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">on -C 11 -p 20f .</code><code class="plain">/Camera_in_gateway</code><code class="plain"> -</code><code class="functions">v</code><code class="plain"> bosch -a 2 </code><code class="comments">#bosch Camera</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">on -C 11 -p 20f .</code><code class="plain">/Camera_in_gateway</code><code class="plain"> -</code><code class="functions">v</code><code class="plain"> chery -a 2 </code><code class="comments">#chery Camera</code></div>
+</div>
+    </div>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">in board 2</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="in board 2" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="functions">export</code><code class="plain"> LD_LIBRARY_PATH=</code><code class="plain">/cache/update/lwe7sgh/lib/</code><code class="plain">:</code><code class="plain">/usr/libnvidia/</code><code class="plain">:</code><code class="plain">/opt/vrte/lib/</code><code class="plain">:</code><code class="plain">/opt/app/lib/</code><code class="plain">:$LD_LIBRARY_PATH</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">.</code><code class="plain">/offline_calib_qnx_unittest</code><code class="plain"> --gtest_output=xml:.</code><code class="plain">/offline_calib_qnx_unittest</code><code class="plain">.xml</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3600697837_safe-id-Y2FsaWJVVC3miqXlkYrkuI7pobnnm67pm4bmiJA">
+        <h2 class="heading "><span> Report and project integration </span></h2>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">in host</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="in host" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">sshpass -p </code><code class="string">"root"</code><code class="plain"> scp root</code><code class="color1">@$TARGERT_IP</code><code class="plain">:$TARGET_DIR/offline_calib_qnx_unittest.csexe test/scripts</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">sshpass -p </code><code class="string">"root"</code><code class="plain"> scp root</code><code class="color1">@$TARGERT_IP</code><code class="plain">:$TARGET_DIR/offline_calib_qnx_unittest.csmes test/scripts</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">sshpass -p </code><code class="string">"root"</code><code class="plain"> scp root</code><code class="color1">@$TARGERT_IP</code><code class="plain">:$TARGET_DIR/offline_calib_qnx_unittest.xml test/scripts</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#report</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">cd test/scripts</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">./offline_calib_unittest_local.sh</code></div>
+</div>
+    </div>
+<p   
+>download coco_cov.zip in your computer and unzip</p>
+<p   
+>open *coco_cov.html in your browser<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3600697837/image-2023-11-1_10-59-38-version-1-modificationdate-1698807579000-api-v2.png" alt="images/confluence/download/attachments/3600697837/image-2023-11-1_10-59-38-version-1-modificationdate-1698807579000-api-v2.png"  height="209" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3600697837/image-2023-11-1_11-0-7-version-1-modificationdate-1698807607000-api-v2.png" alt="images/confluence/download/attachments/3600697837/image-2023-11-1_11-0-7-version-1-modificationdate-1698807607000-api-v2.png"  height="250" />
+</p>
+<p   
+> Note that when git is upload, you need to upload <br/>offline_calib_qnx_unittest.csexe<br/>offline_calib_qnx_unittest.csmes<br/>offline_calib_qnx_unittest.xml<br/> And pass these three files to <a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3_ut4qnx/browse">Browse PJ_W3 / w3_ut4qnx - Source Code 01 (bosch.com)</a><br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3600697837/image-2023-12-12_17-14-52-version-1-modificationdate-1702372493000-api-v2.png" alt="images/confluence/download/attachments/3600697837/image-2023-12-12_17-14-52-version-1-modificationdate-1702372493000-api-v2.png" width="1200"  />
+    <br/> The case is as follows <a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3_ut4qnx/pull-requests/6/overview">Pull Request #6: Feature/CNWVIII-66184 add ut framework for calibration aos repo - Source Code 01 (bosch.com)</a></p>
+<p   
+> In this way, the daily ROOT warehouse will automatically detect the UT coverage rate <br/><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3600697837/image-2023-11-1_11-4-54-version-1-modificationdate-1698807894000-api-v2.png" alt="images/confluence/download/thumbnails/3600697837/image-2023-11-1_11-4-54-version-1-modificationdate-1698807894000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3515778253_02_Calib_Test.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>02 Calib Test</span>
+        </a>
+                <a href="3515778257_EOL_Calibration_problem_analysis_guide.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>EOL Calibration problem analysis guide</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

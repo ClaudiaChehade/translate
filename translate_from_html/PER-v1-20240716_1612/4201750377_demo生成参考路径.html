@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> DEMO Generation Reference Path -Wave 3 Development </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4201750377"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2375894193_02_xSLAM.html">02_xSLAM</a></li>
+                                                                                     <li><a href="2408781832_HPA-APA.html">HPA-APA</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4201750377"> <span> DEMO generation reference path </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-4201750377_safe-id-ZGVtb-eUn-aIkOWPguiAg-i3r-W-hC3mlrnlvI8x">
+        <h1 class="heading "><span> Method 1 </span></h1>
+<p   
+> The work controller on the car is running directly. </p>
+<p   
+> 1. Copy all the files in this directory to the industrial control machine on the car, \\ <a  class="external-link" href="http://bosch.com">bosch.com</a> \ DFSRB \ DFSCN \ DIV \ XC \ Engineering \ Domain \ Wave3 \ 00_DataExchange \ To_ver (excluding the folder of TO_VER, only copy the file inside) </p>
+<p   
+> Suppose it is copied to/mnt/8t_2/demo2/exe directory. </p>
+<p   
+> 2. CD to copy directory. </p>
+<p   
+>cd /mnt/8T_2/demo2/exe</p>
+<p   
+> 3. If this Terminal has not executed the following commands, it needs to be executed first. If it has been executed, it will not be executed. </p>
+<p   
+>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD</p>
+<p   
+>source /opt/ros/noetic/setup.bash</p>
+<p   
+> Give ./generatepath and ./convert_path weighted (777) </p>
+<p   
+>sudo chmod 777 ./generatePath</p>
+<p   
+>sudo chmod 777 ./convert_path</p>
+<p   
+><br/></p>
+    <div class="section section-2" id="src-4201750377_safe-id-ZGVtb-eUn-aIkOWPguiAg-i3r-W-hC3kuIvpnaLkuKTkuKrmraXpqqTmmK_mr4_mrKHnlJ_miJDot6_lvoTpg73pnIDopoHnmoTjgII">
+        <h2 class="heading "><span> The following two steps are required for each generation path. </span></h2>
+<p   
+> 4. Generate path. </p>
+<p   
+> ./generatepath/mNT/8t_2/Demo/demo_03_2024-04-23-10-52-04.bag (this BAG path is replaced by the BAG path recorded on the car) </p>
+<p   
+> After the execution of the above command, an orp.txt file will be generated in the current directory, and this file will be given to Planning. They will generate a global_path_smoothed.txt file (if they are not called this name, change it to this name) </p>
+<p   
+> Copy global_path_smoothed.txt to the current directory. </p>
+<p   
+><br/></p>
+<p   
+> 5. Conversion path. </p>
+<p   
+>./convert_path</p>
+<p   
+> HPA_MAP folders will be created in the current directory, and then there will be a reference_path.yaml file. </p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-4201750377_safe-id-ZGVtb-eUn-aIkOWPguiAg-i3r-W-hC3mlrnlvI8y">
+        <h1 class="heading "><span> Method 2 </span></h1>
+<p   
+> If there is a problem with the environmental control machine environment on the vehicle, it cannot be used and provides the server environment. </p>
+<p   
+>ssh wdv4szh@10.178.12.120</p>
+<p   
+>passwd:8ik,9ol.0p;/+</p>
+<p   
+>cd /mnt/8T_2/demo2/exe</p>
+<p   
+> Copy the baby to the server and find a position casually (it is best to put it under/mnt/8t_2) </p>
+<p   
+> The subsequent steps of the same way 3,4,5 </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2408781832_HPA-APA.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>HPA-APA</span>
+        </a>
+                <a href="3384953261_Feature_reloc_limitations.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Feature reloc limitations</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

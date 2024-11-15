@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>95_WR MS5 Detail Design Docs - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3422485578"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="3422485372_95_WR_Delivery.html">95_WR Delivery</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485572_95_WR_MS5_%28T0%2B12%29_Check%2C_2023_5_24.html">95_WR_MS5 (T0+12) Check, 2023/5/24</a></li>
+                                                                                     <li><a href="3422485576_95_WR_MS5_Algorithm_Reproduce.html">95_WR_MS5 Algorithm Reproduce</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3422485578"> <span>95_WR MS5 Detail Design Docs</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="10.2949%"/>
+                                    <col  width="25.3254%"/>
+                                    <col  width="17.9818%"/>
+                                    <col  width="20.5234%"/>
+                                    <col  width="17.4327%"/>
+                                    <col  width="4.04933%"/>
+                                    <col  width="4.39249%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Design documentation </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Test document </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Code running </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> The amount of data </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Model quantified conversion script </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> AOS code consistency </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Camdetect</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Define the interface variables in the document to add comments and instructions </p>
+</li><li class=" "><p   
+> PIPELINE process detailed instructions to provide image pre -processing </p>
+</li><li class=" "><p   
+> In the article, the next part of the structure draws a detailed structure diagram, and the head is best to provide a structural schematic diagram </p>
+</li><li class=" "><p   
+> The problem of code environment packaging in the readme file, in the later stage of MS4 discussion, will provide mirror images that can be directly run, so that we can operate directly, but currently it shows that Ren Ran is MS4 content </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Environmental problems cannot run </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="14" colspan="1">
+    <p   
+> Lack of model conversion and quantitative scripts </p>
+            </td>
+                <td  class="confluenceTd" rowspan="14" colspan="1">
+    <p   
+> AOS needs the corresponding documentation </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Camnear_detection</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Camera_prediction</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Error reporting during the training, you can't find the corresponding JSON file 04 jul 2023 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Lane_detection</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+>    <span style="color: #ff0000;">
+    <span style="color: #003366;"> Lack of Crosswalk and Stopline indicators </span>
+27 Jun 2023<br/>    </span>
+</p>
+</li><li class=" "><p   
+> The document shows that due to the data source and data distribution, the indicators of some test sets are unstable and poor. Please explain how Wen Yuan uses the test set?27 jun 2023 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> The training code in the warehouse is inconsistent with the code part of the code in the code folder in Perception_MS5_DELIVERY. Which version does the real car correspond?Which version of the duplication can be reproduced to the indicator in the document?27 jun 2023 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> The training set the amount of data increased to a million level, but the test set was not updated. <span style="color: #003366;"> Still using the data provided by MS3 1K+, </span> Is there any update?27 jun 2023 </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Lane_prediction</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Traffic_light</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> There are significant errors, requiring WR update report 27 jun 2023 </p>
+</li><li class=" "><p   
+> What is Pose Feature, you need to clarify 27 jun 2023 </p>
+</li><li class=" "><p   
+> There are 8 states in the code, only 7 types are mentioned in the document, there is no Red_blink 27 jun 2023 </p>
+</li><li class=" "><p   
+> Add model conversion process in the document 27 jul 2023 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> The data of Stagea given in the User Manual document is 46199, and the target_num in the verification results is less than 30,000 27 jun 2023 </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Traffic_Sign</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> The classification model DAG in the document is still wrong.(MS4 is also wrong) 27 jun 2023 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>CarNet</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> The FIG 2 DAG diagram in the document has been updated, but still lacks of front_tail/left_right category head 03 Jul 2023 </p>
+</li><li class=" "><p   
+> Wenyuan delivered the training and packaging code today, but modified the DataSET data path parameter in the config file according to the request of user manual. </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Environmental problems cannot run 04 jul 2023 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Roadmarker</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Image_ODD</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> IMG_ODD document wrote this way: " <i class=" "> Adding Mask, it is not trained as 0, and focuses on the labels with 5 good data. Rainy, Rain_fog_blurry, DARK, </i><br/><i class=" "> have_lighting, construction_area, other label Mask is placed to 0 to 0 </i> ", Whether it means this delivery <strong class=" "> Only trained 5 </strong> Label? </p>
+</li><li class=" "><p   
+> Does this delivery delivered full data?Do you remove PIPELINE that is randomly selected? </p>
+</li><li class=" "><p   
+> There is no explanation of how to export onnx in the document, it needs to be explained </p>
+</li><li class=" "><p   
+> The post -processing instructions in the document are too simple. You need to describe what the input and output of each module is and what the signal flow is </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3D_tracking</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> User Manual does not reflect how to run 27 jun 2023 </p>
+</li><li class=" "><p   
+> Lack of KPI indicators and Data 27 jun 2023 </p>
+</li><li class=" "><p   
+>    <span style="color: #003366;"> The content of the document is the same as MS4, there is no update at all </span>
+27 Jun 2023</p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> The code is not exactly the same as on the car 03 jj 2023 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Liper</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Both the current Design Doc and Label Doc can be found, but this time it is a black box acceptance. Do you need to review the two DOCs? 27 Jun 2023 </p>
+</li><li class=" "><p   
+> User Manual Lack of 27 Jun 2023 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Lidar_ODD</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Both the current Design Doc and Label Doc can be found, but this time it is a black box acceptance. Do you need to review the two DOCs? 27 Jun 2023 </p>
+</li><li class=" "><p   
+> User Manual Lack of 27 Jun 2023 </p>
+</li><li class=" "><p   
+> Please confirm with WR development with the following three questions <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8aba6389819a35c40181a42ffcbf0018">user-2a860</a></p>
+<ul class=" "><li class=" "><p   
+> It can be seen from the Label Doc that a frame of cloud contains a total of 6 sectors. Each sector is divided into 2 areas according to the distance and near and near, which means that there are 12 labeling areas, a total of 12 labels (tags are divided into 4 categories: no: no: no: NoLuck, slight lack, serious lack, others), how are the point cloud label of this entire frame determined? </p>
+</li><li class=" "><p   
+> Dianyun needs to turn to ZOY-Plane or deep chart. Can you be understood here as Range Image?How should I understand the input channel, distance, reflection intensity, ...? </p>
+</li><li class=" "><p   
+> Compared with the original point or BEV, what is the advantage of Range Image? </p>
+</li></ul></li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Error monitor_handling</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> User Mannal Lack of 27 Jun 2023 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> There is no Error Monitor related code in the code in the code, suspecting that it does not contain 27 jun 2023 </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3422485577_95_MS4_Issue_backup.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_MS4 Issue backup</span>
+        </a>
+                <a href="3422485580_95_WR_MS5_Camdetect.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS5 Camdetect</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

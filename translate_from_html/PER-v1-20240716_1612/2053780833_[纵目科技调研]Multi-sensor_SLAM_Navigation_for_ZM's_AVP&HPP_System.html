@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> [Calligraphy Technology Research] Multi -Sensor Slam Navigation for ZM's AVP & HPP System -Wave 3 Development </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2053780833"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2053780833"> <span> [Calligraphy Science and Technology Research] Multi-Sensor Slam Navigation for ZM's AVP & HPP System </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>As suggested by some experts, this page will summarize the slides from ZongMu, including the latest mapping and localization technology and practice in their customer project/demo.</p>
+<p   
+>open course link (Chinese only): <a  class="external-link" href="https://www.aiimooc.com/mall/preshow-htm-itemid-610.html"> [CAIRDC] multi -source information fusion SLAM and applications </a></p>
+<p   
+></p>
+    <div class="section section-1" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tV2hhdCdzQVZQJkhQUChIb21lWm9uZVBhcmtpbmdQaWxvdCk">
+        <h1 class="heading "><span>What's AVP&HPP (Home Zone Parking Pilot)</span></h1>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_13-46-29-version-1-modificationdate-1639547189000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_13-46-29-version-1-modificationdate-1639547189000-api-v2.png"  height="400" />
+    </p>
+<p   
+>AVP summary (L4)</p>
+<ul class=" "><li class=" "><p   
+>select the free parking slot through the HMI.</p>
+</li><li class=" "><p   
+>remote calling</p>
+</li><li class=" "><p   
+>autopilot to the specified localization</p>
+</li><li class=" "><p   
+>no driver in the vehicle</p>
+</li><li class=" "><p   
+>HD Map (supplier) is not available everywhere</p>
+<ul class=" "><li class=" "><p   
+>map build by data collection vehicle (high precision lidar), released to public end-user</p>
+</li><li class=" "><p   
+>inject traffic rules and road network manually → very expensive.</p>
+</li><li class=" "><p   
+>for end-user, localization by camera</p>
+</li></ul></li></ul><p   
+>HPP summary(L3)</p>
+<ul class=" "><li class=" "><p   
+>subset of AVP</p>
+</li><li class=" "><p   
+>np prior HD map and build map during its first driving.</p>
+</li><li class=" "><p   
+>the map is only used by its own vehicle.</p>
+</li><li class=" "><p   
+>no traffic rules and road network connection info in HPP map</p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tU2Vuc29yU3VpdGVmb3JaTSdzQVZQL0hQUA">
+        <h1 class="heading "><span>Sensor Suite for ZM's AVP/HPP</span></h1>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_14-35-17-version-1-modificationdate-1639550117000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_14-35-17-version-1-modificationdate-1639550117000-api-v2.png"  height="400" />
+    </p>
+<ul class=" "><li class=" "><p   
+>4 fisheye camera surround the vehicle</p>
+</li><li class=" "><p   
+>4 corner radar and 1 front radar</p>
+</li><li class=" "><p   
+>wheel pulse → wheel speed</p>
+</li><li class=" "><p   
+>IMU is low-cost level proved by vehicle itself</p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tTGlkYXJTTEFNTWFwcGluZ2ZvckFWUA">
+        <h1 class="heading "><span>Lidar SLAM Mapping for AVP</span></h1>
+<p   
+>cross modality mapping and localization</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_14-38-58-version-1-modificationdate-1639550338000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_14-38-58-version-1-modificationdate-1639550338000-api-v2.png"  height="400" />
+    </p>
+<p   
+>AVP Map Summary</p>
+<ul class=" "><li class=" "><p   
+>semantic layer + lidar layer + visual feature layer</p>
+</li><li class=" "><p   
+>given the pose graph from lidar map layer, generate the visual map layer (4 fisheye camera) at same time, recover the visual structure of parking lot, including point, line and plane.</p>
+</li><li class=" "><p   
+>more easier to use video for scene recognition. The loop closure from video is better than lidar. Video can provide prior loop closure for lidar.</p>
+<ul class=" "><li class=" "><p   
+>ICP will fail in loop closure for lidar</p>
+</li></ul></li></ul><p   
+>End Client Localization</p>
+<ul class=" "><li class=" "><p   
+>Kalman Filter</p>
+<ul class=" "><li class=" "><p   
+>odometry as prior/prediction</p>
+</li><li class=" "><p   
+>measurement correct(localization) by video</p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_14-49-37-version-1-modificationdate-1639550978000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_14-49-37-version-1-modificationdate-1639550978000-api-v2.png"  height="400" />
+    </p>
+<p   
+><u class=" "><strong class=" ">General Lidar Mapping</strong></u></p>
+<ul class=" "><li class=" "><p   
+>LOAM, just simple odometry, no loop closure</p>
+</li><li class=" "><p   
+>Cartgropher, low quality odometry, support loop closure, high computation cost</p>
+</li></ul><p   
+><u class=" "><strong class=" ">demotion</strong></u></p>
+<p   
+>The measurement from spinning lidar is not at the same time. there are distortion due to the time gap between vehicle motion and lidar rotation frequency.</p>
+<p   
+>solved by ICP like LOAM</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_14-54-47-version-1-modificationdate-1639551288000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_14-54-47-version-1-modificationdate-1639551288000-api-v2.png" width="250"  />
+    </p>
+<p   
+><u class=" "><strong class=" ">degeneration</strong></u></p>
+<p   
+>The 6DoF pose after lidar matching is unable to be calculated, several components are lost in e.g. long corridor, strange building, large open area</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_15-13-10-version-1-modificationdate-1639552391000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_15-13-10-version-1-modificationdate-1639552391000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-1" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tRmFzdFNlbWFudGljUG9zZVRyYWNraW5n">
+        <h1 class="heading "><span>Fast Semantic Pose Tracking</span></h1>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_16-19-40-version-1-modificationdate-1639556380000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_16-19-40-version-1-modificationdate-1639556380000-api-v2.png"  height="400" />
+    </p>
+<p   
+>The semantic information from top right image is injected by map supplier manually. The top left image shows the semantic segmentation from real-time surrounding camera.</p>
+<p   
+>there are two solutions for semantic feature matching (<u class=" ">not fully understand</u>)</p>
+<ul class=" "><li class=" "><p   
+>DVO/DSO in visual odometry (see equation above)</p>
+</li></ul><p   style="margin-left:30px;"
+>by tuning the pose to minimize the pixel error between camera <img  class="latexmath"  src="images/inline/f14e80dcd6938bc5cdb809e2861e6f78d5b3c2ddae2d329c2fdcae458df1d840.svg" alt="images/inline/f14e80dcd6938bc5cdb809e2861e6f78d5b3c2ddae2d329c2fdcae458df1d840.svg"   />
+ and map <img  class="latexmath"  src="images/inline/8390ce6faa93a32d1941e15099dbdc44d198a709daabc690b63bdb7b9058a1fa.svg" alt="images/inline/8390ce6faa93a32d1941e15099dbdc44d198a709daabc690b63bdb7b9058a1fa.svg"   />
+. The function F(.) could be treated as some kind of projection/conversion between map and camera.</p>
+<p   style="margin-left:30px;"
+>In order to compute the Jacobian matrix for map, we need to construct the gradient field for map (just dilate the vector map???).</p>
+<p   style="margin-left:30px;"
+>The final cost function should also be able to handle the semantic degradation issue, in case there is no semantic information or only road lane boundary. Since the lane line is parallel, it's infeasible for l    <span style="color: #000000;">
+ongitudinal localization. In this case, we should add the odometry constraint under tightly coupled way. Now the hessian matrix of the cost function will never degrade.    </span>
+</p>
+<p   style="margin-left:30px;"
+>    <span style="color: #000000;">
+This method is every efficient.    </span>
+</p>
+<p   style="margin-left:30px;"
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_16-57-4-version-1-modificationdate-1639558624000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_16-57-4-version-1-modificationdate-1639558624000-api-v2.png"  height="250" />
+    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+Particle filter    </span>
+</p>
+</li></ul><p   style="margin-left:30px;"
+>    <span style="color: #000000;">
+it's very robust for noisy measurement, e.g. the semantic segmentation over non-flat area (ramp road in parking lot).    </span>
+</p>
+<p   style="margin-left:30px;"
+>    <span style="color: #000000;">
+it's a discretized sampling method in space, the localization accuracy is not very high and localization position may flutter sometimes.    </span>
+</p>
+<p   style="margin-left:30px;"
+>    <span style="color: #000000;">
+we can fuse particle filter and direction method(DSO/DVO) with gmapping or fast-slam method. We can improve the distribution of particle filter with direction method.    </span>
+</p>
+<p   style="margin-left:30px;"
+>    <span style="color: #000000;">
+based on less particles, we can get more accurate localization result.    </span>
+</p>
+<p   style="margin-left:30px;"
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-1-44-version-1-modificationdate-1639558905000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-1-44-version-1-modificationdate-1639558905000-api-v2.png" width="600"  />
+    </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tVmlzdWFsU0xBTWZvckhQUA">
+        <h1 class="heading "><span>Visual SLAM for HPP</span></h1>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-3-1-version-1-modificationdate-1639558982000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-3-1-version-1-modificationdate-1639558982000-api-v2.png"  height="400" />
+    </p>
+<p   
+>The visual slam is based on 4 fisheye camera surround the vehicle. Each fisheye camera has a large field of view which is suitable for long-term tracking for geometry feature.</p>
+<p   
+>However, the image of fisheye camera distorted heavily and suffers from rolling shutter issue (vehicle motion + dynamic object). We split the image into pieces. The distortion correction and geometry feature extraction is based on each sub-image.</p>
+<p   
+>As we known, the scale drift of mono-camera will generate error estimation for loop closure. We will recover the real scale by adding the wheel speed and IMU in the tightly coupled cost function.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-12-32-version-1-modificationdate-1639559552000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-12-32-version-1-modificationdate-1639559552000-api-v2.png"  height="400" />
+    </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tTXVsdGktY2FtZXJhdmlzdWFsU0xBTQ">
+        <h1 class="heading "><span>Multi-camera visual SLAM</span></h1>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-13-37-version-1-modificationdate-1639559617000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-13-37-version-1-modificationdate-1639559617000-api-v2.png" width="800"  />
+    </p>
+<p   
+>Only single camera for mapping or localization is not enough. The first and rear camera will be shielded by other vehicles easily. In addition, the texture-less place (big white wall) will also make the mapping crashed. Hence, we need to fuse multiple camera from different position to enhance our slam and improve its robustness.</p>
+<p   
+>The image above shows the solution from ZM. Let's assume all the camera has been calibrated so that they can be treated as a virtual single camera 360°? They put the virtual image into the common backend optimization. Here is an example</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-20-59-version-1-modificationdate-1639560059000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-20-59-version-1-modificationdate-1639560059000-api-v2.png"  height="400" />
+    </p>
+<p   
+>Here is another advantage for multiple camera. It's feasible for cross loop closure and increase the chance to get more loop closures. our map quality shall be improved.</p>
+<p   
+>The image below shows the cross loop closure between front and rear camera. same as left-right.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-23-34-version-1-modificationdate-1639560215000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-23-34-version-1-modificationdate-1639560215000-api-v2.png"  height="400" />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-23-57-version-1-modificationdate-1639560238000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-23-57-version-1-modificationdate-1639560238000-api-v2.png"  height="400" />
+    </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tTWFuaGF0dGFuQ29uc3RyYWludA">
+        <h1 class="heading "><span>Manhattan Constraint</span></h1>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-25-30-version-1-modificationdate-1639560331000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-25-30-version-1-modificationdate-1639560331000-api-v2.png"  height="400" />
+    </p>
+<p   
+>The parking lot is a man-made building structure which is satisfied with Manhattan constraint (the wall is always vertical to road surface). We can use this assumption to extract the camera pose to constraint the rotation.</p>
+<p   
+>Each line from the image will be treated as a single point on the Gaussian Sphere. Different color belongs to different axis in Gaussian sphere.[<u class=" ">not fully understand</u>]</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-29-51-version-1-modificationdate-1639560592000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-29-51-version-1-modificationdate-1639560592000-api-v2.png" width="500"  />
+    </p>
+<p   
+>We can sample from the sphere and execute the J-linkage cluster methods → search a potential xyz-aix to best describe the world coordinate?</p>
+<p   
+>Once the Manhattan world is determined, then we can track it in later frames. Now, even if there is no IMU, the position and rotation (roll, pitch ,yaw) are observable in Manhattan world. We can use camera pose to compute the relative transformation(external calibration parameters) of four fisheye camera.</p>
+    </div>
+    <div class="section section-1" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tUmFkYXJNYXBwaW5n">
+        <h1 class="heading "><span>Radar Mapping</span></h1>
+<p   
+>Here is a comparison between lidar mapping (bottom left) and radar mapping (bottom right).</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-46-3-version-1-modificationdate-1639561564000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-46-3-version-1-modificationdate-1639561564000-api-v2.png"  height="400" />
+    </p>
+<p   
+>The point cloud from radar is more sparse than lidar. And due to its resolution issue in elevation, the point cloud accuracy is low. There is no chance to execute ICP algorithm to get the relative pose between two radar point cloud frames.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-48-39-version-1-modificationdate-1639561722000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-48-39-version-1-modificationdate-1639561722000-api-v2.png"  height="229" />
+    </p>
+<p   
+>We can solve it with probabilistic method. The speaker doesn't talk much details.</p>
+<p   
+>(I will discuss it later in Bosch Road Signature).</p>
+    </div>
+    <div class="section section-1" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tTXVsdGktc2Vuc29yZnVzaW9uc2xhbWFuZHN0YXRlZXN0aW1hdGlvbg">
+        <h1 class="heading "><span>Multi-sensor fusion slam and state estimation</span></h1>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-50-53-version-1-modificationdate-1639561859000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-50-53-version-1-modificationdate-1639561859000-api-v2.png" width="1000"  />
+    </p>
+<p   
+>We use different map layer to improve the robustness of our localization. The three map should be built under the same space and time coordinate. (There is no chance to do offline map alignment?)</p>
+<p   
+>All the localization from different map layer will be estimated separately. E.g. the semantic localization has lowest frequency.</p>
+<p   
+>Then the localization result plus the IMU+wheel speed will be fused in ESEKF to get a high frequency and precision localization.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-15_17-55-53-version-1-modificationdate-1639562154000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-15_17-55-53-version-1-modificationdate-1639562154000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-1" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tUSZBU2Vzc2lvbg">
+        <h1 class="heading "><span>Q&A Session</span></h1>
+<p   
+>Q:</p>
+<p   
+>Is pre-build HD map necessary for AVP?</p>
+<p   
+>A:</p>
+<p   
+>Yes. The map supplier should provide the map(lidar) including man-made semantic information(road network, traffic rule) and high dynamic information (occupied/non-occupied parking slot). The format of map could be vector map or occupancy map.</p>
+<p   
+><br/></p>
+<p   
+>Q:</p>
+<p   
+>How to deal with the dynamic changes for the AVP map？</p>
+<p   
+>A:</p>
+<p   
+>During mapping, all dynamic object should be removed by deep learning. The landmark or observation for map only contain the static object.</p>
+<p   
+>E.g. For feature matching, the feature point number from static object should be more than 50%, otherwise the system will crash.</p>
+<p   
+><br/></p>
+<p   
+>Q:</p>
+<p   
+>Is NDT feasible for radar slam? How to do the registration of radar point cloud?</p>
+<p   
+>A:</p>
+<p   
+>No. ZM uses probabilistic method, no details to be publish. In addition, all the video, semantic and radar map layer should be built under the same time and space coordinate.</p>
+<p   
+>Radar is robust against rainy, foggy, snow scene compared with Lidar. Radar is cheap and can measure the relative speed for other objects.</p>
+<p   
+>The radar locations is noisy and low resolution in elevation direction.</p>
+<p   
+><br/></p>
+<p   
+>Q:</p>
+<p   
+>Is the initial localization position critical for fused localization?</p>
+<p   
+>A:</p>
+<p   
+>It depends on which method for localization. For particle filter, it's more easier to converge and depends on the coverage area by initial particles.</p>
+<p   
+>Radar slam is little bit difficult due to noisy.</p>
+<p   
+><br/></p>
+<p   
+>Q:</p>
+<p   
+>In stereo-camera slam, the points faraway are always wrong and flutter dramatically.</p>
+<p   
+>A:</p>
+<p   
+>It depends on the length of baseline and image resolution. The longer distance between two cameras and the higher resolution of image will make a more accurate depth estimation for points faraway.</p>
+<p   
+>There is some report shows the standard deviation of depth estimation in stereo-camera is has positive correlation with the square of distance. The ratio between baseline and depth of scene should be below 100, otherwise they're useless points.</p>
+<p   
+>In addition, it's been better to use a sliding widow optimization method(VINS, ORBSLAM etc) to estimate the inverse depth in scene rather than the estimation based on only single frame of stereo-camera.</p>
+<p   
+><br/></p>
+<p   
+>Q:</p>
+<p   
+>How to calibrate the cameras surround the vehicle?</p>
+<p   
+>A:</p>
+<p   
+>There are two ways.</p>
+<p   
+>1.Let's say there is a specified calibration workshop where lots of chessboard with known global pose are painted on the wall. We can get the global pose of each camera in global frame so that their relative transformation of each camera is known.</p>
+<p   
+>2.just run the visual slam for each camera and then align the trajectories of slam graphs. We can also get the relative transformation of each camera.</p>
+<p   
+><br/></p>
+<p   
+>Q:</p>
+<p   
+>If there is degradation in VINS, how to prevent it destroy the final localization?</p>
+<p   
+>A:</p>
+<p   
+>The localization from different modality should have uncertainty. The ESEKF as fusion center will handle this. And before that, there is a association gate to check the consistency among different localization and prediction result like chi-square validation. We should not use the measurement without consistency check.</p>
+<p   
+><br/></p>
+<p   
+>Q:</p>
+<p   
+>Do we need a high-cost IMU for slam?</p>
+<p   
+>A:</p>
+<p   
+>No. We only use the yaw rate from IMU. The angle velocity bias of IMU should be estimated correctly by tightly coupled slam. After each iteration, the odometry should be corrected otherwise the system will crash.</p>
+<p   
+><br/></p>
+<p   
+>Q:</p>
+<p   
+>How about the front-end camera?</p>
+<p   
+>A:</p>
+<p   
+>The front camera will not be used in localization due to the narrow field of view. It's mainly for semantic segmentation and matching. We could even remove the front camera and only rely on the 4 fisheye camera surround the vehicle.</p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tUkJHZW41UmFkYXJhbmRsb2NhbGl6YXRpb24vbWFwcGluZw">
+        <h1 class="heading "><span>RB Gen5 Radar and localization/mapping</span></h1>
+    <div class="section section-2" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tZ2VuNXJhZGFyc3BlYw">
+        <h2 class="heading "><span>gen5 radar spec</span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-16_10-34-24-version-1-modificationdate-1639622064000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-16_10-34-24-version-1-modificationdate-1639622064000-api-v2.png" width="900"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-16_10-35-14-version-1-modificationdate-1639622114000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-16_10-35-14-version-1-modificationdate-1639622114000-api-v2.png"  height="400" />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-16_10-36-26-version-1-modificationdate-1639622187000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-16_10-36-26-version-1-modificationdate-1639622187000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2053780833_safe-id-aWQtW-e6teebruenkeaKgOiwg-eglF1NdWx0aXNlbnNvclNMQU1OYXZpZ2F0aW9uZm9yWk0nc0FWUCZIUFBTeXN0ZW0tUEpNUHJhZGFycm9hZHNpZ25hdHVyZQ">
+        <h2 class="heading "><span>PJMP radar road signature</span></h2>
+<p   
+>based on     <span style="color: #172b4d;">
+Gaussian mixture model, it implement the gaussian alignment to recover the pose and other steps for gaussian fusion.    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+Please find details    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #172b4d;">
+<a   href="https://inside-docupedia.bosch.com/confluence/display/MFAD/GMM+Study">GMM Study - CC-AD/PJ-MP (Road Signature) - Docupedia (bosch.com)</a>    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #172b4d;">
+<a  class="external-link" href="https://ieeexplore.ieee.org/document/5674050">B. Jian and B. C. Vemuri, "Robust Point Set Registration Using Gaussian Mixture Models," in IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 33, no. 8, pp. 1633-1645, Aug. 2011, doi: 10.1109/TPAMI.2010.223.</a>    </span>
+</p>
+</li></ul><p   
+>    <span style="color: #172b4d;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-16_10-40-1-version-1-modificationdate-1639622401000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-16_10-40-1-version-1-modificationdate-1639622401000-api-v2.png"  height="250" />
+    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2053780833/image2021-12-16_10-40-18-version-1-modificationdate-1639622418000-api-v2.png" alt="images/confluence/download/thumbnails/2053780833/image2021-12-16_10-40-18-version-1-modificationdate-1639622418000-api-v2.png"  height="250" />
+    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2053780833/image2021-12-16_10-40-37-version-1-modificationdate-1639622438000-api-v2.png" alt="images/confluence/download/attachments/2053780833/image2021-12-16_10-40-37-version-1-modificationdate-1639622438000-api-v2.png"  height="400" />
+    </span>
+</p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2047122521_Knowledge_center.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Knowledge center</span>
+        </a>
+                <a href="2250883224_Apollo_Auto_Map_Service_Study.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Apollo Auto Map Service Study</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

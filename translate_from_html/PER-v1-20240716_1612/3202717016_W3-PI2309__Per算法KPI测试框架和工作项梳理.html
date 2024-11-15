@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> W3-PI2309: PER algorithm KPI test framework and work item combing  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3202717016"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                     <li><a href="3202716967_PER__DIRs_%28Dependences_Impediment_Risks%29.html">PER  DIRs (Dependences/Impediment/Risks)</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3202717016"> <span> W3-PI2309: PER algorithm KPI test framework and work item combing </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3202717016_safe-id-VzNQSTIzMDk6UGVy566X5rOVS1BJ5rWL6K-V5qGG5p625ZKM5bel5L2c6aG55qKz55CGLeiDjOaZr-OAgeebrueahO-8mg">
+        <h1 class="heading "><span> Background and purpose: </span></h1>
+<p   
+> Each algorithm module needs to save the results of the algorithm module such as output, positioning, fusion and other algorithm modules in the ROS BAG after running in the ROOT warehouse code, and compare it based on the real value of the GT data marked before, generate the corresponding KPI evaluation report </p>
+<p   
+> Based on this as an algorithm model to optimize iteration </p>
+    </div>
+    <div class="section section-1" id="src-3202717016_safe-id-VzNQSTIzMDk6UGVy566X5rOVS1BJ5rWL6K-V5qGG5p625ZKM5bel5L2c6aG55qKz55CGLVBpcGVsaW5l56S65oSP5Zu-77ya">
+        <h1 class="heading "><span> PIPELINE schematic diagram: </span></h1>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3202717016/Untitled_Diagram-version-3-modificationdate-1690353937000-api-v2.png" alt="images/confluence/download/attachments/3202717016/Untitled_Diagram-version-3-modificationdate-1690353937000-api-v2.png" width="1361"  />
+    </p>
+    </div>
+    <div class="section section-1" id="src-3202717016_safe-id-VzNQSTIzMDk6UGVy566X5rOVS1BJ5rWL6K-V5qGG5p625ZKM5bel5L2c6aG55qKz55CGLVBpcGVsaW5l5bel5L2c5rWB77ya">
+        <h1 class="heading "><span> Pipeline workflow: </span></h1>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3202717016/Untitled_Diagram1-version-5-modificationdate-1690355959000-api-v2.png" alt="images/confluence/download/attachments/3202717016/Untitled_Diagram1-version-5-modificationdate-1690355959000-api-v2.png" width="2546"  />
+    </p>
+    </div>
+    <div class="section section-1" id="src-3202717016_safe-id-VzNQSTIzMDk6UGVy566X5rOVS1BJ5rWL6K-V5qGG5p625ZKM5bel5L2c6aG55qKz55CGLVBDM-eul-azlUtQSeivhOa1i-ahhuaetuiuvuiuoe-8mg">
+        <h1 class="heading "><span> PC3 algorithm KPI evaluation framework design: </span></h1>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3202717016/kpi_design-version-4-modificationdate-1689314309000-api-v2.png" alt="images/confluence/download/attachments/3202717016/kpi_design-version-4-modificationdate-1689314309000-api-v2.png" width="1521"  />
+    </p>
+    </div>
+    <div class="section section-1" id="src-3202717016_safe-id-VzNQSTIzMDk6UGVy566X5rOVS1BJ5rWL6K-V5qGG5p625ZKM5bel5L2c6aG55qKz55CGLXJvb3Tku5PlkITnrpfms5XmqKHlnZdBY3Rpdml0eei-k-WHulBvcnTvvJo">
+        <h1 class="heading "><span> ROOT warehouse algorithm module Activity output port: </span></h1>
+    <div class="section section-2" id="src-3202717016_safe-id-VzNQSTIzMDk6UGVy566X5rOVS1BJ5rWL6K-V5qGG5p625ZKM5bel5L2c6aG55qKz55CGLUR1YWxPcmluTWFzdGVyQWN0aXZpdHlHcmFwaA">
+        <h2 class="heading "><span>DualOrinMaster Activity Graph</span></h2>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Module</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Activity Name</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Out Port (Type)</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Out Port (Name)</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>MTA</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="15" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #cc99ff;">
+loc    </span>
+</strong><br/><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" ">Odom</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XOdometryResultInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xodometry_result_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XLocFaultEventListInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>perodom_faultevent_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+><strong class=" ">LocalMsf</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerLocalLocResultInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_local_loc_result_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class="checked "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>InsInterface</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ins_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class="checked "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>GNSSInterface</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>gnss_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class="checked "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XLocFaultEventListInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>localmsf_faultevent_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class="checked "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" ">ApaSlam</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerParkingSlotsDataInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_parking_slots_data_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XLocFaultEventListInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>apaslam_faultevent_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" ">VhmProvider</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>VHMOutInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vhm_out_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XLocFaultEventListInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vhmhandler_faultevent_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" ">MapMatcherViperPreprocessor</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>MapMatchPreprocessViperInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>mm_pre_viper_result</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XLocFaultEventListInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>mapmatcherviperpreprocessor_faultevent_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" ">MapMatcherMapPreprocessor</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>MapMatchPreprocessMapInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>mm_pre_map_result</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XLocFaultEventListInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>mapmatchermappreprocessor_faultevent_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">LocGateway</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+XPerGlobalLocResultInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+xper_global_loc_result_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="29" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #cc99ff;">
+viper    </span>
+</strong><br/>    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+    <span style="color: #cc99ff;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="29" colspan="1">
+    <p   
+><strong class=" ">ViperParking</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperNrcsSemSegInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_nrcs_sem_seg_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperParkingSlotInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_parking_slot_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ImageStitchData</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>debug_stitched_img</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerDebugViperObjectInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>debug_front_wide_object</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerDebugViperObjectInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>debug_nrcs_front_object</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerDebugViperObjectInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>debug_nrcs_rear_object</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerDebugViperObjectInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>debug_nrcs_left_object</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerDebugViperObjectInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>debug_nrcs_right_object</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerNrcsSuperPointInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_nrcs_super_point_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperMultiVisionDepthInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_nrcs_vision_depth_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperParkingSignOutputInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>fv_parking_sign_output</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperFrontWideSemSegInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_front_wide_sem_seg_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperVisionDepthInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_front_wide_vision_depth_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperPillarOutputInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_front_wide_pillar_output_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperWallLineOutputInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_front_wide_wallline_output_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperMotInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_parking_mot_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperFreeSpaceOutputInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_free_space_parking_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerCameraFreespaceInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_nrcs_front_freespace_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerCameraFreespaceInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_nrcs_rear_freespace_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerCameraFreespaceInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_nrcs_left_freespace_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerCameraFreespaceInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_nrcs_right_freespace_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerCameraFreespaceInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>debug_fw_freespace</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperLaneInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_lane_parking_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerCameraLaneInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>debug_fw_lane</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerCameraLaneInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>debug_bev_lane</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperRoadEdgeInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_road_edge_parking_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerCameraRoadEdgeInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>debug_fw_roadedge</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerViperRoadMarkerInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xper_viper_road_marker_parking_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>XPerCameraRoadMarkerInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>debug_bev_roadmarker</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #cc99ff;">
+dynamic fusion    </span>
+</strong><br/><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+><strong class=" ">DynamicFusion</strong><br/><strong class=" "><br/></strong><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>DynamicFusionObjListInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>dynamic_fusion_obj_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>DynamicFusionToApaInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>dynamic_fusion_apa_obj_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>DynamicfusionFaultEventListInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>dynamicfusion_faultevent_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="6" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #cc99ff;">
+static fusion    </span>
+</strong><br/><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" ">ContourFusion</strong><br/><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>SFOutputContourInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>sf_output_contour_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>StaticfusionEventListInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>contourfusion_faultevent_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" ">FreespaceFusion</strong><br/><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>StaticFusionFreeSpaceInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>freespace_ellipse_port</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>StaticfusionEventListInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>freespacefusion_faultevent_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" ">LaneFusion</strong><br/><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>StaticFusionRoadInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>static_fusion_road_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>StaticfusionEventListInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lanefusion_faultevent_list_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="12" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #cc99ff;">
+hdmap    </span>
+</strong><br/><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" ">HdmapsrvGuider</strong><br/><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ManuverMapInfoInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>manuver_map_info_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>MapMatchingResultInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>map_matching_result_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="7" colspan="1">
+    <p   
+><strong class=" ">HdmapsrvHorizon</strong><br/><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LocMapInfoInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>loc_map_info_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OriginMapInfoInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>origin_map_info_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>BaseMapInfoInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>base_map_info_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ParkingMapInfoInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>parking_map_info_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>PlanningMapInfoInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>planning_map_info_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ViperMapInfoInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>viper_map_info_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>InternalGuidanceMapInfoInterfaceType</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>internal_guidance_map_senderport</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+><strong class=" ">MapSrvProvider</strong><br/><strong class=" "><br/></strong><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+HDMapDataHighSpeedInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+map_srv_hdmap_hs_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+HDMapDataMidSpeedInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+map_srv_hdmap_ms_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+HDMapDataLowSpeedInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+map_srv_hdmap_ls_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="16" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #cc99ff;">
+scm    </span>
+</strong><br/><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong><strong class=" ">    <span style="color: #cc99ff;">
+<br/>    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="10" colspan="1">
+    <p   
+><strong class=" ">HpaMapService</strong><br/><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ReLocResult    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+reloc    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+BaseMapInfoInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+base_map_info_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ParkingMapInfoInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+parking_map_info_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+HpaGlobalPathInfoInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+hpa_global_path_info_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+LocMapInfoInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+loc_map_info_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+RATrajectoryInfoInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ra_trajectory_info_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+CFctMapResponseInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+cfct_map_response_service_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+PlanningMapInfoInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+planning_map_info_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ParkingMapFaultEventListInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+hpamapservice_faultevent_list_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ParkingMapFaultEventListInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+hpareloc_faultevent_list_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="6" colspan="1">
+    <p   
+><strong class=" ">OnboardMapping</strong><br/><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+TrainingRespondInfoInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+training_respond_info_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+HpaGlobalPathInfoInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+hpa_global_path_info_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+CFctMapResponseInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+cfct_map_response_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+LocMapInfoInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+loc_map_info_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+DebugFeatureMapInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+debug_feature_map    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ParkingMapFaultEventListInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+onboardmapping_faultevent_list_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-3202717016_safe-id-VzNQSTIzMDk6UGVy566X5rOVS1BJ5rWL6K-V5qGG5p625ZKM5bel5L2c6aG55qKz55CGLUR1YWxPcmluU2xhdmVBY3Rpdml0eUdyYXBo">
+        <h2 class="heading "><span>DualOrinSlave Activity Graph</span></h2>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="9.6%"/>
+                                    <col  width="17.7333%"/>
+                                    <col  width="35.8667%"/>
+                                    <col  width="30.0%"/>
+                                    <col  width="6.93333%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Module</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Activity Name</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Out Port (Type)</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Out Port (Name)</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>MTA</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+>    <span style="color: #cc99ff;">
+<strong class=" ">liper</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   style="text-align:center;"
+><strong class=" ">    <span style="color: #000000;">
+LiperParking    </span>
+</strong><br/></p>
+<p   
+><strong class=" ">    <span style="color: #000000;">
+<br/>    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+XPerLiperMotInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+xper_liper_mot_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+XPerLiperFreeSpaceOutputInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+xper_liper_free_space_senderport    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   style="text-align:center;"
+><strong class=" ">    <span style="color: #000000;">
+LiperPost    </span>
+</strong><br/></p>
+<p   
+><strong class=" ">    <span style="color: #000000;">
+<br/>    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+XPerLiperFreeSpaceOutputInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+xper_liper_free_space_output    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+XPerLiperMotInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+xper_liper_mot_output    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class="checked "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #cc99ff;">
+<strong class=" ">loc</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:center;"
+><strong class=" ">    <span style="color: #000000;">
+Xlio    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+XPerLioResultInterfaceType    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+xlio_output    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class="checked "></li></ul>            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3202717016_safe-id-VzNQSTIzMDk6UGVy566X5rOVS1BJ5rWL6K-V5qGG5p625ZKM5bel5L2c6aG55qKz55CGLVBlcueul-azlUtQSeivhOa1i-ahhuaetueahOW3peS9nOmhue-8mg">
+        <h1 class="heading "><span> Per algorithm KPI evaluation framework work items: </span></h1>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Serial number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Work item </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Assigner</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Algorithm evaluation scene definition, data requirements (long -term, which Sensor data is needed) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Real car (equipped with a DSPACE device) collected a Sensor data for specified scenes <span style="color: #000000;"> (The data format is DSPACE specific REC format) </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The collected Sensor data Copy to the PC1/PC2 of the HOL tablet.(The first stage: the hard disk manual Copy, <span style="color: #ff0000;"> Is there any compliance needs? </span>
+）</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+<strong class=" "> The collected Sensor data is marked as GT </strong> (Note: The current Sensor data collected by DSPACE is .Rec format. How can this format convert into a picture format that can be labeled by algorithm? Time stamp synchronization? GT data format?) </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Select a version of ROOT Warehouse Software to deploy on the B Sample, <span style="color: #ff0000;">
+<strong class=" "> If there is an intermediate Runnable output evaluation requirements, targeted adaptation software needs </strong>？(Runnable port→Activity port)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>6</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Hol back irrigation data to B SAMPLE (first stage: manually execute through UI, <span style="color: #ff0000;">
+<strong class=" "> The second stage: automatic execution of local scripts/support test data set batch verification </strong>    </span> ), The PORT data of each algorithm module of the recording is the ROS BAG package (each test data corresponds to a ROS BAG) </p>
+<p   
+>    <span style="color: #ff0000;">
+<strong class=" "> Note: What is the performance from Port portal to recording ROS BAG package?IntersectionConsider the existence of when recording the output signal 1. Lost output signal 2. Reduce the frequency of the output signal </strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>7</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Each algorithm module <span style="color: #000000;"> KPI Metrics Library Development (GT format and alignment) (Python evaluation script/program) </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>8</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Algorithm KPI evaluation software framework design, integration <span style="color: #000000;"> KPI Metrics library, run and generate evaluation report </span>
+（    <span style="color: #ff0000;"> How does ROS data correspond to GT data? </span> Note: <span style="color: #ff0000;"> I learned that PMT currently has a KPI framework in the cloud, but this framework is just a simple data verification, and it is not compared with the real value of GT </span>
+）</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>9</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Scene data PlayList's selection/generation system (maybe webpage human -machine interaction), personnel selects scenario (time) data, forming PlayList (may include: original data packet names, Rosbag names exported result, real value packet name name name(Wait), for HOL backup test and use </p>
+<p   
+> Open items: white list of Rosbag recording signals? <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a> Do you need </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Results Report review, retrieve the result ROSBAG, true value for development/testers for visual analysis </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p  class="auto-cursor-target" 
+>DIRs tracker:</p>
+<p  class="auto-cursor-target" 
+></p>
+    <div  class="tablewrap">
+        <table class="aui">
+        <thead class=" ">    <tr>
+            <td   rowspan="1" colspan="1">
+    <p   
+>key</p>
+            </td>
+                <td   rowspan="1" colspan="1">
+    <p   
+>summary</p>
+            </td>
+                <td   rowspan="1" colspan="1">
+    <p   
+>type</p>
+            </td>
+                <td   rowspan="1" colspan="1">
+    <p   
+>created</p>
+            </td>
+                <td   rowspan="1" colspan="1">
+    <p   
+>due</p>
+            </td>
+                <td   rowspan="1" colspan="1">
+    <p   
+>assignee</p>
+            </td>
+                <td   rowspan="1" colspan="1">
+    <p   
+>reporter</p>
+            </td>
+                <td   rowspan="1" colspan="1">
+    <p   
+>priority</p>
+            </td>
+                <td   rowspan="1" colspan="1">
+    <p   
+>status</p>
+            </td>
+                <td   rowspan="1" colspan="1">
+    <p   
+>resolution</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td   rowspan="1" colspan="10">
+    <p  class="message" 
+>Jira project doesn't exist or you don't have permission to view it. <a  class="jira-link" href="https://rb-tracker.bosch.com/tracker08/secure/IssueNavigator.jspa?reset=true&jqlQuery=project+%3D+CNWVIII+AND+issuetype+in+%28Impediment%2C+%22Open+Item%22%29+AND+fixVersion+%3D+%22W3+PI2309%22+AND+%22Epic+Link%22+%3D+CNWVIII-48743+&src=confmacro">View these issues in Jira</a></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3824004800_E0X-OTA2_HPA_%E6%B3%9B%E5%8C%96%E6%80%A7%E8%BF%AD%E4%BB%A3_%E9%97%AD%E7%8E%AF.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> E0X -OTA2 HPA generalization iterative iteration closed loop </span>
+        </a>
+                <a href="3274855059_xPER%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E8%AF%84%E4%BC%B0%E8%A1%A8.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Xper dynamic memory assessment form </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

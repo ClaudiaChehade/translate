@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Online Calibration Design Specification - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4140799420"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                     <li><a href="2754796745_xcalib_prod.html">xcalib_prod</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4140799420"> <span>Online Calibration Design Specification</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-4140799420_OnlineCalibrationDesignSpecification-1.overview">
+        <h1 class="heading auto-cursor-target"><span>1. overview</span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="121.146"/>
+                                    <col  width="95.4792"/>
+                                    <col  width="578.01"/>
+                                    <col  width="361.385"/>
+                                    <col  width="494.865"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="highlight-grey confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="2">
+    <p   
+>online monitor</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="2">
+    <p   
+>online calibration</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Solve the problem </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="4">
+    <p   
+> During the vehicle driving process, due to the sudden changes in temperature and mechanical vibration, the sensor installed the bracket deformation and the screw was loose.The installation angle of the sensor changes, and the external parameters that deviate from the calibration of the production line </p>
+<ul class=" "><li class=" "><p   
+> Mild: Correction through online calibration </p>
+</li><li class=" "><p   
+> Severe: triggers the downgrade of the relevant autonomous driving function from the perspective of functional security, and prompts users to go to the 4S shop for after -sales calibration </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Function description </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   
+> Monitor the changes in the installation angle of the sensor </p>
+<ul class=" "><li class=" "><p   
+> Downside function downgrade </p>
+</li><li class=" "><p   
+> Touch after sale and online calibration </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <p   
+> Multi -sensor combined calibration </p>
+<ul class=" "><li class=" "><p   
+> Based on feature information </p>
+</li><li class=" "><p   
+> Based on sports trajectory Odometry </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "> Precautions <br/></strong><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="4">
+    <p   
+> 1. Online detection and online calibration for rotation volume, not for translation </p>
+<p   
+> 2. The following scene is not suitable for online monitoring and online calibration </p>
+<ul class=" "><li class=" "><p   
+> Morning and evening peaks, vehicles are congested before and after </p>
+</li><li class=" "><p   
+> Rain and snow, heavy fog, night, etc. </p>
+</li><li class=" "><p   
+> Non -urban road conditions, the roads in front of the vehicle are uneven, and the bumps are obvious </p>
+</li><li class=" "><p   
+> PARKING LOT </p>
+</li><li class=" "><p   
+> The lane line is not clear </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="5" colspan="1">
+    <p   
+><strong class=" "> Brief description </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>camera</p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>lane → vanish point</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>front wide camera (base) → vehicle</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>optical flow</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>side/surround view camera → front wide camera</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>binocular camera calibration</p>
+<p   
+>camera intrinsic + extrinsic：3D → 2D</p>
+<p   
+> Through the 2D pixels in the two images, the restoration area 3D Feature Points </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+>lidar</p>
+            </td>
+                <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+>curb</p>
+<p   
+>pole</p>
+<p   
+>ground normal vector</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>front lidar → front wide camera</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Based on regional characteristics matching </p>
+</li><li class=" "><p   
+> Based on point feature matching </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>side lidar → front lidar</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>point-to-plane ICP</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lidar/camera → imu</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Lidar and Camera can obtain three -dimensional self -movement through the mileage meter, and the sensor movement that gives time alignment can be used to analyze the external rotation parameters in the same 3D movement correlation mechanism </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-4140799420_OnlineCalibrationDesignSpecification-2.cameraalgorithm">
+        <h1 class="heading auto-cursor-target"><span>2. camera algorithm</span></h1>
+    <div class="section section-2" id="src-4140799420_OnlineCalibrationDesignSpecification-2.1.frontviewcamera">
+        <h2 class="heading "><span>2.1. front view camera</span></h2>
+    <div class="section section-3" id="src-4140799420_OnlineCalibrationDesignSpecification-2.1.1.vanishpoint">
+        <h3 class="heading "><span>2.1.1. vanish point</span></h3>
+<ul class=" "><li class=" "><p   
+> Detect the lane lines in the open road (the three lanes are required and the lane lines are clear to avoid direct sunlight. There are fewer vehicles around the non -congestion period, and the vehicles should be straight as possible) </p>
+</li><li class=" "><p   
+> Based on the test results of the lane line, calculate the elimination point </p>
+<ul class=" "><li class=" "><p   
+>the parallel lines meet at VP when projected on the image plane</p>
+</li><li class=" "><p   
+>estimate VP based on the RANSAC</p>
+</li></ul></li></ul><ul class=" "><li class=" "><p   
+> Project the lane line to IPM and calculate the width of the lane on both sides of the vehicle </p>
+</li><li class=" "><p   
+> Evaluate Camera external parameters </p>
+<ul class=" "><li class=" "><p   
+>pitch and yaw angles are estimated simultaneously using a vanishing point computed from a set of lane boundary observations</p>
+</li><li class=" "><p   
+>roll angle and height are computed by minimizing difference between lane width observations and a lane width prior</p>
+</li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2024-3-25_14-40-55-version-1-modificationdate-1712561489000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2024-3-25_14-40-55-version-1-modificationdate-1712561489000-api-v2.png" width="1500"  />
+    <img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/vanishing_point-version-1-modificationdate-1712561489000-api-v2.png" alt="images/confluence/download/attachments/4140799420/vanishing_point-version-1-modificationdate-1712561489000-api-v2.png"  height="250" />
+    <img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2024-3-25_14-24-1-version-1-modificationdate-1712561489000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2024-3-25_14-24-1-version-1-modificationdate-1712561489000-api-v2.png"  height="150" />
+    </p>
+<p   
+><strong class=" ">advantages</strong></p>
+<ul class=" "><li class=" "><p   
+> The overall pipeline is clear and clear, and the theory is complete; </p>
+</li></ul><p   
+><strong class=" ">drawbacks</strong></p>
+<ul class=" "><li class=" "><p   
+> The requirements for vehicle status/road environment/sensor observation requirements are harsh, and it is not easy to enter the calibration state. It takes a long time to collect sufficient amounts of data. At present, there are no good ways to calibrate ROLL and high distance. </p>
+</li></ul><p   
+><strong class=" ">    <span style="color: #003366;">
+code    </span>
+</strong></p>
+<p   
+><a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3_ALG/repos/xcalib-prod/browse">xcalib-prod-online-monitor</a></p>
+<ul class=" "><li class=" "><p   
+> Use the positioning information provided by LOC to determine whether to go straight </p>
+</li><li class=" "><p   
+> Use the lane line information provided by Viper to calculate the elimination point </p>
+</li><li class=" "><p   
+> Use the standard deviation of the Pitch/YAW in the sliding window as the basis for convergence </p>
+</li></ul><p   
+><a  class="external-link" href="https://github.com/OpenCalib/SensorX2car/tree/main/camera2car">OpenCalib/SensorX2car</a></p>
+<ul class=" "><li class=" "><p   
+> Use the neural network to directly output the elimination point and the horizon </p>
+</li><li class=" "><p   
+> Use the fascination point to calibrate the pitch/yaw, use the standard difference in the sliding window as the basis for convergence </p>
+</li><li class=" "><p   
+> Use the horizontal line calibration ROLL, and use the standard deviation in the sliding window as the basis for convergence </p>
+</li></ul>    </div>
+    <div class="section section-3" id="src-4140799420_OnlineCalibrationDesignSpecification-2.1.2.opticalflow">
+        <h3 class="heading "><span>2.1.2. optical flow</span></h3>
+<p   
+>optical flow field: real world motion → image plane (velocity vectors: translation + rotation)</p>
+<ul class=" "><li class=" "><p   
+>left: a purely translational motion where the camera is moving backwards → focus of contraction (FOC)</p>
+</li><li class=" "><p   
+> Right: A Purely Translational Motion where the carera is moving forwards → Focus of Expansion (FOE) is in an infinite distance </p>
+</li></ul><p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4140799420/image-2023-5-5_11-1-21-version-1-modificationdate-1712561489000-api-v2.png" alt="images/confluence/download/thumbnails/4140799420/image-2023-5-5_11-1-21-version-1-modificationdate-1712561489000-api-v2.png"  height="150" />
+     <img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2023-5-5_11-4-18-version-1-modificationdate-1712561489000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2023-5-5_11-4-18-version-1-modificationdate-1712561489000-api-v2.png"  height="150" />
+    </p>
+<p   
+><br/></p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4140799420/image-2024-3-25_14-22-0-version-1-modificationdate-1712561489000-api-v2.png" alt="images/confluence/download/thumbnails/4140799420/image-2024-3-25_14-22-0-version-1-modificationdate-1712561489000-api-v2.png"  height="250" />
+    <img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2023-5-5_13-29-27-version-1-modificationdate-1712561489000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2023-5-5_13-29-27-version-1-modificationdate-1712561489000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+<p   
+>original frame → interest points → optical flow → trajectories → vanishing points → focus of expansion</p>
+<p  class="auto-cursor-target" 
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2024-3-25_14-10-9-version-1-modificationdate-1712561490000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2024-3-25_14-10-9-version-1-modificationdate-1712561490000-api-v2.png" width="1500"  />
+    </p>
+<p   
+><strong class=" ">advantages</strong></p>
+<ul class=" "><li class=" "><p   
+> There are not so many constraints on the external environment and vehicle driving status. Pipeline is free, flexible, and theoretically convergence of the result. </p>
+</li></ul><p   
+><strong class=" ">drawbacks</strong></p>
+<ul class=" "><li class=" "><p   
+> Large calculations, and have a certain accuracy requirements for external provision (EGO Motion / LOC results) </p>
+</li></ul><p   
+><strong class=" ">code</strong></p>
+<p   
+>WAVE1 <a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/NRCS2CN/repos/nrc2_cn/browse">NRCS2_CN / nrc2_cn</a></p>
+<ul class=" "><li class=" "><p   
+> Get the light flow vector from the front end </p>
+</li><li class=" "><p   
+> According to the direction of the vehicle and the initial external parameters of the camera, the camera mobilizes is roughly frame, and the obvious wrong three -dimensional light flow is eliminated. </p>
+</li><li class=" "><p   
+> Use light current optimization vehicle body motion </p>
+</li><li class=" "><p   
+> Use light current optimization camera motion </p>
+</li><li class=" "><p   
+> Align the two movements above and get Pitch / YAW </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2024-3-25_14-33-39-version-1-modificationdate-1712561490000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2024-3-25_14-33-39-version-1-modificationdate-1712561490000-api-v2.png"  height="250" />
+    </p>
+<ul class=" "><li class=" "><p   
+> Calculate the ground method line and get roll </p>
+</li></ul><p   
+><a  class="external-link" href="https://arxiv.org/abs/2303.17137">Online Camera-to-ground Calibration for Autonomous Driving</a></p>
+<ul class=" "><li class=" "><p   
+> Calculate the light flow, estimate the ground line, only retain the ground light flow </p>
+</li><li class=" "><p   
+> Calculate f, remove the error matching, and obtain the camera frame R + T according to the scale information provided by the mileage meter </p>
+</li><li class=" "><p   
+> Use the remaining matching point triggered + Ransac to get the ground method line + camera height initial value H </p>
+</li><li class=" "><p   
+> Constructing optimized equations, minimizing the re-projection of the ground feature point on each frame image. If there is N frame data, the optimized variables are: inter-camera frame position [DOF: 6*(N-1)] + ground method line [dof: 2] + camera height [dof: 1] </p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-2" id="src-4140799420_OnlineCalibrationDesignSpecification-2.2.sideviewcamera">
+        <h2 class="heading "><span>2.2. side view camera</span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2024-3-25_14-8-27-version-1-modificationdate-1712561490000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2024-3-25_14-8-27-version-1-modificationdate-1712561490000-api-v2.png"  height="400" />
+     <img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2024-3-25_14-36-20-version-1-modificationdate-1712561490000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2024-3-25_14-36-20-version-1-modificationdate-1712561490000-api-v2.png"  height="400" />
+    </p>
+<p   
+><strong class=" ">advantages</strong></p>
+<ul class=" "><li class=" "><p   
+>Relatively cheap to calculate</p>
+</li><li class=" "><p   
+>Very robust approach to find a calibration for the side camera</p>
+</li><li class=" "><p   
+>Could be combined with temporal calibration information (visual odometry of camera)</p>
+</li></ul><p   
+><strong class=" ">drawbacks</strong></p>
+<ul class=" "><li class=" "><p   
+>Heuristic approach; No mathematical reasoning why this is always a good idea</p>
+</li><li class=" "><p   
+>Might not work for multiple side cameras with only small overlap regions</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-4140799420_OnlineCalibrationDesignSpecification-2.3.surroundviewcamera">
+        <h2 class="heading "><span>2.3. surround view camera</span></h2>
+<ul class=" "><li class=" "><p   
+>Filter flow field with street mask</p>
+</li><li class=" "><p   
+>Use visual odometry to estimate street normal and scale over height</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2024-3-25_14-25-39-version-1-modificationdate-1712561490000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2024-3-25_14-25-39-version-1-modificationdate-1712561490000-api-v2.png"  height="400" />
+    <img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2024-3-25_14-28-30-version-1-modificationdate-1712561490000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2024-3-25_14-28-30-version-1-modificationdate-1712561490000-api-v2.png"  height="400" />
+    </p>
+<ul class=" "><li class=" "><p   
+>Pose graph optimization (PGO) for multi-camera calibration</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2024-3-25_14-32-39-version-1-modificationdate-1712561490000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2024-3-25_14-32-39-version-1-modificationdate-1712561490000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-4140799420_OnlineCalibrationDesignSpecification-3.lidaralgorithm">
+        <h1 class="heading auto-cursor-target"><span>3. lidar algorithm</span></h1>
+    <div class="section section-2" id="src-4140799420_safe-id-T25saW5lQ2FsaWJyYXRpb25EZXNpZ25TcGVjaWZpY2F0aW9uLTMuMS5mcm9udGxpZGFy4oaSdmVoaWNsZQ">
+        <h2 class="heading "><span>3.1. front lidar → vehicle</span></h2>
+<ul class=" "><li class=" "><p   
+> Use the initial external reference, convert the point cloud from the lidar coordinate system to the vehicle coordinate system </p>
+</li><li class=" "><p   
+> Use the rectangular ROI to filter out the ground point cloud </p>
+</li><li class=" "><p   
+> Perform RANSAC plane fitting, solve the method vector </p>
+</li><li class=" "><p   
+> Pitch and roll through the method through the method </p>
+</li><li class=" "><p   
+> Drive in line, detect the road edge, solve YAW </p>
+</li></ul><p   
+><img  class="confluence-embedded-image cp-img panning confluence-external-resource"  src="images/download/attachments/2788360211/image2023-3-15_14-7-8-version-1-modificationdate-1678860428000-api-v2.png" alt="images/download/attachments/2788360211/image2023-3-15_14-7-8-version-1-modificationdate-1678860428000-api-v2.png"  height="250" />
+    <img  class="confluence-embedded-image cp-img panning confluence-external-resource"  src="images/download/attachments/2788360211/image2023-3-15_14-8-2-version-1-modificationdate-1678860483000-api-v2.png" alt="images/download/attachments/2788360211/image2023-3-15_14-8-2-version-1-modificationdate-1678860483000-api-v2.png"  height="250" />
+    </p>
+    </div>
+    <div class="section section-2" id="src-4140799420_safe-id-T25saW5lQ2FsaWJyYXRpb25EZXNpZ25TcGVjaWZpY2F0aW9uLTMuMi5mcm9udGxpZGFy4oaSZnJvbnR3aWRlY2FtZXJh">
+        <h2 class="heading "><span>3.2. front lidar → front wide camera</span></h2>
+<p   
+> Based On Regional Characteristics Matching is higher. If the Object Function is designed, a better calibration result can be solved in a small range.Feature Matching accuracy and operating efficiency are higher (need actual data test comparison, which solution to choose from or two combinations) </p>
+    <div class="section section-3" id="src-4140799420_safe-id-T25saW5lQ2FsaWJyYXRpb25EZXNpZ25TcGVjaWZpY2F0aW9uLTMuMi4xLuWfuuS6jueCueeJueW-geWMuemFjQ">
+        <h3 class="heading "><span>3.2.1.  Based on point feature matching </span></h3>
+<p   
+> Extract point cloud and the point special sign (edge ​​point) in the image, and to solve the external parameters by constructing PNP </p>
+<p   
+> Key: How to build a PNP, how to find the pairing relationship between the characteristics of the point cloud and the image point </p>
+<p   
+><strong class=" ">pipeline</strong></p>
+<p   
+> Use the rich marginal information in natural scenes (indoor and outdoor) to calibrate lidar to the relative external participation of Camera, extract the deep continuous cloud edges, and align the edge characteristics obtained from the observation of the radar and camera to achieve pixel -level calibration accuracy accuracy accuracy </p>
+<ul class=" "><li class=" "><p   
+> Calculate the first frame and current frame, current frame and latter frame of the TRANSFORM through NDT/ICP, and use a local graph to stitch 3 frame clouds into 1 frame thickening dense point cloud </p>
+</li><li class=" "><p   
+> Extract the edge features in the image via Canny operator </p>
+</li><li class=" "><p   
+> Based on point cloud cutting and RANSAC plane fitting, solve the plane intersect as deep continuous edge features (laser points will not strictly fall on the edge of depth and incompetence) </p>
+</li></ul><p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4140799420/image2023-1-28_13-46-2-version-1-modificationdate-1712561490000-api-v2.png" alt="images/confluence/download/thumbnails/4140799420/image2023-1-28_13-46-2-version-1-modificationdate-1712561490000-api-v2.png" width="300"  />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> The actual laser pulse is not an ideal point, but a beam with a certain scattered angle (that is, the beam divergent angle).When scanning from the foreground objects to the background object, some laser pulses are reflected by the foreground objects, and the rest are reflected by the background, generating two reflex pulses to the laser receiver </p>
+<ul class=" "><li class=" "><p   
+> If the reflectance of the prospective object is high, the signal caused by the first pulse will dominate, resulting in the fake points of the foreground objects (Fake Points) </p>
+</li><li class=" "><p   
+> If the reflectance of the foreground object is close to the background object, the signal caused by the two pulses will be merged, and the concentrated signal will cause the bleeding point of the connection prospect and the background (Bleeding Points) </p>
+</li><li class=" "><p   
+> Using depth and discontinuous edges, the above two phenomena will lead to the expansion of the foreground objects </p>
+</li></ul></li><li class=" "><p   
+> The projection laser point is extracted from the edge features. Due to the multi -value and zero -value mapping caused by the obstruction, the edge extraction error will be caused </p>
+<ul class=" "><li class=" "><p   
+> Zero value problem: A area can be observed by Camera, in the blind area of ​​lidar, which causes the cloud empty cave at the edge (when the background objects have a low reflection rate) </p>
+</li><li class=" "><p   
+> Multi -value problem: The B area can be observed by lidar, in the Camera blind area, causing clouds to expand at the edge (when the background objects have a high reflection rate) </p>
+</li><li class=" "><p   
+> Solution: Extract the edge feature of the depth continuous (point cloud depth without jumping) on ​​the point cloud </p>
+</li></ul></li></ul></li><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image2023-1-10_17-51-25-version-1-modificationdate-1712561490000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image2023-1-10_17-51-25-version-1-modificationdate-1712561490000-api-v2.png" width="500"  />
+    </li><li class=" "><p   
+> Project 3D edges on the 2D image plane, optimize the edge of the LIDAR and Camera image edge alignment </p>
+<ul class=" "><li class=" "><p   
+> Use lidar to the Transform of Camera, convert 3D edges to the camera coordinate system, and then project it to image plane </p>
+<ul class=" "><li class=" "><p   
+> The blue line segment represents the 3D edge, the red line segment represents the 2D edge, the 3D edge translates along the axis C/D or the a/b is still on the yellow plane after rotating the a/b, and the 2D edges on the gray image plane are the same.Single -edge features constitute two effective constraints of TRANSFORM of LIDAR to Camera, which cannot distinguish the following 4 degrees of freedom: </p>
+<ol class=" "><li class=" "><p   
+> Shit along the edge (red arrow D) </p>
+</li><li class=" "><p   
+> Vertical on the edge translation (green arrow C) </p>
+</li><li class=" "><p   
+> Rotate the plane method formed by the focus of the edge and camera (blue arrow B) </p>
+</li><li class=" "><p   
+> Rotate around the edge itself (purple arrow A) </p>
+</li></ol></li></ul></li></ul></li></ul><p   
+> You need to extract the edge characteristics of different directions and positions to fully restrain the external parameter </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4140799420/image2023-1-28_12-43-52-version-1-modificationdate-1712561490000-api-v2.png" alt="images/confluence/download/thumbnails/4140799420/image2023-1-28_12-43-52-version-1-modificationdate-1712561490000-api-v2.png" width="300"  />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Search the front k recent nearest nearest nearest nearest nearest nearest nearest nearest neighboring in the KD tree built by the edge of the image. The algorithm vector </p>
+</li><li class=" "><p   
+> Project the 3D edge direction to the image plane to verify its orthogonality with the law vector, effectively reduce the two nearly non -parallel straight lines to match </p>
+</li><li class=" "><p   
+> Optimize the transform of lidar to Camera, so that the point to the straight line distance </p>
+</li></ul></li></ul><p   
+> [(Laser point + measuring noise) Turn to the camera coordinate system and then projected to the pixel coordinate system and then generate distortion- (camera point + measuring noise of the camera)] * French vector = 0 </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4140799420/image2023-1-28_14-27-45-version-1-modificationdate-1712561491000-api-v2.png" alt="images/confluence/download/thumbnails/4140799420/image2023-1-28_14-27-45-version-1-modificationdate-1712561491000-api-v2.png" width="300"  />
+    </p>
+    </div>
+    <div class="section section-3" id="src-4140799420_safe-id-T25saW5lQ2FsaWJyYXRpb25EZXNpZ25TcGVjaWZpY2F0aW9uLTMuMi4yLuWfuuS6juWMuuWfn-eJueW-geWMuemFjQ">
+        <h3 class="heading "><span> 3.2.2. Based on regional characteristics matching </span></h3>
+<p   
+> Both the image and the point cloud were found in areas with a specific semantic semantics, and these specific areas were extracted from the point cloud as 1, and a Mongolian record that contained only a specific area of ​​the image was 2.Use the initial external parameter to project 1 to 2, and design an Object Function to evaluate whether there are enough 1st projection to the corresponding area of ​​1. Finally, iterates the external reference through the optimized method, so that the Object Function can reach the most value to the most valuable value </p>
+<p   
+> The essential: </p>
+<ul class=" "><li class=" "><p   
+> How to accurately extract the same area in the image and point cloud </p>
+</li><li class=" "><p   
+> Object function design: Decide whether it can be solved through gradient decrease/rise, otherwise it can only be solved by violent search, which is very time -consuming </p>
+</li></ul><p   
+><strong class=" ">pipeline</strong></p>
+<ul class=" "><li class=" "><p   
+> The RGB image is converted into grayscale, based on the LSD (Line Segment Detector) linear segment detection algorithm extraction line feature, and perform an inverse distance transformation of IDT (Inverse Distance Transform)The higher the value, the closer to the line feature center) </p>
+</li><li class=" "><p   
+> Field the laser point cloud data based on Camera's FOV, filter to generate an orderly point cloud, extract line features </p>
+<ul class=" "><li class=" "><p   
+> Turn the point cloud to the Range Image, use the convolution nuclear filtering to remove the point from the eight adjacent points than the point of a certain threshold, filter out the outer point and the ground point </p>
+</li><li class=" "><p   
+> Use clustering to remove the line feature points with only rare adjacent points </p>
+</li></ul></li><li class=" "><p   
+> Use external parameters to calibrate the results, projected the feature points in the laser point cloud on the image, and calculate the score </p>
+</li></ul><p   
+> The loss function is as follows. When the calibration parameters are correct, the image line features corresponding to the point cloud line characteristics response higher </p>
+<p   
+><img  class="confluence-embedded-image cp-img confluence-external-resource"  src="images/download/attachments/2488268325/2022-11-01_20h04_47-version-1-modificationdate-1667551895000-api-v2.png" alt="images/download/attachments/2488268325/2022-11-01_20h04_47-version-1-modificationdate-1667551895000-api-v2.png" width="500"  />
+    </p>
+<ul class=" "><li class=" "><p   
+> Grid Search (Rotation_Step = 0.2Degree, Translation_Step = 2CM) is iterated near the exogenous parameter (rotation_Step = 0.2Degree, translation_Step = 2cm) to calculate new scores </p>
+</li><li class=" "><p   
+> Comprehensively analyze the above scores, evaluate the relative external exterior of lidar to Camera (the correct external reference score is higher, the wrong external parameter score is lower)) </p>
+</li><li class=" "><p   
+> Temporarily applicable to outdoor scenes, indoor scenes are not well performed well </p>
+</li></ul><p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/download/attachments/2509820479/projection-version-1-modificationdate-1668662736000-api-v2.jpg" alt="images/download/attachments/2509820479/projection-version-1-modificationdate-1668662736000-api-v2.jpg"  height="400" />
+    </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-4140799420_safe-id-T25saW5lQ2FsaWJyYXRpb25EZXNpZ25TcGVjaWZpY2F0aW9uLTMuMy5zaWRlbGlkYXLihpJmcm9udGxpZGFy">
+        <h2 class="heading "><span>3.3. side lidar → front lidar</span></h2>
+<p   
+><strong class=" ">point-to-plane ICP</strong></p>
+<ul class=" "><li class=" "><p   
+> Advantages: Considering the distance from the source to the target vertex, compared to the direct calculation point to point distance, considering the local structure of the point cloud, the accuracy is more accurate, and it is not easy to fall into the local optimal best </p>
+</li><li class=" "><p   
+> Disadvantages: Point-to-Plane optimization is a non-linear problem, which is slower. Generally, linearization is similar to </p>
+</li></ul><p   
+><strong class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2023-5-4_17-34-40-version-1-modificationdate-1712561491000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2023-5-4_17-34-40-version-1-modificationdate-1712561491000-api-v2.png"  height="250" />
+</strong></p>
+<p   
+><strong class=" "><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4140799420/image-2023-5-4_17-36-59-version-1-modificationdate-1712561491000-api-v2.png" alt="images/confluence/download/thumbnails/4140799420/image-2023-5-4_17-36-59-version-1-modificationdate-1712561491000-api-v2.png" width="300"  />
+</strong></p>
+    </div>
+    <div class="section section-2" id="src-4140799420_safe-id-T25saW5lQ2FsaWJyYXRpb25EZXNpZ25TcGVjaWZpY2F0aW9uLTMuNC5saWRhci9jYW1lcmHihpJpbXU">
+        <h2 class="heading "><span>3.4. lidar/camera → imu</span></h2>
+<p   
+><strong class=" ">pipeline of lidar → imu<br/></strong></p>
+<ul class=" "><li class=" "><p   
+> Since the sampling frequency of IMU is higher than lidar, the sampling is performed through the linear interpolation </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image2022-12-16_12-39-21-version-1-modificationdate-1712561491000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image2022-12-16_12-39-21-version-1-modificationdate-1712561491000-api-v2.png" width="400"  />
+    </p>
+<ul class=" "><li class=" "><p   
+> Digital pick -up output inspva </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2023-5-4_16-51-25-version-1-modificationdate-1712561491000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2023-5-4_16-51-25-version-1-modificationdate-1712561491000-api-v2.png" width="600"  />
+     <img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image2022-12-16_12-22-53-version-1-modificationdate-1712561491000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image2022-12-16_12-22-53-version-1-modificationdate-1712561491000-api-v2.png" width="400"  />
+    </p>
+<ul class=" "><li class=" "><p   
+> According to the transform and IMU_POSE from lidar to IMU, the splicing multi -frame cloud data data can be seen. It can be seen that the surrounding environment is clear </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image2022-12-16_11-42-32-version-1-modificationdate-1712561491000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image2022-12-16_11-42-32-version-1-modificationdate-1712561491000-api-v2.png"  height="250" />
+    </p>
+<p   
+><strong class=" ">pipeline of camera → imu<br/></strong></p>
+<ul class=" "><li class=" "><p   
+> Camera's rotation increase through feature matching </p>
+</li><li class=" "><p   
+> Camera and IMU relatively rotating angle calibration </p>
+</li><li class=" "><p   
+> Be initialize after the calibration is completed </p>
+</li><li class=" "><p   
+> The calibration of relative translation between Camera and IMU </p>
+</li><li class=" "><p   
+> Put the calibration volume as an estimated state in a joint optimization </p>
+</li></ul><p   
+><strong class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2023-5-4_18-46-44-version-1-modificationdate-1712561492000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2023-5-4_18-46-44-version-1-modificationdate-1712561492000-api-v2.png" width="400"  />
+</strong></p>
+<p   
+><br/></p>
+<p   
+><strong class=" "><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4140799420/image-2023-5-4_18-59-29-version-1-modificationdate-1712561492000-api-v2.png" alt="images/confluence/download/thumbnails/4140799420/image-2023-5-4_18-59-29-version-1-modificationdate-1712561492000-api-v2.png" width="200"  />
+</strong></p>
+<p   
+><strong class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4140799420/image-2023-5-4_19-0-5-version-1-modificationdate-1712561492000-api-v2.png" alt="images/confluence/download/attachments/4140799420/image-2023-5-4_19-0-5-version-1-modificationdate-1712561492000-api-v2.png" width="500"  />
+</strong></p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3252005066_Offline_Calibration_Routine.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Offline Calibration Routine</span>
+        </a>
+                <a href="4059781788_OTA2_Online_Calibration_Test.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>OTA2 Online Calibration Test</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

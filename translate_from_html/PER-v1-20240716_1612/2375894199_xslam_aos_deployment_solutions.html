@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>xslam aos deployment solutions - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2375894199"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                     <li><a href="2375894193_02_xSLAM.html">02_xSLAM</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2375894199"> <span>xslam aos deployment solutions</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+> The map group has a demand on the AOS deployment. We have a huge complex structure (the data scale is ~ 500MB). The three threads were originally read and wrote through the lock mechanism. </p>
+<p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/download/attachments/2363292761/2022-07-25_21h11_04-version-1-modificationdate-1658757118000-api-v2.png" alt="images/download/attachments/2363292761/2022-07-25_21h11_04-version-1-modificationdate-1658757118000-api-v2.png"  height="250" />
+    </p>
+<p   
+> There are the following solutions when AOS deployment: </p>
+<p   
+><strong class=" "><u class=" "> plan </u></strong><strong class=" "><u class=" "> A</u></strong></p>
+<p   
+> Deploy the four modules in the figure above to four Activity, get out of AOS control, call the POSIX interface to open up shared memory, and then control the read and write with the lock mechanism. </p>
+<p   
+> advantage: </p>
+<p   
+> The development workload of the map group is small, which is more in line with the current PC version map code </p>
+<p   
+><br/></p>
+<p   
+> shortcoming: </p>
+<p   
+> Whether the car regulations are required to be satisfied from AOS control </p>
+<p   
+><br/></p>
+<p   
+> proposal: </p>
+<p   
+> Intermediate parts group (AOS development) release the shared intraocular deposit interface that conforms to the vehicle regulations and the interface of the creation lock to the map team </p>
+<p   
+><br/></p>
+<p   
+><strong class=" "><u class=" "> plan </u></strong><strong class=" "><u class=" ">B</u></strong></p>
+<p   
+> Create four Runnable in an Activity, use static to declare ~ 500MB variable space in a Runnable header file, and other Runnable uses the form of Extern to declare and control the read and write through the lock mechanism to control the read and write through the lock mechanism. </p>
+<p   
+> advantage: </p>
+<ul class=" "><li class=" "><p   
+> The development workload of the map group is small, which is more in line with the current PC version map code </p>
+</li><li class=" "><p   
+> No additional memory </p>
+</li></ul><p   
+><br/></p>
+<p   
+> shortcoming: </p>
+<ul class=" "><li class=" "><p   
+> Activity requires all runnable time to be consistent, and you need to manually discharge each Runnable to execute the assembly line.For example, key frame threads must run multiple Cycle at one time to maintain cycle balance with the slowest loop detection threads, and the graphics performance cannot be guaranteed. </p>
+</li></ul><p   
+><br/></p>
+<p   
+> Proposal: None </p>
+<p   
+><br/></p>
+<p   
+><strong class=" "><u class=" "> plan </u></strong><strong class=" "><u class=" ">C</u></strong></p>
+<p   
+> Adopting the normal AOS development process and deploying the four modules in the above figure to the four Activity, you need to reserve a copy of more memory blocks to save the map to deal with different modules. </p>
+<p   
+> advantage: </p>
+<ul class=" "><li class=" "><p   
+> Compliance with automobile regulations software development process </p>
+</li></ul><p   
+><br/></p>
+<p   
+> shortcoming: </p>
+<ul class=" "><li class=" "><p   
+> It is necessary to consume a lot of memory. For example, local map optimization is 4 times faster than the loop detection. After the partial map optimization is calculated, the feedback is fed back to the layer management. At least 4 map data should be retained within the layer management.(The memory required for a single map is 500MB, but the total can be distributed in total 4GB) </p>
+</li><li class=" "><p   
+> The map data of different versions of the map on the layer management module is more troublesome. </p>
+</li><li class=" "><p   
+> The data copy time is long, and the calculation performance is worrying </p>
+</li></ul><p   
+><br/></p>
+<p   
+> Proposal: None </p>
+<p   
+><br/></p>
+<p   
+><strong class=" "><u class=" "> plan </u></strong><strong class=" "><u class=" ">D</u></strong></p>
+<p   
+> Open four threads in a Runnable. You need to call the POSIX interface, and Runnable maintains the shared memory and locking writing mechanism. </p>
+<p   
+> advantage: </p>
+<ul class=" "><li class=" "><p   
+> The development of the map group is the smallest, which is more in line with the current PC version map code </p>
+</li><li class=" "><p   
+> No additional memory </p>
+</li></ul><p   
+><br/></p>
+<p   
+> shortcoming: </p>
+<ul class=" "><li class=" "><p   
+> Whether the car regulations are required to be satisfied from AOS control </p>
+</li></ul><p   
+><br/></p>
+<p   
+> proposal: </p>
+<p   
+> Intermediate parts group (AOS development) releases the thread creation interface that conforms to the vehicle regulations and the interface of the creation lock to the map team </p>
+<p   
+><br/></p>
+<p   style="text-align:left;"
+> Table.1 Running frequency/time/trigger conditions of each module </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>module</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>KeyFrame Tracking （a）</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>LocalMapping （b）</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>LoopClose & Global Opt （c）</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Run/Freq</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>≥ 20Hz</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>≥ 4Hz</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Depending on the scene </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Run duration</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>≤ 50ms</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>≤ 250ms</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>n+ Sec</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Trigger</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Sensor data</p>
+<p   
+>(Camera/IMU/...)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>KeyFrame list</p>
+<p   
+><strong class=" ">MQ</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Scene return ring </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><strong class=" ">Open topic</strong></p>
+<ol class=" "><li class=" "><p   
+> How to share the 500M sharing data in multi -module? </p>
+</li><li class=" "><p   
+> How to ensure the real -time operation of their respective operations under the AOS framework? </p>
+</li><li class=" "><p   
+> Can I make a POC DEMO program in the next stage and simulate the operation/scheduling of the above three modules? </p>
+</li></ol><p   
+><br/></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2456522778_Lane_%26_free_space_-_MS2.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Lane & free space - MS2</span>
+        </a>
+                <a href="2453670978_03_Calibration.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>03_Calibration</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

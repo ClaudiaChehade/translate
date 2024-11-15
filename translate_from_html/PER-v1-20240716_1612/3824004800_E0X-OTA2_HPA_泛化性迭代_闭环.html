@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> E0X -OTA2 HPA generalization iterative iteration closed loop  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3824004800"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                     <li><a href="3202716967_PER__DIRs_%28Dependences_Impediment_Risks%29.html">PER  DIRs (Dependences/Impediment/Risks)</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3824004800"> <span> E0X -OTA2 HPA generalization iterative iteration closed loop </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+></p>
+<p   
+><br/></p>
+<ul class=" "><li class=" ">    <h2 id="src-3824004800_safe-id-RTBYT1RBMkhQQeazm-WMluaAp-i_reS7o-mXreeOry3og4zmma8v55uu55qE" class="heading "><span> Background/Purpose </span></h2>
+</li></ul><p   style="margin-left:30px;"
+> OTA2 20 MAR 2024 will include HPA/RPA/RA function.For the generalized testing of various parking lots in HPA, the XPER module code of the main line of the root warehouse needs to use the increasingly richer Scene Data to return to iteration to ensure the convergence of the problem. </p>
+<p   style="margin-left:30px;"
+> This article hopes to clarify the specific implementation scheme selection (X86 platform? Orin platform?), Scene Data set/backup tool & recompute method, dependency item & action plan </p>
+<p   
+><br/></p>
+<ul class=" "><li class=" ">    <h2 id="src-3824004800_safe-id-RTBYT1RBMkhQQeazm-WMluaAp-i_reS7o-mXreeOry1SZS1jb21wdXRl5pa55qGI" class="heading "><span> Re-compute solution </span></h2>
+</li></ul><p   style="margin-left:30px;"
+> Before discussing whether the re-compute is based on the X86 platform or the Hol/ORIN platform, first lists the front-end module/front-end signal source of HPA Train (XSLAM) to build a map </p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="7.17541%"/>
+                                    <col  width="16.7778%"/>
+                                    <col  width="10.7631%"/>
+                                    <col  width="14.4563%"/>
+                                    <col  width="24.6918%"/>
+                                    <col  width="26.0421%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Group NO</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Sensor signal</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>xPer module</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Perception result</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Information</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Comments</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>#1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>camera image</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Viper</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="margin-left:30px;"
+>Super-poing, Road Mark,</p>
+<p   style="margin-left:30px;"
+>(Lan)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="margin-left:30px;"
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="margin-left:30px;"
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>#2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="margin-left:30px;"
+>Lidar point-cloud, GNSS/INS, IMU, odometer</p>
+<p   style="margin-left:30px;"
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xLio, G-Loc, L-Loc</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="margin-left:30px;"
+>Pos, Global-Loc, Local-Loc</p>
+<p   style="margin-left:30px;"
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="margin-left:30px;"
+>(PER3) <strong class=" ">Siwei</strong> info:</p>
+<p   style="margin-left:30px;"
+> GNSS/INS, IMU, Odometer never used Persim on X86 for RE-compute </p>
+<p   
+> Have you ever? </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   style="margin-left:30px;"
+><br/></p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> X86 platform </p>
+<ul class=" "><li class=" "><p   
+> advantage: </p>
+<ul class=" "><li class=" "><p   
+> Diving Prediction Pipeline has run through and runs stable for a considerable period of time. It can stabilize the output perception results and use it to use WR Prediction Training.Parking Pipeline Tianshu is also in Debug. The current known problem is ViperPrepCProc, and some DLA models do not support. </p>
+</li><li class=" "><p   
+> Without hardware resource restrictions, a large -scale running algorithm KPI can be used. </p>
+</li></ul></li><li class=" "><p   
+> Disadvantages/technical risk </p>
+<ul class=" "><li class=" "><p   
+> Persim is currently available in Driving verification Local Loc, and Parking Local Loc also has output </p>
+</li><li class=" "><p   
+> Persim Camera Gateway X86Driving version has been verified, <span style="color: #ff0000;"> And ViperPrepCProc X86 has a certain maintenance cost </span>
+</p>
+</li><li class=" "><p   
+> Persim Gateway recover a variety of signal sources, which is difficult to ensure the timing and load balancing between the signals and not performed -need to find PMT to provide data to provide data </p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #0000ff;"> The current result is that the signal playback standard deviation of the signal playback standard except the photo is about 2ms, and the photo is about 10ms (Note: the image frame rate of the current data source of the Persim is 10Hz).The main error of the photo is Cam Provider </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #0000ff;"> Specific data can be visible </span>
+</p>
+</li></ul></li></ul></li></ul></li></ul></li></ul><p   
+><img    src="images/inline/ec103c4700837d904b49ce65a6ef1a30cc1374f80c012fa8f842cd40a929ec0b.png" alt="images/inline/ec103c4700837d904b49ce65a6ef1a30cc1374f80c012fa8f842cd40a929ec0b.png"  height="250" />
+    </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> The original data required to record Persim is only ROSBAG -related tools, which cannot guarantee the consistency of the data of the setting data </p>
+</li><li class=" "><p   
+> X86 results and real car results consistency risk </p>
+</li></ul></li></ul></li><li class=" "><p   
+> Hol Orin platform </p>
+<ul class=" "><li class=" "><p   
+> advantage: </p>
+<ul class=" "><li class=" "><p   
+> There is no problem that the above Sensor Signal cannot access the Re-compute platform/ASW code </p>
+</li><li class=" "><p   
+> Directly reuse the XPER module code of the main line of the root warehouse Chery_develop branch, the same car version consistent </p>
+</li></ul></li><li class=" "><p   
+> Disadvantages/technical risk </p>
+<ul class=" "><li class=" "><p   
+> Based on the HOL method RE-compute, there is a relying on the BSW Sensor driver-related code-dependencies/ requires passively update the board card mirror image to ensure that the RE-compute is available.But this one can return to test reuse with the HOL return test before the daily publishing version </p>
+</li></ul></li></ul></li></ul></li></ul><p   
+><br/></p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">VER Info</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>VER3/ QIN YAN:</p>
+<p   
+>3<strong class=" "> In the middle of the month, there should be OTA2, that is, HPA in mid -March will also be mass -produced; </strong><strong class=" "> Subsequent HPA scene HOL tables plan and real car test binding, that is, when the real car test is tested, the HOL data is packaged and recorded in the cloud </strong> Now all in one is the technical implementation of this plan on the real car.Ver Xiaolan allows the table to formulate a medium and long -term plan, of which the real car test plan needs to be referred to the real car test plan (mainly refer to the test plan of the real car HPA parking lot); for HPA tests, the parking lot needs a typical typical example.Sexual, I do n’t know the HPA test part. Is there a plan to plan the parking lot in the real car?If there is, the test field fruit of the HOL tablet plan directly quotes your plan. <a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=3774974655"> Parking Hol Scene Collection -Wave 3 DEVELOPMENT </a> The test scene of the TR list in the second chapter is a social scene for real car testing.I plan to quote the social scene plan of the real car test in this chapter </p>
+<p   
+><br/></p>
+<p   
+><strong class=" "> Term interpretation </strong></p>
+<p   
+> All in ONE: The functional test also has a Hol/DSpace recording system on the real car, which can be activated 1) SOC data recording (that is, ROSBAG recording for real car test) 2) DSpace/Hol data recording, 3) MCU data recording </p>
+        </div>
+    </div>
+<p   
+><br/></p>
+<ul class=" "><li class=" ">    <h2 id="src-3824004800_safe-id-RTBYT1RBMkhQQeazm-WMluaAp-i_reS7o-mXreeOry3lr7nlpJbnmoTkvp3otZbpobnnm64" class="heading "><span> External dependencies </span></h2>
+<ul class=" "><li class=" ">    <h3 id="src-3824004800_safe-id-RTBYT1RBMkhQQeazm-WMluaAp-i_reS7o-mXreeOry3lnLrmma_mlbDmja4" class="heading "><span> Scene data </span></h3>
+<ul class=" "><li class=" "><p   
+> HPA generalization iteration requires a large number of different types of parking lot data, and related data needs to have efficient/implementable collection & cloud online plans.(Craft: You can promote it with the Ver3 team) </p>
+</li></ul></li><li class=" ">    <h3 id="src-3824004800_safe-id-RTBYT1RBMkhQQeazm-WMluaAp-i_reS7o-mXreeOry3ov5DooYzlubPlj7A" class="heading "><span> Operating platform </span></h3>
+<ul class=" "><li class=" "><p   
+> The data of HPA generalization iteration is probably in the cloud, and the HOL platform of the cloud needs to enter the daily normal return state.(Info: There are currently 3 HOL in the cloud) </p>
+</li></ul></li></ul></li></ul><p   
+><br/></p>
+<ul class=" "><li class=" ">    <h2 id="src-3824004800_safe-id-RTBYT1RBMkhQQeazm-WMluaAp-i_reS7o-mXreeOry3ot5_ov5sv6L-t5Luj6KGM5Yqo6aG5" class="heading "><span> Follow -up/iteration action items </span></h2>
+<ul class=" "><li class=" ">    <h3 id="src-3824004800_safe-id-RTBYT1RBMkhQQeazm-WMluaAp-i_reS7o-mXreeOry0xLzEwTU0" class="heading "><span>1/10 MM</span></h3>
+<ul class=" "><li class=" "><p   
+> ViperPrepCProC X86 needs to re -enable/solve the problem of previous Core DUMP 。 <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HTU2SGH">HUA Tianshu (XC-AS/PJ-WIN-PER)</a> Add a question ticket <a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-79648?src=confmacro">CNWVIII-79648</a> -JIRA ISSUE DOESNTE Exist or You DON'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'T'TO of the ViewsPER5 open orders to solve 22 JAN 2024 </p>
+</li><li class=" "><p   
+> Persim toolback performance. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HTU2SGH">HUA Tianshu (XC-AS/PJ-WIN-PER)</a> Update to this document </p>
+</li><li class=" "><p   
+> Hol Scene Data Collection Collection Project Update. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~PGU1SZH">PENG Huidong (XC-AS/PJ-WIN-PER5)</a></p>
+</li><li class=" "><p   
+> PMT cloud HOL platform usability confirmation.  <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HTU2SGH">HUA Tianshu (XC-AS/PJ-WIN-PER)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FHY1SZH">ZHUANG Yu (XC-AS/PJ-WIN-PER5)</a> 19 Jan 2024</p>
+</li></ul></li><li class=" ">    <h3 id="src-3824004800_safe-id-RTBYT1RBMkhQQeazm-WMluaAp-i_reS7o-mXreeOry0xLzE1TU0" class="heading "><span>1/15 MM</span></h3>
+<p  class="auto-cursor-target" 
+> ViperPrepCProC X86 needs to re -enable/solve the problem of previous Core DUMP </p>
+</li></ul></li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Have issued orders <a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-79648?filter=-1&jql=resolution%20%3D%20Unresolved%20AND%20assignee%20%3D%20ILK2SZH"> [Cnwviiii -79648] [Per KPI] PC Persim Parking Viper link CoreDUMP processing -tracker08 (bosch.com) </a> Come to track this problem </p>
+</li><li class=" "><p   
+> It is forbidden to FV, FeV and ODD Runnable. </p>
+</li><li class=" "><p   
+> It is found that ViperPrepCProc is a trigger of the event. At a certain at a time, you cannot receive ideas and images at the same time. You need to change the code to adapt </p>
+</li></ul></li></ul></li></ul><p   
+> Hol Scene Data Planning Status Update </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+><a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=3350459912"> Local Hol data status quo </a> All Local Hol data has been completed offline copy, which can be used in PER HOL; follow -up real car data is not allowed to be offline </p>
+</li><li class=" "><p   
+><a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=3774974655"> Parking Hol scene collection </a> The author expresses that the document is a APA data collection plan; but there is no clear plan to formulate, that is, when the collection is completed, the collection is completed <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~ZXO5SZH">ZHAO Xin (XC-AS/PJ-WIN-PER)</a> Learn from the VV team to learn about the current APA data collection plan </p>
+</li><li class=" "><p   
+> At present, there are about 1/10 scenes in the table, and the data collection is completed (> 10t is not clear); 18 Jan 2024 can complete the work of the clouds of this part of the data and put it into use </p>
+</li><li class=" "><p   
+> The CEP machine is not free to share at present. At present </p>
+</li></ul></li></ul></li></ul><p   style="margin-left:90px;"
+> PMT cloud HOL platform usability confirmation. </p>
+<p   style="margin-left:120px;"
+> Simple alignment information with Ma honglin is as follows: </p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> The current cloud HOL can be perceived until the Planning end test. Last week, it has been commissioned. Recently, it is relatively frequent debugging. </p>
+</li><li class=" "><p   
+> Case has some basic evaluations, such as whether Core, whether the function is activated normally, etc. After the case runs, you can download ROSBAG data and log files for analysis </p>
+</li><li class=" "><p   
+> There are a total of 6 HOL on the cloud platform. At present, 3 HOL (No. 1, 2, 5) has been equipped with automation. Wang Jian uses#2 to debug more. The other two can be selected first. </p>
+</li><li class=" "><p   
+> There are 24 HOL data of CEP PROD, and CEP Dev has a total of 75 HOL data (Parking17). There is no HPA data.There is currently a solid car that can collect DSPACE data. The data is 5min long, including data (ROSBAG) of DSPACE Sensor data and business output. The other two are also debugging DSPACE collection. </p>
+</li></ul></li></ul></li></ul><p   style="margin-left:120px;"
+> Trial experience: <br/></p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Create a few new tasks (running OTA branches DAILY package). Some tasks do not know if it is a resource problem for a long time (or it has never been stuck), and there are several cases of liperDriving_Activity.core.gz?, Stability may have to be strengthened. </p>
+</li><li class=" "><p   
+> The HOL tablet information needs to be perfected. </p>
+</li><li class=" "><p   
+> Data TAG information is not perfect, and it is difficult to test the data and videos online. It is difficult to choose the data for testing. </p>
+</li><li class=" "><p   
+> Operating status </p>
+</li></ul></li><li class=" "><p   
+>OPL：</p>
+</li><li class=" "><p   
+>15 Jan 2024</p>
+<ul class=" "><li class=" "><p   
+> PC link, confirm with PMT confirmation to increase the FCT signal trigger to trigger the building mission <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HTU2SGH">HUA Tianshu (XC-AS/PJ-WIN-PER)</a></p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #ff6600;"> It is currently in the prOGRESS state </span>
+</p>
+</li></ul></li><li class=" "><p   
+> PC link, the onnx model to TRT model task provided by the algorithm on the GPU3080 </p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #ff6600;"> In the current In Progress, the link channel is completed, and the transformed model needs to be uploaded to JFROG management </span>
+</p>
+</li></ul></li><li class=" "><p   
+> PERSIM data collection of PC link <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HTU2SGH">HUA Tianshu (XC-AS/PJ-WIN-PER)</a></p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #ff6600;"> Continue to advance in the past two days, DEMO data is completed; long -term collection risk is not large </span>
+</p>
+</li></ul></li><li class=" "><p   
+> Persim supports the development of Parking and HPA <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HTU2SGH">HUA Tianshu (XC-AS/PJ-WIN-PER)</a></p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> PMT is expected to start the development task next Sprint, and it is expected to be completed after the year </span>
+</p>
+</li></ul></li><li class=" "><p   
+> and <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~SIY8SZH">SHI Yan (XC-AS/PJ-WIN-PER5)</a> Confirm whether PER5 can contribute a HOL for HPA generative platform test <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~ZXO5SZH">ZHAO Xin (XC-AS/PJ-WIN-PER)</a></p>
+</li><li class=" "><p   
+> Find PMT to confirm whether it can be isolated computing resources (which are for PER? Which for VER) <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HTU2SGH">HUA Tianshu (XC-AS/PJ-WIN-PER)</a></p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #008000;"> First use the oral protocol and not forcibly isolation. </span>
+</p>
+</li></ul></li><li class=" "><p   
+> Learn from the VV team to learn about the current HPA and APA data collection plans <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~ZXO5SZH">ZHAO Xin (XC-AS/PJ-WIN-PER)</a></p>
+</li></ul></li><li class=" "><p   
+>24 Jan 2024</p>
+<ul class=" "><li class=" "><p   
+> You need to run the SLAM map mission and HPA Replay on the HOL tablet (including data collection) <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HTU2SGH">HUA Tianshu (XC-AS/PJ-WIN-PER)</a></p>
+</li></ul></li></ul></li></ul><p   
+><br/></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3202716967_PER__DIRs_%28Dependences_Impediment_Risks%29.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>PER  DIRs (Dependences/Impediment/Risks)</span>
+        </a>
+                <a href="3202717016_W3-PI2309__Per%E7%AE%97%E6%B3%95KPI%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E5%92%8C%E5%B7%A5%E4%BD%9C%E9%A1%B9%E6%A2%B3%E7%90%86.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> W3-PI2309: PER algorithm KPI test framework and work item combing </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> The impact of disturbing surrounding camera on the stitching of BEV -Wave 3 Development </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4461810809"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                     <li><a href="2754796745_xcalib_prod.html">xcalib_prod</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4461810809"> <span> The impact of disturbing surrounding camera on the stitching of BEV </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-4461810809_safe-id-aWQt5omw5Yqo546v6KeG55u45py65aSW5Y-C5a-5QkVW5ou85o6l55qE5b2x5ZONLeS9v-eUqOivtOaYjg">
+        <h1 class="heading "><span> Instructions for use </span></h1>
+<ul class=" "><li class=" "><p   
+> Support the external parameters, Pitch, ROLL, and Height, which disturb the external references </p>
+</li><li class=" "><p   
+>python3 disturb_nrcs_extrinsic.py -y yaml_folder -c camera_name[front/rear/left/right] -d delta_yaw/delta_pitch/delta_roll/delta_height[unit:degree/m]</p>
+</li><li class=" "><p   
+> When the T_V_C in the YAML file is rotated in order of Euler Corner XYZ, the pitch angle under the coordinate system of the vehicle corresponds to ROLL, so the disturbance of the Pitch needs to be applied on the delta_rolll </p>
+</li><li class=" "><p   
+> refer to <a   href="4416914771_%E7%8E%AF%E8%A7%86%E7%9B%B8%E6%9C%BA_BEV_%E6%8B%BC%E6%8E%A5_-_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8C%87%E5%8D%97_-_%E5%85%BC%E5%AE%B9_shadow_mode%E3%80%81parking%E3%80%81%E4%BA%A7%E7%BA%BF%E6%A0%87%E5%AE%9A%E5%92%8C%E5%94%AE%E5%90%8E%E6%A0%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86.html"> View Camera BEV Stitching -Data Analysis Guide -Compatible with Shadow_mode, Parking, Line calibration and after -sales calibration data processing </a> , Use the disturbed yaml file to generate BEV </p>
+</li></ul>    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">import</code><code class="plain"> os</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> cv2</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> shutil</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> argparse</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> numpy as np</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">class</code><code class="plain"> DisturbExtrinsic():</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> __init__(</code><code class="color1">self</code><code class="plain">, yaml_file, yaml_disturb, dof):</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.yaml_file </code><code class="keyword">=</code><code class="plain"> yaml_file</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.yaml_disturb </code><code class="keyword">=</code><code class="plain"> yaml_disturb</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.delta_yaw </code><code class="keyword">=</code><code class="plain"> dof[</code><code class="value">0</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.delta_pitch </code><code class="keyword">=</code><code class="plain"> dof[</code><code class="value">1</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.delta_roll </code><code class="keyword">=</code><code class="plain"> dof[</code><code class="value">2</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.delta_height </code><code class="keyword">=</code><code class="plain"> dof[</code><code class="value">3</code><code class="plain">]</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> TransformToEulerAngle(</code><code class="color1">self</code><code class="plain">, transform):</code></div>
+<div class="line"><code class="plain">        scale </code><code class="keyword">=</code><code class="plain"> </code><code class="value">180</code><code class="plain"> </code><code class="keyword">/</code><code class="plain"> np.pi</code></div>
+<div class="line"><code class="plain">        roll </code><code class="keyword">=</code><code class="plain"> scale </code><code class="keyword">*</code><code class="plain"> np.arctan2(transform[</code><code class="value">2</code><code class="plain">, </code><code class="value">1</code><code class="plain">], transform[</code><code class="value">2</code><code class="plain">, </code><code class="value">2</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">        pitch </code><code class="keyword">=</code><code class="plain"> scale </code><code class="keyword">*</code><code class="plain"> np.arctan2(</code><code class="keyword">-</code><code class="plain">transform[</code><code class="value">2</code><code class="plain">, </code><code class="value">0</code><code class="plain">], np.sqrt(transform[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">] </code><code class="keyword">*</code><code class="plain"> transform[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">] </code><code class="keyword">+</code><code class="plain"> transform[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">] </code><code class="keyword">*</code><code class="plain"> transform[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">]))</code></div>
+<div class="line"><code class="plain">        yaw </code><code class="keyword">=</code><code class="plain"> scale </code><code class="keyword">*</code><code class="plain"> np.arctan2(transform[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">], transform[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> [roll, pitch, yaw]</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> EulerAngle2Rotation(</code><code class="color1">self</code><code class="plain">, euler):</code></div>
+<div class="line"><code class="plain">        theta </code><code class="keyword">=</code><code class="plain"> [deg </code><code class="keyword">*</code><code class="plain"> np.pi </code><code class="keyword">/</code><code class="plain"> </code><code class="value">180.0</code><code class="plain"> </code><code class="keyword">for</code><code class="plain"> deg </code><code class="keyword">in</code><code class="plain"> euler]</code></div>
+<div class="line"><code class="plain">        R_x </code><code class="keyword">=</code><code class="plain"> np.array([[</code><code class="value">1</code><code class="plain">,                </code><code class="value">0</code><code class="plain">,                 </code><code class="value">0</code><code class="plain">],</code></div>
+<div class="line"><code class="plain">                        [</code><code class="value">0</code><code class="plain">, np.cos(theta[</code><code class="value">0</code><code class="plain">]), </code><code class="keyword">-</code><code class="plain">np.sin(theta[</code><code class="value">0</code><code class="plain">])],</code></div>
+<div class="line"><code class="plain">                        [</code><code class="value">0</code><code class="plain">, np.sin(theta[</code><code class="value">0</code><code class="plain">]),  np.cos(theta[</code><code class="value">0</code><code class="plain">])]])          </code></div>
+<div class="line"><code class="plain">        R_y </code><code class="keyword">=</code><code class="plain"> np.array([[ np.cos(theta[</code><code class="value">1</code><code class="plain">]), </code><code class="value">0</code><code class="plain">, np.sin(theta[</code><code class="value">1</code><code class="plain">])],</code></div>
+<div class="line"><code class="plain">                        [                </code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">,        </code><code class="value">0</code><code class="plain">        ],</code></div>
+<div class="line"><code class="plain">                        [</code><code class="keyword">-</code><code class="plain">np.sin(theta[</code><code class="value">1</code><code class="plain">]), </code><code class="value">0</code><code class="plain">, np.cos(theta[</code><code class="value">1</code><code class="plain">])]])    </code></div>
+<div class="line"><code class="plain">        R_z </code><code class="keyword">=</code><code class="plain"> np.array([[np.cos(theta[</code><code class="value">2</code><code class="plain">]), </code><code class="keyword">-</code><code class="plain">np.sin(theta[</code><code class="value">2</code><code class="plain">]), </code><code class="value">0</code><code class="plain">],</code></div>
+<div class="line"><code class="plain">                        [np.sin(theta[</code><code class="value">2</code><code class="plain">]),  np.cos(theta[</code><code class="value">2</code><code class="plain">]), </code><code class="value">0</code><code class="plain">],</code></div>
+<div class="line"><code class="plain">                        [               </code><code class="value">0</code><code class="plain">,                 </code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">]])                </code></div>
+<div class="line"><code class="plain">        R </code><code class="keyword">=</code><code class="plain"> np.dot(R_z, np.dot(R_y, R_x))</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> R</code></div>
+<div class="line"><code class="plain">    </code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> change_transform(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        fs_read </code><code class="keyword">=</code><code class="plain"> cv2.FileStorage(</code><code class="color1">self</code><code class="plain">.yaml_file, cv2.FileStorage_READ)</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.transform </code><code class="keyword">=</code><code class="plain"> fs_read.getNode(</code><code class="string">'T_v_c'</code><code class="plain">).mat()</code></div>
+<div class="line"><code class="plain">        fs_read.release()</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"before disturb: \n"</code><code class="plain">, </code><code class="color1">self</code><code class="plain">.transform)</code></div>
+<div class="line"><code class="plain">        euler </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.TransformToEulerAngle(</code><code class="color1">self</code><code class="plain">.transform)</code></div>
+<div class="line"><code class="plain">        euler[</code><code class="value">0</code><code class="plain">] </code><code class="keyword">+</code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.delta_roll</code></div>
+<div class="line"><code class="plain">        euler[</code><code class="value">1</code><code class="plain">] </code><code class="keyword">+</code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.delta_pitch</code></div>
+<div class="line"><code class="plain">        euler[</code><code class="value">2</code><code class="plain">] </code><code class="keyword">+</code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.delta_yaw</code></div>
+<div class="line"><code class="plain">        R </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.EulerAngle2Rotation(euler)</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.transform[:</code><code class="value">3</code><code class="plain">, :</code><code class="value">3</code><code class="plain">] </code><code class="keyword">=</code><code class="plain"> R</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.transform[</code><code class="value">2</code><code class="plain">, </code><code class="value">3</code><code class="plain">] </code><code class="keyword">+</code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.delta_height</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"after disturb: \n"</code><code class="plain">, </code><code class="color1">self</code><code class="plain">.transform)</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># -- keep intrinsic and update extrinsic</code></div>
+<div class="line"><code class="plain">        with </code><code class="functions">open</code><code class="plain">(</code><code class="color1">self</code><code class="plain">.yaml_file, </code><code class="string">'r'</code><code class="plain">) as f_in:</code></div>
+<div class="line"><code class="plain">            with </code><code class="functions">open</code><code class="plain">(</code><code class="color1">self</code><code class="plain">.yaml_disturb, </code><code class="string">'w'</code><code class="plain">) as f_out:</code></div>
+<div class="line"><code class="plain">                lines </code><code class="keyword">=</code><code class="plain"> f_in.readlines()</code></div>
+<div class="line"><code class="plain">                f_out.writelines(lines[:</code><code class="value">40</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">                f_out.write(</code><code class="string">"T_v_c: !!opencv-matrix\n"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">                f_out.write(</code><code class="string">"  rows: 4\n"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">                f_out.write(</code><code class="string">"  cols: 4\n"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">                f_out.write(</code><code class="string">"  dt: d\n"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">                f_out.write(</code><code class="string">"  data: [ "</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">                </code><code class="keyword">for</code><code class="plain"> i </code><code class="keyword">in</code><code class="plain"> </code><code class="functions">range</code><code class="plain">(</code><code class="value">4</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">                    </code><code class="keyword">for</code><code class="plain"> j </code><code class="keyword">in</code><code class="plain"> </code><code class="functions">range</code><code class="plain">(</code><code class="value">4</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">                        f_out.write(f</code><code class="string">"{self.transform[i, j]:.5f}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">                        </code><code class="keyword">if</code><code class="plain"> i !</code><code class="keyword">=</code><code class="plain"> </code><code class="value">3</code><code class="plain"> </code><code class="keyword">or</code><code class="plain"> j !</code><code class="keyword">=</code><code class="plain"> </code><code class="value">3</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">                            f_out.write(</code><code class="string">", "</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">                f_out.write(</code><code class="string">" ]\n"</code><code class="plain">)</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">def</code><code class="plain"> copy_other_yaml_files(yaml_path, camera_name):</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">for</code><code class="plain"> name </code><code class="keyword">in</code><code class="plain"> [</code><code class="string">'front'</code><code class="plain">, </code><code class="string">'rear'</code><code class="plain">, </code><code class="string">'left'</code><code class="plain">, </code><code class="string">'right'</code><code class="plain">]:</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> name </code><code class="keyword">=</code><code class="keyword">=</code><code class="plain"> camera_name:</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">continue</code></div>
+<div class="line"><code class="plain">        yaml_name </code><code class="keyword">=</code><code class="plain"> </code><code class="string">'nrcs_'</code><code class="plain"> </code><code class="keyword">+</code><code class="plain"> name </code><code class="keyword">+</code><code class="plain"> </code><code class="string">'.yaml'</code></div>
+<div class="line"><code class="plain">        src_file </code><code class="keyword">=</code><code class="plain"> os.path.join(yaml_path, yaml_name)</code></div>
+<div class="line"><code class="plain">        dst_file </code><code class="keyword">=</code><code class="plain"> os.path.join(yaml_path, </code><code class="string">'disturb'</code><code class="plain">, yaml_name)</code></div>
+<div class="line"><code class="plain">        shutil.copy(src_file, dst_file)</code></div>
+<div class="line"><code class="plain">        </code></div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">if</code><code class="plain"> __name__ </code><code class="keyword">=</code><code class="keyword">=</code><code class="plain"> </code><code class="string">'__main__'</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">    parser </code><code class="keyword">=</code><code class="plain"> argparse.ArgumentParser(description</code><code class="keyword">=</code><code class="string">'disturb the extrinsic of nrcs'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    parser.add_argument(</code><code class="string">'-y'</code><code class="plain">, </code><code class="string">'--yaml_path'</code><code class="plain">, </code><code class="functions">type</code><code class="keyword">=</code><code class="functions">str</code><code class="plain">, required</code><code class="keyword">=</code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    parser.add_argument(</code><code class="string">'-c'</code><code class="plain">, </code><code class="string">'--camera_name'</code><code class="plain">, </code><code class="functions">type</code><code class="keyword">=</code><code class="functions">str</code><code class="plain">, required</code><code class="keyword">=</code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    parser.add_argument(</code><code class="string">'-d'</code><code class="plain">, </code><code class="string">'--disturb'</code><code class="plain">, </code><code class="functions">type</code><code class="keyword">=</code><code class="functions">str</code><code class="plain">, required</code><code class="keyword">=</code><code class="color1">True</code><code class="plain">, </code><code class="functions">help</code><code class="keyword">=</code><code class="string">'yaw/pitch/roll/height'</code><code class="plain">)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    args </code><code class="keyword">=</code><code class="plain"> parser.parse_args()</code></div>
+<div class="line"><code class="plain">    yaml_path </code><code class="keyword">=</code><code class="plain"> args.yaml_path</code></div>
+<div class="line"><code class="plain">    camera_name </code><code class="keyword">=</code><code class="plain"> args.camera_name</code></div>
+<div class="line"><code class="plain">    disturb </code><code class="keyword">=</code><code class="plain"> args.disturb.split(</code><code class="string">'/'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">if</code><code class="plain"> </code><code class="functions">len</code><code class="plain">(disturb) !</code><code class="keyword">=</code><code class="plain"> </code><code class="value">4</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">raise</code><code class="plain"> ValueError(</code><code class="string">'[ERROR] the disturb should be yaw/pitch/roll/height'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    dof </code><code class="keyword">=</code><code class="plain"> [</code><code class="functions">float</code><code class="plain">(value) </code><code class="keyword">for</code><code class="plain"> value </code><code class="keyword">in</code><code class="plain"> disturb]</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">'disturb the extrinsic of {camera_name}: yaw={dof[0]}degree pitch={dof[1]}degree roll={dof[1]}degree height={dof[3]}m'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code></div>
+<div class="line"><code class="plain">    yaml_name </code><code class="keyword">=</code><code class="plain"> </code><code class="string">'nrcs_'</code><code class="plain"> </code><code class="keyword">+</code><code class="plain"> camera_name </code><code class="keyword">+</code><code class="plain"> </code><code class="string">'.yaml'</code></div>
+<div class="line"><code class="plain">    src_file </code><code class="keyword">=</code><code class="plain"> os.path.join(yaml_path, yaml_name)</code></div>
+<div class="line"><code class="plain">    dst_folder </code><code class="keyword">=</code><code class="plain"> os.path.join(yaml_path, </code><code class="string">'disturb'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">if</code><code class="plain"> os.path.exists(dst_folder):</code></div>
+<div class="line"><code class="plain">        shutil.rmtree(dst_folder)</code></div>
+<div class="line"><code class="plain">    os.makedirs(dst_folder)</code></div>
+<div class="line"><code class="plain">    dst_file </code><code class="keyword">=</code><code class="plain"> os.path.join(dst_folder, yaml_name)</code></div>
+<div class="line"><code class="plain">    disturb_extrinsic </code><code class="keyword">=</code><code class="plain"> DisturbExtrinsic(src_file, dst_file, dof)</code></div>
+<div class="line"><code class="plain">    disturb_extrinsic.change_transform()</code></div>
+<div class="line"><code class="plain">    copy_other_yaml_files(yaml_path, camera_name)</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-4461810809_safe-id-aWQt5omw5Yqo546v6KeG55u45py65aSW5Y-C5a-5QkVW5ou85o6l55qE5b2x5ZONLeS7pTAxTE5OQjJGODM1RDhCQzdGMEQ4Rjc2M0NEMEFCNzkw5Li65L6L77yM5Y2V54us5omw5YqobnJjc19yZWFy55qEeWF35ZKMcGl0Y2g">
+        <h1 class="heading "><span> Take 01LNNB2F835D8BC7F0D8F763CD0AB790 as an example, disturbing the Yaw and Pitch of NRCS_REAR alone </span></h1>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>eol</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/origin_bev_0-version-3-modificationdate-1720449189000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/origin_bev_0-version-3-modificationdate-1720449189000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/origin_bev_1-version-3-modificationdate-1720449194000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/origin_bev_1-version-3-modificationdate-1720449194000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/origin_bev_3-version-3-modificationdate-1720449199000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/origin_bev_3-version-3-modificationdate-1720449199000-api-v2.png"  height="250" />
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTh" rowspan="1" colspan="1">
+    <p   
+>yaw + 0.3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/yaw_0.3_origin_bev_0-version-1-modificationdate-1720449391000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/yaw_0.3_origin_bev_0-version-1-modificationdate-1720449391000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/yaw_0.3_origin_bev_1-version-1-modificationdate-1720449397000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/yaw_0.3_origin_bev_1-version-1-modificationdate-1720449397000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/yaw_0.3_origin_bev_3-version-1-modificationdate-1720449402000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/yaw_0.3_origin_bev_3-version-1-modificationdate-1720449402000-api-v2.png"  height="250" />
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTh" rowspan="1" colspan="1">
+    <p   
+>pitch + 0.3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/roll_0.3_origin_bev_0-version-1-modificationdate-1720449445000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/roll_0.3_origin_bev_0-version-1-modificationdate-1720449445000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/roll_0.3_origin_bev_1-version-1-modificationdate-1720449451000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/roll_0.3_origin_bev_1-version-1-modificationdate-1720449451000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/roll_0.3_origin_bev_3-version-1-modificationdate-1720449455000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/roll_0.3_origin_bev_3-version-1-modificationdate-1720449455000-api-v2.png"  height="250" />
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>yaw + 0.5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/yaw_0.5_origin_bev_0-version-1-modificationdate-1720450053000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/yaw_0.5_origin_bev_0-version-1-modificationdate-1720450053000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/yaw_0.5_origin_bev_1-version-1-modificationdate-1720450059000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/yaw_0.5_origin_bev_1-version-1-modificationdate-1720450059000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/yaw_0.5_origin_bev_3-version-1-modificationdate-1720450065000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/yaw_0.5_origin_bev_3-version-1-modificationdate-1720450065000-api-v2.png"  height="250" />
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>pitch + 0.5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/roll_0.5_origin_bev_0-version-1-modificationdate-1720450017000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/roll_0.5_origin_bev_0-version-1-modificationdate-1720450017000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/roll_0.5_origin_bev_1-version-1-modificationdate-1720450025000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/roll_0.5_origin_bev_1-version-1-modificationdate-1720450025000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/roll_0.5_origin_bev_3-version-1-modificationdate-1720450031000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/roll_0.5_origin_bev_3-version-1-modificationdate-1720450031000-api-v2.png"  height="250" />
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTh" rowspan="1" colspan="1">
+    <p   
+>yaw + 1.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/yaw_1.0_origin_bev_0-version-2-modificationdate-1720449755000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/yaw_1.0_origin_bev_0-version-2-modificationdate-1720449755000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/yaw_1.0_origin_bev_1-version-1-modificationdate-1720449761000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/yaw_1.0_origin_bev_1-version-1-modificationdate-1720449761000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/yaw_1.0_origin_bev_3-version-1-modificationdate-1720449769000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/yaw_1.0_origin_bev_3-version-1-modificationdate-1720449769000-api-v2.png"  height="250" />
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTh" rowspan="1" colspan="1">
+    <p   
+>pitch + 1.0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/roll_1.0_origin_bev_0-version-1-modificationdate-1720449691000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/roll_1.0_origin_bev_0-version-1-modificationdate-1720449691000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/roll_1.0_origin_bev_1-version-1-modificationdate-1720449698000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/roll_1.0_origin_bev_1-version-1-modificationdate-1720449698000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4461810809/roll_1.0_origin_bev_3-version-1-modificationdate-1720449703000-api-v2.png" alt="images/confluence/download/thumbnails/4461810809/roll_1.0_origin_bev_3-version-1-modificationdate-1720449703000-api-v2.png"  height="250" />
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4441097209_%E5%A4%A7%E7%89%8C_7.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Big brand 7 </span>
+        </a>
+                <a href="4416914771_%E7%8E%AF%E8%A7%86%E7%9B%B8%E6%9C%BA_BEV_%E6%8B%BC%E6%8E%A5_-_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8C%87%E5%8D%97_-_%E5%85%BC%E5%AE%B9_shadow_mode%E3%80%81parking%E3%80%81%E4%BA%A7%E7%BA%BF%E6%A0%87%E5%AE%9A%E5%92%8C%E5%94%AE%E5%90%8E%E6%A0%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> View Camera BEV Stitching -Data Analysis Guide -Compatible with Shadow_mode, Parking, Line calibration and after -sales calibration data processing </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

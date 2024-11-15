@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>M1 lidar calibration - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2894683047"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113873_xcalib_eng.html">xcalib_eng</a></li>
+                                                                                                         <li class="shortcut"><a href="2916353596_calibration_tool_release.html">calibration_tool_release</a></li>
+                                                                                     <li><a href="3012883315_V1.2.0.html">V1.2.0</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2894683047"> <span>M1 lidar calibration</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-2894683047_safe-id-TTFsaWRhcmNhbGlicmF0aW9uLeS4gOOAgeagh-WumuW3peWFt-S9v-eUqOivtOaYjg">
+        <h1 class="heading auto-cursor-target"><span> 1. Instructions for use tools </span></h1>
+    <div class="section section-2" id="src-2894683047_safe-id-TTFsaWRhcmNhbGlicmF0aW9uLTHjgIHmoIflrprpl7Q">
+        <h2 class="heading "><span> 1. Break </span></h2>
+<p   style="text-align:left;"
+> Enter the instructions below under the root directory: </p>
+<pre class=" "><tt class=" ">source ./setup.sh</tt></pre><pre class=" "><tt class=" ">./bin/multi_lidar_calib ./config/multi_lidar_calib_config.yaml wheel_base(mm) lidar_calib_data_folder_path</tt></pre><p   style="text-align:left;"
+> E.G. Taking the data of 10816C 20230424 as an example: </p>
+<pre class=" "><tt class=" ">./bin/multi_lidar_calib ./config/multi_lidar_calib_config.yaml 2710 ../data/10816C/20230424/calibration/pcd/</tt></pre><p   style="text-align:left;"
+> The calibration log will be stored in <tt class=" ">lidar_calib_data_folder_path/lidar_calib_log/</tt> The calibration result will be stored in <tt class=" ">lidar_calib_data_folder_path/lidar_calib_result/</tt> There are two files in the calibration result: <strong class=" ">lidar_extrinsic.yaml</strong> , <strong class=" ">lidar_to_vehicle_extrinsic.yaml</strong> The first file is the external parameters of lidar under the world coordinate system, and the second file is the external parameter of lidar under the sensor coordinate system </p>
+<p   style="text-align:left;"
+> Multi_lidar_config.yaml parameter description: </p>
+<ul class=" "><li class=" "><p   
+><tt class=" ">enable_debug_mode</tt> : Whether to turn on the debug mode and print some debugging information to the Terminal, the default is </p>
+</li><li class=" "><p   
+><tt class=" ">enable_visualization</tt> : Whether the visual window pops up during the calibration process, the default is closed </p>
+</li><li class=" "><p   
+><tt class=" ">enable_plane_filter</tt> : Whether to turn on the calibration data quality inspection and noise removal, the default is opened </p>
+</li><li class=" "><p   
+><tt class=" ">vehicle_installed_ruby</tt> : Main Lidar installed sensor model is Ruby-128 vehicle list </p>
+</li><li class=" "><p   
+><tt class=" ">T_v_w</tt> : It is used to convert the calibration parameter from the world coordinate system to the transformation matrix of the self -car coordinate system </p>
+</li></ul><p   style="text-align:left;"
+> Get version information: </p>
+<pre class=" "><tt class=" ">./bin/multi_lidar_calib -v</tt></pre>    </div>
+    <div class="section section-2" id="src-2894683047_safe-id-TTFsaWRhcmNhbGlicmF0aW9uLTLjgIHlrqTlpJblnLrmma8">
+        <h2 class="heading "><span> 2. Outdoor scene </span></h2>
+<p   
+>    <span style="color: #ff0000;">
+./lidar_to_lidar_calib --data=/home/fih1szh/Pictures/bosch_calibration_data/calibration_room/11139C/20230509 --position=1,2,3,4 --parent=main --child=front,left,right --save=true --icp=true    </span>
+</p>
+<p   
+>===== extrinsic front to vehicle =====<br/>ICP_fitness_score:0.0461713 position:1<br/>    <span style="color: #00ccff;">
+# XYZ Euler Angle in degree: -1.16339 0.709419 -0.0415995    </span>
+<br/>    <span style="color: #00ccff;">
+ data: [0.999923, 0.000726045, 0.0123813, 1.66312,    </span>
+<br/>    <span style="color: #00ccff;">
+ -0.000977345, 0.999793, 0.0203021, 0.0133587,    </span>
+<br/>    <span style="color: #00ccff;">
+ -0.012364, -0.0203126, 0.999717, 1.51255,    </span>
+<br/>    <span style="color: #00ccff;">
+ 0, 0, 0, 1]    </span>
+<br/>roll : -1.219 -> -1.163     <span style="color: #ff9900;">
+0.055    </span>
+<br/>pitch: 0.751 -> 0.709     <span style="color: #ff9900;">
+-0.041    </span>
+<br/>yaw : -0.177 -> -0.042     <span style="color: #ff9900;">
+0.135    </span>
+<br/>x : 1.699 -> 1.663     <span style="color: #ff9900;">
+-0.036    </span>
+<br/>y : 0.002 -> 0.013     <span style="color: #ff9900;">
+0.011    </span>
+<br/>z : 1.480 -> 1.513     <span style="color: #ff9900;">
+0.032    </span>
+</p>
+<p   
+>===== extrinsic left to vehicle =====<br/>ICP_fitness_score:0.0509673 position:1<br/>    <span style="color: #00ccff;">
+# XYZ Euler Angle in degree: 0.928035 0.469331 15.1845    </span>
+<br/>    <span style="color: #00ccff;">
+ data: [0.965055, -0.261919, 0.00819128, 3.54185,    </span>
+<br/>    <span style="color: #00ccff;">
+ 0.262022, 0.964926, -0.016196, 0.670917,    </span>
+<br/>    <span style="color: #00ccff;">
+ -0.00366198, 0.0177763, 0.999836, 0.688183,    </span>
+<br/>    <span style="color: #00ccff;">
+ 0, 0, 0, 1]    </span>
+<br/>roll : 0.999 -> 0.928 -0.071<br/>pitch: -0.407 -> 0.469 0.876<br/>yaw : 14.855 -> 15.184 0.330<br/>x : 3.581 -> 3.542 -0.039<br/>y : 0.681 -> 0.671 -0.010<br/>z : 0.532 -> 0.688 0.156</p>
+<p   
+>===== extrinsic right to vehicle =====<br/>ICP_fitness_score:0.0507343 position:3<br/>    <span style="color: #00ccff;">
+# XYZ Euler Angle in degree: 0.174744 -0.181263 -13.9724    </span>
+<br/>    <span style="color: #00ccff;">
+ data: [0.970407, 0.241454, -0.00316385, 3.56028,    </span>
+<br/>    <span style="color: #00ccff;">
+ -0.241463, 0.970406, -0.00304984, -0.617656,    </span>
+<br/>    <span style="color: #00ccff;">
+ 0.00233382, 0.00372355, 0.999991, 0.551353,    </span>
+<br/>    <span style="color: #00ccff;">
+ 0, 0, 0, 1]    </span>
+<br/>roll : -0.188 -> 0.175     <span style="color: #ff9900;">
+0.363    </span>
+<br/>pitch: -0.485 -> -0.181     <span style="color: #ff9900;">
+0.304    </span>
+<br/>yaw : -13.655 -> -13.972     <span style="color: #ff9900;">
+-0.318    </span>
+<br/>x : 3.607 -> 3.560     <span style="color: #ff9900;">
+-0.047    </span>
+<br/>y : -0.683 -> -0.618     <span style="color: #ff9900;">
+0.066    </span>
+<br/>z : 0.509 -> 0.551     <span style="color: #ff9900;">
+0.042    </span>
+</p>
+<p   
+><br/></p>
+<hr>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2894683047_safe-id-TTFsaWRhcmNhbGlicmF0aW9uLeS6jOOAgei0qOajgOW3peWFt-S9v-eUqOivtOaYjg">
+        <h1 class="heading auto-cursor-target"><span> 2. Instructions for the use of quality inspection tools </span></h1>
+<p   
+> The quality inspection of the M1 LIDAR calibration data is integrated into the Lidar Calib Tool V1.2.0 <br/> You can Zhongtong in Multi_lidar_Calib_config.yaml <span style="color: #000000;"> Configuration <span style="color: #0000ff;">
+enable_plane_filter    </span> To control the turning/off of the change function </span>
+</p>
+<p   
+><br/></p>
+<p   
+> There are two steps in quality inspection tools: filter + data <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;"> Quality inspection </span>
+    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+</p>
+<ul class=" "><li class=" "><p   
+><strong class=" "> Step1: filter </strong><br/>    <span style="color: #000000;"> The PCD data is analyzed before processing the data. At present, only one format is supported. After statistics from historical calibration data, the most common format is selected. I hope that in subsequent data collectionConsistency of data format <br/>    <span style="color: #6a9955;">
+// FIELDS x y z intensity ring     <span style="color: #000000;">
+    <span style="color: #6a9955;">
+timestamp    </span>
+    </span>
+<br/>    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+// SIZE 4 4 4 1 2 8 <br/>    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+// TYPE f f f u u f<br/><br/>    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;"> -If if there is no problem in the format, the data will be filtered to remove noise, and the generated files generate <span style="color: #0000ff;">
+lidarName_remove_noise.pcd     <span style="color: #000000;"> It will be stored in lidar_calib_log. The data will be used to calibrate when calibration </span>
+    </span>
+<br/>    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+<br/>    <span style="color: #000000;"> -If the format of the calibration data is inconsistent with the above, the quality inspection will be suspended, and the original calibration data is read for calibration <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894683047/image-2023-5-8_16-5-30-version-1-modificationdate-1683533131000-api-v2.png" alt="images/confluence/download/attachments/2894683047/image-2023-5-8_16-5-30-version-1-modificationdate-1683533131000-api-v2.png"  height="150" />
+<br/><br/>    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+</p>
+</li><li class=" "><p   
+><strong class=" ">    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;"> Step2: Data Quality Inspection <br/>    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+</strong>    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;">
+    <span style="color: #6a9955;">
+    <span style="color: #000000;"> Analyze the point cloud data that removes noise, and determine whether there is a large gap at the seams of the five channels of clouds. <br/> If there is a large gap, the relevant information will be printed in the terminal and log files: <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894683047/image-2023-5-8_16-3-23-version-1-modificationdate-1683533004000-api-v2.png" alt="images/confluence/download/attachments/2894683047/image-2023-5-8_16-3-23-version-1-modificationdate-1683533004000-api-v2.png"  height="250" />
+<br/><br/> If there is a problem with the quality inspection, it will only be reflected in the information printed by the terminal, which will not affect the subsequent calibration process <br/><br/>    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+    </span>
+</p>
+</li></ul><p   
+><br/></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>lidar</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>right</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Before filtering </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894683047/image-2023-4-26_10-37-23-version-1-modificationdate-1682476643000-api-v2.png" alt="images/confluence/download/attachments/2894683047/image-2023-4-26_10-37-23-version-1-modificationdate-1682476643000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894683047/image-2023-4-26_10-48-13-version-1-modificationdate-1682477294000-api-v2.png" alt="images/confluence/download/attachments/2894683047/image-2023-4-26_10-48-13-version-1-modificationdate-1682477294000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894683047/image-2023-4-26_10-50-28-version-1-modificationdate-1682477429000-api-v2.png" alt="images/confluence/download/attachments/2894683047/image-2023-4-26_10-50-28-version-1-modificationdate-1682477429000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> After noise reduction </p>
+<p   
+> (Eliminate the influence of the calibration pattern) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894683047/image-2023-4-27_17-35-36-version-1-modificationdate-1682588137000-api-v2.png" alt="images/confluence/download/attachments/2894683047/image-2023-4-27_17-35-36-version-1-modificationdate-1682588137000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894683047/image-2023-4-27_17-35-58-version-1-modificationdate-1682588159000-api-v2.png" alt="images/confluence/download/attachments/2894683047/image-2023-4-27_17-35-58-version-1-modificationdate-1682588159000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894683047/image-2023-4-27_17-36-19-version-1-modificationdate-1682588180000-api-v2.png" alt="images/confluence/download/attachments/2894683047/image-2023-4-27_17-36-19-version-1-modificationdate-1682588180000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Index indicator at the seam of the area </p>
+<ul class=" "><li class=" "><p   
+> Point cloud thickness (inner point rate) </p>
+</li><li class=" "><p   
+> Quality distance </p>
+</li></ul><p   
+><br/></p>
+<p   
+> Extract the overlapping part of the two areas </p>
+<p   
+> Automatic inspection area order </p>
+<p   
+> (TODO: Sorting) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894683047/image-2023-4-27_17-27-44-version-1-modificationdate-1682587664000-api-v2.png" alt="images/confluence/download/attachments/2894683047/image-2023-4-27_17-27-44-version-1-modificationdate-1682587664000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894683047/image-2023-4-27_17-29-13-version-1-modificationdate-1682587754000-api-v2.png" alt="images/confluence/download/attachments/2894683047/image-2023-4-27_17-29-13-version-1-modificationdate-1682587754000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894683047/image-2023-4-27_17-29-54-version-1-modificationdate-1682587795000-api-v2.png" alt="images/confluence/download/attachments/2894683047/image-2023-4-27_17-29-54-version-1-modificationdate-1682587795000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p  class="auto-cursor-target" 
+> Automatically divide the ground and wall surface for plane fitting, indicator: </p>
+<ul class=" "><li class=" "><p   
+> Point cloud thickness (inner point rate)     <span style="color: #ff0000;">
+±5cm    </span>
+</p>
+</li><li class=" "><p   
+> Vertical verification of the method of law </p>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>lidar</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left wall</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front wall</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left wall</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>ground</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>front</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-15-28-version-1-modificationdate-1682586929000-api-v2.png" alt="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-15-28-version-1-modificationdate-1682586929000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-15-56-version-1-modificationdate-1682586957000-api-v2.png" alt="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-15-56-version-1-modificationdate-1682586957000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-17-34-version-1-modificationdate-1682587054000-api-v2.png" alt="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-17-34-version-1-modificationdate-1682587054000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>left</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-18-59-version-1-modificationdate-1682587139000-api-v2.png" alt="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-18-59-version-1-modificationdate-1682587139000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-19-21-version-1-modificationdate-1682587161000-api-v2.png" alt="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-19-21-version-1-modificationdate-1682587161000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-19-39-version-1-modificationdate-1682587180000-api-v2.png" alt="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-19-39-version-1-modificationdate-1682587180000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-18-35-version-1-modificationdate-1682587115000-api-v2.png" alt="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-18-35-version-1-modificationdate-1682587115000-api-v2.png"  height="150" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>right</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-20-31-version-1-modificationdate-1682587232000-api-v2.png" alt="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-20-31-version-1-modificationdate-1682587232000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-20-51-version-1-modificationdate-1682587251000-api-v2.png" alt="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-20-51-version-1-modificationdate-1682587251000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-21-7-version-1-modificationdate-1682587268000-api-v2.png" alt="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-21-7-version-1-modificationdate-1682587268000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-20-10-version-1-modificationdate-1682587211000-api-v2.png" alt="images/confluence/download/thumbnails/2894683047/image-2023-4-27_17-20-10-version-1-modificationdate-1682587211000-api-v2.png"  height="150" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p  class="auto-cursor-target" 
+> Logos </p>
+<p   
+>-----right lidar calib log-----<br/>[pre process] data qulity check and remove noise<br/>[CheckQuality] max ring value: 4<br/>[FilterPointCloudByROI] 78327 -> 15114 19.296%<br/>[FitPlane] right_ground.pcd: 53.2156(8043/15114) [0.00219801, -0.00315017, 0.999993]</p>
+<p   
+>[FilterPointCloudByROI] 78327 -> 7457 9.52034%<br/>[FitPlane] right_wall_left.pcd: 83.7334(6244/7457) [-0.0249973, -0.998033, -0.0574946]</p>
+<p   
+>[FilterPointCloudByROI] 78327 -> 23549 30.065%<br/>[FitPlane] right_wall_front.pcd: 80.3431(18920/23549) [0.99938, -0.0309612, -0.0167573]</p>
+<p   
+>[FilterPointCloudByROI] 78327 -> 0 0%<br/>[FilterAndFitPlane] right_wall_right0 less than 1000<br/>Angel btw ground and wall_left: 1.51636<br/>Angel btw ground and wall_front: 1.55633<br/>Angel btw ground and wall_right: -nan<br/>Angel btw wall_front and wall_left: 1.56391<br/>Angel btw wall_front and wall_right: -nan<br/>intensity threshold: 30<br/>[CheckQuality] filtered cloud points ratio: 37.5043 (29376/78327)<br/>[pre process] processed data path: /home/wzi2wx/Repo/xcalib-eng/zigzag/10816C/20230424/calibration/pcd/lidar_calib_log/right_remove_noise.pcd</p>
+<p   
+>ring_0:3.66279 ring_1:3.47134 distance:0.191453<br/>[FitPlane] right_1-2: 99.7096(1030/1033) [0.989261, 0.140232, -0.0411908]</p>
+<p   
+>ring_1:5.05463 ring_2:5.25318 distance:0.198551<br/>[FitPlane] right_2-3: 99.9432(1761/1762) [0.957177, 0.289286, -0.0111772]</p>
+<p   
+>ring_2:5.52543 ring_3:5.03404 distance:0.491393<br/>[FitPlane] right_3-4: 67.801(777/1146) [0.202838, -0.979102, -0.0147038]</p>
+<p   
+><strong class=" ">[CheckQuality]     <span style="color: #ff0000;">
+fatal error    </span>
+: right_3-4 intrinsic issue, ratio is lower than: 0.67801 < 0.75</strong></p>
+<p   
+>ring_3:-1.96751 ring_4:-2.00686 distance:0.0393591<br/>[FitPlane] right_4-5: 97.5712(2089/2141) [0.21554, -0.976468, -0.00726508]</p>
+<p   
+>[pre process] successful</p>
+<p   
+>[ReadPcdFile] LOAD PCD FILE: resource/20230214/calib_room_0214_downsample.pcd<br/>[ReadPcdFile] point size: 1500000<br/>[ReadPcdFile] LOAD PCD FILE: /home/wzi2wx/Repo/xcalib-eng/zigzag/10816C/20230424/calibration/pcd/lidar_calib_log/right_remove_noise.pcd<br/>[ReadPcdFile] point size: 29376<br/>[LidarCalib] Calib method P2Plane<br/>[LidarCalib] Start roll pitch z optimization<br/>[ReadPcdFile] LOAD PCD FILE: /home/wzi2wx/Repo/xcalib-eng/zigzag/10816C/20230424/calibration/pcd/right_0.pcd<br/>[ReadPcdFile] point size: 78284</p>
+<p   
+>[ground parameters] a=-0.0339111 b=-0.0105108 c=-1.45901 d=-0.99937<br/>ground_z:0.684763m<br/>norm: -0.0232357 -0.00720197 -0.999704<br/>inliner ratio: 79.567<br/>first station calculation result: roll: -0.419724 pitch: 1.32928 ground Z: -125.933</p>
+<p   
+>[ReadPcdFile] LOAD PCD FILE: resource/20230214/calib_room_0214_downsample.pcd<br/>[ReadPcdFile] enable downsample<br/>[ReadPcdFile] point size: 72734<br/>[find_point_correspondences] average_dis: 0.02711<br/>Ceres Solver Report: Iterations: 4, Initial cost: 1.267406e+01, Final cost: 1.267296e+01, Termination: CONVERGENCE<br/>[find_point_correspondences] average_dis: 0.0271069<br/>Ceres Solver Report: Iterations: 4, Initial cost: 1.267223e+01, Final cost: 1.267167e+01, Termination: CONVERGENCE<br/>[find_point_correspondences] average_dis: 0.0271065<br/>Ceres Solver Report: Iterations: 18, Initial cost: 1.267125e+01, Final cost: 1.267098e+01, Termination: CONVERGENCE<br/>final pose XYZ Euler angle: roll: -0.419831 pitch: 1.32925 yaw: 166.467 x: -7.48789 y: 0.62426 z: -125.933<br/>calib method: P2Plane<br/>downsample_voxel_size: 0.05<br/>downsample: disable<br/>inlier_rmse: 0.0186351<br/>fitness: 1<br/>ERROR CODE: NO_ERROR</p>
+<p   
+>-----right lidar calibrate finished-----</p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3019145947_lidar_calib_%E5%AF%B9%E8%BD%A6%E7%AB%AF%E6%A0%87%E5%AE%9A%E7%9A%84%E9%80%82%E9%85%8D.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Lidar Calib adapts to the car end calibration </span>
+        </a>
+                <a href="3019307527_M1_lidar_%E5%AE%A4%E5%A4%96%E5%9C%BA%E6%99%AF%E6%A0%87%E5%AE%9A%E9%AA%8C%E8%AF%81%EF%BC%88doing%EF%BC%89.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> M1 Lidar Outdoor Scenario Standard Deterlation (Doing) </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

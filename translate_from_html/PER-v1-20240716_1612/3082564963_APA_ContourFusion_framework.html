@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>APA ContourFusion framework - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3082564963"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2495263431_Static_Fusion_-_PER.html">Static Fusion - PER</a></li>
+                                                                                     <li><a href="2498326801_SF-APA.html">SF-APA</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3082564963"> <span>APA ContourFusion framework</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+></p>
+    <div class="section section-1" id="src-3082564963_APAContourFusionframework-Introduction">
+        <h1 class="heading "><span>Introduction</span></h1>
+<p   
+> In the APA scenario, the target -level obstacle information represented by Bounding Box is not enough.The small parking space requires the perception and fusion module to give the obstacle contour -level access space. </p>
+<p   
+> Contourfusion is used to integrate obstacle perception results from sensors such as USS and Camera, and builds a passable area.The passable area that is finally sent to the downstream is represented by a 2D point set of surrounding obstacles relative to the proximal outline of the car. </p>
+    </div>
+    <div class="section section-1" id="src-3082564963_APAContourFusionframework-Background">
+        <h1 class="heading "><span>Background</span></h1>
+<ul class=" "><li class=" "><p   
+> 2022/06-2022/08, Develop 1.0 version <a   href="https://inside-docupedia.bosch.com/confluence/display/PJW3PER/APA+FreeSpace+Fusion">APA FreeSpace Fusion - PJ-W3-PER - Docupedia (bosch.com)</a></p>
+</li><li class=" "><p   
+> 2022/09-2022/04, pause, Guo Hongming transfer to the PSS module </p>
+</li><li class=" "><p   
+> 2022/05-to the present, the current version </p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-3082564963_safe-id-QVBBQ29udG91ckZ1c2lvbmZyYW1ld29yay1JbnB1dCZPdXRwdXQ">
+        <h1 class="heading "><span>Input & Output</span></h1>
+    <div class="section section-2" id="src-3082564963_APAContourFusionframework-Input">
+        <h2 class="heading "><span> Input</span></h2>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> enter </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Brief introduction </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Visualization </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Viper-BevSemseg</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> The semantic segmentation model processing is treated. </p>
+</li><li class=" "><p   
+> Each pixel has category information and confidence. </p>
+</li><li class=" "><p   
+> Under the assumptions of the ground level, each pixel calculates the square area of ​​the real world XCM*XCM through reverse field projection calculation. </p>
+</li><li class=" "><p   
+> Current category information support: </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-24_9-59-29-version-1-modificationdate-1685344420000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-24_9-59-29-version-1-modificationdate-1685344420000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-content-image-border image-center"                 style="display:block; margin-left: auto; margin-right: auto;"
+     src="images/confluence/download/attachments/3082564963/image2022-12-8_18-47-55-version-1-modificationdate-1685344420000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image2022-12-8_18-47-55-version-1-modificationdate-1685344420000-api-v2.png" width="150" height="150" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Viper-FeFreespace</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #24292f;"> It is used to describe the space that is not covered by obstacles in the vehicle driving path </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #24292f;"> Obtain from one -eye fish eye+freespace CNN model </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #24292f;"> There are "pseudo -contour" formed by the height of disorders </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #24292f;"> According to 2D points, there is no high information, no semantic information </span>
+</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail image-center"                 style="display:block; margin-left: auto; margin-right: auto;"
+     src="images/confluence/download/thumbnails/3082564963/image-2023-5-24_10-20-50-version-1-modificationdate-1685344420000-api-v2.png" alt="images/confluence/download/thumbnails/3082564963/image-2023-5-24_10-20-50-version-1-modificationdate-1685344420000-api-v2.png"  height="150" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Viper-Roadmarker</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class="content-wrapper "><p   
+> On the basis of Viper-BevSemseg, the ground logo obtained through vectorization </p>
+</li><li class="content-wrapper "><p   
+> Mainly use the wheelshone information </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail image-center"                 style="display:block; margin-left: auto; margin-right: auto;"
+     src="images/confluence/download/thumbnails/3082564963/image-2023-5-24_10-29-22-version-1-modificationdate-1685344420000-api-v2.png" alt="images/confluence/download/thumbnails/3082564963/image-2023-5-24_10-29-22-version-1-modificationdate-1685344420000-api-v2.png" width="200"  />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Viper-FeDepthImage</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Pixel value represents the straight line distance of the center of the sensor coordinate system (or projection of the line distance on the deep shaft) </p>
+</li><li class=" "><p   
+> Generally, the depth of the objects can be used to collect objects such as deep camera, laser radar, and structured light. The current project uses monocular fish eye+depth estimation model to obtain deep information </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-external-resource image-center"                 style="display:block; margin-left: auto; margin-right: auto;"
+     src="images/i.ytimg.com/vi/eTYcMB6Yhe8/maxresdefault.jpg" alt="images/i.ytimg.com/vi/eTYcMB6Yhe8/maxresdefault.jpg"  height="150" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Uper-PointCloud</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Use the point set of the contour of the obstacles around the car from the USS back waves </p>
+</li><li class=" "><p   
+> About 150 points for each frame (one time stamp every 6 frames) </p>
+</li><li class=" "><p   
+> Each point can be regarded as 2.5D (there is no specific height value, only the height category) </p>
+</li><li class=" "><p   
+> Based on self -car coordinate system </p>
+</li><li class=" "><p   
+> Provided by Faleo </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3082564963/image2022-12-8_18-58-23-version-1-modificationdate-1685344420000-api-v2.png" alt="images/confluence/download/thumbnails/3082564963/image2022-12-8_18-58-23-version-1-modificationdate-1685344420000-api-v2.png"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail confluence-external-resource"  src="images/download/attachments/2569235832/image2022-12-8_18-57-58-version-1-modificationdate-1670497078000-api-v2.png" alt="images/download/attachments/2569235832/image2022-12-8_18-57-58-version-1-modificationdate-1670497078000-api-v2.png"  height="150" />
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Xloc-Egopose</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> The self -parking position under VHMABST coordinate system </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N/A</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-3082564963_APAContourFusionframework-Output">
+        <h2 class="heading "><span>Output</span></h2>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="15.1457%"/>
+                                    <col  width="51.7002%"/>
+                                    <col  width="33.1541%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Output </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Brief introduction </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Visualization </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Contour</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> The point set of the obstacle of the obstacle relative to the proximal contour of the car </p>
+</li><li class=" "><p   
+> For parking space generation (PSS) and APA processes, APA Planner (APA Planner) </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail image-center"                 style="display:block; margin-left: auto; margin-right: auto;"
+     src="images/confluence/download/thumbnails/3082564963/image2022-12-8_19-16-47-version-1-modificationdate-1685344420000-api-v2.png" alt="images/confluence/download/thumbnails/3082564963/image2022-12-8_19-16-47-version-1-modificationdate-1685344420000-api-v2.png"  height="150" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-3082564963_APAContourFusionframework-Interface">
+        <h2 class="heading "><span>Interface</span></h2>
+<p   
+><a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/browse">https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3-up1-pub-interface/browse</a></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3082564963_APAContourFusionframework-Workflow">
+        <h1 class="heading "><span>Workflow</span></h1>
+<p   
+><img  class="drawio-image-border"  src="images/inline/018196390060a20e5e818270bd530d7e3a382c89ba8a0bffde12b7c18be1594a.png" alt="images/inline/018196390060a20e5e818270bd530d7e3a382c89ba8a0bffde12b7c18be1594a.png"   />
+    </p>
+    <div class="section section-2" id="src-3082564963_APAContourFusionframework-USSPointCloudPre-Process">
+        <h2 class="heading "><span>USS Point Cloud Pre-Process</span></h2>
+    <div class="section section-3" id="src-3082564963_safe-id-QVBBQ29udG91ckZ1c2lvbmZyYW1ld29yay1UaW1lJlNwYWNlQWxpZ25tZW50">
+        <h3 class="heading "><span>Time & Space Alignment</span></h3>
+<p   
+> The USS point cloud is generated by Valeo's UPER ECU, and it is generated or updated by 150 points for a single operating cycle.Every 6 points are encapsulated into a frame of CAN.Each CAN message contains the only point cloud time stamp.After the communication mode and the Data format of BSW and Sensor Abstraction, they are finally transmitted to the Contourfusion input port.After the Contourfusion gets the USS point cloud, the following problems need to be solved in turn: </p>
+<ol class=" "><li class=" "><p   
+> Each frame cloud data contains multiple timestamps and needs to be performed (currently using medium -bit). </p>
+</li><li class=" "><p   
+> The coordinates of each point in the point cloud data are based on the self -car coordinate system, so: </p>
+<ol class=" "><li class=" "><p   
+> Before performing the Semseg Filter, you need to use the unique point cloud timestamp to index the closest SEMSEG DATA in the Semseg Buffer to achieve the alignment of the SEMSEG DATA and the USS point cloud data in the Bev image coordinate system. </p>
+</li><li class=" "><p   
+> Before the Point Cloud Integration, the USS point cloud data and Local Map are aligned under the global coordinate system in the same way. </p>
+</li></ol></li></ol>    </div>
+    <div class="section section-3" id="src-3082564963_APAContourFusionframework-DbscanCluster">
+        <h3 class="heading "><span>Dbscan Cluster</span></h3>
+<p   
+> In a frame of USS point cloud data, each point exists independently, and there is no connection between each other and cannot provide the oblite -level attributes required for downstream.And when using visual information to filter USS point clouds, a single point often cannot generate highly confident associations.Therefore, here is a cluster of the USS point cloud data. </p>
+<p   
+> For the general distribution features of the USS point cloud data, the DBSCAN (DENSITY-BASED Spatial Clustering of Applications with Noise) algorithm is used.The rough principle is: For the given Data set, first select a point as the starting point, find out all points within a certain value of the surrounding distance, forming a density -connected area, thereby determining a cluster.Then scan each point of the data concentration in turn, repeat the above process until all points are accessed.At the same time, it will also be found for those unqualified outbound points or noise points.And it can be found that the cluster of any shape is not affected by the initial cluster center. </p>
+<p   
+> Classification effect: </p>
+<p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/download/attachments/3044090138/image-2023-5-17_10-36-48-version-1-modificationdate-1684291008000-api-v2.png" alt="images/download/attachments/3044090138/image-2023-5-17_10-36-48-version-1-modificationdate-1684291008000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-external-resource"  src="images/download/attachments/3044090138/image-2023-5-17_10-37-7-version-1-modificationdate-1684291027000-api-v2.png" alt="images/download/attachments/3044090138/image-2023-5-17_10-37-7-version-1-modificationdate-1684291027000-api-v2.png"  height="250" />
+</p>
+    </div>
+    <div class="section section-3" id="src-3082564963_APAContourFusionframework-SemsegFilter">
+        <h3 class="heading "><span>Semseg Filter</span></h3>
+<p   
+> Protect the USS point cloud data one by one to the SEMSEG image after alignment, find the obstacle elements in the neighborhood, and use the group as a unit to statistically query the results.If the query fails, it will be regarded as noise filtering. </p>
+    </div>
+    <div class="section section-3" id="src-3082564963_APAContourFusionframework-PointCloudUniform">
+        <h3 class="heading "><span>Point Cloud Uniform</span></h3>
+<p   
+> In order to facilitate the unified processing of obstacles of different sensor sources, the DATA to be integrated will be uniformly expressed before the construction of the local map.This process contains two core tasks: </p>
+<ol class=" "><li class=" "><p   
+> According to the height category of the USS point cloud, the prior height is generated, 3D points are obtained from the 2D point, and the 3D point is expanded down to the ground in a discrete manner in the vertical direction of the ground. </p>
+</li><li class=" "><p   
+> Convert the USS point cloud data structure to the input format of the Voxel Fusion algorithm </p>
+</li></ol>    </div>
+    </div>
+    <div class="section section-2" id="src-3082564963_APAContourFusionframework-FisheyeFreeSpacePre-Process">
+        <h2 class="heading "><span>Fisheye Free Space Pre-Process</span></h2>
+    <div class="section section-3" id="src-3082564963_safe-id-QVBBQ29udG91ckZ1c2lvbmZyYW1ld29yay1UaW1lJlNwYWNlQWxpZ25tZW50LjE">
+        <h3 class="heading "><span>Time & Space Alignment</span></h3>
+<p   
+> Similar to the USS point cloud data, Fisheye Free Space data also needs to align with Semseg and Local Map under the appropriate coordinate system. </p>
+    </div>
+    <div class="section section-3" id="src-3082564963_APAContourFusionframework-HeightClassReference">
+        <h3 class="heading "><span>Height Class Reference</span></h3>
+<p   
+> Unlike the USS point cloud data, the Fisheye Free Space does not provide high categories nor a semantic category.Therefore, under the existing resources, the Fefs point can only be projected on the semseg to the semantics of the judgment point, which generates a priority height. </p>
+    </div>
+    <div class="section section-3" id="src-3082564963_APAContourFusionframework-PseudoFreeSpacePointExclude">
+        <h3 class="heading "><span>Pseudo Free Space Point Exclude</span></h3>
+<p   
+> As shown in the red part in the figure below, there are more "pseudo -outlines" caused by the height of obstacles in the FEFS DATA.These pseudo -outlines do not exist on the ground that cannot be passed through obstacles. It is a systematic False Positive, which will cause serious interference to the Voxel Fusion algorithm.Therefore, it must be removed during the pre -processing process. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-24_16-19-49-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-24_16-19-49-version-1-modificationdate-1685344421000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-24_16-54-40-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-24_16-54-40-version-1-modificationdate-1685344421000-api-v2.png"  height="400" />
+</p>
+<p   
+><br/></p>
+<p   
+> The specific practice mainly uses the laws of pseudo -contour mainly in the direction of parallel to sight.So first project Fefs data to semseg, and then use it <span style="color: #172b4d;"> Douglas </span>
+    <span style="color: #172b4d;">
+-    </span>
+    <span style="color: #172b4d;"> The Pook algorithm discretes the contour into a folding line, and then judges the connection of the point in the middle point in each line segment in the light heart and the angle of the line segment itself. If it is less than a certain degree, the line segment is removed. </span>
+</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-24_16-34-54-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-24_16-34-54-version-1-modificationdate-1685344421000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-24_16-36-38-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-24_16-36-38-version-1-modificationdate-1685344421000-api-v2.png"  height="250" />
+</p>
+<p   
+><br/></p>
+<p   
+> At present, the key points that need to be further verified are: </p>
+<ol class=" "><li class=" "><p   
+> Is the law of parallel and parallelism of pseudo -contour and sight still established under IPM? </p>
+</li><li class=" "><p   
+> The images of 4 fish eyes are projected on SEMSEG at the same time and carried out <span style="color: #172b4d;"> Douglas </span>
+    <span style="color: #172b4d;"> -Pook is discretely obtained </span>
+    <span style="color: #172b4d;"> Does the folding line still obey the above laws? </span>
+</p>
+</li></ol>    </div>
+    <div class="section section-3" id="src-3082564963_APAContourFusionframework-PointCloudUniform.1">
+        <h3 class="heading "><span>Point Cloud Uniform</span></h3>
+<p   
+> Refer to the approach in the USS point cloud processing, and use the prior height obtained by the Height Class Reference to expand the point cloud expansion and format conversion of the FEFS DATA to facilitate subsequent map construction. </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3082564963_APAContourFusionframework-VoxelFusion">
+        <h2 class="heading "><span>Voxel Fusion</span></h2>
+    <div class="section section-3" id="src-3082564963_APAContourFusionframework-LocalMapTransition">
+        <h3 class="heading "><span>Local Map Transition</span></h3>
+<p   
+> The single -frame vision range of the VIPER environment is a square with a side length of 15m*15m in the center of the self -car geometric center as the middle point.In order to make the APA PNC more planned space when planning the parking path, and to avoid huge memory occupation caused by maintaining a map based on a global coordinate system, it is necessary toThe self -car movement continues to update the center point of the map: </p>
+<ol class=" "><li class=" "><p   
+> When the program starts, fix the central point of the local map at the projection point of the ground on the ground from the center of the rear axis of the car; record the information of 16M each, left and right before and after the center point. </p>
+</li><li class=" "><p   
+> According to the image timestamp of the VIPER current frame, find the most similar self -parking position in the buffer of the parking position. </p>
+</li><li class=" "><p   
+> When the location of the car is currently exceeded 5M of the original map center point, the map center point is updated to the projection point of the ground center of the rear axis of the car at this time.After moving, the information is still kept in the map, otherwise discard; </p>
+</li></ol><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/move_method-version-1-modificationdate-1685344421000-api-v2.gif" alt="images/confluence/download/attachments/3082564963/move_method-version-1-modificationdate-1685344421000-api-v2.gif"  height="400" />
+    </p>
+    </div>
+    <div class="section section-3" id="src-3082564963_APAContourFusionframework-UniformedPointCloudintegration">
+        <h3 class="heading "><span>Uniformed Point Cloud integration</span></h3>
+<p   
+> In the APA scenario, the outline -level obstacle -level obstacle perception needs determine that the upstream can only be used to characterize the accessible area by point sets.With the point as a fusion goal, the complexity is much higher than the fusion of Bouding Box, etc.The difficulty is: </p>
+<ol class=" "><li class=" "><p   
+> The relationship between the correlation between the front and rear frame Data and the heterogeneous DATA is unstable.Conventional fusion algorithms such as Karman filtering, which generally generate association indicators by the distance between the Ou's or Mali distance between the targets to be fused, thereby determining the relationship.For point -like targets, the location error is very easy to occur, so it is difficult to obtain a stable relationship. </p>
+</li><li class=" "><p   
+> The calculation process of the variance is complicated.The first is how to show the difference in the set of points.Secondly, because the number of points of the contour of the obstacle is generally higher than that of the number of BBOXs that indicate the target of the obstacle, no matter how the choice of the variance can avoid complicated calculations. </p>
+</li></ol><p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/download/attachments/2569235832/image2023-3-15_11-48-33-version-1-modificationdate-1678852113000-api-v2.png" alt="images/download/attachments/2569235832/image2023-3-15_11-48-33-version-1-modificationdate-1678852113000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-25_18-20-20-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-25_18-20-20-version-1-modificationdate-1685344421000-api-v2.png"  height="400" />
+</p>
+<p   
+><br/></p>
+<p   
+> Therefore, in the early stage, I tried to achieve the fusion of obstacles in the method of Occupied Grid Map.Because Grid Cell is naturally aligned, the complicated and sensitive related relationship calculations are avoided.In addition, Grid Cell can be occupied as an observation event, and the frequency of statistical time occurs as judgment of Cell state, thereby avoiding complicated square difference calculation. <a  class="external-link" href="https://bosch-my.sharepoint.com/personal/guh3wx_bosch_com/_layouts/15/stream.aspx?id=/personal/guh3wx_bosch_com/Documents/Microsoft+Teams+Chat+Files/vogm_multi_frame_0_2.webm&ga=1&sw=auth">vogm_multi_frame_0_2.webm (sharepoint.com)</a> EssenceBut there is a problem that in OGM, each CLL is independent of each other, and the outline of "no thickness" obstacles cannot be produced, and 3D situations cannot be processed. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-25_16-19-41-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-25_16-19-41-version-1-modificationdate-1685344421000-api-v2.png"  height="400" />
+    </p>
+<p   
+> To this end, the Voxel Fusion solution is proposed here.Its core idea is to build and update the "cut -off with symbol distance field" within the effective range of local maps. </p>
+<p   
+> As shown below, <span style="color: #24292f;"> Trimming the Truncated Signed Distance Field (TSDF) is a Data structure commonly used in computer graphics to represent the distance information on the surface of the object. </span>
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/download/attachments/2831578982/image-2023-3-20_1-21-21-version-1-modificationdate-1679246482000-api-v2.png" alt="images/download/attachments/2831578982/image-2023-3-20_1-21-21-version-1-modificationdate-1679246482000-api-v2.png"   />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-24_17-6-37-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-24_17-6-37-version-1-modificationdate-1685344421000-api-v2.png"  height="400" />
+</p>
+<p   
+>    <span style="color: #24292f;"> In terms of data structure, TSDF is generally composed of a three -dimensional grid, and the distance information of the point to the surface of the object is stored at each grid point and the observation weight.The value of the distance information D (x) is symbol. When the grid point is inside the object, the distance value is negative; when the grid point is outside the object, the distance value is positive; when the grid point is just on the surface of the object surface, the grid point is located on the surface of the object surface.At the time, the distance value is 0.The weight w (x) can be adjusted, which is generally set to the constant, or the confidence of the point cloud. </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #24292f;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-24_17-2-53-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-24_17-2-53-version-1-modificationdate-1685344421000-api-v2.png" width="500"  />
+    </span>
+</p>
+<p   
+> The point cloud observation of each frame can be regarded as a deeper measurement from the ENVIRONMENT of the Sensor coordinate system.Therefore, the point cloud observation generated in real time can be used to integrate the current observation along the direction of the sight to the following formula to the interception. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-24_17-10-14-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-24_17-10-14-version-1-modificationdate-1685344421000-api-v2.png" width="500"  />
+    </p>
+<p   
+> The D and W values ​​are current observation information.The relationship between current observations and historical observations is determined by Raycast. </p>
+    </div>
+    <div class="section section-3" id="src-3082564963_APAContourFusionframework-MeshExtraction">
+        <h3 class="heading "><span>Mesh Extraction</span></h3>
+<p   
+> Within each processing cycle, after integrating the latest point cloud observation into TSDF, the Marching Cube algorithm can be used to extract the D value of 0 from the TSDF. </p>
+<p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/i.makeagif.com/media/6-16-2015/Iz9S23.gif" alt="images/i.makeagif.com/media/6-16-2015/Iz9S23.gif"  height="400" />
+<img  class="confluence-embedded-image confluence-external-resource"  src="images/b40f1409b878ae4e9da396ed52cbaf18ca12a5381ce5b795a2ba0b32e126ec73.png" alt="images/b40f1409b878ae4e9da396ed52cbaf18ca12a5381ce5b795a2ba0b32e126ec73.png"  height="400" />
+</p>
+<p   
+> As shown in the left of the figure above, the process of extracting the equivalent surface from the entire TSDF in the current local map range can be decomposed as the appropriate equivalent surface from each Voxel, and then connecting it together.Therefore, here is two categories based on the relationship between Voxel's TSD value and 0 C and 0: </p>
+<ol class=" "><li class=" "><p   
+> The angle point greater than 0 is deemed to be above the value surface, recorded as C = 1; </p>
+</li><li class=" "><p   
+> The angle point of less than 0 is deemed to be below the equal surface, recorded as C = 0; </p>
+</li></ol><p   
+> According to the simple arrangement and combination, it can be seen that there are 256 combinations of the 8 top -point C value, which means that the equivalent surface shape in a Voxel is limited, with a total of 256 species.And in the case of only the shape of the equivalent surface, and the position of the equivalent surface, it can be further reduced to 15 kinds, as shown in the right of the figure above.The shape of these 15 equivalent surfaces can be decomposed into 0-5 triangles. </p>
+<p   
+> Therefore, every Voxel (Cube) in the current TSDF (CUBE) is determined according to the TSD value of its 8 angle points, and the value surface shape in the Voxel can be determined (represented by several triangular corner coordinates).Connect all triangular angle coordinates to get the final equivalent surface. </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3082564963_APAContourFusionframework-ContourGeneration">
+        <h2 class="heading "><span>Contour Generation</span></h2>
+<p   
+> The existing downstream users (PSS and APA Planner) do not accept 3D obstacles, so they need to projection equivalent to ground.Based on the principles of point cloud processing of USS point clouds and fish eye FreeSpace based on 4.1.4 and 4.2.4, there will be no suspended equivalent surface in the future.Therefore, the Z value of the equivalent triangle can be directly projected directly to achieve projection. </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-3082564963_APAContourFusionframework-Depthbasedcontourfusion">
+        <h2 class="heading "><span>Depth based contour fusion</span></h2>
+<p   
+>UPER + Viper_Semseg + NRCS freespace polyline + Depth image (stixel)</p>
+<p   
+>The Stixel is a Compact Medium Level Representation of the 3D-World</p>
+<ul class=" "><li class=" "><p   
+>Input</p>
+<ul class=" "><li class=" "><p   
+>UPER: uss + height type (low, high, traversable, NA)</p>
+</li><li class=" "><p   
+>VIPER: free-space polyline + stixel-based height</p>
+</li></ul></li><li class=" "><p   
+> process: </p>
+<ul class=" "><li class=" "><p   
+> Extract Stixel according to the depth diagram of each fish eye </p>
+</li><li class=" "><p   
+> According to the average depth of Stixel and its depth, obtain the location information of the obstacles in the self -car coordinate system </p>
+</li><li class=" "><p   
+> Multi -frame observation fusion obstacles </p>
+</li></ul></li><li class=" "><p   
+> advantage: </p>
+<ul class=" "><li class=" "><p   
+> Program based on deep diagram </p>
+<ul class=" "><li class=" "><p   
+> Light current/sfm and other methods requires the depth of the vehicle to move and reconstruct the depth of obvious texture areas, while the deep chart can extract the depth information when the vehicle is static </p>
+</li><li class=" "><p   
+> Deep diagram prediction methods based on neural network training are more stable and better than traditional CV methods; especially in sparse areas. </p>
+</li><li class=" "><p   
+> The depth diagram provides the depth of 100%pixels in the full image, and the light flow/SFM can only be in the area where the texture is strong </p>
+</li></ul></li><li class=" "><p   
+> Stixel strategy </p>
+<ul class=" "><li class=" "><p   
+> Stixel is a medium -level representation of the scene. </p>
+</li><li class=" "><p   
+> Reduced the calculation of the depth graphic pixel processing </p>
+</li><li class=" "><p   
+> Can support suspended obstacles </p>
+</li></ul></li></ul></li></ul>    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="15.6859%"/>
+                                    <col  width="33.6357%"/>
+                                    <col  width="50.6031%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>item</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>depth image</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>optical-flow / sfm</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Sporting </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Arbitrarily </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Need to be obtained in exercise, Structure From Motion </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> stability </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Good generalization performance, especially in the sparse area of ​​texture </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Only in the area with strong texture (Key-POINT BASED) </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Amount of information </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Full figure pixel depth, 100% </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> A strong texture area, <5%</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<ul class=" "><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-8_2-22-0-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-8_2-22-0-version-1-modificationdate-1685344421000-api-v2.png"  height="250" />
+    </li><li class=" "><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3082564963/image-2023-5-8_2-5-56-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/thumbnails/3082564963/image-2023-5-8_2-5-56-version-1-modificationdate-1685344421000-api-v2.png"  height="203" />
+    <p   
+></p>
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3082564963/image-2023-5-8_2-6-38-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/thumbnails/3082564963/image-2023-5-8_2-6-38-version-1-modificationdate-1685344421000-api-v2.png"  height="203" />
+    <p   
+><br/>(a) the free-space (b) foreground membership</p>
+</li><li class=" "><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3082564963/image-2023-5-8_2-6-52-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/thumbnails/3082564963/image-2023-5-8_2-6-52-version-1-modificationdate-1685344421000-api-v2.png"  height="203" />
+    <p   
+></p>
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3082564963/image-2023-5-8_2-7-5-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/thumbnails/3082564963/image-2023-5-8_2-7-5-version-1-modificationdate-1685344421000-api-v2.png"  height="203" />
+    <p   
+><br/>(c) membership cost image (d) height segmentation</p>
+</li></ul><p   
+> Stixel extraction based on deep diagram </p>
+<p   style="margin-left:30px;"
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-26_9-30-42-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-26_9-30-42-version-1-modificationdate-1685344421000-api-v2.png"  height="250" />
+    </p>
+<p   style="margin-left:30px;"
+><br/></p>
+<p   style="margin-left:30px;"
+>Semantic image (not required input yet):</p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Temporary no -eye semantic semantic segmentation input </p>
+</li><li class=" "><p   
+> Semantic segmentation diagram is conducive to improving object segmentation accuracy and providing more semantic type information </p>
+</li><li class=" "><p   
+> Depending on the current MTCNN multi -tasking model, the computing power and actual needs of MTCNN, to be determined </p>
+</li><li class=" "><p   
+> Can be used to replace IPM Semantic Segmentation Image </p>
+</li></ul></li></ul><p   style="margin-left:30px;"
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082564963/image-2023-5-26_9-54-55-version-1-modificationdate-1685344421000-api-v2.png" alt="images/confluence/download/attachments/3082564963/image-2023-5-26_9-54-55-version-1-modificationdate-1685344421000-api-v2.png"  height="250" />
+    </p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3082564963_APAContourFusionframework-Status">
+        <h1 class="heading "><span>Status</span></h1>
+<p   
+><a   href="https://inside-docupedia.bosch.com/confluence/display/PJW3PER/APA+Contour+Progress">APA Contour Progress - PJ-W3-PER - Docupedia (bosch.com)</a></p>
+    <div class="section section-2" id="src-3082564963_safe-id-QVBBQ29udG91ckZ1c2lvbmZyYW1ld29yay01MzDoioLngrnigJTigJTln7rkuo40LjHmj5DkvpvkuIDku71VU1PngrnkupHkuLrkuLvnmoRjb250b3Vy5pWw5o2u77yM57uZ5Yiw5LiL5ri455So5oi35a6e546w5pWw5o2u6ZO-6Lev55qE5omT6YCa44CC55uu5YmN54q25oCB5aaC5LiL77ya">
+        <h2 class="heading "><span> 530 nodes -CONTOUR data mainly provides a USS point cloud based on 4.1, which gives downstream users to realize data links.The current state is as follows: </span></h2>
+<ul class=" "><li class=" "><p   
+><strong class=" "> need: </strong></p>
+<ul class=" "><li class=" "><p   
+> The first edition requirements and interfaces are basically sorted out </p>
+</li></ul></li><li class=" "><p   
+><strong class=" "> Development: </strong></p>
+<ul class=" "><li class=" "><p   
+> The alignment and projection of USS point clouds and SEMSEG images: </p>
+<ol class=" "><li class=" "><p   
+> Understand and use w3_trans_helper libraries and related APIs <a   href="2711844173_Introduction_%26_tag_log.html">Introduction & tag log - wave 3 development - Docupedia (bosch.com)</a></p>
+</li><li class=" "><p   
+> Prepare 11127C to look at the camera calibration file (in the short term, the AOS Parameter mechanism needs to be introduced in the long run, and SWA has been submitted) </p>
+</li></ol></li><li class=" "><p   
+> The packet and screening of USS point clouds: </p>
+<ol class=" "><li class=" "><p   
+> Dianyun uses DBSCAN clustering </p>
+</li><li class=" "><p   
+> For each class, whether there is OBSTACLE within the range of the surrounding 5X5 </p>
+</li><li class=" "><p   
+> According to whether the statistical value of the group level is more than half, decide whether to retain the point of the group </p>
+</li></ol></li><li class=" "><p   
+> Contour's package: The downstream demand is divided into two levels, one is the demand of the Node level, and the second is the needs of Object. </p>
+<ol class=" "><li class=" "><p   
+> Node level: </p>
+<ol class=" "><li class=" "><p   
+> At present, only 100 points per frame (fixed -length) of downstream, only the first 100 points of the USS first take the first 100 points of the USS </p>
+</li><li class=" "><p   
+> The variance matrix is ​​not available for the time being </p>
+</li></ol></li><li class=" "><p   
+> Object level: </p>
+<ol class=" "><li class=" "><p   
+> Object ID, currently cannot provide ID </p>
+</li><li class=" "><p   
+> Confident, take the Node average in the group </p>
+</li><li class=" "><p   
+> Height class, vote value in the group </p>
+</li><li class=" "><p   
+> Object class, height class is high as OBSTACLE, low is set to Curbstone </p>
+</li></ol></li></ol></li></ul></li><li class=" "><p   
+><strong class=" "> integrated </strong></p>
+<ul class=" "><li class=" "><p   
+> Upgrade AOS 3.3 Solving compilation problems (on-going) </p>
+</li></ul></li><li class=" "><p   
+><strong class=" "> test </strong></p>
+<ul class=" "><li class=" "><p   
+><strong class=" "> data: </strong></p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #ff0000;">
+<strong class=" "> Rosbag Contains: XODOM & Valeo UPER Point Cloud 5/18, it is serious <a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-42256">[CNWVIII-42256] Validation:: Chery 430 SW USS data record - tracker08 (bosch.com)</a></strong>    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;">
+<strong class=" "> Rosbag Contains: XODOM & Valeo Uper Point Cloud & ipm Semseg 5/25, DELAY </strong>    </span>
+</p>
+</li></ul></li><li class=" "><p   
+><strong class=" "> environment: </strong></p>
+<ul class=" "><li class=" "><p   
+> Can't compile the X86 version of ROOT → Can't set up DOL offline running ENVIRONMENT </p>
+</li></ul></li><li class=" "><p   
+><strong class=" "> tool ：</strong></p>
+<ul class=" "><li class=" "><p   
+> USS point cloud Visualization Tool Ready, lack of data verification </p>
+</li></ul></li></ul></li></ul>    </div>
+    <div class="section section-2" id="src-3082564963_safe-id-QVBBQ29udG91ckZ1c2lvbmZyYW1ld29yay02MjDoioLngrnigJTigJTot5HpgJrlrozmlbTnmoR2b3hlbGZ1c2lvbumTvui3r--8jOebruWJjeeKtuaAgeWmguS4i--8mg">
+        <h2 class="heading "><span> 620 nodes -the full Voxel Fusion link, the current state is as follows: </span></h2>
+<ul class=" "><li class=" "><p   
+><strong class=" "> Develop </strong></p>
+<ul class=" "><li class=" "><p   
+> VIPER preprocessor code -not start </p>
+</li><li class=" "><p   
+> voxel core code Develop -60% </p>
+</li><li class=" "><p   
+> CONTOUR post -processing code -NOT START </p>
+</li></ul></li><li class=" "><p   
+><strong class=" "> integrated </strong>—— not start</p>
+</li><li class=" "><p   
+><strong class=" "> test </strong></p>
+<ul class=" "><li class=" "><p   
+><strong class=" "> data </strong></p>
+<ul class=" "><li class=" "><p   
+>rosbag contains: xodom & valeo uper point cloud & ipm semseg & fisheye freespace 5/31 ——not ready</p>
+</li></ul></li><li class=" "><p   
+><strong class=" "> environment </strong></p>
+<ul class=" "><li class=" "><p   
+> DOL Environment -NOT Ready </p>
+</li></ul></li><li class=" "><p   
+><strong class=" "> tool </strong></p>
+<ul class=" "><li class=" "><p   
+> VIPER input interface Visualization Tool -NOT Ready </p>
+</li><li class=" "><p   
+> Contour output interface Visualization Tool -NOT Ready </p>
+</li></ul></li></ul></li></ul>    </div>
+    </div>
+    <div class="section section-1" id="src-3082564963_APAContourFusionframework-Problem">
+        <h1 class="heading "><span> Problem</span></h1>
+<ul class=" "><li class=" "><p   
+> For the above content, the human resources are extremely tight at 620 nodes </p>
+</li></ul><p   
+><br/></p>
+<p   
+>Appendix:</p>
+<ul class=" "><li class=" "><p   
+><a   href="https://inside-docupedia.bosch.com/confluence/display/PJW3PER/Related+work+-+APA+contours">Related work - APA contours - PJ-W3-PER - Docupedia (bosch.com)</a></p>
+</li></ul><p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2498326801_SF-APA.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>SF-APA</span>
+        </a>
+                <a href="3006155016_APA_ContoursFusion_Plan_%26_State.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>APA ContoursFusion Plan & State</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

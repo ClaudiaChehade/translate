@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Outliers Removal in Visual Odometry for High-speed Automotive Applications - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2234222800"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2234222800"> <span>Outliers Removal in Visual Odometry for High-speed Automotive Applications</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>This page will discuss the method to remove outlier of optical flow tracking before camera pose optimization. It's a little bit tricky that not all the "<strong class=" ">well-matched</strong>" visual features tracked by optical flow should be used for pose estimation.</p>
+<p   
+>The main idea comes from the paper, "How to Distinguish Inliers from Outliers in Visual Odometry for High-speed Automotive Applications, Martin Buczko and Volker Willert".</p>
+<p   
+>Their system has ranked <strong class=" ">first place (Jan 11th 2016)</strong> amongst camera-based algorithms in the KITTI benchmark. Furthermore, at speeds higher than 70 km/h it achieves better results than the best camera and laser-scanner based methods in the benchmark.</p>
+<p   
+></p>
+    <div class="section section-1" id="src-2234222800_OutliersRemovalinVisualOdometryforHighspeedAutomotiveApplications-ProblemDescription">
+        <h1 class="heading "><span>Problem Description</span></h1>
+<p   
+>The essential part of any visual odometry system is the detection of outliers. Therefor, a broad variety of methods has been introduced:</p>
+<ul class=" "><li class=" "><p   
+>purely flow-based approaches, which assume the flow follows patterns which are induced by the ego motion of the car.</p>
+</li><li class=" "><p   
+>motion model-based approaches, which explicitly constrain the flow using a certain motion model.</p>
+</li></ul><p   
+>The majority of existing systems use <strong class=" ">reprojection error-based</strong> approaches, such as <strong class=" ">RANSAC</strong>.</p>
+<p   
+>The <strong class=" ">RANSAC </strong>is based on the principle:</p>
+<p   
+>In each iteration, a minimum number of random samples is taken from the correspondences to create a motion hypothesis. Then, a score for each feature is calculated that describes whether it supports the hypothesis. If the motion estimate reaches a predefined support of the features, the non-supporting features are marked as outliers. Otherwise, a new random sample is drawn and the next iteration starts.</p>
+<p   
+>In order to define the support of a feature in this RANSAC-scheme, we have to calculate the <u class=" "><strong class=" ">reprojection error</strong></u> for each feature and compare it to a constant threshold.</p>
+<p   
+>However, only reprojection error is <u class=" "><strong class=" ">not enough</strong></u> as figure below,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2234222800/image2022-4-24_10-28-47-version-1-modificationdate-1650770146000-api-v2.png" alt="images/confluence/download/attachments/2234222800/image2022-4-24_10-28-47-version-1-modificationdate-1650770146000-api-v2.png"  height="400" />
+    </p>
+<p   
+>Figure description,</p>
+<ul class=" "><li class=" "><p   
+>Flow with cyan color comes from the ego-motion compensation. (motion prediction + feature reprojection)</p>
+</li><li class=" "><p   
+>Flow with yellow color comes from the real optical flow tracking.</p>
+</li><li class=" "><p   
+>Red circle means error-free measurement (cyan color and yellow color are totally matched).</p>
+</li><li class=" "><p   
+>In the upper image, the green(inlier) and red bar(outlier) comes from classical <strong class=" ">reprojection error</strong>.</p>
+</li><li class=" "><p   
+>In the lower image, the green(inlier) and red bar(outlier) comes from proposed <strong class=" ">normalized reprojection error</strong>.</p>
+</li></ul><p   
+>From the upper image, the true outlier with red circle has an additive error in the depth estimate. The reprojection error shows a low error for the distant outlier, thus selected as an inlier (green bar) but high values for close/near true inliers. Hence, the reprojection error has both false positive and false negative judge.</p>
+<p   
+>From the lower image, all the inliers come from normalized reprojection error have almost the same offset/height/length of green bar. It's easier to set the threshold and distinguish the inlier and outlier. At least, the normalized reprojection error seems to be not affected by the feature distance.</p>
+    </div>
+    <div class="section section-1" id="src-2234222800_OutliersRemovalinVisualOdometryforHighspeedAutomotiveApplications-ProblemAnalysis">
+        <h1 class="heading "><span>Problem Analysis</span></h1>
+<p   
+>Before introducing the normalized reprojection, let's see and analyze <strong class=" ">why</strong> the reprojection error will have false negative and false positive outliers.</p>
+<p   
+>In order to find a proper threshold on the reprojection error to reject outliers, we have to define some motion error range <img  class="latexmath"  src="images/inline/37058191d091f0b3fc306e2dc0dc6946b30fb62539622a479f63d08b9a0a7024.svg" alt="images/inline/37058191d091f0b3fc306e2dc0dc6946b30fb62539622a479f63d08b9a0a7024.svg"   />
+ on the optimal estimate<img  class="latexmath"  src="images/inline/c9543dde526e9b8ab753831b9305d59bcae062d3a2482194097ee64db5f7308e.svg" alt="images/inline/c9543dde526e9b8ab753831b9305d59bcae062d3a2482194097ee64db5f7308e.svg"   />
+ to find the reprojection error range given the motion error range and error-free measurements. This results in the sensitivity of the reprojection error <img  class="latexmath"  src="images/inline/45805270da13d1dbca90dfe78daa0bbfab200d67a62673da958c35114ed6abed.svg" alt="images/inline/45805270da13d1dbca90dfe78daa0bbfab200d67a62673da958c35114ed6abed.svg"   />
+.</p>
+<p   
+>Now, considering high-speed scenarios, we can assume very small rotations and much larger longitudinal than horizontal and vertical movements (lateral coordinate X, transversal coordinate Y and forward coordinate Z),</p>
+<ul class=" "><li class=" "><p   
+>high-speed approximation, <img  class="latexmath"  src="images/inline/f034cfda8a96320d54e472b00cf366805e3f4b6b995dd13212b0d2dd6e5546f9.svg" alt="images/inline/f034cfda8a96320d54e472b00cf366805e3f4b6b995dd13212b0d2dd6e5546f9.svg"   />
+</p>
+</li><li class=" "><p   
+>high-speed approximation, <img  class="latexmath"  src="images/inline/1737e3c08f5a38d485e64844772558407c622e77e9592547a27c1b4ac2900a40.svg" alt="images/inline/1737e3c08f5a38d485e64844772558407c622e77e9592547a27c1b4ac2900a40.svg"   />
+</p>
+</li></ul><p   
+>Under highspeed for an error-prone motion hypothesis <img  class="latexmath"  src="images/inline/ef50a662a4af06d99fac27ad01656295f2cce28e7e4e3dfc1ef59c1feb16944b.svg" alt="images/inline/ef50a662a4af06d99fac27ad01656295f2cce28e7e4e3dfc1ef59c1feb16944b.svg"   />
+, we've finally got the reprojection error sensitivity below. Here the<img  class="latexmath"  src="images/inline/1a31b8b9013e8da552e8473fbb2f81d8d8eaef08fdc750c617f8aa50f1d2fd30.svg" alt="images/inline/1a31b8b9013e8da552e8473fbb2f81d8d8eaef08fdc750c617f8aa50f1d2fd30.svg"   />
+ is i-th feature depth at time t.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2234222800/image2022-4-24_13-51-42-version-1-modificationdate-1650779502000-api-v2.png" alt="images/confluence/download/attachments/2234222800/image2022-4-24_13-51-42-version-1-modificationdate-1650779502000-api-v2.png" width="350"  />
+    </p>
+<p   
+>The sensitivity of the reprojection error is scaled by the absolute value of the image coordinate <img  class="latexmath"  src="images/inline/46ca41c07db6abd15cf0294f9ade616c0b2df6e267d19fb2bb0126a2bfa937bd.svg" alt="images/inline/46ca41c07db6abd15cf0294f9ade616c0b2df6e267d19fb2bb0126a2bfa937bd.svg"   />
+ and damped by the feature’s depth <img  class="latexmath"  src="images/inline/261ad535bb6b404db22e2cfe91749d316edddc599a9e2ff354c4daa5ab739880.svg" alt="images/inline/261ad535bb6b404db22e2cfe91749d316edddc599a9e2ff354c4daa5ab739880.svg"   />
+.</p>
+<p   
+>This means, an incorrect motion hypothesis <img  class="latexmath"  src="images/inline/ef50a662a4af06d99fac27ad01656295f2cce28e7e4e3dfc1ef59c1feb16944b.svg" alt="images/inline/ef50a662a4af06d99fac27ad01656295f2cce28e7e4e3dfc1ef59c1feb16944b.svg"   />
+ with a fixed error range <img  class="latexmath"  src="images/inline/3eacd5c873e15c83a79c6f46bce7197475e59cba680e2a03ae5cae0645f3a984.svg" alt="images/inline/3eacd5c873e15c83a79c6f46bce7197475e59cba680e2a03ae5cae0645f3a984.svg"   />
+ produces a variant sensitivity <img  class="latexmath"  src="images/inline/97d736df999ee99b1395b62d13b6f0833d3fd0317cf704d4e2e57729d587def3.svg" alt="images/inline/97d736df999ee99b1395b62d13b6f0833d3fd0317cf704d4e2e57729d587def3.svg"   />
+ dependent on the feature’s position.</p>
+<p   
+>To receive a first impression on the consequences for the sensitivity of the reprojection error in such driving scenarios the figure below shows the dependency of the reprojection error <img  class="latexmath"  src="images/inline/b4e7583752ada1bd4d9ac23bbda862901937f966e8c56a2041f29b71343db144.svg" alt="images/inline/b4e7583752ada1bd4d9ac23bbda862901937f966e8c56a2041f29b71343db144.svg"   />
+ for an increase in longitudinal translation error estimates <img  class="latexmath"  src="images/inline/3eacd5c873e15c83a79c6f46bce7197475e59cba680e2a03ae5cae0645f3a984.svg" alt="images/inline/3eacd5c873e15c83a79c6f46bce7197475e59cba680e2a03ae5cae0645f3a984.svg"   />
+ for varying feature depth <img  class="latexmath"  src="images/inline/f4325a9a488c2a61b181c0d18e3fac4b76e4a20cceb567f9ce84cfb97037e649.svg" alt="images/inline/f4325a9a488c2a61b181c0d18e3fac4b76e4a20cceb567f9ce84cfb97037e649.svg"   />
+. It clearly illustrates, the RE is combined with the error of <u class=" "><strong class=" ">feature depth</strong></u> and     <span style="color: #000000;">
+<u class=" "><strong class=" ">longitudinal translation</strong></u>(estimated pose).    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>the reprojection error (RE) linearly increases with increasing translation error</p>
+</li><li class=" "><p   
+>the sensitivity of the reprojection error (the slope of the lines) decreases with increasing distance of the features</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2234222800/image2022-4-24_14-9-39-version-1-modificationdate-1650780579000-api-v2.png" alt="images/confluence/download/attachments/2234222800/image2022-4-24_14-9-39-version-1-modificationdate-1650780579000-api-v2.png" width="500"  />
+    </p>
+<p   
+>Thus, methods that base the outlier removal on a constant threshold (e.g. <u class=" ">threshold=0.2 pixel</u>) on the reprojection error may remove close/near features(<strong class=" ">false positive</strong>) and miss the distance/far features(<strong class=" ">false negative</strong>) quite often.</p>
+<p   
+>In addition, the classical RE be interfered by the feature distance and difficult to tell the translation error. As close features with high absolute values of their correspondences are lost during the outlier rejection process, the sensitivity of the reprojection error against forward translation gets lost. In turn, this results in worse estimates of the translation because the signal-to-resolution ratio is getting small and cannot be exploited anymore.</p>
+<p   
+>To conclude, a reasonable threshold to judge the feature’s quality can not be a constant value but must incorporate the depth as much as the length of the image coordinate in order to make a meaningful statement on the feature’s quality.</p>
+    </div>
+    <div class="section section-1" id="src-2234222800_OutliersRemovalinVisualOdometryforHighspeedAutomotiveApplications-ProposedMethodandBenefit">
+        <h1 class="heading "><span>Proposed Method and Benefit</span></h1>
+<p   
+>To reduce the variance of the reprojection error on the feature position we can either apply a position adaptive threshold(create manual rules as feature engineering on figure above) for outlier removal or normalize the reprojection<br/>error for coordinate scaling and depth damping.</p>
+<ul class=" "><li class=" "><p   
+>Since the resolution of the measured depth values decreases with distance and depth measurements are error-prone in general, we do not want to incorporate them to compensate the depth damping of the reprojection error.</p>
+</li><li class=" "><p   
+>Instead, we use the dependency of the absolute value of the optical flow on the depth and use the optical flow measurements to normalize the reprojection error.</p>
+</li></ul><p   
+>Let's use the highway assumption again. The error-free (visual match perfectly) absolute value (position difference) of a feature’s optical flow induced by an error-free straight forward motion <img  class="latexmath"  src="images/inline/3fbbed33471c6c966ce4d697e795da41c2c387636a9b544bc7cfe824d4b35527.svg" alt="images/inline/3fbbed33471c6c966ce4d697e795da41c2c387636a9b544bc7cfe824d4b35527.svg"   />
+ would be,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2234222800/image2022-4-24_14-55-18-version-1-modificationdate-1650783319000-api-v2.png" alt="images/confluence/download/attachments/2234222800/image2022-4-24_14-55-18-version-1-modificationdate-1650783319000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Using the absolute value of the current flow as a normalization to the sensitivity of the reprojection error, we get</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2234222800/image2022-4-24_15-0-48-version-1-modificationdate-1650783649000-api-v2.png" alt="images/confluence/download/attachments/2234222800/image2022-4-24_15-0-48-version-1-modificationdate-1650783649000-api-v2.png" width="450"  />
+    </p>
+<p   
+>Here, the second approximation assumes the depth being much larger than the longitudinal motion <img  class="latexmath"  src="images/inline/659c6d87f6958f85627b29bba9dee90eccebb64da49f88218cb3317485ca074e.svg" alt="images/inline/659c6d87f6958f85627b29bba9dee90eccebb64da49f88218cb3317485ca074e.svg"   />
+.</p>
+<p   
+>Now, the normalized reprojection error is not scaled by the absolute value of the image coordinate anymore and almost not dependent on the distance of long distant features as shown in figure below,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2234222800/image2022-4-24_15-4-4-version-1-modificationdate-1650783844000-api-v2.png" alt="images/confluence/download/attachments/2234222800/image2022-4-24_15-4-4-version-1-modificationdate-1650783844000-api-v2.png" width="500"  />
+    </p>
+<p   
+>The image above is the comparison between <strong class=" ">sensitivity</strong> of reprojection error (RE) and <strong class=" ">sensitivity</strong> of normalized reprojection error (NRE).</p>
+<ul class=" "><li class=" "><p   
+>The reprojection error (see red) is dampened by distant and slow features and a fixed threshold outlier criterion tends to <u class=" "><strong class=" ">lose close and fast features</strong></u>. (e.g. threshold=0.02, near/close feature with same velocity or fast feature with same distance will be removed.)</p>
+</li><li class=" "><p   
+>By contrast, the normalized reprojection error (see green) amplifies distant and slow features up to some saturation, thus a fixed threshold outlier criterion tends to keep close and fast features. (e.g. threshold=0.08, the far feature with same velocity or slow feature with same distance will be removed).</p>
+</li></ul><p   
+>Thus, using a threshold <img  class="latexmath"  src="images/inline/1f6e4de091fbd07a1e94579f2ad7fd0f281c64f9ec746b844dc871863347d21b.svg" alt="images/inline/1f6e4de091fbd07a1e94579f2ad7fd0f281c64f9ec746b844dc871863347d21b.svg"   />
+ on the normalized reprojection error to mark each feature <img  class="latexmath"  src="images/inline/6f7122696c3ccf9fb72320d91c9ef377e18403048af2ef1057b3d00b0494c2a5.svg" alt="images/inline/6f7122696c3ccf9fb72320d91c9ef377e18403048af2ef1057b3d00b0494c2a5.svg"   />
+ as a member of the current feature set, we apply,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2234222800/image2022-4-24_20-57-28-version-1-modificationdate-1650805049000-api-v2.png" alt="images/confluence/download/attachments/2234222800/image2022-4-24_20-57-28-version-1-modificationdate-1650805049000-api-v2.png" width="350"  />
+    </p>
+<p   
+>This criterion turns out to be very suitable for outlier removal, especially in <u class=" "><strong class=" ">high-speed scenarios</strong></u>, because it is almost invariant to the features’ 3D position.</p>
+<p   
+>The figure below shows a simulation comparison between the reprojection error and the normalized reprojection error for some error prone depth estimates and a forward motion <img  class="latexmath"  src="images/inline/d58387963a97a20fa358056d71a6c1b97c85394e24d657913c5dafa1d7fdee98.svg" alt="images/inline/d58387963a97a20fa358056d71a6c1b97c85394e24d657913c5dafa1d7fdee98.svg"   />
+ of 100km/h. The reprojection error does not allow a separation between inliers and outliers because <img  class="latexmath"  src="images/inline/529b0eabe1d724e85b44e3823ddf8372959a77246c79a058a5b7bec6e6d50115.svg" alt="images/inline/529b0eabe1d724e85b44e3823ddf8372959a77246c79a058a5b7bec6e6d50115.svg"   />
+ scales with the absolute value of the coordinate of the features. By contrast, <img  class="latexmath"  src="images/inline/107d6cdfd24bf0c75bbac3d645895aae1fc62bc210d1ee17890eaf72b1284f6e.svg" alt="images/inline/107d6cdfd24bf0c75bbac3d645895aae1fc62bc210d1ee17890eaf72b1284f6e.svg"   />
+ leads to a clear separability.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2234222800/image2022-4-24_21-4-2-version-1-modificationdate-1650805443000-api-v2.png" alt="images/confluence/download/attachments/2234222800/image2022-4-24_21-4-2-version-1-modificationdate-1650805443000-api-v2.png" width="450"  />
+    </p>
+<p   
+>This simulation assumes depths start at 3m for feature 1 and end at 100m for feature 50. Every tenth feature has an error of 10% in the estimated depth (the red line marks the ground truth outlier).</p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">Benefit</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>The classical RE can't find these outlier with constant threshold. However, the NRE could tell the outlier with constant threshold.</p>
+        </div>
+    </div>
+    <div class="section section-2" id="src-2234222800_OutliersRemovalinVisualOdometryforHighspeedAutomotiveApplications-Howtoapplythisoutlierremovalmethodtoposeoptimizationproblem">
+        <h2 class="heading "><span>How to apply this outlier removal method to pose optimization problem</span></h2>
+<p   
+>To realize an iterative optimization scheme that carefully alternates between incremental outlier rejection and pose change refinement, we need a suitable set of a reasonable number of features to start with. A suitable feature has unambiguous temporal as well as stereoscopic correspondence measurements to get as much reliable optical flow and depth estimates as possible.</p>
+<p   
+>Next, we iterate and alternating between a) pose refinement keeping the current inlier set <img  class="latexmath"  src="images/inline/9b38f1a4f41af069cb1805a8f91b3d3395a19317cf2ea7373d497753116ebc26.svg" alt="images/inline/9b38f1a4f41af069cb1805a8f91b3d3395a19317cf2ea7373d497753116ebc26.svg"   />
+ fixed and b) outlier removal keeping the current pose <img  class="latexmath"  src="images/inline/0368e545d4b6a9ef3fedc28ab6cb377f9c9cd7d23a78ac43f8fe34b5f8b35bfd.svg" alt="images/inline/0368e545d4b6a9ef3fedc28ab6cb377f9c9cd7d23a78ac43f8fe34b5f8b35bfd.svg"   />
+ fixed.</p>
+<p   
+>step a, Pose refinement</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2234222800/image2022-4-24_21-29-6-version-1-modificationdate-1650806948000-api-v2.png" alt="images/confluence/download/attachments/2234222800/image2022-4-24_21-29-6-version-1-modificationdate-1650806948000-api-v2.png" width="350"  />
+    </p>
+<p   
+>step b, apply robust Outlier Criterion for Camera-based Odometry,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2234222800/image2022-4-24_21-38-48-version-1-modificationdate-1650807529000-api-v2.png" alt="images/confluence/download/attachments/2234222800/image2022-4-24_21-38-48-version-1-modificationdate-1650807529000-api-v2.png" width="400"  />
+    </p>
+<p   
+>go back to step a, until max iteration or feature number don't change. In the end, we terminate our robust pose estimation scheme and perform one last refining optimization run with the remaining features.</p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2326725176_Optical_Flow_Report_on_Szh2_Parking_215.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Optical Flow Report on Szh2 Parking 215</span>
+        </a>
+                <a href="2333897361_Monocular_Outlier_Detection_for_Visual_Odometry.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Monocular Outlier Detection for Visual Odometry</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

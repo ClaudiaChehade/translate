@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pillar/Vehicle fitting filter solution - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4492703419"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2495263431_Static_Fusion_-_PER.html">Static Fusion - PER</a></li>
+                                                                                                         <li class="shortcut"><a href="2498326801_SF-APA.html">SF-APA</a></li>
+                                                                                                         <li class="shortcut"><a href="3493196014_CF_doc.html">CF doc</a></li>
+                                                                                     <li><a href="4477630569_CF_taskforce_2407.html">CF taskforce 2407</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4492703419"> <span>Pillar/Vehicle fitting filter solution</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4492703419/image-2024-7-16_16-42-46-version-1-modificationdate-1721119367000-api-v2.png" alt="images/confluence/download/attachments/4492703419/image-2024-7-16_16-42-46-version-1-modificationdate-1721119367000-api-v2.png" width="500"  />
+    </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+> Only work in the Guidance phase </p>
+<p   
+><br/></p>
+<p   
+> Code process: </p>
+<ol class=" "><li class=" "><p   
+> Perform categories of square columns/cylinders/vehicle observation points according to VIPER-FS semantic information </p>
+<ol class=" "><li class=" "><p   
+>GUO hongming</p>
+</li></ol></li><li class=" "><p   
+> For the fitting of each class, the fitting scheme is to refine the design </p>
+<ol class=" "><li class=" "><p   
+>GUO hongming</p>
+</li></ol></li><li class=" "><p   
+> Use the fitting result to be associated with the USS input. </p>
+</li><li class=" "><p   
+> Related with the fusion result with the fitting result, and the node point on the association is eliminated </p>
+</li><li class=" "><p   
+> Insert the fit results into the node set, output it to the downstream </p>
+</li></ol><p   
+><br/></p>
+<p   
+> Technical solutions: </p>
+<ul class=" "><li class=" "><p   
+> Multi -frame fitting, or single -frame fitting and then tracking the fitting result?—— Observe the data before deciding </p>
+</li><li class=" "><p   
+> How to get a straight line from point cloud coordinates? </p>
+</li><li class=" "><p   
+> How to get a line segment in a straight line? </p>
+</li></ul><p   
+><br/></p>
+    <div class="section section-1" id="src-4492703419_safe-id-UGlsbGFyL1ZlaGljbGVmaXR0aW5nZmlsdGVyc29sdXRpb24tUGlwZWxpbmU">
+        <h1 class="heading "><span>Pipeline</span></h1>
+<ul class=" "><li class=" "><p   
+> In each frame of Viper-Fs, the Pillar Object observes cluster, and each pillar generates the corresponding group. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~GUH3WX">GUO Hongming (BCSC/EPA1, XC-AS/PJ-WIN-PER7)</a></p>
+</li><li class=" "><p   
+> initialization: </p>
+<ul class=" "><li class=" "><p   
+> The first frame of the point cloud quality of each group is used as its ROI round heart, radius pre-set.Determine whether the Group is on both sides of the target parking space. If it is the pillar next to the target parking space, select the group and initialize the target pillar. </p>
+</li><li class=" "><p   
+> Subsequent frames, the Viper-FS Pillar Group of each frame, and a distance judgment with Target Pillar ROI. In Target Pillar Roi, it is a new observation of Target Pillar; </p>
+<ul class=" "><li class=" "><p   
+> The point cloud coordinates of each frame are used as a new value -added, and the average coordinates of the movement of the qualitative heart is calculated to update the ROI. </p>
+</li></ul></li><li class=" "><p   
+> Pllar observation of continuous n {3} frames, and the outline is fitted together. </p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~RNE2SZH">REN Sixu (XC-AS/EPF2-CN)</a> Target initialization, ROI initialization, observation association </p>
+</li></ul></li><li class=" "><p   
+> renew </p>
+<ul class=" "><li class=" "><p   
+> Each target pillar observation group, judge the quality of the observation group, decide whether it is used to Renew Pillar </p>
+</li><li class=" "><p   
+> According to new observations, the Outline / Renew is re -carried out. </p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~LKA4SZH">LIU Kai (XC-AS/PJ-W3-PER7)</a></p>
+</li></ul></li><li class=" "><p   
+>tracking</p>
+<ul class=" "><li class=" "><p   
+> The adjacent frame combination results are performed to fuse the time domain, such as low -pass filtering to reduce the jitter of the Pillar Contour. </p>
+</li></ul></li><li class=" "><p   
+> Outline </p>
+<ul class=" "><li class=" "><p   
+> Perform straight-line fitting to generate a straight line Pillar-Line; calculate the angle of the Video-Line of the Pillar-Line and CPS; according to the parallel assumptions, to correct the slope of the Pillar-Line; and then fix the straight line under fixed sloping or perform straight lines under the slope or perform straight lines for linear lines.Choose (to this slope angle); </p>
+</li><li class=" "><p   
+> If it is an unilateral observation, based on the observation of Point, a straight -line interception is performed to generate the line segment. </p>
+</li><li class=" "><p   
+> If it is a bilateral observation, calculate the outline of L and intercept the line segment. </p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~LKA4SZH">LIU Kai (XC-AS/PJ-W3-PER7)</a></p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~OIY1SZH">LIU Yong (XC-AS/PJ-WIN-PER7)</a> === Plan survey </p>
+</li><li class=" "><p   
+>pose opt + structure opt;</p>
+</li><li class=" "><p   
+>pose: x, y, yaw</p>
+</li><li class=" "><p   
+>structure: width, length</p>
+</li></ul></li></ul><p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-4492703419_safe-id-UGlsbGFyL1ZlaGljbGVmaXR0aW5nZmlsdGVyc29sdXRpb24t6KeC5rWL5L-d5a2Y562W55Wl">
+        <h1 class="heading "><span> Observation preservation strategy </span></h1>
+<ul class=" "><li class=" "><p   
+> Observation of Pillar/Vehicle at the Searching stage </p>
+</li><li class=" "><p   
+> Searching stage </p>
+<ul class=" "><li class=" "><p   
+> According to the key frame extraction of the target location: the X value of the objective heart in the self-car coordinate system is regarded as an effective observation within the range of (-0.5m, 6.5m)Change, extract a key frame.In principle, Searching is less than 10 kf </p>
+<ul class=" "><li class=" "><p   
+>workaround: <strong class=" "> Simplified version, save one frame every 10 frames first </strong></p>
+</li><li class=" "><p   
+><a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=4483295541"> BEV-FS Pillar different observation angle changes </a></p>
+</li></ul></li><li class=" "><p   
+> Data quality assessment </p>
+<ul class=" "><li class=" "><p   
+> It is judged by BEV-FS Point to determine its quality based on its corresponding camera observation angle and distance; similar strategies are used to calculate the Weight value in the CF code, which can be reused. </p>
+</li><li class=" "><p   
+> Do not do the first edition </p>
+</li></ul></li></ul></li><li class=" "><p   
+> Target removal </p>
+<ul class=" "><li class=" "><p   
+> After a certain distance behind the car, the target will be deleted </p>
+</li><li class=" "><p   
+> Not to do it temporarily </p>
+</li></ul></li><li class=" "><p   
+> Guidance stage </p>
+<ul class=" "><li class=" "><p   
+> Select the Guidance phase, you need to extract the target of the structure </p>
+</li><li class=" "><p   
+> In the Guidance stage, new observations are preserved when selecting the target. </p>
+</li><li class=" "><p   
+> In the field of vision in the field of vision, new observations are no longer preserved. </p>
+</li></ul></li><li class=" "><p   
+> Save information </p>
+<ul class=" "><li class=" "><p   
+><strong class=" "> BEV-FS Points of the target </strong></p>
+</li><li class=" "><p   
+> BEV-FS semantic category of target </p>
+</li><li class=" "><p   
+> Current frame self -car EGO POSE </p>
+</li><li class=" "><p   
+> Time stamp of current frames </p>
+</li><li class=" "><p   
+> X, Y (the first edition does not do) under the coordinate system of the target quality </p>
+</li><li class=" "><p   
+> The parking status of the current frame (Searching, Guidance) </p>
+<ul class=" "><li class=" "><p   
+> Structural extraction algorithm needs to be distinguished by Searching, Guidance observation </p>
+</li></ul></li></ul></li><li class=" "><p   
+>7/13 todo</p>
+<ul class=" "><li class=" "><p   
+> Each 10 -frame keyframe extraction </p>
+</li><li class=" "><p   
+> Package the observation information of the target into a structure, which is convenient for new information to increase information in the future. </p>
+</li></ul></li></ul><p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-4492703419_safe-id-UGlsbGFyL1ZlaGljbGVmaXR0aW5nZmlsdGVyc29sdXRpb24t55uu5qCH6L2u5buT5pu05paw562W55Wl">
+        <h1 class="heading "><span> Target contour RENEW strategy </span></h1>
+<ul class=" "><li class=" "><p   
+> Target Initialization: </p>
+<ul class=" "><li class=" "><p   
+> Initialize the target, determine the goi area of ​​the target, and point cloud observation </p>
+</li></ul></li><li class=" "><p   
+> Outline and optimization: </p>
+<ul class=" "><li class=" "><p   
+> With the increase of observation point clouds, try to fit the outline </p>
+</li><li class=" "><p   
+> Optimization of time domain contour, increase the stability of the contour, and evaluate the confidence of the contour </p>
+</li></ul></li><li class=" "><p   
+> Contour RENEW </p>
+<ul class=" "><li class=" "><p   
+> In the Searching stage, when the left/right fish eye camera passes through the target distance (such as 1.5m), the target observation perspective is relatively complete (you can see the three edges);Fix it and save it in the vector Map. </p>
+</li><li class=" "><p   
+> During the Guidance stage, the pillars and vehicles on both sides of the target parking space are mainly renewed; if the car is borrowed, the observation and outline of the pillars/vehicles that are close to the borrowing also require Renew. </p>
+</li><li class=" "><p   
+> In the Guidance stage, when the target enters a better observation vision, Renew observation, and adjust the outline of the target according to the observation; because the observation perspective at this time is not necessarily complete, it may only be based on the observation outline. <strong class=" "> Pose-only adjustment (pose-only) </strong> , Do not re -fit. </p>
+</li></ul></li><li class=" "><p   
+>7/13</p>
+<ul class=" "><li class=" "><p   
+> 'Accept APA State signal: Searching or Guidance </p>
+</li><li class=" "><p   
+> In the Guidance phase, accept the target slot signal </p>
+</li><li class=" "><p   
+> Reorganization/selecting observation data </p>
+</li><li class=" "><p   
+> Call the pillar_fitting function </p>
+</li></ul></li></ul><p   
+><br/></p>
+<p   
+>7/13</p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4477631103_CF%E9%92%88%E5%AF%B9viper_bev-fs%E7%9A%84%E9%80%82%E9%85%8D.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> CF's adaptation for Viper BEV-FS </span>
+        </a>
+                <a href="4477630592_uss%E6%AE%8B%E7%95%99%E5%8F%8A%E8%AF%AF%E6%8E%A2%E8%BF%87%E6%BB%A4.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> USS residue and misunderstanding filtering </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

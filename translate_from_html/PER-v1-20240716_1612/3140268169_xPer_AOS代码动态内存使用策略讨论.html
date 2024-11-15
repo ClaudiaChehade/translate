@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Xper AOS code dynamic memory use strategy discussion  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3140268169"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                     <li><a href="3140268148_xPER_Meeting_Minutes.html">xPER Meeting Minutes</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3140268169"> <span> Xper AOS code dynamic memory use strategy discussion </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>Date: 16 Jun 2023</p>
+<p   
+>Attendees: <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~YAI2SGH">YANG Liu (XC-AS/PJ-WIN-PER)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~SIY8SZH">SHI Yan (XC-AS/PJ-WIN-PER5)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~OIY1SZH">LIU Yong (XC-AS/PJ-WIN-PER7)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~LAE7SZH">LA Lei (XC-AS/PJ-WIN-PER1)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HPA4SZH">HU Paul (XC-AS/PJ-WIN-PER3)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~ZXO5SZH">ZHAO Xin (XC-AS/PJ-WIN-PER)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8aba6389887fd9a2018894df83e8009e">user-575fc</a></p>
+<p   
+>Place: 208 13M05</p>
+<p   
+><strong class=" "> background </strong></p>
+<ol class=" "><li class=" "><p   
+> Avoid procedures from continuously applying/release memory during the continuous operation.As a result, the following problems: a) The memory fragments are generated, which eventually causes the memory cannot be applied.b) Applying for memory system calls, resulting in increased operation time. </p>
+</li></ol><p   
+><br/></p>
+<p   
+><strong class=" "> [in conclusion] </strong></p>
+<ol class=" "><li class=" "><p   
+> The initialization phase (ininit function) PER expects to continue to maintain the current state.That is, each algorithm module still meets the code that includes dynamic memory applications such as instantiation to meet a variety of business conditions. </p>
+</li><li class=" "><p   
+> The non -initialization stage (onupdate function) provides different interface replacement schemes on the project, and gradually removes the use of dynamic memory. </p>
+</li></ol><p   
+><br/></p>
+<p   
+><strong class=" "> Existing difficulty </strong></p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="10.8264%"/>
+                                    <col  width="20.501%"/>
+                                    <col  width="40.8868%"/>
+                                    <col  width="21.6527%"/>
+                                    <col  width="5.98906%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> type </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Code instance </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> solution </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> solved </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>example</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>new/malloc/make_shared</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/loc/browse/runnables/loc/local_msf/src/local_msf.cpp?at=refs%2Fheads%2Frelease_PI0630#85">Source of local_msf.cpp - Loc - Source Code 01 (bosch.com)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Use Global Variables Directly, or the global VFC version of Ring Buffer </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>std::vector</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>...</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Use VFC version of STD :: Vector </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xodom</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>local-loc</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+make_shared    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+make_unique    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+new    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #003366;">
+make_shared    </span> It will be removed and uses Static Circlebuffer + ordinary pointer instead </p>
+</li><li class=" "><p   
+> Make_unique will be retained. It belongs to the memory application during the initialization stage. The memory will only be released at the end of the program </p>
+</li><li class=" "><p   
+> New will be modified to make_unique, and it is also for the initialization stage to get memory application </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xlio</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+make_shared    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+std::vector/list/deque    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+std::unordered_map    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+>global-loc</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+make_shared    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+new/malloc<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+<p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>std::vector/list/deque</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>std::map</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+>xcalib</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>std::vector</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="inline-task-list "><li class=" "></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>std::map</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>make_shared</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>cv::mat</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>hdmap</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>new/malloc/make_shared</p>
+<p   
+> std :: vector and other stl container </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> All operations related to dynamic memory applications exist only when the program initializes, and there is no dynamic memory application during the program operation. </p>
+</li><li class=" "><p   
+> There is a memory pool inside, only when the program is initialized, applying a Heap memory, and using this fixed memory during the operation. </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>xslam</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>std::vector</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Use VFC version of STD :: Vector </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>std::map</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>make_shared</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>new</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>cv::mat</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Use EIGEN replacement </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>std::queue</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>std::list</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>Static Fusion</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>new</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Use global variables directly </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>std::vector</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+></p>
+<p  class="title" 
+><strong class=" ">Action required</strong></p>
+<p   
+>You may not have permission in Bitbucket to see this resource. Check your permissions in Bitbucket or the Include Bitbucket configuration may need to be reviewed. Please <a   href="https://inside-docupedia.bosch.com/confluence/wiki/contactadministrators.action">contact your system administrator </a>to do so.</p>
+<p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Use VFC version Vector </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3157148567_xPER_AOS_log%E5%AE%8C%E6%88%90%E7%8A%B6%E6%80%81%E7%BB%9F%E8%AE%A1.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Xper AOS LOG complete status statistics </span>
+        </a>
+                <a href="3202716967_PER__DIRs_%28Dependences_Impediment_Risks%29.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>PER  DIRs (Dependences/Impediment/Risks)</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>How to test xcalib-prod on bench - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3229341522"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                     <li><a href="2754796745_xcalib_prod.html">xcalib_prod</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3229341522"> <span>How to test xcalib-prod on bench</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3229341522_safe-id-SG93dG90ZXN0eGNhbGlicHJvZG9uYmVuY2gtU3RlcDE65Yi35Lu2">
+        <h1 class="heading "><span> Step1: Brush </span></h1>
+<ol class=" "><li class=" "><p   
+> Copy the Daily Build you need to local, and then copy the .zip to the table/cache/update/asw/directory by SCP <br/>daily build released link: <a   href="https://inside-docupedia.bosch.com/confluence/display/wave3/PI2306+SW+Internal+Release">PI2306 SW Internal Release - wave 3 development - Docupedia (bosch.com)</a></p>
+</li><li class=" "><p   
+> Declaim file: unzip xxx.zip -d <i class=" ">    <span style="color: #000000;">
+PATH_TO_SAVE_UNZIPPED_FILES    </span>
+</i></p>
+</li><li class=" "><p   
+> IF needs to test the code compiled locally: <br/> -Calibration Zicang: Replace the compiled OfficeCalibration_Activity to to <i class=" ">    <span style="color: #000000;">
+PATH_TO_SAVE_UNZIPPED_FILES    </span>
+</i> /output/bin/lower <br/> -XCALIB-PROD algorithm module: will be compiled well <a  class="external-link" href="http://libofflinecalib.so">libofflinecalib.so</a> Replace <i class=" ">    <span style="color: #000000;">
+PATH_TO_SAVE_UNZIPPED_FILES    </span>
+</i> /output/bin/lib/and path_to_save_unzipped_files/output/lib_w3/perception/below <br/> *Use CHMOD A+X to change the file permissions after replacing the file </p>
+</li></ol>    </div>
+    <div class="section section-1" id="src-3229341522_safe-id-SG93dG90ZXN0eGNhbGlicHJvZG9uYmVuY2gtU3RlcDI65L-u5pS56YWN572u5paH5Lu2">
+        <h1 class="heading "><span> Step2: Modify the configuration file </span></h1>
+<ol class=" "><li class=" "><p  class="auto-cursor-target" 
+> Preparation of front items: <br/><strong class=" "> method one </strong> : Copy the calibration_config.yaml in the unzipped package to/data/call, and then modify the /data/calib/calibration_config.yaml </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">cp ./</code><code class="keyword">package</code><code class="plain">/perception/offline_calibration/config/calibration_config.yaml /data/calib/calibration_config.yaml</code></div>
+</div>
+    </div>
+<p  class="auto-cursor-target" 
+><br/><strong class=" "> Two ways </strong> : Make sure that there is no call_config.yaml in the/data/call/call/cat, and then modify the. <br/><br/></p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">reason</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+> In the decompressive software package, the corresponding version of the configuration file has been integrated :/ Package/Perception/Office_CALIBTION/Config/ <strong class=" ">    <span style="color: #3366ff;">
+calibration_config.yaml    </span>
+</strong><br/> However, in order to facilitate the vehicle terminal debugging (if you release it to the customer software, you will be brushed to the read -only partition, and you cannot change the configuration file according to the debugging needs). There is a mechanism for calibrating the module, that is, when reading the config file, it is to read the Config file. <span style="color: #000000;">
+/data/calib/    </span>
+<strong class=" ">    <span style="color: #339966;">
+calibration_config.yaml     <span style="color: #003366;"> Priority is greater than </span>
+    <span style="color: #3366ff;">
+.    </span>
+    </span>
+</strong>    <span style="color: #000000;">
+/package/perception/offline_calibration/config/    </span>
+<strong class=" ">    <span style="color: #339966;">
+    <span style="color: #3366ff;">
+calibration_config.yaml<br/>    </span>
+    </span>
+</strong>    <span style="color: #339966;">
+    <span style="color: #3366ff;">
+    <span style="color: #000000;"> In other words, there are configuration files in the IF/Data/Calib/directory, so you need to change the config file in the directory to take effect.Therefore, the above two methods are to ensure that the Config version is consistent with the software version and can make effective changes. <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3229341522/image-2023-9-5_14-55-45-version-1-modificationdate-1693896945000-api-v2.png" alt="images/confluence/download/attachments/3229341522/image-2023-9-5_14-55-45-version-1-modificationdate-1693896945000-api-v2.png"  height="150" />
+<br/>    </span>
+    </span>
+    </span>
+</p>
+        </div>
+    </div>
+</li><li class=" "><p   
+> According to the method of the previous step, determine the configuration file to be modified, and make corresponding changes according to the needs of this test: <br/></p>
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3229341522/image-2023-9-5_17-15-46-version-1-modificationdate-1693905346000-api-v2.png" alt="images/confluence/download/attachments/3229341522/image-2023-9-5_17-15-46-version-1-modificationdate-1693905346000-api-v2.png"  height="250" />
+    </li><li class=" "><p   
+> if <strong class=" "> Test_on_bench is set to true </strong> Then you need to store the folder that stores the calibration data <strong class=" ">chery_sim_data</strong> Copy <i class=" ">    <span style="color: #000000;">
+PATH_TO_SAVE_UNZIPPED_FILES    </span>
+</i>/output/package/perception/offline_calibration/<br/> File download address: \ \ <a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\00_DataExchange\to_zian\bench_test\offline_calibration\chery_sim_data<br/><br/></p>
+</li></ol>    </div>
+    <div class="section section-1" id="src-3229341522_safe-id-SG93dG90ZXN0eGNhbGlicHJvZG9uYmVuY2gtU3RlcDM65ZCv5Yqo5qCH5a6a6L-b56iL">
+        <h1 class="heading "><span> Step3: Start the calibration process </span></h1>
+    <div class="section section-2" id="src-3229341522_safe-id-SG93dG90ZXN0eGNhbGlicHJvZG9uYmVuY2gt5pa55rOV5LiA77ya6YCa6L-H6ISa5pys5ZCv5Yqo">
+        <h2 class="heading "><span> Method 1: Start through the script </span></h2>
+<ol class=" "><li class=" "><p   
+>cd <i class=" ">    <span style="color: #000000;">
+PATH_TO_SAVE_UNZIPPED_FILES    </span>
+</i>/output/</p>
+</li><li class=" "><p   
+>./start_calibration.sh<br/> *The default log level is 4, if the information about the output log_info needs to be <i class=" ">    <span style="color: #000000;">
+PATH_TO_SAVE_UNZIPPED_FILES    </span>
+</i> /OUTPUT/BOOT_CALIBTION. <br/></p>
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3229341522/image-2023-9-5_14-33-29-version-1-modificationdate-1693895610000-api-v2.png" alt="images/confluence/download/attachments/3229341522/image-2023-9-5_14-33-29-version-1-modificationdate-1693895610000-api-v2.png" width="1000"  />
+    </li><li class=" "><p   
+> Open a new window and enter PS to see if the 6 required processes are needed: <br/></p>
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3229341522/image-2023-9-5_17-59-8-version-1-modificationdate-1693907948000-api-v2.png" alt="images/confluence/download/attachments/3229341522/image-2023-9-5_17-59-8-version-1-modificationdate-1693907948000-api-v2.png"  height="150" />
+    <p   
+><br/><br/></p>
+</li></ol>    </div>
+    <div class="section section-2" id="src-3229341522_safe-id-SG93dG90ZXN0eGNhbGlicHJvZG9uYmVuY2gt5pa55rOV5LqM77ya6YCa6L-HZXNtZeWQr-WKqOiEmuacrOaLiei1t-agh-WumuaJgOmcgOi_m-eoiw">
+        <h2 class="heading "><span> Method 2: Start the script and pull the calibration process through the ESME startup script. </span></h2>
+<ol class=" "><li class=" "><p  class="auto-cursor-target" 
+> First of all, make sure that it is currently in the factory mode: <br/> View the current SOC mode through cat /log/bsw/lcm.log <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3229341522/image-2023-9-8_14-7-36-version-1-modificationdate-1694153256000-api-v2.png" alt="images/confluence/download/attachments/3229341522/image-2023-9-8_14-7-36-version-1-modificationdate-1694153256000-api-v2.png"  height="94" />
+    <br/> The two places displayed in these two places are 0N, so the current ECU is in the NORMAL mode, so you need </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">export LD_LIBRARY_PATH=/opt/vrte/lib:$LD_LIBRARY_PATH</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">/opt/app/rcmtool/bin/Exe_RcmTool</code></div>
+</div>
+    </div>
+<p  class="auto-cursor-target" 
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3229341522/image-2023-9-4_16-43-12-version-1-modificationdate-1693816992000-api-v2.png" alt="images/confluence/download/attachments/3229341522/image-2023-9-4_16-43-12-version-1-modificationdate-1693816992000-api-v2.png"  height="250" />
+    <br/> After the content of the above figure appears in Terminal, enter 9 and then restart the tablet. <br/> After restarting, at this time, at View The Current Soc Mode Through Cat /log/bsw/lcm.log, you will find that the Socmode of Master and Slave has become CF </p>
+</li><li class=" "><p   
+> The input instructions pull up the relevant process through ESME: <br/>LD_LIBRARY_PATH=/opt/vrte/lib:$LD_LIBRARY_PATH LOG_LEVEL=2 ASW_PATH=<strong class=" ">PATH_TO_SAVE_UNZIPPED_FILES/output/</strong> <strong class=" ">PATH_TO_SAVE_UNZIPPED_FILES/output/</strong>bin/esme -f <strong class=" ">PATH_TO_SAVE_UNZIPPED_FILES/output/</strong>yaaac_codegen/carma_0_22_deploy/DualOrinMaster/DualOrinMaster_esme.json -p TRUE</p>
+</li></ol>    </div>
+    </div>
+    <div class="section section-1" id="src-3229341522_safe-id-SG93dG90ZXN0eGNhbGlicHJvZG9uYmVuY2gtU3RlcDQ66YCa6L-H6K-K5pat5oyH5Luk6Kem5Y-R5qCH5a6aKOW9k3NraXBfZGlhZ25vc2Vfc2lnbmFs572u5Li6ZmFsc2Xml7Yp">
+        <h1 class="heading "><span> Step4: Trigger the calibration by diagnostic instructions (when SKIP_DIAGNOSE_SIGNAL is placed as false) </span></h1>
+<p   
+> Specific operation steps View: <a   href="3229341526_How_to_trigger_offline_calibration_by_diagnose_signal_on_bench.html">How to trigger offline calibration by diagnose signal on bench</a></p>
+    </div>
+    <div class="section section-1" id="src-3229341522_safe-id-SG93dG90ZXN0eGNhbGlicHJvZG9uYmVuY2gtU3RlcDU65p-l55yL5qCH5a6a57uT5p6c">
+        <h1 class="heading "><span> Step5: View the calibration results </span></h1>
+<p   
+> Use cat /log/aos/master/calibration_activity.log to view results <br/><br/></p>
+<ol class=" "><li class=" "><p   
+> View the calibration status of each sensor: search <strong class=" ">    <span style="color: #003366;">
+routine_id: 0x4081 - EOL_CALIBRATION    </span>
+</strong></p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3229341522/image-2023-9-5_15-10-5-version-1-modificationdate-1693897805000-api-v2.png" alt="images/confluence/download/thumbnails/3229341522/image-2023-9-5_15-10-5-version-1-modificationdate-1693897805000-api-v2.png"  height="250" />
+    </p>
+</li><li class=" "><p   
+> View FaultEvent: Search <span style="color: #003366;">
+<strong class=" ">EFaultEventId</strong>    </span>
+<br/></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3229341522/image-2023-9-5_15-17-59-version-1-modificationdate-1693898280000-api-v2.png" alt="images/confluence/download/attachments/3229341522/image-2023-9-5_15-17-59-version-1-modificationdate-1693898280000-api-v2.png"  height="250" />
+    </p>
+</li><li class=" "><p   
+> View error code: Search <strong class=" ">calib errors<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3229341522/image-2023-9-5_15-20-15-version-1-modificationdate-1693898416000-api-v2.png" alt="images/confluence/download/attachments/3229341522/image-2023-9-5_15-20-15-version-1-modificationdate-1693898416000-api-v2.png"  height="85" />
+<br/></strong></p>
+</li></ol><p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3229341522_Howtotestxcalibprodonbench-Howtoremotelyrebootbench">
+        <h1 class="heading "><span>How to remotely reboot bench</span></h1>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">export LD_LIBRARY_PATH=/opt/vrte/lib:$LD_LIBRARY_PATH</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">/opt/app/rcmtool/bin/Exe_RcmTool</code></div>
+</div>
+    </div>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3229341522/image-2023-9-4_16-43-12-version-1-modificationdate-1693816992000-api-v2.png" alt="images/confluence/download/attachments/3229341522/image-2023-9-4_16-43-12-version-1-modificationdate-1693816992000-api-v2.png"  height="250" />
+    </p>
+<p   
+> After the content appears in the above figure, enter 40, and after a period of time, the restart will be completed </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3229341522_Howtotestxcalibprodonbench-TroubleShooting">
+        <h1 class="heading "><span>Trouble Shooting</span></h1>
+<ol class=" "><li class=" "><p  class="auto-cursor-target" 
+> After starting the calibration process, there is no crash, but the log is printed only a few lines <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3229341522/image-2023-9-6_10-46-26-version-1-modificationdate-1693968386000-api-v2.png" alt="images/confluence/download/attachments/3229341522/image-2023-9-6_10-46-26-version-1-modificationdate-1693968386000-api-v2.png" width="600"  />
+    <br/> Inspection ideas: confirm whether the camera is connected well.The IF camera is not connected, and the system does not call the onInit function in the calibration module. Therefore, the calibration module has not been initialized. It has been in a PENDING state, and the above problems will occur.Use the three instructions below to confirm whether the camera has been connected: </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">#Front+Rear</code></div>
+<div class="line"><code class="plain">nvsipl_camera -c </code><code class="string">"CHERY_E03-B0"</code><code class="plain"> -m </code><code class="string">"0x0111 0x0000 0x0000 0x0000"</code><code class="plain"> --enableRawOutput --showfps --camRecCfg </code><code class="value">1</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#wing cam</code></div>
+<div class="line"><code class="plain">nvsipl_camera -c </code><code class="string">"CHERY_E03-B0"</code><code class="plain"> -m </code><code class="string">"0x0000 0x1111 0x0000 0x0000"</code><code class="plain"> --enableRawOutput --showfps --camRecCfg </code><code class="value">1</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#fish eye cam</code></div>
+<div class="line"><code class="plain">nvsipl_camera -c </code><code class="string">"CHERY_E03-B0"</code><code class="plain"> -m </code><code class="string">"0x0000 0x0000 0x1111 0x0000"</code><code class="plain"> --enableRawOutput --disableISP0Output --disableISP1Output --disableISP2Output --showfps --camRecCfg </code><code class="value">1</code></div>
+</div>
+    </div>
+</li><li class=" "><p  class="auto-cursor-target" 
+> After the tablet restarted, the calibration process was not started through the calibration script, but when I entered PS or Pidin AR, I saw that 7 processes had been pulled up: <br/> Solution: ESME is caused by starting from the start of the script, and then restarts the tablet </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">/asw/esme_switch.sh -f</code></div>
+</div>
+    </div>
+</li></ol><p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3350949183_0817.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>0817</span>
+        </a>
+                <a href="3229341526_How_to_trigger_offline_calibration_by_diagnose_signal_on_bench.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>How to trigger offline calibration by diagnose signal on bench</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

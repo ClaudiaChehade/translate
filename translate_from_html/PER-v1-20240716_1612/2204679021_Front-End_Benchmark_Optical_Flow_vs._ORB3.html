@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Front-End Benchmark Optical Flow vs. ORB3 - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2204679021"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                                         <li class="shortcut"><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                                                     <li><a href="2132608655_Orb-Slamv3_Front-End_Improvement_Study.html">Orb-Slamv3 Front-End Improvement Study</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2204679021"> <span>Front-End Benchmark Optical Flow vs. ORB3</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-2204679021_FrontEndBenchmarkOpticalFlowvs.ORB3-Summary">
+        <h1 class="heading "><span>Summary</span></h1>
+<p   
+>Here is the benchmark among origin ORB3, optical flow track for non-keyframe, dead reckoning for non-keyframe:</p>
+<ul class=" "><li class=" "><p   
+>The optical flow request less keyframe but have similar performance on the easy dataset.</p>
+</li><li class=" "><p   
+>The optical flow is unable to handle the intense motion and will lost track.</p>
+<ul class=" "><li class=" "><p   
+>MH_03_MEDIUM and V2_02_MEDIUM have track lost.</p>
+</li></ul></li><li class=" "><p   
+>The trajectories of ORBSLAM3 (origin, flk, dead reckoning) are changed for each execution, maybe have different IMU bias estimation status of current map.</p>
+</li><li class=" "><p   
+>The origin ORB slam3 has similar ATE performance as the paper (Orb3 reported values are the median after 10 executions.)</p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-2204679021_safe-id-RnJvbnRFbmRCZW5jaG1hcmtPcHRpY2FsRmxvd3ZzLk9SQjMtRGlzY3Vzc2lvbjpXaGF0J3N0aGVtYWluY29udHJpYnV0aW9uZnJvbW5vbi1rZXlmcmFtZXRvd2FyZHNrZXlmcmFtZT8">
+        <h1 class="heading "><span>Discussion: What's the main contribution from non-keyframe towards keyframe?</span></h1>
+<p   
+>Based on the tracking thread, each last frame will pass its bias and PVQ to current frame so that the current IMU pre-integration and current PVQ can be calculated (see Tracking::PredictStateIMU and Tracking::PreintegrateIMU).</p>
+<ul class=" "><li class=" "><p   
+>If there is no non-keyframe at all, then the error of IMU pre-integration between each keyframe will be large and the visual feature may not be able to pull back the drift pose.</p>
+</li><li class=" "><p   
+>If all non-keyframe uses dead reckoning, then the motion information(P, V, Q, Bias) could be transferred to next frame. Since there is no visual feature to constraint the dead reckoning for non-keyframe, after a long time, the visual feature of keyframe may not be able to pull back the drift pose either.</p>
+</li></ul><p   
+>In general, the front-end with optical flow tracking constraint shall be better than pure dead reckoning method.</p>
+<p   
+>Maybe there are two variants,</p>
+<ul class=" "><li class=" "><p   
+>the optical flow module shall have high quality of feature tracking otherwise it will make result worse.</p>
+</li><li class=" "><p   
+>if the time interval between each non-keyframe is short enough, then it's front-end may have the same performance against optical flow version.</p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-2204679021_FrontEndBenchmarkOpticalFlowvs.ORB3-BenchmarkTable">
+        <h1 class="heading "><span>Benchmark Table</span></h1>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="125.0"/>
+                                    <col  width="568.0"/>
+                                    <col  width="332.0"/>
+                                    <col  width="109.0"/>
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Seq</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Trajectory Plot</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>FLK ATE/RPE</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>ORB ATE/RPE</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>DR ATE/RPE</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>MH_01_EASY</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_11-37-57-version-1-modificationdate-1648870677000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_11-37-57-version-1-modificationdate-1648870677000-api-v2.png" width="528"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_10-17-56-version-1-modificationdate-1648865876000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_10-17-56-version-1-modificationdate-1648865876000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Key Frame Number: 183</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_10-17-0-version-1-modificationdate-1648865820000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_10-17-0-version-1-modificationdate-1648865820000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Key Frame Number: 349</p>
+<p   
+>Orb3 Paper ATE Pos: 0.062</p>
+<p   
+>36382 poses in MH_01_easy => length of 80.63 meters<br/>180 poses in FLK_KF => length of 73.96 meters<br/>345 poses in ORB3_KF => length of 75.14 meters<br/>168 poses in DR_KF => length of 74.31 meters</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_11-40-20-version-1-modificationdate-1648870820000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_11-40-20-version-1-modificationdate-1648870820000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Key Frame Number: 169</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>MH_02_EASY</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-6_14-33-1-version-1-modificationdate-1649226782000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-6_14-33-1-version-1-modificationdate-1649226782000-api-v2.png" width="528"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-6_14-21-53-version-1-modificationdate-1649226114000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-6_14-21-53-version-1-modificationdate-1649226114000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Key Frame Number: 165</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_9-39-35-version-1-modificationdate-1648863576000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_9-39-35-version-1-modificationdate-1648863576000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Key Frame Number: 327</p>
+<p   
+>Orb3 Paper ATE Pos: 0.037</p>
+<p   
+>29993 poses in MH_02_easy => length of 73.47 meters<br/>322 poses in ORB3_KF => length of 69.52 meters<br/>142 poses in DR_KF => length of 66.33 meters<br/>163 poses in FLK_KF_2 => length of 67.99 meters</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_12-0-40-version-1-modificationdate-1648872041000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_12-0-40-version-1-modificationdate-1648872041000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Key Frame Number: 147</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>MH_03_MEDIUM</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_18-29-23-version-1-modificationdate-1648895364000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_18-29-23-version-1-modificationdate-1648895364000-api-v2.png" width="528"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+<p   
+>Key Frame Number: 206</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_18-34-7-version-1-modificationdate-1648895647000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_18-34-7-version-1-modificationdate-1648895647000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Key Frame Number: 272</p>
+<p   
+>Orb3 Paper ATE Pos: 0.046</p>
+<p   
+>26302 poses in MH_03_medium => length of 130.93 meters<br/>205 poses in FLK_KF => length of 127.08 meters<br/>270 poses in ORB3_KF => length of 126.25 meters<br/>136 poses in DR_KF => length of 122.65 meters</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+<p   
+>Key Frame Number: 136</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>V1_01_EASY</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_12-8-49-version-1-modificationdate-1648872529000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_12-8-49-version-1-modificationdate-1648872529000-api-v2.png" width="528"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_10-26-40-version-1-modificationdate-1648866401000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_10-26-40-version-1-modificationdate-1648866401000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Key Frame Number: 173</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_10-27-18-version-1-modificationdate-1648866438000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_10-27-18-version-1-modificationdate-1648866438000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Key Frame Number: 269</p>
+<p   
+>Orb3 Paper ATE Pos: 0.049</p>
+<p   
+>28712 poses in V1_01_easy => length of 58.59 meters<br/>168 poses in FLK_KF => length of 55.11 meters<br/>267 poses in ORB3_KF => length of 54.71 meters<br/>146 poses in DR_KF => length of 54.99 meters</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_12-9-44-version-1-modificationdate-1648872584000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_12-9-44-version-1-modificationdate-1648872584000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Key Frame Number: 146</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>V2_02_MEDIUM</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-2_13-10-12-version-1-modificationdate-1648876213000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-2_13-10-12-version-1-modificationdate-1648876213000-api-v2.png" width="528"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+<p   
+>Key Frame Number: 225</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+<p   
+>Key Frame Number: 301</p>
+<p   
+>Orb3 Paper ATE Pos: 0.021</p>
+<p   
+>23091 poses in V2_02_medium => length of 83.23 meters<br/>216 poses in FLK_KF => length of 72.03 meters<br/>312 poses in ORB3_KF => length of 79.24 meters<br/>146 poses in DR_KF => length of 55.24 meters</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>pure dead reckoning is too bad</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2204679021_safe-id-RnJvbnRFbmRCZW5jaG1hcmtPcHRpY2FsRmxvd3ZzLk9SQjMtT3BlblBvaW50OmRpZmZlcmVudHJlc3VsdG9udGhlc2FtZWRhdGFzZXQ">
+        <h1 class="heading "><span>Open Point: different result on the same dataset</span></h1>
+<p   
+>Summary:</p>
+<ul class=" "><li class=" "><p   
+>the acc bias drift exist among all version of ORBSLAM.</p>
+</li><li class=" "><p   
+>the little acc bias drift (±0.02) will not cause big different result.</p>
+</li></ul><p   
+>The figure below shows the results of <strong class=" ">FLK-SLAM</strong> at different running time on the MH_01_easy,</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Trajectory and Bias Plotting</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test 1</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test 3</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test 6</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-6_11-55-11-version-1-modificationdate-1649217312000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-6_11-55-11-version-1-modificationdate-1649217312000-api-v2.png" width="496"  />
+    </p>
+<p   
+>36382 poses in MH_01_easy(GT) => length of 80.63 meters<br/>168 poses in FLK_1 => length of 72.91 meters<br/>170 poses in FLK_3 => length of 73.52 meters<br/>183 poses in FLK_6 => length of 74.56 meters</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-6_11-58-9-version-1-modificationdate-1649217490000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-6_11-58-9-version-1-modificationdate-1649217490000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>======================================<br/>Absolute Trajectory Error<br/>======================================<br/>rmse_ori = 1.203 | rmse_pos = 0.035<br/>mean_ori = 1.090 | mean_pos = 0.033<br/>min_ori = 0.051 | min_pos = 0.011<br/>max_ori = 2.684 | max_pos = 0.063<br/>std_ori = 0.510 | std_pos = 0.010<br/>======================================<br/>Relative Pose Error<br/>======================================<br/>seg 8 - median_ori = 0.374 | median_pos = 0.063 (151 samples)<br/>seg 16 - median_ori = 0.600 | median_pos = 0.071 (132 samples)<br/>seg 24 - median_ori = 0.813 | median_pos = 0.082 (120 samples)<br/>seg 32 - median_ori = 0.961 | median_pos = 0.106 (102 samples)<br/>seg 40 - median_ori = 1.065 | median_pos = 0.137 (89 samples)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>======================================<br/>Absolute Trajectory Error<br/>======================================<br/>rmse_ori = 1.240 | rmse_pos = 0.055<br/>mean_ori = 1.135 | mean_pos = 0.053<br/>min_ori = 0.111 | min_pos = 0.012<br/>max_ori = 3.285 | max_pos = 0.171<br/>std_ori = 0.502 | std_pos = 0.016<br/>======================================<br/>Relative Pose Error<br/>======================================<br/>seg 8 - median_ori = 0.341 | median_pos = 0.064 (150 samples)<br/>seg 16 - median_ori = 0.558 | median_pos = 0.103 (132 samples)<br/>seg 24 - median_ori = 0.737 | median_pos = 0.105 (119 samples)<br/>seg 32 - median_ori = 0.777 | median_pos = 0.152 (106 samples)<br/>seg 40 - median_ori = 0.972 | median_pos = 0.173 (92 samples)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>======================================<br/>Absolute Trajectory Error<br/>======================================<br/>rmse_ori = 1.200 | rmse_pos = 0.094<br/>mean_ori = 1.105 | mean_pos = 0.089<br/>min_ori = 0.139 | min_pos = 0.024<br/>max_ori = 2.622 | max_pos = 0.271<br/>std_ori = 0.470 | std_pos = 0.030<br/>======================================<br/>Relative Pose Error<br/>======================================<br/>seg 8 - median_ori = 0.438 | median_pos = 0.090 (166 samples)<br/>seg 16 - median_ori = 0.625 | median_pos = 0.149 (147 samples)<br/>seg 24 - median_ori = 0.832 | median_pos = 0.168 (134 samples)<br/>seg 32 - median_ori = 1.123 | median_pos = 0.227 (118 samples)<br/>seg 40 - median_ori = 1.216 | median_pos = 0.198 (95 samples)</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<p   
+>The figure below shows the results of dead reckoning <strong class=" ">SLAM</strong> at different running time on the MH_01_easy,</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Trajectory and Bias Plotting</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test 1</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test 2</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test 3</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-7_17-45-16-version-1-modificationdate-1649324717000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-7_17-45-16-version-1-modificationdate-1649324717000-api-v2.png" width="496"  />
+    </p>
+<p   
+>36382 poses in MH_01_easy => length of 80.63 meters<br/>174 poses in DR_1 => length of 74.18 meters<br/>174 poses in DR_2 => length of 73.53 meters<br/>179 poses in DR_3 => length of 74.22 meters</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-7_17-48-10-version-1-modificationdate-1649324891000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-7_17-48-10-version-1-modificationdate-1649324891000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>======================================<br/>Absolute Trajectory Error<br/>======================================<br/>rmse_ori = 1.200 | rmse_pos = 0.071<br/>mean_ori = 1.087 | mean_pos = 0.065<br/>min_ori = 0.064 | min_pos = 0.007<br/>max_ori = 2.706 | max_pos = 0.110<br/>std_ori = 0.510 | std_pos = 0.028<br/>======================================<br/>Relative Pose Error<br/>======================================<br/>seg 8 - median_ori = 0.369 | median_pos = 0.087 (157 samples)<br/>seg 16 - median_ori = 0.617 | median_pos = 0.124 (138 samples)<br/>seg 24 - median_ori = 0.900 | median_pos = 0.118 (124 samples)<br/>seg 32 - median_ori = 0.974 | median_pos = 0.131 (109 samples)<br/>seg 40 - median_ori = 1.093 | median_pos = 0.163 (94 samples)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>======================================<br/>Absolute Trajectory Error<br/>======================================<br/>rmse_ori = 1.205 | rmse_pos = 0.080<br/>mean_ori = 1.101 | mean_pos = 0.074<br/>min_ori = 0.251 | min_pos = 0.005<br/>max_ori = 2.689 | max_pos = 0.129<br/>std_ori = 0.492 | std_pos = 0.032<br/>======================================<br/>Relative Pose Error<br/>======================================<br/>seg 8 - median_ori = 0.357 | median_pos = 0.097 (157 samples)<br/>seg 16 - median_ori = 0.586 | median_pos = 0.123 (137 samples)<br/>seg 24 - median_ori = 0.916 | median_pos = 0.121 (124 samples)<br/>seg 32 - median_ori = 1.030 | median_pos = 0.152 (109 samples)<br/>seg 40 - median_ori = 1.080 | median_pos = 0.169 (93 samples)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>======================================<br/>Absolute Trajectory Error<br/>======================================<br/>rmse_ori = 1.211 | rmse_pos = 0.056<br/>mean_ori = 1.098 | mean_pos = 0.052<br/>min_ori = 0.050 | min_pos = 0.008<br/>max_ori = 2.712 | max_pos = 0.097<br/>std_ori = 0.514 | std_pos = 0.021<br/>======================================<br/>Relative Pose Error<br/>======================================<br/>seg 8 - median_ori = 0.356 | median_pos = 0.083 (161 samples)<br/>seg 16 - median_ori = 0.667 | median_pos = 0.112 (142 samples)<br/>seg 24 - median_ori = 0.928 | median_pos = 0.118 (128 samples)<br/>seg 32 - median_ori = 0.947 | median_pos = 0.121 (113 samples)<br/>seg 40 - median_ori = 1.037 | median_pos = 0.143 (97 samples)</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<p   
+>The figure below shows the results of original <strong class=" ">ORB3 SLAM</strong> at different running time on the MH_01_easy,</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Trajectory and Bias Plotting</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test 1</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test 2</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test 3</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-8_10-15-55-version-1-modificationdate-1649384155000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-8_10-15-55-version-1-modificationdate-1649384155000-api-v2.png" width="496"  />
+    </p>
+<p   
+>36382 poses in MH_01_easy => length of 80.63 meters<br/>349 poses in ORB_1 => length of 74.71 meters<br/>348 poses in ORB_2 => length of 76.25 meters<br/>350 poses in ORB_3 => length of 76.16 meters</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2204679021/image2022-4-8_10-17-2-version-1-modificationdate-1649384222000-api-v2.png" alt="images/confluence/download/attachments/2204679021/image2022-4-8_10-17-2-version-1-modificationdate-1649384222000-api-v2.png" width="496"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>======================================<br/>Absolute Trajectory Error<br/>======================================<br/>rmse_ori = 1.186 | rmse_pos = 0.029<br/>mean_ori = 1.051 | mean_pos = 0.025<br/>min_ori = 0.277 | min_pos = 0.002<br/>max_ori = 2.814 | max_pos = 0.065<br/>std_ori = 0.550 | std_pos = 0.014<br/>======================================<br/>Relative Pose Error<br/>======================================<br/>seg 8 - median_ori = 0.307 | median_pos = 0.057 (295 samples)<br/>seg 16 - median_ori = 0.515 | median_pos = 0.066 (266 samples)<br/>seg 24 - median_ori = 0.742 | median_pos = 0.049 (245 samples)<br/>seg 32 - median_ori = 1.113 | median_pos = 0.075 (217 samples)<br/>seg 40 - median_ori = 1.413 | median_pos = 0.082 (188 samples)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>======================================<br/>Absolute Trajectory Error<br/>======================================<br/>rmse_ori = 1.200 | rmse_pos = 0.036<br/>mean_ori = 1.065 | mean_pos = 0.032<br/>min_ori = 0.311 | min_pos = 0.003<br/>max_ori = 2.780 | max_pos = 0.066<br/>std_ori = 0.554 | std_pos = 0.016<br/>======================================<br/>Relative Pose Error<br/>======================================<br/>seg 8 - median_ori = 0.295 | median_pos = 0.052 (298 samples)<br/>seg 16 - median_ori = 0.465 | median_pos = 0.066 (272 samples)<br/>seg 24 - median_ori = 0.769 | median_pos = 0.063 (248 samples)<br/>seg 32 - median_ori = 1.091 | median_pos = 0.082 (216 samples)<br/>seg 40 - median_ori = 1.304 | median_pos = 0.104 (190 samples)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>======================================<br/>Absolute Trajectory Error<br/>======================================<br/>rmse_ori = 1.166 | rmse_pos = 0.024<br/>mean_ori = 1.015 | mean_pos = 0.022<br/>min_ori = 0.241 | min_pos = 0.003<br/>max_ori = 2.812 | max_pos = 0.053<br/>std_ori = 0.574 | std_pos = 0.008<br/>======================================<br/>Relative Pose Error<br/>======================================<br/>seg 8 - median_ori = 0.279 | median_pos = 0.047 (309 samples)<br/>seg 16 - median_ori = 0.430 | median_pos = 0.063 (277 samples)<br/>seg 24 - median_ori = 0.721 | median_pos = 0.049 (253 samples)<br/>seg 32 - median_ori = 1.105 | median_pos = 0.068 (219 samples)<br/>seg 40 - median_ori = 1.383 | median_pos = 0.082 (191 samples)</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2132608655_Orb-Slamv3_Front-End_Improvement_Study.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Orb-Slamv3 Front-End Improvement Study</span>
+        </a>
+                <a href="2326725176_Optical_Flow_Report_on_Szh2_Parking_215.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Optical Flow Report on Szh2 Parking 215</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

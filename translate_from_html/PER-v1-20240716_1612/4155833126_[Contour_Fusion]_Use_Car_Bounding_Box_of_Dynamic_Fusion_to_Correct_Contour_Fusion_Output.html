@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>[Contour Fusion] Use Car Bounding Box of Dynamic Fusion to Correct Contour Fusion Output - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4155833126"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2495263431_Static_Fusion_-_PER.html">Static Fusion - PER</a></li>
+                                                                                                         <li class="shortcut"><a href="2498326801_SF-APA.html">SF-APA</a></li>
+                                                                                     <li><a href="3493196014_CF_doc.html">CF doc</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4155833126"> <span>[Contour Fusion] Use Car Bounding Box of Dynamic Fusion to Correct Contour Fusion Output</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<ul class=" "><li class=" "><p  class="auto-cursor-target" 
+> CONTOUR FILTER BY DYNAMIC FUSION CA-BOX strategy time-consuming test </p>
+<ul class=" "><li class=" "><p  class="auto-cursor-target" 
+> Time -consuming test statistics </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="2">
+    <p   
+> DF Filter updates/filtration time consumption each time RUN </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="2">
+    <p   
+> Run always takes time </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> data set </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Average time consumption (MS) </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Maximum time (MS) </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Average time consumption (MS) </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Maximum time (MS) </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>CNWVIII-79821</p>
+<p   
+> (There are fusion parking spaces, the number of CAR OBJ is large) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.140</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2.222</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>13.3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>45.7</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>CNWVIII-89739</p>
+<p   
+> (Pure space vertical parking space, the number of Car Obj is small) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.225</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.679</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>7.1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20.9</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>CNWVIII-89741</p>
+<p   
+> (Pure space oblique parking space, the number of CAR OBJ is small) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.152</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1.107</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>7.6</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>45.4</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+</li><li class=" "><p  class="auto-cursor-target" 
+> Time -consuming comparison diagram </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4155833126/image-2024-4-3_13-28-11-version-1-modificationdate-1712979852000-api-v2.png" alt="images/confluence/download/attachments/4155833126/image-2024-4-3_13-28-11-version-1-modificationdate-1712979852000-api-v2.png"  height="150" />
+    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" "></tbody>        </table>
+            </div>
+</li></ul></li><li class=" "><p   
+> Contour Filter by Dynamic Fusion CAR BOX Strategy Detailed Description </p>
+<ul class=" "><li class=" "><p   
+> Filter (delete, correction) strategy description </p>
+<ul class=" "><li class=" "><p   
+> The black box in the figure below is the CAR B-BOX output from DF </p>
+</li><li class=" "><p   
+> The red frame is the delete box of the Contour point. The original Contour Point in the box will be deleted. At the same time, the vehicle frame edge of the vehicle frame in the red frame is used as a new Contour Point output </p>
+</li><li class=" "><p   
+> The blue frame is a correction box for the Contour point. The Contour Point in the box will be translated by 15cm towards the projection point towards the car frame edge line, and only moves to the vehicle frame edge line. </p>
+</li><li class=" "><p  class="auto-cursor-target" 
+> On the edge of the vehicle frame in the blue frame, there will be no Contour's projection point. </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4155833126/image-2024-4-3_18-44-1-version-1-modificationdate-1712979852000-api-v2.png" alt="images/confluence/download/attachments/4155833126/image-2024-4-3_18-44-1-version-1-modificationdate-1712979852000-api-v2.png"  height="400" />
+    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" "></tbody>        </table>
+            </div>
+</li></ul></li><li class=" "><p   
+> Performance frame parameter numeralization description </p>
+<ul class=" "><li class=" "><p   
+> Each of the DF CAR BOX received in the algorithm (the black frame in the figure below) will be unified according to the vehicle's body coordinate system. The specific unified rules are as follows: </p>
+<ul class=" "><li class=" "><p   
+> When the angle of the vehicle box long and the X -axis direction vector (direction of the front) of the vehicle body is less than 30 ° or greater than 150 °, it will not be operated (the attribute is set to Invalid, and the level of parking space is not treated for the time being) </p>
+</li><li class=" "><p   
+> The nearest short side of the vehicle frame and the vehicle body is as the edge of Bottom </p>
+</li><li class=" "><p   
+> The four corner points of the vehicle frame are arranged clockwise: left_top-> right_top-> right_bottom → left_bottom </p>
+</li><li class=" "><p   
+> Including the above blue correction box and the red deletion box also abide by this rule </p>
+</li></ul></li></ul></li></ul></li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+> Fake Parking Slots expanded on both sides of the parking frame (red box in the figure below) </p>
+<ul class=" "><li class=" "><p   
+> The two long sides of each CAR B-BOX will extend a Fake Parking Slot with a width of 3M. The role is: </p>
+</li><li class=" "><p   
+> Determine whether to intersect with PSD line parking spaces (independent judgment on the left and right sides of Car b-BOX), if intersecting, the corresponding side of the CAR B-BOX will no longer perform a Filter operation based on DF CAR BOXES </p>
+</li><li class=" "><p  class="auto-cursor-target" 
+> Determine whether the rear axis center of the vehicle enters any FAKE Parking Slot. If you enter, stop the Filter operation based on DF Car Boxes </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4155833126/image-2024-4-3_18-45-36-version-1-modificationdate-1712979852000-api-v2.png" alt="images/confluence/download/attachments/4155833126/image-2024-4-3_18-45-36-version-1-modificationdate-1712979852000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" "></tbody>        </table>
+            </div>
+</li></ul></li></ul></li><li class=" "><p  class="auto-cursor-target" 
+> Algorithm presidential flow chart </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4155833126/image-2024-4-3_18-46-24-version-1-modificationdate-1712979852000-api-v2.png" alt="images/confluence/download/attachments/4155833126/image-2024-4-3_18-46-24-version-1-modificationdate-1712979852000-api-v2.png" width="600"  />
+    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" "></tbody>        </table>
+            </div>
+</li></ul></li></ul><ul class=" "><li class=" "><p   
+> Summary for the first discussion </p>
+<ul class=" "><li class=" "><p   
+> Correction strategy </p>
+<ul class=" "><li class=" "><p   
+> Currently only correction of vertical space parking spaces </p>
+</li><li class=" "><p   
+> A slight correction of the 30%part of the parking space (relatively shallow), the maximum correction amplitude is 15cm </p>
+</li><li class=" "><p  class="auto-cursor-target" 
+> The deeper part of the parking space is corrected, and the maximum correction amplitude is 50cm </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4155833126/image-2024-3-25_18-19-48-version-1-modificationdate-1712979852000-api-v2.png" alt="images/confluence/download/thumbnails/4155833126/image-2024-3-25_18-19-48-version-1-modificationdate-1712979852000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" "></tbody>        </table>
+            </div>
+</li><li class=" "><p  class="auto-cursor-target" 
+> The phenomenon that can be accepted on the side of the vehicle's side </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4155833126/image-2024-3-25_18-20-22-version-1-modificationdate-1712979852000-api-v2.png" alt="images/confluence/download/thumbnails/4155833126/image-2024-3-25_18-20-22-version-1-modificationdate-1712979852000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" "></tbody>        </table>
+            </div>
+</li></ul></li><li class=" "><p   
+> Revise time </p>
+<ul class=" "><li class=" "><p   
+> Correct it only in pure space parking spaces </p>
+</li><li class=" "><p   
+> Amended (including Searching and Guardiance phase) before entering the virtual parking frame at the rear of the vehicle, stopped correction after entering </p>
+</li></ul></li></ul></li></ul>        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3493196014_CF_doc.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>CF doc</span>
+        </a>
+                <a href="3508464921_CF_Plan_2023.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>CF Plan 2023</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

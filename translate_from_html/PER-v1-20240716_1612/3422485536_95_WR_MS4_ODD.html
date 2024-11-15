@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>95_WR MS4 ODD - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3422485536"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="3422485372_95_WR_Delivery.html">95_WR Delivery</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485425_95_WR_MS4%28T0%2B9%29_Checks.html">95_WR_MS4(T0+9) Checks</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485430_95_WR_MS4_Algorithm_Reproduce%5B%E6%9C%80%E7%BB%88%E9%AA%8C%E6%94%B6%E6%8A%A5%E5%91%8A%5D.html"> 95_WR_MS4 Algorithm REPRODUCE [Final Acceptance Report] </a></li>
+                                                                                     <li><a href="3422485493_95_WR_MS4_Detail_Design_Docs.html">95_WR MS4 Detail Design Docs</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3422485536"> <span>95_WR MS4 ODD</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3422485536_safe-id-aWQtOTVfV1JNUzRPREQtMS7mqKHlnZfku7vliqE">
+        <h1 class="heading "><span> 1. Module task </span></h1>
+<ul class=" "><li class=" "><p   
+>Purpose</p>
+<ul class=" "><li class=" "><p   
+> The ODD module is not determined whether the vehicle is driving in a dangerous environment </p>
+</li></ul></li><li class=" "><p   
+>scope</p>
+<ul class=" "><li class=" "><p   
+> Autonomous driving modules (plural) depend on different conditions.Only when all conditions are full, can the entire autonomous driving system run normally </p>
+</li><li class=" "><p   
+> The judgment of Image ODD coverage includes: </p>
+<ul class=" "><li class=" "><p   
+> weather </p>
+</li><li class=" "><p   
+> Camera quality </p>
+</li><li class=" "><p   
+> Road scene </p>
+</li><li class=" "><p   
+> Road type </p>
+</li><li class=" "><p   
+> Road material </p>
+</li><li class=" "><p   
+> Light condition </p>
+</li><li class=" "><p   
+> Road obstacle </p>
+</li><li class=" "><p   
+> Brightness </p>
+</li></ul></li></ul></li></ul>    </div>
+    <div class="section section-1" id="src-3422485536_safe-id-aWQtOTVfV1JNUzRPREQtMy7mqKHlnZfnu4TmiJA">
+        <h1 class="heading "><span> 3. Module composition </span></h1>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485536/image-2023-4-26_14-23-43-version-1-modificationdate-1694153235000-api-v2.png" alt="images/confluence/download/attachments/3422485536/image-2023-4-26_14-23-43-version-1-modificationdate-1694153235000-api-v2.png"  height="250" />
+    </p>
+    </div>
+    <div class="section section-1" id="src-3422485536_safe-id-aWQtOTVfV1JNUzRPREQtMi7mqKHlnovovpPlhaU">
+        <h1 class="heading "><span> 2. Model input </span></h1>
+<ul class=" "><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485536/image-2023-4-26_14-27-24-version-1-modificationdate-1694153235000-api-v2.png" alt="images/confluence/download/attachments/3422485536/image-2023-4-26_14-27-24-version-1-modificationdate-1694153235000-api-v2.png" width="400"  />
+    <ul class=" "><li class=" "><p   
+> Unclear explanation of the input camera type </p>
+</li></ul></li></ul>    </div>
+    <div class="section section-1" id="src-3422485536_id-95_WRMS4ODD-3.Dataset">
+        <h1 class="heading "><span>3. Dataset</span></h1>
+<ul class=" "><li class=" "><p   
+>test_data: 43767<br/></p>
+<ul class=" "><li class=" "><p   
+> There is a real value of 5000, and there is no real value for the remaining </p>
+</li></ul></li><li class=" "><p   
+>train_data: 4959</p>
+</li></ul><p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3422485536_safe-id-aWQtOTVfV1JNUzRPREQtNC5Nb2RlbERlc2lnbiYmREFH">
+        <h1 class="heading "><span>4. Model Design && DAG</span></h1>
+<ul class=" "><li class=" "><p   
+>Backbone:</p>
+<ul class=" "><li class=" "><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3422485536/image-2023-4-26_15-54-55-version-1-modificationdate-1694153235000-api-v2.png" alt="images/confluence/download/thumbnails/3422485536/image-2023-4-26_15-54-55-version-1-modificationdate-1694153235000-api-v2.png"  height="250" />
+    </li></ul></li><li class=" "><p   
+>head: DLAClassifyHead</p>
+<ul class=" "><li class=" "><p   
+> 21 major category, 63 small category </p>
+<ul class=" "><li class=" "><p   
+>normal_weather</p>
+<ul class=" "><li class=" "><p   
+>2</p>
+</li></ul></li><li class=" "><p   
+>rainy</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>snowy</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>foggy_sandstorm</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>have_lighting</p>
+<ul class=" "><li class=" "><p   
+>5</p>
+</li></ul></li><li class=" "><p   
+>face_sun_light</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>face_car_light</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>water_on_ground</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>snow_on_ground</p>
+<ul class=" "><li class=" "><p   
+>2</p>
+</li></ul></li><li class=" "><p   
+>overexposure</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>dark</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>occlusion</p>
+<ul class=" "><li class=" "><p   
+>2</p>
+</li></ul></li><li class=" "><p   
+>fog_rain_drop_blurry</p>
+<ul class=" "><li class=" "><p   
+>2</p>
+</li></ul></li><li class=" "><p   
+>moving_blurry</p>
+<ul class=" "><li class=" "><p   
+>2</p>
+</li></ul></li><li class=" "><p   
+>other_blurry</p>
+<ul class=" "><li class=" "><p   
+>2</p>
+</li></ul></li><li class=" "><p   
+>road_type</p>
+<ul class=" "><li class=" "><p   
+>6</p>
+</li></ul></li><li class=" "><p   
+>water_splash</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>construction_area</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>traffic_light_blurry</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>obstcal_blurry</p>
+<ul class=" "><li class=" "><p   
+>3</p>
+</li></ul></li><li class=" "><p   
+>pavement_material</p>
+<ul class=" "><li class=" "><p   
+>4</p>
+</li></ul></li></ul></li></ul></li></ul><p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3422485536_id-95_WRMS4ODD-4.">
+        <h1 class="heading "><span>4. </span></h1>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3422485536_safe-id-aWQtOTVfV1JNUzRPREQtNS7kuI5NUzPkuI3lkIzlpIQ">
+        <h1 class="heading "><span> 5. Different places from MS3 </span></h1>
+<ul class=" "><li class=" "><p   
+> Readme is listed in the current code. </p>
+</li></ul>    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3422485534_95_WR_MS4_Lane_Prediction.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS4 Lane Prediction</span>
+        </a>
+                <a href="3422485544_95_WR_MS4_Road_Marker.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS4 Road Marker</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

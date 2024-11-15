@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Installation - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2012270923"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2012270895_Deployment.html">Deployment</a></li>
+                                                                                     <li><a href="2012270904_Nvidia_Drive_AGX.html">Nvidia Drive AGX</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2012270923"> <span>Installation</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<ul class=" "><li class=" "><p   
+><strong class=" ">Introduction</strong></p>
+</li></ul><p   
+>The overall introduction of the developer Kit is available in the link below:</p>
+<p   
+><a  class="external-link" href="https://developer.nvidia.com/drive/drive-agx">https://developer.nvidia.com/drive/drive-agx</a></p>
+<p   
+>In this page, there is a emended video about how to set up the developer kit, however the video is too rough and lost many details. For more detailed information you may go to the “Downloads” tab(<a  class="external-link" href="https://developer.nvidia.com/drive/downloads">https://developer.nvidia.com/drive/downloads</a>) to read the installation guide for the specified version of Drive OS and DriveWorks you want to install.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2012270923/download-version-1-modificationdate-1637203518000-api-v2.png" alt="images/confluence/download/attachments/2012270923/download-version-1-modificationdate-1637203518000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+<ul class=" "><li class=" "><p   
+><strong class=" ">Drive OS installation</strong></p>
+</li></ul><p   
+>In this procedure we need a host PC, which has a Ubuntu Desktop 18.04 LTS and working Internet connection. Firstly the Nvidia driver should be updated to the latest version. Then SDK manager should be installed in the PC. With the SDK manager the specific version of Drive OS can be installed automatically in both host system and target board. The detailed process of installation is available in this link: <a  class="external-link" href="https://docs.nvidia.com/drive/drive-os-5.2.0.0L/drive-qsg-dz/install-with-sdkm-drive/index.html">https://docs.nvidia.com/drive/drive-os-5.2.0.0L/drive-qsg-dz/install-with-sdkm-drive/index.html</a> There are 4 steps of the installation via SDK manager.</p>
+<p   
+>During Step 3 there could be some error alarms pop out, due to unstable Internet connection in the office, in this case we just need to repeat the procedure to finish installation. In order to avoid too frequent repetition, I suggest to enable the option “Download now. Install later” as you can see in the picture below, which means we firstly download all the packages, and then go back to Step 2 to install them.</p>
+<p   
+><strong class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2012270923/flashing-version-1-modificationdate-1637203518000-api-v2.png" alt="images/confluence/download/attachments/2012270923/flashing-version-1-modificationdate-1637203518000-api-v2.png"  height="136" />
+</strong></p>
+<ul class=" "><li class=" "><p   
+><strong class=" ">DriveWorks installation</strong></p>
+</li></ul><p   
+>In the first attempt of the environment setup we installed DriveOS 5.2.6, and successfully installed GUI by following the tutorial in this link: <a  class="external-link" href="https://docs.nvidia.com/drive/drive-os-5.2.0.0L/drive-os/index.html#page/DRIVE_OS_Linux_SDK_Development_Guide/Interfaces/sys_components_file_ubuntu.html#wwpID0E0GB0HA">https://docs.nvidia.com/drive/drive-os-5.2.0.0L/drive-os/index.html#page/DRIVE_OS_Linux_SDK_Development_Guide/Interfaces/sys_components_file_ubuntu.html#wwpID0E0GB0HA</a>. After that, we downloaded DriveWorks 4.0 and tried to install it on the target board, however, lots of dependency unmet are reported, which is difficult to be solved one by one. The same issue happened when we tried to install the DriveWorks in the host. We supposed there could be a irreversible mistake during the installation, therefore we decided to reflash Drive OS to repeat the procedure. In this time, the flashing progress was stuck at 99% for such a long time that the process failed eventually, meanwhile a thermal alarm was false qualified for the debug USB port(ttyUSB3). For the details of the issue you may refer to the issue we created in the Nvidia technical forum(<a  class="external-link" href="https://forums.developer.nvidia.com/t/drive-agx-target-board-is-unable-to-flash-drive-os-5-2-6/195100">https://forums.developer.nvidia.com/t/drive-agx-target-board-is-unable-to-flash-drive-os-5-2-6/195100</a>). In the forum, many people encountered the same problem as us, it could be a unknown bug in the developer kit. Fortunately, the issue was solved by following the experience of another participate.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2012270923/solution-version-1-modificationdate-1637203518000-api-v2.png" alt="images/confluence/download/attachments/2012270923/solution-version-1-modificationdate-1637203518000-api-v2.png"  height="214" />
+    </p>
+<p   
+>After that we flashed the host PC and target board with Drive OS 5.2.0(afraid there could be other unknown bugs in 5.2.6). In this time we installed Drive Works prior to GUI on the target board with SSH server. Before Drive Works installation, we should pay more attentions to the preconditions:</p>
+<ul class=" "><li class=" "><p   
+>libx11-dev</p>
+</li><li class=" "><p   
+>libxrandr-dev</p>
+</li><li class=" "><p   
+>libxcursor-dev</p>
+</li><li class=" "><p   
+>libxxf86vm-dev</p>
+</li><li class=" "><p   
+>libxinerama-dev</p>
+</li><li class=" "><p   
+>libxi-dev</p>
+</li><li class=" "><p   
+>libglu1-mesa-dev</p>
+</li><li class=" "><p   
+>libglew-dev</p>
+</li><li class=" "><p   
+>libgles2-mesa-dev</p>
+</li></ul><p   
+>Make sure all the packages are successfully installed, therefore I suggest install them one after another with “sudo apt install” command. If you forget to install some of them, and execute “$ sudo dpkg -i” to install Drive Works, there will definitely be an error. The only thing you need to do is to remove the failed installation completely by following the commands below:</p>
+<ul class=" "><li class=" "><p   
+>sudo apt-get remove [package_name]</p>
+</li><li class=" "><p   
+>sudo apt-get purge [package_name]</p>
+</li><li class=" "><p   
+>sudo apt-get autoremove</p>
+</li><li class=" "><p   
+>sudo apt-get clean</p>
+</li></ul><p   
+>Finally use “dpkg --list” to check if DriveWorks is still on the list.</p>
+<p   
+>I found the .deb file driveworks_cross-XXXX.deb for cross compile is located in the package for target board, but it can only be successfully installed in host PC, because it is only compatible for X86 system rather than ARM. I have no idea why Nvidia release the package like that.</p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2012270904_Nvidia_Drive_AGX.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Nvidia Drive AGX</span>
+        </a>
+                <a href="2040895221_Image_Chain_System_Architecture.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Image Chain System Architecture</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

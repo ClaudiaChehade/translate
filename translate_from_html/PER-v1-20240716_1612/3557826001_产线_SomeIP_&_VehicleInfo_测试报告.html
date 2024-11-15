@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Someip & VehicleICLEINFO test report  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3557826001"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                     <li><a href="2754796745_xcalib_prod.html">xcalib_prod</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3557826001"> <span> Someip & VehicleICLEINFO test report </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div  class="tablewrap">
+        <table class="wrapped relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="6.93299%"/>
+                                    <col  width="5.9901%"/>
+                                    <col  width="8.42912%"/>
+                                    <col  width="18.3585%"/>
+                                    <col  width="18.414%"/>
+                                    <col  width="20.8544%"/>
+                                    <col  width="21.0763%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>item</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>chassis/body</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>should be</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>20231019 success</p>
+<p   
+> (Normal calibration) </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>20231019 fail</p>
+<p   
+> (Open the door, trunk and wiper) </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>20231018 success</p>
+<p   
+> (Normal calibration) </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>20231018 fail</p>
+<p   
+> (Open the door, hood, trunk, fold the rearview mirror, turn off the wiper) </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>front left door</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>body</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+open    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+open    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>front right door</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>body</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+close    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+    <span style="color: #000000;">
+open    </span>
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+open    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+open    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rear left door</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>body</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+open    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+open    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rear right door</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>body</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+open    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+open    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>hood</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>body</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+close    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>trunk</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>body</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+open    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+open    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rearview mirror</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>body</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>unfold</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ffffff;">
+    <span style="color: #ff0000;">
+fold    </span>
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+    <span style="color: #ffffff;">
+    <span style="color: #ff0000;">
+fold    </span>
+    </span>
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+fold    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+fold    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>power</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>body</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>on</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>on</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>on</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>on</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>on</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>front wiper</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>body</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>off</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>off</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>on</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>off</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+on    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>headbeam</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>body</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+close    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>close</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+close    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>tire pressure</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>body</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[152.95 ~ 233.07]</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+255（abnormal）    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+255（abnormal）    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+255（abnormal）    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+255（abnormal）    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>height of air suspension</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>chassis</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #ff0000;">
+left_front: -1.5    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;">
+right_front: -8.8    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;">
+left_rear: 1.8    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;">
+right_rear: -0.7    </span>
+</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>    <span style="color: #ff0000;">
+left_front: -5.5    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;">
+right_front: -8.4    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;">
+left_rear: 1.3    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;">
+right_rear: 2.4    </span>
+</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>?</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>?</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>current level</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>chassis</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>normal</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>normal</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>normal</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>?</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>?</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vehicle speed</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>chassis</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="3">
+    <p   
+>result</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail image-left"                 style="float:left;"
+     src="images/confluence/download/thumbnails/3557826001/image-2023-10-19_13-30-56-version-1-modificationdate-1697693456000-api-v2.png" alt="images/confluence/download/thumbnails/3557826001/image-2023-10-19_13-30-56-version-1-modificationdate-1697693456000-api-v2.png" width="300"  />
+    </p>
+<p   style="text-align:left;"
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3557826001/image-2023-10-19_13-31-9-version-1-modificationdate-1697693470000-api-v2.png" alt="images/confluence/download/thumbnails/3557826001/image-2023-10-19_13-31-9-version-1-modificationdate-1697693470000-api-v2.png" width="300"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail image-left"                 style="float:left;"
+     src="images/confluence/download/thumbnails/3557826001/image-2023-10-19_13-30-24-version-1-modificationdate-1697693424000-api-v2.png" alt="images/confluence/download/thumbnails/3557826001/image-2023-10-19_13-30-24-version-1-modificationdate-1697693424000-api-v2.png" width="300"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>CALIB_ERROR_FRONT_LEFT_DOOR_OPEN</p>
+</li><li class=" "><p   
+>CALIB_ERROR_FRONT_RIGHT_DOOR_OPEN</p>
+</li><li class=" "><p   
+>CALIB_ERROR_REAR_LEFT_DOOR_OPEN</p>
+</li><li class=" "><p   
+>CALIB_ERROR_REAR_RIGHT_DOOR_OPEN</p>
+</li><li class=" "><p   
+>CALIB_ERROR_TRUNK_OPEN</p>
+</li><li class=" "><p   
+>CALIB_ERROR_REARVIEW_MIRROR_FOLD</p>
+</li><li class=" "><p   
+>CALIB_ERROR_TIRE_PRESSURE_ABNORMAL</p>
+</li><li class=" "><p   
+>CALIB_ERROR_FRONT_WIPER_OPEN</p>
+</li><li class=" "><p   
+>CALIB_ERROR_TARGET_DETECT_ABNORMAL</p>
+</li></ul><p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3557826001/image-2023-10-19_13-43-18-version-1-modificationdate-1697694198000-api-v2.png" alt="images/confluence/download/thumbnails/3557826001/image-2023-10-19_13-43-18-version-1-modificationdate-1697694198000-api-v2.png" width="300"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3557826001/image-2023-10-18_17-15-25-version-1-modificationdate-1697620526000-api-v2.png" alt="images/confluence/download/attachments/3557826001/image-2023-10-18_17-15-25-version-1-modificationdate-1697620526000-api-v2.png" width="350"  />
+    </p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3557826001/image-2023-10-18_17-14-40-version-1-modificationdate-1697620481000-api-v2.png" alt="images/confluence/download/attachments/3557826001/image-2023-10-18_17-14-40-version-1-modificationdate-1697620481000-api-v2.png" width="350"  />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="3">
+    <p   
+>summary</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <ul class=" "><li class=" "><p   
+> Rearview mirror output abnormality (using the default value FOLD) </p>
+</li><li class=" "><p   
+> Big light output abnormalities (using the default value close) </p>
+</li><li class=" "><p   
+> Abnormal tire pressure output (using the default value 255) </p>
+</li><li class=" "><p   
+> Height of Air Suspension's two outputs are inconsistent </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <ul class=" "><li class=" "><p   
+> The right front door is closed when normal calibration, but the output is open, and the production line is required to be further confirmed (the door is not closed and the output is abnormal) </p>
+</li><li class=" "><p   
+> Open the hood, but the output is closed, and the production line needs to be further confirmed (the hood does not open the OR output exception) </p>
+</li><li class=" "><p   
+> The output of the rearview mirror is expanded, and the suspected output is abnormal (using the default value) </p>
+</li><li class=" "><p   
+> The wiper and hood cannot be opened at the same time, and the production line needs to close the hood to open the wiper and test again </p>
+</li><li class=" "><p   
+> The production line is uncertain whether the headlight is turned on </p>
+</li><li class=" "><p   
+> The tire pressure output is 255, and the suspected output is abnormal (using the default value) </p>
+</li><li class=" "><p   
+> Unexpectedly of Height of Air Suspension and Current Level meet expectations. The default status of the suspension type is air suspension, and the production line needs to be further tested for further testing </p>
+</li><li class=" "><p   
+> 11 Cameras's SN abnormality </p>
+</li></ul>            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    <div class="section section-1" id="src-3557826001_safe-id-aWQt5Lqn57q_U29tZUlQJlZlaGljbGVJbmZv5rWL6K-V5oql5ZGKLTIwMjMxMDE55pel5b-X5oiq5Zu-">
+        <h1 class="heading "><span> 20231019 Log screenshot </span></h1>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3557826001/image-2023-10-19_11-38-43-version-1-modificationdate-1697686723000-api-v2.png" alt="images/confluence/download/attachments/3557826001/image-2023-10-19_11-38-43-version-1-modificationdate-1697686723000-api-v2.png" width="2000"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3557826001/image-2023-10-19_11-43-40-version-1-modificationdate-1697687021000-api-v2.png" alt="images/confluence/download/attachments/3557826001/image-2023-10-19_11-43-40-version-1-modificationdate-1697687021000-api-v2.png" width="2000"  />
+    </p>
+    </div>
+    <div class="section section-1" id="src-3557826001_safe-id-aWQt5Lqn57q_U29tZUlQJlZlaGljbGVJbmZv5rWL6K-V5oql5ZGKLTIwMjMxMDE45pel5b-X5oiq5Zu-">
+        <h1 class="heading "><span> 20231018 Log screenshot </span></h1>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3557826001/image-2023-10-18_17-5-25-version-1-modificationdate-1697619925000-api-v2.png" alt="images/confluence/download/attachments/3557826001/image-2023-10-18_17-5-25-version-1-modificationdate-1697619925000-api-v2.png" width="2000"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3557826001/image-2023-10-18_17-13-32-version-1-modificationdate-1697620412000-api-v2.png" alt="images/confluence/download/attachments/3557826001/image-2023-10-18_17-13-32-version-1-modificationdate-1697620412000-api-v2.png" width="2000"  />
+    </p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4328404670_XxtrinsicCli_%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> XXTRINSICLI tool development </span>
+        </a>
+                <a href="3274478509_%E4%BE%9B%E5%BA%94%E5%95%86%E5%86%85%E5%8F%82%E6%A0%A1%E9%AA%8C.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Participate in the supplier </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

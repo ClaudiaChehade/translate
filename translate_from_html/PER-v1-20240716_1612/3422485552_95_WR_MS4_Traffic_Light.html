@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> 1. WR solution design analysis -Wave 3 Development </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3422485552"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="3422485372_95_WR_Delivery.html">95_WR Delivery</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485425_95_WR_MS4%28T0%2B9%29_Checks.html">95_WR_MS4(T0+9) Checks</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485430_95_WR_MS4_Algorithm_Reproduce%5B%E6%9C%80%E7%BB%88%E9%AA%8C%E6%94%B6%E6%8A%A5%E5%91%8A%5D.html"> 95_WR_MS4 Algorithm REPRODUCE [Final Acceptance Report] </a></li>
+                                                                                     <li><a href="3422485493_95_WR_MS4_Detail_Design_Docs.html">95_WR MS4 Detail Design Docs</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3422485552"> <span> 1. WR solution design analysis </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<ol class=" "><li class=" "><p   
+> Traffic Light detection and identification is divided into three stages, namely MTCNN, TL_DETECOR and TL_DECIDER, and then introduce TL_DETECOR and TL_DECIDER, respectively. </p>
+</li><li class=" "><p   
+> Traffic light detection identification task: </p>
+</li></ol><ul class=" "><li class=" "><p   
+> Overall solution flowchart: </p>
+<ul class=" "><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485552/image-2023-4-26_11-42-58-1-version-1-modificationdate-1694153237000-api-v2.png" alt="images/confluence/download/attachments/3422485552/image-2023-4-26_11-42-58-1-version-1-modificationdate-1694153237000-api-v2.png"  height="400" />
+    </li></ul></li><li class=" "><p   
+> TL_Detector's DAG diagram </p>
+</li><li class=" "><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3422485552/Copy_of_Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" alt="images/confluence/download/attachments/3422485552/Copy_of_Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" width="600"  />
+    </li><li class=" "><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3422485552/Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" alt="images/confluence/download/attachments/3422485552/Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" width="600"  />
+    </li></ul><ul class=" "><li class=" "><p   
+> DAG diagram of tl_decider </p>
+</li></ul><p   
+></p>
+<ul class=" "><li class=" "><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3422485552/Copy_of_Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" alt="images/confluence/download/attachments/3422485552/Copy_of_Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" width="600"  />
+    </li><li class=" "><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3422485552/Copy_of_Copy_of_Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" alt="images/confluence/download/attachments/3422485552/Copy_of_Copy_of_Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" width="600"  />
+    </li><li class=" "><p   
+>transformer encoder</p>
+<ul class=" "><li class=" "><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3422485552/Copy_of_Copy_of_Copy_of_Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" alt="images/confluence/download/attachments/3422485552/Copy_of_Copy_of_Copy_of_Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" width="200"  />
+    </li></ul></li><li class=" "><p   
+>transformer decoder</p>
+<ul class=" "><li class=" "><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3422485552/Copy_of_Copy_of_Copy_of_Copy_of_Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" alt="images/confluence/download/attachments/3422485552/Copy_of_Copy_of_Copy_of_Copy_of_Traffi_Light_Detector-version-1-modificationdate-1694153237000-api-v2.png" width="200"  />
+    </li></ul></li></ul><p   
+>    <span style="color: #953800;">
+QueryBulbFea,    </span>
+</p>
+<p   
+>    <span style="color: #953800;">
+QueryLaneFea,    </span>
+</p>
+<p   
+>    <span style="color: #953800;">
+QueryTLFea,    </span>
+</p>
+<p   
+>    <span style="color: #953800;">
+QueryDecision    </span>
+</p>
+<p   
+><br/></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3422485544_95_WR_MS4_Road_Marker.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS4 Road Marker</span>
+        </a>
+                <a href="3422485564_95_WR_MS4_TrafficSign_Classification.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS4 TrafficSign Classification</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

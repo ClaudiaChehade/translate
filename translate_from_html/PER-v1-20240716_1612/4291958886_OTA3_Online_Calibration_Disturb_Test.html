@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>OTA3 Online Calibration Disturb Test - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4291958886"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                     <li><a href="2754796745_xcalib_prod.html">xcalib_prod</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4291958886"> <span>OTA3 Online Calibration Disturb Test</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p  class="auto-cursor-target" 
+> Reference document <a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=4182024590"> Online Calibration test requirement & data analysis </a></p>
+<p  class="auto-cursor-target" 
+><strong class=" "> background: </strong></p>
+<p  class="auto-cursor-target" 
+> 1. The external parameter of Camera yaw pitch roll to verify whether the optimization result of the online calibration is consistent with the disturbance value to ensure the function </p>
+<p  class="auto-cursor-target" 
+> 2. Publicization test should <span style="color: #003366;"> Fully cover the following CORNER CASE </span>
+</p>
+    <div  class="tablewrap">
+        <table class="relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="409.0"/>
+                                    <col  width="165.0"/>
+                                    <col  width="422.0"/>
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" "> Road conditions </strong></p>
+<p   
+>    <span style="color: #003366;"> The confidence of the 2D lane detection can be used as an objective standard </span>
+</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> High -speed, elevated, urban fast roads (flat roads) </p>
+</li><li class=" "><p   
+> The three lanes live in the middle, and the lane is clear </p>
+</li><li class=" "><p   
+> Non -congestion period </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>bad</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> General urban roads (bumpy roads) </p>
+</li><li class=" "><p   
+> Below three lanes (parking lots), The Lane Line is Not Clear </p>
+</li><li class=" "><p   
+> Morning and evening peaks, congestion periods (there are many surrounding vehicles, lane lines are blocked) </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" "> Weather conditions </strong></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Sunny and cloudy days </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>bad</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> At night, rainy days (small/medium/large), heavy fog, backlight </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" "> Driving habit </strong></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> The speed 40 ~ 100 km/h </p>
+</li><li class=" "><p   
+> Driving smoothly, try to go straight to avoid changing lanes </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>bad</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Too low or too high </p>
+</li><li class=" "><p   
+> Frequent changes 、 Accelerate 、 Acute deceleration 、 Sudden brake 、 Turn a sharp turn </p>
+</li></ul>            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    <div class="section section-1" id="src-4291958886_safe-id-T1RBM09ubGluZUNhbGlicmF0aW9uRGlzdHVyYlRlc3Qt5pa55qGI5LiA77ya6YCa6L-H5py65qKw6KOF572u55yf5a6e5pS55Y-YY2FtZXJh5aSW5Y-C">
+        <h1 class="heading auto-cursor-target"><span> Option 1: Camera external parameters are truly changed through mechanical devices </span></h1>
+<p   
+> advantage: </p>
+<ul class=" "><li class=" "><p   
+> True and credible </p>
+</li><li class=" "><p   
+> No need to modify the lane line extraction and online calibration related software </p>
+</li></ul><p   
+> shortcoming: </p>
+<ul class=" "><li class=" "><p   
+> It is necessary to design and process machinery devices. The design and production cycle is long, and the modification of vehicles is difficult. </p>
+</li><li class=" "><p   
+> Unable to comprehensively cover special scenarios, Road Conditions and specific weather, light conditions, etc. </p>
+</li><li class=" "><p   
+> Effective data screening difficulty </p>
+</li><li class=" "><p   
+> Wasting real car test resources </p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-4291958886_safe-id-T1RBM09ubGluZUNhbGlicmF0aW9uRGlzdHVyYlRlc3Qt5pa55qGI5LqM77ya5L2_55SoU3ludGhldGljRGF0YUdlbmVyYXRpb27mj5Dkvpvku7_nnJ_mlbDmja4">
+        <h1 class="heading auto-cursor-target"><span> Option 2: Use Synthetic Data Generation to provide simulation data </span></h1>
+<p   
+> advantage: </p>
+<ul class=" "><li class=" "><p   
+> You can simulate all Camera and lidar </p>
+</li><li class=" "><p   
+> Can be generalized to get rich Corner Case data, improve the online calibration performance </p>
+</li><li class=" "><p   
+> Can provide closed -loop testing, greatly reduce test costs </p>
+</li><li class=" "><p   
+> For the test environment in dangerous scenes, not only can reduce the cost of scene construction, but also reduce the safety risks of testers </p>
+</li></ul><p   
+> shortcoming: </p>
+<ul class=" "><li class=" "><p   
+> There are differences with the real environment </p>
+</li><li class=" "><p   
+> Need to adapt software, the current output is a single -frame image and the real value of the 3D lane line, not Rosbag </p>
+<ul class=" "><li class=" "><p   
+> How to perceive the lane line and enter the online calibration module?(Temporarily convert the true value of the 3D lane line through the external parameter to the image) </p>
+</li><li class=" "><p   
+> How to initialize the production line calibration parameters? </p>
+</li><li class=" "><p   
+> How to update the online calibration results? </p>
+</li><li class=" "><p   
+> How to evaluate the impact on function? </p>
+</li></ul></li></ul>    <div  class="tablewrap">
+        <table class="confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>case</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Sun congestion </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Xiaoyong rain </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Foggy sky </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> evening </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Rainy day </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front wide</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-50-34-version-1-modificationdate-1716452079000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-50-34-version-1-modificationdate-1716452079000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-45-2-version-1-modificationdate-1716452079000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-45-2-version-1-modificationdate-1716452079000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-3-55-version-1-modificationdate-1716452079000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-3-55-version-1-modificationdate-1716452079000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-10-39-version-1-modificationdate-1716452079000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-10-39-version-1-modificationdate-1716452079000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-14-28-version-1-modificationdate-1716452079000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-14-28-version-1-modificationdate-1716452079000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front tele</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-50-47-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-50-47-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-45-55-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-45-55-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-4-28-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-4-28-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-11-42-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-11-42-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-14-37-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-14-37-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front left</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-50-55-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-50-55-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-46-14-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-46-14-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-4-41-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-4-41-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-11-50-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-11-50-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-14-47-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-14-47-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front right</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-7-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-7-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-46-27-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-46-27-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-4-51-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-4-51-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-0-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-0-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-14-55-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-14-55-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>rear</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-17-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-17-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-46-46-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-46-46-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-3-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-3-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-11-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-11-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-4-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-4-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>rear left</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-27-version-1-modificationdate-1716452080000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-27-version-1-modificationdate-1716452080000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-47-4-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-47-4-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-12-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-12-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-21-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-21-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-13-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-13-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>rear right</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-36-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-36-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-47-22-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-47-22-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-22-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-22-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-31-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-31-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-22-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-22-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>nrcs front</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-48-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-48-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-48-56-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-48-56-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-32-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-32-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-40-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-40-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-32-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-32-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>nrcs rear</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-58-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-51-58-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-49-27-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-49-27-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-6-5-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-6-5-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-48-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-48-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-39-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-39-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>nrcs left</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-52-12-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-52-12-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-48-26-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-48-26-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-42-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-42-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-56-version-1-modificationdate-1716452081000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-12-56-version-1-modificationdate-1716452081000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-49-version-1-modificationdate-1716452082000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-49-version-1-modificationdate-1716452082000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>nrcs right</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-52-28-version-1-modificationdate-1716452082000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-52-28-version-1-modificationdate-1716452082000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_17-48-40-version-1-modificationdate-1716452082000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_17-48-40-version-1-modificationdate-1716452082000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-52-version-1-modificationdate-1716452082000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-5-52-version-1-modificationdate-1716452082000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-13-4-version-1-modificationdate-1716452082000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-13-4-version-1-modificationdate-1716452082000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-58-version-1-modificationdate-1716452082000-api-v2.png" alt="images/confluence/download/attachments/4291958886/image-2024-5-15_18-15-58-version-1-modificationdate-1716452082000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-4291958886_safe-id-T1RBM09ubGluZUNhbGlicmF0aW9uRGlzdHVyYlRlc3Qt5Zyo57q_5qCH5a6a6ZyA5rGC">
+        <h1 class="heading auto-cursor-target"><span> Online calibration requirements </span></h1>
+<p   
+> Data requirements (can provide single -frame data or ROSBAG) </p>
+<ul class=" "><li class=" "><p   
+> 11 Cameras Simulation Image + 3D lane line (simulation settings) + 2D lane line (perception results) </p>
+</li><li class=" "><p   
+> 3 lidars simulation point cloud </p>
+</li></ul><p   
+> Corner Case test requirements (can be implemented in order according to the degree of difficulty) </p>
+<ul class="inline-task-list "><li class=" "><p   
+> Turn </p>
+</li><li class=" "><p   
+> evening </p>
+</li><li class=" "><p   
+> night </p>
+</li><li class=" "><p   
+> Rainy days (small/medium/big) </p>
+</li><li class=" "><p   
+> Foggy sky </p>
+</li><li class=" "><p   
+> Rainy day </p>
+</li><li class=" "><p   
+> Morning and evening peaks, congestion periods (there are many surrounding vehicles, lane lines are blocked) </p>
+</li><li class=" "><p   
+> The speed is less than 40 km/h </p>
+</li><li class=" "><p   
+> The speed is higher than 100 km/h </p>
+</li><li class=" "><p  class="auto-cursor-target" 
+> Three lanes do not run in the middle </p>
+</li><li class=" "><p   
+> Frequent changes </p>
+</li><li class=" "><p   
+> The lane line is not clear </p>
+</li><li class=" "><p   
+> Pathm bumpy ups and downs </p>
+</li><li class=" "><p   
+> Adverse light </p>
+</li><li class=" "><p   
+> Accelerate </p>
+</li><li class=" "><p   
+> Acute deceleration </p>
+</li><li class=" "><p   
+> Sudden brake </p>
+</li><li class=" "><p   
+> Turn a sharp turn </p>
+</li></ul>    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4192817515_Online_Calibration_%E6%B5%8B%E8%AF%95%E8%A6%81%E6%B1%82_%26_%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Online Calibration test requirement & data analysis </span>
+        </a>
+                <a href="4441097971_variant_air-suspension_and_load_combinations_test_for_parking_bev_stittch_image_on_Chery-E0x.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>variant air-suspension and load combinations test for parking bev stittch image on Chery-E0x</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

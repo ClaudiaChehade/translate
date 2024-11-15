@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Online Calibration test requirement & data analysis  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4192817515"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                                         <li class="shortcut"><a href="2754796745_xcalib_prod.html">xcalib_prod</a></li>
+                                                                                     <li><a href="4059781788_OTA2_Online_Calibration_Test.html">OTA2 Online Calibration Test</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4192817515"> <span> Online Calibration test requirement & data analysis </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-4192817515_safe-id-T25saW5lQ2FsaWJyYXRpb27mtYvor5XopoHmsYIm5pWw5o2u5YiG5p6QLea1i-ivleimgeaxgg">
+        <h1 class="heading "><span> Testing requirements </span></h1>
+<p   
+>    <span style="color: #003366;"> 1. Generalization tests should be fully covered in the following scenes </span>
+</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="44.6361%"/>
+                                    <col  width="8.73575%"/>
+                                    <col  width="46.5571%"/>
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" "> Road conditions </strong>    <span style="color: #003366;"> (The confidence of the 2D lane line test can be used as an objective standard) </span>
+</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> High -speed, elevated, urban fast roads (flat roads) </p>
+</li><li class=" "><p   
+> The three lanes live in the middle, and the lane is clear </p>
+</li><li class=" "><p   
+> Non -congestion period </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>bad</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> General urban roads (bumpy roads) </p>
+</li><li class=" "><p   
+> Below the three lanes (parking lots), the lane line is unclear </p>
+</li><li class=" "><p   
+> Morning and evening peaks, congestion periods (there are many surrounding vehicles, lane lines are blocked) </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" "> Weather conditions </strong></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Sunny and cloudy days </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>bad</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> At night, rainy days (small/medium/large), heavy fog, backlight </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" "> Driving habit </strong></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> The speed 40 ~ 100 km/h </p>
+</li><li class=" "><p   
+> Driving smoothly, try to go straight to avoid changing lanes </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>bad</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Too low or too high </p>
+</li><li class=" "><p   
+> Frequent changes, rapid acceleration, rapid deceleration, sudden braking, rapid turning </p>
+</li></ul>            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+> 2. Record data as required </p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Record Rosbag, including the following topic </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #339966;">
+/C/Camera/FrontTele    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/C/Camera/FrontWide    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/viper_driving/xper_viper_lane_and_edge_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/local_msf/xper_local_loc_result_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/ara_com_gateway/sensor_calib_parameter_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/ara_com_gateway.offline_sensor_calib_parameter_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/ara_com_gateway.online_sensor_calib_parameter_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/online_calibration/online_calib_result_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;">
+    <span style="color: #339966;">
+<del class=" ">/A/online_calibration/on_line_key_info_debug</del>    </span>
+    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #000000;"> Copy standard <span style="color: #339966;">
+online_calibration.json    </span>
+    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> The intermediate result of the copy /data /call </span>
+</p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>    <span style="color: #339966;">
+vehicle_movement_status.txt    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+side_view_camera_front_tele.txt    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+side_view_camera_front_wide.txt    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #000000;"> Restart the ADCC, read the offline and online calibration parameters in Persistency in order, and save it as <span style="color: #339966;">
+read_xxtrinsic.txt    </span>
+    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Open the TJA function, observe and record the neutrality </span>
+</p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-4192817515_safe-id-T25saW5lQ2FsaWJyYXRpb27mtYvor5XopoHmsYIm5pWw5o2u5YiG5p6QLeaVsOaNruWIhuaekA">
+        <h1 class="heading "><span> data analysis </span></h1>
+<p   
+> Take Val/12848C20240417 as an example to introduce how to use automated analysis tools (more data, please access online calibration data archive paths) </p>
+<p   
+> 1. Prepare data (support analysis of some files) </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4192817515/image-2024-4-22_13-14-57-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/thumbnails/4192817515/image-2024-4-22_13-14-57-version-1-modificationdate-1713840139000-api-v2.png"  height="150" />
+    </p>
+<p   
+> 2. Running tools </p>
+<p   
+>xcalib-prod/online_calibration/script/<a  class="unresolved" href="#src-4192817515">online_calib_analyze.py</a></p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">online_calib_analyze.py</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="online_calib_analyze.py" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">#!/usr/bin/env python3</code></div>
+<div class="line"><code class="comments"># -*- coding: utf-8 -*-</code></div>
+<div class="line"><code class="plain"> </code></div>
+<div class="line"><code class="comments">"""</code></div>
+<div class="line"><code class="comments">Created on  2024-04-19</code></div>
+<div class="line"><code class="comments">@ author:   Li Han</code></div>
+<div class="line"><code class="comments">@ function: auto analyze online calibration data</code></div>
+<div class="line"><code class="comments">@ usage:    python online_calib_analyze.py [folder_path]</code></div>
+<div class="line"><code class="comments">"""</code></div>
+<div class="line"><code class="plain"> </code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> os</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> re</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> math</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> time</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> datetime</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> argparse</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> numpy as np</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> matplotlib.pyplot as plt</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">class</code><code class="plain"> HistogramStatistics:</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> __init__(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_data_capacity </code><code class="keyword">=</code><code class="plain"> </code><code class="value">1000</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_bin_number </code><code class="keyword">=</code><code class="plain"> </code><code class="value">120</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_bin_width </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.05</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_bin_coefficient </code><code class="keyword">=</code><code class="plain"> </code><code class="value">3.0</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_lower_bound </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.0</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_upper_bound </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.0</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_data </code><code class="keyword">=</code><code class="plain"> []</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_histogram </code><code class="keyword">=</code><code class="plain"> []</code></div>
+<div class="line"><code class="plain">   </code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> init(</code><code class="color1">self</code><code class="plain">, path, sensor_name, delta_angle):</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.path </code><code class="keyword">=</code><code class="plain"> path</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_sensor_name </code><code class="keyword">=</code><code class="plain"> sensor_name</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_delta_angle </code><code class="keyword">=</code><code class="plain"> delta_angle</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_histogram </code><code class="keyword">=</code><code class="plain"> np.zeros(</code><code class="color1">self</code><code class="plain">.m_bin_number, dtype</code><code class="keyword">=</code><code class="plain">np.uint32)</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_lower_bound </code><code class="keyword">=</code><code class="plain"> </code><code class="keyword">-</code><code class="plain">(</code><code class="color1">self</code><code class="plain">.m_bin_number </code><code class="keyword">*</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.m_bin_width) </code><code class="keyword">/</code><code class="plain"> </code><code class="value">2.0</code></div>
+<div class="line"><code class="plain">        </code><code class="color1">self</code><code class="plain">.m_upper_bound </code><code class="keyword">=</code><code class="plain"> (</code><code class="color1">self</code><code class="plain">.m_bin_number </code><code class="keyword">*</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.m_bin_width) </code><code class="keyword">/</code><code class="plain"> </code><code class="value">2.0</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> add_data(</code><code class="color1">self</code><code class="plain">, value):</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> value ></code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.m_lower_bound </code><code class="keyword">and</code><code class="plain"> value <</code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.m_upper_bound:</code></div>
+<div class="line"><code class="plain">            </code><code class="color1">self</code><code class="plain">.m_data </code><code class="keyword">=</code><code class="plain"> np.append(</code><code class="color1">self</code><code class="plain">.m_data, value)</code></div>
+<div class="line"><code class="plain">            index </code><code class="keyword">=</code><code class="plain"> </code><code class="functions">int</code><code class="plain">((value </code><code class="keyword">-</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.m_lower_bound) </code><code class="keyword">/</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.m_bin_width)</code></div>
+<div class="line"><code class="plain">            </code><code class="color1">self</code><code class="plain">.m_histogram[index] </code><code class="keyword">+</code><code class="keyword">=</code><code class="plain"> </code><code class="value">1</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> calculate_mode(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        max_bin_index </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0</code></div>
+<div class="line"><code class="plain">        max_bin_count </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0</code></div>
+<div class="line"><code class="plain">        second_bin_count </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">for</code><code class="plain"> i </code><code class="keyword">in</code><code class="plain"> </code><code class="functions">range</code><code class="plain">(</code><code class="functions">len</code><code class="plain">(</code><code class="color1">self</code><code class="plain">.m_histogram)):</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">if</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.m_histogram[i] > max_bin_count:</code></div>
+<div class="line"><code class="plain">                </code><code class="keyword">if</code><code class="plain"> </code><code class="functions">abs</code><code class="plain">(i </code><code class="keyword">-</code><code class="plain"> max_bin_index) > </code><code class="value">1</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">                    second_bin_count </code><code class="keyword">=</code><code class="plain"> max_bin_count</code></div>
+<div class="line"><code class="plain">                max_bin_count </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.m_histogram[i]</code></div>
+<div class="line"><code class="plain">                max_bin_index </code><code class="keyword">=</code><code class="plain"> i</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> max_bin_count < </code><code class="color1">self</code><code class="plain">.m_bin_coefficient </code><code class="keyword">*</code><code class="plain"> second_bin_count:</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> replace mode by mean (first_bin_count:{max_bin_count} second_bin_count:{second_bin_count})"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.m_lower_bound </code><code class="keyword">+</code><code class="plain"> (max_bin_index </code><code class="keyword">*</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.m_bin_width) </code><code class="keyword">+</code><code class="plain"> (</code><code class="color1">self</code><code class="plain">.m_bin_width </code><code class="keyword">/</code><code class="plain"> </code><code class="value">2.0</code><code class="plain">)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> calculate_mean(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> np.mean(</code><code class="color1">self</code><code class="plain">.m_data)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> calculate_standard_deviation(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        mean </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.calculate_mean()</code></div>
+<div class="line"><code class="plain">        variance </code><code class="keyword">=</code><code class="plain"> np.var(</code><code class="color1">self</code><code class="plain">.m_data)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> math.sqrt(variance)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> calculate_median(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> np.median(</code><code class="color1">self</code><code class="plain">.m_data)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> calculate_variance(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> np.var(</code><code class="color1">self</code><code class="plain">.m_data)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> calculate_skewness(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        mean </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.calculate_mean()</code></div>
+<div class="line"><code class="plain">        variance </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.calculate_variance()</code></div>
+<div class="line"><code class="plain">        skewness </code><code class="keyword">=</code><code class="plain"> np.mean((</code><code class="color1">self</code><code class="plain">.m_data </code><code class="keyword">-</code><code class="plain"> mean) </code><code class="keyword">*</code><code class="keyword">*</code><code class="plain"> </code><code class="value">3</code><code class="plain">) </code><code class="keyword">/</code><code class="plain"> math.</code><code class="functions">pow</code><code class="plain">(variance, </code><code class="value">1.5</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> skewness</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> calculate_kurtosis(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        mean </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.calculate_mean()</code></div>
+<div class="line"><code class="plain">        variance </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.calculate_variance()</code></div>
+<div class="line"><code class="plain">        kurtosis </code><code class="keyword">=</code><code class="plain"> np.mean((</code><code class="color1">self</code><code class="plain">.m_data </code><code class="keyword">-</code><code class="plain"> mean) </code><code class="keyword">*</code><code class="keyword">*</code><code class="plain"> </code><code class="value">4</code><code class="plain">) </code><code class="keyword">/</code><code class="plain"> math.</code><code class="functions">pow</code><code class="plain">(variance, </code><code class="value">2</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> kurtosis</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> is_normal_distribution(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        mean </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.calculate_mean()</code></div>
+<div class="line"><code class="plain">        standard_deviation </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.calculate_standard_deviation()</code></div>
+<div class="line"><code class="plain">        threshold </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.05</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">for</code><code class="plain"> value </code><code class="keyword">in</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.m_data:</code></div>
+<div class="line"><code class="plain">            score </code><code class="keyword">=</code><code class="plain"> (value </code><code class="keyword">-</code><code class="plain"> mean) </code><code class="keyword">/</code><code class="plain"> standard_deviation</code></div>
+<div class="line"><code class="plain">            probability </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.5</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> (</code><code class="value">1</code><code class="plain"> </code><code class="keyword">+</code><code class="plain"> math.erf(score </code><code class="keyword">/</code><code class="plain"> math.sqrt(</code><code class="value">2</code><code class="plain">)))</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">if</code><code class="plain"> </code><code class="functions">abs</code><code class="plain">(probability </code><code class="keyword">-</code><code class="plain"> </code><code class="value">0.5</code><code class="plain">) > threshold:</code></div>
+<div class="line"><code class="plain">                </code><code class="keyword">return</code><code class="plain"> </code><code class="color1">False</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> </code><code class="color1">True</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> print_statistics(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"///// {self.m_delta_angle} histogram statistics of {self.m_sensor_name} /////"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> bound: {self.m_lower_bound:.3f} - {self.m_upper_bound:.3f}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> mean: {self.calculate_mean():.3f}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> standard deviation: {self.calculate_standard_deviation():.3f}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> median: {self.calculate_median():.3f}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> variance: {self.calculate_variance():.3f}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> skewness: {self.calculate_skewness():.3f}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> kurtosis: {self.calculate_kurtosis():.3f}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> {'good' if self.is_normal_distribution() else 'bad'} normal distribution"</code><code class="plain">)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> plot_histogram(</code><code class="color1">self</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">        plt.figure(figsize</code><code class="keyword">=</code><code class="plain">(</code><code class="value">8</code><code class="plain">, </code><code class="value">6</code><code class="plain">))</code></div>
+<div class="line"><code class="plain">        plt.hist(</code><code class="color1">self</code><code class="plain">.m_data, bins</code><code class="keyword">=</code><code class="string">'auto'</code><code class="plain">, color</code><code class="keyword">=</code><code class="string">'skyblue'</code><code class="plain">, alpha</code><code class="keyword">=</code><code class="value">0.7</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        plt.xlabel(f</code><code class="string">'{self.m_delta_angle}'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        plt.ylabel(</code><code class="string">'histogram frequency'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        plt.title(f</code><code class="string">'{self.m_sensor_name}'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        mode </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.calculate_mode()</code></div>
+<div class="line"><code class="plain">        mean </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">self</code><code class="plain">.calculate_mean()</code></div>
+<div class="line"><code class="plain">        plt.axvline(x</code><code class="keyword">=</code><code class="plain">mode, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">, label</code><code class="keyword">=</code><code class="string">'mode'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        plt.axvline(x</code><code class="keyword">=</code><code class="plain">mean, color</code><code class="keyword">=</code><code class="string">'g'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">, label</code><code class="keyword">=</code><code class="string">'mean'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        plt.text(mode, </code><code class="value">0.95</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> plt.ylim()[</code><code class="value">1</code><code class="plain">], f</code><code class="string">"mode: {mode:.3f}"</code><code class="plain">, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, ha</code><code class="keyword">=</code><code class="string">'center'</code><code class="plain">, va</code><code class="keyword">=</code><code class="string">'top'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        plt.text(mean, </code><code class="value">0.9</code><code class="plain"> </code><code class="keyword">*</code><code class="plain"> plt.ylim()[</code><code class="value">1</code><code class="plain">], f</code><code class="string">"mean: {mean:.3f}"</code><code class="plain">, color</code><code class="keyword">=</code><code class="string">'g'</code><code class="plain">, ha</code><code class="keyword">=</code><code class="string">'center'</code><code class="plain">, va</code><code class="keyword">=</code><code class="string">'top'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        plt.legend()</code></div>
+<div class="line"><code class="plain">        plt.grid(</code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        plt.savefig(os.path.join(</code><code class="color1">self</code><code class="plain">.path, f</code><code class="string">'{self.m_sensor_name}_{self.m_delta_angle}_histogram.png'</code><code class="plain">))</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">def</code><code class="plain"> process_online_calibration(</code><code class="functions">file</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"\n----- ----- ----- online_calibration ----- ----- -----"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    keyinfos </code><code class="keyword">=</code><code class="plain"> [</code><code class="string">"convergence time"</code><code class="plain">, </code><code class="string">"last_ypr"</code><code class="plain">, </code><code class="string">"last_std"</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">    keyinfo_pattern </code><code class="keyword">=</code><code class="plain"> re.</code><code class="functions">compile</code><code class="plain">(r</code><code class="string">'"message_string"\s*:\s*"(.+)"\s*,\s*"component"'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    runtime_pattern </code><code class="keyword">=</code><code class="plain"> re.</code><code class="functions">compile</code><code class="plain">(r</code><code class="string">'online update time cost: (\d+(\.\d+)?)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    with </code><code class="functions">open</code><code class="plain">(</code><code class="functions">file</code><code class="plain">, </code><code class="string">'r'</code><code class="plain">) as f:</code></div>
+<div class="line"><code class="plain">        lines </code><code class="keyword">=</code><code class="plain"> f.readlines()</code></div>
+<div class="line"><code class="plain">    runtime </code><code class="keyword">=</code><code class="plain"> [] </code><code class="comments"># -- release daily build not analyze</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">for</code><code class="plain"> num, line </code><code class="keyword">in</code><code class="plain"> </code><code class="functions">enumerate</code><code class="plain">(lines):</code></div>
+<div class="line"><code class="plain">        line </code><code class="keyword">=</code><code class="plain"> line.strip()</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">for</code><code class="plain"> key </code><code class="keyword">in</code><code class="plain"> keyinfos:</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">if</code><code class="plain"> key </code><code class="keyword">in</code><code class="plain"> line:</code></div>
+<div class="line"><code class="plain">                </code><code class="keyword">if</code><code class="plain"> keyinfo_pattern.search(line):</code></div>
+<div class="line"><code class="plain">                    </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">'{keyinfo_pattern.search(line).group(1)}'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">                </code><code class="keyword">break</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> runtime_pattern.findall(line):</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">for</code><code class="plain"> match </code><code class="keyword">in</code><code class="plain"> runtime_pattern.findall(line):</code></div>
+<div class="line"><code class="plain">                runtime.append(</code><code class="functions">float</code><code class="plain">(match[</code><code class="value">0</code><code class="plain">]))</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    fig </code><code class="keyword">=</code><code class="plain"> plt.figure(figsize</code><code class="keyword">=</code><code class="plain">(</code><code class="value">15</code><code class="plain">, </code><code class="value">6</code><code class="plain">), dpi</code><code class="keyword">=</code><code class="value">100</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    plt.xlabel(</code><code class="string">"frame"</code><code class="plain">, fontsize</code><code class="keyword">=</code><code class="value">10</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    plt.ylabel(</code><code class="string">'runtime (ms)'</code><code class="plain">, fontsize</code><code class="keyword">=</code><code class="value">10</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    plt.plot(runtime, </code><code class="string">'-'</code><code class="plain">, color</code><code class="keyword">=</code><code class="string">'blue'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    plt.grid(axis</code><code class="keyword">=</code><code class="string">'y'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    plt.savefig(os.path.join(os.path.dirname(</code><code class="functions">file</code><code class="plain">), </code><code class="string">"runtime.png"</code><code class="plain">), bbox_inches</code><code class="keyword">=</code><code class="string">'tight'</code><code class="plain">, pad_inches</code><code class="keyword">=</code><code class="value">0.1</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    plt.close()</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">def</code><code class="plain"> process_camera(</code><code class="functions">file</code><code class="plain">, sensor_name):</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> plot_vaild_frames(data):</code></div>
+<div class="line"><code class="plain">        fig, axs </code><code class="keyword">=</code><code class="plain"> plt.subplots(</code><code class="value">1</code><code class="plain">, </code><code class="value">3</code><code class="plain">, figsize</code><code class="keyword">=</code><code class="plain">(</code><code class="value">18</code><code class="plain">, </code><code class="value">5</code><code class="plain">))</code></div>
+<div class="line"><code class="plain">        euler_angle_threshold </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.3</code></div>
+<div class="line"><code class="plain">        plt.title(f</code><code class="string">'{sensor_name}'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># picture-1: delta euler angle</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">0</code><code class="plain">].plot(data[</code><code class="value">0</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'delta_yaw'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">0</code><code class="plain">].plot(data[</code><code class="value">3</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'delta_roll'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">0</code><code class="plain">].set_ylabel(</code><code class="string">'delta euler angle'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">0</code><code class="plain">].legend()</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">0</code><code class="plain">].grid(</code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># picture-2: mean</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">1</code><code class="plain">].plot(data[</code><code class="value">1</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'delta_yaw_mean'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">1</code><code class="plain">].plot(data[</code><code class="value">4</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'delta_roll_mean'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">1</code><code class="plain">].set_ylabel(</code><code class="string">'mean'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">1</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="plain">euler_angle_threshold, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">1</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="keyword">-</code><code class="plain">euler_angle_threshold, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">1</code><code class="plain">].legend()</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">1</code><code class="plain">].grid(</code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="comments"># picture-3: standard deviation</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">2</code><code class="plain">].plot(data[</code><code class="value">2</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'delta_yaw_std'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">2</code><code class="plain">].plot(data[</code><code class="value">5</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'delta_roll_std'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">2</code><code class="plain">].set_ylabel(</code><code class="string">'standard deviation'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">2</code><code class="plain">].legend()</code></div>
+<div class="line"><code class="plain">        axs[</code><code class="value">2</code><code class="plain">].grid(</code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        plt.tight_layout()</code></div>
+<div class="line"><code class="plain">        plt.savefig(os.path.join(os.path.dirname(</code><code class="functions">file</code><code class="plain">), sensor_name </code><code class="keyword">+</code><code class="plain"> </code><code class="string">".png"</code><code class="plain">))</code></div>
+<div class="line"><code class="plain">        plt.close()</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> plot_histogram_statistics(path, sensor_name, delta_angle, data):</code></div>
+<div class="line"><code class="plain">        hs </code><code class="keyword">=</code><code class="plain"> HistogramStatistics()</code></div>
+<div class="line"><code class="plain">        hs.init(path, sensor_name, delta_angle)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">for</code><code class="plain"> value </code><code class="keyword">in</code><code class="plain"> data:</code></div>
+<div class="line"><code class="plain">            hs.add_data(value)</code></div>
+<div class="line"><code class="plain">        hs.print_statistics()</code></div>
+<div class="line"><code class="plain">        hs.plot_histogram()</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    sensor_name </code><code class="keyword">=</code><code class="plain"> os.path.splitext(os.path.basename(</code><code class="functions">file</code><code class="plain">))[</code><code class="value">0</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"\n----- ----- ----- {sensor_name} ----- ----- -----"</code><code class="plain">)    </code></div>
+<div class="line"><code class="plain">    with </code><code class="functions">open</code><code class="plain">(</code><code class="functions">file</code><code class="plain">, </code><code class="string">'r'</code><code class="plain">) as f:</code></div>
+<div class="line"><code class="plain">        lines </code><code class="keyword">=</code><code class="plain"> f.readlines()</code></div>
+<div class="line"><code class="plain">    offline_calib </code><code class="keyword">=</code><code class="plain"> lines[</code><code class="value">1</code><code class="plain">].split(</code><code class="string">']'</code><code class="plain">)[</code><code class="value">1</code><code class="plain">].strip().split()</code></div>
+<div class="line"><code class="plain">    yaw_offline_calib </code><code class="keyword">=</code><code class="plain"> </code><code class="functions">float</code><code class="plain">(offline_calib[</code><code class="value">0</code><code class="plain">].split(</code><code class="string">':'</code><code class="plain">)[</code><code class="value">1</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">    pitch_offline_calib </code><code class="keyword">=</code><code class="plain"> </code><code class="functions">float</code><code class="plain">(offline_calib[</code><code class="value">1</code><code class="plain">].split(</code><code class="string">':'</code><code class="plain">)[</code><code class="value">1</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">    roll_offline_calib </code><code class="keyword">=</code><code class="plain"> </code><code class="functions">float</code><code class="plain">(offline_calib[</code><code class="value">2</code><code class="plain">].split(</code><code class="string">':'</code><code class="plain">)[</code><code class="value">1</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"[offline calib] yaw: {yaw_offline_calib} pitch: {pitch_offline_calib} roll: {roll_offline_calib}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    timestamp </code><code class="keyword">=</code><code class="plain"> </code><code class="functions">float</code><code class="plain">(lines[</code><code class="value">2</code><code class="plain">].split(</code><code class="string">":"</code><code class="plain">)[</code><code class="value">1</code><code class="plain">].strip())</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">print</code><code class="plain">(time.strftime(</code><code class="string">"[online calib] %Y-%m-%d %H:%M"</code><code class="plain">, time.localtime(timestamp)))</code></div>
+<div class="line"><code class="plain">    skip_lines </code><code class="keyword">=</code><code class="plain"> [</code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">, </code><code class="value">2</code><code class="plain">]    </code></div>
+<div class="line"><code class="plain">    pattern </code><code class="keyword">=</code><code class="plain"> re.</code><code class="functions">compile</code><code class="plain">(r</code><code class="string">'\[online calib\] convergence time:(\d+) timestamp:(\d+\.\d+)(.*)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">for</code><code class="plain"> num, line </code><code class="keyword">in</code><code class="plain"> </code><code class="functions">enumerate</code><code class="plain">(lines):</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> pattern.search(line.strip()):</code></div>
+<div class="line"><code class="plain">            skip_lines.append(num)</code></div>
+<div class="line"><code class="plain">            convergence_time, timestamp, values </code><code class="keyword">=</code><code class="plain"> pattern.search(line.strip()).groups()</code></div>
+<div class="line"><code class="plain">            values </code><code class="keyword">=</code><code class="plain"> </code><code class="functions">list</code><code class="plain">(</code><code class="functions">map</code><code class="plain">(</code><code class="functions">float</code><code class="plain">, values.split()))</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">'convergence_time:{convergence_time} '</code><code class="plain">, datetime.datetime.fromtimestamp(</code><code class="functions">float</code><code class="plain">(timestamp)).strftime(</code><code class="string">"%Y-%m-%d %H:%M"</code><code class="plain">))</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> [current convergence] yaw: {values[0]:.3f} pitch: {values[1]:.3f} roll: {values[2]:.3f}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> [last mean] yaw: {values[3]:.3f} pitch: {values[4]:.3f} roll: {values[5]:.3f}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"--> [last standard deviation] yaw: {values[6]:.3f} pitch: {values[7]:.3f} roll: {values[8]:.3f}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    data </code><code class="keyword">=</code><code class="plain"> [line.strip().split() </code><code class="keyword">for</code><code class="plain"> idx, line </code><code class="keyword">in</code><code class="plain"> </code><code class="functions">enumerate</code><code class="plain">(lines) </code><code class="keyword">if</code><code class="plain"> idx </code><code class="keyword">not</code><code class="plain"> </code><code class="keyword">in</code><code class="plain"> skip_lines]</code></div>
+<div class="line"><code class="plain">    data_transposed </code><code class="keyword">=</code><code class="plain"> </code><code class="functions">list</code><code class="plain">(</code><code class="functions">map</code><code class="plain">(</code><code class="functions">list</code><code class="plain">, </code><code class="functions">zip</code><code class="plain">(</code><code class="keyword">*</code><code class="plain">[</code><code class="functions">list</code><code class="plain">(</code><code class="functions">map</code><code class="plain">(</code><code class="functions">float</code><code class="plain">, row)) </code><code class="keyword">for</code><code class="plain"> row </code><code class="keyword">in</code><code class="plain"> data])))</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"vaild frames number: {len(data_transposed[0])}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    plot_vaild_frames(data_transposed)</code></div>
+<div class="line"><code class="plain">    plot_histogram_statistics(os.path.dirname(</code><code class="functions">file</code><code class="plain">), sensor_name, </code><code class="string">"delta_yaw"</code><code class="plain">, data_transposed[</code><code class="value">0</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">    plot_histogram_statistics(os.path.dirname(</code><code class="functions">file</code><code class="plain">), sensor_name, </code><code class="string">"delta_roll"</code><code class="plain">, data_transposed[</code><code class="value">3</code><code class="plain">])</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">def</code><code class="plain"> process_vehicle_movement_status(</code><code class="functions">file</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"\n----- ----- ----- vehicle_movement_status ----- ----- -----"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    vehicle_speed_reference </code><code class="keyword">=</code><code class="plain"> </code><code class="value">10.0</code></div>
+<div class="line"><code class="plain">    yaw_rate_threshold </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.01</code></div>
+<div class="line"><code class="plain">    x_acceleration_threshold </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.5</code></div>
+<div class="line"><code class="plain">    y_acceleration_threshold </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.1</code></div>
+<div class="line"><code class="plain">    centrifugal_acceleration_threshold </code><code class="keyword">=</code><code class="plain"> </code><code class="value">0.1</code></div>
+<div class="line"><code class="plain">    with </code><code class="functions">open</code><code class="plain">(</code><code class="functions">file</code><code class="plain">, </code><code class="string">'r'</code><code class="plain">) as f:</code></div>
+<div class="line"><code class="plain">        lines </code><code class="keyword">=</code><code class="plain"> f.readlines()</code></div>
+<div class="line"><code class="plain">    data </code><code class="keyword">=</code><code class="plain"> [line.strip().split() </code><code class="keyword">for</code><code class="plain"> line </code><code class="keyword">in</code><code class="plain"> lines[</code><code class="value">1</code><code class="plain">:]]</code></div>
+<div class="line"><code class="plain">    timestamps_ns </code><code class="keyword">=</code><code class="plain"> [</code><code class="functions">float</code><code class="plain">(row[</code><code class="value">0</code><code class="plain">]) </code><code class="keyword">/</code><code class="plain"> </code><code class="value">1e9</code><code class="plain"> </code><code class="keyword">for</code><code class="plain"> row </code><code class="keyword">in</code><code class="plain"> data]</code></div>
+<div class="line"><code class="plain">    timestamps </code><code class="keyword">=</code><code class="plain"> [ts </code><code class="keyword">-</code><code class="plain"> timestamps_ns[</code><code class="value">0</code><code class="plain">] </code><code class="keyword">for</code><code class="plain"> ts </code><code class="keyword">in</code><code class="plain"> timestamps_ns]</code></div>
+<div class="line"><code class="plain">    others </code><code class="keyword">=</code><code class="plain"> [</code><code class="functions">list</code><code class="plain">(</code><code class="functions">map</code><code class="plain">(</code><code class="functions">float</code><code class="plain">, row[</code><code class="value">1</code><code class="plain">:])) </code><code class="keyword">for</code><code class="plain"> row </code><code class="keyword">in</code><code class="plain"> data]</code></div>
+<div class="line"><code class="plain">    data_transposed </code><code class="keyword">=</code><code class="plain"> </code><code class="functions">list</code><code class="plain">(</code><code class="functions">map</code><code class="plain">(</code><code class="functions">list</code><code class="plain">, </code><code class="functions">zip</code><code class="plain">(</code><code class="keyword">*</code><code class="plain">others)))</code></div>
+<div class="line"><code class="plain">    fig, axs </code><code class="keyword">=</code><code class="plain"> plt.subplots(</code><code class="value">3</code><code class="plain">, </code><code class="value">2</code><code class="plain">, figsize</code><code class="keyword">=</code><code class="plain">(</code><code class="value">15</code><code class="plain">, </code><code class="value">10</code><code class="plain">))</code></div>
+<div class="line"><code class="plain">    </code><code class="comments"># picture-1: vehicle_speed & vehicle_speed_mean</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">].plot(timestamps, data_transposed[</code><code class="value">0</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'vehicle speed'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">].plot(timestamps, data_transposed[</code><code class="value">1</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'vehicle speed mean'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">].set_xlabel(f</code><code class="string">'second (threshold: {vehicle_speed_reference} m/s)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">].set_ylabel(</code><code class="string">'vehicle speed (m/s)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="plain">vehicle_speed_reference, color</code><code class="keyword">=</code><code class="string">'g'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">].legend()</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">].grid(</code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="comments"># picture-2: yaw_rate & yaw_rate_mean</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">].plot(timestamps, data_transposed[</code><code class="value">2</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'yaw rate'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">].plot(timestamps, data_transposed[</code><code class="value">3</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'yaw rate mean'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">].set_xlabel(f</code><code class="string">'second (threshold: {yaw_rate_threshold} rad/s)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">].set_ylabel(</code><code class="string">'yaw rate (rad/s)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="value">0.0</code><code class="plain">, color</code><code class="keyword">=</code><code class="string">'g'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="plain">yaw_rate_threshold, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="keyword">-</code><code class="plain">yaw_rate_threshold, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">].legend()</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">].grid(</code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="comments"># picture-3: x_acceleration & x_acceleration_filter_mean</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">].plot(timestamps, data_transposed[</code><code class="value">4</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'x acceleration'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">].plot(timestamps, data_transposed[</code><code class="value">5</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'x acceleration filter mean'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">].set_xlabel(f</code><code class="string">'second (threshold: {x_acceleration_threshold} m/s2)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">].set_ylabel(</code><code class="string">'x acceleration (m/s2)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="value">0.0</code><code class="plain">, color</code><code class="keyword">=</code><code class="string">'g'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="plain">x_acceleration_threshold, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="keyword">-</code><code class="plain">x_acceleration_threshold, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">].legend()</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">].grid(</code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="comments"># picture-4: y_acceleration & y_acceleration_filter_mean</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">].plot(timestamps, data_transposed[</code><code class="value">6</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'y acceleration'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">].plot(timestamps, data_transposed[</code><code class="value">7</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'y acceleration filter mean'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">].set_xlabel(f</code><code class="string">'second (threshold: {y_acceleration_threshold} m/s2)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">].set_ylabel(</code><code class="string">'y acceleration (m/s2)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="value">0.0</code><code class="plain">, color</code><code class="keyword">=</code><code class="string">'g'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="plain">y_acceleration_threshold, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="keyword">-</code><code class="plain">y_acceleration_threshold, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">].legend()</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">1</code><code class="plain">, </code><code class="value">1</code><code class="plain">].grid(</code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="comments"># picture-5: centrifugal_acceleration</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">0</code><code class="plain">].plot(timestamps, data_transposed[</code><code class="value">8</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'centrifugal acceleration'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">0</code><code class="plain">].set_xlabel(f</code><code class="string">'second (threshold: {centrifugal_acceleration_threshold} m/s2)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">0</code><code class="plain">].set_ylabel(</code><code class="string">'centrifugal acceleration (m/s2)'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">0</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="value">0.0</code><code class="plain">, color</code><code class="keyword">=</code><code class="string">'g'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">0</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="plain">centrifugal_acceleration_threshold, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">0</code><code class="plain">].axhline(y</code><code class="keyword">=</code><code class="keyword">-</code><code class="plain">centrifugal_acceleration_threshold, color</code><code class="keyword">=</code><code class="string">'r'</code><code class="plain">, linestyle</code><code class="keyword">=</code><code class="string">'--'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">0</code><code class="plain">].legend()</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">0</code><code class="plain">].grid(</code><code class="color1">True</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="comments"># picture-6: straight_driving</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">1</code><code class="plain">].plot(timestamps, data_transposed[</code><code class="value">9</code><code class="plain">], label</code><code class="keyword">=</code><code class="string">'straight driving'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">1</code><code class="plain">].set_xlabel(</code><code class="string">'second'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">1</code><code class="plain">].set_ylabel(</code><code class="string">'straight driving'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    axs[</code><code class="value">2</code><code class="plain">, </code><code class="value">1</code><code class="plain">].legend()</code></div>
+<div class="line"><code class="plain">    plt.tight_layout()</code></div>
+<div class="line"><code class="plain">    plt.savefig(os.path.join(os.path.dirname(</code><code class="functions">file</code><code class="plain">), </code><code class="string">"vehicle_movement_status.png"</code><code class="plain">))</code></div>
+<div class="line"><code class="plain">    plt.close()</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">def</code><code class="plain"> process_read_xxtrinsic(</code><code class="functions">file</code><code class="plain">):</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"\n----- ----- ----- read_xxtrinsic ----- ----- -----"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> find_transform_world(lines, xxtrinsic, sensor_name):</code></div>
+<div class="line"><code class="plain">        found_xxtrinsic </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">False</code></div>
+<div class="line"><code class="plain">        found_sensor </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">False</code></div>
+<div class="line"><code class="plain">        pattern </code><code class="keyword">=</code><code class="plain"> rf</code><code class="string">"extrinsic for sensor\d \({re.escape(sensor_name)}\)"</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">for</code><code class="plain"> num, line </code><code class="keyword">in</code><code class="plain"> </code><code class="functions">enumerate</code><code class="plain">(lines):</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">if</code><code class="plain"> xxtrinsic </code><code class="keyword">in</code><code class="plain"> line:</code></div>
+<div class="line"><code class="plain">                found_xxtrinsic </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">True</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">elif</code><code class="plain"> found_xxtrinsic </code><code class="keyword">and</code><code class="plain"> re.search(pattern, line):</code></div>
+<div class="line"><code class="plain">                found_sensor </code><code class="keyword">=</code><code class="plain"> </code><code class="color1">True</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">elif</code><code class="plain"> found_sensor </code><code class="keyword">and</code><code class="plain"> </code><code class="string">'transform_world'</code><code class="plain"> </code><code class="keyword">in</code><code class="plain"> line:</code></div>
+<div class="line"><code class="plain">                </code><code class="keyword">if</code><code class="plain"> num </code><code class="keyword">+</code><code class="plain"> </code><code class="value">1</code><code class="plain"> < </code><code class="functions">len</code><code class="plain">(lines):</code></div>
+<div class="line"><code class="plain">                    values </code><code class="keyword">=</code><code class="plain"> lines[num </code><code class="keyword">+</code><code class="plain"> </code><code class="value">1</code><code class="plain">].strip().split()</code></div>
+<div class="line"><code class="plain">                    </code><code class="keyword">return</code><code class="plain"> [</code><code class="functions">float</code><code class="plain">(value) </code><code class="keyword">for</code><code class="plain"> value </code><code class="keyword">in</code><code class="plain"> values]</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> transform_to_euler_angle(transform):</code></div>
+<div class="line"><code class="plain">        scale </code><code class="keyword">=</code><code class="plain"> </code><code class="value">180</code><code class="plain"> </code><code class="keyword">/</code><code class="plain"> np.pi</code></div>
+<div class="line"><code class="plain">        roll </code><code class="keyword">=</code><code class="plain"> scale </code><code class="keyword">*</code><code class="plain"> np.arctan2(transform[</code><code class="value">2</code><code class="plain">, </code><code class="value">1</code><code class="plain">], transform[</code><code class="value">2</code><code class="plain">, </code><code class="value">2</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">        pitch </code><code class="keyword">=</code><code class="plain"> scale </code><code class="keyword">*</code><code class="plain"> np.arctan2(</code><code class="keyword">-</code><code class="plain">transform[</code><code class="value">2</code><code class="plain">, </code><code class="value">0</code><code class="plain">], np.sqrt(transform[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">] </code><code class="keyword">*</code><code class="plain"> transform[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">] </code><code class="keyword">+</code><code class="plain"> transform[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">] </code><code class="keyword">*</code><code class="plain"> transform[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">]))</code></div>
+<div class="line"><code class="plain">        yaw </code><code class="keyword">=</code><code class="plain"> scale </code><code class="keyword">*</code><code class="plain"> np.arctan2(transform[</code><code class="value">1</code><code class="plain">, </code><code class="value">0</code><code class="plain">], transform[</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">])</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> [roll, pitch, yaw]</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="keyword">def</code><code class="plain"> calculate_euler_angle_difference(sensor_name, transform_offline, transform_online):</code></div>
+<div class="line"><code class="plain">        euler_angles_offline </code><code class="keyword">=</code><code class="plain"> transform_to_euler_angle(np.array(transform_offline).reshape(</code><code class="value">4</code><code class="plain">, </code><code class="value">4</code><code class="plain">))</code></div>
+<div class="line"><code class="plain">        euler_angles_online </code><code class="keyword">=</code><code class="plain"> transform_to_euler_angle(np.array(transform_online).reshape(</code><code class="value">4</code><code class="plain">, </code><code class="value">4</code><code class="plain">))</code></div>
+<div class="line"><code class="plain">        euler_angle_difference </code><code class="keyword">=</code><code class="plain"> np.array(euler_angles_online) </code><code class="keyword">-</code><code class="plain"> np.array(euler_angles_offline)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(f</code><code class="string">"{sensor_name}"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"--> transform_offline:"</code><code class="plain">, transform_offline)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"--> transform_online"</code><code class="plain">, transform_online)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"--> euler_angles_offline: {:.3f} {:.3f} {:.3f}"</code><code class="plain">.</code><code class="functions">format</code><code class="plain">(</code><code class="keyword">*</code><code class="plain">euler_angles_offline))</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"--> euler_angles_online: {:.3f} {:.3f} {:.3f}"</code><code class="plain">.</code><code class="functions">format</code><code class="plain">(</code><code class="keyword">*</code><code class="plain">euler_angles_online))</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"--> euler angle difference: {:.3f} {:.3f} {:.3f}"</code><code class="plain">.</code><code class="functions">format</code><code class="plain">(</code><code class="keyword">*</code><code class="plain">euler_angle_difference))</code></div>
+<div class="line"><code class="plain">    </code></div>
+<div class="line"><code class="plain">    with </code><code class="functions">open</code><code class="plain">(</code><code class="functions">file</code><code class="plain">, </code><code class="string">'r'</code><code class="plain">) as f:</code></div>
+<div class="line"><code class="plain">        lines </code><code class="keyword">=</code><code class="plain"> f.readlines()</code></div>
+<div class="line"><code class="plain">    front_wide_offline </code><code class="keyword">=</code><code class="plain"> find_transform_world(lines, </code><code class="string">'offline xxtrinsic part'</code><code class="plain">, </code><code class="string">'SIDE_VIEW_CAMERA_FRONT_WIDE'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    front_wide_online </code><code class="keyword">=</code><code class="plain"> find_transform_world(lines, </code><code class="string">'online xxtrinsic part'</code><code class="plain">, </code><code class="string">'SIDE_VIEW_CAMERA_FRONT_WIDE'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    calculate_euler_angle_difference(</code><code class="string">"[front wide camera]"</code><code class="plain">, front_wide_offline, front_wide_online)</code></div>
+<div class="line"><code class="plain">    front_tele_offline </code><code class="keyword">=</code><code class="plain"> find_transform_world(lines, </code><code class="string">'offline xxtrinsic part'</code><code class="plain">, </code><code class="string">'SIDE_VIEW_CAMERA_FRONT_TELE'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    front_tele_online </code><code class="keyword">=</code><code class="plain"> find_transform_world(lines, </code><code class="string">'online xxtrinsic part'</code><code class="plain">, </code><code class="string">'SIDE_VIEW_CAMERA_FRONT_TELE'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    calculate_euler_angle_difference(</code><code class="string">"[front tele camera]"</code><code class="plain">, front_tele_offline, front_tele_online)</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">def</code><code class="plain"> search_files(folder):</code></div>
+<div class="line"><code class="plain">    online_calibration_json </code><code class="keyword">=</code><code class="plain"> os.path.join(folder, </code><code class="string">"online_calibration.json"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">if</code><code class="plain"> os.path.isfile(online_calibration_json):</code></div>
+<div class="line"><code class="plain">        process_online_calibration(online_calibration_json)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">else</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"[ERROR] could not find:"</code><code class="plain">, online_calibration_json)</code></div>
+<div class="line"><code class="plain">      </code></div>
+<div class="line"><code class="plain">    front_wide </code><code class="keyword">=</code><code class="plain"> os.path.join(folder, </code><code class="string">"side_view_camera_front_wide.txt"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">if</code><code class="plain"> os.path.isfile(front_wide):</code></div>
+<div class="line"><code class="plain">        process_camera(front_wide, </code><code class="string">"side_view_camera_front_wide"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">else</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"[ERROR] could not find:"</code><code class="plain">, front_wide)</code></div>
+<div class="line"><code class="plain">    </code></div>
+<div class="line"><code class="plain">    front_tele </code><code class="keyword">=</code><code class="plain"> os.path.join(folder, </code><code class="string">"side_view_camera_front_tele.txt"</code><code class="plain">)    </code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">if</code><code class="plain"> os.path.isfile(front_tele):</code></div>
+<div class="line"><code class="plain">        process_camera(front_tele, </code><code class="string">"side_view_camera_front_tele"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">else</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"[ERROR] could not find:"</code><code class="plain">, front_tele)</code></div>
+<div class="line"><code class="plain">    </code></div>
+<div class="line"><code class="plain">    vehicle_movement_status </code><code class="keyword">=</code><code class="plain"> os.path.join(folder, </code><code class="string">"vehicle_movement_status.txt"</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">if</code><code class="plain"> os.path.isfile(vehicle_movement_status):</code></div>
+<div class="line"><code class="plain">        process_vehicle_movement_status(vehicle_movement_status)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">else</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"[ERROR] could not find:"</code><code class="plain">, vehicle_movement_status)</code></div>
+<div class="line"><code class="plain">    </code></div>
+<div class="line"><code class="plain">    read_xxtrinsic </code><code class="keyword">=</code><code class="plain"> os.path.join(folder, </code><code class="string">"read_xxtrinsic.txt"</code><code class="plain">)    </code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">if</code><code class="plain"> os.path.isfile(read_xxtrinsic):</code></div>
+<div class="line"><code class="plain">        process_read_xxtrinsic(read_xxtrinsic)</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">else</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">print</code><code class="plain">(</code><code class="string">"[ERROR] could not find:"</code><code class="plain">, read_xxtrinsic)</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">if</code><code class="plain"> __name__ </code><code class="keyword">=</code><code class="keyword">=</code><code class="plain"> </code><code class="string">"__main__"</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">    parser </code><code class="keyword">=</code><code class="plain"> argparse.ArgumentParser(description</code><code class="keyword">=</code><code class="string">'auto analyze online calibration data'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    parser.add_argument(</code><code class="string">'folder'</code><code class="plain">, </code><code class="functions">type</code><code class="keyword">=</code><code class="functions">str</code><code class="plain">, </code><code class="functions">help</code><code class="keyword">=</code><code class="string">'the path of online calibration data'</code><code class="plain">)</code></div>
+<div class="line"><code class="plain">    args </code><code class="keyword">=</code><code class="plain"> parser.parse_args()</code></div>
+<div class="line"><code class="plain">    search_files(args.folder)</code></div>
+</div>
+    </div>
+<p   
+> $ python online_calib_analyze.py value/12848c20240417 View terminal printing </p>
+<p   
+> $ python online_calib_analyze.py value/12848c20240417> online_calib_analyze.log to save the terminal log </p>
+<ul class=" "><li class=" "><p   
+>runtime</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-39-38-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-39-38-version-1-modificationdate-1713840139000-api-v2.png"  height="250" />
+    </p>
+<ul class=" "><li class=" "><p   
+> Vehicle movement status </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-39-52-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-39-52-version-1-modificationdate-1713840139000-api-v2.png" width="800"  />
+    </p>
+<ul class=" "><li class=" "><p   
+> The convergence of each camera </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-33-3-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-33-3-version-1-modificationdate-1713840139000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-33-43-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-33-43-version-1-modificationdate-1713840139000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-34-4-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-34-4-version-1-modificationdate-1713840139000-api-v2.png"  height="400" />
+</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-42-59-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-42-59-version-1-modificationdate-1713840139000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-43-59-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-43-59-version-1-modificationdate-1713840139000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-44-4-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-44-4-version-1-modificationdate-1713840139000-api-v2.png"  height="250" />
+</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-43-14-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-43-14-version-1-modificationdate-1713840139000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-44-11-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-44-11-version-1-modificationdate-1713840139000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-46-59-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-46-59-version-1-modificationdate-1713840139000-api-v2.png"  height="250" />
+</p>
+<ul class=" "><li class=" "><p   
+> The parameters of Office and Online in Persistency change </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-34-25-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-34-25-version-1-modificationdate-1713840139000-api-v2.png"  height="250" />
+    </p>
+<p   
+> 3. Upload results </p>
+<p   
+><strong class=" "> Online calibration data archiving path: \\ <a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\00_DataExchange\online_calibration</strong></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_14-11-26-version-1-modificationdate-1713840139000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_14-11-26-version-1-modificationdate-1713840139000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4192817515/image-2024-4-22_13-37-53-version-1-modificationdate-1713840140000-api-v2.png" alt="images/confluence/download/attachments/4192817515/image-2024-4-22_13-37-53-version-1-modificationdate-1713840140000-api-v2.png"  height="400" />
+</p>
+<p   
+> Batch Data Analysis Reference instructions (please understand and modify in -depth before use) </p>
+<p   
+>$ find d    <span style="color: #000000;">
+irectory    </span>
+ -type d -exec sh -c 'python online_calib_analyze.py "$0" > "$0/online_calib_analyze.log"' {} \;</p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4088481889_%E5%9C%A8%E7%BA%BF%E6%A0%87%E5%AE%9Adaily_test.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Online calibration daily test </span>
+        </a>
+                <a href="4291958886_OTA3_Online_Calibration_Disturb_Test.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>OTA3 Online Calibration Disturb Test</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

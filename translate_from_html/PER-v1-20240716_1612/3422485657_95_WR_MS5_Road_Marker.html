@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>95_WR MS5 Road Marker - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3422485657"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="3422485372_95_WR_Delivery.html">95_WR Delivery</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485572_95_WR_MS5_%28T0%2B12%29_Check%2C_2023_5_24.html">95_WR_MS5 (T0+12) Check, 2023/5/24</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485576_95_WR_MS5_Algorithm_Reproduce.html">95_WR_MS5 Algorithm Reproduce</a></li>
+                                                                                     <li><a href="3422485578_95_WR_MS5_Detail_Design_Docs.html">95_WR MS5 Detail Design Docs</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3422485657"> <span>95_WR MS5 Road Marker</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+></p>
+    <div class="section section-1" id="src-3422485657_safe-id-aWQtOTVfV1JNUzVSb2FkTWFya2VyLeaooeWdl-S7u-WKoQ">
+        <h1 class="heading "><span> Module task </span></h1>
+<ul class=" "><li class=" "><p   
+> The Mapdl module is to meet the needs of Wave3 Map Construction & Localization. <br/> The Mapdl module is a simple multi -tasking module, which contains two sub -tasks, one is a semantic division task, which is used to divide different types of Road Markers on the pavement; the other task is to detect the task, which will detect the road arrows and roadside signs by detecting the road arrows and roadside signs, and it will also be detected, and the roadside signs will be detected, and the roadside signs will be detected, and the roadside signs will be detected, and the roadside signs will be detected, and the roadside signs will be detected.At the same time, the above key points information is detected for assistance positioning and building maps. <br/></p>
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485657/image-2023-4-26_9-50-56-version-1-modificationdate-1694153244000-api-v2.png" alt="images/confluence/download/attachments/3422485657/image-2023-4-26_9-50-56-version-1-modificationdate-1694153244000-api-v2.png"  height="250" />
+    </li></ul>    </div>
+    <div class="section section-1" id="src-3422485657_safe-id-aWQtOTVfV1JNUzVSb2FkTWFya2VyLeaooeWdl0RhdGFzZXQ">
+        <h1 class="heading "><span> Module dataset </span></h1>
+<ul class=" "><li class=" "><p   
+> Model input: BATCHED RGB Images of Front Cameras. </p>
+</li><li class=" "><p   
+> Segmentation: MS5 data volume ( <strong class=" ">49956/1705</strong>）<br/></p>
+<ul class=" "><li class=" "><p   
+>Unified into 8 Classes:</p>
+<ul class=" "><li class=" "><p   
+>ARROW</p>
+</li><li class=" "><p   
+>LANE_LINE_MARKING</p>
+</li><li class=" "><p   
+>ROAD_TEXT</p>
+</li><li class=" "><p   
+>ZEBRA_CROSSING_BODY</p>
+</li><li class=" "><p   
+>YELLOW_MESH</p>
+</li><li class=" "><p   
+>DIAMOND</p>
+</li><li class=" "><p   
+>DECELERATION_MARKING</p>
+</li><li class=" "><p   
+>OTHER</p>
+</li></ul></li><li class=" "><p   
+> Data pre -processing: <br/></p>
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485657/image-2023-4-26_10-2-7-version-1-modificationdate-1694153244000-api-v2.png" alt="images/confluence/download/attachments/3422485657/image-2023-4-26_10-2-7-version-1-modificationdate-1694153244000-api-v2.png"  height="250" />
+    </li></ul></li><li class=" "><p   
+> DETECTION: MS5 data volume ( <strong class=" ">131275/1911</strong>）</p>
+<ul class=" "><li class=" "><p   
+>4 Classes BBox<br/><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3422485657/image-2023-7-28_15-11-50-version-1-modificationdate-1694153243000-api-v2.png" alt="images/confluence/download/thumbnails/3422485657/image-2023-7-28_15-11-50-version-1-modificationdate-1694153243000-api-v2.png" width="200"  />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485657/image-2023-7-28_15-12-19-version-1-modificationdate-1694153243000-api-v2.png" alt="images/confluence/download/attachments/3422485657/image-2023-7-28_15-12-19-version-1-modificationdate-1694153243000-api-v2.png" width="450"  />
+<br/></p>
+<ul class=" "><li class=" "><p   
+>ARROW_BOX</p>
+</li><li class=" "><p   
+>TRAFFIC_SIGN_PHYSICAL_BOX</p>
+</li><li class=" "><p   
+>TRAFFIC_SIGN_STANDALONE_BOX</p>
+</li><li class=" "><p   
+>TRAFFIC_SIGN_CLASSIFICATION_BOX</p>
+</li></ul></li><li class=" "><p   
+>4 classes Keypoints<br/><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3422485657/image-2023-7-28_15-10-26-version-1-modificationdate-1694153243000-api-v2.png" alt="images/confluence/download/thumbnails/3422485657/image-2023-7-28_15-10-26-version-1-modificationdate-1694153243000-api-v2.png" width="100"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3422485657/image-2023-7-28_15-10-52-version-1-modificationdate-1694153243000-api-v2.png" alt="images/confluence/download/thumbnails/3422485657/image-2023-7-28_15-10-52-version-1-modificationdate-1694153243000-api-v2.png"  height="209" />
+</p>
+<ul class=" "><li class=" "><p   
+>ARROW_START_POINT_LEFT</p>
+</li><li class=" "><p   
+>ARROW_START_POINT_RIGHT</p>
+</li><li class=" "><p   
+>ARROW_END_POINT</p>
+</li><li class=" "><p   
+>TRAFFIC_SIGN_POINT</p>
+</li></ul></li><li class=" "><p   
+> Pre -processing <br/></p>
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3422485657/image-2023-4-26_10-14-45-version-1-modificationdate-1694153244000-api-v2.png" alt="images/confluence/download/attachments/3422485657/image-2023-4-26_10-14-45-version-1-modificationdate-1694153244000-api-v2.png"  height="250" />
+    </li></ul></li></ul><p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3422485657_safe-id-aWQtOTVfV1JNUzVSb2FkTWFya2VyLU1vZGVsRGVzaWduJiZEQUc">
+        <h1 class="heading "><span>Model Design && DAG</span></h1>
+<ul class=" "><li class=" "><p   
+>Backbone: Regnet</p>
+</li><li class=" "><p   
+>Neck: PFPN</p>
+</li><li class=" "><p   
+>Head:</p>
+<ul class=" "><li class=" "><p   
+>Segmentation Head</p>
+</li><li class=" "><p   
+>Detection Head (Centernet Head)</p>
+</li></ul></li></ul><p   
+><br/><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3422485657/mapdl-version-1-modificationdate-1694153243000-api-v2.png" alt="images/confluence/download/attachments/3422485657/mapdl-version-1-modificationdate-1694153243000-api-v2.png" width="1531"  />
+    </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3422485657_safe-id-aWQtOTVfV1JNUzVSb2FkTWFya2VyLUFPU-S7o-eggQ">
+        <h1 class="heading "><span> AOS code </span></h1>
+<p   
+> Compared with the MS4, the AOS part is compared to NO Modification, and the main implementation points are as follows: </p>
+<ul class=" "><li class=" "><p   
+> Initialize Mapnet, run the model to get the test results. </p>
+</li><li class=" "><p   
+> The results can be visual. </p>
+</li><li class=" "><p   
+> The packaging results to the corresponding Port MSG and sending MSG. </p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-3422485657_safe-id-aWQtOTVfV1JNUzVSb2FkTWFya2VyLU1TNemqjOaUtuaAu-e7k--8iOWvueavlE1TNO-8iQ">
+        <h1 class="heading "><span> MS5 acceptance summary (comparison MS4) </span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="6.78887%"/>
+                                    <col  width="5.88368%"/>
+                                    <col  width="25.0735%"/>
+                                    <col  width="18.3752%"/>
+                                    <col  width="43.8108%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="highlight-#b3d4ff confluenceTh" rowspan="1" colspan="2">
+    <p   
+>MapNet@MS5</p>
+            </td>
+                <td  class="highlight-#b3d4ff confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Segmentation</p>
+            </td>
+                <td  class="highlight-#b3d4ff confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Detection</p>
+            </td>
+                <td  class="highlight-#b3d4ff confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Remark </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="highlight-#deebff confluenceTd" rowspan="1" colspan="2">
+    <p   
+>Design Doc/User Manuel</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="2">
+    <ul class=" "><li class=" "><p   
+> Compared to MS4: The model structure Neck is changed from FPN to PFPN, and the rest of the model has not been changed. </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> The Detection part of the reasoning instruction is not provided, and some reasoning indicators of the Detection are not provided.It is not received before the end of July by the end of July.28 jul 2023 </p>
+</li><li class=" "><p   
+> Regarding NECK's modification, Wen Yuan's reply is because of increasing the parameters of the division task and improving the performance of the division task. </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#deebff confluenceTd" rowspan="2" colspan="1">
+    <p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+>python</p>
+<p   
+> Training </p>
+            </td>
+                <td  class="highlight-#deebff confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Training code </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> paid </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> paid </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Multi -task training sampling ratio: 1: 1 </p>
+</li><li class=" "><p   
+> Multi -task training LOSS ratio: 10: 1 </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#deebff confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Quantity of data sets </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+><strong class=" "> Training set: 4000 → 49956 </strong></p>
+</li><li class=" "><p   
+><strong class=" "> Test set: 1000 → 1705 </strong></p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+><strong class=" "> Training set: 4000 → 131275 </strong></p>
+</li><li class=" "><p   
+><strong class=" "> Test set: 1000 → 1911 </strong></p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#deebff confluenceTd" rowspan="1" colspan="2">
+    <p   
+> AOS code </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> No modification </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+><strong class=" "> No Modification, no 3D position detection module is provided. </strong></p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Detection3D position detection, Wen Yuan's reply will be launched on the car on the car around 7/22.No relevant results have been received. </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#deebff confluenceTd" rowspan="1" colspan="2">
+    <p   
+> other problems </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="3">
+    <ul class=" "><li class=" "><p   
+><strong class=" "> Reap indicator: </strong></p>
+<ul class=" "><li class=" "><p   
+><strong class=" "> Sub -task: REPRODUCE index difference is 0.56%. <a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-48868?src=confmacro">CNWVIII-48868</a> - Jira issue doesn't exist or you don't have permission to view it.</strong></p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;">
+<strong class=" "> The detection task does not provide indicators. </strong>    </span>
+</p>
+</li></ul></li></ul>            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3422485654_95_WR_MS5_Lane_Detection.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS5 Lane Detection</span>
+        </a>
+                <a href="3422485668_95_WR_MS5_Traffic_Sign_Classification.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS5 Traffic Sign Classification</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

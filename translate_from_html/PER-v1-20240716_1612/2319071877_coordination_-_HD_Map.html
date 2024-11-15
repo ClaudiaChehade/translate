@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>coordination - HD Map - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2319071877"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="2319071870_HD_Map_data_structure.html">HD Map data structure</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2319071877"> <span>coordination - HD Map</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+><strong class=" "> The coordinate system of high -precision map data </strong></p>
+<p   
+><strong class=" ">1. GNSS </strong><strong class=" "> Coordinate System </strong></p>
+<p   
+> GCJ02 Coordinate System, GCJ02 Coordinate System's coordinates on WGS84, including dimensions, longitudes and altitude (Latitude, Longitude, Altitude).According to national regulations, altitude value is often given 0 or given a relatively high level of the ground. </p>
+<p   
+> The GCJ02 coordinate system is the most basic expression of map element coordinates. </p>
+<p   
+><strong class=" ">2. ENU</strong><strong class=" "> Coordinate System </strong></p>
+<p   
+> The ENU coordinate system can be used for the use of Localization, Fusion, Planning modules. </p>
+<p   
+> The definition of ENU coordinate system is: </p>
+<p   
+> X -axis -point to the east </p>
+<p   
+> Y -axis -point north </p>
+<p   
+> Z axis -point to the top (and the gravity line into a straight line) </p>
+<p   
+><br/></p>
+<p   
+> The ENU coordinate system depends on the 3D Descartes coordinate system established on the surface of the earth.Universal Transversve Mercator UTM uses a 2D Descartes coordinate system to give the surface point of the earth.The coordinate system divides the earth into 60 areas, each region is represented as a 6 -degree longitudinal zone, and it is projected by cutting lines in Makoto in each area. </p>
+<p   
+> UTM projection involves the problem of UTM GRID switching. When implementing, please synchronize this problem with other Team. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2319071877/coordination_02-version-1-modificationdate-1655358787000-api-v2.png" alt="images/confluence/download/attachments/2319071877/coordination_02-version-1-modificationdate-1655358787000-api-v2.png"  height="250" />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2319071877/utm-zones-version-1-modificationdate-1655358804000-api-v2.png" alt="images/confluence/download/attachments/2319071877/utm-zones-version-1-modificationdate-1655358804000-api-v2.png"  height="250" />
+    </p>
+<p   
+> Regarding the use of UTM coordinate systems, we follow international standards and specifications.You can refer to the following website to get more details: </p>
+<p   
+><a  class="external-link" href="http://geokov.com/education/utm.aspx">http://geokov.com/education/utm.aspx</a></p>
+<p   
+><a  class="external-link" href="https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system">https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system</a></p>
+<p   
+> Apollo CoordInate System: <a  class="external-link" href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/coordination_cn.md">https://github.com/ApolloAuto/apollo/blob/master/docs/specs/coordination_cn.md</a> In Apolo system, UTM Coordinate System is unified in modules such as positioning, Planning and other modules <strong class=" "> Local coordinate system use </strong>。</p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+>UTM:</p>
+<p   
+><a  class="external-link" href="https://en.wikipedia.org/wiki/File:Universal_Transverse_Mercator_zones.svg">https://en.wikipedia.org/wiki/File:Universal_Transverse_Mercator_zones.svg</a></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2319071877/Universal_Transverse_Mercator_zones-version-1-modificationdate-1655358299000-api-v2.png" alt="images/confluence/download/attachments/2319071877/Universal_Transverse_Mercator_zones-version-1-modificationdate-1655358299000-api-v2.png"  height="400" />
+    </p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2319071870_HD_Map_data_structure.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>HD Map data structure</span>
+        </a>
+                <a href="2966426324_HD_Map_related_standars.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>HD Map related standars</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Offline Calibration Routine - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3252005066"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                     <li><a href="2754796745_xcalib_prod.html">xcalib_prod</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3252005066"> <span>Offline Calibration Routine</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3252005066_OfflineCalibrationRoutine-">
+        <h1 class="heading "><span></span></h1>
+    </div>
+    <div class="section section-1" id="src-3252005066_OfflineCalibrationRoutine-Input">
+        <h1 class="heading "><span>Input</span></h1>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-DiagnoseRequest">
+        <h2 class="heading "><span>DiagnoseRequest</span></h2>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> DiagnoseRequest</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    RoutineID routine_id{RoutineID::RI_UNKNOWN};             </code></div>
+<div class="line"><code class="plain">    SubFunction sub_function{SubFunction::SF_UNKNOWN};          </code><code class="comments"> // The current ROUTINE stage is mainly divided into start_routine and request_routine_results </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{}; 	</code><code class="comments"> // Sensorid to be talked about </code></div>
+<div class="line"><code class="plain">    vfc::uint8_t room_id{0u}; </code></div>
+<div class="line"><code class="plain">    vfc::uint8_t target_id{0u};                           		</code><code class="comments"> // The currently collected target ID in the after -sales calibration </code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+<p   
+> Target ID is 1-44 sorting first, first stand, and then viewing, ff = 255 interrupt collection </p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3252005066_OfflineCalibrationRoutine-Output">
+        <h1 class="heading "><span>Output</span></h1>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-DiagnoseResponse">
+        <h2 class="heading "><span>DiagnoseResponse</span></h2>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> DiagnoseResponse</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    RoutineID routine_id{RoutineID::RI_UNKNOWN};       							 </code><code class="comments"> // EOL or AFTERSALES or target query or collect data test </code></div>
+<div class="line"><code class="plain">    SubFunction sub_function{SubFunction::SF_UNKNOWN};                           </code><code class="comments"> // start_routine or request_routine_result </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{};                     </code><code class="comments"> / Third </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CalibStatus, MAX_SENSOR_ID> calib_status{};                </code><code class="comments"> // The calibration status of each sensor corresponds to the above Sensorid. </code></div>
+<div class="line"><code class="plain">    CalibStatus all_calib_status{CalibStatus::CS_UNKNOWN};                       </code><code class="comments"> // Total a calibration state </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<vfc::uint8_t, MAX_SIDE_TARGET_NUM> side_targets{};         </code><code class="comments"> // Zhou Shi target collection to be collected </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<vfc::uint8_t, MAX_SURROUND_TARGET_NUM> surround_targets{}; </code><code class="comments"> // Evergreen target collection to be collected </code></div>
+<div class="line"><code class="plain">    vfc::uint8_t is_capture_success{0u};                                         </code><code class="comments"> // All target collection results </code></div>
+<div class="line"><code class="plain">    </code><code class="color1">bool</code><code class="plain"> is_verification{</code><code class="keyword">true</code><code class="plain">};                                                  </code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+<p  class="auto-cursor-target" 
+> target_inquire stage </p>
+<p  class="auto-cursor-target" 
+> The diagnosis returns to only follow SIDE_TARGETS & Surround_targets Fixed length (40 and 4), of which 0 or 1 </p>
+<p  class="auto-cursor-target" 
+> Target Capture stage </p>
+<p  class="auto-cursor-target" 
+> Just follow IS_CAPTURE_SUCCCESS </p>
+<p  class="auto-cursor-target" 
+> Afterrsales Calibration stage </p>
+<p  class="auto-cursor-target" 
+> a. Inquire, but not requesting Calibration, Unconfig </p>
+<p  class="auto-cursor-target" 
+> b. There is no inquire but requesting Calibration, FAIL </p>
+    </div>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-OfflineCalibResult">
+        <h2 class="heading auto-cursor-target"><span>OfflineCalibResult</span></h2>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> OfflineCalibResult </code><code class="comments">// output_2: OfflineCalibResultInterfaceType</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{};</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<ResultStatus, MAX_SENSOR_ID> result_statuses{};                      </code><code class="comments"> // Success / Internal Payment Failure / Failure </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<DeltaSensorExtrinsic, MAX_SENSOR_ID> delta_sensor_extrinsics{}; 	   </code><code class="comments"> // and the error of the installation position </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CalibError, MAX_CALIB_ERROR> calib_errors;                           </code><code class="comments"> // The reason for failure, this is not the same as the above Sensor ID, one by one </code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-SensorXxtrinsic">
+        <h2 class="heading auto-cursor-target"><span>SensorXxtrinsic</span></h2>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> SensorXxtrinsic</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    VehicleIdentificationNumber vin;											</code><code class="comments"> // SN number </code></div>
+<div class="line"><code class="plain">    VehicleInfo vehicle_info;        </code></div>
+<div class="line"><code class="plain">    VehicleSize vehicle_size;       </code></div>
+<div class="line"><code class="plain">    VehicleStatus vehicle_status;    </code></div>
+<div class="line"><code class="plain">    CalibInfo calib_info;            </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{};					</code><code class="comments"> / Third </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CameraIntrinsic, MAX_SENSOR_ID> sensor_intrinsics{};		</code><code class="comments"> // Internal parameters of the sensor </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorExtrinsic, MAX_SENSOR_ID> sensor_extrinsics{};		</code><code class="comments"> // Sensor external parameters </code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-CalibFaultEvent">
+        <h2 class="heading "><span>CalibFaultEvent</span></h2>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">vector</code></div>
+<div class="line"><code class="plain">EFaultEventId   FAULTEVENT_ID{EFaultEventId::EFAULTEVENTID_MAX_COUNT};</code></div>
+<div class="line"><code class="plain">EFaultEventStatus   FAULTEVENT_STATUS{EFaultEventStatus::EFAULTEVENT_STATUS_INVALID};</code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3252005066_safe-id-T2ZmbGluZUNhbGlicmF0aW9uUm91dGluZS1FcnJvcuS6p-eUn-eahOaDheWGtQ">
+        <h1 class="heading "><span> The situation of error </span></h1>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-calib_errorsinOfflineCalibResult">
+        <h2 class="heading "><span>calib_errors in OfflineCalibResult</span></h2>
+<p   
+><strong class=" ">    <span style="color: #ff0000;"> [Level is not related to the number of sensors] It is mainly a check that calibrates the front or dependent item </span>
+</strong></p>
+    <div class="section section-3" id="src-3252005066_safe-id-T2ZmbGluZUNhbGlicmF0aW9uUm91dGluZS3nsbvlnos">
+        <h3 class="heading "><span> type </span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">enum</code><code class="plain"> </code><code class="keyword">class</code><code class="plain"> CalibError : vfc::uint8_t </code><code class="comments">// output_1: EolCalibResultInterfaceType</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    CALIB_SUCCESS,                          </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_FRONT_LEFT_DOOR_OPEN,       	 	</code><code class="comments"> // [Pre -end item check] The left front door is not closed </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_FRONT_RIGHT_DOOR_OPEN,      	 	</code><code class="comments"> // [Pre -initiative check] The right front door is not closed </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_REAR_LEFT_DOOR_OPEN,        	 	</code><code class="comments"> // [Pre -end item check] The left back door is not closed </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_REAR_RIGHT_DOOR_OPEN,       		</code><code class="comments"> // [Pre -end item check] The right back door is not closed </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_HOOD_OPEN,                  	 	</code><code class="comments"> // [Pre -End item check] The engine cover is not closed </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_TRUNK_OPEN,                 	 	</code><code class="comments"> // [Pre -End item check] The trunk is not closed </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_LEFT_REARVIEW_MIRROR_FOLD,  	 	</code><code class="comments"> // [Pre -end item check] The left rearview mirror is not folded </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_RIGHT_REARVIEW_MIRROR_FOLD, 	 	</code><code class="comments"> // [Pre -end item check] The right rearview mirror is not folded </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_POWER_OFF,                  	 	</code><code class="comments"> // [Pre -End item check] The engine is closed </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_FRONT_WIPER_OPEN,           	 	</code><code class="comments"> // [Pre -end item check] Wiper is not closed </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_HEADBEAM_OPEN,              	 	</code><code class="comments"> // [Pre -End item check] The front beam is opened </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_LIDAR_POINTCLOUD_ABNORMAL,			</code><code class="comments"> // [Read data] Dianyun is abnormal </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_CAMERA_IMAGE_ABNORMAL,      	 	</code><code class="comments"> // [Read data] Image abnormalities </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_CAMERA_INTRINSIC_ABNORMAL,        	</code><code class="comments"> // 【Reading internal reference】 Internal reference test fails to pass </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_VEHICLE_SPEED_NO_ZERO,      		</code><code class="comments"> // [Pre -initiative check] The speed is not 0 is 0 </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_VEHICLE_INFO_ABNORMAL,      		</code><code class="comments"> // [Pre -end item check] Model model or frame number is unknown </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_SUSPENSION_NOT_NORMAL_LEVEL,      	</code><code class="comments"> // [Pre -End item check] The suspension status is abnormal </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_TIRE_PRESSURE_ABNORMAL,             </code><code class="comments"> // [Pre -End item check] Abnormal tire pressure </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_NO_TARGET_GROUNDTRUTH,      		</code><code class="comments">// TODO</code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_TARGET_DETECT_ABNORMAL,     	 	</code><code class="comments">// TODO</code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_CALIB_RESULT_INVALID,       		</code><code class="comments">// TODO</code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_DIAGNOISE_IO,               		</code><code class="comments"> // Wednent Sensorid to empty </code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_TIMEOUT,                    		</code><code class="comments">// TODO</code></div>
+<div class="line"><code class="plain">    CALIB_ERROR_MAX</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-result_statusesinOfflineCalibResult">
+        <h2 class="heading "><span>result_statuses in OfflineCalibResult</span></h2>
+<p   
+><strong class=" ">    <span style="color: #ff0000;"> [The length and the number of sensors are the same] The most direct indicator calibration is successful or not </span>
+</strong></p>
+    <div class="section section-3" id="src-3252005066_safe-id-T2ZmbGluZUNhbGlicmF0aW9uUm91dGluZS3nsbvlnosuMQ">
+        <h3 class="heading "><span> type </span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">enum</code><code class="plain"> </code><code class="keyword">class</code><code class="plain"> ResultStatus : vfc::uint8_t </code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    XXTRINSIC_VALID = 0u, 						 	</code><code class="comments"> // Normal inside and outside </code></div>
+<div class="line"><code class="plain">    INTRINSIC_INVALID,    							</code><code class="comments"> / Third </code></div>
+<div class="line"><code class="plain">    EXTRINSIC_INVALID,    							</code><code class="comments"> // TODO: Sensors with abnormalities with abnormal results of external participation are assigned </code></div>
+<div class="line"><code class="plain">    XXTRINSIC_INVALID,    							</code><code class="comments"> // Internal and external ginseng is abnormal </code></div>
+<div class="line"><code class="plain">    RESULT_STATUS_MAX</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-calib_statusinDiagnoseResponse">
+        <h2 class="heading "><span>calib_status in DiagnoseResponse</span></h2>
+<p   
+><strong class=" ">    <span style="color: #ff0000;"> [The length of the length as the sensor is the same] The calibration state of each sensor is currently only using the call_success and the call </span>
+</strong></p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">enum</code><code class="plain"> </code><code class="keyword">class</code><code class="plain"> CalibStatus : vfc::uint8_t </code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    CS_UNKNOWN = 0u, </code></div>
+<div class="line"><code class="plain">    CALIB_SUCCESS,   								</code><code class="comments">// in use</code></div>
+<div class="line"><code class="plain">    ON_CALIB,      </code></div>
+<div class="line"><code class="plain">    CALIB_FAIL,      							 	</code><code class="comments">// in use</code></div>
+<div class="line"><code class="plain">    UNCONFIG,        </code></div>
+<div class="line"><code class="plain">    AFTERSALES_FAIL, </code></div>
+<div class="line"><code class="plain">    CALIB_STATUS_MAX</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3252005066_safe-id-T2ZmbGluZUNhbGlicmF0aW9uUm91dGluZS3lkITnp43mg4XlhrXkuIvnmoTov5Tlm57lgLzmsYfmgLvvvIhSRVFVRVNUX1JPVVRJTkVfUkVTVUxUU--8iQ">
+        <h1 class="heading "><span> In various cases, the return value summary (request_routine_results) </span></h1>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-EOL_CALIBRATION">
+        <h2 class="heading "><span>EOL_CALIBRATION</span></h2>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-DiagnoseResponse.1">
+        <h3 class="heading "><span>DiagnoseResponse</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> DiagnoseResponse</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    RoutineID routine_id{RoutineID::RI_UNKNOWN};       							 </code><code class="comments">// EOL_CALIBRATION</code></div>
+<div class="line"><code class="plain">    SubFunction sub_function{SubFunction::SF_UNKNOWN};                           </code><code class="comments">// Request_Routine_Result</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{};                     </code><code class="comments">// same as request</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CalibStatus, MAX_SENSOR_ID> calib_status{};                </code><code class="comments">// Success or Fail</code></div>
+<div class="line"><code class="plain">    CalibStatus all_calib_status{CalibStatus::CS_UNKNOWN};                       </code><code class="comments">// Success or Fail</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<vfc::uint8_t, MAX_SIDE_TARGET_NUM> side_targets{};         </code><code class="comments">// None</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<vfc::uint8_t, MAX_SURROUND_TARGET_NUM> surround_targets{}; </code><code class="comments">// None</code></div>
+<div class="line"><code class="plain">    vfc::uint8_t is_capture_success{0u};                                         </code><code class="comments">// don't care</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">bool</code><code class="plain"> is_verification{</code><code class="keyword">true</code><code class="plain">};                                                  </code><code class="comments">// don't care </code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-OfflineCalibResult.1">
+        <h3 class="heading auto-cursor-target"><span>OfflineCalibResult</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> OfflineCalibResult</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{};          					   </code><code class="comments">// same as request</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<ResultStatus, MAX_SENSOR_ID> result_statuses{};                      </code><code class="comments">// Valid / Intrinsic Invalid (when read param) / Extrinsic Invalid (when do calibration)</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<DeltaSensorExtrinsic, MAX_SENSOR_ID> delta_sensor_extrinsics{}; 	   </code><code class="comments">// correspond to sensor_ids, if status not valid, it doesn't make sense</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CalibError, MAX_CALIB_ERROR> calib_errors;                           </code><code class="comments">// calib errors when doing calibration</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-SensorXxtrinsic.1">
+        <h3 class="heading auto-cursor-target"><span>SensorXxtrinsic</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> SensorXxtrinsic</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    VehicleIdentificationNumber vin;											</code><code class="comments">// SN</code></div>
+<div class="line"><code class="plain">    VehicleInfo vehicle_info;        </code></div>
+<div class="line"><code class="plain">    VehicleSize vehicle_size;       </code></div>
+<div class="line"><code class="plain">    VehicleStatus vehicle_status;    </code></div>
+<div class="line"><code class="plain">    CalibInfo calib_info;            </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{};     				</code><code class="comments">// same as request (to be confirmed)</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CameraIntrinsic, MAX_SENSOR_ID> sensor_intrinsics{};		</code><code class="comments">// intrinsic correspond to sensor_ids</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorExtrinsic, MAX_SENSOR_ID> sensor_extrinsics{};		</code><code class="comments">// extrinsic correspond to sensor_ids</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-CalibFaultEvent.1">
+        <h3 class="heading "><span>CalibFaultEvent</span></h3>
+<p   
+> What are the abnormalities? What are the abnormalities </p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-TARGET_INQUIRE">
+        <h2 class="heading "><span>TARGET_INQUIRE</span></h2>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-DiagnoseResponse.2">
+        <h3 class="heading "><span>DiagnoseResponse</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> DiagnoseResponse</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    RoutineID routine_id{RoutineID::RI_UNKNOWN};       							 </code><code class="comments">// TARGET_INQUIRE</code></div>
+<div class="line"><code class="plain">    SubFunction sub_function{SubFunction::SF_UNKNOWN};                           </code><code class="comments">// Request_Routine_Result</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{};                     </code><code class="comments">// same as request</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CalibStatus, MAX_SENSOR_ID> calib_status{};                </code><code class="comments">// ON_CALIB</code></div>
+<div class="line"><code class="plain">    CalibStatus all_calib_status{CalibStatus::CS_UNKNOWN};                       </code><code class="comments">// ON_CALIB</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<vfc::uint8_t, MAX_SIDE_TARGET_NUM> side_targets{};         </code><code class="comments">// side target index</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<vfc::uint8_t, MAX_SURROUND_TARGET_NUM> surround_targets{}; </code><code class="comments">// surround target index</code></div>
+<div class="line"><code class="plain">    vfc::uint8_t is_capture_success{0u};                                         </code><code class="comments">// don't care</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">bool</code><code class="plain"> is_verification{</code><code class="keyword">true</code><code class="plain">};                                                  </code><code class="comments">// don't care </code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-OfflineCalibResult.2">
+        <h3 class="heading auto-cursor-target"><span>OfflineCalibResult</span></h3>
+<p   
+> none </p>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-SensorXxtrinsic.2">
+        <h3 class="heading auto-cursor-target"><span>SensorXxtrinsic</span></h3>
+<p   
+> none </p>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-CalibFaultEvent.2">
+        <h3 class="heading "><span>CalibFaultEvent</span></h3>
+<p   
+> What are the abnormalities? What are the abnormalities </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-TARGET_CAPTURE">
+        <h2 class="heading "><span>TARGET_CAPTURE</span></h2>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-DiagnoseResponse.3">
+        <h3 class="heading "><span>DiagnoseResponse</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> DiagnoseResponse</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    RoutineID routine_id{RoutineID::RI_UNKNOWN};       							 </code><code class="comments">// TARGET_CAPTURE</code></div>
+<div class="line"><code class="plain">    SubFunction sub_function{SubFunction::SF_UNKNOWN};                           </code><code class="comments">// Request_Routine_Result</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{};                     </code><code class="comments">// same as request</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CalibStatus, MAX_SENSOR_ID> calib_status{};                </code><code class="comments">// ON_CALIB</code></div>
+<div class="line"><code class="plain">    CalibStatus all_calib_status{CalibStatus::CS_UNKNOWN};                       </code><code class="comments">// ON_CALIB</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<vfc::uint8_t, MAX_SIDE_TARGET_NUM> side_targets{};         </code><code class="comments">// current capturing target id (if id told in request)</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<vfc::uint8_t, MAX_SURROUND_TARGET_NUM> surround_targets{}; </code><code class="comments">// current capturing target id (if id told in request)</code></div>
+<div class="line"><code class="plain">    vfc::uint8_t is_capture_success{0u};                                         </code><code class="comments">// true or false</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">bool</code><code class="plain"> is_verification{</code><code class="keyword">true</code><code class="plain">};                                                  </code><code class="comments">// don't care</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-OfflineCalibResult.3">
+        <h3 class="heading auto-cursor-target"><span>OfflineCalibResult</span></h3>
+<p   
+> none </p>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-SensorXxtrinsic.3">
+        <h3 class="heading auto-cursor-target"><span>SensorXxtrinsic</span></h3>
+<p   
+> none </p>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-CalibFaultEvent.3">
+        <h3 class="heading "><span>CalibFaultEvent</span></h3>
+<p   
+> What are the abnormalities? What are the abnormalities </p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3252005066_OfflineCalibrationRoutine-AFTERSALES_CALIBRATION">
+        <h2 class="heading "><span>AFTERSALES_CALIBRATION</span></h2>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-DiagnoseResponse.4">
+        <h3 class="heading "><span>DiagnoseResponse</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> DiagnoseResponse</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    RoutineID routine_id{RoutineID::RI_UNKNOWN};       							 </code><code class="comments">// AFTERSALES_CALIBRATION</code></div>
+<div class="line"><code class="plain">    SubFunction sub_function{SubFunction::SF_UNKNOWN};                           </code><code class="comments">// Request_Routine_Result</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{};                     </code><code class="comments">// same as request</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CalibStatus, MAX_SENSOR_ID> calib_status{};                </code><code class="comments">// Success or Fail</code></div>
+<div class="line"><code class="plain">    CalibStatus all_calib_status{CalibStatus::CS_UNKNOWN};                       </code><code class="comments">// Success or Fail</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<vfc::uint8_t, MAX_SIDE_TARGET_NUM> side_targets{};         </code><code class="comments">// None</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<vfc::uint8_t, MAX_SURROUND_TARGET_NUM> surround_targets{}; </code><code class="comments">// None</code></div>
+<div class="line"><code class="plain">    vfc::uint8_t is_capture_success{0u};                                         </code><code class="comments">// don't care</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">bool</code><code class="plain"> is_verification{</code><code class="keyword">true</code><code class="plain">};                                                  </code><code class="comments">// don't care </code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-OfflineCalibResult.4">
+        <h3 class="heading auto-cursor-target"><span>OfflineCalibResult</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> OfflineCalibResult</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{};          					   </code><code class="comments">// same as request</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<ResultStatus, MAX_SENSOR_ID> result_statuses{};                      </code><code class="comments">// Valid / Intrinsic Invalid (when read param) / Extrinsic Invalid (when do calibration)</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<DeltaSensorExtrinsic, MAX_SENSOR_ID> delta_sensor_extrinsics{}; 	   </code><code class="comments">// correspond to sensor_ids, if status not valid, it doesn't make sense</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CalibError, MAX_CALIB_ERROR> calib_errors;                           </code><code class="comments">// calib errors when doing calibration</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+<p  class="auto-cursor-target" 
+> One thing needs to be specifically explained. Our target-capture of Aftersales-Calibration's default AFTERSALES-CAPTURE and Aftersales-Calibration Period are the same, and there is no check in the code (because even if it is checked, there is no corresponding fault event.. </p>
+<p  class="auto-cursor-target" 
+> If the target-capture, the internal reference/data of a certain sensor to be calibrated can be obtained, and the other sensors are normal. We set the Target-Capture (IS_CAPTURE_SUCCCESS) failure. At the same time, the corresponding fault event needs to be collected.If you want to continue to calibrate other sensors, you need to delete the sensor from the to be tuned to the Sensor_ids </p>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-SensorXxtrinsic.4">
+        <h3 class="heading auto-cursor-target"><span>SensorXxtrinsic</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">struct</code><code class="plain"> SensorXxtrinsic</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    VehicleIdentificationNumber vin;											</code><code class="comments">// SN</code></div>
+<div class="line"><code class="plain">    VehicleInfo vehicle_info;        </code></div>
+<div class="line"><code class="plain">    VehicleSize vehicle_size;       </code></div>
+<div class="line"><code class="plain">    VehicleStatus vehicle_status;    </code></div>
+<div class="line"><code class="plain">    CalibInfo calib_info;            </code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorId, MAX_SENSOR_ID> sensor_ids{};     				</code><code class="comments">// same as request (to be confirmed)</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<CameraIntrinsic, MAX_SENSOR_ID> sensor_intrinsics{};		</code><code class="comments">// intrinsic correspond to sensor_ids</code></div>
+<div class="line"><code class="plain">    vfc::TFixedVector<SensorExtrinsic, MAX_SENSOR_ID> sensor_extrinsics{};		</code><code class="comments">// extrinsic correspond to sensor_ids</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+<p   
+> If you need to ensure that the emission must be right, the may be different in Sensor_ids and Request </p>
+<p   
+> If the same in the Sensor_ids and Request, there is an error result, you need to remove it according to the Response or Office Calib Result </p>
+    </div>
+    <div class="section section-3" id="src-3252005066_OfflineCalibrationRoutine-CalibFaultEvent.4">
+        <h3 class="heading "><span>CalibFaultEvent</span></h3>
+<p   
+> What are the abnormalities? What are the abnormalities </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3252005066_safe-id-T2ZmbGluZUNhbGlicmF0aW9uUm91dGluZS3or4rmlq3mjqXlj6M">
+        <h1 class="heading "><span> Diagnostic interface </span></h1>
+<p   
+><br/></p>
+<p   
+><img    src="images/inline/5fd3661ff17307d4a55d6d7d2ef356c523b5e6210261f3562c0f0e5c99b5ffac.png" alt="images/inline/5fd3661ff17307d4a55d6d7d2ef356c523b5e6210261f3562c0f0e5c99b5ffac.png"  height="250" />
+    </p>
+<ol class=" "><li class=" "><p   
+> 4081 Corresponding to DiagnoserSponse, you need to fill it up. </p>
+</li><li class=" "><p   
+> 4082 Corresponding to DiagnoserSponse, it needs to be filled, but there is one afterrsalesFail in the state. What is the difference between this (Li Han)? </p>
+</li><li class=" "><p   
+> 4007 corresponds to OfflineCallibresult, what is poster in the request, and the diagnosis that is not posted will be used in persist (whether the default value or the previous calibration results need to be confirmed with Lilong) </p>
+</li><li class=" "><p   
+> Sensorxxtrinsic has nothing to do with diagnosis, related to JOE related </p>
+</li><li class=" "><p   
+> What are the possession of faultevent, there is nothing right </p>
+</li></ol><p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4450331698_Jetour_EOL_calibrationroom_gazebo_simulation.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Jetour EOL calibrationroom gazebo simulation</span>
+        </a>
+                <a href="4140799420_Online_Calibration_Design_Specification.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Online Calibration Design Specification</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

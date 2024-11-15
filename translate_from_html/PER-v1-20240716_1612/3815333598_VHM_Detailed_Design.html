@@ -1,0 +1,3233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VHM Detailed Design - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3815333598"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                     <li><a href="1834779718_00_Localization.html">00_Localization</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3815333598"> <span>VHM Detailed Design</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+> Because VHM is a platform code for integrated W1 Parking.The detailed design of VHM below mainly introduces the detailed design of the integrated part. </p>
+    <div class="section section-1" id="src-3815333598_safe-id-VkhNRGV0YWlsZWREZXNpZ24tMeOAgeS4u-imgeWKn-iDvQ">
+        <h1 class="heading "><span> 1. Main functions </span></h1>
+<p   
+> VHM, the full name is Vehicle Model.This module provides more accurate mileage meters and vehicle dynamic results in the parking scenario. </p>
+<p   
+> VHM input is the information of other ECUs inside the vehicle. It does not need to rely on the front -loading to locate the sensor, which can obtain more accurate positioning and dynamic results. </p>
+<p   
+> This module is a functional security module with a security level as ASILB. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3815333598/image-2023-12-29_14-35-51-version-1-modificationdate-1704781197000-api-v2.png" alt="images/confluence/download/attachments/3815333598/image-2023-12-29_14-35-51-version-1-modificationdate-1704781197000-api-v2.png"  height="400" />
+    </p>
+<p   
+> Figure 1 VHM mainly input, output, and internal main algorithm flowchart </p>
+<p   
+> The main algorithm flowchart of VHM is shown in Figure 1. </p>
+<p   
+> Enter the matching parameters and algorithm parameters required for VHM on the left.Including the characteristic steering curve (at different angles, the curve from three polynomial fits steering wheel to the rotary angle.), The effective wheelbase, front wheels and rear wheels, the length of the wheel pulse, and the drive wheel. </p>
+<p   
+> The upper input is the CAN signal required by VHM, see the interface below. </p>
+<p   
+> The number of inputs in the lower side includes the number of wheels rotating a circle, RA <span style="color: #003366;"> S (rear axle steering) Find </span> Table (if it is a vehicle that can be turned around the front and rear wheels). </p>
+<p   
+> The output on the right includes the driving distance of each cycle, the position of the position of each cycle, and the angle changes of each cycle. </p>
+<p   
+> The main modules include: </p>
+<p   
+> 1. Driving distance calculation module.The amount of changes in each cycle of wheel pulse per cycle multiplied by the length of each wheel pulse to obtain the driving distance of each cycle vehicle. </p>
+<p   
+> 2. Calculate the direction of the vehicle.The main idea is to vote for the driving direction of the 4 wheels, and the four wheels vote as the final driving direction that is determined. </p>
+<p   
+> 3. YAW angle calculation.Use the monorail model to calculate the YAW angle when a larger steering, use the dual -track model to calculate the YAW angle when smaller steering, and use the mixed monorail and dual -track calculation YAW angle when the middle steering is used. </p>
+<p   
+> 4. Self -calibration module.Because VHM requires high accuracy, in different scenarios of vehicles, VHM will collect related data to calibrate the proportional coefficient of Yawrate's Office, the turn of the steering wheel angle, and the four wheels. </p>
+<p   
+> 5. Signal pre -processing.When the frame loss and the system are unstable, you can use the wheel pulse signal of the loss of the interpolation of the speed and the speed signal to overcome the bad conditions. </p>
+    </div>
+    <div class="section section-1" id="src-3815333598_safe-id-VkhNRGV0YWlsZWREZXNpZ24tMuOAgVZITeeahOmdmeaAgeiuvuiuoQ">
+        <h1 class="heading "><span> 2. VHM's static design </span></h1>
+<p   
+> VHMPROVIDER is an Activity at the AOS level called VHMPROVIDER.There is only one runnable in the Activity, which is the same name as Activity, that is, VHMPROVIDER. </p>
+<p   
+> The class diagram of the specific VHMPROVIDER static view is shown in Figure 2. </p>
+<p   
+> In order to achieve the function of the first chapter, VHMPROVIDER is divided into six categories, namely SHMPROVIDER, VALIN, RBPVSM, RBPVHM, Rbppar, and VBPFLT. </p>
+<p   
+>    <span style="color: #003366;"> 1. Valin.Valin is a signal isolation layer in VHM. This unit can isolate the external signal input and the input interface of the class RBPVHM.When ensuring that different models are adapted, you only need to modify the code of the Valin layer, and there is no need to change the code of the RBPVSM and the RBPVHM.The interface function of this class and VHMPROVIDER includes: </span>
+</p>
+<p   
+>    <span style="color: #003366;"> Void Setwheelradius (Float): Enter the tire radius to the interface function in the class Valin. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> Void UpdateValinall_data (): The main function of the Valin scheduling per cycle is performed. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> 2. Date RBPVSM.The structure of the Valin packed, the group package and Unit are converted into a VSM input available for RPBVHM. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> void RBP_VLINALLLLSION_VD (): The main function of performing VSM conversion scheduling per cycle. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> void RBP_VSM_getStubdata_vd (): When VHMPROVIDER output, VSM data needs to be output to the downstream.This function is the interface function when VHMPROVIDER calls VSM results. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> 3. Class RBPVHM: This class contains the VHM algorithm.The driving distance calculation module, vehicle driving direction calculation, YAW angle computing, Self -Standard module and signal pre -processing are all in this class. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> void RBP_VHM_COMMON_INIT_VD (): The initialization function of RBPVHM. </span>
+<br/>    <span style="color: #003366;"> void RBP_VHM_COMMON_RUN10MS_VD (): The main function of performing the VHM algorithm per cycle of RBPVHM. </span>
+<br/>    <span style="color: #003366;"> void RBP_VHM_SET_AUTOCALIB_HANDLER (Struct RBP_VHM_SAVE_AUTOCALIB_HANDLER_ST &): The transmission function of the method of reading and writing EEPROM in AutoCalib. </span>
+<br/>    <span style="color: #003366;"> void rbp_vhm_SetReInitTrigger_vd(rbp_Type_LineSinCosFl_st ,UInt8)：当泊车时候从searching阶段到guidance阶段Vhm接收Pme状态机信号，将新的坐标系原点设置到类RpbVhm的接口函数。 </span>
+<br/>    <span style="color: #003366;"> void RBP_VHM_GetMonitordata_VD (algvhmoutput.rbp_type_vhm_Monitordata_ST &): Satellite VHMPROVIDER calls one of the interface functions of RPBVHM per cycle calculation results. </span>
+<br/>    <span style="color: #003366;"> void rbp_vhm_common_getVHMOutputInterfaceData_b(AlgVHMOutput.rbp_Type_vhm_common_outputData_st &)：类VhmProvider调用类RpbVhm每个周期计算结果的接口函数之二。 </span>
+</p>
+<p   
+>    <span style="color: #003366;"> 4. Satellite Rbppar: The main role of this class is to allow different algorithm parameters and VHM matching parameters according to different models. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> void RBP_PAR_INIT_CHERY_VD (UINT_T): Enter the model (E03/E0Y) into the interface function in the Rbppar. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> 5. VBPFLT: When there is a problem or downgrade in RBPVHM, the downgrade signal will be sent to the FLT state machine.This class can store and analyze the corresponding downgrade signals. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> void RBP_FLT_Geteventstatus_VD (RBP_TAG_FLT_EVENTNAME_E): This interface function can remove the status position of the relegation signal of the FLT status machine. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> 6. VHMPROVIDER.The main class of VHMPROVIDER.This class is responsible for the input signal and status machine signal of the external part, call other classes, and output the execution results of each cycle. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> DEGRADE :: FaulteventListITEM Transferdegrademode (RBP_TYPE_FLT_EVENTSTANTANTAN, VHM :: Errorevents): The main role of this function is to convert the reducing signal status position from the FLT status machine to the type of output interface available. </span>
+<br/>    <span style="color: #003366;"> void RBP_Type_PAR_NVMVHM_AUTO_CALIB_ST RBP_VHM_ReadAutocalibrationParam (): This function defines how vhmprovider reads the self -calibration results of EEPROM. </span>
+<br/>    <span style="color: #003366;"> void RBP_VHM_WRITEAUTOCALINPARAM (const Rbp_type_par_nvmvhm_Auto_CALIB_S) This function defines how VHMPROMIDER writes the Self -Standard results of EEPROM. </span>
+<br/>    <span style="color: #003366;"> Static Void Handleacu2Sig (Const Canrouterchery :: ACU2 &): process the received ACU2 signal and put it in the input queue of Valin. </span>
+<br/>    <span style="color: #003366;"> Static Void Handleacu3Sig (Const Canrouterchery :: ACU3 &): process the received ACU3 signal and put it in the input queue of Valin. </span>
+<br/>    <span style="color: #003366;"> Static Void HandleoneBox1Sig (Const CanRouterchery :: Onebox1 &): process the onebox1 signal received and put it in the input queue of Valin. </span>
+<br/>    <span style="color: #003366;"> Static Void HandleoneBox4Sig (Const Canrouterchery :: Onebox4 &): process the onebox4 signal received and put it in the input queue of Valin. </span>
+<br/>    <span style="color: #003366;"> Static Void Handlesas1Sig (Const Canrouterchery :: SAS1 &): process the SAS1 signal received and put it in the input queue of Valin. </span>
+<br/>    <span style="color: #003366;"> Static Void HandlevCucom10Sig (Const Canrouterchery :: vcucom10 &): process the receiving: VCUCOM10 signal and put it in the input queue of Valin. </span>
+<br/>    <span style="color: #003366;"> Static Void Handlepmactlmngr (Const FCT_PMACTLMRGR_OUT_IF :: cpmactlMRGRGRGRETPUT &): processing the PMACTLMNGR signal you received. If the conditions are met, the VHM coordinate original point will be reset. </span>
+<br/>    <span style="color: #003366;"> Static Void PrepareoutputDegrade (Degrade :: XLOCFAULTEVENTLIST &): Summarize the different downgrade signals of the VHMPROVIDER class and put them in the output queue. </span>
+<br/>    <span style="color: #003366;"> Static Void PrepareoutPut (XLOC :: CVHMOUTPUTINTERFACE &, UINT32_T): Prepare the output of the VHMPROVIDER class and put it in the output queue. </span>
+<br/>    <span style="color: #003366;">
+void VhmHandler_onInit(const VhmHandler_InStruct &,mwala::generic_io::State<VhmHandler_State> &, VHMHANDLER_RUNCONTEXT &): The initialization function of the VHMPROVIDER class, which initializes the AutoCalib module in this part, mainly defines the interaction method of AutoCalib and Eeprom.Initialize Valin to receive AOS data queues. </span>
+<br/>    <span style="color: #003366;">
+void VhmHandler_onUpdate(const VhmHandler_InStruct &in,VhmHandler_OutStruct &out,mwala::generic_io::State<VhmHandler_State> & State, VHMHANDLER_RUNCONTEXT &): The main function of the period scheduling of the algorithm of vhmprovider.The change function will receive the Can input signal, status machine signal, execute the main function, and send the output of each cycle. If there is a problem, send a downgrade signal. </span>
+</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3815333598/image-2024-1-5_16-45-41-version-1-modificationdate-1704781197000-api-v2.png" alt="images/confluence/download/attachments/3815333598/image-2024-1-5_16-45-41-version-1-modificationdate-1704781197000-api-v2.png" width="1500"  />
+    </p>
+<p   
+> Figure 2 Class diagram of VHMPRODER static view </p>
+    </div>
+    <div class="section section-1" id="src-3815333598_safe-id-VkhNRGV0YWlsZWREZXNpZ24tM-OAgVZITeeahOWKqOaAgeiuvuiuoQ">
+        <h1 class="heading "><span> 3. VHM's dynamic design </span></h1>
+    <div class="section section-2" id="src-3815333598_safe-id-VkhNRGV0YWlsZWREZXNpZ24tMy4x44CB54q25oCB5py65Zu-">
+        <h2 class="heading "><span> 3.1. Status chart </span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3815333598/image-2024-1-5_20-11-5-version-1-modificationdate-1704781197000-api-v2.png" alt="images/confluence/download/attachments/3815333598/image-2024-1-5_20-11-5-version-1-modificationdate-1704781197000-api-v2.png"  height="400" />
+    </p>
+<p   
+> Figure 3 VHMPROVIDER status chart </p>
+<p   
+> VHMPROVIDER's status machine has two states: <span style="color: #003366;"> Vhmhandler_oninit and VHMHANDLER_ONUPDATE.When the system is turned on, first enter the VHMHANDLER_ONINIT state. If the initialization is successful, enter the VHMHANDLER_ONUPDATE state.After that, VHMPROVIDER receives relevant data for processing every 10ms and sends the calculation results. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> The sequential charts in the following are different from the two different states of VHMHANDLER_ONINIT and VHMHANDLER_ONUPDATE, respectively. </span>
+</p>
+    </div>
+    <div class="section section-2" id="src-3815333598_safe-id-VkhNRGV0YWlsZWREZXNpZ24tMy4yLuaXtuW6j-Wbvg">
+        <h2 class="heading "><span> 3.2. Sequential map </span></h2>
+<p   
+> Glossary: </p>
+<p   
+> AutoCalib: The full name is AutoCalibration, which is a self -calibration module in the RBPVHM.It is used for offsetting angle, tire ratio coefficient, yawrate migrants in the steering wheel rotation angle in RBPVHM.Because the class needs to store the calibration results from time to time in the EEPROM in the system, it is necessary to define the storage method and storage path in the AOS layer. </p>
+    <div class="section section-3" id="src-3815333598_safe-id-VkhNRGV0YWlsZWREZXNpZ24tMy4yLjFWaG1IYW5kbGVyX29uSW5pdOeKtuaAgeS4i-eahOaXtuW6j-Wbvu-8mg">
+        <h3 class="heading "><span> 3.2.1 Timing in the state of vhmHandler_oninit: </span></h3>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3815333598/image-2024-1-8_17-14-50-version-1-modificationdate-1704781197000-api-v2.png" alt="images/confluence/download/attachments/3815333598/image-2024-1-8_17-14-50-version-1-modificationdate-1704781197000-api-v2.png"   />
+    </p>
+<p   
+> Figure 4 <span style="color: #003366;"> VHMHANDLER_ONINIT timing chart </span>
+</p>
+<p   
+>    <span style="color: #003366;"> In the initialization state of VHMPROVIDER, the mainly initialized the autocalib sub -module of the RBPVHM, defining the interaction method of AutoCalib and EEPROM.Initialized Valin receiving AOS data queue.Sequential maps are shown in Figure 4. </span>
+</p>
+    </div>
+    <div class="section section-3" id="src-3815333598_safe-id-VkhNRGV0YWlsZWREZXNpZ24tMy4yLjJWaG1IYW5kbGVyX29uVXBkYXRl54q25oCB5LiL55qE5pe25bqP5Zu-77ya">
+        <h3 class="heading "><span> 3.2.2 Timing in VHMHANDLER_ONUPDATE: </span></h3>
+<p   
+><br/></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3815333598/image-2024-1-8_17-13-10-version-1-modificationdate-1704781198000-api-v2.png" alt="images/confluence/download/attachments/3815333598/image-2024-1-8_17-13-10-version-1-modificationdate-1704781198000-api-v2.png"   />
+    </p>
+<p   
+>    <span style="color: #003366;"> Fig </span>
+</p>
+<p   
+> The timing map of vhmhandler_onupdate is shown in Figure 5.This status is 10MS cycle scheduling. </p>
+<p   
+> When the RBPVHM and Valin are not initialized, the configuration word (E03/E0Y) sent by the system to the model is required, and the VHMPROVIDER combined with the model configuration to read the system parameters, initialized Valin and the RBPVHM.After the type Valin and the RBPVHM have been initialized, this step is no longer performed. </p>
+<p   
+> After the type Valin and the class RBPVHM are initialized, the following steps are performed: </p>
+<ol class=" "><li class=" "><p   
+> Process the data of ACU2.When the input message queue exists in ACU2 data, process the received data received and put it in the Valin queue.Call interface: Static Void Handleacu2sig (Const Canrouterchery :: Acu2 &). </p>
+</li><li class=" "><p   
+> Process the data of ACU3.When the input message queue exists in ACU3 data, process the received data received and put it in the Valin queue.Call interface: Static Void Handleacu3Sig (Const Canrouterchery :: Acu3 &). </p>
+</li><li class=" "><p   
+> Process the data of onebox1.When the input message queue exists in onebox1 data, process the data received by the one, and put it in the Valin queue.Call interface: Static Void HandleoneBox1Sig (Const Canrouterchery :: Onebox1 &). </p>
+</li><li class=" "><p   
+> Process the data of onebox4.When the input message queue exists in onebox4 data, process the data received by the OneBox4 and put it in the Valin queue.Among them, the timestamp of each frame will be checked in this function. If there is a problem of retreating when there is a timestamp, it will be discovered in time and reports the problem in Send Degrade Data.Call interface: Static Void HandleoneBox4Sig (Const Canrouterchery :: Onebox4 &). </p>
+</li><li class=" "><p   
+> Process data of SAS1.When the input message queue exists in SAS1 data, process the data received by the SAS1 and put it in the Valin queue.Call interface: Static Void HandlesaS1Sig (Const Canrouterchery :: SAS1 &). </p>
+</li><li class=" "><p   
+> Process data of VCUCOM10.When there is VCUCOM10 data in the input message queue, process the data received to VCUCOM10 and put it in the Valin queue.Call interface: Static Void HandlevCucom10Sig (Const Canrouterchery :: vcucom10 &). </p>
+</li><li class=" "><p   
+> Process data of PMACTLMNGR.When PMACTLMNGR data exists in the input message queue, the status machine data of the PMACTLMNGR is processed.Determine whether the parking status is converted from Searching to Guidance.If so, the RBPVHM module needs to perform corresponding coordinate system jump and conversion processing. <span style="color: #003366;"> Calling interface: Static Void Handlepmactlmngr (Const FCT_PMACTLMRGR_OUT_IF :: cpmactlmRGRGRGRATPUT &). </span>
+</p>
+</li><li class=" "><p   
+> Update Valin data.Receive the CAN data put on the Valin queue for a single scheduling for the corresponding processing.Including unit conversion, CAN signal packaging to the corresponding structure.Call the interface: <span style="color: #003366;">
+void updateValinAll_data()。    </span>
+</p>
+</li><li class=" "><p   
+> Valin data is converted into VSM.The data structure stored in Valin is encapsulated into an input interface of RBPVHM, which is VSM.Call interface <span style="color: #003366;">
+：void rbp_vsm_valinAllConversion_vd()。    </span>
+</p>
+</li><li class=" "><p   
+> Class RBPVHM algorithm execution.The main logic of the RBPVHM algorithm.Enter the Valin data to perform corresponding processing, and calculate the POSE and vehicle sports results of each cycle.For details, see 1. The introduction part.Call <span style="color: #003366;"> Port: void RBP_VHM_COMMON_RUN10MS_VD (). </span>
+</p>
+</li><li class=" "><p   
+> Send VHM data.Output the results of each cycle calculation. <span style="color: #003366;"> Call the interface: Void Prepareoutput (XLOC :: CVHMOUTPUTINTERFACE &, UINT32_T). </span> The interface function will call: void RBP_VHM_GetMonitordata_VD (algvhmoutput.rbp_type_vhm_monitordata_st &) and void RBP_VHM_COMMON_GETVHMOUTInterfaceData_b (ALGVVV Hmoutput.rbp_type_vhm_common_outputdata_st &).Get data from RBPVHM. </p>
+</li><li class=" "><p   
+> Send downgrade data.Determine whether the RBPVHM has a downgrade.And send your own state to the state machine.The current supported FID includes:: <span style="color: #000000;">
+VHMWicFailure、VHMOutputCheckFailed、VHMCRCCheckFailed、VHMTimestampCheckFailed。    <span style="color: #003366;"> Call the interface: Void PrepareoutputDegrade (degrade :: xlocfaultEventList &). </span> Among them, the function will be performed: </span>
+</p>
+</li></ol><ol class=" "><li class=" "><ol class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Get VHMOUTPUTCKECKFAILILD and VHMWICFAILURURIRIRIDE from the VHM algorithm warehouse. If there is a problem, a downgrade signal will be sent. </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> This function will get the result of checking the timestamp in the Handle Onebox4 Data. If there is a problem, a downgrade signal will be sent. </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> This function checks the results of the CRC verification when VHM Autocalib storage data. If there is a problem, a downgrade signal will be sent. </span>
+</p>
+</li></ol></li></ol><p   
+><br/></p>
+    </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3815333598_safe-id-VkhNRGV0YWlsZWREZXNpZ24tNOOAgeaOpeWPo--8mg">
+        <h1 class="heading "><span> 4. Interface: </span></h1>
+<p   
+> Divided into interfaces of module hierarchical interfaces and unit levels.The following is divided into two levels of introduction: </p>
+    <div class="section section-2" id="src-3815333598_safe-id-VkhNRGV0YWlsZWREZXNpZ24tNC4x5qih5Z2X5bGC57qn5o6l5Y-j">
+        <h2 class="heading "><span> 4.1 Module hierarchical interface </span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3815333598/2024-01-11_16h44_26-version-1-modificationdate-1704962699000-api-v2.png" alt="images/confluence/download/attachments/3815333598/2024-01-11_16h44_26-version-1-modificationdate-1704962699000-api-v2.png"  height="250" />
+    </p>
+<p   
+> Figure 6 VHM input and output interface </p>
+<p   
+><br/></p>
+<p   
+> The input of VHM is the CAN signal and the status machine signal. </p>
+<p   
+> The CAN signal mainly includes ACU2 (Yawrate, horizontal acceleration), ACU3 (vertical acceleration), OneBox1 (vehicle speed), OneBox4 (wheel pulse and wheel direction), SAS1 (direction plate corner) and VCUVOM10 (gear) signal. </p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="5.62404%"/>
+                                    <col  width="9.61793%"/>
+                                    <col  width="26.3271%"/>
+                                    <col  width="11.0036%"/>
+                                    <col  width="11.8186%"/>
+                                    <col  width="17.3612%"/>
+                                    <col  width="13.7748%"/>
+                                    <col  width="4.40143%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ Serial number     </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Output field </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ Field description     </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> type of data </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ unit     </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Value description </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ Update frequency     </span>
+</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">1<br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><strong class=" ">ONEBOX_1</strong></p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> UTC19 -bit timestamp </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint64_</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>/</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> It can be accurate to 1ms, it is best to be precise to NS </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">2<br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ESP_1_VehicleSpeedVSOSigValidData</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Valid logo position </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 to value, 1 is invalid </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">3<br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ABS_ESP_1_VehicleSpeedVSOSig</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Vehicle speed </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::float32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>km/h</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Keep 4 valid numbers after the decimal point </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">4<br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="21" colspan="1">
+    <p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><strong class=" ">ONEBOX_4</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> UTC19 -bit timestamp </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint64_</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>/</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> It can be accurate to 1ms, it is best to be precise to NS </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">5</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LHFPulseCounterFailSts</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FL wheel pulse Valid logo position </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0:Fail Not present</p>
+<p   
+>1:Fail Present</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">6</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LHFPulseCounter</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FL wheel pulse number </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1(0-8191)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 ~ max maximum pulse number </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">7</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RHFPulseCounterFailSts</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FR wheel pulse Valid logo position </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0:Fail Not present</p>
+<p   
+>1:Fail Present</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">8</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RHFPulseCounter</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FR wheel pulse number </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1(0-8191)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 ~ max maximum pulse number </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">9</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LHRPulseCounterFailSts</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RL wheel pulse Valid logo position </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0:Fail Not present</p>
+<p   
+>1:Fail Present</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">10</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LHRPulseCounter</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RL wheel pulse number </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1(0-8191)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 ~ max maximum pulse number </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">11</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RHRPulseCounterFailSts</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RR wheel pulse Valid logo position </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0:Fail Not present</p>
+<p   
+>1:Fail Present</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">12</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RHRPulseCounter</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RR wheel pulse number </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1(0-8191)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 ~ max maximum pulse number </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">13</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RHFWheelDriveDirection</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FR wheel rotation direction </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0: init</p>
+<p   
+>0x1:Forward</p>
+<p   
+>0x2:Backward</p>
+<p   
+>0x3:Stop</p>
+<p   
+>0x4:Invalid</p>
+<p   
+>0x5:Reserved</p>
+<p   
+>0x6:Reserved</p>
+<p   
+>0x7:Reserved</p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0: STOP<br/>1: FWD<br/>2: BWD<br/>3: UNKNOWN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">14</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LHFWheelDriveDirection</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FL wheel rotation direction </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0: init</p>
+<p   
+>0x1:Forward</p>
+<p   
+>0x2:Backward</p>
+<p   
+>0x3:Stop</p>
+<p   
+>0x4:Invalid</p>
+<p   
+>0x5:Reserved</p>
+<p   
+>0x6:Reserved</p>
+<p   
+>0x7:Reserved</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0: STOP<br/>1: FWD<br/>2: BWD<br/>3: UNKNOWN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">15</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LHFWheelSpeedRawValidData</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FL VEHICLE SPEED status </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0: Valid</p>
+<p   
+>0x1: Not Valid</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">16</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RHFWheelSpeedRawValidData</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Fr Vehicle SPEED status bit </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0: Valid</p>
+<p   
+>0x1: Not Valid</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">17</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LHFWheelSpeedRaw</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FL vehicle speed </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::float32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m/s</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Keep four valid numbers after decimal point </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">18</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RHFWheelSpeedRaw</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FR vehicle speed </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::float32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m/s</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Keep four valid numbers after decimal point </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">19</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RHRWheelDriveDirection</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RR wheel rotation direction </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0: init</p>
+<p   
+>0x1:Forward</p>
+<p   
+>0x2:Backward</p>
+<p   
+>0x3:Stop</p>
+<p   
+>0x4:Invalid</p>
+<p   
+>0x5:Reserved</p>
+<p   
+>0x6:Reserved</p>
+<p   
+>0x7:Reserved</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0: STOP<br/>1: FWD<br/>2: BWD<br/>3: UNKNOWN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">20</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LHRWheelDriveDirection</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RL wheel rotation direction </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0: init</p>
+<p   
+>0x1:Forward</p>
+<p   
+>0x2:Backward</p>
+<p   
+>0x3:Stop</p>
+<p   
+>0x4:Invalid</p>
+<p   
+>0x5:Reserved</p>
+<p   
+>0x6:Reserved</p>
+<p   
+>0x7:Reserved</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0: STOP<br/>1: FWD<br/>2: BWD<br/>3: UNKNOWN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">21</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LHRWheelSpeedRawValidData</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RL vehicle speed status </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0: Valid</p>
+<p   
+>0x1: Not Valid</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">22</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RHRWheelSpeedRawValidData</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RR vehicle speed position </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0: Valid</p>
+<p   
+>0x1: Not Valid</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">23</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>LHRWheelSpeedRaw</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RL vehicle speed </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::float32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m/s</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Keep four valid numbers after decimal point </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">24</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RHRWheelSpeedRaw</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RR vehicle speed </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::float32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m/s</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Keep four valid numbers after decimal point </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">25</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="5" colspan="1">
+    <p   
+><strong class=" ">ACU_2</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> UTC19 -bit timestamp </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> It can be accurate to 1ms, it is best to be precise to NS </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">26</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ACU_2_YawrateSigValidData</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Yawrate status </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0:Valid</p>
+<p   
+>0x1:Reserved</p>
+<p   
+>0x2:Invalid</p>
+<p   
+>0x3:Iniitalize</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">27</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ACU_2_YawRate</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Vehicle yawrate </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::float32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>deg/sec</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Keep four valid numbers after decimal point </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">29</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ACU_2_LateralAccelerationSigVD</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Vehicle Horizontal Acceleration status position </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0:Valid</p>
+<p   
+>0x1:Reserved</p>
+<p   
+>0x2:Invalid</p>
+<p   
+>0x3:Iniitalize</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">30</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ACU_2_LateralAcceleration</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Vehicle horizontal acceleration </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::float32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>g</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Keep four valid numbers after decimal point </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">31</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" ">ACU_3</strong><br/><strong class=" "><br/></strong><strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ACU_3_LongitudinalAccelerationVD</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Vertical acceleration status position </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0:Valid</p>
+<p   
+>0x1:Reserved</p>
+<p   
+>0x2:Invalid</p>
+<p   
+>0x3:Iniitalize</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">32</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ACU_3_LongitudinalAcceleration</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Vertical acceleration of vehicles </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::float32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>g</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Keep four valid numbers after decimal point </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">33</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" "><br/></strong><strong class=" ">VCU_COM_10</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> UTC19 -bit timestamp </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> It can be accurate to 1ms, it is best to be precise to NS </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">34</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>VCU_ActualGear</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Vehicle gear </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0:NoRequest</p>
+<p   
+>0x1: gear P</p>
+<p   
+>0x2: gear R</p>
+<p   
+>0x3: gear N</p>
+<p   
+>0x4: gear D</p>
+<p   
+>0x5: Reserved</p>
+<p   
+>0x6: Reserved</p>
+<p   
+>0x7: Invalid</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:center;"
+>0:NOSIGNAL<br/>1:GEAR_DRIVE<br/>2:GEAR_NEUTRAL<br/>3:GEAR_REVERSE</p>
+<p   style="text-align:center;"
+>4:GEAR_PARK</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">35</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+><strong class=" "><br/></strong><strong class=" "><br/></strong><strong class=" ">SAS_1</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> UTC19 -bit timestamp </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint64_</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>/</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> It can be accurate to 1ms, it is best to be precise to NS </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">36</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>SAM_1_SteeringAngle</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Vehicle steering wheel corner </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::float32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>deg</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Keep four valid numbers after decimal point </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">37</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>SAM_1_SteeringAngleVD</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> VEHICLE STEERING WHEEL CORNER effectiveness </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:left;"
+>0x0: Valid</p>
+<p   style="text-align:left;"
+>0x1: Not Valid</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">38</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+><strong class=" "><br/></strong><strong class=" ">ONEBOX_3</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>T0</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> UTC19 -bit timestamp </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint64_</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>/</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> It can be accurate to 1ms, it is best to be precise to NS </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">39</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>VehicleStandstill</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Whether the vehicle is still </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vfc::uint32_t</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0x0: Not Standstill</p>
+<p   
+>0x1: Standstill</p>
+<p   
+>0x2:invalid</p>
+<p   
+>0x3: Reserved</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 for exercise, 1 is still </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+>    <span style="color: #000000;"> PMACTLMNGR is mainly a PMA status machine signal, which is used to transmit the coordinate original point of the VHM coordinate system jump signal. </span>
+</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="58.0"/>
+                                    <col  width="162.0"/>
+                                    <col  width="141.0"/>
+                                    <col  width="154.0"/>
+                                    <col  width="50.0"/>
+                                    <col  width="179.0"/>
+                                    <col  width="169.0"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Serial number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Output field </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Field description </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> type of data </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> unit </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Value description </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Update frequency </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #000000;">
+1<br/>    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+receiveTime    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> UTC19 -bit timestamp </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::uint64_t    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ns</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> It can be accurate to 1ms, it is best to be precise to NS </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #000000;">
+2<br/>    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+m_triggerInitManeuver    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> whether </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+bool    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 or 1 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 0 is invalid, 1 is value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #000000;">
+3<br/>    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+P_st.X_f32    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The value of reset origin X </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::float32_t    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+m    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #000000;">
+4    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+P_st.Y_f32    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RESET original point y's value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::float32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+m    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #000000;">
+5    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+Phi_st.Angle_f32    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Reset origin Angle value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::float32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+rad    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #000000;">
+6    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+Phi_st.Cos_f32    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Reset origin Angle's cos value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::float32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #000000;">
+7    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+Phi_st.Sin_f32    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Reset origin Angle's sin value </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::float32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #000000;">
+8    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+m_resetDrivenDistance    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Reset driving distance </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::uint8_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+m    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10ms</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+>    <span style="color: #000000;"> VHMOUTPUT is an output signal of VHM.Pose information output vehicle and sports information of the vehicle. </span>
+    <span style="color: #000000;"> The VHM output interface is mainly: </span>
+</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="39.0"/>
+                                    <col  width="333.0"/>
+                                    <col  width="179.0"/>
+                                    <col  width="106.0"/>
+                                    <col  width="62.0"/>
+                                    <col  width="91.0"/>
+                                    <col  width="59.0"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ Serial number     </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Output field </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ Field description     </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> type of data </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ unit     </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Value description </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ Update frequency     </span>
+</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">1<br/></strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+pma_sensorOput_nsTime_u64    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> UTC19 -bit timestamp </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::uint64_t    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ns    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ It can be accurate to 1ms, it is best to be precise to NS     </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">2<br/></strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+m_cycleCounter    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Cycle </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::uint32_t    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ 0 or 1     </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Each cycle +1 </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">3<br/></strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+Position_mm_st.X_s32    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> The X value of the output position </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::int32_t    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+mm    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Starting from ignition. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" "><br/></strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+Position_mm_st.Y_s32    </span>
+</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Y value at the output position </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::int32_t    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+mm    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Starting from ignition. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">4</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+YawAngle_rad_f32    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> YAW value at the output location </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::float32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+rad    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Starting from ignition. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">5</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+AbsoluteDrivenDistance_mm_u32    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> The absolute value of driving distance </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::uint32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+rad    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Starting from ignition. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">6</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+SignedDrivenDistance_mm_s32    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Travel distance </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::int32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+mm    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Starting from ignition. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">7</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+FrontWheelAngle_rad_f32    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Front wheel corner </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::float32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+rad    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">8</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+Velocity_mps_st.X_f32    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Speed ​​X value </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::int32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+m/s    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Output under the coordinate system. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">9</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+Velocity_mps_st.Y_f32    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Speed ​​Y value </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::int32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+m/s    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Output under the coordinate system. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">10</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+Acceleration_mpSqrS_st.X_f32    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> The X value of acceleration </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::int32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+m/s^2    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Output under the coordinate system. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">11</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+Acceleration_mpSqrS_st.Y_f32    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Y value of acceleration </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::int32_t    </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+m/s^2    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Output under the coordinate system. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">12</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+MovementDirection_en    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Driving direction </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+enum    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Including forward, backward, stopping, unknown. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">13</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+OutputState_en    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Output state </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+enum    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Including initialization, update, no update, re -initialization </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">14</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+Quality_en    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Output signal quality </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+enum    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Including high precision, good accuracy, medium accuracy, low precision, downgrade, serious problems. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+>VHMHandlerFaulteventList    <span style="color: #000000;"> Output for the downgrade signal of VHM.The interface of the downgrade signal is </span>
+    <span style="color: #000000;">
+：    </span>
+</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="53.0"/>
+                                    <col  width="147.0"/>
+                                    <col  width="124.0"/>
+                                    <col  width="396.0"/>
+                                    <col  width="173.0"/>
+                                    <col  width="151.0"/>
+                                    <col  width="144.0"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Serial number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Output field </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Field description </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> type of data </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> unit </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Value description </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Update frequency </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #000000;">
+1<br/>    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+m_SensorAbstracionFaultEventList    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Faultevent queue </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+vfc::TFixedVector<FaultEventListItem, XLOC_FAULTEVENT_MAXSIZE>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Faultevent queue </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p  class="auto-cursor-target" 
+>    <span style="color: #003366;"> Among them </span>
+</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="52.0"/>
+                                    <col  width="159.0"/>
+                                    <col  width="111.0"/>
+                                    <col  width="284.0"/>
+                                    <col  width="46.0"/>
+                                    <col  width="485.0"/>
+                                    <col  width="137.0"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ Serial number     </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Output field </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ Field description     </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> type of data </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ unit     </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Value description </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+ Update frequency     </span>
+</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+<strong class=" ">1<br/></strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+FAULTEVENT_ID    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Downgrade </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+enum class EFaultEventId : vfc::uint16_t    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> OT1 contains </span>
+</p>
+<p   
+>    <span style="color: #003366;"> Fault_vhmwicFailure, wheel pulse error </span>
+<br/>    <span style="color: #003366;"> FAULT_VHMOUTPUTCHECKFAILED, output check error </span>
+</p>
+<p   
+>    <span style="color: #003366;"> Fault_vhmwictimestamp_error, timestamp error </span>
+</p>
+<p   
+>    <span style="color: #003366;"> Fault_vhmpersisisistency_crc_error, CRC verification error </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+2    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+FAULTEVENT_STATUS    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Relegation state </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+enum class EFaultEventStatus : vfc::uint8_t    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+/    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+EFAULTEVENT_STATUS_PASSED,     </span>
+<br/>    <span style="color: #003366;">
+EFAULTEVENT_STATUS_FAILED, EFAULTEVENT_STATUS_PREPASSED, EFAULTEVENT_STATUS_PREFAILED,    </span>
+<br/>    <span style="color: #003366;">
+ EFAULTEVENT_STATUS_INVALID    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;">
+10ms    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-3815333598_safe-id-VkhNRGV0YWlsZWREZXNpZ24tNC4y5Y2V5YWD5bGC57qn5o6l5Y-j">
+        <h2 class="heading "><span> 4.2 Unit level interface </span></h2>
+<p   
+> See Doxgen document: </p>
+<p   
+> See Sharepoint: <a  class="external-link" href="https://bosch-my.sharepoint.com/:u:/r/personal/uxz2sgh_bosch_com/Documents/Attachments/PJ-Wave3%20VhmProvider%20activity%20detailed%20design%20.zip?csf=1&web=1&e=zpFao2">PJ-Wave3 VhmProvider activity detailed design .zip</a></p>
+<p   
+> Or T & R: <a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-77795?src=confmacro">CNWVIII-77795</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3815333598_safe-id-VkhNRGV0YWlsZWREZXNpZ24tNeS7o-eggeWkjeeUqOaApw">
+        <h1 class="heading "><span> 5 code reuseability </span></h1>
+<p   
+>    <span style="color: #003366;"> Class Valin, </span>
+    <span style="color: #003366;"> Class RBPVSM, </span>
+    <span style="color: #003366;"> Class RBPVHM, </span>
+    <span style="color: #003366;"> Class RBPPAR, </span>
+    <span style="color: #003366;"> Class VBPFLT reuse from the Wave1 platform code.Provide some related information as follows. </span>
+</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="30.4783%"/>
+                                    <col  width="45.5998%"/>
+                                    <col  width="23.9002%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Document content </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Docupedia link </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Comment </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> VHM overall introduction </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="https://inside-docupedia.bosch.com/confluence/display/CPSAGG/Odometry">Odometry</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Self -standard </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Overall introduction: <a   href="https://inside-docupedia.bosch.com/confluence/display/CPSAGG/Auto-Calibration">Auto-Calibration</a></p>
+<p   
+> Tire calibration: <a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=405143654">Wheels & Tires Calibration</a></p>
+<p   
+> Self -standard verification: <a   href="https://inside-docupedia.bosch.com/confluence/display/CPSAGG/Verification+of+Odometry+Calibration">Verification of Odometry Calibration</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #003366;"> Class RBPVHM </span> Input and output interface </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> input interface: <a   href="https://inside-docupedia.bosch.com/confluence/display/ultraschallwiki/VHM1+Input+signals">VHM1 Input signals</a></p>
+<p   
+> Output Interface: <a   href="https://inside-docupedia.bosch.com/confluence/display/ultraschallwiki/VHM+Output+API+v2">VHM Output API v2</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> VHM parameter introduction </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="https://inside-docupedia.bosch.com/confluence/display/ultraschallwiki/2.3.2+VHM1+parameters">2.3.2 VHM1 parameters</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> VHM into the pit step </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="unresolved" href="#src-3815333598">7. First Steps as a VHM developer</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+>    <span style="color: #003366;"> The VHMPROVIDER is developed in this project. </span>
+</p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3824003621_Odom_Detailed_Design.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Odom Detailed Design</span>
+        </a>
+                <a href="1834779678_01_Map.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>01_Map</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

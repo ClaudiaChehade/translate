@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Configuration parameter management based on the Camera Service framework  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4427333790"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                     <li><a href="4328964141_J6E_Camera_Service.html">J6E Camera Service</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4427333790"> <span> Configuration parameter management based on the Camera Service framework </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-107072?src=confmacro">CNWVIII-107072</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+<p   
+> Camera Service Warehouse Address: </p>
+<p   style="margin-left:30px;"
+><a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/MIDDLETRIM_XCCN/repos/camera_service/browse?at=refs%2Fheads%2Fdevelop">Browse JETOUR_J6E_MiddleTrim_Project / camera_service - Sourcecode01 / Sourcecode06 productive system (bosch.com)</a></p>
+<p   
+><br/></p>
+<p   
+> Based on the horizon Sensor Center source code, analyze and manage the Configuration File of each module: Sensor Center source code is located at <span style="color: #ff0000;">
+O:\Engineering\domain\WAVE3\04_PER\04_Training\Horizon_materials\sensor_center_v1.7.5.tar.gz    </span>
+</p>
+<p   style="margin-left:30px;"
+><strong class=" "> Analyze Sensor_global.json (CAMERASERVICEMANAGER's Configuration File): Reference file directory v1.7.5/config/sensor_global.json </strong></p>
+<p   style="margin-left:30px;"
+> Structure: </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">struct SensorGlobalProperties {					</code></div>
+<div class="line"><code class="plain">  std::string communication_path;</code></div>
+<div class="line"><code class="plain">  std::string adapter_path;</code></div>
+<div class="line"><code class="plain">  uint32_t monitor_timeout_ms;</code></div>
+<div class="line"><code class="plain">  uint32_t fps_print_interval_ms;</code></div>
+<div class="line"><code class="plain">  std::string diag_adapter_name;</code></div>
+<div class="line"><code class="plain">  std::string command_adapter_name;</code></div>
+<div class="line"><code class="plain">  HeartBeatProperties heartbeat_properties;</code></div>
+<div class="line"><code class="plain">  SchedPolicyProperties sched_policy_properties;</code></div>
+<div class="line"><code class="plain">  SysmgrControlProperties sysmgr_control_properties;</code></div>
+<div class="line"><code class="plain">  StateManagerProperties state_manager_properties;</code></div>
+<div class="line"><code class="plain">  FpsControlProperties fps_control_properties;</code></div>
+<div class="line"><code class="plain">  TimingDiagProperties timing_diag_properties;</code></div>
+<div class="line"><code class="plain">  std::string process_name;</code></div>
+<div class="line"><code class="plain">  bool time_cost_en{</code><code class="keyword">false</code><code class="plain">};</code></div>
+<div class="line"><code class="plain">  std::vector<CfgProperties> sensor_params;</code></div>
+<div class="line"><code class="plain">  std::string schedule_group_path;</code></div>
+<div class="line"><code class="plain">  std::string customized_field;</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">struct CfgProperties {					</code></div>
+<div class="line"><code class="plain">  bool enable;</code></div>
+<div class="line"><code class="plain">  std::string property_file;</code></div>
+<div class="line"><code class="plain">  std::string sensor_name;</code></div>
+<div class="line"><code class="plain">  std::vector<std::string> plugin_libraries;</code></div>
+<div class="line"><code class="plain">  std::string plugin_classname;</code></div>
+<div class="line"><code class="plain">  std::vector<std::string> raw_adapter_name_list;</code></div>
+<div class="line"><code class="plain">  std::vector<std::string> frame_adapter_name_list;</code></div>
+<div class="line"><code class="plain">  SensorModeProperties sensor_mode_cfg;</code></div>
+<div class="line"><code class="plain">  std::shared_ptr<HwIntfCfg> hw_cfg;</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">struct SensorModeProperties {				</code></div>
+<div class="line"><code class="plain">  SensorRunMode run_mode_type;</code></div>
+<div class="line"><code class="plain">  std::string senso</code></div>
+<div class="line"><code class="plain">r_name;</code></div>
+<div class="line"><code class="plain">  std::vector<std::string> frame_adapter_name_list;</code></div>
+<div class="line"><code class="plain">  std::vector<std::string> raw_adapter_name_list;</code></div>
+<div class="line"><code class="plain">  std::vector<AdapterProperties> frame_adapter_properties_list;</code></div>
+<div class="line"><code class="plain">  std::vector<AdapterProperties> raw_adapter_properties_list;</code></div>
+<div class="line"><code class="plain">  std::map<std::string, std::string> frame_adapter_topic_map;</code></div>
+<div class="line"><code class="plain">  std::map<std::string, std::string> raw_adapter_topic_map;</code></div>
+<div class="line"><code class="plain">  TS_SRC_INFO ts_src;</code></div>
+<div class="line"><code class="plain">  std::string group_adapter_name;</code></div>
+<div class="line"><code class="plain">  bool group_enable{</code><code class="keyword">false</code><code class="plain">};</code></div>
+<div class="line"><code class="plain">  bool group_active {</code><code class="keyword">false</code><code class="plain">};</code></div>
+<div class="line"><code class="plain">  int16_t group_id{-</code><code class="value">1</code><code class="plain">};</code></div>
+<div class="line"><code class="plain">  int64_t group_sync_timeout;</code></div>
+<div class="line"><code class="plain">  int64_t group_sync_difftime;</code></div>
+<div class="line"><code class="plain">  MsgSyncMode group_sync_mode;</code></div>
+<div class="line"><code class="plain">  struct OnlineMode {</code></div>
+<div class="line"><code class="plain">    bool raw_msg_enable;</code></div>
+<div class="line"><code class="plain">    std::string hal_type;</code></div>
+<div class="line"><code class="plain">  } online_info;</code></div>
+<div class="line"><code class="plain">  struct FeedbackMode {</code></div>
+<div class="line"><code class="plain">     CallbackMessageMode feedback_msg_mode;</code></div>
+<div class="line"><code class="plain">  } feedback_info;</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+<p   style="margin-left:30px;"
+><strong class=" "> Analyze Adapter.json (Configuration File) (ATAPTERBASE): Reference File Directory V1.7.5/Config/Sensor_center/Adapter.json </strong></p>
+<p   style="margin-left:30px;"
+> Structure: </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">class</code><code class="plain"> AdapterMessageConfig {					</code><code class="comments">//adapter.json</code></div>
+<div class="line"><code class="plain"> </code><code class="keyword">public</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">  AdapterMessageConfig() :</code></div>
+<div class="line"><code class="plain">    adapter_mode(AdapterMessageMode::AdapterModeNone),</code></div>
+<div class="line"><code class="plain">    adapter_name(</code><code class="string">""</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    topic_name(</code><code class="string">""</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    enable_pub(</code><code class="keyword">false</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    enable_sub(</code><code class="keyword">false</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    enable_client(</code><code class="keyword">false</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    enable_service(</code><code class="keyword">false</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    messagedomainid(</code><code class="value">0</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    messagetrantype(</code><code class="value">0</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    messagenum(</code><code class="value">0</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    participantattr(</code><code class="value">0</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    sub_fps_print_interval_ms(</code><code class="value">0</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    service_fps_print_interval_ms(</code><code class="value">0</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    enable(</code><code class="keyword">false</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    plugin_classname(</code><code class="string">""</code><code class="plain">) {}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  ~AdapterMessageConfig() = </code><code class="keyword">default</code><code class="plain">;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  AdapterMessageMode adapter_mode;</code></div>
+<div class="line"><code class="plain">  std::string adapter_name;</code></div>
+<div class="line"><code class="plain">  std::string topic_name;</code></div>
+<div class="line"><code class="plain">  bool enable_pub;</code></div>
+<div class="line"><code class="plain">  bool enable_sub;</code></div>
+<div class="line"><code class="plain">  bool enable_client;</code></div>
+<div class="line"><code class="plain">  bool enable_service;</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">int</code><code class="plain"> messagedomainid;</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">int</code><code class="plain"> messagetrantype;</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">int</code><code class="plain"> messagenum;</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">int</code><code class="plain"> participantattr;</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">int</code><code class="plain"> sub_fps_print_interval_ms;</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">int</code><code class="plain"> service_fps_print_interval_ms;</code></div>
+<div class="line"><code class="plain">  bool enable;</code></div>
+<div class="line"><code class="plain">  std::string plugin_classname;</code></div>
+<div class="line"><code class="plain">  std::vector<std::string> plugin_libraries;</code></div>
+<div class="line"><code class="plain">  uint32_t timeout_ms;</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+<p   style="margin-left:30px;"
+><strong class=" "> Analysis of Camera_X.JSON (Configuration File of CameraManager): Reference file directory v1.7.5/config/adsor_center/carera_0.json </strong></p>
+<p   style="margin-left:30px;"
+> Structure: </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">struct VioConfig {					</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">int</code><code class="plain">  config_index;</code></div>
+<div class="line"><code class="plain">  std::string cam_cfg_file;</code></div>
+<div class="line"><code class="plain">  std::string vio_cfg_file;</code></div>
+<div class="line"><code class="plain">  std::string switch_cfg_file;</code></div>
+<div class="line"><code class="plain">  std::unordered_map<uint32_t, uint32_t> mipi_width;</code></div>
+<div class="line"><code class="plain">  std::unordered_map<uint32_t, uint32_t> mipi_height;</code></div>
+<div class="line"><code class="plain">  CameraType camera_type;</code></div>
+<div class="line"><code class="plain">  bool init_ensure_all{</code><code class="keyword">true</code><code class="plain">};</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+<p   style="margin-left:30px;"
+><strong class=" "> Analysis of hb_j5dev.json (configuration file) of viodriver: Reference file directory v1.7.5/config/adsor_center/camera/j5DVB/AR0233_RX0/hb_j5Dev.json </strong></p>
+<p   style="margin-left:30px;"
+> Structure: </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">struct CameraInfo {					</code></div>
+<div class="line"><code class="plain">  uint16_t camera_fps;</code></div>
+<div class="line"><code class="plain">  uint16_t camera_port_id;</code></div>
+<div class="line"><code class="plain">  uint32_t camera_width;</code></div>
+<div class="line"><code class="plain">  uint32_t camera_height;</code></div>
+<div class="line"><code class="plain">  std::string camera_name;</code></div>
+<div class="line"><code class="plain">  std::string deserial_name;</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+<p   style="margin-left:30px;"
+><br/></p>
+<p   
+><strong class=" "> Replenish: </strong></p>
+<p   
+> In order to uniformly manage the configuration files dependent on each module, PER5 Team is in <a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/MIDDLETRIM_XCCN/repos/camera_service/browse?at=refs%2Fheads%2Fdevelop"> camera_service </a> The module of the parameter parsing is added to the warehouse to uniformly analyze the configuration parameter Structure required by each module. Now it is necessary to collect the configuration file and its Structure definition required for each module <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~DNB1SZH">DUAN Bingheng (XC-AS/PJ-WIN-MW1)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~JEO1SZH">JIAO Leo (XC-AS/PJ-WIN-PMT2)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJO2SZH">WANG Qiang (XC-AS/PJ-WIN-VER)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MRO1SZH">MI Roy (XC-CP/ESW5-CN)</a></p>
+<p   
+><strong class=" ">CameraServiceManager: <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~DNB1SZH">DUAN Bingheng (XC-AS/PJ-WIN-MW1)</a></strong></p>
+<p   
+><strong class=" ">Adapter：</strong></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Configuration file </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Structure </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>sensor_global.json</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><strong class=" ">Encoder: <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJO2SZH">WANG Qiang (XC-AS/PJ-WIN-VER)</a></strong></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Configuration file </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Structure </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><strong class=" ">Decoder：</strong><strong class=" "><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~JEO1SZH">JIAO Leo (XC-AS/PJ-WIN-PMT2)</a></strong></p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="midnight syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">enum</code><code class="plain"> </code><code class="keyword">class</code><code class="plain"> BrcMode: uint8_t</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  eEncodeH264_CBR   = </code><code class="value">0</code><code class="plain">, </code><code class="comments">// currently not supported </code></div>
+<div class="line"><code class="plain">  eEncodeH264_VBR   = </code><code class="value">1</code><code class="plain">, </code><code class="comments">// currently not supported</code></div>
+<div class="line"><code class="plain">  eEncodeH264_AVBR  = </code><code class="value">2</code><code class="plain">, </code><code class="comments">// currently not supported</code></div>
+<div class="line"><code class="plain">  eEncodeH265_CBR   = </code><code class="value">3</code><code class="plain">, </code><code class="comments">// currently not supported</code></div>
+<div class="line"><code class="plain">  eEncodeH265_VBR   = </code><code class="value">4</code><code class="plain">, </code><code class="comments">// currently not supported</code></div>
+<div class="line"><code class="plain">  eEncodeH265_AVBR  = </code><code class="value">5</code><code class="plain">, </code><code class="comments">// currently not supported</code></div>
+<div class="line"><code class="plain">  eEncodeJpeg       = </code><code class="value">6</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">  eEncodeUnknowRc</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    </code><code class="string">"ip"</code><code class="plain">: </code><code class="string">"x.x.x.x"</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    </code><code class="string">"port"</code><code class="plain">: ***,</code></div>
+<div class="line"><code class="plain">    </code><code class="string">"record"</code><code class="plain">: </code><code class="value">0</code><code class="plain">,                    </code><code class="comments">// 0: close   1:open</code></div>
+<div class="line"><code class="plain">    </code><code class="string">"cameras"</code><code class="plain">: {</code></div>
+<div class="line"><code class="plain">        </code><code class="string">"camera_0"</code><code class="plain">: {</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"BrcMode"</code><code class="plain">: </code><code class="value">6</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"input_pixFmt"</code><code class="plain">: </code><code class="value">1</code><code class="plain">,      </code><code class="comments">// 1: nv12   2：yuv420p</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"width"</code><code class="plain">: </code><code class="value">1024</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"height"</code><code class="plain">: </code><code class="value">1024</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"jpeg_quality"</code><code class="plain">: </code><code class="value">90</code><code class="plain">,     </code><code class="comments">// （0 - 100]</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"camera_index"</code><code class="plain">: </code><code class="value">0</code><code class="plain">，</code></div>
+<div class="line"><code class="plain">			</code><code class="string">"frame_buf_count"</code><code class="plain">: </code><code class="value">5</code><code class="plain">,    </code><code class="comments">// size of input queue</code></div>
+<div class="line"><code class="plain">			</code><code class="string">"bitstream_buf_count"</code><code class="plain">:</code><code class="value">5</code><code class="plain">  </code><code class="comments">// size of output queue</code></div>
+<div class="line"><code class="plain">        },</code></div>
+<div class="line"><code class="plain">        </code><code class="string">"camera_1"</code><code class="plain">: {</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"BrcMode"</code><code class="plain">: </code><code class="value">6</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"input_pixFmt"</code><code class="plain">: </code><code class="value">1</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"width"</code><code class="plain">: </code><code class="value">1024</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"height"</code><code class="plain">: </code><code class="value">1024</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"jpeg_quality"</code><code class="plain">: </code><code class="value">90</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"camera_index"</code><code class="plain">: </code><code class="value">1</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">			</code><code class="string">"frame_buf_count"</code><code class="plain">: </code><code class="value">5</code><code class="plain">,   </code></div>
+<div class="line"><code class="plain">			</code><code class="string">"bitstream_buf_count"</code><code class="plain">:</code><code class="value">5</code><code class="plain"> </code></div>
+<div class="line"><code class="plain">        },</code></div>
+<div class="line"><code class="plain">		...</code></div>
+<div class="line"><code class="plain">		...</code></div>
+<div class="line"><code class="plain">		...</code></div>
+<div class="line"><code class="plain">        </code><code class="string">"camera_x"</code><code class="plain">: {</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"BrcMode"</code><code class="plain">: </code><code class="value">6</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"input_pixFmt"</code><code class="plain">: </code><code class="value">1</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"width"</code><code class="plain">: </code><code class="value">1024</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"height"</code><code class="plain">: </code><code class="value">1024</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"jpeg_quality"</code><code class="plain">: </code><code class="value">90</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            </code><code class="string">"camera_index"</code><code class="plain">: x,</code></div>
+<div class="line"><code class="plain">			</code><code class="string">"frame_buf_count"</code><code class="plain">: </code><code class="value">5</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">			</code><code class="string">"bitstream_buf_count"</code><code class="plain">:</code><code class="value">5</code><code class="plain"> </code></div>
+<div class="line"><code class="plain">        }</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+<p   
+><strong class=" ">vio_driver: </strong><strong class=" "><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MRO1SZH">MI Roy (XC-CP/ESW5-CN)</a></strong></p>
+    <div  class="tablewrap">
+        <table class="wrapped relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="34.9112%"/>
+                                    <col  width="65.0502%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Configuration file </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Structure </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4334980708_sensor_center%E4%B8%9A%E5%8A%A1%E6%A8%A1%E5%9D%97%E5%8F%8A%E6%8E%A5%E5%8F%A3.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Sensor Center business module and interface </span>
+        </a>
+                <a href="4343839102_OTA3_Parking_Task_force.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>OTA3 Parking Task force</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

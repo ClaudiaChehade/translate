@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Global2Local feedback - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2782679487"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2495263431_Static_Fusion_-_PER.html">Static Fusion - PER</a></li>
+                                                                                                         <li class="shortcut"><a href="2782679446_SF-LaneModel.html">SF-LaneModel</a></li>
+                                                                                     <li><a href="2782679470_SF-LM-doc.html">SF-LM-doc</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2782679487"> <span>Global2Local feedback</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+></p>
+<p   
+><br/></p>
+    <div class="section section-1" id="src-2782679487_Global2Localfeedback-Legend">
+        <h1 class="heading "><span>Legend</span></h1>
+<p   
+><strong class=" ">Viper lanes:</strong>     <span style="color: #ff0000;">
+read line    </span>
+</p>
+<p   
+><strong class=" ">Viper roadedge</strong>:     <span style="color: #ff00ff;">
+purple curve    </span>
+</p>
+<p   
+><strong class=" ">HDMap lanes</strong>: white line</p>
+<p   
+><strong class=" ">Tlg</strong>: transform global to local</p>
+<p   
+><strong class=" ">Tlb</strong>: tranform from base/body to local, i.e. P_local</p>
+<p   
+><strong class=" ">Tgb</strong>: transform from base/body to global, i.e. P_global</p>
+    </div>
+    <div class="section section-1" id="src-2782679487_Global2Localfeedback-global2local">
+        <h1 class="heading "><span>global2local</span></h1>
+<p   
+> The change formula for changing the coordinates of the map element from the Global Frame to the Local Frame is: </p>
+    <div  class="tablewrap">
+        <table class="latexmath-mathblock">
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="latexmath-numbering" rowspan="1" colspan="1">
+                </td>
+                <td  class="latexmath-center" rowspan="1" colspan="1">
+    <p   
+><img  class="latexmath"  src="images/inline/32ff41bbb15ea31f83541f2b2424c844490d308b491920f1df38c112cfe23c2c.svg" alt="images/inline/32ff41bbb15ea31f83541f2b2424c844490d308b491920f1df38c112cfe23c2c.svg"   />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2782679487_Global2Localfeedback-m_transformfromxLoc">
+        <h1 class="heading "><span>m_transform from xLoc</span></h1>
+<p   
+>// translation and rotation from ENU/Map to local frame. T*P_global=P_local<br/>CXPerLocTransform3_4 m_transform;</p>
+<p   
+><a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3_ALG/repos/xper_interfaces/browse/pub_loc/include/xper_loc_outputif.hpp#142">Source of xper_loc_outputif.hpp - xper_interfaces - Source Code 01 (bosch.com)</a></p>
+<p   
+> When using M_TRANSFORM output by XLOC to convert the coordinate system of the lane line, as the vehicle's driving distance increases, the Viper Lane and HDMAP LANE will be farther and farther under Local Frame. </p>
+<p   
+> This deviation is caused by the positioning accuracy of P_LOCAL, P_global.Instead, XLOC is caused by smooth processing of the time domain of the M_TRANSFORM matrix. <strong class=" "> The smooth change matrix (recorded as M_TRANSFORM_SMOOTHed) is not satisfied with the coordinate system transformation equation. </strong></p>
+    <div  class="tablewrap">
+        <table class="latexmath-mathblock">
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="latexmath-numbering" rowspan="1" colspan="1">
+                </td>
+                <td  class="latexmath-center" rowspan="1" colspan="1">
+    <p   
+><img  class="latexmath"  src="images/inline/4bae4ef8864a5d22e1ee153d31d270a3f5eac41507b1636d5ea165379798ed4c.svg" alt="images/inline/4bae4ef8864a5d22e1ee153d31d270a3f5eac41507b1636d5ea165379798ed4c.svg"   />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+> A test trajectory of Suzhou Xinglong Street-Modern Avenue: </p>
+<p   
+> Among them, the white car body is EGO Vehicle, and the yellow car body is a car body that comes from the Global Pose. <strong class=" "> In principle, the two vehicles should be completely overlapped. </strong></p>
+<p   
+>in local frame</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2782679487/2023-02-20_local%5B00_00_29%5D_crop-3-version-1-modificationdate-1677247247000-api-v2.png" alt="images/confluence/download/attachments/2782679487/2023-02-20_local%5B00_00_29%5D_crop-3-version-1-modificationdate-1677247247000-api-v2.png"  height="240" />
+    </p>
+<p   
+>in base_link</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2782679487/2023_02_20_base_link%5B00_00_15%5D_crop_2-version-1-modificationdate-1677247615000-api-v2.png" alt="images/confluence/download/attachments/2782679487/2023_02_20_base_link%5B00_00_15%5D_crop_2-version-1-modificationdate-1677247615000-api-v2.png"  height="234" />
+    </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2782679487_safe-id-R2xvYmFsMkxvY2FsZmVlZGJhY2st55u05o6l5L2_55SoVF9sZw">
+        <h1 class="heading "><span> Use t_LG directly </span></h1>
+<p   
+> Calculating TLG directly according to P_global and P_Local, there will be no situation where Viper_lane and HDMAP_LANE gradually deviate.Although viper_lane and HDMAP_LANE will not be stable and aligned, it will not be farther and farther. </p>
+    <div  class="tablewrap">
+        <table class="latexmath-mathblock">
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="latexmath-numbering" rowspan="1" colspan="1">
+                </td>
+                <td  class="latexmath-center" rowspan="1" colspan="1">
+    <p   
+><img  class="latexmath"  src="images/inline/32ff41bbb15ea31f83541f2b2424c844490d308b491920f1df38c112cfe23c2c.svg" alt="images/inline/32ff41bbb15ea31f83541f2b2424c844490d308b491920f1df38c112cfe23c2c.svg"   />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+> The following figure shows the rendering effect of the TLG directly calculated under ROS directly, in the local frame </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2782679487/2023-02-24_18h11_54%5B00_09_05%5D%5B20230224-210031%5D_crop-version-1-modificationdate-1677246722000-api-v2.png" alt="images/confluence/download/attachments/2782679487/2023-02-24_18h11_54%5B00_09_05%5D%5B20230224-210031%5D_crop-version-1-modificationdate-1677246722000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+<p   
+><img    src="images/inline/bde57c1de7cdf95befd608e7bf0c19bcdd32daa0102fda7a9a8d121c6ff43d71.png" alt="images/inline/bde57c1de7cdf95befd608e7bf0c19bcdd32daa0102fda7a9a8d121c6ff43d71.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2782679487_safe-id-R2xvYmFsMkxvY2FsZmVlZGJhY2st5YiG5p6Q">
+        <h1 class="heading "><span> analyze </span></h1>
+<p   
+> The use of Local Frame and Global Pose, Local Pose: </p>
+<ul class=" "><li class=" "><p   
+> Smoching the TLG (Global To Local Transfrom) directly destroys the coordinate transformation equation and introduces the deviation, making VIPER_LANE and HDMAP_LANE gradually deviate from each other.--- There is a partial estimate </p>
+</li><li class=" "><p   
+> Optimizing the stability of TLG should be achieved by optimizing the stability of TLG, TGB (ie Global Pose, Local Pose). </p>
+</li><li class=" "><p   
+> After HDMAP transforms through TLG, the jitter can only be suppressed as much as possible, and it will not be completely eliminated. </p>
+</li><li class=" "><p   
+> Lane Model output LANES will also have a jitter </p>
+<ul class=" "><li class=" "><p   
+> Under Global Frame, HD MAP and Global Frame coordinate system, all elements of HD MAP will not jitter </p>
+</li><li class=" "><p   
+> Under Local Frame, the TLG transformation is affected by the precision of Local Loc, Global LOC. After the HD MAP element is transformed into Local Frame through TLG, there will </p>
+</li><li class=" "><p   
+> The Lane Molel module focuses on the association & verification & complement of Viper & HDMAP, etc., to suppress the shake processing effect limited; </p>
+</li></ul></li><li class=" "><p   
+> When PNC is Local Planning, Planner needs related jitter processing to improve the smoothness of Local Trajectory </p>
+<ul class=" "><li class=" "><p   
+>eg, <a  class="external-link" href="https://zhuanlan.zhihu.com/p/524300384"> Planning control trajectory stitching -Zhihu.com </a></p>
+</li><li class=" "><p   
+> Analysis of Apollo 6.0 trajectory stitching algorithm: <a  class="external-link" href="https://zhuanlan.zhihu.com/p/390229961">https://zhuanlan.zhihu.com/p/390229961</a></p>
+</li><li class=" "><p   
+><a  class="external-link" href="https://cloud.tencent.com/developer/article/2028649">https://cloud.tencent.com/developer/article/2028649</a>    <span style="color: #172b4d;">
+    </span>
+</p>
+<ul class=" "><li class=" "><p   
+><strong class=" "> For control, the continuous and stable trajectory is more conducive to the smoothness of the instructions under the control, and avoiding the vehicle's jitter. </strong> Therefore, in each operating cycle, the difference between the actual execution effect and planning effect of the vehicle needs to be judged. When the difference is not large, the planning results of the previous operating cycle are directly used; when the difference is relatively large, the replanid (re -planning) will be initiated.The actual test shows that the trajectory stitching can indeed make the control of the real car smoother. </p>
+</li><li class=" "><p   
+> Some of Apollo's official sharing: </p>
+    <blockquote>
+<p   
+>Q：<strong class=" "> The initial status of each real -time plan, such as S, speed, acceleration, etc. are the main time feedback of the car body chassis or from the combination navigation, or the reference volume is obtained from the results of the upper frame plan?How can the two -frame trajectory be connected to ensure that the control module does not change at speed, acceleration, curvature, etc. at the connection? </strong></p>
+<p   
+> A: This question is very good. There is no special introduction in today's sharing. I will describe it here briefly, <strong class=" "> The status of the vehicle is obtained from the upstream positioning module, which combines the data of a variety of sensors, including the coordinates under the current map coordinate system, the orientation, turning angle, speed, acceleration, and so on. </strong> <strong class=" "> The trajectory planning module is carried out in a fixed frequency. We use the trajectory of the trajectory stitching algorithm to ensure that the trajectory of the adjacent frames is smooth in the controller. </strong> Suppose our cycle is DT seconds. If we do not have the trajectory of the previous cycle, then we use the sports model to exterior the state of the vehicle currently obtained from the positioning module.Called it to re -planned; if the trajectory of the previous cycle exists, we will find the corresponding trajectory point in the trajectory of the previous cycle according to the current system time T.The difference between the current vehicle status obtained by the positioning module, if this difference is within a certain range, we find the previous cycle trajectory point of the T + DT time as the starting point of the planning; if this difference exceeds the setting range, it means that the controller is large in largeFor errors, we will do the first case. This mechanism guarantees the smooth stitching of the adjacent frame trajectory when the control error allows.The trajectory of a small DT length is smoothly stitched. </p>
+<p   
+><br/></p>
+<p   
+>Q：<strong class=" "> Why not start the starting point of the current status of the vehicle every time the plan is planned, but "Find the previous cycle trajectory point of the T + DT time as the starting point of the plan"? </strong></p>
+<p   
+> A: because <strong class=" "> The plan is really sent to the controller at T + DT. </strong></p>
+        </blockquote>
+</li></ul></li></ul></li><li class=" "><p   
+> Under Local Frame, the jitter problem in complex scenes needs to be solved together </p>
+</li></ul><p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2809907591_Clarify_Requirements_from_WR_PNC.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Clarify Requirements from WR PNC</span>
+        </a>
+                <a href="2831556249_Global-to-local_transform.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Global-to-local transform</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

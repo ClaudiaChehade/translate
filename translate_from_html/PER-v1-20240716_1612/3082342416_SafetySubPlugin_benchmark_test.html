@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SafetySubPlugin benchmark test - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3082342416"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="4288512465_xPER_safety_build.html">xPER safety build</a></li>
+                                                                                     <li><a href="3082341986_xPER_safety_op_develop.html">xPER safety op develop</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3082342416"> <span>SafetySubPlugin benchmark test</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~ILD2SGH">LIU Dingjie (XC-AS/PJ-WIN-PER5)</a></p>
+<ul class=" "><li class=" "><p   
+>model</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #ff0000;">
+<strong class=" "> Subtracting fixed numbers (TBD) </strong>    </span>
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3082342416/image-2023-5-27_15-22-39-version-1-modificationdate-1685425460000-api-v2.png" alt="images/confluence/download/thumbnails/3082342416/image-2023-5-27_15-22-39-version-1-modificationdate-1685425460000-api-v2.png"  height="250" />
+</p>
+<ul class=" "><li class=" "><p   
+> Vector reduction <img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3082342416/image-2023-5-27_15-24-0-version-1-modificationdate-1685425460000-api-v2.png" alt="images/confluence/download/thumbnails/3082342416/image-2023-5-27_15-24-0-version-1-modificationdate-1685425460000-api-v2.png"  height="250" />
+</p>
+</li></ul></li></ul></li></ul><p   
+><br/></p>
+<ul class=" "><li class=" "><p  class="auto-cursor-target" 
+>command</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">.</code><code class="plain">/safe_plugin_build</code><code class="plain"> --onnx=sub_safety.onnx  --saveEngine=sub_safety.gie</code></div>
+<div class="line"><code class="plain">.</code><code class="plain">/safe_plugin_infer</code><code class="plain"> --bmp=input.bmp --loadEngine=sub_safety.gie --dumpInTensor=fv_input.tensor --dumpOutTensor=sub_output.tensor</code></div>
+<div class="line"><code class="comments">#subPlugin Inference time = 0.5807</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">.</code><code class="plain">/trtexec</code><code class="plain"> --loadInputs=</code><code class="string">"input"</code><code class="plain">:fv_input.tensor --loadEngine=sub_standard_fp16.gie  --exportOutput=trtexec_sub_output.json --dumpProfile</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">[01</code><code class="plain">/03/1970-04</code><code class="plain">:59:17] [I]</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/03/1970-04</code><code class="plain">:59:17] [I] === Profile (1343 iterations ) ===</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/03/1970-04</code><code class="plain">:59:17] [I]                                                           Layer   Time (ms)   Avg. Time (ms)   Median Time (ms)   Time %</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/03/1970-04</code><code class="plain">:59:17] [I]                   Reformatting CopyNode </code><code class="keyword">for</code><code class="plain"> Network Input input      110.49           0.0823             0.0823      4.0</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/03/1970-04</code><code class="plain">:59:17] [I]                                                 Conv_0 + Relu_1      716.02           0.5331             0.5331     26.1</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/03/1970-04</code><code class="plain">:59:17] [I]                                                          Conv_2      470.28           0.3502             0.3500     17.1</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/03/1970-04</code><code class="plain">:59:17] [I]                                              custom_added_Conv0      688.85           0.5129             0.5129     25.1</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/03/1970-04</code><code class="plain">:59:17] [I]                                               custom_added_Sub1      376.44           0.2803             0.2800     13.7</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/03/1970-04</code><code class="plain">:59:17] [I]  Reformatting CopyNode </code><code class="keyword">for</code><code class="plain"> Output Tensor 0 to custom_added_Sub1      383.71           0.2857             0.2838     14.0</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/03/1970-04</code><code class="plain">:59:17] [I]                                                           Total     2745.79           2.0445             2.0422    100.0</code></div>
+<div class="line"><code class="plain">[01</code><code class="plain">/03/1970-04</code><code class="plain">:59:17] [I]</code></div>
+<div class="line"><code class="plain">&&&& PASSED TensorRT.trtexec [TensorRT v8610] </code><code class="comments"># ./trtexec --loadInputs=input:fv_input.tensor --loadEngine=sub_standard_fp16.gie --exportOutput=trtexec_sub_output.json --dumpProfile</code></div>
+</div>
+    </div>
+</li></ul><p   
+><br/></p>
+<ul class=" "><li class=" "><p  class="auto-cursor-target" 
+>tensor accuracy</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">python3 compare_tensor.py --safety_tensor sub_output.tensor --standard_tensor trtexec_sub_output.json  </code></div>
+<div class="line"><code class="plain"> </code></div>
+<div class="line"><code class="plain">arrarysize=8847360</code></div>
+<div class="line"><code class="plain">+---------------------+----------+</code></div>
+<div class="line"><code class="plain">|    Compare Status   |  Failed  |</code></div>
+<div class="line"><code class="plain">+---------------------+----------+</code></div>
+<div class="line"><code class="plain">|    Total </code><code class="functions">diff</code><code class="plain"> num   | 8839196  |</code></div>
+<div class="line"><code class="plain">| >    0.1 percentage | 0.000 %  |</code></div>
+<div class="line"><code class="plain">| >   0.01 percentage | 0.033 %  |</code></div>
+<div class="line"><code class="plain">| >  0.001 percentage | 24.036 % |</code></div>
+<div class="line"><code class="plain">| > 0.0001 percentage | 88.201 % |</code></div>
+<div class="line"><code class="plain">| >0.00001 percentage | 94.313 % |</code></div>
+<div class="line"><code class="plain">+---------------------+----------+</code></div>
+<div class="line"><code class="plain"> </code></div>
+</div>
+    </div>
+</li><li class="auto-cursor-target "><p  class="auto-cursor-target" 
+>calc latency</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Item</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>time(ms)</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>comment</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>standard trtexec</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.2803</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>safety infer</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.5807</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>kernel calc time</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+</li><li class="auto-cursor-target "><p  class="auto-cursor-target" 
+>engine size</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Item</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>size(byte)</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>comment</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>standard</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>43612</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>safety</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>46393</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p  class="auto-cursor-target" 
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3082342416/image-2023-5-27_15-39-31-version-1-modificationdate-1685425460000-api-v2.png" alt="images/confluence/download/attachments/3082342416/image-2023-5-27_15-39-31-version-1-modificationdate-1685425460000-api-v2.png"  height="58" />
+    </p>
+</li><li class="auto-cursor-target "></li></ul>        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3097135310_Safety_sin_cos_plugin_benchmark_test.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Safety sin/cos plugin benchmark test</span>
+        </a>
+                <a href="3081923074_Safety_unarySqrtPlugin_benchmark_test.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Safety unarySqrtPlugin benchmark test</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

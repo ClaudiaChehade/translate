@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>QNX safety manual - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3335863028"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2767301703_Dynamic_Fusion_-_PER.html">Dynamic Fusion - PER</a></li>
+                                                                                     <li><a href="3335863025_safety_fusion.html">safety_fusion</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3335863028"> <span>QNX safety manual</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3335863028_QNXsafetymanual-QNXOSSafetyManual">
+        <h1 class="heading "><span>QNX OS Safety Manual</span></h1>
+    <div class="section section-2" id="src-3335863028_QNXsafetymanual-background">
+        <h2 class="heading "><span>background</span></h2>
+<ul class=" "><li class=" "><p   
+>RST-0005.</p>
+</li><li class=" "><p   
+>The QOS SHALL be accessed from application code only through<br/>interfaces published in the BlackBerry QNX public documentation.</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-3335863028_QNXsafetymanual-referencedocument">
+        <h2 class="heading "><span>reference document</span></h2>
+<ul class=" "><li class=" "><p   
+><a   href="attachments/3335863103/1/QMS3289-QOS2.2.2_OsSafetyManual_v9.0_2022-06-29.pdf">QMS3289-QOS2.2.2_OsSafetyManual_v9.0_2022-06-29.pdf</a></p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-3335863028_QNXsafetymanual-checklist">
+        <h2 class="heading "><span>checklist</span></h2>
+    <div  class="tablewrap">
+        <table class="confluenceTable">
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Original ID</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Description</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>summary</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RST-0023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>An application SHALL NOT use atomic operations (including all mutex operations)<br/>in non-cacheable memory on AArch64-based systems</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Can't use Mutex data mutually exclusive operation <br/> AARCH64 architecture does not support atomic operations in unable cache memory </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RST-0011</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The system SHALL be engineered in such a way that exhaustion of any resource,<br/>in particular memory, does not occur.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> System Resource MANAGEMENT, design ensure that memory memory is sufficient </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RST-0110</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>All safety critical applications SHALL be compiled with the qcc/q++<br/>compiler using only the options listed in A.1.1.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Compilation: Only compile configuration parameters of form A.1.1 can be used </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RST-0111</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>No compiler builtins SHALL be explicitly called from any application that is<br/>compiled with the qcc/q++ compiler.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Compilation: Cannot call the built -in function of the compiler </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RST-0119</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Wide characters SHALL NOT be used in the code.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Do not use Wide Characters in the code </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>RST-0133</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Applications SHALL NOT depend upon the accuracy of representation<br/>when converting between string and real number types.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Can't make a conversion between string and numbers </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3335863028_QNXsafetymanual-QNXlibcxxSafetyManual">
+        <h1 class="heading "><span>QNX libcxx Safety Manual</span></h1>
+    </div>
+    <div class="section section-1" id="src-3335863028_QNXsafetymanual-background.1">
+        <h1 class="heading "><span>background</span></h1>
+<ul class=" "><li class=" "><p   
+>RST-0108.</p>
+</li><li class=" "><p   
+>Users of the libcxx Certified C++ Library MUST comply with the libcxx<br/>Safety Manual.</p>
+</li></ul>    <div class="section section-2" id="src-3335863028_QNXsafetymanual-referencedocument.1">
+        <h2 class="heading "><span>reference document</span></h2>
+<ul class=" "><li class=" "><p   
+><a   href="attachments/3335863114/1/QMS3570-QOS2.2.2_libcxxSafetyManual_v7.0_2022-06-29.pdf">QMS3570-QOS2.2.2_libcxxSafetyManual_v7.0_2022-06-29.pdf</a></p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-3335863028_QNXsafetymanual-checklist.1">
+        <h2 class="heading "><span>checklist</span></h2>
+    <div  class="tablewrap">
+        <table class="relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="18.8134%"/>
+                                    <col  width="53.8249%"/>
+                                    <col  width="59.1399%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Original ID</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Description</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>summary</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Restriction 3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The application developer SHALL NOT use internal functions and classes<br/>when compiling and linking applications with libcxx.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> When using libcxx compilation and link applications, application developers must not use the internal function and class of libcxx <br/><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Restriction 4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The system integrator SHALL compile the libcxx with one of the following<br/>compiler options: -std=c++11, -std=c++14, -std=c++17.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Compile the specified C ++ version to prevent problems, functions and other problems such as C ++ unexpected header files, functions, errors </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Restriction 10</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The system integrator SHALL prevent redefinition of _LIBCXX macros<br/>from source code or from the command line, or from both.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Do not use libcxx macros, e.g: m_pi ... </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Recommendation 3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The system integrator SHOULD perform additional unit testing<br/>and integration testing, for every user-defined type as a template argument to a libcxx<br/>class/function instantiation.<br/>Redefining macros involves ensuring the new definition of macro must be effectively<br/>the same as the old macro. And, redefining macros could lead to compiler warnings<br/>and errors. Hence, redefining of _LIBCXX macros must not be done to maintain known<br/>behavior of libcxx library.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>UT,<br/> The type defined by each user is instantiated by the template parameter/function of the libcxx. The type of user definition will have a certain range of errors <br/> The template guarantees the normal range of the parameter type </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Recommendation 5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The system integrator SHOULD prevent use of implicit type<br/>conversions as arguments to libcxx functions, and use static analysis tool to prevent such<br/>conversion, in all their applications that uses libcxx functions</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Prevent parameters of the use of implicit converting to the libcxx function, <br/> Use static analysis tools to prevent conversion </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3335863028_QNXsafetymanual-QNXlibmSafetyManual">
+        <h1 class="heading "><span>QNX libm Safety Manual</span></h1>
+    <div class="section section-2" id="src-3335863028_QNXsafetymanual-background.2">
+        <h2 class="heading "><span>background</span></h2>
+<ul class=" "><li class=" "><p   
+>RST-0058.</p>
+</li><li class=" "><p   
+>Users of the libm library for mathematical functions MUST comply with the<br/>Mathematics Library Safety Manual.</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-3335863028_QNXsafetymanual-referencedocument.2">
+        <h2 class="heading "><span>reference document</span></h2>
+<ul class=" "><li class=" "><p   
+><a   href="attachments/3335863118/1/QMS3359-QOS2.2_LibmSafetyManual_v8.0_2020-10-19.pdf">QMS3359-QOS2.2_LibmSafetyManual_v8.0_2020-10-19.pdf</a></p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-3335863028_QNXsafetymanual-checklist.2">
+        <h2 class="heading "><span>checklist</span></h2>
+    <div  class="tablewrap">
+        <table class="relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="17.0275%"/>
+                                    <col  width="52.8526%"/>
+                                    <col  width="60.4391%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Original ID</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Description</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>summary</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Restriction 1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The user of the libm SHALL NOT redefine any of the symbols defined in<br/>the libm (including header files).<br/>Thus, a user must not redefine cos() or any other of the functions and macros defined in<br/>the libm.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Can't re -define the symbols in the libm header file </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Restriction 6</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The user of the libm SHALL check for errors flagged by a function by<br/>using fetestexcept().</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Error Handling: Run errors with the FeTestexcept function </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Restriction 18</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Before using the libm, the system SHALL verify that the FPU is correctly configured.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FPU? Configuration </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Restriction 8</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The user of the libm SHALL NOT make any assumptions about the<br/>accuracy of the results returned from the following functions:</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Function Accuration Exceptions: QNX provides three different accuracy calculation functions for Float Double Long Double. SIN </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Restriction 9</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The user of the libm SHALL NOT assume that the value returned by any<br/>double or long double version of a libm function has an accuracy of more than six<br/>significant decimal digits.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The return value accuracy cannot assume that Double Or Long Double returns more than 6 digits with validity </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Restriction 20</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The user of libm SHALL assume the accuracy of the results returned<br/>from the<br/>float fmodf(float x, float y)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The FMODF function is limited to three -bit effective numbers </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Recommendation 7</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>The user of libm SHOULD use the -fno-builtin compiler option when compiling code that<br/>invokes a function from the libm</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Compilation: -fno -Builtin </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5.1 Error Conditions</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5.1.1 Quiet and Signalling NaNs</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 5.1 Error Conditions, about libm value domain, value range </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3335863028_QNXsafetymanual-QNXSDP">
+        <h1 class="heading "><span>QNX SDP</span></h1>
+    <div class="section section-2" id="src-3335863028_QNXsafetymanual-background.3">
+        <h2 class="heading "><span>background</span></h2>
+<ul class=" "><li class=" "><p   
+>RST-0006.</p>
+</li><li class=" "><p   
+>All developers creating applications to run on the QOS SHALL be aware<br/>of and SHALL follow the restrictions that the BlackBerry QNX library documentation (provided as part of the QNX SDP 7.1 installation) applies to the contexts in which different libc functions may be invoked.</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-3335863028_QNXsafetymanual-referencedocument.3">
+        <h2 class="heading "><span>reference document</span></h2>
+<p   
+><a  class="external-link" href="http://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/topic/about.html">- About This Reference (qnx.com)</a></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4336292593_Blind_Area.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Blind Area</span>
+        </a>
+                <a href="3848384646_uss_points_assessment.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>uss points assessment</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> PER :: HOL data requirements on functional verification  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3340236010"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                     <li><a href="3340235841_HOL_and_Data.html">HOL and Data</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3340236010"> <span> PER :: HOL data requirements on functional verification </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3340236010_safe-id-UEVSOjpIT0zkuIrlip_og73pqozor4HnmoTmlbDmja7pnIDmsYItMS5QRVI6OkhPTOaVsOaNrueOsOeKtg">
+        <h1 class="heading "><span> 1. Per :: Hol data status quo </span></h1>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Serial number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> time </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Status quo description </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> emergency level </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Reported by </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Per lacks data on HOL that can verify VIPER and LIPER at the same time </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The most high </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~CWH8SZH">CHEN Wenhui (XC-AS/PJ-WIN-PER5)</a></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-3340236010_safe-id-UEVSOjpIT0zkuIrlip_og73pqozor4HnmoTmlbDmja7pnIDmsYItMi5QRVI6OkhPTOaVsOaNrumcgOaxgg">
+        <h1 class="heading auto-cursor-target"><span> 2. Per :: Hol data requirements </span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="67.0"/>
+                                    <col  width="137.0"/>
+                                    <col  width="116.0"/>
+                                    <col  width="114.0"/>
+                                    <col  width="136.0"/>
+                                    <col  width="187.0"/>
+                                    <col  width="80.0"/>
+                                    <col  width="223.0"/>
+                                    <col  width="81.0"/>
+                                    <col  width="274.0"/>
+                                    <col  width="380.0"/>
+                                    <col  width="120.0"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="12">
+    <p   
+> emergency level 说明： The most high  > 非常 high  >  high  >  generally </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> serial number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Met the demand TIME </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Get the data time </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Data demand feedback </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Scenes </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> sensor </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> duration </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> detail </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> emergency level </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Ticket</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Demander </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Remark </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>17 Jul 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RBCN underground parking lot </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> 5 Parking Chery Camera data </p>
+</li><li class=" "><p   
+> Lidar data </p>
+</li><li class=" "><p   
+> IMU data </p>
+</li><li class=" "><p   
+> INS data </p>
+</li><li class=" "><p   
+> CAN data </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5min</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1.Occasionally, people's walking around the car was collected </p>
+<p   
+> 2.The car drives from the ground to the underground parking lot, turns around in the parking lot, and then drives out the underground parking lot. </p>
+<p   
+> Data requirements: lidar frame rate 10Hz 10Hz </p>
+<p   
+> IMU/INS frame rate 100Hz </p>
+<p   
+> CAN frame rate 50/100Hz </p>
+<p   
+> Each Sensor data guarantees Time synchronization </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:center;"
+> The most high </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-52798"> [CNWVIII-52798] Per5 :: HOL table frame Chery CAM + M2 Lidar Rbac-215 (RBCN underground parking lot) B-SAMPLE DATA Collection (5 + MIN)-Tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~CWH8SZH">CHEN Wenhui (XC-AS/PJ-WIN-PER5)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~PGU1SZH">PENG Huidong (XC-AS/PJ-WIN-PER5)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~GWG1SGH">GONG Weimeng (XC-AS/PJ-WIN-PER3)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RBAC 215 parking lot </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> 5 Parking Chery Camera data </p>
+</li><li class=" "><p   
+> Lidar data </p>
+</li><li class=" "><p   
+> IMU data </p>
+</li><li class=" "><p   
+> INS data </p>
+</li><li class=" "><p   
+> CAN data </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5min</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Occasionally, people's walking around the car was collected </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> high </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~CWH8SZH">CHEN Wenhui (XC-AS/PJ-WIN-PER5)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~PGU1SZH">PENG Huidong (XC-AS/PJ-WIN-PER5)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~GWG1SGH">GONG Weimeng (XC-AS/PJ-WIN-PER3)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RBAC 205 parking lot </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> 5 Parking Chery Camera data </p>
+</li><li class=" "><p   
+> Lidar data </p>
+</li><li class=" "><p   
+> IMU data </p>
+</li><li class=" "><p   
+> INS data </p>
+</li><li class=" "><p   
+> CAN data </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5min</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Occasionally, people's walking around the car was collected </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> high </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~CWH8SZH">CHEN Wenhui (XC-AS/PJ-WIN-PER5)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~PGU1SZH">PENG Huidong (XC-AS/PJ-WIN-PER5)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~GWG1SGH">GONG Weimeng (XC-AS/PJ-WIN-PER3)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Rbac ground parking lot opens open SCNES </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> 5 Parking Chery Camera data </p>
+</li><li class=" "><p   
+> Lidar data </p>
+</li><li class=" "><p   
+> IMU data </p>
+</li><li class=" "><p   
+> INS data </p>
+</li><li class=" "><p   
+> CAN data </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>8min</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The factory area is bypass near a parking space, and some people walk around and have been collected </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> generally </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~CWH8SZH">CHEN Wenhui (XC-AS/PJ-WIN-PER5)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~PGU1SZH">PENG Huidong (XC-AS/PJ-WIN-PER5)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~GWG1SGH">GONG Weimeng (XC-AS/PJ-WIN-PER3)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RBCN underground parking lot </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Lidar data </p>
+</li><li class=" "><p   
+> IMU data </p>
+</li><li class=" "><p   
+> INS data </p>
+</li><li class=" "><p   
+> CAN data </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10min</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Cross -layer data collection of parking lots: The car drives from the ground to the underground parking lot B1, turns around in the B1 parking lot, then drives to the B2 parking lot, and then drives back to the ground. </p>
+<p   
+> Data requirements: </p>
+<ol class=" "><li class=" "><p   
+> lidar frame rate 10Hz </p>
+</li></ol><p   
+> IMU/INS frame rate 100Hz </p>
+<p   
+> CAN frame rate 50/100Hz </p>
+<p   
+> 2. Each Sensor data guarantees Time synchronization </p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> high </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~GWG1SGH">GONG Weimeng (XC-AS/PJ-WIN-PER3)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>6</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RBAC 205 parking lot </p>
+<p   
+> RBAC 215 parking lot </p>
+<p   
+> RBCN underground parking lot </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> 5 Parking Chery Camera data </p>
+</li><li class=" "><p   
+> Lidar data </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5min</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class=" "><li class=" "><p   
+> Frame rate: </p>
+<ol class=" "><li class=" "><p   
+>10 hz</p>
+</li></ol></li><li class=" "><p   
+> Synchronous: </p>
+<ol class=" "><li class=" "><p   
+> Hope Camera data and lidar data synchronize </p>
+</li></ol></li><li class=" "><p   
+> Scenes: </p>
+<ol class=" "><li class=" "><p   
+> Seduer Scenario </p>
+</li><li class=" "><p   
+> In -depth parking space </p>
+</li></ol></li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> high </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~UNJ1SZH">YANG Junyan (XC-AS/PJ-WIN-PER1)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~YCH6SZH">YANG Chen (XC-AS/PJ-WIN-PER2)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>7</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Urban elevated </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Lidar data </p>
+</li><li class=" "><p   
+> IMU data </p>
+</li><li class=" "><p   
+> INS data </p>
+</li><li class=" "><p   
+> CAN data </p>
+</li><li class=" "><p   
+> HVM data </p>
+</li><li class=" "><p   
+> ODOM data </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20min</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Driving road test upper and lower ramp SCNES: </p>
+<p   
+> Select a section of HIGH frame section, first go to the ramp, run a section of Time on the High rack and then lower the ramp. </p>
+<p   
+> Data requirements: </p>
+<ol class=" "><li class=" "><p   
+> lidar frame rate 10Hz </p>
+</li></ol><p   
+> IMU/INS frame rate 100Hz </p>
+<p   
+> CAN frame rate 50/100Hz </p>
+<p   
+> 2. Each Sensor data guarantees Time synchronization </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> generally </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~GWG1SGH">GONG Weimeng (XC-AS/PJ-WIN-PER3)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~JNI8SZH">JIN Na (XC-AS/PJ-WIN-PER3)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>8</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RBAC underground parking lot </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> IPM-Parking data </p>
+</li><li class=" "><p   
+> CAN data </p>
+</li><li class=" "><p   
+> Apaslam data </p>
+</li><li class=" "><p   
+> VHM data </p>
+</li><li class=" "><p   
+> HVM data </p>
+</li><li class=" "><p   
+> ODOM data </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5min</p>
+<p   
+> Each Scenes 5min </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Scenes 1: There is a pillar in the middle of the warehouse on both sides </p>
+</li><li class=" "><p   
+> Scenario 2: Collect the scene where the vertical parking space is connected to the end and end (see TickTes for details) </p>
+</li></ul><ul class=" "><li class=" "><p   
+> Scenario 3: When there is only one corner point to be seen when it is wrapped, whether it will be matched with the corner of the parking space next door </p>
+</li><li class=" "><p   
+> Scenario 4: Stable run around the 205 parking lot for 2 laps </p>
+</li><li class=" "><p   
+> Scenes 5: The searches of the parking space searches in parallel lines, the pendant stage </p>
+</li><li class=" "><p   
+> Scenario 6: The searches of the parking space searches obliquely line, the incense stage </p>
+</li><li class=" "><p   
+> Scenario 7: The searches at night scenes, the incense stage </p>
+</li><li class=" "><p   
+> SceNES 8: Place Lock Test Parking Period (see TICKETS for details) </p>
+</li></ul><p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-56655?src=confmacro">CNWVIII-56655</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HLC2SGH">LI Chen (XC-AS/PJ-WIN-PER2)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~USY2SZH">SUN Yangyang (XC-AS/PJ-WIN-PER2)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~UXZ2SGH">XU Zhonglin (XC-AS/PJ-WIN-PER3)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~JNI8SZH">JIN Na (XC-AS/PJ-WIN-PER3)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>9</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Urban tunnel </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Lidar data </p>
+</li><li class=" "><p   
+> IMU data </p>
+</li><li class=" "><p   
+> INS data </p>
+</li><li class=" "><p   
+> CAN data </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20min</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Choose a Urban Tunnel and record data from 1 km from before the tunnel to 1 km from the tunnel. </p>
+<p   
+> Data requirements: </p>
+<ol class=" "><li class=" "><p   
+> lidar frame rate 10Hz </p>
+</li></ol><p   
+> IMU/INS frame rate 100Hz </p>
+<p   
+> CAN frame rate 50/100Hz </p>
+<p   
+> 2. Each Sensor data guarantees Time synchronization </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> generally </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~GWG1SGH">GONG Weimeng (XC-AS/PJ-WIN-PER3)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RBAC 205 parking lot </p>
+<p   
+> RBAC 215 parking lot </p>
+<p   
+> RBCN underground parking lot </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> 5 Parking Chery Camera data </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5min</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> generally </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong (BCSC/EPA1, XC-AS/PJ-WIN-PER2)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>11</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Urban area </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Lidar data </p>
+</li><li class=" "><p   
+> IMU data </p>
+</li><li class=" "><p   
+> INS data </p>
+</li><li class=" "><p   
+> CAN data </p>
+</li><li class=" "><p   
+> HVM data </p>
+</li><li class=" "><p   
+> ODOM data </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20min</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Select a section of Urban Area road, choose the High Building or HIGH frame section on both sides of the road, and finally select the vehicle to be more congested. </p>
+<p   
+> Data requirements: </p>
+<ol class=" "><li class=" "><p   
+> lidar frame rate 10Hz </p>
+</li></ol><p   
+> IMU/INS frame rate 100Hz </p>
+<p   
+> CAN frame rate 50/100Hz </p>
+<p   
+> 2. Each Sensor data guarantees Time synchronization </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> generally </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~GWG1SGH">GONG Weimeng (XC-AS/PJ-WIN-PER3)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~JNI8SZH">JIN Na (XC-AS/PJ-WIN-PER3)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>12</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15 Aug 2023</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> RBAC underground parking lot </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> PSD data </p>
+</li><li class=" "><p   
+> CAN data </p>
+</li><li class=" "><p   
+> HVM data </p>
+</li><li class=" "><p   
+> Apaslam data </p>
+</li><li class=" "><p   
+> VHM data </p>
+</li><li class=" "><p   
+> ODOM data </p>
+<p   
+> Data requirements: </p>
+<p   
+> CAN frame rate 50/100Hz </p>
+<ul class=" "><li class=" "><p   
+> PSD frame rate 10Hz </p>
+</li><li class=" "><p   
+> VHM frame rate 100Hz </p>
+</li><li class=" "><p   
+> ODOM frame rate 100Hz </p>
+</li></ul></li><li class=" "><p   
+><br/></p>
+<p   
+> 2. Each Sensor data guarantees Time synchronization </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5min</p>
+<p   
+> Each Scenes 5min </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Scenes 1: Stable run around the 205 parking lot for 2 laps </p>
+</li><li class=" "><p   
+> Scenario 2: Paper Park Search Power Search Period, Point in the Period </p>
+</li><li class=" "><p   
+> Scenes 3: The searches of the parking space searches on the line of the line, the penetration stage </p>
+</li><li class=" "><p   
+> Scenario 4: The searches at night scenes, the entry stage </p>
+</li><li class=" "><p   
+> Scenario 5: Place Lock Test Parking Period (see TICKETS for details) </p>
+</li></ul><p   
+></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-56655?src=confmacro">CNWVIII-56655</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~UXZ2SGH">XU Zhonglin (XC-AS/PJ-WIN-PER3)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~JNI8SZH">JIN Na (XC-AS/PJ-WIN-PER3)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3850961100_HOL%E7%83%A7%E5%BD%95%E7%9B%B8%E5%85%B3%EF%BC%881_17_2024%EF%BC%89.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> HOL burning records (1/17/2024) </span>
+        </a>
+                <a href="3378461611_Liper_Topic.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Liper Topic</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

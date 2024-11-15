@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HVM Detailed Design - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3819956223"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                     <li><a href="1834779718_00_Localization.html">00_Localization</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3819956223"> <span>HVM Detailed Design</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>    <span style="color: #172b4d;"> HVM is a platform code for integrated W1 Driving.The detailed design of the HVM below mainly introduces the detailed code design of the integrated part. </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #172b4d;"> one.introduce </span>
+</p>
+<p   
+>    <span style="color: #172b4d;"> HVM: Host Vehicle Movement.This module provides more accurate vehicle dynamic results in the driving scene. </span>
+</p>
+<p   
+>    <span style="color: #172b4d;"> The input of this module is the vehicle CAN signal + vene Parameters + Vehicle Specific Parameters: </span>
+</p>
+<ul class=" "><li class=" "><p   
+>Wheel speed.</p>
+</li><li class=" "><p   
+>Sensor yaw rate.</p>
+</li><li class=" "><p   
+>Longitudinal acceleration sensor.</p>
+</li><li class=" "><p   
+>Lateral acceleration sensor.</p>
+</li><li class=" "><p   
+>Steering wheel angle.</p>
+</li><li class=" "><p   
+>Vehicle specific parameters.</p>
+</li><li class=" "><p   
+>ESC state.</p>
+</li><li class=" "><p   
+>…</p>
+</li></ul><p   
+>    <span style="color: #172b4d;"> The output of the module is: </span>
+</p>
+<ul class=" "><li class=" "><p   
+>Current trajectory.</p>
+</li><li class=" "><p   
+>Wheel angle</p>
+</li><li class=" "><p   
+>Longitudinal acceleration sensor / road slope estimation</p>
+</li><li class=" "><p   
+>Lateral acceleration.</p>
+</li><li class=" "><p   
+>Yaw rate.</p>
+</li><li class=" "><p   
+>Oval course detection.</p>
+</li><li class=" "><p   
+>Wheels standstill.</p>
+</li><li class=" "><p   
+>Vehicle Parameter (e.g. wheel base, wheel track).</p>
+</li></ul><p   
+>    <span style="color: #172b4d;"> The functional security level of this module is ASILB. </span>
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/download/attachments/2645172890/image2023-1-11_13-19-49-version-1-modificationdate-1673414389000-api-v2.png" alt="images/download/attachments/2645172890/image2023-1-11_13-19-49-version-1-modificationdate-1673414389000-api-v2.png"   />
+ <img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3819956223/image-2024-1-4_15-21-48-version-1-modificationdate-1704787797000-api-v2.png" alt="images/confluence/download/attachments/3819956223/image-2024-1-4_15-21-48-version-1-modificationdate-1704787797000-api-v2.png"  height="250" />
+</p>
+<p   
+> Figure 1 HVM software architecture </p>
+<p   
+> For example, the software architecture map: PME module obtains vehicle CAN signal and other vehicle parameters from the outside, as well as Persistent Data (the calibration results during the driving process of the vehicle, such as steering wheel corner+front wheel corner, etc.)Calculate the results of the learning, and then output the dynamic results of the vehicle and continue to optimize and store the Persistent Data. </p>
+<p   
+> Among them, the HVM part is the adaptation layer code. The function of this layer code has the following points: </p>
+<p   
+> 1. Convert the CAN signal of different models to the universal signal parameters required for the PME layer </p>
+<p   
+> 2. Monitor the signal layer of the CAN signal layer and identify bad operating conditions in advance </p>
+<p   
+><br/></p>
+<p   
+> two.Static design </p>
+<p   
+><br/></p>
+<p   
+> HVM_PME Static Design Module is as follows of red frames: </p>
+<p   
+> 1. PERPMERUNABLE platform code is the core Host Vehicle Motion calculation part. </p>
+<p   
+> 2. The left end of thepME is the SPPHVM layer adaptation code. </p>
+<p   
+> The main CPP files are SPPHVMRunnable.This layer adaptation code is mainly responsible for converting vehicle parameters, signals, and Persistent Data into universal functions of the platform core relationship layer. </p>
+<p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/download/attachments/3800363677/image-2024-1-4_15-11-38-version-1-modificationdate-1704352298000-api-v2.png" alt="images/download/attachments/3800363677/image-2024-1-4_15-11-38-version-1-modificationdate-1704352298000-api-v2.png"  height="250" />
+ <img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3819956223/image-2024-1-10_18-8-1-version-1-modificationdate-1704881282000-api-v2.png" alt="images/confluence/download/attachments/3819956223/image-2024-1-10_18-8-1-version-1-modificationdate-1704881282000-api-v2.png"  height="250" />
+</p>
+<p   
+> Fig </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #172b4d;"> three.Dynamic design: </span>
+</p>
+<p   
+>    <span style="color: #172b4d;"> Status chart: </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3819956223/image-2024-1-9_10-53-33-version-1-modificationdate-1704787798000-api-v2.png" alt="images/confluence/download/attachments/3819956223/image-2024-1-9_10-53-33-version-1-modificationdate-1704787798000-api-v2.png"  height="400" />
+    </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #172b4d;"> Init sequence diagram </span>
+</p>
+<p   
+><br/></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3819956223/image-2024-1-9_10-51-49-version-1-modificationdate-1704787798000-api-v2.png" alt="images/confluence/download/attachments/3819956223/image-2024-1-9_10-51-49-version-1-modificationdate-1704787798000-api-v2.png"  height="400" />
+    </p>
+<p   
+><br/></p>
+<p   
+> ONUPDATE part of the time preface diagram </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3819956223/image-2024-1-9_10-52-45-version-1-modificationdate-1704787798000-api-v2.png" alt="images/confluence/download/attachments/3819956223/image-2024-1-9_10-52-45-version-1-modificationdate-1704787798000-api-v2.png"  height="400" />
+    </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #172b4d;"> Four.interface: </span>
+</p>
+<p   
+>    <span style="color: #172b4d;"> The main input of HVM is the CAN signal and body signal: </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3819956223/image-2024-1-4_14-51-12-1-version-1-modificationdate-1704787798000-api-v2.png" alt="images/confluence/download/attachments/3819956223/image-2024-1-4_14-51-12-1-version-1-modificationdate-1704787798000-api-v2.png"  height="150" />
+    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;"> The output of HVM is the result of vehicle dynamics: </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/3819956223/image-2024-1-4_14-52-2-1-version-1-modificationdate-1704787798000-api-v2.png" alt="images/confluence/download/thumbnails/3819956223/image-2024-1-4_14-52-2-1-version-1-modificationdate-1704787798000-api-v2.png"  height="150" />
+    </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #172b4d;"> HVM's input signal and HVM internal mapping relationship is as follows: </span>
+</p>
+<p  class="auto-cursor-target" 
+>4.1 .hvm input signals mapping</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="7.63626%"/>
+                                    <col  width="13.5417%"/>
+                                    <col  width="3.54392%"/>
+                                    <col  width="6.14978%"/>
+                                    <col  width="8.58221%"/>
+                                    <col  width="15.1216%"/>
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Description</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="5">
+    <p   
+><strong class=" ">EMS</strong></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Signal Name</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">SI unit</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Resolution</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Comment</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;">
+cherry signals    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "><i class=" ">Sensor Signals</i></strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Wheel Velocities with Timestamp and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vxwWheelNA{FL,FR,RL,RR}</p>
+<p   
+>tAbsWheelVelocity_ul</p>
+<p   
+>VxwWheelStatus{FL,FR,RL,RR}</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m/s</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>includes sign indicating rolling direction</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;">
+ESP_1_VehicleSpeedVSOSigValidData    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+ABS_ESP_1_VehicleSpeedVSOSig    </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #172b4d;">
+LHFWheelSpeedRaw    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+RHFWheelSpeedRaw    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+LHRWheelSpeedRaw    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+RHRWheelSpeedRaw    </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #172b4d;">
+LHFWheelSpeedRawValidData    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+RHFWheelSpeedRawValidData    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+LHRWheelSpeedRawValidData    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+RHRWheelSpeedRawValidData    </span>
+</p>
+<p   
+><br/></p>
+<p   
+>    <span style="color: #172b4d;">
+RHFWheelDriveDirection    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+LHFWheelDriveDirection    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+RHRWheelDriveDirection    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+LHRWheelDriveDirection    </span>
+</p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Wheel Tic Counter and Timestamp</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Rate of Wheel Rotation</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Wheel Rotation Direction</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Wheels Standstill Recognition</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>WheelsStandstill</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Yaw Rate with Timestamp and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>psiDtN</p>
+<p   
+>tAbsPsiDt_ul</p>
+<p   
+>PsiDtStatus</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rad/s</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;">
+ACU_2_YawRate    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+ACU_2_YawrateSigValidData    </span>
+</p>
+<p   
+>    <span style="color: #0000ff;">
+// sign inversion    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+ACU_2_YASCalibrationSts    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Longitudinal Acceleration and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>axvSensorN</p>
+<p   
+>AxvSensorStatus</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m/s²</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;">
+ACU_3_LongitudinalAcceleration    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+ACU_3_LongitudinalAccelerationVD    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Longitudinal Acceleration Offset</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Lateral Acceleration and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>ayvSensorN</p>
+<p   
+>AyvSensorStatus</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m/s²</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;">
+ACU_2_LateralAccelerationSigVD    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+ACU_2_LateralAcceleration    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Lateral Acceleration Offset</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Front Wheel Angle and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>alpWheelAngleN</p>
+<p   
+>AlpWheelStatus</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rad</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;">
+/    </span>
+</p>
+<p   
+>    <span style="color: #0000ff;">
+cal. from steering wheel angle    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Rear Wheel Angle and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>alpWheelAngleRearN</p>
+<p   
+>AlpWheelRearStatus</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rad</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;">
+/    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Steering Wheel Angle and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>alpSteeringWheelAngleN</p>
+<p   
+>alpSteeringWheelStatus</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rad</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;">
+SAM_1_SteeringAngle    </span>
+</p>
+<p   
+>    <span style="color: #172b4d;">
+SAM_1_SteeringAngleVD    </span>
+</p>
+<p   
+>    <span style="color: #0000ff;">
+// sign inversion    </span>
+</p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Gear Position</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Gear Target</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">GPS Dilution of Precision</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">GPS Position and Timestamp</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">ESP Intervention</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "><i class=" ">Future Interfaces</i></strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Wheel Edges and Delta Times</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Planned for 3D Re-Design</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Wheel Rotation Direction</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Planned for 3D Re-Design</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Deceleration Stabilization Controller Activity</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Planned for 3D Re-Design</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Acceleration Stabilization Controller Activity</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Planned for 3D Re-Design</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Yaw Rate Stabilization Controller Activity</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Planned for 3D Re-Design</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Brake Force and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Planned for 3D Re-Design / 6D Estimator</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Propulsion Force and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Planned for 3D Re-Design / 6D Estimator</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Pitch Rate and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rad/s</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Planned for 6D Estimator</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Roll Rate and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rad/s</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Planned for 6D Estimator</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Vertical Acceleration and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m/s²</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Planned for 6D Estimator</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "><i class=" ">Premium Customer</i></strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">GPS Vehicle Velocity</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Tyre Pressure and Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Tyre Change</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Wheel Signal Qualifier</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" "><i class=" ">Vehicle Parameters</i></strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Wheel Base</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lWheelbase</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;">
+2.810    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Wheel Track</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lWheelTrack</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;">
+front 1.63 rear 1.65<br/>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Longitudinal position of front bumper</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>dxvFrontBumper</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;">
+3.732    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Longitudinal position of rear bumper</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>dxvRearBumper</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;">
+0.888    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Maximum width of the ego vehicle</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>dVehicleWidthMax</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;">
+2.204    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Minimum width of the ego vehicle</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>dVehicleWidthMin</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;">
+1.910    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Characteristic Velocity</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>vCh</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>m/s</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;">
+28    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Gradient of the side slip angle referring to the rear axle</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>fak1uBetaCorrSideSlipAngle</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>rad * s²/m</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;">
+-    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Drivertrain Configuration</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-#fffae6 confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Vehicle and Trailer Masses</strong></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>curbVehicleMass</p>
+<p   
+>grossVehicleMass</p>
+<p   
+>grossTrailerMass</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>kg</p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-#e6fcff confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #0000ff;"> Type: 700km 5R1V1D/HF Tri -Yuan </span>
+</p>
+<p   
+>    <span style="color: #0000ff;">
+2050    </span>
+</p>
+<p   
+>    <span style="color: #0000ff;">
+2425    </span>
+</p>
+<p   
+>    <span style="color: #0000ff;">
+-    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+>    <span style="color: #172b4d;">
+<a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=3030256355"> HVM signal layer conversion relationship Detailed design </a>    </span>
+</p>
+<p   
+><br/></p>
+    <div class="section section-1" id="src-3819956223_safe-id-SFZNRGV0YWlsZWREZXNpZ24tNC4y5Y2V5YWD5bGC57qn5o6l5Y-j">
+        <h1 class="heading "><span> 4.2 Unit level interface </span></h1>
+<p   
+> See Doxgen document: </p>
+<p   
+> Or T & R: <a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-78848?src=confmacro">CNWVIII-78848</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3819956223_safe-id-SFZNRGV0YWlsZWREZXNpZ24tNeS7o-eggeWkjeeUqOaApw">
+        <h1 class="heading "><span> 5 code reuseability </span></h1>
+<p   
+>    <span style="color: #003366;"> PME part is reused from the Wave1 platform code.The PME platform is a platform for the use of Bosch Driving function to provide self -car positioning and vehicle sports. Theoretically, it can be directly used in the W3 Driving function, so in the W3 project, the PME platform is reused. </span>
+</p>
+<p   
+>    <span style="color: #003366;"> SPPHVM is a glue layer code. Data conversion and mapping work for different projects and models of different items and different projects cannot be reused. </span>
+</p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4454815653_HVM_VHM_Odom_LocalMsf_pipeline.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>HVM/VHM/Odom/LocalMsf pipeline</span>
+        </a>
+                <a href="4314399538_Loc_Triage_Team_know.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Loc Triage Team know</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

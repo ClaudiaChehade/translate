@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Monocular Outlier Detection for Visual Odometry - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2333897361"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                                         <li class="shortcut"><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                                                     <li><a href="2234222800_Outliers_Removal_in_Visual_Odometry_for_High-speed_Automotive_Applications.html">Outliers Removal in Visual Odometry for High-speed Automotive Applications</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2333897361"> <span>Monocular Outlier Detection for Visual Odometry</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>This page will summarize the ideas about how to detect outliers in a visual odometry pipeline that is purely based on the optical flow of one monocular camera without requiring information about depth.</p>
+<p   
+>And the paper "Monocular Outlier Detection for Visual Odometry" is the follow-up discussion of "    <span style="color: #172b4d;">
+<a  class="external-link" href="http://Outliers%20Removal%20in%20Visual%20Odometry%20for%20High-speed%20Automotive%20Applications">How to Distinguish Inliers from Outliers in Visual Odometry for High-speed Automotive Applications, Martin Buczko and Volker Willert</a>    </span>
+". This new method has considered both the camera motion and pixel discretization error in outlier removal.</p>
+<p   
+>Main contribution:</p>
+<ul class=" "><li class=" "><p   
+>analyze the dependency of the direction of the flow induced by the translational components of the camera motion assuming rotation-free (rotation is known)</p>
+</li><li class=" "><p   
+>solve for a normalized directional flow error that takes the influence of the discretization error induced by the pixel size into account (a circular and a squared error bound)</p>
+</li><li class=" "><p   
+>present a monocular outlier detection pipeline including the normalized directional flow error as a suitable constant threshold criterion almost invariant to the camera motion and the scene geometry</p>
+</li></ul><p   
+>Outline:</p>
+<p   
+></p>
+    <div class="section section-1" id="src-2333897361_MonocularOutlierDetectionforVisualOdometry-RelationsBetweenCameraMotionandOpticalFlow">
+        <h1 class="heading "><span>Relations Between Camera Motion and Optical Flow</span></h1>
+<p   
+>The figure below shows there is a generic vehicle motions that contain rotation and translation lead to optical flow vectors (green lines) that do not necessarily have a common intersection point. The different directions (yellow lines) of optical flow depend on the motion itself and the spatial coordinates of the observed features.</p>
+<p   
+>Here is the motion data:</p>
+<ul class=" "><li class=" "><p   
+>rotation: pitch: 1°, yaw: 2°, roll: 0°,</p>
+</li><li class=" "><p   
+>translation: sideward and downward is 0.1m and forward is about 1m.</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2333897361/image2022-6-28_15-29-26-version-1-modificationdate-1656401367000-api-v2.png" alt="images/confluence/download/attachments/2333897361/image2022-6-28_15-29-26-version-1-modificationdate-1656401367000-api-v2.png"  height="237" />
+    </p>
+<p   
+><u class=" "><strong class=" ">What's the relation between camera motion and optical flow</strong></u></p>
+<p   
+>Actually, the optical flow hypothesis <img  class="latexmath"  src="images/inline/8bd15ca47ad22c055bb2116bcf63c09c02dc875b815774294f22d9b26e97bcfd.svg" alt="images/inline/8bd15ca47ad22c055bb2116bcf63c09c02dc875b815774294f22d9b26e97bcfd.svg"   />
+ can be seen as the projected static 3D points on the image plane of an arbitrarily moving camera with motion hypothesis <img  class="latexmath"  src="images/inline/effb538a0f32030ed2319122bfa9e7417a3f04a3a2e6a1f4151ec2786839ce74.svg" alt="images/inline/effb538a0f32030ed2319122bfa9e7417a3f04a3a2e6a1f4151ec2786839ce74.svg"   />
+. The estimated optical flow can be defined as <img  class="latexmath"  src="images/inline/d0792a572fcf02e28448ea9f41850ad3896f0b3a490f3283803eff9d4d073d4e.svg" alt="images/inline/d0792a572fcf02e28448ea9f41850ad3896f0b3a490f3283803eff9d4d073d4e.svg"   />
+.</p>
+<p   
+><u class=" "><strong class=" ">What is focus of expansion (FoE)</strong></u></p>
+<p   
+>The optical flow induced by projected static 3D points on the image plane of a moving camera can be decomposed into its rotational and translational components. The directions of the translational components define straight lines all intersecting at a common point, the focus of expansion (FoE) as figure below, an example is given for a rotation-free optical flow pattern including the FoE.</p>
+<p   
+>For <u class=" "><strong class=" ">purely translational</strong></u> motions ( <img  class="latexmath"  src="images/inline/4be1aa131041d865ef40109006d0130ab448ff23299224c2f4c2b8a1a2ec0283.svg" alt="images/inline/4be1aa131041d865ef40109006d0130ab448ff23299224c2f4c2b8a1a2ec0283.svg"   />
+, all optical flow vectors intersect in one point, which is referred to as focus of expansion FoE (<img  class="latexmath"  src="images/inline/3cbd780d9edeeec2f94a2bd23f4d225f6f15c1c7d02233d6bff69c3097971fee.svg" alt="images/inline/3cbd780d9edeeec2f94a2bd23f4d225f6f15c1c7d02233d6bff69c3097971fee.svg"   />
+). The green lines show the simulated optical flow vectors for <img  class="latexmath"  src="images/inline/3e50271b3f1e5d94622c9441d450ae3d1560fa7241bda9a645280bc291275d9a.svg" alt="images/inline/3e50271b3f1e5d94622c9441d450ae3d1560fa7241bda9a645280bc291275d9a.svg"   />
+. Here <img  class="latexmath"  src="images/inline/d58387963a97a20fa358056d71a6c1b97c85394e24d657913c5dafa1d7fdee98.svg" alt="images/inline/d58387963a97a20fa358056d71a6c1b97c85394e24d657913c5dafa1d7fdee98.svg"   />
+ is about 1m, sideward and downward motion are 0.1 m.</p>
+<p   
+>The yellow lines enlarge the optical flow vectors until reaching <img  class="latexmath"  src="images/inline/3cbd780d9edeeec2f94a2bd23f4d225f6f15c1c7d02233d6bff69c3097971fee.svg" alt="images/inline/3cbd780d9edeeec2f94a2bd23f4d225f6f15c1c7d02233d6bff69c3097971fee.svg"   />
+.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2333897361/image2022-6-28_17-19-13-version-1-modificationdate-1656407953000-api-v2.png" alt="images/confluence/download/attachments/2333897361/image2022-6-28_17-19-13-version-1-modificationdate-1656407953000-api-v2.png"  height="232" />
+    </p>
+<p   
+><u class=" "><strong class=" ">How to compute the FoE</strong></u></p>
+<p   
+>The FoE (<img  class="latexmath"  src="images/inline/3cbd780d9edeeec2f94a2bd23f4d225f6f15c1c7d02233d6bff69c3097971fee.svg" alt="images/inline/3cbd780d9edeeec2f94a2bd23f4d225f6f15c1c7d02233d6bff69c3097971fee.svg"   />
+) is the projection of the translational camera motion component T onto the image plane written as follows,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-28_17-35-0-version-1-modificationdate-1656408901000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-28_17-35-0-version-1-modificationdate-1656408901000-api-v2.png" width="200"  />
+    </p>
+<p   
+>The FoE is independent on the feature’s depth and only dependent on the ratios <img  class="latexmath"  src="images/inline/5df410c724f6bb889bfbf87d9034a71fc2376d879d239a64033b8b8a20b37841.svg" alt="images/inline/5df410c724f6bb889bfbf87d9034a71fc2376d879d239a64033b8b8a20b37841.svg"   />
+ between the translational components of the camera motion.</p>
+<p   
+>Based on the FoE, we will have the <u class=" ">directions of the translational flow components</u> are given by,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-28_17-50-29-version-1-modificationdate-1656409830000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-28_17-50-29-version-1-modificationdate-1656409830000-api-v2.png" width="200"  />
+    </p>
+    </div>
+    <div class="section section-1" id="src-2333897361_MonocularOutlierDetectionforVisualOdometry-NormalizedOpticalFlowDirectionalErrorwithDifferentCameraPixelDiscretizationErrorPattern">
+        <h1 class="heading "><span>Normalized Optical Flow Directional Error with Different Camera Pixel Discretization Error Pattern</span></h1>
+<p   
+>The preciseness of the measurement of the image coordinates <img  class="latexmath"  src="images/inline/7b5e3ebbda98649c481283fa7ff01699b73b933376f87a350a8a0a399469c17e.svg" alt="images/inline/7b5e3ebbda98649c481283fa7ff01699b73b933376f87a350a8a0a399469c17e.svg"   />
+ is limited by the discretization of the image plane given by the pixel size. Since optical flow vectors <img  class="latexmath"  src="images/inline/d3bc000723b83568126b9d0d93684b01d9b0c11bf741a0001e7c4f791c16d641.svg" alt="images/inline/d3bc000723b83568126b9d0d93684b01d9b0c11bf741a0001e7c4f791c16d641.svg"   />
+ are differences of image coordinates, the image discretization error also influences the flow direction error <img  class="latexmath"  src="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg" alt="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg"   />
+. Here, we're going to talk about two kinds of discretization error pattern, circular discretization error bound and squared Discretization error bound.</p>
+<p   
+><u class=" "><strong class=" ">How to compute the optical flow direction error</strong></u></p>
+<p   
+>We assume the discretization error has to be considered for both optical flow coordinates <img  class="latexmath"  src="images/inline/e9d227fb126eeabc980082219e1d4989606119ab7d9e3fb0e5dd7d30d714c472.svg" alt="images/inline/e9d227fb126eeabc980082219e1d4989606119ab7d9e3fb0e5dd7d30d714c472.svg"   />
+ and <img  class="latexmath"  src="images/inline/0b38a33041f4106a6295dba1f279eabad93fd53cf1c7648abb3a2333ff61dcf6.svg" alt="images/inline/0b38a33041f4106a6295dba1f279eabad93fd53cf1c7648abb3a2333ff61dcf6.svg"   />
+. The focus of expansion <img  class="latexmath"  src="images/inline/3cbd780d9edeeec2f94a2bd23f4d225f6f15c1c7d02233d6bff69c3097971fee.svg" alt="images/inline/3cbd780d9edeeec2f94a2bd23f4d225f6f15c1c7d02233d6bff69c3097971fee.svg"   />
+ is assumed to be much more accurate because it is calculated from all optical flow vectors including a robust least squares fitting technique (in next section).</p>
+<p   
+>Given</p>
+<ul class=" "><li class=" "><p   
+>optical flow <img  class="latexmath"  src="images/inline/a657f8c6a201777aec0a65cd6ddf6622a2b9b45b6ee4a08b2bacde27e26d8dd8.svg" alt="images/inline/a657f8c6a201777aec0a65cd6ddf6622a2b9b45b6ee4a08b2bacde27e26d8dd8.svg"   />
+,</p>
+</li><li class=" "><p   
+>hypothesis direction pointing to the FoE <img  class="latexmath"  src="images/inline/a9b7f0adb02f4eca7ddd147dc983d1eda335b887ea64ef7f9e206eabc64da963.svg" alt="images/inline/a9b7f0adb02f4eca7ddd147dc983d1eda335b887ea64ef7f9e206eabc64da963.svg"   />
+</p>
+</li></ul><p   
+>The directional error <img  class="latexmath"  src="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg" alt="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg"   />
+ (w/o discretization error) is,</p>
+<ul class=" "><li class=" "><img  class="latexmath"  src="images/inline/49fbb0575d58a3c227ae5fdd0857f3c14f3271c4901481947beaf5e04a2cb522.svg" alt="images/inline/49fbb0575d58a3c227ae5fdd0857f3c14f3271c4901481947beaf5e04a2cb522.svg"   />
+    </li></ul><p   
+>Tips:<i class=" "></i></p>
+<p   
+><i class=" ">For monocular visual odometry systems, depth cannot directly be measured and thus only the directional error can be exploited.</i></p>
+<p   
+><br/></p>
+<p   
+><u class=" "><strong class=" ">Circular Discretization Error Bound</strong></u></p>
+<p   
+>The figure below shows the worst configuration with circular discretization error pattern.</p>
+<ul class=" "><li class=" "><p   
+><img  class="latexmath"  src="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg" alt="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg"   />
+ is the directional error without considering the discretization error</p>
+</li><li class=" "><p   
+><img  class="latexmath"  src="images/inline/3487161af0767f212e64de5b9cea9c32b9a3ab411d52001fca0465b8fb249240.svg" alt="images/inline/3487161af0767f212e64de5b9cea9c32b9a3ab411d52001fca0465b8fb249240.svg"   />
+ is the directional error including the discretization error assuming a circular error bound with radius <img  class="latexmath"  src="images/inline/8ff608f2f2f6bece2096b3eff5a8c33f007335f3feeacda0d889ddab7c3dfa69.svg" alt="images/inline/8ff608f2f2f6bece2096b3eff5a8c33f007335f3feeacda0d889ddab7c3dfa69.svg"   />
+</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2333897361/image2022-6-29_16-42-29-version-1-modificationdate-1656492150000-api-v2.png" alt="images/confluence/download/attachments/2333897361/image2022-6-29_16-42-29-version-1-modificationdate-1656492150000-api-v2.png"  height="400" />
+    </p>
+<p   
+>The first erroneous coordinate <img  class="latexmath"  src="images/inline/868e3bdc605fae7e84aacfc40c60369dfe1ec50cbfc21ec9afbd57641ec63e4c.svg" alt="images/inline/868e3bdc605fae7e84aacfc40c60369dfe1ec50cbfc21ec9afbd57641ec63e4c.svg"   />
+ is given by the tangent to the circular error bound of coordinate <img  class="latexmath"  src="images/inline/afc4f67cc4fb87e9b53a1c35fd22c67ef13f8b95f56bee179246dd9106c80231.svg" alt="images/inline/afc4f67cc4fb87e9b53a1c35fd22c67ef13f8b95f56bee179246dd9106c80231.svg"   />
+ from the error-free coordinate <img  class="latexmath"  src="images/inline/a585254df6dc6fe43025f75030c69d6042c890d42f05af00a0e9f8ec7a2d32b0.svg" alt="images/inline/a585254df6dc6fe43025f75030c69d6042c890d42f05af00a0e9f8ec7a2d32b0.svg"   />
+.</p>
+<p   
+>The second erroneous coordinate <img  class="latexmath"  src="images/inline/86afbe33097aaba0abebeeec89945d071df7f8979ce23c4057b0d929f306a44a.svg" alt="images/inline/86afbe33097aaba0abebeeec89945d071df7f8979ce23c4057b0d929f306a44a.svg"   />
+ is given by the tangent to the circular error bound of coordinate <img  class="latexmath"  src="images/inline/a585254df6dc6fe43025f75030c69d6042c890d42f05af00a0e9f8ec7a2d32b0.svg" alt="images/inline/a585254df6dc6fe43025f75030c69d6042c890d42f05af00a0e9f8ec7a2d32b0.svg"   />
+ from the error free coordinate <img  class="latexmath"  src="images/inline/afc4f67cc4fb87e9b53a1c35fd22c67ef13f8b95f56bee179246dd9106c80231.svg" alt="images/inline/afc4f67cc4fb87e9b53a1c35fd22c67ef13f8b95f56bee179246dd9106c80231.svg"   />
+.</p>
+<p   
+>Since there is a erroneous pixel coordinate, it leads to an erroneous optical flow vector <img  class="latexmath"  src="images/inline/a4b3f208b43de02de4029c83b119e14d322ce69b345a3fed22ca819effe10974.svg" alt="images/inline/a4b3f208b43de02de4029c83b119e14d322ce69b345a3fed22ca819effe10974.svg"   />
+ and also due to this discretization errors, it maximally changes the directional error from <img  class="latexmath"  src="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg" alt="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg"   />
+ to <img  class="latexmath"  src="images/inline/3487161af0767f212e64de5b9cea9c32b9a3ab411d52001fca0465b8fb249240.svg" alt="images/inline/3487161af0767f212e64de5b9cea9c32b9a3ab411d52001fca0465b8fb249240.svg"   />
+.</p>
+<p   
+>Based on basic geometry knowledge, we will have, <img  class="latexmath"  src="images/inline/fd93cdf9f301ff63db96efc234c57b5771daf2e5042093e11f5a9de04175100c.svg" alt="images/inline/fd93cdf9f301ff63db96efc234c57b5771daf2e5042093e11f5a9de04175100c.svg"   />
+ and <img  class="latexmath"  src="images/inline/05980e3a396a239e3a001cfff100add3c15c8334ef8f871671f240510cf4f1cd.svg" alt="images/inline/05980e3a396a239e3a001cfff100add3c15c8334ef8f871671f240510cf4f1cd.svg"   />
+.</p>
+<p   
+>Applying the law of sines to two different triangles,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-29_17-1-59-version-1-modificationdate-1656493319000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-29_17-1-59-version-1-modificationdate-1656493319000-api-v2.png" width="300"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-29_17-2-29-version-1-modificationdate-1656493349000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-29_17-2-29-version-1-modificationdate-1656493349000-api-v2.png" width="300"  />
+    </p>
+<p   
+>For moderately small angles α and quite small Δα such that, <img  class="latexmath"  src="images/inline/4581179d4764372110944cd3d9eaef9ac0a2c1c722534d3697a489644bc359e1.svg" alt="images/inline/4581179d4764372110944cd3d9eaef9ac0a2c1c722534d3697a489644bc359e1.svg"   />
+, <img  class="latexmath"  src="images/inline/03f001b7256ba07c11701f0e871a127962f6e43fc1f72d1de6fe80205c83dfa7.svg" alt="images/inline/03f001b7256ba07c11701f0e871a127962f6e43fc1f72d1de6fe80205c83dfa7.svg"   />
+ and <img  class="latexmath"  src="images/inline/dfd8d44c5e4ed27c99d36aac9947a7afd32fde57f776e14d50e8c939397ef2e6.svg" alt="images/inline/dfd8d44c5e4ed27c99d36aac9947a7afd32fde57f776e14d50e8c939397ef2e6.svg"   />
+, then it's reduced to,</p>
+<p   
+><img  class="latexmath"  src="images/inline/fb7bdaab6ebc3ce93552304b2d88b49e3f4f438d6825411d49b4c17ca1d355c6.svg" alt="images/inline/fb7bdaab6ebc3ce93552304b2d88b49e3f4f438d6825411d49b4c17ca1d355c6.svg"   />
+    </p>
+<p   
+>Based on above equation, we can treat the maximal difference <img  class="latexmath"  src="images/inline/fa022eae90081186f76570d7fe5c201bc2eb2edbf0c14fc31a34e411d95732cd.svg" alt="images/inline/fa022eae90081186f76570d7fe5c201bc2eb2edbf0c14fc31a34e411d95732cd.svg"   />
+(under worst configuration, see figure above) as an normalization factor for the directional error <img  class="latexmath"  src="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg" alt="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg"   />
+ to eliminate the sensitivity changes of the directional error because of the discretization error.</p>
+<p   
+>Finally, we have the normalized directional error for a circular error bound.    <span style="color: #ff0000;">
+ We'll use the <img  class="latexmath"  src="images/inline/70144376a902f61cd30d9a7b4947eaa5de322e6ba899af8421c83068362acaa7.svg" alt="images/inline/70144376a902f61cd30d9a7b4947eaa5de322e6ba899af8421c83068362acaa7.svg"   />
+ as the indictor to judge the quality of optical flow exclude the affect of pixel discretization error.    </span>
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-29_17-42-22-version-1-modificationdate-1656495742000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-29_17-42-22-version-1-modificationdate-1656495742000-api-v2.png" width="250"  />
+    </p>
+<p   
+>Tips:</p>
+<ul class=" "><li class=" "><p   
+>optical flow vector (with discretization error) <img  class="latexmath"  src="images/inline/d3bc000723b83568126b9d0d93684b01d9b0c11bf741a0001e7c4f791c16d641.svg" alt="images/inline/d3bc000723b83568126b9d0d93684b01d9b0c11bf741a0001e7c4f791c16d641.svg"   />
+ is known</p>
+</li><li class=" "><p   
+>FoE is known (see next section for caculation)</p>
+</li><li class=" "><p   
+><img  class="latexmath"  src="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg" alt="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg"   />
+ comes from <img  class="latexmath"  src="images/inline/49fbb0575d58a3c227ae5fdd0857f3c14f3271c4901481947beaf5e04a2cb5222.svg" alt="images/inline/49fbb0575d58a3c227ae5fdd0857f3c14f3271c4901481947beaf5e04a2cb5222.svg"   />
+</p>
+</li><li class=" "><p   
+><img  class="latexmath"  src="images/inline/5fdafde1532e5706d43ad38ccd4eaa18c4b403d4e3551d917b598d99470f7ff5.svg" alt="images/inline/5fdafde1532e5706d43ad38ccd4eaa18c4b403d4e3551d917b598d99470f7ff5.svg"   />
+ is constant threshold</p>
+</li></ul><p   
+><br/></p>
+<p   
+><u class=" "><strong class=" ">Squared Discretization Error Bound</strong></u></p>
+<p   
+>Similar to the circular error bound model, the figure below shows the worst configuration with squared discretization error pattern.</p>
+<ul class=" "><li class=" "><p   
+><img  class="latexmath"  src="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg" alt="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg"   />
+ is the directional error without considering the discretization error</p>
+</li><li class=" "><p   
+><img  class="latexmath"  src="images/inline/346fb984d8a3661dd13c52b321b85c5a910b966ffcc9ca3449bafe02837dc4a4.svg" alt="images/inline/346fb984d8a3661dd13c52b321b85c5a910b966ffcc9ca3449bafe02837dc4a4.svg"   />
+ is the directional error including the discretization error assuming a squared error bound with size <img  class="latexmath"  src="images/inline/8fe5923a5ea523b678a81a496466b75f3b5c94b5dc021d128169ec4af4627dab.svg" alt="images/inline/8fe5923a5ea523b678a81a496466b75f3b5c94b5dc021d128169ec4af4627dab.svg"   />
+</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2333897361/image2022-6-29_17-53-1-version-1-modificationdate-1656496381000-api-v2.png" alt="images/confluence/download/attachments/2333897361/image2022-6-29_17-53-1-version-1-modificationdate-1656496381000-api-v2.png"  height="400" />
+    </p>
+<p   
+>For the squared error bound, the worst directional error <img  class="latexmath"  src="images/inline/346fb984d8a3661dd13c52b321b85c5a910b966ffcc9ca3449bafe02837dc4a4.svg" alt="images/inline/346fb984d8a3661dd13c52b321b85c5a910b966ffcc9ca3449bafe02837dc4a4.svg"   />
+ occurs, when the component normal to the optical flow vector is shifted opposed and the tangential components are shifted towards the center of the optical flow vector.</p>
+<p   
+>In addition, the directional error including a squared error bound <img  class="latexmath"  src="images/inline/346fb984d8a3661dd13c52b321b85c5a910b966ffcc9ca3449bafe02837dc4a4.svg" alt="images/inline/346fb984d8a3661dd13c52b321b85c5a910b966ffcc9ca3449bafe02837dc4a4.svg"   />
+ is also dependent on the absolute orientation of the flow vector configuration within the image. Due to this fact, we apply a simple sample-based approach to account for all different configurations. The basic idea is visualized in figure below. Here, the measured vector is plotted as a solid blue line for each 45° sector. The worst case (see dashed blue) is that the starting point and the endpoint are always shifted in opposite directions.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-29_17-59-9-version-1-modificationdate-1656496750000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-29_17-59-9-version-1-modificationdate-1656496750000-api-v2.png"  height="250" />
+    </p>
+<p   
+>The sampling method can be formulated as below equation and each <img  class="latexmath"  src="images/inline/8ff2339282d905a0b4d321fc979c44f053db0a80d526232ed9c763fb51f8e893.svg" alt="images/inline/8ff2339282d905a0b4d321fc979c44f053db0a80d526232ed9c763fb51f8e893.svg"   />
+ can be constructed as shown in the first figure of this section.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2333897361/image2022-6-29_22-2-8-version-1-modificationdate-1656511329000-api-v2.png" alt="images/confluence/download/attachments/2333897361/image2022-6-29_22-2-8-version-1-modificationdate-1656511329000-api-v2.png" width="350"  />
+    </p>
+<p   
+>The maximum directional error (worst case) for a squared error bound is given by,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-3-53-version-1-modificationdate-1656511433000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-3-53-version-1-modificationdate-1656511433000-api-v2.png" width="250"  />
+    </p>
+<p   
+>Again, the maximal difference <img  class="latexmath"  src="images/inline/da6c4429e32c8a060e7920d1eb0d4022341ebf16c8e92f6dcf7144f990d1c8c0.svg" alt="images/inline/da6c4429e32c8a060e7920d1eb0d4022341ebf16c8e92f6dcf7144f990d1c8c0.svg"   />
+ can serve as a normalization factor for the directional error under squared error pattern.</p>
+<p   
+>Finally, the normalization of α for a squared error bound leads to below.     <span style="color: #ff0000;">
+We'll use the <img  class="latexmath"  src="images/inline/2586df206f7396d2019c41d7c6f1e47c2453fba8e133cca545733caabab93e25.svg" alt="images/inline/2586df206f7396d2019c41d7c6f1e47c2453fba8e133cca545733caabab93e25.svg"   />
+ as the indictor to judge the quality of optical flow exclude the affect of pixel discretization error.    </span>
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-7-8-version-1-modificationdate-1656511629000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-7-8-version-1-modificationdate-1656511629000-api-v2.png" width="150"  />
+    </p>
+<p   
+>Tips:</p>
+<ul class=" "><li class=" "><p   
+>assume FoE is known (calculation see next section)</p>
+</li><li class=" "><p   
+><img  class="latexmath"  src="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg" alt="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg"   />
+ is the directional error without considering the discretization error → known</p>
+</li><li class=" "><p   
+><img  class="latexmath"  src="images/inline/346fb984d8a3661dd13c52b321b85c5a910b966ffcc9ca3449bafe02837dc4a4.svg" alt="images/inline/346fb984d8a3661dd13c52b321b85c5a910b966ffcc9ca3449bafe02837dc4a4.svg"   />
+ can be calculated from above equation.</p>
+</li></ul>    </div>
+    <div class="section section-1" id="src-2333897361_MonocularOutlierDetectionforVisualOdometry-OutlierRemovalPipeLine">
+        <h1 class="heading "><span>Outlier Removal Pipe Line</span></h1>
+<p   
+><u class=" "><strong class=" ">step one: Rotation-Estimation</strong></u></p>
+<p   
+>Previously, there is rotation-free assumption so that the direction of all optical flow have one common cross point. In order to compensate the rotation, we prefer the use of a common monocular visual odometry technique and optimize for the motion, that minimizes the "epipolar constraint".</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-29-2-version-1-modificationdate-1656512942000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-29-2-version-1-modificationdate-1656512942000-api-v2.png" width="250"  />
+    </p>
+<p   
+>Subsequently, the correct rotation can be found by decomposing <img  class="latexmath"  src="images/inline/3044381bfe3fe2c9c51d2ecf4f40ec807b741f4184d43f86b9d1d7fef85e716d.svg" alt="images/inline/3044381bfe3fe2c9c51d2ecf4f40ec807b741f4184d43f86b9d1d7fef85e716d.svg"   />
+.</p>
+<p   
+><u class=" "><strong class=" ">step two: Rotation-Compensation</strong></u></p>
+<p   
+>As long as <img  class="latexmath"  src="images/inline/c717dd145fdebab02448da0bd7c66754987e70ad76c31b7b8a6f0eefef7255d7.svg" alt="images/inline/c717dd145fdebab02448da0bd7c66754987e70ad76c31b7b8a6f0eefef7255d7.svg"   />
+, the direction of the optical flow is not dependent on the feature’s depth. Since the absence of rotation cannot be assumed in automotive context, existing rotation must be eliminated from the measurement data.</p>
+<p   
+>This can be achieved by transforming <img  class="latexmath"  src="images/inline/dda30992b466c039fece320a82dd6553aec1ba129b8a1d37ca24f2754f603146.svg" alt="images/inline/dda30992b466c039fece320a82dd6553aec1ba129b8a1d37ca24f2754f603146.svg"   />
+. The rotation free motion is equal to an ideal rotation compensation. The transformed camera coordinate can be written as <img  class="latexmath"  src="images/inline/e80846817e3a6ee54566b00c6692b523e39f4492604f630390b08e7e3ec665a9.svg" alt="images/inline/e80846817e3a6ee54566b00c6692b523e39f4492604f630390b08e7e3ec665a9.svg"   />
+.</p>
+<p   
+><u class=" "><strong class=" ">step three: Outlier-Definition</strong></u></p>
+<p   
+>We consider a feature as a member of the current set of inlier features by evaluating the following criterion,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-42-51-version-1-modificationdate-1656513771000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-42-51-version-1-modificationdate-1656513771000-api-v2.png" width="200"  />
+    </p>
+<p   
+>For a faster but less precise scheme, the criterion <img  class="latexmath"  src="images/inline/4107fd64d23e57a3fc1121523dcb303431a873c55c14c41ce2f517a94f31a6b5.svg" alt="images/inline/4107fd64d23e57a3fc1121523dcb303431a873c55c14c41ce2f517a94f31a6b5.svg"   />
+ can be used.</p>
+<p   
+><u class=" "><strong class=" ">step four: Robust Joint Determination of the Focus of Expansion and Outliers</strong></u></p>
+<p   
+>The focus of expansion can be computed from the cross point of two straight optical flow line in the <a  class="external-link" href="https://en.wikipedia.org/wiki/Hough_transform">Hough form</a>.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-53-56-version-1-modificationdate-1656514436000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-53-56-version-1-modificationdate-1656514436000-api-v2.png" width="200"  />
+ <img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-54-35-version-1-modificationdate-1656514476000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-54-35-version-1-modificationdate-1656514476000-api-v2.png" width="100"  />
+</p>
+<p   
+>Here, ϕ is the angle between the line and the x-axis and d is the distance between origin and the line.</p>
+<p   
+>From this, we formulate the minimum sample problem to identify the focus of expansion <img  class="latexmath"  src="images/inline/4284ddcbade88675d1e8744d458eedeffda8a546ad210194856dffafea0def6f.svg" alt="images/inline/4284ddcbade88675d1e8744d458eedeffda8a546ad210194856dffafea0def6f.svg"   />
+ from two optical flow vectors <img  class="latexmath"  src="images/inline/70f6ec9369af83cdfd9d3b8402f92b1ad74ce7a1b78146bc0a1a68fba42a66ed.svg" alt="images/inline/70f6ec9369af83cdfd9d3b8402f92b1ad74ce7a1b78146bc0a1a68fba42a66ed.svg"   />
+ and <img  class="latexmath"  src="images/inline/711a7f5b330fba7bbc528cd63331cd47126c0ab4fde9d0ef997004d73cc39f10.svg" alt="images/inline/711a7f5b330fba7bbc528cd63331cd47126c0ab4fde9d0ef997004d73cc39f10.svg"   />
+.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-57-39-version-1-modificationdate-1656514660000-api-v2.png" alt="images/confluence/download/thumbnails/2333897361/image2022-6-29_22-57-39-version-1-modificationdate-1656514660000-api-v2.png" width="300"  />
+    </p>
+<p   
+>Tips: the FoE point is the intersection of two Hough line.</p>
+<p   
+>To achieve robustness, we integrate all methods into the generic RANSAC scheme,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2333897361/image2022-6-29_22-59-34-version-1-modificationdate-1656514775000-api-v2.png" alt="images/confluence/download/attachments/2333897361/image2022-6-29_22-59-34-version-1-modificationdate-1656514775000-api-v2.png" width="350"  />
+    </p>
+    </div>
+    <div class="section section-1" id="src-2333897361_MonocularOutlierDetectionforVisualOdometry-PerformanceEvaluation">
+        <h1 class="heading "><span>Performance Evaluation</span></h1>
+<p   
+><u class=" "><strong class=" ">Simulation Case</strong></u></p>
+<p   
+>    <span style="color: #0000ff;">
+Problem: No constant threshold can separate the green true inliers from the red true outliers.    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>The green lines are error-free. (no pixel error is injected.)</p>
+</li><li class=" "><p   
+>The red lines are man-made error. (every 10th optical flow has an additive error of 1 px normal to the ideal direction to simulate small errors with non-Gaussian distribution. Furthermore, 5 coarse outliers are added to simulate mismatches)</p>
+</li></ul><p   
+>Reminder: direction error <img  class="latexmath"  src="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg" alt="images/inline/78002c8261d0d16ee9b28409b026e2db8e50ebda193063b6f785021fcb740a58.svg"   />
+ is the angle between optical flow vector and FoE flow vector.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2333897361/image2022-6-29_23-7-8-version-1-modificationdate-1656515228000-api-v2.png" alt="images/confluence/download/attachments/2333897361/image2022-6-29_23-7-8-version-1-modificationdate-1656515228000-api-v2.png"  height="250" />
+    </p>
+<p   
+>The visualization within the simulated scene above. <strong class=" ">Based on threshold=1.0</strong>, Green lines stand for correctly identified inliers and red lines for correctly identified outliers. Blue lines symbolize false positive inliers, whereas yellow lines mean false negative inliers.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2333897361/image2022-6-29_23-14-9-version-1-modificationdate-1656515650000-api-v2.png" alt="images/confluence/download/attachments/2333897361/image2022-6-29_23-14-9-version-1-modificationdate-1656515650000-api-v2.png"  height="216" />
+    </p>
+<p   
+>    <span style="color: #0000ff;">
+Solution: with RANSAC scheme above, the result shows in the figure below,    </span>
+</p>
+<p   
+>With the proposed method, green true inliers and red true outliers can easily be separated by constant values.</p>
+<p   
+>We choose the<strong class=" "> threshold as 1</strong>, meaning that features with errors beyond discretization effects are considered as outliers.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2333897361/image2022-6-29_23-16-39-version-1-modificationdate-1656515799000-api-v2.png" alt="images/confluence/download/attachments/2333897361/image2022-6-29_23-16-39-version-1-modificationdate-1656515799000-api-v2.png"  height="250" />
+    </p>
+<p   
+>    <span style="color: #0000ff;">
+All inliers and outliers are correctly identified.    </span>
+ All data including distant features with very small optical flow vectors are classified correctly.</p>
+<p   
+><u class=" "><strong class=" ">Kitti benchmark</strong></u></p>
+<p   
+>This version is published as MonoROCC in Kitti benchmark and currently reaches the tenth place of all camera-based methods with 1.11% error.</p>
+<p   
+>By the day of 2022.6.29, the "MonoRocc" ranks 64 in visual odometry benchmark.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2333897361/image2022-6-29_23-20-14-version-1-modificationdate-1656516014000-api-v2.png" alt="images/confluence/download/attachments/2333897361/image2022-6-29_23-20-14-version-1-modificationdate-1656516014000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2234222800_Outliers_Removal_in_Visual_Odometry_for_High-speed_Automotive_Applications.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Outliers Removal in Visual Odometry for High-speed Automotive Applications</span>
+        </a>
+                <a href="2069605453_Trajectory_Evaluation_Study.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Trajectory Evaluation Study</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Curdine APK upgrade  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3384934434"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="3077643066_HDMap.html">HDMap</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3384934434"> <span> Curdine APK upgrade </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+> The cockpit lion navigation map upgrade (ensure the start of the USB debugging mode) </p>
+<ul class=" "><li class=" "><p   
+> 1. Uninstallation of the original software (ensure the operation, two uninstall) </p>
+<ul class=" "><li class=" "><p   
+>1.1</p>
+<ul class=" "><li class=" "><p   
+>adb root</p>
+</li><li class=" "><p   
+>adb remount</p>
+</li><li class=" "><p   
+>adb shell uninstall com.lion.appfwk.navi</p>
+</li></ul></li><li class=" "><p   
+>1.2</p>
+<ul class=" "><li class=" "><p   
+>adb root</p>
+</li><li class=" "><p   
+>adb remount</p>
+</li><li class=" "><p   
+>adb shell</p>
+</li><li class=" "><p   
+>cd /vendor/app/RedwoodLionNavi/</p>
+</li><li class=" "><p   
+>rm *.apk</p>
+</li></ul></li></ul></li><li class=" "><p   
+> 2. Delete the original data </p>
+<ul class=" "><li class=" "><p   
+>adb root</p>
+</li><li class=" "><p   
+>adb remount</p>
+</li><li class=" "><p   
+>adb shell</p>
+</li><li class=" "><p   
+>cd storage/emulated/0/Android/data</p>
+</li><li class=" "><p   
+>rm -rf com.lion.appfwk.navi</p>
+</li></ul></li><li class=" "><p   
+> 3. Installation </p>
+<ul class=" "><li class=" "><p   
+>adb root</p>
+</li><li class=" "><p   
+>adb remount</p>
+</li><li class=" "><p   
+>adb shell push *.apk /vendor/app/RedwoodLionNavi/</p>
+</li><li class=" "><p   
+>adb shell reboot</p>
+</li></ul></li></ul><p   
+><br/></p>
+<p   
+> Curdine four -dimensional AOM installation </p>
+<ul class=" "><li class=" "><p   
+>adb root</p>
+</li><li class=" "><p   
+>adb remout</p>
+</li><li class=" "><p   
+>adb install AOM-app-release.apk</p>
+</li><li class=" "><p   
+> Modify the IP address of the relevant configuration file </p>
+<ul class=" "><li class=" "><p   
+>ICC:192.168.56.31</p>
+</li><li class=" "><p   
+>ADCC:192.168.56.11</p>
+</li><li class=" "><p   
+>VCC:192.168.62.7</p>
+</li></ul></li><li class=" "><p   
+> adb shell enters the car </p>
+</li><li class=" "><p   
+>mkdir -P /storage/emulated/0/navi/</p>
+</li><li class=" "><p   
+> Push the ETC and Share folder until/Storage/Emulated/0/Navi path </p>
+<ul class=" "><li class=" "><p   
+>adb push etc/ share/ /storage/emulated/0/navi/</p>
+</li></ul></li><li class=" "><p   
+> After DB is combined to decompress </p>
+<ul class=" "><li class=" "><p   
+>adb push DB/ /storage/emulated/0/navi/</p>
+</li></ul></li></ul>        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3117067572_%E5%9B%9B%E7%BB%B4SDK%E5%BE%85%E4%BA%A4%E4%BB%98%E5%8A%9F%E8%83%BD%E7%82%B9.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Four -dimensional SDK to be delivered to the function point </span>
+        </a>
+                <a href="2319071870_HD_Map_data_structure.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>HD Map data structure</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

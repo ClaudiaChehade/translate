@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Benchmark Tooling between VINS-Mono and Open-VINS - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2069603815"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2069603815"> <span>Benchmark Tooling between VINS-Mono and Open-VINS</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>This page is intended to compare the performance between VINS-Mono and OpenVINS(MSCKF) on custom data and open-source data. As for KPI definition, please ref <a   href="2069605453_Trajectory_Evaluation_Study.html">Trajectory Evaluation Study - wave 3 development - Docupedia (bosch.com)</a></p>
+<p   
+></p>
+    <div class="section section-1" id="src-2069603815_BenchmarkToolingbetweenVINSMonoandOpenVINS-BenchmarkonEuRoCMAVDataset">
+        <h1 class="heading "><span>Benchmark on EuRoC MAV Dataset</span></h1>
+<p   
+>Data set description: <a  class="external-link" href="https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets">kmavvisualinertialdatasets – ASL Datasets (ethz.ch)</a></p>
+<p   
+>Evolution Tools: <a  class="external-link" href="https://docs.openvins.com/namespaceov__eval.html">ov_eval namespace | OpenVINS</a></p>
+<p   
+>Tips:</p>
+<ul class=" "><li class=" "><p   
+>This page will not compare the whole dataset. just provide the approach to generate the performance report.</p>
+</li><li class=" "><p   
+>VINS-Mono and Open-VINS have similar performance on "    <span style="color: #000000;">
+MH_05_difficult" data.    </span>
+</p>
+</li></ul>    <div class="section section-2" id="src-2069603815_BenchmarkToolingbetweenVINSMonoandOpenVINS-HowtocollecttheestimatedPoseforVINS-Mono">
+        <h2 class="heading "><span>How to collect the estimated Pose for VINS-Mono</span></h2>
+<p   
+>Execute the following command and wait for a while. And these commands are from different repo.</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">command</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="command" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments"># Terminal 1</code></div>
+<div class="line"><code class="plain">roslaunch vins_estimator euroc.launch</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments"># Terminal 2</code></div>
+<div class="line"><code class="plain">roslaunch ov_eval record.launch</code></div>
+</div>
+    </div>
+<p   
+>ROS Launch File for VINS-Mono,</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">euroc.launch</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="euroc.launch" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain"><</code><code class="keyword">launch</code><code class="plain">></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"config_path"</code><code class="plain"> </code><code class="color1">default</code><code class="plain"> = </code><code class="string">"$(find feature_tracker)/../config/euroc/euroc_config.yaml"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"vins_path"</code><code class="plain"> </code><code class="color1">default</code><code class="plain"> = </code><code class="string">"$(find feature_tracker)/../config/../"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    </code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">node</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"feature_tracker"</code><code class="plain"> </code><code class="color1">pkg</code><code class="plain">=</code><code class="string">"feature_tracker"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"feature_tracker"</code><code class="plain"> </code><code class="color1">output</code><code class="plain">=</code><code class="string">"log"</code><code class="plain">></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"config_file"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"string"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg config_path)"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"vins_folder"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"string"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg vins_path)"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    </</code><code class="keyword">node</code><code class="plain">></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <</code><code class="keyword">node</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"vins_estimator"</code><code class="plain"> </code><code class="color1">pkg</code><code class="plain">=</code><code class="string">"vins_estimator"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"vins_estimator"</code><code class="plain"> </code><code class="color1">output</code><code class="plain">=</code><code class="string">"screen"</code><code class="plain">></code></div>
+<div class="line"><code class="plain">       <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"config_file"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"string"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg config_path)"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">       <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"vins_folder"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"string"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg vins_path)"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    </</code><code class="keyword">node</code><code class="plain">></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <</code><code class="keyword">node</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"pose_graph"</code><code class="plain"> </code><code class="color1">pkg</code><code class="plain">=</code><code class="string">"pose_graph"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"pose_graph"</code><code class="plain"> </code><code class="color1">output</code><code class="plain">=</code><code class="string">"screen"</code><code class="plain">></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"config_file"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"string"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg config_path)"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"visualization_shift_x"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"int"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"0"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"visualization_shift_y"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"int"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"0"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"skip_cnt"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"int"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"0"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"skip_dis"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"double"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"0"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    </</code><code class="keyword">node</code><code class="plain">></code></div>
+<div class="line"><code class="plain">    </code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">node</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"rvizvisualisation"</code><code class="plain"> </code><code class="color1">pkg</code><code class="plain">=</code><code class="string">"rviz"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"rviz"</code><code class="plain"> </code><code class="color1">output</code><code class="plain">=</code><code class="string">"log"</code><code class="plain"> </code><code class="color1">args</code><code class="plain">=</code><code class="string">"-d $(find vins_estimator)/../config/vins_rviz_config.rviz"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain"></</code><code class="keyword">launch</code><code class="plain">></code></div>
+</div>
+    </div>
+<p   
+>ROS Launch File for OpenVINS "ov_eval" tooling,</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">record.launch</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="record.launch" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain"><</code><code class="keyword">launch</code><code class="plain">></code></div>
+<div class="line"><code class="plain">    <!-- what ros bag to play --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"bag_name"</code><code class="plain">    </code><code class="color1">default</code><code class="plain">=</code><code class="string">"MH_05_difficult"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"bag_path"</code><code class="plain">    </code><code class="color1">default</code><code class="plain">=</code><code class="string">"/home/maploc/workspace/EuRoC"</code><code class="plain"> /></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <!-- where to save the recorded poses --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"path_save"</code><code class="plain">   </code><code class="color1">default</code><code class="plain">=</code><code class="string">"/home/maploc/workspace/output"</code><code class="plain"> /></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <!-- record the trajectory --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">node</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"recorder_estimate"</code><code class="plain"> </code><code class="color1">pkg</code><code class="plain">=</code><code class="string">"ov_eval"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"pose_to_file"</code><code class="plain"> </code><code class="color1">output</code><code class="plain">=</code><code class="string">"screen"</code><code class="plain"> </code><code class="color1">required</code><code class="plain">=</code><code class="string">"true"</code><code class="plain">></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"topic"</code><code class="plain">      </code><code class="color1">type</code><code class="plain">=</code><code class="string">"str"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"/vins_estimator/odometry"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"topic_type"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"str"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"Odometry"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"output"</code><code class="plain">     </code><code class="color1">type</code><code class="plain">=</code><code class="string">"str"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg path_save)/$(arg bag_name)_est.txt"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    </</code><code class="keyword">node</code><code class="plain">></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <</code><code class="keyword">node</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"recorder_timing"</code><code class="plain"> </code><code class="color1">pkg</code><code class="plain">=</code><code class="string">"ov_eval"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"pid_ros.py"</code><code class="plain"> </code><code class="color1">output</code><code class="plain">=</code><code class="string">"screen"</code><code class="plain">></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"nodes"</code><code class="plain">   </code><code class="color1">type</code><code class="plain">=</code><code class="string">"str"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"/feature_tracker,/vins_estimator,/pose_graph"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"output"</code><code class="plain">  </code><code class="color1">type</code><code class="plain">=</code><code class="string">"str"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg path_save)/psutil_log.txt"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    </</code><code class="keyword">node</code><code class="plain">></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <!-- play the dataset --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">node</code><code class="plain"> </code><code class="color1">pkg</code><code class="plain">=</code><code class="string">"rosbag"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"play"</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"rosbag"</code><code class="plain"> </code><code class="color1">args</code><code class="plain">=</code><code class="string">"-r 4 $(arg bag_path)/$(arg bag_name).bag"</code><code class="plain"> </code><code class="color1">required</code><code class="plain">=</code><code class="string">"true"</code><code class="plain">/></code></div>
+<div class="line"><code class="plain"></</code><code class="keyword">launch</code><code class="plain">></code></div>
+</div>
+    </div>
+<p   
+>we can also     <span style="color: #000000;">
+evaluate the computational load (    </span>
+<i class=" ">not computation time</i>    <span style="color: #000000;">
+) from the record,    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_15-7-6-version-1-modificationdate-1640588826000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_15-7-6-version-1-modificationdate-1640588826000-api-v2.png" width="500"  />
+    </span>
+</p>
+    </div>
+    <div class="section section-2" id="src-2069603815_BenchmarkToolingbetweenVINSMonoandOpenVINS-HowtocollecttheestimatedPoseforOpen-VINS">
+        <h2 class="heading "><span>How to collect the estimated Pose for Open-VINS</span></h2>
+<p   
+>Execute the following command and wait for a while.</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">command</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="command" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">roslaunch ov_msckf subscribe.launch config:=euroc_mav</code></div>
+</div>
+    </div>
+<p   
+>Configuration for euroc_mav,</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">subscribe.launch</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="subscribe.launch" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain"><</code><code class="keyword">launch</code><code class="plain">></code></div>
+<div class="line"><code class="plain">    <!-- what config we are going to run (should match folder name) --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"verbosity"</code><code class="plain">   </code><code class="color1">default</code><code class="plain">=</code><code class="string">"INFO"</code><code class="plain"> /> <!-- ALL, DEBUG, INFO, WARNING, ERROR, SILENT --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"config"</code><code class="plain">      </code><code class="color1">default</code><code class="plain">=</code><code class="string">"euroc_mav"</code><code class="plain"> /> <!-- euroc_mav, tum_vi, rpng_aruco --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"config_path"</code><code class="plain"> </code><code class="color1">default</code><code class="plain">=</code><code class="string">"$(find ov_msckf)/../config/$(arg config)/estimator_config.yaml"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"bag_name"</code><code class="plain">    </code><code class="color1">default</code><code class="plain">=</code><code class="string">"MH_05_difficult"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"bag_path"</code><code class="plain">    </code><code class="color1">default</code><code class="plain">=</code><code class="string">"/home/maploc/workspace/EuRoC"</code><code class="plain"> /></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <!-- mono or stereo and what ros bag to play --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"max_cameras"</code><code class="plain"> </code><code class="color1">default</code><code class="plain">=</code><code class="string">"1"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"use_stereo"</code><code class="plain">  </code><code class="color1">default</code><code class="plain">=</code><code class="string">"false"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"bag_start"</code><code class="plain">   </code><code class="color1">default</code><code class="plain">=</code><code class="string">"0"</code><code class="plain"> /> <!-- v1-2: 0, mh1: 40, mh2: 35, mh3: 17.5, mh4-5: 15 --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"dataset"</code><code class="plain">     </code><code class="color1">default</code><code class="plain">=</code><code class="string">"MH_05_difficult"</code><code class="plain"> /> <!-- V1_01_easy, V1_02_medium, V2_02_medium --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"dobag"</code><code class="plain">       </code><code class="color1">default</code><code class="plain">=</code><code class="string">"false"</code><code class="plain"> /> <!-- if we should play back the bag --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"bag"</code><code class="plain">         </code><code class="color1">default</code><code class="plain">=</code><code class="string">"$(arg bag_path)/$(arg bag_name).bag"</code><code class="plain"> /></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <!-- saving trajectory path and timing information --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"dosave"</code><code class="plain">      </code><code class="color1">default</code><code class="plain">=</code><code class="string">"true"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"dotime"</code><code class="plain">      </code><code class="color1">default</code><code class="plain">=</code><code class="string">"true"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"path_est"</code><code class="plain">    </code><code class="color1">default</code><code class="plain">=</code><code class="string">"/home/maploc/workspace/output/traj_estimate.txt"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"path_time"</code><code class="plain">   </code><code class="color1">default</code><code class="plain">=</code><code class="string">"/home/maploc/workspace/output/traj_timing.txt"</code><code class="plain"> /></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <!-- if we should viz the groundtruth --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"dolivetraj"</code><code class="plain">  </code><code class="color1">default</code><code class="plain">=</code><code class="string">"false"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">arg</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"path_gt"</code><code class="plain">     </code><code class="color1">default</code><code class="plain">=</code><code class="string">"$(find ov_data)/$(arg config)/$(arg dataset).txt"</code><code class="plain"> /></code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <!-- MASTER NODE! --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">node</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"run_subscribe_msckf"</code><code class="plain"> </code><code class="color1">pkg</code><code class="plain">=</code><code class="string">"ov_msckf"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"run_subscribe_msckf"</code><code class="plain"> </code><code class="color1">output</code><code class="plain">=</code><code class="string">"screen"</code><code class="plain"> </code><code class="color1">clear_params</code><code class="plain">=</code><code class="string">"true"</code><code class="plain"> </code><code class="color1">required</code><code class="plain">=</code><code class="string">"true"</code><code class="plain">></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        <!-- master configuration object --></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"verbosity"</code><code class="plain">              </code><code class="color1">type</code><code class="plain">=</code><code class="string">"string"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg verbosity)"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"config_path"</code><code class="plain">            </code><code class="color1">type</code><code class="plain">=</code><code class="string">"string"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg config_path)"</code><code class="plain"> /></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        <!-- world/filter parameters --></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"use_stereo"</code><code class="plain">             </code><code class="color1">type</code><code class="plain">=</code><code class="string">"bool"</code><code class="plain">   </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg use_stereo)"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"max_cameras"</code><code class="plain">            </code><code class="color1">type</code><code class="plain">=</code><code class="string">"int"</code><code class="plain">    </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg max_cameras)"</code><code class="plain"> /></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">        <!-- timing statistics recording --></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"record_timing_information"</code><code class="plain">   </code><code class="color1">type</code><code class="plain">=</code><code class="string">"bool"</code><code class="plain">   </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg dotime)"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"record_timing_filepath"</code><code class="plain">      </code><code class="color1">type</code><code class="plain">=</code><code class="string">"string"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg path_time)"</code><code class="plain"> /></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </</code><code class="keyword">node</code><code class="plain">></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <!-- play the dataset --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">node</code><code class="plain"> </code><code class="color1">pkg</code><code class="plain">=</code><code class="string">"rosbag"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"play"</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"rosbag"</code><code class="plain"> </code><code class="color1">args</code><code class="plain">=</code><code class="string">"-r 4 $(arg bag_path)/$(arg bag_name).bag"</code><code class="plain"> </code><code class="color1">required</code><code class="plain">=</code><code class="string">"true"</code><code class="plain">/></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <!-- record the trajectory if enabled --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">group</code><code class="plain"> </code><code class="color1">if</code><code class="plain">=</code><code class="string">"$(arg dosave)"</code><code class="plain">></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">node</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"recorder_estimate"</code><code class="plain"> </code><code class="color1">pkg</code><code class="plain">=</code><code class="string">"ov_eval"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"pose_to_file"</code><code class="plain"> </code><code class="color1">output</code><code class="plain">=</code><code class="string">"screen"</code><code class="plain"> </code><code class="color1">required</code><code class="plain">=</code><code class="string">"true"</code><code class="plain">></code></div>
+<div class="line"><code class="plain">            <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"topic"</code><code class="plain">      </code><code class="color1">type</code><code class="plain">=</code><code class="string">"str"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"/ov_msckf/poseimu"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">            <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"topic_type"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"str"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"PoseWithCovarianceStamped"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">            <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"output"</code><code class="plain">     </code><code class="color1">type</code><code class="plain">=</code><code class="string">"str"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg path_est)"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        </</code><code class="keyword">node</code><code class="plain">></code></div>
+<div class="line"><code class="plain">    </</code><code class="keyword">group</code><code class="plain">></code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    <!-- path viz of aligned gt --></code></div>
+<div class="line"><code class="plain">    <</code><code class="keyword">group</code><code class="plain"> </code><code class="color1">if</code><code class="plain">=</code><code class="string">"$(arg dolivetraj)"</code><code class="plain">></code></div>
+<div class="line"><code class="plain">        <</code><code class="keyword">node</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"live_align_trajectory"</code><code class="plain"> </code><code class="color1">pkg</code><code class="plain">=</code><code class="string">"ov_eval"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"live_align_trajectory"</code><code class="plain"> </code><code class="color1">output</code><code class="plain">=</code><code class="string">"log"</code><code class="plain"> </code><code class="color1">clear_params</code><code class="plain">=</code><code class="string">"true"</code><code class="plain">></code></div>
+<div class="line"><code class="plain">            <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"alignment_type"</code><code class="plain"> </code><code class="color1">type</code><code class="plain">=</code><code class="string">"str"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"posyaw"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">            <</code><code class="keyword">param</code><code class="plain"> </code><code class="color1">name</code><code class="plain">=</code><code class="string">"path_gt"</code><code class="plain">        </code><code class="color1">type</code><code class="plain">=</code><code class="string">"str"</code><code class="plain"> </code><code class="color1">value</code><code class="plain">=</code><code class="string">"$(arg path_gt)"</code><code class="plain"> /></code></div>
+<div class="line"><code class="plain">        </</code><code class="keyword">node</code><code class="plain">></code></div>
+<div class="line"><code class="plain">    </</code><code class="keyword">group</code><code class="plain">></code></div>
+<div class="line"><code class="plain"></</code><code class="keyword">launch</code><code class="plain">></code></div>
+</div>
+    </div>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">estimator_config.yaml</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="estimator_config.yaml" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">%YAML:1.0 # need to specify the file type at the top!</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">verbosity: "INFO" # ALL, DEBUG, INFO, WARNING, ERROR, SILENT</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">use_fej: true # if first-estimate Jacobians should be used (enable for good consistency)</code></div>
+<div class="line"><code class="plain">use_imuavg: true # if using discrete integration, if we should average sequential IMU measurements to "smooth" it</code></div>
+<div class="line"><code class="plain">use_rk4int: true # if rk4 integration should be used (overrides imu averaging)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">use_stereo: false # if we have more than 1 camera, if we should try to track stereo constraints between pairs</code></div>
+<div class="line"><code class="plain">max_cameras: 1 # how many cameras we have 1 = mono, 2 = stereo, >2 = binocular (all mono tracking)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">calib_cam_extrinsics: true # if the transform between camera and IMU should be optimized R_ItoC, p_CinI</code></div>
+<div class="line"><code class="plain">calib_cam_intrinsics: true # if camera intrinsics should be optimized (focal, center, distortion)</code></div>
+<div class="line"><code class="plain">calib_cam_timeoffset: true # if timeoffset between camera and IMU should be optimized</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">max_clones: 11 # how many clones in the sliding window</code></div>
+<div class="line"><code class="plain">max_slam: 50 # number of features in our state vector</code></div>
+<div class="line"><code class="plain">max_slam_in_update: 25 # update can be split into sequential updates of batches, how many in a batch</code></div>
+<div class="line"><code class="plain">max_msckf_in_update: 40 # how many MSCKF features to use in the update</code></div>
+<div class="line"><code class="plain">dt_slam_delay: 2 # delay before initializing (helps with stability from bad initialization...)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">gravity_mag: 9.81 # magnitude of gravity in this location</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">feat_rep_msckf: "GLOBAL_3D"</code></div>
+<div class="line"><code class="plain">feat_rep_slam: "ANCHORED_MSCKF_INVERSE_DEPTH"</code></div>
+<div class="line"><code class="plain">feat_rep_aruco: "ANCHORED_MSCKF_INVERSE_DEPTH"</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># zero velocity update parameters we can use</code></div>
+<div class="line"><code class="plain"># we support either IMU-based or disparity detection.</code></div>
+<div class="line"><code class="plain">try_zupt: true</code></div>
+<div class="line"><code class="plain">zupt_chi2_multipler: 0 # set to 0 for only disp-based</code></div>
+<div class="line"><code class="plain">zupt_max_velocity: 0.1</code></div>
+<div class="line"><code class="plain">zupt_noise_multiplier: 50</code></div>
+<div class="line"><code class="plain">zupt_max_disparity: 1.5 # set to 0 for only imu-based</code></div>
+<div class="line"><code class="plain">zupt_only_at_beginning: true</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># ==================================================================</code></div>
+<div class="line"><code class="plain"># ==================================================================</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">init_window_time: 0.75 # how many seconds to collect initialization information</code></div>
+<div class="line"><code class="plain">init_imu_thresh: 1.5 # threshold for variance of the accelerometer to detect a "jerk" in motion</code></div>
+<div class="line"><code class="plain">init_max_disparity: 1.5 # max disparity to consider the platform stationary (dependent on resolution)</code></div>
+<div class="line"><code class="plain">init_max_features: 50 # how many features to track during initialization (saves on computation)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># ==================================================================</code></div>
+<div class="line"><code class="plain"># ==================================================================</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">record_timing_information: true # if we want to record timing information of the method</code></div>
+<div class="line"><code class="plain">record_timing_filepath: "/home/maploc/workspace/output/traj_timing.txt" # </code><code class="comments">https://docs.openvins.com/eval-timing.html</code><code class="plain">#eval-ov-timing-flame</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># if we want to save the simulation state and its diagional covariance</code></div>
+<div class="line"><code class="plain"># use this with rosrun ov_eval error_simulation</code></div>
+<div class="line"><code class="plain">save_total_state: true</code></div>
+<div class="line"><code class="plain">filepath_est: "/home/maploc/workspace/output/ov_estimate.txt"</code></div>
+<div class="line"><code class="plain">filepath_std: "/home/maploc/workspace/output/ov_estimate_std.txt"</code></div>
+<div class="line"><code class="plain">filepath_gt: "/home/maploc/workspace/output/ov_groundtruth.txt"</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># ==================================================================</code></div>
+<div class="line"><code class="plain"># ==================================================================</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># our front-end feature tracking parameters</code></div>
+<div class="line"><code class="plain"># we have a KLT and descriptor based (KLT is better implemented...)</code></div>
+<div class="line"><code class="plain">use_klt: true</code></div>
+<div class="line"><code class="plain">num_pts: 250</code></div>
+<div class="line"><code class="plain">fast_threshold: 15</code></div>
+<div class="line"><code class="plain">grid_x: 20</code></div>
+<div class="line"><code class="plain">grid_y: 20</code></div>
+<div class="line"><code class="plain">min_px_dist: 15</code></div>
+<div class="line"><code class="plain">knn_ratio: 0.70</code></div>
+<div class="line"><code class="plain">downsample_cameras: false # will downsample image in half if true</code></div>
+<div class="line"><code class="plain">multi_threading: true # if should enable opencv multi threading</code></div>
+<div class="line"><code class="plain">histogram_method: "HISTOGRAM" # NONE, HISTOGRAM, CLAHE</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># aruco tag tracker for the system</code></div>
+<div class="line"><code class="plain"># DICT_6X6_1000 from </code><code class="comments">https://chev.me/arucogen/</code></div>
+<div class="line"><code class="plain">use_aruco: false</code></div>
+<div class="line"><code class="plain">num_aruco: 1024</code></div>
+<div class="line"><code class="plain">downsize_aruco: true</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># ==================================================================</code></div>
+<div class="line"><code class="plain"># ==================================================================</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># camera noises and chi-squared threshold multipliers</code></div>
+<div class="line"><code class="plain">up_msckf_sigma_px: 1</code></div>
+<div class="line"><code class="plain">up_msckf_chi2_multipler: 1</code></div>
+<div class="line"><code class="plain">up_slam_sigma_px: 1</code></div>
+<div class="line"><code class="plain">up_slam_chi2_multipler: 1</code></div>
+<div class="line"><code class="plain">up_aruco_sigma_px: 1</code></div>
+<div class="line"><code class="plain">up_aruco_chi2_multipler: 1</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># masks for our images</code></div>
+<div class="line"><code class="plain">use_mask: false</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># imu and camera spacial-temporal</code></div>
+<div class="line"><code class="plain"># imu config should also have the correct noise values</code></div>
+<div class="line"><code class="plain">relative_config_imu: "kalibr_imu_chain.yaml"</code></div>
+<div class="line"><code class="plain">relative_config_imucam: "kalibr_imucam_chain.yaml"</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2069603815_BenchmarkToolingbetweenVINSMonoandOpenVINS-GroundTruthFormatConversion">
+        <h2 class="heading "><span>Ground Truth Format Conversion</span></h2>
+<p   
+>    <span style="color: #000000;">
+We now need to ensure both our estimated trajectory and groundtruth are in the correct formats for us to read in. We need things to be in the RPE text file format (i.e. time(s), px, py, pz, qx, qy, qz, qw). We have a nice helper script that will transform ASL / EuRoC groundtruth files to the correct format. By default the EuRoC groundtruth has the timestamp in nanoseconds and the quaternion is in an incorrect order (i.e. time(ns), px, py, pz, qw, qx, qy, qz). A user can either process all CSV files in a given folder, or just a specific one.    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+The EuRoC groundtruth file is hold in     <span style="color: #333333;">
+ASL Dataset Format.    </span>
+    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">rosrun ov_eval format_converter </code><code class="plain">/home/maploc/workspace/output/MH_05_difficult</code><code class="plain">.csv</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2069603815_BenchmarkToolingbetweenVINSMonoandOpenVINS-CheckAlignedTrajectory">
+        <h2 class="heading "><span>Check Aligned Trajectory</span></h2>
+<p   
+>Since the scale and roll+pitch are observable, there are only 4 DoF for trajectory alignment. Hence we can choose the "    <span style="color: #000000;">
+posyaw    </span>
+" for alignment.</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">rosrun ov_eval plot_trajectories posyaw ..</code><code class="plain">/output/MH_05_difficult</code><code class="plain">.txt ..</code><code class="plain">/output/MH_05_difficult_est</code><code class="plain">.txt</code></div>
+</div>
+    </div>
+<p   
+>Not aligned Trajectory,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_22-31-6-version-1-modificationdate-1640615466000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_22-31-6-version-1-modificationdate-1640615466000-api-v2.png"  height="400" />
+    </p>
+<p   
+>4-DoF aligned Trajectory,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_22-27-55-version-1-modificationdate-1640615275000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_22-27-55-version-1-modificationdate-1640615275000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2069603815_BenchmarkToolingbetweenVINSMonoandOpenVINS-GeneratePerformanceReportforVINS-Mono">
+        <h2 class="heading "><span>Generate Performance Report for VINS-Mono</span></h2>
+<p   
+>    <span style="color: #000000;">
+The single run script will plot statistics and also 3σ    </span>
+    <span style="color: #000000;">
+ bounds if available. One can use this to see consistency of the estimator or debug how the current run has gone. It also reports to console the average RMSE and RPE values for this run along with the number of samples. To change the RPE distances you will need to edit the code currently.    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">command</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="command" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">rosrun ov_eval error_singlerun posyaw ..</code><code class="plain">/output/MH_05_difficult</code><code class="plain">.txt ..</code><code class="plain">/output/MH_05_difficult_est</code><code class="plain">.txt</code></div>
+</div>
+    </div>
+<p   
+>The performance for VINS-Mono on MH_05_difficult dataset are as followed (tips: "/vins_estimator/odometry" will be the online localization result from VINS-Mono)</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_22-28-43-version-1-modificationdate-1640615323000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_22-28-43-version-1-modificationdate-1640615323000-api-v2.png" width="1200"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_22-31-31-version-1-modificationdate-1640615492000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_22-31-31-version-1-modificationdate-1640615492000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_22-31-40-version-1-modificationdate-1640615501000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_22-31-40-version-1-modificationdate-1640615501000-api-v2.png"  height="400" />
+</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_22-31-50-version-1-modificationdate-1640615510000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_22-31-50-version-1-modificationdate-1640615510000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_22-31-59-version-1-modificationdate-1640615520000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_22-31-59-version-1-modificationdate-1640615520000-api-v2.png"  height="400" />
+</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_22-32-11-version-1-modificationdate-1640615531000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_22-32-11-version-1-modificationdate-1640615531000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2069603815_BenchmarkToolingbetweenVINSMonoandOpenVINS-GeneratePerformanceReportforOpen-VINS">
+        <h2 class="heading "><span>Generate Performance Report for Open-VINS</span></h2>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">command</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="command" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">rosrun ov_eval error_singlerun posyaw ..</code><code class="plain">/output/MH_05_difficult</code><code class="plain">.txt ..</code><code class="plain">/output/traj_estimate</code><code class="plain">.txt</code></div>
+<div class="line"><code class="plain">rosrun ov_eval timing_flamegraph ..</code><code class="plain">/output/traj_timing</code><code class="plain">.txt</code></div>
+</div>
+    </div>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_23-2-45-version-1-modificationdate-1640617366000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_23-2-45-version-1-modificationdate-1640617366000-api-v2.png"  height="400" />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_23-6-14-version-1-modificationdate-1640617574000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_23-6-14-version-1-modificationdate-1640617574000-api-v2.png"  height="250" />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_23-4-2-version-1-modificationdate-1640617443000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_23-4-2-version-1-modificationdate-1640617443000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_23-4-18-version-1-modificationdate-1640617459000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_23-4-18-version-1-modificationdate-1640617459000-api-v2.png"  height="400" />
+</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_23-4-32-version-1-modificationdate-1640617473000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_23-4-32-version-1-modificationdate-1640617473000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_23-4-43-version-1-modificationdate-1640617484000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_23-4-43-version-1-modificationdate-1640617484000-api-v2.png"  height="400" />
+</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_23-4-56-version-1-modificationdate-1640617497000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_23-4-56-version-1-modificationdate-1640617497000-api-v2.png"  height="400" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-27_23-6-29-version-1-modificationdate-1640617589000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-27_23-6-29-version-1-modificationdate-1640617589000-api-v2.png"  height="400" />
+</p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2069603815_BenchmarkToolingbetweenVINSMonoandOpenVINS-DeploymentTips">
+        <h1 class="heading "><span>Deployment Tips</span></h1>
+    <div class="section section-2" id="src-2069603815_BenchmarkToolingbetweenVINSMonoandOpenVINS-OpenVINS">
+        <h2 class="heading "><span>OpenVINS</span></h2>
+<p   
+>please follow the instruction on page <a  class="external-link" href="https://docs.openvins.com/gs-installing.html#gs-install-ros-1">Getting Started » Installation Guide | OpenVINS</a>.</p>
+<p   
+>In order to benchmark with VINS-Mono fairly, we should change the config to 1 camera and don't use stereo image.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-24_15-1-25-version-1-modificationdate-1640329285000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-24_15-1-25-version-1-modificationdate-1640329285000-api-v2.png" width="1000"  />
+    </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-2069603815_BenchmarkToolingbetweenVINSMonoandOpenVINS-VINS-Mono">
+        <h2 class="heading "><span>VINS-Mono</span></h2>
+<p   
+>if you want to install it on OSD6 (ubuntu20.04), please try this version of VINS-Mono, <a  class="external-link" href="https://github.com/huahang/VINS-Mono/tree/fix-build-for-ros-noetic">huahang/VINS-Mono at fix-build-for-ros-noetic (github.com)</a></p>
+<p   
+>otherwise you'll suffer from the opencv version confliction between ROS and VINS-Mono.</p>
+<p   
+>The screenshot comes from MH_05_difficult.bag of EuRoC dataset.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069603815/image2021-12-23_9-18-16-version-1-modificationdate-1640222368000-api-v2.png" alt="images/confluence/download/attachments/2069603815/image2021-12-23_9-18-16-version-1-modificationdate-1640222368000-api-v2.png" width="1000"  />
+    </p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2250883224_Apollo_Auto_Map_Service_Study.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Apollo Auto Map Service Study</span>
+        </a>
+                <a href="2103372775_Feature_Number_vs._Vehicle_Velocity_based_on_VINS-Mono.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Feature Number vs. Vehicle Velocity based on VINS-Mono</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

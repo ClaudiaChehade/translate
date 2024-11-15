@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Summary of GDATA Receiving data error issues  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4315263035"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="4315262822_XC_CR_DRV_STATIC_DEV.html">XC_CR DRV_STATIC_DEV</a></li>
+                                                                                     <li><a href="4315262856_DRV_Data_requirements.html">DRV Data requirements</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4315263035"> <span> Summary of GDATA Receiving data error issues </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-4315263035_safe-id-R2RhdGHlm57moIfmlbDmja7plJnor6_pl67popjmsYfmgLstTGFuZQ">
+        <h1 class="heading auto-cursor-target"><span> Lane</span></h1>
+<p  class="auto-cursor-target" 
+> Note: The following is only for "lane_divider.geojson", "lane_line.geojson", "lane_relation.geojson", "root_edge.geojson" </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Problem file </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Explanation </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> solution </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>comment</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>all</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Some Frame lacks a certain Geojson file </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Renovation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> Some Frame does not output Geojson if there is no corresponding layer; </p>
+<p   
+> Optimized item: This problem will be solved during the formal delivery, such as giving an empty JSON, MESSAGE description; </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_divider.geojson</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Feature ['Properties'] ['LEFT_LLID'] exists with two identical IDs, that is, a divider binds a centerline twice and twice </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Interpretation+Rebate </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> GDATA does not come out, RB provides timestamp or ID; </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_divider.geojson</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Feature ['Properties'] [LEFT_LLID'] exists with two different IDs, that is, one divider binds two Centerline </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Interpretation+Rebate </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> In the middle is a two -way co -marked line. </p>
+<p   
+> Option: After the meeting, GDATA provides a sample diagram; </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_divider.geojson</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Feature ['Properties'] ['LEFT_LLID'] and Feature ['Properties'] ['Right_llid'] are the same, that is, the left Centerline and right Centerline binding a divider are the same. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Renovation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> Description: The left side of the lane line on the left and seams on the right side </p>
+<p   
+> Option: Repair, subsequent self -inspection to strengthen, avoid similar errors; </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_divider.geojson</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> "Isshared": 0 DIVIDER is different from its linked Centerline, usually the Divider point sorting error </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Renovation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> Description: A two -way lane shares a label, and the line stops interrupting the label at the intersection. </p>
+<p   
+> Scheme: GDATA provides a sample diagram, and the internal discussion of RB after the meeting; </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4315263035/image-2024-6-26_11-15-19-version-1-modificationdate-1719371719000-api-v2.png" alt="images/confluence/download/attachments/4315263035/image-2024-6-26_11-15-19-version-1-modificationdate-1719371719000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>6</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_divider.geojson</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> "IsShared": 1's divider should bind the left and right centerline, there is a missing situation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Renovation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> GDATA label the problem and needs to be repaired; </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>7</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_divider.geojson</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Multiple divider is bound to the same Centerline, which should be connected to the end. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Renovation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> Description: The problem caused by the standard line that exceeds the stop line; as the figure in item 5; </p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>8</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_divider.geojson</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Please explain how the Divider of the "isshared": 1 distinguishes the left and right relationships bound to the centerline?And does the sort of Divider have no reference significance at this time? </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Interpretation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> Description: There is no reference significance of the sorting of the standard line; </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>9</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_divider.geojson</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> A centerline will bind two divider, which is one less situation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Renovation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> Description: The bicycle lane can pass through the two -way; </p>
+<p   
+> Option: GDATA provides a sample diagram; </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_divider.geojson</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Divider's Type attributes have the UNKNOWN imaginary line, please explain the relevant definition and marking rules </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Interpretation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> Requirements: Describe the marking rules, automatic or semi -automatic, if it is semi -automatic, provide a pseudo -code, acceptance rules description; </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>11</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_line.geojson</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The Predlanes of the A line is the B line, so the Succlanes of Line B should be a line A. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Renovation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> GDATA does not come out without debug, RB provides timestamps; </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>12</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lane_relation.geojson</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Can you increase the left and right lines and keep it consistent with the Openlane-V2 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Interpretation </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> Program: Left and Right Special Topics Discussion </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-4315263035_safe-id-R2RhdGHlm57moIfmlbDmja7plJnor6_pl67popjmsYfmgLst5ZKM6LGB5Y-j6Lev5Y-j5Yyd6YGT55u45YWz55qE6Zeu6aKY">
+        <h1 class="heading "><span> Problems related to the gate ramp </span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The breakpoint is a problem with the gap: </p>
+<p   
+><br/></p>
+<ul class=" "><li class=" "><p   
+> Breaking with roads as a level, with directionality </p>
+</li><li class=" "><p   
+> I haven't found out when it will be marked or when the mouth will not </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Ordinary gap </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>12954C_20240403134726_5,1712123372500000000</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_11-22-26-version-1-modificationdate-1718162560105-api-v2.png" alt="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_11-22-26-version-1-modificationdate-1718162560105-api-v2.png"  height="400" /> The left lane and self -lanes of this figure should not be interrupted nor it should be marked as a virtual lane line <br/></p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> GDATA feedback lane should be "non -virtual" lanes, with left and right lanes, but it will be interrupted because of the entrance of the courtyard.Will return to repairs </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20240403142123_4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/2/download/attachments/228501313/image-2024-6-12_9-58-34-version-1-modificationdate-1718157514813-api-v2.png" alt="images/2/download/attachments/228501313/image-2024-6-12_9-58-34-version-1-modificationdate-1718157514813-api-v2.png" width="800"  /> The same as the lane and right lane should not be interrupted nor the virtual lane line </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> GDATA feedback lane should be "non -virtual" lanes, with left and right lanes, but it will be interrupted because of the entrance of the courtyard.Will return to repairs </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> T -shaped road leakage a road </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>13109C_20240403152755_1，1712129287300000000</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-55-06-version-1-modificationdate-1718171730086-api-v2.png" alt="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-55-06-version-1-modificationdate-1718171730086-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> The GDATA construction is not covered with complete coverage, and the frame should be thrown </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> There is a gap but no labeling </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> figure 1 .12954C_20240403144732_1,1712126899800000000</p>
+<p   
+> Figure 2.12954C_20240403144732_1712126903400000000 </p>
+<p   
+> image 3 .12954C_20240403144732_1,1712126906500000000</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> figure 1 </p>
+<p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-00-55-version-1-modificationdate-1718168473461-api-v2.png" alt="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-00-55-version-1-modificationdate-1718168473461-api-v2.png"  height="250" />
+    </p>
+<p   
+> figure 2 </p>
+<p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-03-28-version-1-modificationdate-1718168644322-api-v2.png" alt="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-03-28-version-1-modificationdate-1718168644322-api-v2.png"  height="250" />
+    </p>
+<p   
+> image 3 </p>
+<p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-04-52-version-1-modificationdate-1718168753371-api-v2.png" alt="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-04-52-version-1-modificationdate-1718168753371-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> GDATA will determine the gap marking rules </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>12954C_20240403150253_2,1712127811600000000</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-09-40-version-1-modificationdate-1718168988487-api-v2.png" alt="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-09-40-version-1-modificationdate-1718168988487-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> GDATA will determine the gap marking rules </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>12954C_20240403150253_3,1712127844000000000</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-12-14-version-1-modificationdate-1718169155909-api-v2.png" alt="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-12-14-version-1-modificationdate-1718169155909-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> GDATA will determine the gap marking rules </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>13109C_20240403151255_1,1712128383600000000</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-external-resource"  src="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-39-14-version-2-modificationdate-1718170796158-api-v2.png" alt="images/2/download/attachments/228501313/Screenshot_from_2024-06-12_13-39-14-version-2-modificationdate-1718170796158-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>26 Jun 2024</p>
+<p   
+> GDATA will determine the gap marking rules </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4363000552_centerline%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Centerline requirements analysis </span>
+        </a>
+                <a href="4427038339_gdata_%E6%A0%87%E6%B3%A8%E8%A7%84%E5%88%99%E5%8F%8D%E9%A6%88.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> GDATA labeling rules feedback </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

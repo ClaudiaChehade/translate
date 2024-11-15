@@ -1,0 +1,2689 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> M1 laser radar point cloud data abnormal analysis -WAVE 3 Development </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2904698277"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113873_xcalib_eng.html">xcalib_eng</a></li>
+                                                                                                         <li class="shortcut"><a href="2916353596_calibration_tool_release.html">calibration_tool_release</a></li>
+                                                                                     <li><a href="2759767640_V1.1.0.html">V1.1.0</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2904698277"> <span> M1 laser radar point cloud data abnormal analysis </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAtdXBkYXRlb24yMDIzLTA0LTIw">
+        <h1 class="heading auto-cursor-target"><span>update on 2023-04-20</span></h1>
+<p   
+> It is recommended to standardize the test scene and conduct batch analysis <a   href="2959532562_how_to_use_cloudcompare.html">how to use cloudcompare</a></p>
+    <div class="section section-2" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAt5LiA44CB5L6b5bqU5ZWG5o-Q5L6b55qETTHmv4DlhYnpm7fovr7kuIvnur_mtYvor5XngrnkupHmlbDmja7or4TkvLA">
+        <h2 class="heading "><span> 1. M1 lidar offline test point cloud data assessment provided by the supplier </span></h2>
+<p   
+>    <span style="color: #ff0000;"> Real ± 5cm <strong class=" ">1sigma </strong> Standard (why not require 2Sigma+) </span>
+</p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="5.23141%"/>
+                                    <col  width="21.1001%"/>
+                                    <col  width="17.0664%"/>
+                                    <col  width="26.157%"/>
+                                    <col  width="24.9564%"/>
+                                    <col  width="5.48869%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>frame</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Internal point rate <     <span style="color: #ff0000;">
+±5cm    </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Average distance (point cloud thickness) </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> legend </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="2">
+    <p   
+>CloudCompare ( plane fitting RMS )</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.76 (11666/11694)</p>
+<p   
+>[RANSAC] 93.89 (10979/11694)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0218</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-10-19-version-1-modificationdate-1681967420000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-10-19-version-1-modificationdate-1681967420000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_10-55-8-version-1-modificationdate-1681959308000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_10-55-8-version-1-modificationdate-1681959308000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.014</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.83 (13363/13386)</p>
+<p   
+>[RANSAC] 95.94 (12842/13386)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0106</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-11-4-version-1-modificationdate-1681967464000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-11-4-version-1-modificationdate-1681967464000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-16-47-version-1-modificationdate-1681960607000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-16-47-version-1-modificationdate-1681960607000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0137</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.82 (12405/12427)</p>
+<p   
+>[RANSAC] 94.96 (11801/12427)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0111</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-11-40-version-1-modificationdate-1681967500000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-11-40-version-1-modificationdate-1681967500000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-24-29-version-1-modificationdate-1681961070000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-24-29-version-1-modificationdate-1681961070000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.014</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.59 (13719/13775)</p>
+<p   
+>[RANSAC] 98.86 (13618/13775)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0145</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-12-9-version-1-modificationdate-1681967531000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-12-9-version-1-modificationdate-1681967531000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-30-54-version-1-modificationdate-1681961454000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-30-54-version-1-modificationdate-1681961454000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0142</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.68 (13195/13238)</p>
+<p   
+>[RANSAC] 98.66 (13061/13238)</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0164</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-12-38-version-1-modificationdate-1681967559000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-12-38-version-1-modificationdate-1681967559000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-33-36-version-1-modificationdate-1681961616000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-33-36-version-1-modificationdate-1681961616000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0144</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>6</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.63 (13272/13321)</p>
+<p   
+>[RANSAC] 94.22 (12551/13321)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0163</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-13-17-version-1-modificationdate-1681967598000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-13-17-version-1-modificationdate-1681967598000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-38-42-version-1-modificationdate-1681961923000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-38-42-version-1-modificationdate-1681961923000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0143</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>7</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.61 (12781/12831)</p>
+<p   
+>[RANSAC] 79.80 (10239/12831)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0224</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-13-45-version-1-modificationdate-1681967626000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-13-45-version-1-modificationdate-1681967626000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-46-46-version-1-modificationdate-1681962407000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-46-46-version-1-modificationdate-1681962407000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0147</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>8</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.77 (12443/12472)</p>
+<p   
+>[RANSAC] 98.97 (12344/12472)</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0171</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-14-22-version-1-modificationdate-1681967663000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-14-22-version-1-modificationdate-1681967663000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-49-4-version-1-modificationdate-1681962544000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-49-4-version-1-modificationdate-1681962544000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0141</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>9</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.70 (13116/13156)</p>
+<p   
+>[RANSAC] 98.50 (12959/13156)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0168</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-14-51-version-1-modificationdate-1681967692000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-14-51-version-1-modificationdate-1681967692000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-52-30-version-1-modificationdate-1681962750000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-52-30-version-1-modificationdate-1681962750000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0141</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.74 (12155/12187)</p>
+<p   
+>[RANSAC] 94.95 (11572/12187)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0108</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-15-46-version-1-modificationdate-1681967746000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_13-15-46-version-1-modificationdate-1681967746000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-54-53-version-1-modificationdate-1681962893000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_11-54-53-version-1-modificationdate-1681962893000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.014</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAt5LqM44CB5pu05paw5Zu65Lu25YmN5ZCO5a-55q-U">
+        <h2 class="heading "><span> 2. Comparison of more new firmware </span></h2>
+<p   
+>    <span style="color: #ff0000;"> New firmware does not fixes Area layered problem </span>
+</p>
+    <div  class="tablewrap">
+        <table class="relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="7.59942%"/>
+                                    <col  width="31.5077%"/>
+                                    <col  width="24.9329%"/>
+                                    <col  width="35.96%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>10074C</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>front_lidar</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-20_21-17-8-version-1-modificationdate-1681996629000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-20_21-17-8-version-1-modificationdate-1681996629000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-17-57-version-1-modificationdate-1681996678000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-17-57-version-1-modificationdate-1681996678000-api-v2.png"  height="150" />
+    </p>
+<p   
+>plane fitting RMS: 0.014075</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>left_lidar</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-35-57-version-1-modificationdate-1681997757000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-35-57-version-1-modificationdate-1681997757000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-37-6-version-1-modificationdate-1681997827000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-37-6-version-1-modificationdate-1681997827000-api-v2.png"  height="150" />
+    </p>
+<p   
+>plane fitting RMS: 0.027483</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-43-23-version-1-modificationdate-1681998204000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-43-23-version-1-modificationdate-1681998204000-api-v2.png"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-44-38-version-1-modificationdate-1681998279000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-44-38-version-1-modificationdate-1681998279000-api-v2.png"  height="150" />
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>right_lidar</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-46-46-version-1-modificationdate-1681998407000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-46-46-version-1-modificationdate-1681998407000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-47-17-version-1-modificationdate-1681998438000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-47-17-version-1-modificationdate-1681998438000-api-v2.png"  height="150" />
+    </p>
+<p   
+>plane fitting RMS: 0.012654</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-49-53-version-1-modificationdate-1681998593000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-49-53-version-1-modificationdate-1681998593000-api-v2.png"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-50-13-version-1-modificationdate-1681998613000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_21-50-13-version-1-modificationdate-1681998613000-api-v2.png"  height="150" />
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    <div  class="tablewrap">
+        <table class="wrapped relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="18.2154%"/>
+                                    <col  width="4.74114%"/>
+                                    <col  width="5.55212%"/>
+                                    <col  width="5.67689%"/>
+                                    <col  width="25.39%"/>
+                                    <col  width="3.80539%"/>
+                                    <col  width="26.2634%"/>
+                                    <col  width="10.2933%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Place </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Frame number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Installation location </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> New firmware ？</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> legend </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Area </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Internal point rate     <span style="color: #ff0000;">
+<±5cm    </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Average distance (point cloud thickness) </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="8" colspan="1">
+    <p   style="text-align:left;"
+>    <span style="color: #000000;"> Building wall </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> The wall may not be flat enough </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> Different test objects and test scenes in the control group </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> The first collection of 10074C_N + 10816C_N </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> The second collection of 10074C_Y + 11162C_N </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #000000;"> The second wall is flattened by the first time </span>
+</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+>10074C</p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>front</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-20_13-31-4-version-1-modificationdate-1681968664000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-20_13-31-4-version-1-modificationdate-1681968664000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+<p   
+>3</p>
+<p   
+>4</p>
+<p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 95.77 (3102/3239) [RANSAC] 90.80 (2941/3239)</p>
+<p   
+>[PCL] 99.02 (7095/7165) [RANSAC] 28.95 (2074/7165)</p>
+<p   
+>[PCL] 98.96 (11205/11323) [RANSAC] 7.71 (873/11323)</p>
+<p   
+>[PCL] 91.48 (11367/12426) [RANSAC] 47.60 (5915/12426)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0198</p>
+<p   
+>0.025</p>
+<p   
+>0.0248</p>
+<p   
+>0.0246</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff0000;">
+Y    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-20_14-1-48-version-1-modificationdate-1681970509000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-20_14-1-48-version-1-modificationdate-1681970509000-api-v2.png"  height="150" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+1<br/>    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+2    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+3    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+4    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 96.78 (3522/3639) [RANSAC] 95.88 (3489/3639)</p>
+<p   
+>[PCL] 97.35 (7394/7595) [RANSAC] 84.74 (6436/7595)</p>
+<p   
+>[PCL] 99.97 (14994/14999) [RANSAC] 99.85 (14977/14999)</p>
+<p   
+>[PCL] 99.85 (9221/9235) [RANSAC] 90.54 (8361/9235)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0156</p>
+<p   
+>0.0203</p>
+<p   
+>0.014</p>
+<p   
+>0.0244</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>left</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff0000;">
+Y    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_14-10-51-version-1-modificationdate-1681971052000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_14-10-51-version-1-modificationdate-1681971052000-api-v2.png"  height="150" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+1<br/>    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+3    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+4    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+5    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.79 (1896/1900) [RANSAC] 99.84 (1897/1900)</p>
+<p   
+>[PCL] 99.89 (10057/10068) [RANSAC] 99.87 (10055/10068)</p>
+<p   
+>[PCL] 99.98 (11560/11562) [RANSAC] 99.98 (11560/11562)</p>
+<p   
+>[PCL] 99.95 (8006/8010) [RANSAC] 39.36 (3153/8010)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0072</p>
+<p   
+>0.0089</p>
+<p   
+>0.0102</p>
+<p   
+>0.0249</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>right</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff0000;">
+Y    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #ff0000;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_16-24-49-version-1-modificationdate-1681979091000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_16-24-49-version-1-modificationdate-1681979091000-api-v2.png"  height="150" />
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+1<br/>    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+2    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+3    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.86 (4942/4949) [RANSAC] 99.60 (4929/4949)<br/>[PCL] 99.99 (11672/11673) [RANSAC] 99.99 (11672/11673)<br/>[PCL] 100.00 (11232/11232) [RANSAC] 100.00 (11232/11232)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.011</p>
+<p   
+>0.0076</p>
+<p   
+>0.0096</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10816C</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>left</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-20_16-31-34-version-1-modificationdate-1681979494000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-20_16-31-34-version-1-modificationdate-1681979494000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+4<br/>    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+5    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.99 (10590/10591) [RANSAC] 99.98 (10589/10591)</p>
+<p   
+>[PCL] 97.76 (3582/3664) [RANSAC] 97.68 (3579/3664)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0098</p>
+<p   
+>0.0116</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+>11162C</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>front</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_17-7-1-version-1-modificationdate-1681981622000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_17-7-1-version-1-modificationdate-1681981622000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+<p   
+>2</p>
+<p   
+>3</p>
+<p   
+>4</p>
+<p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.32 (9384/9448) [RANSAC] 99.20 (9372/9448)</p>
+<p   
+>[PCL] 98.31 (11229/11422) [RANSAC] 80.54 (9199/11422)</p>
+<p   
+>[PCL] 99.10 (14558/14690) [RANSAC] 21.55 (3165/14690)</p>
+<p   
+>[PCL] 98.67 (11377/11530) [RANSAC] 2.98 (344/11530)</p>
+<p   
+>[PCL] 95.45 (9566/10022) [RANSAC] 53.63 (5375/10022)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0129</p>
+<p   
+>0.0228</p>
+<p   
+>0.0249</p>
+<p   
+>0.026</p>
+<p   
+>0.0239</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>left</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_17-11-46-version-1-modificationdate-1681981907000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_17-11-46-version-1-modificationdate-1681981907000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+<p   
+>2</p>
+<p   
+>3</p>
+<p   
+>4</p>
+<p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 97.30 (4359/4480) [RANSAC] 90.45 (4052/4480)</p>
+<p   
+>[PCL] 99.54 (6871/6903) [RANSAC] 92.63 (6394/6903)</p>
+<p   
+>[PCL] 99.98 (9636/9638) [RANSAC] 78.66 (7581/9638)</p>
+<p   
+>[PCL] 99.94 (11213/11220) [RANSAC] 99.60 (11175/11220)</p>
+<p   
+>[PCL] 99.68 (5914/5933) [RANSAC] 99.07 (5878/5933)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0201</p>
+<p   
+>0.0222</p>
+<p   
+>0.0244</p>
+<p   
+>0.0154</p>
+<p   
+>0.0175</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>right</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-20_17-15-39-version-1-modificationdate-1681982141000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-20_17-15-39-version-1-modificationdate-1681982141000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+<p   
+>2</p>
+<p   
+>3</p>
+<p   
+>4</p>
+<p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>[PCL] 99.58 (5862/5887) [RANSAC] 98.32 (5788/5887)</p>
+<p   
+>[PCL] 100.00 (11559/11559) [RANSAC] 100.00 (11559/11559)</p>
+<p   
+>[PCL] 99.94 (11243/11250) [RANSAC] 94.48 (10629/11250)</p>
+<p   
+>[PCL] 99.48 (7304/7342) [RANSAC] 49.55 (3638/7342)</p>
+<p   
+>[PCL] 99.52 (3495/3512) [RANSAC] 70.33 (2470/3512)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>0.0148</p>
+<p   
+>0.0083</p>
+<p   
+>0.0197</p>
+<p   
+>0.0252</p>
+<p   
+>0.0253</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="24" colspan="1">
+    <p   style="text-align:left;"
+> Calibration </p>
+<ul class=" "><li class=" "><p   
+> The wall and the ground are relatively flat </p>
+</li><li class=" "><p   
+> A target pattern has an influence on the quality of the point cloud </p>
+</li></ul><p   
+><br/></p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="12" colspan="1">
+    <p   
+>10074C</p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>front_far</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>front_near</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>left_far</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>left_near</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>right_far</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>right_near</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="12" colspan="1">
+    <p   
+>10816C</p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>front_far</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>front_near</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>left_far</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>left_near</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>right_far</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>right_near</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAt5LiJ44CB5pu05paw5Zu65Lu25YmN5ZCO5oqV5b2x57uT5p6c5a-55q-U">
+        <h2 class="heading "><span> 3. Comparison of projection results before and behind </span></h2>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> the data shows </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>10074C_front_lidar</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>10074C_left_lidar</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>10074C_right_lidar</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>10816C_left_lidar</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Old firmware </p>
+<p   
+> Original calibration </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Old firmware </p>
+<p   
+> Calibration optimization </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/10074C_20230327_front_lidar-version-2-modificationdate-1681881762000-api-v2.jpg" alt="images/confluence/download/attachments/2904698277/10074C_20230327_front_lidar-version-2-modificationdate-1681881762000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/10074C_20230327_left_lidar-version-3-modificationdate-1681881811000-api-v2.jpg" alt="images/confluence/download/attachments/2904698277/10074C_20230327_left_lidar-version-3-modificationdate-1681881811000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/10074C_20230327_right_lidar-version-2-modificationdate-1681881830000-api-v2.jpg" alt="images/confluence/download/attachments/2904698277/10074C_20230327_right_lidar-version-2-modificationdate-1681881830000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-19_15-6-17-version-1-modificationdate-1681887978000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-19_15-6-17-version-1-modificationdate-1681887978000-api-v2.png"  height="150" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> New firmware </p>
+<p   
+> Original calibration </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-19_13-12-17-version-1-modificationdate-1681881138000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-19_13-12-17-version-1-modificationdate-1681881138000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-19_13-20-47-version-1-modificationdate-1681881647000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-19_13-20-47-version-1-modificationdate-1681881647000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-19_13-22-13-version-1-modificationdate-1681881733000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-19_13-22-13-version-1-modificationdate-1681881733000-api-v2.png"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> New firmware </p>
+<p   
+> Calibration optimization </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<hr>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAtdXBkYXRlb24yMDIzLTA0LTEy">
+        <h1 class="heading auto-cursor-target"><span>update on 2023-04-12</span></h1>
+    <div class="section section-2" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAt5pyJ5Zu-5qGI55qE5qCH5a6a6Ze05aKZ6Z2iVlPml6Dlm77moYjnmoTmma7pgJrlopnpnaI">
+        <h2 class="heading "><span> Calibration wall with pattern  VS  Non -pattern ordinary wall surface  </span></h2>
+<p   
+> 1. The calibration pattern affects the quality of the point cloud data of M1 lidar, but it is not a key factor that causes poor projection results </p>
+<p  class="auto-cursor-target" 
+> White pattern corresponds to purple point cloud Inlier, black pattern corresponds to green dot cloud OUTLIER (± 2cm) <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-14_13-14-59-version-1-modificationdate-1681458321000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-14_13-14-59-version-1-modificationdate-1681458321000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-14_13-12-49-version-1-modificationdate-1681458313000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-14_13-12-49-version-1-modificationdate-1681458313000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-19_12-53-38-version-1-modificationdate-1681880019000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-19_12-53-38-version-1-modificationdate-1681880019000-api-v2.png"  height="150" />
+</p>
+<p   
+> 2. M1 LIDAR's close -range range accuracy is poor, especially in both end line beams </p>
+<ul class=" "><li class=" "><p   
+> Calibration left and right wall distance is about 6m, front/left_lidar is about the wall <span style="color: #ff0000;">
+2m    </span>
+</p>
+</li><li class=" "><p   
+> The top of the calibration is about 4m from the ground, Front/LEFT/RIGHT_ LIDAR is from the ground/roof <span style="color: #ff0000;">
+2m    </span>
+</p>
+</li></ul><p   
+>10074C_20230307_front-lidar<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-5-version-1-modificationdate-1681439022000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-5-version-1-modificationdate-1681439022000-api-v2.png"  height="150" />
+    </p>
+<p   
+> 3. Pandar_qt_lidar and main -_lidar of the same vehicle are not affected by the calibration pattern </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Place </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Frame number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>lidar</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Area (1-5 from left to right) </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Follow the wall (unit: m) </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Internal point rate (thickness <    <span style="color: #ff0000;">
+ ±2cm    </span>
+）</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> legend </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+> Calibration wall with pattern </p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>10074C</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>main</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+2.0<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>91.506%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-13_18-22-31-version-1-modificationdate-1681441545000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-13_18-22-31-version-1-modificationdate-1681441545000-api-v2.png"  height="150" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>M1 front</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> 4 front/right side <br/>    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+5<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+69%/62%    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+57.75%    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image cp-img panning confluence-thumbnail confluence-external-resource"  src="images/download/attachments/2940970735/image-2023-4-13_19-42-42-version-1-modificationdate-1681386163000-api-v2.png" alt="images/download/attachments/2940970735/image-2023-4-13_19-42-42-version-1-modificationdate-1681386163000-api-v2.png"  height="150" />
+<img  class="confluence-embedded-image cp-img panning confluence-thumbnail confluence-external-resource"  src="images/download/attachments/2940970735/image-2023-4-13_19-42-24-version-1-modificationdate-1681386144000-api-v2.png" alt="images/download/attachments/2940970735/image-2023-4-13_19-42-24-version-1-modificationdate-1681386144000-api-v2.png"  height="150" />
+<img  class="confluence-embedded-image cp-img panning confluence-thumbnail confluence-external-resource"  src="images/download/thumbnails/2940970735/image-2023-4-13_18-20-6-version-1-modificationdate-1681381206000-api-v2.png" alt="images/download/thumbnails/2940970735/image-2023-4-13_18-20-6-version-1-modificationdate-1681381206000-api-v2.png"  height="150" />
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10816C</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>M1 left</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+3    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+4    </span>
+</p>
+<p   
+>    <span style="color: #000000;"> 5 front side/ </span>
+    <span style="color: #000000;"> Right </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+5.0<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+65%    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+54%    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+55%/    </span>
+    <span style="color: #000000;">
+46% (    </span>
+    <span style="color: #000000;">
+    <span style="color: #ff0000;">
+76% < ±5cm    </span>
+)    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-13_19-49-23-version-1-modificationdate-1681443591000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-13_19-49-23-version-1-modificationdate-1681443591000-api-v2.png"  height="150" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+> Non -pattern ordinary wall surface </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10074C</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>M1 front</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+4    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+5    </span>
+</p>
+<p   
+>    <span style="color: #000000;"> 1, 2, 3 non -plane, cannot be analyzed </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+5.0    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+95.512%    </span>
+</p>
+<p   
+>    <span style="color: #ff0000;">
+53.7039%    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image cp-img panning confluence-thumbnail confluence-external-resource"  src="images/download/attachments/2940970735/image-2023-4-13_19-36-28-version-1-modificationdate-1681385788000-api-v2.png" alt="images/download/attachments/2940970735/image-2023-4-13_19-36-28-version-1-modificationdate-1681385788000-api-v2.png"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-4-13_18-21-42-version-1-modificationdate-1681441725000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-4-13_18-21-42-version-1-modificationdate-1681441725000-api-v2.png"  height="150" />
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10816C</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>M1 left</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+3    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+4    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+5    </span>
+</p>
+<p   
+>    <span style="color: #000000;"> 1. 2 non -plane, cannot analyze </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+5.0<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+> 95%    </span>
+</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-13_19-40-5-version-1-modificationdate-1681442325000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-13_19-40-5-version-1-modificationdate-1681442325000-api-v2.png"  height="150" />
+<img  class="confluence-embedded-image cp-img panning confluence-external-resource"  src="images/download/attachments/2940970735/image-2023-4-13_19-39-10-version-1-modificationdate-1681385950000-api-v2.png" alt="images/download/attachments/2940970735/image-2023-4-13_19-39-10-version-1-modificationdate-1681385950000-api-v2.png"  height="150" />
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAt6Kej5Yaz5o6q5pa9">
+        <h2 class="heading "><span> solution </span></h2>
+<p   
+> short term </p>
+<p   
+> 1. Remove the outermost left and right AREA (0 and 4 channels) and filter out Outlier </p>
+<p   
+> 2. lidar → IMU dynamic calibration </p>
+<p   
+> 3. The quality inspection is performed before calibration. </p>
+<p   
+> 4. Weaken the outermost area (0 and 4 channels), and use the middle Area (1, 2, 3) for projection verification </p>
+<p   
+> long </p>
+<p   
+> 1. Replace the calibration room pattern and use 80% of the man -reflex board </p>
+<p   
+> 2. Do not let the supplier rot, improve the data quality problem of M1 lidar </p>
+<p   
+> The M1 LIDAR supplier updates the firmware and said that it has adopted deep learning algorithm. It takes a few days to take effect. Please arrange for them to see if the alignment between Area is improved and collect data to collect data </p>
+<ul class=" "><li class="elementToProof "><p   
+> The vehicle that brush the firmware is collecting Front_wide_camera, Front_lidar, and Main_lidar data for the building walls (located at 5M 10M 30M 30M 50M 80m). </p>
+</li><li class="elementToProof "><p   
+> 4. Reference to "RS-LIDAR-M1 3.0 Gaze Function Report" 4. Static test-4.1. Situing accuracy </p>
+</li></ul><p   
+> 3. The data quality problem of M2 LIDAR used in mass production is not necessarily OK. Please provide them with a "sample/test report/point cloud data sample" (similar to "RS-LIDAR-M1 3.0 gaze function test report")) <br/></p>
+    </div>
+    <div class="section section-2" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAt5Y-C6ICD5oyH5qCH">
+        <h2 class="heading "><span> reference indicator </span></h2>
+<p   
+> 1. Due to the dynamic coupling of time synchronization and point cloud distortion, the calibration group only guarantees static "verification data" < 30 pixel (白色车辆和灯杆除外，高反现象会造成点云扭曲膨胀变形)</p>
+<p   
+> 2. Calculate at a level of 0.2 °/vertical resolution, a line in the upper and lower direction errors/left and right directions: 10M error 3.49cm, 50m error 0.175m, 100m error 0.349m error 0.349m </p>
+<p   
+> 3. Front_wide_camera's hfov = 120 °, the resolution is 3840*2160 pixel, 120/3840 = 0.03125 °, 10pixel error 0.3125 °, 20pixel error 0.625 °, 30pixel error 0.9375 ° </p>
+<p   
+><br/></p>
+<p   
+> Below from "RS-LIDAR-M1 User Guide", accuracy <span style="color: #ed5c57;">
+±5cm    </span>
+<br/><br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-version-1-modificationdate-1681439009000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-version-1-modificationdate-1681439009000-api-v2.png"  height="250" />
+    <br/></p>
+<p   
+><br/></p>
+<p   
+> Below is taken from "RS-Lidar-M1 3.0 Gaze Functional Test Report" <br/></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-1-version-1-modificationdate-1681439014000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-1-version-1-modificationdate-1681439014000-api-v2.png"  height="250" />
+    <br/></p>
+<p   
+> 4. Static test -4.1. Situration accuracy: target static continuous collection 10S (total 100 frames) data <br/><br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-2-version-1-modificationdate-1681439016000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-2-version-1-modificationdate-1681439016000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-3-version-1-modificationdate-1681439018000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-3-version-1-modificationdate-1681439018000-api-v2.png"  height="250" />
+</p>
+<p   
+><br/></p>
+<hr>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAtdXBkYXRlb24yMDIzLTA0LTA05LiO5L6b5bqU5ZWG5Lqk5rWB5Lya6K6u57qq6KaB">
+        <h1 class="heading auto-cursor-target"><span> UPDATE on 2023-04-04 Minutes of the Communication Conference with the Supplier </span></h1>
+<p   
+> Question 1: The effect of alignment between point cloud Area is poor </p>
+<p   
+> Answer 1: The supplier acknowledges that due to the internal reference standard, it is not allowed to be caused, and try to repair the firmware repair by updating the firmware </p>
+<p   
+> Question 2: The thickness of the point cloud on the flat wall is large </p>
+<p   
+> Answer 2-1: Chip selection and product positioning determine that the ranging accuracy of M1 lidar is poor (nearly ± 3cm far away ± 5cm), M2 range range accuracy will be significantly improved </p>
+<p   
+> Answer 2-2: Suppliers suspect that the wall pattern of calibration room wall affects the laser point cloud data </p>
+<p   
+> Question 3: "Polka -like" abnormal point cloud & sky miscellaneous point </p>
+<p   
+> Answer 3: Suppliers acknowledge that there are problems and need to get data further analysis </p>
+<p   
+>task list</p>
+<ul class="inline-task-list "><li class=" "><p   
+> Provide abnormal data for supplier @Dong Shitao <br/></p>
+</li><li class=" "><p   
+> Verify the impact of the design of the wall surface pattern on the laser radar point cloud data, find a relatively flat wall, use 10074C Front-Lidar to collect data from 3/5/8/10m from the wall surface, and perform a flatness analysis @Dong Shitaoo@wang zian </p>
+</li><li class=" "><p   
+> Update M1 LIDAR firmware @Supplier next Monday next Monday </p>
+</li><li class=" "><p   
+> Clarify the acceptance indicators, if the point cloud thickness on the wall of the calibration room is more than 10cm within 10m, the supplier agrees to change the part or return to the factory for re -calibration (Bosch does not accept it, supplier re -evaluate) </p>
+</li><li class=" "><p   
+> Analyze why the M1 lidar's projection is better in M1 LIDAR labeled @Ma Liang </p>
+</li></ul><p   
+><br/></p>
+<hr>
+    </div>
+    <div class="section section-1" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAt5byC5bi454K55LqR5o-P6L-w">
+        <h1 class="heading auto-cursor-target"><span> Diaoyun description </span></h1>
+<p   
+> 1. M1 lidar product control is poor, the product consistency is not good, the adverse rate is high, and some problems are obvious </p>
+<p   
+> 2. M1 LIDAR single -frame point cloud data is composed of five pieces of cloud. The ranging accuracy of Area on the left and right sides is low, and the sewing is obviously sewing at the overlap. </p>
+<p   
+>11142C_20230330_right-lidar 11162C_20230411_left_lidar</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-4-version-1-modificationdate-1681439020000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-14_10-23-29-4-version-1-modificationdate-1681439020000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-4-14_12-38-21-version-1-modificationdate-1681447101000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-4-14_12-38-21-version-1-modificationdate-1681447101000-api-v2.png"  height="250" />
+</p>
+<p   
+> 2. There are too many cloud noise on the outside of the outside, which seriously affects the calibration accuracy. </p>
+<p   
+> 3. Examples of abnormal cloud data (ripple radiation dot cloud, abnormal bruises in the sky) </p>
+<p   
+>11118C 20230328 front-lidar</p>
+<p   
+>    <span style="color: #000000;">
+<strong class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-31_15-20-42-version-1-modificationdate-1680247762000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-31_15-20-42-version-1-modificationdate-1680247762000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-31_15-22-12-version-1-modificationdate-1680247763000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-31_15-22-12-version-1-modificationdate-1680247763000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-31_15-22-39-version-1-modificationdate-1680247763000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-31_15-22-39-version-1-modificationdate-1680247763000-api-v2.png"  height="250" />
+</strong>    </span>
+</p>
+    <div class="section section-2" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAtTTHmv4DlhYnpm7fovr7moIflrprmlrnmoYjvvJrlnKjmoIflrprpl7TlhoXph4fpm4bigJzkuKTluKfmoIflrprmlbDmja7igJ0">
+        <h2 class="heading "><span> M1 Lidar standard scheme: Collect "two -frame calibration data" in Calibration </span></h2>
+<p   
+> Frame 1 Data: calibrate at the door </p>
+<ul class=" "><li class=" "><p   
+> Use the installation design value to convert the point cloud from the lidar coordinate system to the vehicle coordinate system </p>
+</li><li class=" "><p   
+> Use the rectangular ROI to filter out the ground point cloud </p>
+</li><li class=" "><p   
+> Perform RANSAC plane fitting, solve the method vector </p>
+</li><li class=" "><p   
+> Pitch and roll through the method of the method, and calculate Z, as the initial value and threshold </p>
+</li></ul><p   
+> Frame 2 Data: On the China Institution </p>
+<ul class=" "><li class=" "><p   
+> Disposition based on the first frame data </p>
+</li><li class=" "><p   
+> If the Pitch, ROLL, and Z in the calibration result are large from the data of the first frame, it is determined to be the definition failure </p>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Frame 1 </span>
+</p>
+<p   
+>    <span style="color: #000000;"> Calibration entrance </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image2023-3-7_21-15-2-version-1-modificationdate-1680247763000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image2023-3-7_21-15-2-version-1-modificationdate-1680247763000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image2023-3-7_21-14-10-version-1-modificationdate-1680247763000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image2023-3-7_21-14-10-version-1-modificationdate-1680247763000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image2023-3-7_21-14-45-version-1-modificationdate-1680247764000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image2023-3-7_21-14-45-version-1-modificationdate-1680247764000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Frame 2 </span>
+</p>
+<p   
+>    <span style="color: #000000;"> On the middle device </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image2023-3-7_21-15-27-version-1-modificationdate-1680247764000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image2023-3-7_21-15-27-version-1-modificationdate-1680247764000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image2023-3-7_21-16-31-version-1-modificationdate-1680247764000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image2023-3-7_21-16-31-version-1-modificationdate-1680247764000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image2023-3-7_21-16-1-version-1-modificationdate-1680247765000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image2023-3-7_21-16-1-version-1-modificationdate-1680247765000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAt5qCH5a6a5bel5YW3VlPmiYvosIPkvJjljJY">
+        <h2 class="heading "><span> Calculation tool vs hand -optimization </span></h2>
+<p   
+> Red is the M1 laser radar point cloud, black is a high -precision scanning point cloud, which can be regarded as real value. Normal calibration ideas are optimized alignment, but ~ </p>
+<ul class=" "><li class=" "><p   
+> The quality of the point cloud of M1 lidar is too poor, and the overall cannot be fitted with the Calibration. The best fit still cannot guarantee that the calibration parameters are correct </p>
+</li><li class=" "><p   
+> The point that hit the ground and the wall is uneven, which seriously affects the calibration accuracy </p>
+</li></ul><p   
+> Due to the poor product control of the M1 lidar, the project is urgently needed, so the degree of freedom is used to make the projection effect better </p>
+<ul class=" "><li class=" "><p   
+> The calibration room belongs to close observation, and the outdoor long distance may be poorly realized </p>
+</li><li class=" "><p   
+> After the hand adjustment, it is guaranteed that the projection of the verification data is normal, but the CALIBRATION is not good </p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-1" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAtMTAwNzRDLzIwMjMwMzA3">
+        <h1 class="heading auto-cursor-target"><span>10074C/20230307</span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="4.10249%"/>
+                                    <col  width="1.75252%"/>
+                                    <col  width="15.6532%"/>
+                                    <col  width="17.6049%"/>
+                                    <col  width="27.5225%"/>
+                                    <col  width="27.5225%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>extrinsic</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front.pcd</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front_0.pcd</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front_0.pcd</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+XYZ Euler Angle in degree: -0.668159     <span style="color: #ff0000;">
+<strong class=" ">0.708627</strong>    </span>
+ -179.704    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+calib tool    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_15-32-8-version-1-modificationdate-1680247765000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_15-32-8-version-1-modificationdate-1680247765000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_15-35-6-version-1-modificationdate-1680247765000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_15-35-6-version-1-modificationdate-1680247765000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_15-35-27-version-1-modificationdate-1680247765000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_15-35-27-version-1-modificationdate-1680247765000-api-v2.png" width="666"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_15-37-35-version-1-modificationdate-1680247765000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_15-37-35-version-1-modificationdate-1680247765000-api-v2.png" width="666"  />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+XYZ Euler Angle in degree: -0.65006     </span>
+    <span style="color: #ff0000;">
+<strong class=" ">0.944694</strong>    </span>
+    <span style="color: #000000;">
+ -179.57    </span>
+</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Hand tone </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_15-41-43-version-1-modificationdate-1680247765000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_15-41-43-version-1-modificationdate-1680247765000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_15-38-27-version-1-modificationdate-1680247765000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_15-38-27-version-1-modificationdate-1680247765000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_15-39-54-version-1-modificationdate-1680247765000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_15-39-54-version-1-modificationdate-1680247765000-api-v2.png" width="666"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_15-36-57-version-1-modificationdate-1680247766000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_15-36-57-version-1-modificationdate-1680247766000-api-v2.png" width="666"  />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAtMTA4MTYvMjAyMzAzMTM">
+        <h1 class="heading auto-cursor-target"><span>10816/20230313</span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="4.10249%"/>
+                                    <col  width="1.75252%"/>
+                                    <col  width="15.6532%"/>
+                                    <col  width="17.6049%"/>
+                                    <col  width="27.5225%"/>
+                                    <col  width="27.5225%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>extrinsic</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left.pcd</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left_0.pcd</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left_0.pcd</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+XYZ Euler Angle in degree: -0.850945     <span style="color: #ff0000;">
+<strong class=" ">-0.677777</strong>    </span>
+ -166.737    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+calib tool    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-3-29_15-56-34-version-1-modificationdate-1680247766000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-3-29_15-56-34-version-1-modificationdate-1680247766000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-11-32-version-1-modificationdate-1680247766000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-11-32-version-1-modificationdate-1680247766000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-11-7-version-1-modificationdate-1680247766000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-11-7-version-1-modificationdate-1680247766000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-8-49-version-1-modificationdate-1680247766000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-8-49-version-1-modificationdate-1680247766000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+XYZ Euler Angle in degree: -0.916394 <strong class=" ">    <span style="color: #ff0000;">
+-0.883003    </span>
+</strong> -166.237    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Hand tone </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-3-29_16-13-13-version-1-modificationdate-1680247766000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-3-29_16-13-13-version-1-modificationdate-1680247766000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-14-53-version-1-modificationdate-1680247766000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-14-53-version-1-modificationdate-1680247766000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-15-26-version-1-modificationdate-1680247766000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-15-26-version-1-modificationdate-1680247766000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-12-13-version-1-modificationdate-1680247766000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-12-13-version-1-modificationdate-1680247766000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-2904698277_safe-id-TTHmv4DlhYnpm7fovr7ngrnkupHmlbDmja7lvILluLjliIbmnpAtMTExNjcvMjAyMzAzMjY">
+        <h1 class="heading auto-cursor-target"><span>11167/20230326</span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="4.10249%"/>
+                                    <col  width="1.75252%"/>
+                                    <col  width="15.6532%"/>
+                                    <col  width="17.6049%"/>
+                                    <col  width="27.5225%"/>
+                                    <col  width="27.5225%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>extrinsic</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left.pcd</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left_0.pcd</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left_0.pcd</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+# XYZ Euler Angle in degree: -0.349614     <span style="color: #ff0000;">
+<strong class=" ">0.229186</strong>    </span>
+ -163.597    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+calib tool    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-3-29_16-19-39-version-1-modificationdate-1680247767000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-3-29_16-19-39-version-1-modificationdate-1680247767000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-22-15-version-1-modificationdate-1680247767000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-22-15-version-1-modificationdate-1680247767000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-23-20-version-1-modificationdate-1680247767000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-23-20-version-1-modificationdate-1680247767000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-21-2-version-1-modificationdate-1680247767000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-21-2-version-1-modificationdate-1680247767000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+XYZ Euler Angle in degree: -0.349614 <strong class=" ">    <span style="color: #ff0000;">
+0.669186    </span>
+</strong> -163.297    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Hand tone </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2904698277/image-2023-3-29_16-26-2-version-1-modificationdate-1680247767000-api-v2.png" alt="images/confluence/download/thumbnails/2904698277/image-2023-3-29_16-26-2-version-1-modificationdate-1680247767000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-24-41-version-1-modificationdate-1680247767000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-24-41-version-1-modificationdate-1680247767000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-24-59-version-1-modificationdate-1680247767000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-24-59-version-1-modificationdate-1680247767000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2904698277/image-2023-3-29_16-24-3-version-1-modificationdate-1680247767000-api-v2.png" alt="images/confluence/download/attachments/2904698277/image-2023-3-29_16-24-3-version-1-modificationdate-1680247767000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2788360211_lidar_%E6%A0%87%E5%AE%9A%E5%B7%A5%E5%85%B7%E8%AF%84%E4%BC%B0_%26_%E6%9B%B4%E6%96%B0.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> lidar calibration tool evaluation & update </span>
+        </a>
+                <a href="2959532562_how_to_use_cloudcompare.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>how to use cloudcompare</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

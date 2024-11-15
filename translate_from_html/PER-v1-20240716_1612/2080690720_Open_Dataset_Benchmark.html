@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Open Dataset Benchmark - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2080690720"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                                         <li class="shortcut"><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                                                     <li><a href="2069603815_Benchmark_Tooling_between_VINS-Mono_and_Open-VINS.html">Benchmark Tooling between VINS-Mono and Open-VINS</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2080690720"> <span>Open Dataset Benchmark</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p  class="sectionedit1" 
+>hardware platform: HP work station</p>
+<p  class="sectionedit1" 
+>performance analysis:</p>
+<ul class=" "><li class="sectionedit1 "><p   
+>see page, <a   href="2069605453_Trajectory_Evaluation_Study.html">Trajectory Evaluation Study - wave 3 development - Docupedia (bosch.com)</a></p>
+<ul class=" "><li class="sectionedit1 "><p   
+>pos→ norm(xyz), ori → norm(R,P,Y)</p>
+</li></ul></li><li class="sectionedit1 "><p   
+>since the video+imu is as observation, the pose+yaw (4DoF) will be selected for trajectory alignment</p>
+</li></ul><p  class="sectionedit1" 
+>runtime analysis:</p>
+<ul class=" "><li class="sectionedit1 "><p   
+>    <span style="color: #ff0000;">
+    <span style="color: #000000;">
+openvins has ~3x higher output frequency than vins mono → aligned them by image time    </span>
+    </span>
+</p>
+<ul class=" "><li class="sectionedit1 "><p   
+>    <span style="color: #0000ff;">
+slightly difference    </span>
+</p>
+<ul class=" "><li class="sectionedit1 "><p   
+>    <span style="color: #0000ff;">
+openvins ~2.75s leading time    </span>
+</p>
+<ul class=" "><li class="sectionedit1 "><p   
+>    <span style="color: #000000;">
+it has dt_slam_delay: 2 # delay before initializing (helps with stability from bad initialization...)    </span>
+</p>
+</li><li class="sectionedit1 "><p   
+>    <span style="color: #000000;">
+it has init_window_time: 0.75 # how many seconds to collect initialization information    </span>
+</p>
+</li><li class="sectionedit1 "><p   
+>    <span style="color: #000000;">
+it has calibrate the time delay between imu and camera, and     </span>
+    <span style="color: #0000ff;">
+t_cam = t_imu - t_calibrate    </span>
+</p>
+</li></ul></li><li class="sectionedit1 "><p   
+>    <span style="color: #0000ff;">
+vins mono use the image time from ros message directly    </span>
+</p>
+</li></ul></li></ul></li><li class="sectionedit1 "><p   
+>time selection</p>
+<ul class=" "><li class="sectionedit1 "><p   
+>openvins → whole execution time of function VioManager    <span style="color: #aa3731;">
+::    </span>
+    <span style="color: #aa3731;">
+track_image_and_update    </span>
+</p>
+</li><li class="sectionedit1 "><p   
+>vins mono → whole execution time of each measurement in the "for loop" of estimator_node.cpp :: process. only vins_estimator node.</p>
+</li></ul></li></ul>    <div class="section section-1" id="src-2080690720_OpenDatasetBenchmark-EuRoCMAVDataset">
+        <h1 class="heading sectionedit1"><span>EuRoC MAV Dataset</span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="12.0045%"/>
+                                    <col  width="25.5946%"/>
+                                    <col  width="29.8981%"/>
+                                    <col  width="21.5176%"/>
+                                    <col  width="10.9853%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>open-vins</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>vins-mono</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>runtime per frame</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Comments</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><i class=" ">Machine Hall 01     <span style="color: #333333;">
+easy    </span>
+</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-5_16-0-37-version-1-modificationdate-1641369638000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-5_16-0-37-version-1-modificationdate-1641369638000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-5_15-53-38-version-1-modificationdate-1641369219000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-5_15-53-38-version-1-modificationdate-1641369219000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-5_17-25-1-version-1-modificationdate-1641374702000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-5_17-25-1-version-1-modificationdate-1641374702000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Based on paper "OpenVINS: A Research Platform for Visual-Inertial Estimation", they think the ground truth is wrong...</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-5_16-3-8-version-1-modificationdate-1641369788000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-5_16-3-8-version-1-modificationdate-1641369788000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><i class=" ">Machine Hall 02     <span style="color: #333333;">
+easy    </span>
+</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-5_16-56-11-version-1-modificationdate-1641372972000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-5_16-56-11-version-1-modificationdate-1641372972000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-5_16-55-24-version-1-modificationdate-1641372924000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-5_16-55-24-version-1-modificationdate-1641372924000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-5_17-26-44-version-1-modificationdate-1641374804000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-5_17-26-44-version-1-modificationdate-1641374804000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>open-vins has failed in the first 40 seconds → no tracked points.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_16-21-30-version-1-modificationdate-1641457291000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_16-21-30-version-1-modificationdate-1641457291000-api-v2.png"  height="250" />
+    </p>
+<p   
+>vinsmono has succeed in tracking in 40 seconds,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_16-23-6-version-1-modificationdate-1641457386000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_16-23-6-version-1-modificationdate-1641457386000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><i class=" ">Machine Hall 03     <span style="color: #333333;">
+medium    </span>
+</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-5_17-55-1-version-1-modificationdate-1641376502000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-5_17-55-1-version-1-modificationdate-1641376502000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-5_17-54-15-version-1-modificationdate-1641376455000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-5_17-54-15-version-1-modificationdate-1641376455000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-5_17-56-46-version-1-modificationdate-1641376607000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-5_17-56-46-version-1-modificationdate-1641376607000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>openvins has initial tracking in after 3 seconds, (green dots)</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_16-25-19-version-1-modificationdate-1641457519000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_16-25-19-version-1-modificationdate-1641457519000-api-v2.png"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><i class=" ">Machine Hall 04     <span style="color: #333333;">
+difficult    </span>
+</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-14-32-version-1-modificationdate-1641435273000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-14-32-version-1-modificationdate-1641435273000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-15-42-version-1-modificationdate-1641435342000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-15-42-version-1-modificationdate-1641435342000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-17-46-version-1-modificationdate-1641435466000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-17-46-version-1-modificationdate-1641435466000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><i class=" ">Machine Hall 05     <span style="color: #333333;">
+difficult    </span>
+</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-27-49-version-1-modificationdate-1641436070000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-27-49-version-1-modificationdate-1641436070000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-27-14-version-1-modificationdate-1641436035000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-27-14-version-1-modificationdate-1641436035000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-28-40-version-1-modificationdate-1641436120000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-28-40-version-1-modificationdate-1641436120000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><i class=" ">Vicon Room 1 01     <span style="color: #333333;">
+easy    </span>
+</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-36-49-version-1-modificationdate-1641436609000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-36-49-version-1-modificationdate-1641436609000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-37-49-version-1-modificationdate-1641436669000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-37-49-version-1-modificationdate-1641436669000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-38-32-version-1-modificationdate-1641436712000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-38-32-version-1-modificationdate-1641436712000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><i class=" ">Vicon Room 1 02     <span style="color: #333333;">
+medium    </span>
+</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-44-50-version-1-modificationdate-1641437090000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-44-50-version-1-modificationdate-1641437090000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-43-23-version-1-modificationdate-1641437003000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-43-23-version-1-modificationdate-1641437003000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-45-24-version-1-modificationdate-1641437124000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-45-24-version-1-modificationdate-1641437124000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><i class=" ">Vicon Room 1 03     <span style="color: #333333;">
+difficult    </span>
+</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-48-55-version-1-modificationdate-1641437335000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-48-55-version-1-modificationdate-1641437335000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-49-52-version-1-modificationdate-1641437392000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-49-52-version-1-modificationdate-1641437392000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-50-27-version-1-modificationdate-1641437427000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-50-27-version-1-modificationdate-1641437427000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><i class=" ">Vicon Room 2 01     <span style="color: #333333;">
+easy    </span>
+</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-56-56-version-1-modificationdate-1641437816000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-56-56-version-1-modificationdate-1641437816000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-56-17-version-1-modificationdate-1641437777000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-56-17-version-1-modificationdate-1641437777000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_10-57-27-version-1-modificationdate-1641437848000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_10-57-27-version-1-modificationdate-1641437848000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><i class=" ">Vicon Room 2 02     <span style="color: #333333;">
+medium    </span>
+</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_12-13-9-version-1-modificationdate-1641442389000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_12-13-9-version-1-modificationdate-1641442389000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_12-13-53-version-1-modificationdate-1641442434000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_12-13-53-version-1-modificationdate-1641442434000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_12-14-28-version-1-modificationdate-1641442469000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_12-14-28-version-1-modificationdate-1641442469000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><i class=" ">Vicon Room 2 03     <span style="color: #333333;">
+difficult    </span>
+</i></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_12-21-45-version-1-modificationdate-1641442905000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_12-21-45-version-1-modificationdate-1641442905000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_12-21-11-version-1-modificationdate-1641442872000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_12-21-11-version-1-modificationdate-1641442872000-api-v2.png" width="400"  />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2080690720/image2022-1-6_12-22-31-version-1-modificationdate-1641442951000-api-v2.png" alt="images/confluence/download/attachments/2080690720/image2022-1-6_12-22-31-version-1-modificationdate-1641442951000-api-v2.png"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-2080690720_OpenDatasetBenchmark-KITTIDataset">
+        <h1 class="heading "><span>KITTI Dataset</span></h1>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2080690720_OpenDatasetBenchmark-TUMDataset">
+        <h1 class="heading "><span>TUM Dataset</span></h1>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-2080690720_OpenDatasetBenchmark-NuScenesDataset">
+        <h1 class="heading "><span>NuScenes Dataset</span></h1>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2103372775_Feature_Number_vs._Vehicle_Velocity_based_on_VINS-Mono.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Feature Number vs. Vehicle Velocity based on VINS-Mono</span>
+        </a>
+                <a href="2074196616_Error_State_Extend_Kalman_Filter_Study.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Error State Extend Kalman Filter Study</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

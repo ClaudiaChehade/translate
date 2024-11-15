@@ -1,0 +1,189 @@
+Console sink registered success!
+[0;90m1970-01-01 00:00:41.623 [0;1;96m[ Debug ][m: reopen RouDi mqueue!
+[0;90m1970-01-01 00:00:41.623 [0;1;93m[Warning][m: RouDi not found - waiting ...
+[0;90m1970-01-01 00:00:47.132 [0;1;96m[ Debug ][m: RouDi mqueue found!
+[0;90m1970-01-01 00:00:47.132 [0;1;93m[Warning][m: ... RouDi found.
+[0;90m1970-01-01 00:00:47.505 [0;1;92m[ Info  ][m: Application /offline_calibration registered management segment 0x34d2d91000 with size 266103040 to id 1
+[0;90m1970-01-01 00:00:59.200 [0;1;92m[ Info  ][m: Application /offline_calibration  registered payload segment 0x34e2b5a000 with size 8921863680 to id 2
+[0;90m1970-01-01 00:00:59.974 [0;1;92m[ Info  ][m: Application /offline_calibration  registered payload segment 0x36f67ea000 with size 685718720 to id 3
+[0;90m1970-01-01 00:00:59.975 [0;1;96m[ Debug ][m: Receive ApplicationPortData from RouDi: /offline_calibration
+[0;90m1970-01-01 00:00:59.975 [0;1;92m[ Info  ][m: Create PoshRuntime successfully, the RouDi port is: 37777
+[      61.616134] |   INFO|OfflineCalibrat|       generic_client.inl@174  |/offline_calibration::main           | Generic client: Sync setup complete! 
+
+[      61.616134] |   INFO|OfflineCalibrat|       generic_client.inl@197  |/offline_calibration::main           | Generic client: Setup complete! 
+
+[      61.728150] |   INFO|OfflineCalibrat|       generic_client.inl@174  |/offline_calibration::main           | Generic client: Sync setup complete! 
+
+[      61.728150] |   INFO|OfflineCalibrat|       generic_client.inl@197  |/offline_calibration::main           | Generic client: Setup complete! 
+
+[      61.810157] |   INFO|OfflineCalibrat|       generic_client.inl@174  |/offline_calibration::main           | Generic client: Sync setup complete! 
+
+[      61.810157] |   INFO|OfflineCalibrat|       generic_client.inl@197  |/offline_calibration::main           | Generic client: Setup complete! 
+
+[      61.907150] |   INFO|OfflineCalibrat|       generic_client.inl@174  |/offline_calibration::main           | Generic client: Sync setup complete! 
+
+[      61.907150] |   INFO|OfflineCalibrat|       generic_client.inl@197  |/offline_calibration::main           | Generic client: Setup complete! 
+
+[      62.011129] |   INFO|OfflineCalibrat|       generic_client.inl@174  |/offline_calibration::main           | Generic client: Sync setup complete! 
+
+[      62.011129] |   INFO|OfflineCalibrat|       generic_client.inl@197  |/offline_calibration::main           | Generic client: Setup complete! 
+
+[      62.108131] |   INFO|OfflineCalibrat|       generic_client.inl@174  |/offline_calibration::main           | Generic client: Sync setup complete! 
+
+[      62.108131] |   INFO|OfflineCalibrat|       generic_client.inl@197  |/offline_calibration::main           | Generic client: Setup complete! 
+
+[      62.205144] |   INFO|OfflineCalibrat|       generic_client.inl@174  |/offline_calibration::main           | Generic client: Sync setup complete! 
+
+[      62.205144] |   INFO|OfflineCalibrat|       generic_client.inl@197  |/offline_calibration::main           | Generic client: Setup complete! 
+
+[      62.280159] |   INFO|OfflineCalibrat|       generic_client.inl@174  |/offline_calibration::main           | Generic client: Sync setup complete! 
+
+[      62.280159] |   INFO|OfflineCalibrat|       generic_client.inl@197  |/offline_calibration::main           | Generic client: Setup complete! 
+
+[      62.374188] |   INFO|OfflineCalibrat|       generic_client.inl@174  |/offline_calibration::main           | Generic client: Sync setup complete! 
+
+[      62.374188] |   INFO|OfflineCalibrat|       generic_client.inl@197  |/offline_calibration::main           | Generic client: Setup complete! 
+
+[      62.470193] |   INFO|OfflineCalibrat|       generic_client.inl@174  |/offline_calibration::main           | Generic client: Sync setup complete! 
+
+[      62.470193] |   INFO|OfflineCalibrat|       generic_client.inl@197  |/offline_calibration::main           | Generic client: Setup complete! 
+
+[      62.572180] |   INFO|OfflineCalibrat|       generic_client.inl@174  |/offline_calibration::main           | Generic client: Sync setup complete! 
+
+[      62.573179] |   INFO|OfflineCalibrat|       generic_client.inl@197  |/offline_calibration::main           | Generic client: Setup complete! 
+
+specifier: camera_intrinsic_set_receiverport__CameraIntrinsicSetInterfaceType
+[0;90m1970-01-01 00:01:02.573 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_CameraIntrinsicSetInterfaceType_camera_provider__camera_intrinsic_set_senderport_CameraIntrinsicSetInterfaceType
+specifier: vehicle_variant_receiverport__VehicleVariantInterfaceType
+[0;90m1970-01-01 00:01:02.574 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_VehicleVariantInterfaceType_ara_com_gateway__vehicle_variant_senderport_VehicleVariantInterfaceType
+specifier: diag_request_receiverport__DiagnoseRequestInterfaceType
+[0;90m1970-01-01 00:01:02.574 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_DiagnoseRequestInterfaceType_ara_com_gateway__diag_request_senderport_DiagnoseRequestInterfaceType
+specifier: vehicle_identification_num_receiverport__VehicleIdentificationNumberInterfaceType
+[0;90m1970-01-01 00:01:02.575 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_VehicleIdentificationNumberInterfaceType_ara_com_gateway__vehicle_identification_num_senderport_VehicleIdentificationNumberInterfaceType
+specifier: vehicle_status_for_cali_can_receiverport__VehicleStatusInterfaceType
+[0;90m1970-01-01 00:01:02.576 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_VehicleStatusInterfaceType_sensor_abstraction__vehicle_status_for_cali_can_senderport_VehicleStatusInterfaceType
+specifier: xper_liper_point_cloud_receiverport__XPerLiperPointCloudInterfaceType
+[0;90m1970-01-01 00:01:02.576 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_XPerLiperPointCloudInterfaceType_netcom_gateway_master__xper_liper_point_cloud_senderport_XPerLiperPointCloudInterfaceType
+specifier: cali_precodiction_receiverport__CalibPreconditionInterfaceType
+[0;90m1970-01-01 00:01:02.577 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_CalibPreconditionInterfaceType_sensor_abstraction__cali_precodiction_senderport_CalibPreconditionInterfaceType
+specifier: cvalin_high_beam_switch_sts_e_receiverport__CvalinHighBeamSwitchStsEInterface
+[0;90m1970-01-01 00:01:02.577 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_CvalinHighBeamSwitchStsEInterface_sensor_abstraction__cvalin_high_beam_switch_sts_e_CvalinHighBeamSwitchStsEInterface
+specifier: cvalin_bcmrear_view_lfolded_status_receiverport__CvalinBCMRearViewLFoldedStatusInterface
+[0;90m1970-01-01 00:01:02.579 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_CvalinBCMRearViewLFoldedStatusInterface_sensor_abstraction__cvalin_bcmrear_view_lfolded_status_CvalinBCMRearViewLFoldedStatusInterface
+specifier: cvalin_bcmrear_view_rfolded_status_receiverport__CvalinBCMRearViewRFoldedStatusInterface
+[0;90m1970-01-01 00:01:02.579 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_CvalinBCMRearViewRFoldedStatusInterface_sensor_abstraction__cvalin_bcmrear_view_rfolded_status_CvalinBCMRearViewRFoldedStatusInterface
+specifier: sensor_calib_parameter_receiverport__SensorXxtrinsicInterfaceType
+[0;90m1970-01-01 00:01:02.580 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_SensorXxtrinsicInterfaceType_ara_com_gateway__sensor_calib_parameter_senderport_SensorXxtrinsicInterfaceType
+specifier: lidar_status_receiverport__LidarStatusInterface
+[0;90m1970-01-01 00:01:02.581 [0;1;96m[ Debug ][m: Receive receiver from RouDi: Service_0000_0000_0000_LidarStatusInterface_netcom_gateway_master__lidar_status_senderport_LidarStatusInterface
+specifier: 4c30a00dbb43b21dbffb0b8010973841d69e3c8c7b60f4f45d47d7aec57f51ef
+[0;90m1970-01-01 00:01:02.582 [0;1;96m[ Debug ][m: Receive sender from RouDi: Service_0000_0000_0000_SensorXxtrinsicInterfaceType_offline_calibration__sensor_xxtrinsic_senderport_SensorXxtrinsicInterfaceType
+specifier: 5acfb29a7da74a9083c7bab60c2d1d5145a1fb1a8cb8be59d465118edd005f68
+[0;90m1970-01-01 00:01:02.583 [0;1;96m[ Debug ][m: Receive sender from RouDi: Service_0000_0000_0000_CalibFaultEventInterfaceType_offline_calibration__calib_fault_event_senderport_CalibFaultEventInterfaceType
+specifier: offline_calibration__diag_reponse_senderport__diag_reponse_senderport__DiagnoseResponseInterfaceType
+[0;90m1970-01-01 00:01:02.583 [0;1;96m[ Debug ][m: Receive sender from RouDi: Service_0000_0000_0000_DiagnoseResponseInterfaceType_offline_calibration__diag_reponse_senderport_DiagnoseResponseInterfaceType
+specifier: 6b0f589b2af45b1d39f76297d814c92269cba9d18dbdcb78699e30a0a0504d64
+[0;90m1970-01-01 00:01:02.584 [0;1;96m[ Debug ][m: Receive sender from RouDi: Service_0000_0000_0000_OfflineCalibResultInterfaceType_offline_calibration__offline_calib_result_senderport_OfflineCalibResultInterfaceType
+[      62.586179] |   INFO|OfflineCalibrat|OfflineCalibration_main.cpp@166  |/offline_calibration::main           | Initialize
+[      62.586179] |   INFO|           none|   aos_signal_handler.cpp@94   |/offline_calibration::none           | Thread SignalHandling started
+[      62.586179] |   INFO|OfflineCalibrat|       fixed_activity.inl@228  |/offline_calibration::main           | Set thread id 1 with name MWALA_01.
+[      62.586179] |   INFO|OfflineCalibrat|       fixed_activity.inl@232  |/offline_calibration::main           | Set main thread with name MWALA_00.
+[      62.586179] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@62   |/offline_calibration::offline_calibration| ===== ===== ===== OfflineCalibration_onInit ===== ===== =====
+[      62.616174] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@93   |/offline_calibration::offline_calibration| bazinga calib_file_path: ./package/perception/offline_calibration/config
+[      62.616174] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@94   |/offline_calibration::offline_calibration| config_file_path: ./package/perception/offline_calibration/config/calibration_config.yaml
+[      62.616174] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@95   |/offline_calibration::offline_calibration| camera_groundtruth_path: ./package/perception/offline_calibration/config/camera_target_groudtruth.yaml
+[      62.616174] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@96   |/offline_calibration::offline_calibration| lidar_groundtruth_path: ./package/perception/offline_calibration/config/lidar_target_groundtruth.yaml
+[      62.616174] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@97   |/offline_calibration::offline_calibration| vehicle_info_path: ./package/perception/offline_calibration/config/vehicle_key_information.yaml
+[      62.616174] |   INFO|           none|      eol_calibration.cpp@15   |/offline_calibration::offline_calibration| BuildDate: Jul  6 2023
+[      62.616174] |   INFO|           none|      eol_calibration.cpp@16   |/offline_calibration::offline_calibration| BuildTime: 17:37:14
+[      62.616174] |   INFO|           none|      eol_calibration.cpp@27   |/offline_calibration::offline_calibration| calib config folder path bazinga: ./package/perception/offline_calibration/config
+[      62.616174] |   INFO|           none|      eol_calibration.cpp@28   |/offline_calibration::offline_calibration| config file path: ./package/perception/offline_calibration/config/calibration_config.yaml
+[      62.616174] |   INFO|           none|      eol_calibration.cpp@29   |/offline_calibration::offline_calibration| camera ground truth path: ./package/perception/offline_calibration/config/camera_target_groudtruth.yaml
+[      62.616174] |   INFO|           none|      eol_calibration.cpp@30   |/offline_calibration::offline_calibration| lidar ground truth path: ./package/perception/offline_calibration/config/lidar_target_groundtruth.yaml
+[      62.616174] |   INFO|           none|      eol_calibration.cpp@31   |/offline_calibration::offline_calibration| vehicle key info path: ./package/perception/offline_calibration/config/vehicle_key_information.yaml
+[      62.616174] |   INFO|           none|         camera_param.cpp@56   |/offline_calibration::offline_calibration| start load environment
+[1m[38;2;255;165;000m[      62.619174] |WARNING|           none|         camera_param.cpp@157  |/offline_calibration::offline_calibration| tag group: [  120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139] 
+[0m[1m[38;2;255;165;000m[      62.619174] |WARNING|           none|         camera_param.cpp@158  |/offline_calibration::offline_calibration| fix flag: [  0, 0, 1, 1, 1, 0] 
+[0m[      62.619174] |   INFO|           none|         camera_param.cpp@231  |/offline_calibration::offline_calibration| end load environment, count: 20
+[      62.619174] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@107  |/offline_calibration::offline_calibration| success to init the offline calib
+[1m[38;2;255;165;000m[      62.619174] |WARNING|           none|  carma_error_handler.cpp@81   |/offline_calibration::offline_calibration| CARMA ErrorHandler: MWALA__ACTIVITY__MORE_JOBS_THAN_BUSINESS_LOGICS_AVAILABLE
+[0m[1m[38;2;255;165;000m[      62.619174] |WARNING|OfflineCalibrat|          environment.hpp@42   |/offline_calibration::offline_calibration| Environment Variable: ESME_SEM is Empty!
+[0m[      62.619174] |   INFO|OfflineCalibrat|OfflineCalibration_esme.hpp@58   |/offline_calibration::offline_calibration| not found the ESME_SEM environment
+[      62.619174] |   INFO|OfflineCalibrat|OfflineCalibration_main.cpp@170  |/offline_calibration::offline_calibration| Run
+[      65.620089] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@117  |/offline_calibration::offline_calibration| ===== ===== ===== OfflineCalibration_onUpdate ===== ===== =====
+[      65.620089] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@138  |/offline_calibration::offline_calibration| OfflineCalibration_onUpdate --> handle the diagnose request
+[1m[38;2;255;000;000m[      65.620089] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@162  |/offline_calibration::offline_calibration| in.m_diag_request_receiverport is empty
+[0m[      65.620089] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@179  |/offline_calibration::offline_calibration| the size of fake sensor_ids: 14
+[      65.620089] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@189  |/offline_calibration::offline_calibration| OfflineCalibration_onUpdate --> handle the sub-function of calibration routine
+[      65.620089] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@191  |/offline_calibration::offline_calibration| routine_id: 1 
+[      65.620089] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@194  |/offline_calibration::offline_calibration| sub_function: 1 
+[      65.620089] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@282  |/offline_calibration::offline_calibration| OfflineCalibration_onUpdate --> init the sensor parameters
+[      65.620089] |   INFO|           none|        offline_calib.cpp@47   |/offline_calibration::offline_calibration| InitSensorParam --> init the sensor parameters
+[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of FRONT_LIDAR
+[1m[38;2;255;000;000m[      65.620089] |  ERROR|           none|        offline_calib.cpp@69   |/offline_calibration::offline_calibration| the intrinsic of FRONT_LIDAR is not exist
+[0m[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of LEFT_LIDAR
+[1m[38;2;255;000;000m[      65.620089] |  ERROR|           none|        offline_calib.cpp@69   |/offline_calibration::offline_calibration| the intrinsic of LEFT_LIDAR is not exist
+[0m[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of RIGHT_LIDAR
+[1m[38;2;255;000;000m[      65.620089] |  ERROR|           none|        offline_calib.cpp@69   |/offline_calibration::offline_calibration| the intrinsic of RIGHT_LIDAR is not exist
+[0m[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of SIDE_VIEW_CAMERA_FRONT_TELE
+[      65.620089] |   INFO|           none|        offline_calib.cpp@93   |/offline_calibration::offline_calibration| the intrinsic of SIDE_VIEW_CAMERA_FRONT_TELE is normal
+[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of SIDE_VIEW_CAMERA_FRONT_WIDE
+[      65.620089] |   INFO|           none|        offline_calib.cpp@93   |/offline_calibration::offline_calibration| the intrinsic of SIDE_VIEW_CAMERA_FRONT_WIDE is normal
+[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of SIDE_VIEW_CAMERA_FRONT_LEFT
+[      65.620089] |   INFO|           none|        offline_calib.cpp@93   |/offline_calibration::offline_calibration| the intrinsic of SIDE_VIEW_CAMERA_FRONT_LEFT is normal
+[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of SIDE_VIEW_CAMERA_FRONT_RIGHT
+[      65.620089] |   INFO|           none|        offline_calib.cpp@93   |/offline_calibration::offline_calibration| the intrinsic of SIDE_VIEW_CAMERA_FRONT_RIGHT is normal
+[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of SIDE_VIEW_CAMERA_REAR_LEFT
+[      65.620089] |   INFO|           none|        offline_calib.cpp@93   |/offline_calibration::offline_calibration| the intrinsic of SIDE_VIEW_CAMERA_REAR_LEFT is normal
+[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of SIDE_VIEW_CAMERA_REAR_RIGHT
+[      65.620089] |   INFO|           none|        offline_calib.cpp@93   |/offline_calibration::offline_calibration| the intrinsic of SIDE_VIEW_CAMERA_REAR_RIGHT is normal
+[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of SIDE_VIEW_CAMERA_REAR
+[      65.620089] |   INFO|           none|        offline_calib.cpp@93   |/offline_calibration::offline_calibration| the intrinsic of SIDE_VIEW_CAMERA_REAR is normal
+[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of SURROUND_VIEW_CAMERA_FRONT
+[      65.620089] |   INFO|           none|        offline_calib.cpp@93   |/offline_calibration::offline_calibration| the intrinsic of SURROUND_VIEW_CAMERA_FRONT is normal
+[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of SURROUND_VIEW_CAMERA_REAR
+[      65.620089] |   INFO|           none|        offline_calib.cpp@93   |/offline_calibration::offline_calibration| the intrinsic of SURROUND_VIEW_CAMERA_REAR is normal
+[      65.620089] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of SURROUND_VIEW_CAMERA_LEFT
+[      65.620089] |   INFO|           none|        offline_calib.cpp@93   |/offline_calibration::offline_calibration| the intrinsic of SURROUND_VIEW_CAMERA_LEFT is normal
+[      65.621090] |   INFO|           none|        offline_calib.cpp@52   |/offline_calibration::offline_calibration| init the parameters of SURROUND_VIEW_CAMERA_RIGHT
+[      65.621090] |   INFO|           none|        offline_calib.cpp@93   |/offline_calibration::offline_calibration| the intrinsic of SURROUND_VIEW_CAMERA_RIGHT is normal
+[      65.621090] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@293  |/offline_calibration::offline_calibration| OfflineCalibration_onUpdate --> handle the pre-condition for the offline calib
+[1m[38;2;255;000;000m[      65.621090] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@300  |/offline_calibration::offline_calibration| in.m_vehicle_identification_num_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.621090] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@310  |/offline_calibration::offline_calibration| in.m_vehicle_variant_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.621090] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@368  |/offline_calibration::offline_calibration| in.m_cali_precodiction_receiverport.empty()
+[0m[      65.621090] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@371  |/offline_calibration::offline_calibration| OfflineCalibration_onUpdate --> handle the pointcloud of lidar
+[1m[38;2;255;000;000m[      65.621090] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@380  |/offline_calibration::offline_calibration| in.m_xper_liper_point_cloud_receiverport is empty
+[0m[      65.621090] |   INFO|OfflineCalibrat|offline_calibration_runnable.cpp@383  |/offline_calibration::offline_calibration| OfflineCalibration_onUpdate --> handle the image of camera
+[1m[38;2;255;000;000m[      65.815070] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@402  |/offline_calibration::offline_calibration| in.m_cam_front_wide_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.815070] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@420  |/offline_calibration::offline_calibration| in.m_cam_front_tele_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@438  |/offline_calibration::offline_calibration| in.m_cam_wing_left_front_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@456  |/offline_calibration::offline_calibration| in.m_cam_wing_right_front_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@474  |/offline_calibration::offline_calibration| in.m_cam_wing_left_rear_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@492  |/offline_calibration::offline_calibration| in.m_cam_wing_right_rear_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@510  |/offline_calibration::offline_calibration| in.m_cam_wing_center_rear_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@528  |/offline_calibration::offline_calibration| in.m_cam_nrcs_front_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@546  |/offline_calibration::offline_calibration| in.m_cam_nrcs_rear_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@564  |/offline_calibration::offline_calibration| in.m_cam_nrcs_left_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|OfflineCalibrat|offline_calibration_runnable.cpp@582  |/offline_calibration::offline_calibration| in.m_cam_nrcs_right_receiverport is empty
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|           none|        image_process.cpp@87   |/offline_calibration::offline_calibration| SIDE_VIEW_CAMERA_FRONT_WIDE image not received
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|           none|        image_process.cpp@96   |/offline_calibration::offline_calibration| SIDE_VIEW_CAMERA_FRONT_TELE image not received
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|           none|        image_process.cpp@105  |/offline_calibration::offline_calibration| SIDE_VIEW_CAMERA_FRONT_LEFT image not received
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|           none|        image_process.cpp@114  |/offline_calibration::offline_calibration| SIDE_VIEW_CAMERA_FRONT_RIGHT image not received
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|           none|        image_process.cpp@123  |/offline_calibration::offline_calibration| SIDE_VIEW_CAMERA_REAR_LEFT image not received
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|           none|        image_process.cpp@132  |/offline_calibration::offline_calibration| SIDE_VIEW_CAMERA_REAR_RIGHT image not received
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|           none|        image_process.cpp@141  |/offline_calibration::offline_calibration| SIDE_VIEW_CAMERA_REAR_RIGHT image not received
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|           none|        image_process.cpp@150  |/offline_calibration::offline_calibration| SURROUND_VIEW_CAMERA_FRONT image not received
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|           none|        image_process.cpp@159  |/offline_calibration::offline_calibration| SURROUND_VIEW_CAMERA_REAR image not received
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|           none|        image_process.cpp@168  |/offline_calibration::offline_calibration| SURROUND_VIEW_CAMERA_LEFT image not received
+[0m[1m[38;2;255;000;000m[      65.816070] |  ERROR|           none|        image_process.cpp@177  |/offline_calibration::offline_calibration| SURROUND_VIEW_CAMERA_RIGHT image not received
+[0m[      65.816070] |   INFO|           none|        image_process.cpp@187  |/offline_calibration::offline_calibration| ===== HandleImageSet =====
+[      65.816070] |   INFO|           none|        image_process.cpp@197  |/offline_calibration::offline_calibration| handel the image of FRONT_LIDAR
+[      65.816070] |   INFO|           none|        image_process.cpp@197  |/offline_calibration::offline_calibration| handel the image of LEFT_LIDAR
+[      65.816070] |   INFO|           none|        image_process.cpp@197  |/offline_calibration::offline_calibration| handel the image of RIGHT_LIDAR
+[      65.816070] |   INFO|           none|        image_process.cpp@197  |/offline_calibration::offline_calibration| handel the image of SIDE_VIEW_CAMERA_FRONT_TELE
+[      65.816070] |   INFO|           none|        image_process.cpp@229  |/offline_calibration::offline_calibration| SIDE_VIEW_CAMERA_FRONT_TELE: 2160 3840
+[      65.816070] |   INFO|           none|        image_process.cpp@197  |/offline_calibration::offline_calibration| handel the image of SIDE_VIEW_CAMERA_FRONT_WIDE
+[      65.816070] |   INFO|           none|        image_process.cpp@210  |/offline_calibration::offline_calibration| SIDE_VIEW_CAMERA_FRONT_WIDE: 2160 3840
+[      65.816070] |   INFO|           none|        image_process.cpp@197  |/offline_calibration::offline_calibration| handel the image of SIDE_VIEW_CAMERA_FRONT_LEFT
+[      65.816070] |   INFO|           none|        image_process.cpp@248  |/offline_calibration::offline_calibration| SIDE_VIEW_CAMERA_FRONT_LEFT: 1280 1920
+[      65.816070] |   INFO|           none|        image_process.cpp@197  |/offline_calibration::offline_calibration| handel the image of SIDE_VIEW_CAMERA_FRONT_RIGHT

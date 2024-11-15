@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trajectory Evaluation Study - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2069605453"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2069605453"> <span>Trajectory Evaluation Study</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>This page is the summary of "<a  class="external-link" href="http://rpg.ifi.uzh.ch/docs/IROS18_Zhang.pdf">A Tutorial on Quantitative Trajectory Evaluation for Visual(-Inertial) Odometry</a>". It has proposed principled methods to quantitatively evaluate the quality of an estimated trajectory from visual(-inertial) odometry (VO/VIO). Actually, this method could also be used for both map and localization evaluation.</p>
+<p   
+></p>
+<p   
+>Given a estimated trajectory and ground truth trajectory, they are from different reference frame/coordinate and their state <u class=" "><strong class=" ">temporal correspondences</strong></u> are known (important assumption) . How to evaluate the performance of estimated trajectory?</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069605453/image2021-12-23_16-6-57-version-1-modificationdate-1640246817000-api-v2.png" alt="images/confluence/download/attachments/2069605453/image2021-12-23_16-6-57-version-1-modificationdate-1640246817000-api-v2.png" width="800"  />
+    </p>
+    <div class="section section-1" id="src-2069605453_TrajectoryEvaluationStudy-Howtoaligntrajectories">
+        <h1 class="heading "><span>How to align trajectories</span></h1>
+<p   
+>As both trajectories has different coordinate origin, we can't compute their distance directly. In common practice, we should align the estimated trajectory <img  class="latexmath"  src="images/inline/4c3c78622839dbcd0980c3e6fbf368af328c43ce950606d70c1ffd0f2aa045f6.svg" alt="images/inline/4c3c78622839dbcd0980c3e6fbf368af328c43ce950606d70c1ffd0f2aa045f6.svg"   />
+ to the ground truth trajectory <img  class="latexmath"  src="images/inline/3169ea2def974c54378fc6ffc145ba761f3424b0da9ac46dc8f687e3ddaf0e88.svg" alt="images/inline/3169ea2def974c54378fc6ffc145ba761f3424b0da9ac46dc8f687e3ddaf0e88.svg"   />
+ so that we can find an equivalent estimation <img  class="latexmath"  src="images/inline/5e1be9b005e82669aba1e24a5ffff167fb6ed8422fca1e0af86c71510c8c2d89.svg" alt="images/inline/5e1be9b005e82669aba1e24a5ffff167fb6ed8422fca1e0af86c71510c8c2d89.svg"   />
+ which is closest to <img  class="latexmath"  src="images/inline/3169ea2def974c54378fc6ffc145ba761f3424b0da9ac46dc8f687e3ddaf0e88.svg" alt="images/inline/3169ea2def974c54378fc6ffc145ba761f3424b0da9ac46dc8f687e3ddaf0e88.svg"   />
+ and also <u class=" "><strong class=" ">uniquely define</strong></u> the estimation error of <img  class="latexmath"  src="images/inline/4c3c78622839dbcd0980c3e6fbf368af328c43ce950606d70c1ffd0f2aa045f6.svg" alt="images/inline/4c3c78622839dbcd0980c3e6fbf368af328c43ce950606d70c1ffd0f2aa045f6.svg"   />
+. The alignment can be described as parameterized transformation <img  class="latexmath"  src="images/inline/a2ffd95652647266d65628b5f418982d8085ea3d99a50f1b02e8dded07a7cba4.svg" alt="images/inline/a2ffd95652647266d65628b5f418982d8085ea3d99a50f1b02e8dded07a7cba4.svg"   />
+, s is for scalar, R is for rotation and t is for translation.</p>
+    <div class="section section-2" id="src-2069605453_safe-id-VHJhamVjdG9yeUV2YWx1YXRpb25TdHVkeS1BbWJpZ3VpdGllcy9jb25zdHJhaW50c29mdHJhamVjdG9yeWFsaWdubWVudGZvcmRpZmZlcmVudHNlbnNvcmNvbmZpZ3VyYXRpb25z">
+        <h2 class="heading "><span>Ambiguities/constraints of trajectory alignment for different sensor configurations</span></h2>
+<p   
+>There are some constraints of alignment for different sensor set. Let's first discuss the ambiguities or equivalent parameters in different visual(-inertial) setups. As we know, the non-linear least square problem has certain ambiguities, there may be infinite solutions that have the same minimum cost and the parameters that are different but equivalent. E.g. the mono visual-only odometry are lack of scale factor, the estimation about translation are ambiguities. But it's different for stereo and IMU sensor set.</p>
+<ul class=" "><li class=" "><p   
+>monocular measurement model <strong class=" ">7-DoF</strong></p>
+</li></ul><p   style="margin-left:30px;"
+>The alignment could be treated as similarity transform. It won't change the pixel reprojection location on image if we zoom in/out or move or rotate the whole scene. <u class=" ">The result of nonlinear least square will be equivalent if the scene points are similarity transformed</u>. So we have 7-DoF about alignment transformation.</p>
+<ul class=" "><li class=" "><p   
+>stereo measurement model <strong class=" ">6-DoF</strong></p>
+</li></ul><p   style="margin-left:30px;"
+>The scale is observable or determined from stereo camera. The pixel reprojection location can be hold only if <img  class="latexmath"  src="images/inline/1fdf7dab3df5fd534129631579632960302c31dab8b3f31962704c49baff2fc4.svg" alt="images/inline/1fdf7dab3df5fd534129631579632960302c31dab8b3f31962704c49baff2fc4.svg"   />
+, we can't zoom in/out the scene otherwise it's inconsistent with stereo camera measurement. <u class=" ">The result of nonlinear least square will be equivalent</u><u class=" "> if the scene points are rigidly transformed</u>. So alignment transformation becomes a rigid body transformation with 6-DoF.</p>
+<ul class=" "><li class=" "><p   
+>inertial measurement model <strong class=" ">4-DoF</strong></p>
+</li></ul><p   style="margin-left:30px;"
+>Both scale and gravity vector(pitch and roll) are observable from inertial sensor, the transformed measurement remain unchanged only when <img  class="latexmath"  src="images/inline/1fdf7dab3df5fd534129631579632960302c31dab8b3f31962704c49baff2fc4.svg" alt="images/inline/1fdf7dab3df5fd534129631579632960302c31dab8b3f31962704c49baff2fc4.svg"   />
+ and <img  class="latexmath"  src="images/inline/79f57713e20a3c802c02a8c71e1460cac0d5821229724ed6a9321d4db06e3fd1.svg" alt="images/inline/79f57713e20a3c802c02a8c71e1460cac0d5821229724ed6a9321d4db06e3fd1.svg"   />
+. For the rotation, the alignment can only rotate the scene around z-axis (rotation around gravity). Now the alignment becomes yaw-only rigid body transformation. <u class=" ">The result of nonlinear least square will be equivalent</u><u class=" "> if the scene points are moved or rotated around the z-axis.</u> It has 4-DoF (yaw + translation).</p>
+<p   style="margin-left:30px;"
+>The yaw-only rotation can be defined as,</p>
+<p   style="margin-left:30px;"
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2069605453/image2021-12-23_17-47-30-version-1-modificationdate-1640252850000-api-v2.png" alt="images/confluence/download/thumbnails/2069605453/image2021-12-23_17-47-30-version-1-modificationdate-1640252850000-api-v2.png" width="200"  />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2069605453_TrajectoryEvaluationStudy-Trajectoryalignmentalgorithm">
+        <h2 class="heading "><span>Trajectory alignment algorithm</span></h2>
+<p   
+>Given the estimated positions <img  class="latexmath"  src="images/inline/7e036c1a60aa2684e1806677e93e943461cd1ae6be881e25f58ca7b0764e8fa1.svg" alt="images/inline/7e036c1a60aa2684e1806677e93e943461cd1ae6be881e25f58ca7b0764e8fa1.svg"   />
+ and the ground truth positions <img  class="latexmath"  src="images/inline/92473e69b78e6eaa33b497b820749e6ac5387cd41b06fe7668a83f7ecd209b9d.svg" alt="images/inline/92473e69b78e6eaa33b497b820749e6ac5387cd41b06fe7668a83f7ecd209b9d.svg"   />
+, we want to find the similarity or rigid transformation (s=1) which satisfices,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2069605453/image2021-12-23_17-45-33-version-1-modificationdate-1640252733000-api-v2.png" alt="images/confluence/download/thumbnails/2069605453/image2021-12-23_17-45-33-version-1-modificationdate-1640252733000-api-v2.png" width="300"  />
+    </p>
+<p   
+>To solve the least squares problem, the method is summarized as below and ignore the math prove steps. If a yaw-only rigid body transformation is desired, we need to adapt the rotation calculation in Umeyama’s method as below.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069605453/image2021-12-23_17-46-41-version-1-modificationdate-1640252801000-api-v2.png" alt="images/confluence/download/attachments/2069605453/image2021-12-23_17-46-41-version-1-modificationdate-1640252801000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2069605453_TrajectoryEvaluationStudy-Trajectoryerrormetrics">
+        <h1 class="heading "><span>Trajectory error metrics</span></h1>
+<p   
+>Here is the summary,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069605453/image2021-12-23_22-37-42-version-1-modificationdate-1640270262000-api-v2.png" alt="images/confluence/download/attachments/2069605453/image2021-12-23_22-37-42-version-1-modificationdate-1640270262000-api-v2.png" width="500"  />
+    </p>
+    <div class="section section-2" id="src-2069605453_safe-id-VHJhamVjdG9yeUV2YWx1YXRpb25TdHVkeS1BYnNvbHV0ZXRyYWplY3RvcnllcnJvcihBVEUp">
+        <h2 class="heading "><span>Absolute trajectory error (ATE)</span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069605453/image2021-12-23_22-18-59-version-1-modificationdate-1640269139000-api-v2.png" alt="images/confluence/download/attachments/2069605453/image2021-12-23_22-18-59-version-1-modificationdate-1640269139000-api-v2.png" width="600"  />
+    </p>
+<p   
+>After trajectory alignment, for a single state, the error between <img  class="latexmath"  src="images/inline/dbf31239ea717748440f6d568e05319899d939cd2b1bfb7cce26488b19b7faff.svg" alt="images/inline/dbf31239ea717748440f6d568e05319899d939cd2b1bfb7cce26488b19b7faff.svg"   />
+ and the ground truth <img  class="latexmath"  src="images/inline/c66dfb5045ee5f6230cdc17a9e2832de600a2e17f848ca2486c04fa6fbf37227.svg" alt="images/inline/c66dfb5045ee5f6230cdc17a9e2832de600a2e17f848ca2486c04fa6fbf37227.svg"   />
+ can be parameterized as,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2069605453/image2021-12-23_22-21-36-version-1-modificationdate-1640269296000-api-v2.png" alt="images/confluence/download/thumbnails/2069605453/image2021-12-23_22-21-36-version-1-modificationdate-1640269296000-api-v2.png" width="250"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069605453/image2021-12-23_22-21-58-version-1-modificationdate-1640269317000-api-v2.png" alt="images/confluence/download/attachments/2069605453/image2021-12-23_22-21-58-version-1-modificationdate-1640269317000-api-v2.png" width="500"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2069605453/image2021-12-23_22-22-23-version-1-modificationdate-1640269343000-api-v2.png" alt="images/confluence/download/thumbnails/2069605453/image2021-12-23_22-22-23-version-1-modificationdate-1640269343000-api-v2.png" width="250"  />
+    </p>
+<p   
+>To quantify the quality of the whole trajectory, the root mean square error (RMSE) is usually used,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069605453/image2021-12-23_22-22-56-version-1-modificationdate-1640269375000-api-v2.png" alt="images/confluence/download/attachments/2069605453/image2021-12-23_22-22-56-version-1-modificationdate-1640269375000-api-v2.png" width="350"  />
+    </p>
+<p   
+>where <img  class="latexmath"  src="images/inline/97bf9e95a62d60cadf54c8c2544ee2e656b1ed32e05d0bdd0f2bc1b241da5393.svg" alt="images/inline/97bf9e95a62d60cadf54c8c2544ee2e656b1ed32e05d0bdd0f2bc1b241da5393.svg"   />
+ means converting the rotation matrix to angle axis representation and using the norm of rotation angles(    <span style="color: #448c27;">
+omegax, omegay, omegaz    </span>
+) as the error.</p>
+<p   
+><u class=" "><strong class=" ">Question: How Many Frames to Align?</strong></u></p>
+<p   
+>There is no standard for selecting the number of states to be used for trajectory alignment. The position ATE decreases when more states are used in the alignment, while the rotation ATE does not show a obvious tendency. Intuitively, since the trajectory alignment aims to minimize the least squares position error, the more states that are used, the smaller the position ATE is likely to be. The rotation components are not used in computing the alignment transformation and thus are less correlated.</p>
+<p   
+>    <span style="color: #ff0000;">
+In practice, when comparing different algorithms, one needs to be consistent in which states are used for trajectory alignment across different algorithms for a fair comparison.    </span>
+</p>
+    </div>
+    <div class="section section-2" id="src-2069605453_safe-id-VHJhamVjdG9yeUV2YWx1YXRpb25TdHVkeS1SZWxhdGl2ZUVycm9yKFJFKQ">
+        <h2 class="heading "><span>Relative Error(RE)</span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069605453/image2021-12-23_22-36-11-version-1-modificationdate-1640270171000-api-v2.png" alt="images/confluence/download/attachments/2069605453/image2021-12-23_22-36-11-version-1-modificationdate-1640270171000-api-v2.png"  height="400" />
+    </p>
+<p   
+>The basic idea of relative error is that, since VO/VIO systems do not have a global reference (global position and yaw), the estimation quality can be evaluated by measuring the relative relations between the states at different times.</p>
+<p   
+>Select K pairs set of states by some criteria (e.g., distance along the trajectory) from <img  class="latexmath"  src="images/inline/5e1be9b005e82669aba1e24a5ffff167fb6ed8422fca1e0af86c71510c8c2d89.svg" alt="images/inline/5e1be9b005e82669aba1e24a5ffff167fb6ed8422fca1e0af86c71510c8c2d89.svg"   />
+. and each pair defines a sub-trajectory and a relative error of sub-trajectory is calculated in a similar way as the absolute error.</p>
+<p   
+>Hence, there is no big difference between RE and ATE except the alignment is done by first state and error is calculated by end state in each sub-trajectory. From RE, we can get a collection of errors ("ATE" for small range) for all the sub-trajectories.</p>
+<p   
+>Based on that,</p>
+<ul class=" "><li class=" "><p   
+>statistics such as the median, average and percentiles can be calculated, which gives more information than ATE.</p>
+</li><li class=" "><p   
+>selecting the states according to different criteria, RE can have different meanings</p>
+<ul class=" "><li class=" "><p   
+>a larger distance of state pairs reflects more the long-term accuracy</p>
+</li><li class=" "><p   
+>a smaller distance of state pairs reflects the local consistency</p>
+</li></ul></li></ul><p   
+>Tips:</p>
+<p   
+>As for sub trajectory alignment, it's not like the Umeyama method. Please check the code in the end of this page. It just identify the start and end point by segment and compare the both of relative transformation from start to end.</p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">RE Computation</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>For each pair,</p>
+<p   
+>1.get the start and end pose from EST sub trajectory, calculate the pose transform between start and end pose → T_c1_c2</p>
+<p   
+>2.get the start and end pose from GT sub trajectory, calculate the pose transform between start and end pose → T_m1_m2</p>
+<p   
+>3.compute the pose error → Eigen::Matrix4d T_error_in_c2 = ov_core::Inv_se3(T_m1_m2) * T_c1_c2;</p>
+<p   
+>4.Rotate rotation so that rotation error is in the global frame (allows us to look at yaw error)</p>
+        </div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2069605453_TrajectoryEvaluationStudy-SingleRunConsistency">
+        <h2 class="heading "><span>Single Run Consistency</span></h2>
+<p   
+>This metric is not discussed in the paper but provided by OpenVINS. Usually, the localization result contains pose and uncertainty <img  class="latexmath"  src="images/inline/f96487121e6e3f95b504acda7404cf3049da573ddccb948c5968509b47caeb03.svg" alt="images/inline/f96487121e6e3f95b504acda7404cf3049da573ddccb948c5968509b47caeb03.svg"   />
+. We can compute the pose error against ground truth and also plot the localization <img  class="latexmath"  src="images/inline/6e613fa35317d142884a51ad6975017d535716187582a7433606145615b30313.svg" alt="images/inline/6e613fa35317d142884a51ad6975017d535716187582a7433606145615b30313.svg"   />
+ estimation bound.     <span style="color: #000000;">
+This provides insight into if the estimator is becoming over confident at certain timesteps. E.g. the uncertainty is small whereas the pose error is quite large.    </span>
+</p>
+<p   
+>Additionally, the tools from OpenVINS can also evaluate the runtime performance(timing, memory, cpu load) for each "node" of VINS algorithm.</p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2069605453_TrajectoryEvaluationStudy-CodeStudyandTooling">
+        <h1 class="heading "><span>Code Study and Tooling</span></h1>
+<p   
+>Reference Link: <a  class="external-link" href="https://docs.openvins.com/namespaceov__eval.html">ov_eval namespace | OpenVINS</a></p>
+<ul class=" "><li class=" "><p   
+>create association between gt and est trajectory by time stamp</p>
+</li></ul><p   style="margin-left:30px;"
+>Assumption, the time delay between GT and estimator is constant which is described by "offset". The time difference of correspondence pair should be smaller than max_difference.</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">find association</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="find association" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">//ov_eval\src\alignment\AlignUtils.cpp</code></div>
+<div class="line"><code class="plain">AlignUtils::perform_association(offset, max_difference, est_times, gt_times, est_poses, gt_poses, est_covori, est_covpos, gt_covori, gt_covpos);</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// Intersect timestamps, in ov_eval\src\calc\ResultTrajectory.cpp</code></div>
+<div class="line"><code class="comments">// attention: ov_eval has fixed 20ms max_difference threshold</code></div>
+<div class="line"><code class="plain">AlignUtils::perform_association(0, 0.02, est_times, gt_times, est_poses, gt_poses, est_covori, est_covpos, gt_covori, gt_covpos);</code></div>
+</div>
+    </div>
+<p   
+>The code below will try to find closest GT pose for each estimate.</p>
+<ul class=" "><li class=" "><p   
+>If the time stamp between gt and est is larger than 20ms, then the GT data will be ignored and not be used to compute the error.</p>
+</li><li class=" "><p   
+>If the time stamp between gt and est is smaller than 20ms and found, then it will try to refine the matching and find a closer GT time stamp within 20ms.</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069605453/image2022-7-5_13-19-28-version-1-modificationdate-1656998369000-api-v2.png" alt="images/confluence/download/attachments/2069605453/image2022-7-5_13-19-28-version-1-modificationdate-1656998369000-api-v2.png"  height="400" />
+    </p>
+<p   
+>And the "EVO (<a  class="external-link" href="https://github.com/MichaelGrupp/evo">MichaelGrupp/evo: Python package for the evaluation of odometry and SLAM (github.com)</a>)" has the same situation, here the max time difference threshold is 10ms.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069605453/image2022-7-5_13-28-33-version-1-modificationdate-1656998914000-api-v2.png" alt="images/confluence/download/attachments/2069605453/image2022-7-5_13-28-33-version-1-modificationdate-1656998914000-api-v2.png" width="600"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2069605453/image2022-7-5_13-29-22-version-1-modificationdate-1656998963000-api-v2.png" alt="images/confluence/download/attachments/2069605453/image2022-7-5_13-29-22-version-1-modificationdate-1656998963000-api-v2.png" width="600"  />
+    </p>
+<ul class=" "><li class=" "><p   
+>trajectory alignment</p>
+</li></ul><p   style="margin-left:30px;"
+>the user should provide align mode,     <span style="color: #003366;">
+<tt class=" ">posyaw(4DoF)</tt>    </span>
+    <span style="color: #000000;">
+,     </span>
+<tt class=" ">posyawsingle</tt>    <span style="color: #000000;">
+,     </span>
+<tt class=" ">se3(6DoF)</tt>    <span style="color: #000000;">
+,     </span>
+<tt class=" ">se3single</tt>    <span style="color: #000000;">
+,     </span>
+<tt class=" ">sim3(7DoF)</tt>    <span style="color: #000000;">
+, and     </span>
+<tt class=" ">none</tt>    <span style="color: #000000;">
+.    </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">trajectory align umeyama</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="trajectory align umeyama" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">  </code><code class="comments">// AlignUtils::align_umeyama</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// Substract mean of each trajectory</code></div>
+<div class="line"><code class="plain">  Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 1> mu_M = get_mean(model);</code></div>
+<div class="line"><code class="plain">  Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 1> mu_D = get_mean(data);</code></div>
+<div class="line"><code class="plain">  std::vector<Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 1>> model_zerocentered, data_zerocentered;</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">for</code><code class="plain"> (</code><code class="color1">size_t</code><code class="plain"> i = 0; i < model.size(); i++) {</code></div>
+<div class="line"><code class="plain">    model_zerocentered.push_back(model[i] - mu_M);</code></div>
+<div class="line"><code class="plain">    data_zerocentered.push_back(data[i] - mu_D);</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Get correlation matrix</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">double</code><code class="plain"> n = model.size();</code></div>
+<div class="line"><code class="plain">  Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 3> C = Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 3>::Zero();</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">for</code><code class="plain"> (</code><code class="color1">size_t</code><code class="plain"> i = 0; i < model_zerocentered.size(); i++) {</code></div>
+<div class="line"><code class="plain">    C.noalias() += model_zerocentered[i] * data_zerocentered[i].transpose();</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"><code class="plain">  C *= 1.0 / n;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Get data sigma</code></div>
+<div class="line"><code class="plain">  </code><code class="color1">double</code><code class="plain"> sigma2 = 0;</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">for</code><code class="plain"> (</code><code class="color1">size_t</code><code class="plain"> i = 0; i < data_zerocentered.size(); i++) {</code></div>
+<div class="line"><code class="plain">    sigma2 += data_zerocentered[i].dot(data_zerocentered[i]);</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"><code class="plain">  sigma2 *= 1.0 / n;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// SVD decomposition</code></div>
+<div class="line"><code class="plain">  Eigen::JacobiSVD<Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 3>> svd(C, Eigen::ComputeFullV | Eigen::ComputeFullU);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 3> U_svd = svd.matrixU();</code></div>
+<div class="line"><code class="plain">  Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 1> D_svd = svd.singularValues();</code></div>
+<div class="line"><code class="plain">  Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 3> V_svd = svd.matrixV();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 3> S = Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 3>::Identity();</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">if</code><code class="plain"> (U_svd.determinant() * V_svd.determinant() < 0) {</code></div>
+<div class="line"><code class="plain">    S(2, 2) = -1;</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// If only yaw, use that specific solver (optimizes over yaw angle)</code></div>
+<div class="line"><code class="plain">  </code><code class="comments">// Else get best full 3 dof rotation</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">if</code><code class="plain"> (yaw_only) {</code></div>
+<div class="line"><code class="plain">    Eigen::Matrix<</code><code class="color1">double</code><code class="plain">, 3, 3> rot_C = n * C.transpose();</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">double</code><code class="plain"> theta = AlignUtils::get_best_yaw(rot_C);</code></div>
+<div class="line"><code class="plain">    R = ov_core::rot_z(theta);</code></div>
+<div class="line"><code class="plain">  } </code><code class="keyword">else</code><code class="plain"> {</code></div>
+<div class="line"><code class="plain">    R.noalias() = U_svd * S * V_svd.transpose();</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// If known scale, fix it</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">if</code><code class="plain"> (known_scale) {</code></div>
+<div class="line"><code class="plain">    s = 1;</code></div>
+<div class="line"><code class="plain">  } </code><code class="keyword">else</code><code class="plain"> {</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// Get best scale</code></div>
+<div class="line"><code class="plain">    s = 1.0 / sigma2 * (D_svd.asDiagonal() * S).trace();</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">  </code><code class="comments">// Get best translation</code></div>
+<div class="line"><code class="plain">  t.noalias() = mu_M - s * R * mu_D;</code></div>
+</div>
+    </div>
+<ul class=" "><li class=" "><p   
+>ATE and RPE computation</p>
+</li></ul>    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">ate and re</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="ate and re" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">//ate computation, ResultTrajectory::calculate_ate</code></div>
+<div class="line"><code class="comments">// Calculate the position and orientation error at every timestep</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">for</code><code class="plain"> (</code><code class="color1">size_t</code><code class="plain"> i = 0; i < est_poses_aignedtoGT.size(); i++) {</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// Calculate orientation error</code></div>
+<div class="line"><code class="plain">    Eigen::Matrix3d e_R = ov_core::quat_2_Rot(est_poses_aignedtoGT.at(i).block(3, 0, 4, 1)).transpose() *</code></div>
+<div class="line"><code class="plain">                          ov_core::quat_2_Rot(gt_poses.at(i).block(3, 0, 4, 1));</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">double</code><code class="plain"> ori_err = 180.0 / M_PI * ov_core::log_so3(e_R).norm();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// Calculate position error</code></div>
+<div class="line"><code class="plain">    </code><code class="color1">double</code><code class="plain"> pos_err = (gt_poses.at(i).block(0, 0, 3, 1) - est_poses_aignedtoGT.at(i).block(0, 0, 3, 1)).norm();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// Append this error!</code></div>
+<div class="line"><code class="plain">    error_ori.timestamps.push_back(est_times.at(i));</code></div>
+<div class="line"><code class="plain">    error_ori.values.push_back(ori_err);</code></div>
+<div class="line"><code class="plain">    error_pos.timestamps.push_back(est_times.at(i));</code></div>
+<div class="line"><code class="plain">    error_pos.values.push_back(pos_err);</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">//re computation, ResultTrajectory::calculate_rpe</code></div>
+<div class="line"><code class="plain">std::vector<</code><code class="color1">double</code><code class="plain">> segments = {8.0, 16.0, 24.0, 32.0, 40.0};</code><code class="comments">//custom defined</code></div>
+<div class="line"><code class="plain"> </code><code class="comments">// Loop through each segment length</code></div>
+<div class="line"><code class="plain">  </code><code class="keyword">for</code><code class="plain"> (</code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain"> &distance : segment_lengths) {</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// Our stats for this length</code></div>
+<div class="line"><code class="plain">    Statistics error_ori, error_pos;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// Get end of subtrajectories for each possible starting point</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// NOTE: is there a better way to select which end pos is a valid segments that are of the correct lenght?</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// NOTE: right now this allows for longer segments to have bigger error in their start-end distance vs the desired segment length</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// std::vector<int> comparisons = compute_comparison_indices_length(accum_distances, distance, 0.1*distance);</code></div>
+<div class="line"><code class="plain">    std::vector<</code><code class="color1">int</code><code class="plain">> comparisons = compute_comparison_indices_length(accum_distances, distance, max_dist_diff);</code></div>
+<div class="line"><code class="plain">    </code><code class="functions">assert</code><code class="plain">(comparisons.size() == gt_poses.size());</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">    </code><code class="comments">// Loop through each relative comparison</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">for</code><code class="plain"> (</code><code class="color1">size_t</code><code class="plain"> id_start = 0; id_start < comparisons.size(); id_start++) {</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      </code><code class="comments">// Get the end id (skip if we couldn't find an end)</code></div>
+<div class="line"><code class="plain">      </code><code class="color1">int</code><code class="plain"> id_end = comparisons[id_start];</code></div>
+<div class="line"><code class="plain">      </code><code class="keyword">if</code><code class="plain"> (id_end == -1)</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">continue</code><code class="plain">;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      </code><code class="comments">//===============================================================================</code></div>
+<div class="line"><code class="plain">      </code><code class="comments">// Get T I1 to world EST at beginning of subtrajectory (at state idx)</code></div>
+<div class="line"><code class="plain">      Eigen::Matrix4d T_c1 = Eigen::Matrix4d::Identity();</code></div>
+<div class="line"><code class="plain">      T_c1.block(0, 0, 3, 3) = ov_core::quat_2_Rot(est_poses_aignedtoGT.at(id_start).block(3, 0, 4, 1)).transpose();</code></div>
+<div class="line"><code class="plain">      T_c1.block(0, 3, 3, 1) = est_poses_aignedtoGT.at(id_start).block(0, 0, 3, 1);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      </code><code class="comments">// Get T I2 to world EST at end of subtrajectory starting (at state comparisons[idx])</code></div>
+<div class="line"><code class="plain">      Eigen::Matrix4d T_c2 = Eigen::Matrix4d::Identity();</code></div>
+<div class="line"><code class="plain">      T_c2.block(0, 0, 3, 3) = ov_core::quat_2_Rot(est_poses_aignedtoGT.at(id_end).block(3, 0, 4, 1)).transpose();</code></div>
+<div class="line"><code class="plain">      T_c2.block(0, 3, 3, 1) = est_poses_aignedtoGT.at(id_end).block(0, 0, 3, 1);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      </code><code class="comments">// Get T I2 to I1 EST</code></div>
+<div class="line"><code class="plain">      Eigen::Matrix4d T_c1_c2 = ov_core::Inv_se3(T_c1) * T_c2;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      </code><code class="comments">//===============================================================================</code></div>
+<div class="line"><code class="plain">      </code><code class="comments">// Get T I1 to world GT at beginning of subtrajectory (at state idx)</code></div>
+<div class="line"><code class="plain">      Eigen::Matrix4d T_m1 = Eigen::Matrix4d::Identity();</code></div>
+<div class="line"><code class="plain">      T_m1.block(0, 0, 3, 3) = ov_core::quat_2_Rot(gt_poses.at(id_start).block(3, 0, 4, 1)).transpose();</code></div>
+<div class="line"><code class="plain">      T_m1.block(0, 3, 3, 1) = gt_poses.at(id_start).block(0, 0, 3, 1);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      </code><code class="comments">// Get T I2 to world GT at end of subtrajectory starting (at state comparisons[idx])</code></div>
+<div class="line"><code class="plain">      Eigen::Matrix4d T_m2 = Eigen::Matrix4d::Identity();</code></div>
+<div class="line"><code class="plain">      T_m2.block(0, 0, 3, 3) = ov_core::quat_2_Rot(gt_poses.at(id_end).block(3, 0, 4, 1)).transpose();</code></div>
+<div class="line"><code class="plain">      T_m2.block(0, 3, 3, 1) = gt_poses.at(id_end).block(0, 0, 3, 1);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      </code><code class="comments">// Get T I2 to I1 GT</code></div>
+<div class="line"><code class="plain">      Eigen::Matrix4d T_m1_m2 = ov_core::Inv_se3(T_m1) * T_m2;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      </code><code class="comments">//===============================================================================</code></div>
+<div class="line"><code class="plain">      </code><code class="comments">// Compute error transform between EST and GT start-end transform</code></div>
+<div class="line"><code class="plain">      Eigen::Matrix4d T_error_in_c2 = ov_core::Inv_se3(T_m1_m2) * T_c1_c2;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      Eigen::Matrix4d T_c2_rot = Eigen::Matrix4d::Identity();</code></div>
+<div class="line"><code class="plain">      T_c2_rot.block(0, 0, 3, 3) = T_c2.block(0, 0, 3, 3);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      Eigen::Matrix4d T_c2_rot_inv = Eigen::Matrix4d::Identity();</code></div>
+<div class="line"><code class="plain">      T_c2_rot_inv.block(0, 0, 3, 3) = T_c2.block(0, 0, 3, 3).transpose();</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      </code><code class="comments">// Rotate rotation so that rotation error is in the global frame (allows us to look at yaw error)</code></div>
+<div class="line"><code class="plain">      Eigen::Matrix4d T_error_in_w = T_c2_rot * T_error_in_c2 * T_c2_rot_inv;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      </code><code class="comments">//===============================================================================</code></div>
+<div class="line"><code class="plain">      </code><code class="comments">// Compute error for position</code></div>
+<div class="line"><code class="plain">      error_pos.timestamps.push_back(est_times.at(id_start));</code></div>
+<div class="line"><code class="plain">      error_pos.values.push_back(T_error_in_w.block(0, 3, 3, 1).norm());</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">      </code><code class="comments">// Calculate orientation error</code></div>
+<div class="line"><code class="plain">      </code><code class="color1">double</code><code class="plain"> ori_err = 180.0 / M_PI * ov_core::log_so3(T_error_in_w.block(0, 0, 3, 3)).norm();</code></div>
+<div class="line"><code class="plain">      error_ori.timestamps.push_back(est_times.at(id_start));</code></div>
+<div class="line"><code class="plain">      error_ori.values.push_back(ori_err);</code></div>
+<div class="line"><code class="plain">    }</code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2333897361_Monocular_Outlier_Detection_for_Visual_Odometry.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Monocular Outlier Detection for Visual Odometry</span>
+        </a>
+                <a href="2047122533_VINS-Mono_Study.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>VINS-Mono Study</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

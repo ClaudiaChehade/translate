@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MSCKF for VINS Study - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2084531245"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2084531245"> <span>MSCKF for VINS Study</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>This page will show the study note of MSCKF (Multi-State Constraint Kalman Filter) for Vision-aided Inertial Navigation. It's also famous as another branch of visual-inertial solution. The MSCKF is based on ESEKF, please review <a   href="2074196616_Error_State_Extend_Kalman_Filter_Study.html">Error State Extend Kalman Filter Study - wave 3 development - Docupedia (bosch.com)</a> if necessary.</p>
+<p   
+></p>
+    <div class="section section-1" id="src-2084531245_MSCKFforVINSStudy-OverallIntroduction">
+        <h1 class="heading "><span>Overall Introduction</span></h1>
+<p   
+>Let's first review the disadvantages of the <a  class="external-link" href="http://ais.informatik.uni-freiburg.de/teaching/ws17/mapping/pdf/slam05-ekf-slam.pdf">EKF to SLAM</a> which estimate both the robot's pose and locations of landmarks in the environment. The state space for 2D plane is,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_15-24-31-version-1-modificationdate-1641713071000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_15-24-31-version-1-modificationdate-1641713071000-api-v2.png" width="400"  />
+    </p>
+<p   
+>It's a (3+2n) dimensional Gaussian estimation problem. The "Extended Kalman Filter Algorithm" is as below,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_15-28-14-version-1-modificationdate-1641713295000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_15-28-14-version-1-modificationdate-1641713295000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Its belief is represented by,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_15-32-53-version-1-modificationdate-1641713574000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_15-32-53-version-1-modificationdate-1641713574000-api-v2.png"  height="250" />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_15-35-6-version-1-modificationdate-1641713706000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_15-35-6-version-1-modificationdate-1641713706000-api-v2.png"  height="250" />
+    </p>
+<p   
+>Hence the high volume of data also poses a significant challenge for estimation algorithm design. When real-time localization performance is required, one is faced with a fundamental trade-off between the computational complexity of an algorithm and the resulting estimation accuracy.</p>
+<p   
+>The MSCKF is able to optimally utilize the localization information provided by multiple measurements of visual features. Its measurement model that expresses these geometric constraints <u class=" "><strong class=" ">without including the 3D feature position in the filter state vector</strong></u>, resulting in computational complexity only linear in the number of features. It is capable of high-precision pose estimation in large-scale real-world environments.</p>
+<p   
+>MSCKF Algorithm Loop:</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #172b4d;">
+Update nominal state with IMU motion model as prediction    </span>
+</p>
+</li><li class=" "><p   
+>Propagate error state uncertainty</p>
+</li><li class=" "><p   
+>When it triggers measurement update (visual features are no longer visible or remove camera pose due to sliding window limits, will discuss later), otherwise go back to step 1</p>
+<ol class=" "><li class=" "><p   
+>Compute the Kalman Gain</p>
+</li><li class=" "><p   
+>    <span style="color: #172b4d;">
+Compute the error state based on visual geometric constraints (each image will have a pose based on the predicted nominal state)    </span>
+</p>
+</li><li class=" "><p   
+>Correct the nominal state with error state</p>
+</li><li class=" "><p   
+>Correct the error state covariance/uncertainty</p>
+</li><li class=" "><p   
+>Reset the error state and go back to step 1</p>
+</li></ol></li></ol>    </div>
+    <div class="section section-1" id="src-2084531245_MSCKFforVINSStudy-StateSystemModel">
+        <h1 class="heading "><span>State System Model</span></h1>
+<p   
+>The error in the estimate <img  class="latexmath"  src="images/inline/c0f00704e6929d6918eaf544cbc11b64ef14a254e07c829108e183f0bcc9cda7.svg" alt="images/inline/c0f00704e6929d6918eaf544cbc11b64ef14a254e07c829108e183f0bcc9cda7.svg"   />
+(nominal state, no noise + static bias) of a quantity <img  class="latexmath"  src="images/inline/7b5e3ebbda98649c481283fa7ff01699b73b933376f87a350a8a0a399469c17e.svg" alt="images/inline/7b5e3ebbda98649c481283fa7ff01699b73b933376f87a350a8a0a399469c17e.svg"   />
+(true state with noise and dynamic bias) is defined as <img  class="latexmath"  src="images/inline/6078860d887c6a7c2bb24100e3987e169cedad5ff284344a69b93433fac6dc87.svg" alt="images/inline/6078860d887c6a7c2bb24100e3987e169cedad5ff284344a69b93433fac6dc87.svg"   />
+.</p>
+    <div class="section section-2" id="src-2084531245_MSCKFforVINSStudy-NominalState">
+        <h2 class="heading "><span>Nominal State</span></h2>
+<p   
+>Assuming that N camera poses are included in the EKF state vector at time-step k, this nominal vector has the following form,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_16-15-55-version-1-modificationdate-1641716155000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_16-15-55-version-1-modificationdate-1641716155000-api-v2.png" width="500"  />
+    </p>
+<p   
+>where "I" means IMU-affixed frame, "G" is the global frame (ECEF), "C" is the camera frame. <img  class="latexmath"  src="images/inline/02e959aee68c624de82d82f3629981ea62fffe3d59554bb8ba1e5472656dd00f.svg" alt="images/inline/02e959aee68c624de82d82f3629981ea62fffe3d59554bb8ba1e5472656dd00f.svg"   />
+ is the unit quaternion describing the estimated rotation from frame "G" to frame "C i" (<img  class="latexmath"  src="images/inline/d8e67faaaf0cf715482b7152285199e1facacae5b8c0f0858cce07bfd365c5f0.svg" alt="images/inline/d8e67faaaf0cf715482b7152285199e1facacae5b8c0f0858cce07bfd365c5f0.svg"   />
+ camera), <img  class="latexmath"  src="images/inline/6f9a5ceb6dbcdc8a56e3e1028902dfc04d430f85287e4a12eb73733cc7904687.svg" alt="images/inline/6f9a5ceb6dbcdc8a56e3e1028902dfc04d430f85287e4a12eb73733cc7904687.svg"   />
+ is the estimated position of the <img  class="latexmath"  src="images/inline/d8e67faaaf0cf715482b7152285199e1facacae5b8c0f0858cce07bfd365c5f0.svg" alt="images/inline/d8e67faaaf0cf715482b7152285199e1facacae5b8c0f0858cce07bfd365c5f0.svg"   />
+ camera.</p>
+    </div>
+    <div class="section section-2" id="src-2084531245_MSCKFforVINSStudy-ErrorState">
+        <h2 class="heading "><span>Error State</span></h2>
+<p   
+>The EKF error state vector is defined accordingly,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_16-33-51-version-1-modificationdate-1641717231000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_16-33-51-version-1-modificationdate-1641717231000-api-v2.png" width="500"  />
+    </p>
+<p   
+>where,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_16-34-13-version-1-modificationdate-1641717254000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_16-34-13-version-1-modificationdate-1641717254000-api-v2.png" width="400"  />
+    </p>
+<p   
+>the orientation error is described by the error quaternion <img  class="latexmath"  src="images/inline/1d0a7ca2dfc1c463ecb0fb99d3d7723f6559ac9e851d0513ff1ed4c887883ba8.svg" alt="images/inline/1d0a7ca2dfc1c463ecb0fb99d3d7723f6559ac9e851d0513ff1ed4c887883ba8.svg"   />
+ and we use <img  class="latexmath"  src="images/inline/9ee5b0cebb4ea11a44cc5ba63ee65dae2ff5ebdc20bcbcd146fef67e9008200e.svg" alt="images/inline/9ee5b0cebb4ea11a44cc5ba63ee65dae2ff5ebdc20bcbcd146fef67e9008200e.svg"   />
+ (3-DoF) describe the attitude errors is a minimal representation.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_16-47-49-version-1-modificationdate-1641718069000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_16-47-49-version-1-modificationdate-1641718069000-api-v2.png" width="200"  />
+    </p>
+<p   
+>And the <img  class="latexmath"  src="images/inline/a7ac1f1e77c5836f26428d089211185d4062ea62ad75bc518e8bba2c291eb5a8.svg" alt="images/inline/a7ac1f1e77c5836f26428d089211185d4062ea62ad75bc518e8bba2c291eb5a8.svg"   />
+ and <img  class="latexmath"  src="images/inline/fd058b2a5ea3637cfd716ef127f01b696920b78c0fecebcdb021aad89cbc5135.svg" alt="images/inline/fd058b2a5ea3637cfd716ef127f01b696920b78c0fecebcdb021aad89cbc5135.svg"   />
+ are 3x1 vectors that describe the error of biases affecting the gyroscope and accelerometer measurements, respectively. <img  class="latexmath"  src="images/inline/a8e081c5e1830f16d41e425c17606a5b1caf62d6f8165ac78d4eaf3eb299d7e2.svg" alt="images/inline/a8e081c5e1830f16d41e425c17606a5b1caf62d6f8165ac78d4eaf3eb299d7e2.svg"   />
+ and <img  class="latexmath"  src="images/inline/bc083369bfc5fd5d4f9bd985870cebb891f9c8f6ac3185cb917b62bff39cc4ff.svg" alt="images/inline/bc083369bfc5fd5d4f9bd985870cebb891f9c8f6ac3185cb917b62bff39cc4ff.svg"   />
+ are the error of velocity and IMU position.</p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2084531245_MSCKFforVINSStudy-IMUMotionEquationandCovariancePropagation">
+        <h1 class="heading "><span>IMU Motion Equation and Covariance Propagation</span></h1>
+<p   
+>Next, let's see the filter propagation equations are derived by discretization of the continuous-time IMU system model. Then we've the nominal state update/prediction function.</p>
+    <div class="section section-2" id="src-2084531245_MSCKFforVINSStudy-Continuous-timesystemmodeling">
+        <h2 class="heading "><span>Continuous-time system modeling</span></h2>
+    <div class="section section-3" id="src-2084531245_MSCKFforVINSStudy-TrueState">
+        <h3 class="heading "><span>True State</span></h3>
+<p   
+>The time evolution of the IMU state is described by, the equation below is the derivatives of <u class=" "><strong class=" ">true state</strong></u> against time.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_17-18-54-version-1-modificationdate-1641719934000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_17-18-54-version-1-modificationdate-1641719934000-api-v2.png" width="250"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_17-22-7-version-1-modificationdate-1641720128000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_17-22-7-version-1-modificationdate-1641720128000-api-v2.png" width="150"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_17-22-29-version-1-modificationdate-1641720149000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_17-22-29-version-1-modificationdate-1641720149000-api-v2.png" width="150"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_17-22-46-version-1-modificationdate-1641720167000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_17-22-46-version-1-modificationdate-1641720167000-api-v2.png" width="150"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_17-23-7-version-1-modificationdate-1641720188000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_17-23-7-version-1-modificationdate-1641720188000-api-v2.png" width="150"  />
+    </p>
+<p   
+>where <img  class="latexmath"  src="images/inline/d41af3881ed2354537d211c6e87fc031d1395c1e2d46e5de13b9b2d4aaf41537.svg" alt="images/inline/d41af3881ed2354537d211c6e87fc031d1395c1e2d46e5de13b9b2d4aaf41537.svg"   />
+ is the acceleration under the global frame and <img  class="latexmath"  src="images/inline/74edfef4dddb8cb03eaebfa5c5360f98d2d1b55dea5977bbd2165c411291b379.svg" alt="images/inline/74edfef4dddb8cb03eaebfa5c5360f98d2d1b55dea5977bbd2165c411291b379.svg"   />
+ is the angle velocity under IMU frame. The rest is the same as ESEKF definition.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_17-33-6-version-1-modificationdate-1641720786000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_17-33-6-version-1-modificationdate-1641720786000-api-v2.png" width="500"  />
+    </p>
+<p   
+>It is important to note that the IMU measurements incorporate the effects of the planet’s rotation <img  class="latexmath"  src="images/inline/16da0332aff51475e41c4ef09ab46c3bd5c59f68bcd361ef65f5c12ac04704b2.svg" alt="images/inline/16da0332aff51475e41c4ef09ab46c3bd5c59f68bcd361ef65f5c12ac04704b2.svg"   /> (It considers the speed of the earth's rotation, and a bunch of people on the Internet say that there is no consideration in the code). Moreover, The Accelerometer Measurements Include The <br/>gravitational acceleration <img  class="latexmath"  src="images/inline/d7d48544789b9562658bb5aa22ddd5b1dabcf5c3243cf447451f6e01a07fcb41.svg" alt="images/inline/d7d48544789b9562658bb5aa22ddd5b1dabcf5c3243cf447451f6e01a07fcb41.svg"   />
+ expressed in the local frame. Hence the IMU measurement can be described as,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_17-40-54-version-1-modificationdate-1641721255000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_17-40-54-version-1-modificationdate-1641721255000-api-v2.png" width="500"  />
+    </p>
+<p   
+>where C(.) denotes a rotational matrix, <img  class="latexmath"  src="images/inline/b5cb17c959118462a49bf7394261bb7f9f780fc92e2faf6b3bb536321ff4bda7.svg" alt="images/inline/b5cb17c959118462a49bf7394261bb7f9f780fc92e2faf6b3bb536321ff4bda7.svg"   />
+ and <img  class="latexmath"  src="images/inline/963cb423d332f35820e424a0f002f94d540a8bb8390dbcdb18e52cbfda71a9ec.svg" alt="images/inline/963cb423d332f35820e424a0f002f94d540a8bb8390dbcdb18e52cbfda71a9ec.svg"   />
+ are zero-mean, white Gaussian noise processes modeling the measurement noise. Please be noted the <a  class="external-link" href="https://arxiv.org/pdf/1712.00036.pdf">Stereo-MSCKF</a> has ignore the effects of the planet’s rotation. So the IMU measurement could be simplified as,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_22-8-53-version-1-modificationdate-1641737333000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_22-8-53-version-1-modificationdate-1641737333000-api-v2.png" width="350"  />
+    </p>
+    </div>
+    <div class="section section-3" id="src-2084531245_MSCKFforVINSStudy-NominalState.1">
+        <h3 class="heading "><span>Nominal State</span></h3>
+<p   
+>Now let's check the continuous-time system model for nominal state with symbol ^. And the nominal state will not consider any noise. This is also where our IMU motion equation (<u class=" "><strong class=" ">nominal state prediction</strong></u>) comes from.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-14-5-version-1-modificationdate-1641737646000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-14-5-version-1-modificationdate-1641737646000-api-v2.png" width="180"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-15-5-version-1-modificationdate-1641737705000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-15-5-version-1-modificationdate-1641737705000-api-v2.png" width="120"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_22-15-31-version-1-modificationdate-1641737732000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_22-15-31-version-1-modificationdate-1641737732000-api-v2.png" width="500"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-19-34-version-1-modificationdate-1641737974000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-19-34-version-1-modificationdate-1641737974000-api-v2.png" width="100"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-19-51-version-1-modificationdate-1641737991000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-19-51-version-1-modificationdate-1641737991000-api-v2.png" width="120"  />
+    </p>
+<p   
+>where,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-29-44-version-1-modificationdate-1641738585000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-29-44-version-1-modificationdate-1641738585000-api-v2.png" width="120"  />
+    </p>
+<p   
+><img  class="latexmath"  src="images/inline/a6b3d68db8814160ac76929f164905bba972c33278b79f94e745f1961c5756a9.svg" alt="images/inline/a6b3d68db8814160ac76929f164905bba972c33278b79f94e745f1961c5756a9.svg"   />
+, the linear acceleration only considers the static bias without random noise.</p>
+<p   
+><img  class="latexmath"  src="images/inline/1985b15bc1422f898196aad70b533ceacec51f6492b07fbd874131abee946aa9.svg" alt="images/inline/1985b15bc1422f898196aad70b533ceacec51f6492b07fbd874131abee946aa9.svg"   />
+, the angle velocity only consider the earth's rotation and static bias without random noise.</p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">tips</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>    <span style="color: #202124;">
+Coriolis force and centrifugal force have been removed from IMU measurement in the equation about <img  class="latexmath"  src="images/inline/85a27fc760e4b2fb07d48d9944aba6e05cb59edeb3970788faccac83a1edd220.svg" alt="images/inline/85a27fc760e4b2fb07d48d9944aba6e05cb59edeb3970788faccac83a1edd220.svg"   />
+.    </span>
+</p>
+        </div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2084531245_MSCKFforVINSStudy-ErrorStateundercontinuoustime">
+        <h3 class="heading "><span>Error State under continuous time</span></h3>
+<p   
+>    <span style="color: #202124;">
+The linearized continuous time model for the IMU error-state is, it describes the error state derivatives against time (please <u class=" ">ignore the math deduction</u>). From the equation below, we can easily tell the derivates of each error state same as nominal state does. Here is just a compact form and put everything into one equation.    </span>
+</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_22-45-16-version-1-modificationdate-1641739517000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_22-45-16-version-1-modificationdate-1641739517000-api-v2.png" width="350"  />
+    </p>
+<p   
+>where <img  class="latexmath"  src="images/inline/6abc74bf29ce66338d5b4ee3420e3d82b51456cf1c64be3103d6067c283774fa.svg" alt="images/inline/6abc74bf29ce66338d5b4ee3420e3d82b51456cf1c64be3103d6067c283774fa.svg"   />
+ is the system noise. The covariance matrix of <img  class="latexmath"  src="images/inline/6abc74bf29ce66338d5b4ee3420e3d82b51456cf1c64be3103d6067c283774fa.svg" alt="images/inline/6abc74bf29ce66338d5b4ee3420e3d82b51456cf1c64be3103d6067c283774fa.svg"   />
+, <img  class="latexmath"  src="images/inline/ee362392b307c888d1b65f999363229fce0e9a444eaed4956cfefff86d24237a.svg" alt="images/inline/ee362392b307c888d1b65f999363229fce0e9a444eaed4956cfefff86d24237a.svg"   />
+ depends on the IMU noise characteristics and is computed off-line during sensor calibration.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-49-21-version-1-modificationdate-1641739762000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-9_22-49-21-version-1-modificationdate-1641739762000-api-v2.png" width="300"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_22-52-43-version-1-modificationdate-1641739963000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_22-52-43-version-1-modificationdate-1641739963000-api-v2.png" width="500"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_22-53-3-version-1-modificationdate-1641739983000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_22-53-3-version-1-modificationdate-1641739983000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Put it together.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_22-54-13-version-1-modificationdate-1641740054000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_22-54-13-version-1-modificationdate-1641740054000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2084531245_MSCKFforVINSStudy-ErrorStateCovariancePropagationunderDiscrete-time">
+        <h2 class="heading "><span>Error State Covariance Propagation under Discrete-time</span></h2>
+<p   
+>The IMU samples the signals <img  class="latexmath"  src="images/inline/f76bc4c70041aedc0b980d89a31ac0c2944e3901a6e2e294a5e8b3d406f17246.svg" alt="images/inline/f76bc4c70041aedc0b980d89a31ac0c2944e3901a6e2e294a5e8b3d406f17246.svg"   />
+ and <img  class="latexmath"  src="images/inline/3988692ced5c43ac9e0327b17198fc9c642f91410c05a3312c67d24c19d16af7.svg" alt="images/inline/3988692ced5c43ac9e0327b17198fc9c642f91410c05a3312c67d24c19d16af7.svg"   />
+ with a period T. And these measurements are used for state propagation in the EKF. Based on the above     <span style="color: #202124;">
+error state derivatives equation under c    </span>
+ontinuous-time, we can write the equation between two nearby error state under discrete-time, <img  class="latexmath"  src="images/inline/16f3127536cdd66dde3c2e554cb4759f01023bd8dfba6b010c6c1e176455fc9a.svg" alt="images/inline/16f3127536cdd66dde3c2e554cb4759f01023bd8dfba6b010c6c1e176455fc9a.svg"   />
+ is IMU measurement interval. The equation below is the IMU error state under discrete-time.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_23-0-2-version-1-modificationdate-1641740403000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_23-0-2-version-1-modificationdate-1641740403000-api-v2.png" width="600"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_23-0-26-version-1-modificationdate-1641740426000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_23-0-26-version-1-modificationdate-1641740426000-api-v2.png" width="600"  />
+    </p>
+<p   
+>The original paper says the IMU state estimate is propagated using 5th order <a  class="external-link" href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods">Runge-Kutta</a> numerical integration(better than Euler, Mid-point integration) of above     <span style="color: #202124;">
+error state derivatives equation under c    </span>
+ontinuous-time.</p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">tips</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>Remember the error state prediction is meaningless in ESEKF, it will always be reset, we only care about the covariance of error state. Hence we don't see the error state prediction equation in the original paper.</p>
+        </div>
+    </div>
+<p   
+>Here is more details about the math deduction about transformation function <img  class="latexmath"  src="images/inline/6172aa43a8d1694973b88fac44f62edc65fd135856bfb62f401751c01b2a0d5b.svg" alt="images/inline/6172aa43a8d1694973b88fac44f62edc65fd135856bfb62f401751c01b2a0d5b.svg"   />
+(.) of IMU error state from <img  class="latexmath"  src="images/inline/f860bd3d94edd2bb395e0620ba5e2bba106ef45f709cd7b0620e965f67f690e0.svg" alt="images/inline/f860bd3d94edd2bb395e0620ba5e2bba106ef45f709cd7b0620e965f67f690e0.svg"   />
+ to <img  class="latexmath"  src="images/inline/e381f406e58e508e77d847f3b28b53bd6cbd70250dcdeb866cb795195ea23776.svg" alt="images/inline/e381f406e58e508e77d847f3b28b53bd6cbd70250dcdeb866cb795195ea23776.svg"   />
+. The internet also says it can be derived from the transformation between Z domain and S domain <img  class="latexmath"  src="images/inline/87876feb10f3c4b4d94716bfc8d11da177a251676b2f69cdbb224a7aa399780b.svg" alt="images/inline/87876feb10f3c4b4d94716bfc8d11da177a251676b2f69cdbb224a7aa399780b.svg"   />
+, then do the Taylor     <span style="color: #000000;">
+series    </span>
+    <span style="color: #000000;">
+     </span>
+expansion.</p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">math details about Φ function</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+> The equation comes from the page of vins-mono Cui Huaun. </p>
+<p   
+>we've already known,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-17_10-22-35-version-1-modificationdate-1642386156000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-17_10-22-35-version-1-modificationdate-1642386156000-api-v2.png" width="200"  />
+    </p>
+<p   
+>we've also known,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-17_10-23-37-version-1-modificationdate-1642386217000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-17_10-23-37-version-1-modificationdate-1642386217000-api-v2.png" width="200"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-17_10-25-17-version-1-modificationdate-1642386317000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-17_10-25-17-version-1-modificationdate-1642386317000-api-v2.png" width="200"  />
+    </p>
+<p   
+>Then we have,</p>
+<p   
+><img  class="latexmath"  src="images/inline/fa2d7c6a86dc7359b92805323bf6d0ba943136cdd860780d6db0b4da8d210425.svg" alt="images/inline/fa2d7c6a86dc7359b92805323bf6d0ba943136cdd860780d6db0b4da8d210425.svg"   />
+    </p>
+<p   
+>Hence the function <img  class="latexmath"  src="images/inline/6172aa43a8d1694973b88fac44f62edc65fd135856bfb62f401751c01b2a0d5b.svg" alt="images/inline/6172aa43a8d1694973b88fac44f62edc65fd135856bfb62f401751c01b2a0d5b.svg"   />
+ is,</p>
+<p   
+><img  class="latexmath"  src="images/inline/adb314b983e2c5222f7bf659babab1e26e80bae18c3ce4c7943769086819610c.svg" alt="images/inline/adb314b983e2c5222f7bf659babab1e26e80bae18c3ce4c7943769086819610c.svg"   />
+    </p>
+        </div>
+    </div>
+<p   
+>Now let's see how to propagate the error state covariance matrix, this time it will involve the N camera pose →     <span style="color: #ff0000;">
+    <span style="color: #000000;">
+the new function F of complete error state in MSCKF will be     <span style="color: #ff0000;">
+more complicated    </span>
+, not the above F of IMU error state any more    </span>
+     </span>
+.</p>
+<p   
+>Given the covariance matrix at time k,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_23-16-16-version-1-modificationdate-1641741376000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_23-16-16-version-1-modificationdate-1641741376000-api-v2.png" width="400"  />
+    </p>
+<p   
+>where</p>
+<ul class=" "><li class=" "><p   
+><img  class="latexmath"  src="images/inline/436b77e3c748ed2c737ca4cffa75a6ba1c5b3a64ddb37552519642d4551a4936.svg" alt="images/inline/436b77e3c748ed2c737ca4cffa75a6ba1c5b3a64ddb37552519642d4551a4936.svg"   />
+ is the 15x15 covariance matrix of the evolving IMU state</p>
+</li><li class=" "><p   
+><img  class="latexmath"  src="images/inline/473d1df43d9fe31c39f4dd275d55773fb826a62627000ce13f837384cf7a6ef5.svg" alt="images/inline/473d1df43d9fe31c39f4dd275d55773fb826a62627000ce13f837384cf7a6ef5.svg"   />
+ is the 6Nx6N covariance matrix of the camera pose estimation</p>
+</li><li class=" "><p   
+><img  class="latexmath"  src="images/inline/a9d09c8c8fef0bdd3ee31be8cbb932e564b1f3c7b948fba255a55ccc6d169aa6.svg" alt="images/inline/a9d09c8c8fef0bdd3ee31be8cbb932e564b1f3c7b948fba255a55ccc6d169aa6.svg"   />
+ is the correlation between the errors in the IMU state and the camera pose estimates.</p>
+</li></ul><p   
+>Next the covariance matrix of the propagated state <img  class="latexmath"  src="images/inline/7cd57e8579c4515254a2e700890167b466e3e93df1f3254e6a9e602034fb2db5.svg" alt="images/inline/7cd57e8579c4515254a2e700890167b466e3e93df1f3254e6a9e602034fb2db5.svg"   />
+ will be computed by numerical integration of the<u class=" "><strong class=" "> Lyapunov equation</strong></u> below,</p>
+<p   
+>    <span style="color: #202124;">
+<u class=" "><strong class=" ">continuous time equation</strong></u>    </span>
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-17_13-45-4-version-1-modificationdate-1642398304000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-17_13-45-4-version-1-modificationdate-1642398304000-api-v2.png" width="300"  />
+    </p>
+<p   
+><u class=" "><strong class=" ">discrete time equation</strong></u></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-17_13-48-2-version-1-modificationdate-1642398486000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-17_13-48-2-version-1-modificationdate-1642398486000-api-v2.png" width="350"  />
+    </p>
+<p   
+>Hence we've got the covariance matrix of time k+1 is,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-9_23-17-55-version-1-modificationdate-1641741476000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-9_23-17-55-version-1-modificationdate-1641741476000-api-v2.png" width="600"  />
+    </p>
+<p   
+>Here just plot the block view of the covariance matrix from different time,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-17_14-16-52-version-1-modificationdate-1642400212000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-17_14-16-52-version-1-modificationdate-1642400212000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2084531245_MSCKFforVINSStudy-CameraStateAugmentation">
+        <h2 class="heading "><span>Camera State Augmentation</span></h2>
+<p   
+><u class=" "><strong class=" ">What is state augmentation</strong></u></p>
+<p   
+>The MSCKF will estimate the error state of IMU and N camera pose at the same time. Unlike other keyframe based measurement update method, MSCKF will process each incoming image as followed,</p>
+<ul class=" "><li class=" "><p   
+>camera pose estimation → IMU prediction(propagation) + calibration matrix (camera – IMU)</p>
+</li><li class=" "><p   
+>insert the camera pose into MSCKF error state vector</p>
+</li><li class=" "><p   
+>insert the camera pose covariance component into MSCKF error state covariance matrix.</p>
+</li></ul><p   
+>The step about inserting new camera information into the MSCKF state and covariance matrix is called <u class=" "><strong class=" ">state augmentation</strong></u>(to insert new camera pose into sliding window). As for the sliding window update/margin policy will be discussed later, the number of camera pose (sliding window size) should be a fixed number. And the ESEKF will reset the error state at each cycle. We should be more focus on how to compute the covariance matrix when a new image comes.</p>
+<p   
+>Before we further look at the Jacobian matrix of error state to predict the covariance matrix, we should first figure out the error state equation when a new image comes.</p>
+<p   
+><u class=" "><strong class=" ">Error state augmentation</strong></u></p>
+<p   
+>Let's assume the N+1 image is coming</p>
+<ul class=" "><li class=" "><p   
+>the nominal state of the new camera pose, please be noted the <img  class="latexmath"  src="images/inline/4a8a997a3fd7e187cc0e5e408f59ae62b0824e00b380c019d6ad314a52be351f.svg" alt="images/inline/4a8a997a3fd7e187cc0e5e408f59ae62b0824e00b380c019d6ad314a52be351f.svg"   />
+ and <img  class="latexmath"  src="images/inline/add588ea19679bbff8a12e451a89ec75e2031399234a62de25380691e2d3f856.svg" alt="images/inline/add588ea19679bbff8a12e451a89ec75e2031399234a62de25380691e2d3f856.svg"   />
+will not contain the new camera pose, just the prediction of IMU.</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-17_16-5-58-version-1-modificationdate-1642406759000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-17_16-5-58-version-1-modificationdate-1642406759000-api-v2.png" width="450"  />
+    </p>
+<ul class=" "><li class=" "><p   
+>true state of the new camera pose, tips: true_state = nomial_state + error_state</p>
+</li></ul><p   
+>The green part will describe the error state of (N+1)th camera pose</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-17_16-19-21-version-1-modificationdate-1642407561000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-17_16-19-21-version-1-modificationdate-1642407561000-api-v2.png" width="500"  />
+    </p>
+<p   
+>Then the error state of augmentation is,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-17_16-40-50-version-1-modificationdate-1642408851000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-17_16-40-50-version-1-modificationdate-1642408851000-api-v2.png" width="200"  />
+    </p>
+<p   
+>The orange part will describe the error state of the previous IMU error state (used for the propagation/prediction of N+1 camera pose?)</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-17_16-23-22-version-1-modificationdate-1642407802000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-17_16-23-22-version-1-modificationdate-1642407802000-api-v2.png" width="500"  />
+    </p>
+<ul class=" "><li class=" "><p   
+>the relationship between augmented camera pose and old error state of IMU</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-17_16-52-58-version-1-modificationdate-1642409580000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-17_16-52-58-version-1-modificationdate-1642409580000-api-v2.png" width="500"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-17_16-53-33-version-1-modificationdate-1642409615000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-17_16-53-33-version-1-modificationdate-1642409615000-api-v2.png" width="600"  />
+    </p>
+<p   
+><u class=" "><strong class=" ">Error State Covariance Matrix Augmentation</strong></u></p>
+<p   
+>Now let's check how to compute the error state covariance matrix after a new image is coming. As the figure below, the covariance matrix will add one row and one column due to the error state augmentation operation.<u class=" "> The rest of old covariance matrix shall be the same</u>.<br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-19_9-6-2-version-1-modificationdate-1642554363000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-19_9-6-2-version-1-modificationdate-1642554363000-api-v2.png"  height="400" />
+    </p>
+<p   
+>As for the augment part (see bottom right red block), if we ignore the process noise, the covariance matrix can be as followed, the error state <img  class="latexmath"  src="images/inline/325484977f7c01d2abc8a4e2cfc1eadf7626d7af0b0ae093f0b24807a7d3c430.svg" alt="images/inline/325484977f7c01d2abc8a4e2cfc1eadf7626d7af0b0ae093f0b24807a7d3c430.svg"   />
+ is 15+6xN dimension.</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-18_9-25-12-version-1-modificationdate-1642469113000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-18_9-25-12-version-1-modificationdate-1642469113000-api-v2.png" width="250"  />
+ → <img  class="latexmath"  src="images/inline/bcdc1025eccc4b61333aa61e15afbc950084dadf0c3cf5fb8490ed62e2605052.svg" alt="images/inline/bcdc1025eccc4b61333aa61e15afbc950084dadf0c3cf5fb8490ed62e2605052.svg"   />
+ is 6x6.</p>
+<p   
+>The Jacobian matrix is between new camera pose and old error state,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-19_9-51-54-version-1-modificationdate-1642557115000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-19_9-51-54-version-1-modificationdate-1642557115000-api-v2.png" width="700"  />
+    </p>
+<p   
+>If we put everything together, we will have the following,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-18_23-9-25-version-1-modificationdate-1642518566000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-18_23-9-25-version-1-modificationdate-1642518566000-api-v2.png" width="500"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-18_23-17-42-version-1-modificationdate-1642519063000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-18_23-17-42-version-1-modificationdate-1642519063000-api-v2.png" width="500"  />
+    </p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">tips</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>please be noted the dimension of <img  class="latexmath"  src="images/inline/6bb14f9a96c47e659bba244a270bb8b13cc6d6232a19773d9286e511dd258260.svg" alt="images/inline/6bb14f9a96c47e659bba244a270bb8b13cc6d6232a19773d9286e511dd258260.svg"   />
+ is (6N+15)*(6N+15). It just keep the old covariance matrix not changed. Then the dimension of <img  class="latexmath"  src="images/inline/b4e62fcd7892b34f60f6221a366b76b0e587c48d2b12b60903041e5bf628f525.svg" alt="images/inline/b4e62fcd7892b34f60f6221a366b76b0e587c48d2b12b60903041e5bf628f525.svg"   />
+ is (6x(    <span style="color: #ff0000;">
+<strong class=" ">N+1</strong>    </span>
+)+15)x(6N+15).</p>
+        </div>
+    </div>
+<p   
+>From the equation above, the covariance matrix of error state will add additional 6 rows and 6 columns data (see red bounding box) when a new image is coming. The original covariance matrix shall not be changed.</p>
+<p   
+>In MSCKF, the IMU propagation only changes IMU state (covariance) and the camera pose will not be affected. However, it will use the visual observation to correct the camera pose in the measurement update step. These visual measurement will not change the IMU state neither. So the state augmentation will be the bridge between camera and IMU. The covariance matrix <img  class="latexmath"  src="images/inline/9a0f627d5ae6ff0531cd3636e532b3c971878f443585a78bfecbfa9bbcdf9fb5.svg" alt="images/inline/9a0f627d5ae6ff0531cd3636e532b3c971878f443585a78bfecbfa9bbcdf9fb5.svg"   />
+ will be used to describe the relationship between camera and IMU. Hence each time, the camera pose got updated and then the IMU state will be updated implicitly. This is the chain about how the visual information will affect the IMU state.</p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2084531245_MSCKFforVINSStudy-MeasurementUpdate">
+        <h1 class="heading "><span>Measurement Update</span></h1>
+    <div class="section section-2" id="src-2084531245_MSCKFforVINSStudy-MeasurementUpdatePolicyandSlidingWindow">
+        <h2 class="heading "><span>Measurement Update Policy and Sliding Window</span></h2>
+<p   
+><u class=" "><strong class=" ">camera pose augmentation policy</strong></u></p>
+<ul class=" "><li class=" "><p   
+>trigger timing</p>
+<ul class=" "><li class=" "><p   
+>after IMU propagation and before measurement update</p>
+</li></ul></li><li class=" "><p   
+>trigger condition</p>
+<ul class=" "><li class=" "><p   
+>every new image comes</p>
+</li></ul></li><li class=" "><p   
+>operation</p>
+<ul class=" "><li class=" "><p   
+>compute the new camera pose with IMU propagation and insert it into error state vector.</p>
+</li><li class=" "><p   
+>compute the new covariance matrix and add new "6 row and 6 columns" of additional covariance data.</p>
+</li></ul></li></ul><p   
+><u class=" "><strong class=" ">camera pose removal policy</strong></u></p>
+<ul class=" "><li class=" "><p   
+>trigger timing</p>
+<ul class=" "><li class=" "><p   
+>after measurement update</p>
+</li></ul></li><li class=" "><p   
+>trigger condition</p>
+<ul class=" "><li class=" "><p   
+>camera pose number is larger than limits,</p>
+</li></ul></li><li class=" "><p   
+>operation</p>
+<ul class=" "><li class=" "><p   
+>remove the eldest camera pose in state vector and corresponding covariance matrix component→ normal case</p>
+</li></ul></li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>remove the latest camera pose in state vector and corresponding covariance matrix component→ not enough movement</p>
+</li><li class=" "><p   
+>original paper method → to be checked in code.</p>
+<ul class=" "><li class=" "><p   
+>it will make the 1/3 camera pose evenly spaced in time,</p>
+</li><li class=" "><p   
+>always keep the first camera pose to get larger baseline</p>
+</li><li class=" "><p   
+>remove the second eldest camera pose or latest camera pose</p>
+</li></ul></li></ul></li></ul><p   
+><u class=" "><strong class=" ">MSCKF measurement update timing</strong></u></p>
+<ul class=" "><li class=" "><p   
+>When a feature that has been tracked in a number of images is no longer detected → This case occurs most often, as features move outside the camera’s field of view</p>
+</li><li class=" "><p   
+>When maximum allowable number of camera poses are reached, before remove the camera pose, all the feature observations that occurred at the corresponding time instants are used to correct the prediction.</p>
+</li></ul><p   
+><u class=" "><strong class=" ">Other discussion from the Internet</strong></u></p>
+<p   
+>Q: Which feature will be used in measurement update and when?</p>
+<p   
+>A:</p>
+<p   
+>The measurement update of MSCKF is based on the assumption, all the feature 3D position are already known. And these 3D position comes from the triangulation estimation. The accuracy of triangulation will have big impact on the the accuracy of measurement model. Here are some factors about the accuracy of triangulation,</p>
+<ul class=" "><li class=" "><p   
+>the number of feature points/observations</p>
+<ul class=" "><li class=" "><p   
+>ideally, more observations will improve the accuracy of triangulation. In order to get more feature points, the MSCKF will only execute the measurement update after the feature tracking is lost. Here, "lost track of feature points" mean there won't be any new observation of that landmark any more. This landmark to be triangulation shall be seen by multiple cameras.</p>
+</li></ul></li><li class=" "><p   
+>the disparity of feature points</p>
+<ul class=" "><li class=" "><p   
+>ideally, bigger disparity will improve the accuracy of triangulation. However, the disparity/p    <span style="color: #000000;">
+arallax for mono-camera depends on the motion of camera. Hence, the feature points from less motion will not be triangulated and also not be used in measurement update.    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #000000;">
+the accuracy of camera pose    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+the accuracy of camera pose and triangulation are depended each other.    </span>
+</p>
+</li></ul></li></ul>    </div>
+    <div class="section section-2" id="src-2084531245_MSCKFforVINSStudy-CameraPoseConstraintwithVisualFeature">
+        <h2 class="heading "><span>Camera Pose Constraint with Visual Feature</span></h2>
+<p   
+>To derive our measurement model, we are motivated by the fact that viewing a static feature from multiple camera poses results in constraints involving all these poses. The camera observations are grouped per tracked feature,<br/>rather than per camera pose where the measurements were recorded. All the measurements of the same 3D point are used to define a constraint equation relating all the camera poses at which the measurements occurred. This is achieved without including the feature position in the filter state vector.</p>
+<p   
+>Let's say there is a single landmark <img  class="latexmath"  src="images/inline/59577c1106ed338df7b0d612b96ed880db26923a261dfd58bfd11d6ae5a1ae38.svg" alt="images/inline/59577c1106ed338df7b0d612b96ed880db26923a261dfd58bfd11d6ae5a1ae38.svg"   />
+ has been seen from camera i with pose <img  class="latexmath"  src="images/inline/c8f68f8d1599708f6a9d5eb55b19848a7338eabd94c0405cc8136a226a8de7c6.svg" alt="images/inline/c8f68f8d1599708f6a9d5eb55b19848a7338eabd94c0405cc8136a226a8de7c6.svg"   />
+, then the observation of the feature is described by the model,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-19_23-5-5-version-1-modificationdate-1642604705000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-19_23-5-5-version-1-modificationdate-1642604705000-api-v2.png" width="250"  />
+    </p>
+<p   
+>The feature position expressed in camera frame,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-19_23-5-44-version-1-modificationdate-1642604745000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-19_23-5-44-version-1-modificationdate-1642604745000-api-v2.png" width="400"  />
+    </p>
+<p   
+>where</p>
+<ul class=" "><li class=" "><p   
+><img  class="latexmath"  src="images/inline/4c090074d1b0cc65a8d02bac9c77a28e2f6f745c748516016afb975c3362879e.svg" alt="images/inline/4c090074d1b0cc65a8d02bac9c77a28e2f6f745c748516016afb975c3362879e.svg"   />
+ is the 2x1 image noise vector</p>
+</li><li class=" "><p   
+>image noise covariance matrix <img  class="latexmath"  src="images/inline/e75d4053452b53bc94b4fafda56d8f425554403e5426a07beb2ba50382ffbe15.svg" alt="images/inline/e75d4053452b53bc94b4fafda56d8f425554403e5426a07beb2ba50382ffbe15.svg"   />
+</p>
+</li><li class=" "><p   
+><img  class="latexmath"  src="images/inline/eb38563dcbc4036426927d04339cad1fa9d1ce83a59c5d441cb1748a53fc2987.svg" alt="images/inline/eb38563dcbc4036426927d04339cad1fa9d1ce83a59c5d441cb1748a53fc2987.svg"   />
+ is the 3D feature position in the global frame which is firstly computed via non-linear triangulation.</p>
+</li></ul><p   
+>Once the estimate of the feature position is obtained, we compute the measurement residual,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-19_23-14-21-version-1-modificationdate-1642605261000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-19_23-14-21-version-1-modificationdate-1642605261000-api-v2.png" width="150"  />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-19_23-14-44-version-1-modificationdate-1642605284000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-19_23-14-44-version-1-modificationdate-1642605284000-api-v2.png" width="450"  />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2084531245_MSCKFforVINSStudy-VisualResidualJacobianMatrix">
+        <h2 class="heading "><span>Visual Residual Jacobian Matrix</span></h2>
+<p   
+>Let's get the Jacobian matrix between reprojection error and ( error state vector + j-th landmark). Based on the Gauss-Newton method, it is linearizing about the reprojection error as,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-19_23-19-48-version-1-modificationdate-1642605588000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-19_23-19-48-version-1-modificationdate-1642605588000-api-v2.png" width="200"  />
+    </p>
+<p   
+>Inside reprojection residual function <img  class="latexmath"  src="images/inline/4547d6d0cd1b08c4f653358b164c37dc19473edcd9d2c0fb25c9c62bf9304d6a.svg" alt="images/inline/4547d6d0cd1b08c4f653358b164c37dc19473edcd9d2c0fb25c9c62bf9304d6a.svg"   />
+, the camera pose and 3D feature position in world are estimated which are unknown. Hence, we can make the linearizing of visual residual function at the Zero point of error term (error camera pose(inside <img  class="latexmath"  src="images/inline/325484977f7c01d2abc8a4e2cfc1eadf7626d7af0b0ae093f0b24807a7d3c430.svg" alt="images/inline/325484977f7c01d2abc8a4e2cfc1eadf7626d7af0b0ae093f0b24807a7d3c430.svg"   />
+), error feature position), then the reprojection error equation can be approximated as,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-19_23-21-56-version-1-modificationdate-1642605716000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-19_23-21-56-version-1-modificationdate-1642605716000-api-v2.png" width="500"  />
+    </p>
+<p   
+>where</p>
+<ul class=" "><li class=" "><p   
+><img  class="latexmath"  src="images/inline/94b1b964297072001c9fd34e6f74288deb349132c3e6827c3209dfc4fc47b5c2.svg" alt="images/inline/94b1b964297072001c9fd34e6f74288deb349132c3e6827c3209dfc4fc47b5c2.svg"   />
+ and <img  class="latexmath"  src="images/inline/6515cdd001d111e98b4063f5d4468581667ff9c37804eac8ed9079fcff67e77d.svg" alt="images/inline/6515cdd001d111e98b4063f5d4468581667ff9c37804eac8ed9079fcff67e77d.svg"   />
+ are the Jacobians of the measurement <img  class="latexmath"  src="images/inline/e3605dd3cdda3ea6a4bc9327689ef3ad6c225e5c09f4bfb1e45c66d7f91af1e4.svg" alt="images/inline/e3605dd3cdda3ea6a4bc9327689ef3ad6c225e5c09f4bfb1e45c66d7f91af1e4.svg"   />
+ with respect to the state and the feature position.</p>
+</li><li class=" "><p   
+><img  class="latexmath"  src="images/inline/c5c4d13df742eeea86cdbfda273e4317a74ba4a43519098e48dd875d7a655d23.svg" alt="images/inline/c5c4d13df742eeea86cdbfda273e4317a74ba4a43519098e48dd875d7a655d23.svg"   />
+ is the error in the position estimation of <img  class="latexmath"  src="images/inline/59577c1106ed338df7b0d612b96ed880db26923a261dfd58bfd11d6ae5a1ae38.svg" alt="images/inline/59577c1106ed338df7b0d612b96ed880db26923a261dfd58bfd11d6ae5a1ae38.svg"   />
+</p>
+</li></ul><p   
+>Based on the chain rule, the Jacobian of error state is,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_13-17-29-version-1-modificationdate-1642655849000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_13-17-29-version-1-modificationdate-1642655849000-api-v2.png" width="500"  />
+    </p>
+<p   
+>where the <img  class="latexmath"  src="images/inline/df0b7887aa607944f3f25c35182ed1cd484eacc2bfa2f1a4336f4f98c324cd3c.svg" alt="images/inline/df0b7887aa607944f3f25c35182ed1cd484eacc2bfa2f1a4336f4f98c324cd3c.svg"   />
+ is the Jacobian of reprojection residual respect with landmark under camera frame,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-20_13-32-35-version-1-modificationdate-1642656756000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-20_13-32-35-version-1-modificationdate-1642656756000-api-v2.png" width="200"  />
+    </p>
+<p   
+>We can plot the value of this Jacobian matrix <img  class="latexmath"  src="images/inline/16c6c8c515cf5ef678a3375343f364f789c2d7131b2edc9dee86bb72bf281604.svg" alt="images/inline/16c6c8c515cf5ef678a3375343f364f789c2d7131b2edc9dee86bb72bf281604.svg"   />
+ about reprojection residual function, the red block in the second row means there is non-zero value because the j-th feature has been observed by i-th camera. The rest is all zero.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_13-21-25-version-1-modificationdate-1642656086000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_13-21-25-version-1-modificationdate-1642656086000-api-v2.png" width="500"  />
+    </p>
+<p   
+>The same way for Jacobian of landmark,</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-20_13-27-40-version-1-modificationdate-1642656460000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-20_13-27-40-version-1-modificationdate-1642656460000-api-v2.png" width="300"  />
+    </p>
+<p   
+>If the landmark/feature j has been seen by M camera, we can stack their approximated reprojection residual together,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_13-38-36-version-1-modificationdate-1642657116000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_13-38-36-version-1-modificationdate-1642657116000-api-v2.png" width="600"  />
+    </p>
+<p   
+>We can plot the stacked Jacobian matrix as below, all the red block are the camera which could see the landmark j.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_13-41-9-version-1-modificationdate-1642657270000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_13-41-9-version-1-modificationdate-1642657270000-api-v2.png" width="550"  />
+    </p>
+<p   
+>If there are three landmarks can be seen by several camera, then the stacked Jacobian matrix can be,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_13-49-26-version-1-modificationdate-1642657766000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_13-49-26-version-1-modificationdate-1642657766000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2084531245_MSCKFforVINSStudy-NullSpaceProjection">
+        <h2 class="heading "><span>Null Space Projection</span></h2>
+<p   
+>Since the state estimate X is used to compute the feature position estimate, the error <img  class="latexmath"  src="images/inline/c5c4d13df742eeea86cdbfda273e4317a74ba4a43519098e48dd875d7a655d23.svg" alt="images/inline/c5c4d13df742eeea86cdbfda273e4317a74ba4a43519098e48dd875d7a655d23.svg"   />
+ is correlated with the error <img  class="latexmath"  src="images/inline/325484977f7c01d2abc8a4e2cfc1eadf7626d7af0b0ae093f0b24807a7d3c430.svg" alt="images/inline/325484977f7c01d2abc8a4e2cfc1eadf7626d7af0b0ae093f0b24807a7d3c430.svg"   />
+. Thus, the residual <img  class="latexmath"  src="images/inline/0c00614ba7d7a642cf0376b4d8d452c7700d8be4e5dab671860ae5b8d4982f4c.svg" alt="images/inline/0c00614ba7d7a642cf0376b4d8d452c7700d8be4e5dab671860ae5b8d4982f4c.svg"   />
+ cannot be directly applied for measurement update in the EKF. To overcome this problem, we want to eliminate the error term about feature points. We project the original residual <img  class="latexmath"  src="images/inline/6efee0ba09b4b1bad342e2d58edd1ee06f0f6e2e2d5310ed1b878f2c3d1d46cf.svg" alt="images/inline/6efee0ba09b4b1bad342e2d58edd1ee06f0f6e2e2d5310ed1b878f2c3d1d46cf.svg"   />
+ into the left null space of <img  class="latexmath"  src="images/inline/2599c7f2fa9d8d68b74f8bc0c8e5c87d48df40787559fa2d1c8e27383ccc54a4.svg" alt="images/inline/2599c7f2fa9d8d68b74f8bc0c8e5c87d48df40787559fa2d1c8e27383ccc54a4.svg"   />
+ as new residual <img  class="latexmath"  src="images/inline/095d82ca3a1a300e700316071d209a26a9f81ae38fa7484919265033e551ea4b.svg" alt="images/inline/095d82ca3a1a300e700316071d209a26a9f81ae38fa7484919265033e551ea4b.svg"   />
+.</p>
+    <div  class="confbox admonition admonition-info">
+                    <p class="title">details about nullspace</p>
+                            <span class="admonition-icon confluence-information-macro-icon"></span>
+                <div class="admonition-body">
+<p   
+>Assume there are three variables <img  class="latexmath"  src="images/inline/01684bd3400e7fec8efd4a1bff281868ae47872a78ff128560cfdccea892a4a9.svg" alt="images/inline/01684bd3400e7fec8efd4a1bff281868ae47872a78ff128560cfdccea892a4a9.svg"   />
+, <img  class="latexmath"  src="images/inline/e1964683dfa874f6eeada28cf0c3b035114ae227c3d41501dc154abe7678ec72.svg" alt="images/inline/e1964683dfa874f6eeada28cf0c3b035114ae227c3d41501dc154abe7678ec72.svg"   />
+ and Y with equation <img  class="latexmath"  src="images/inline/8b4bb6eead41ac5444906d1b9b9f7e5e1ce5ccf27fa3a512f79af1f94f8e4fc2.svg" alt="images/inline/8b4bb6eead41ac5444906d1b9b9f7e5e1ce5ccf27fa3a512f79af1f94f8e4fc2.svg"   />
+. Now, we only care about X1 and how to deal with the equation to remove X2?</p>
+<ul class=" "><li class=" "><p   
+>if <img  class="latexmath"  src="images/inline/01684bd3400e7fec8efd4a1bff281868ae47872a78ff128560cfdccea892a4a9.svg" alt="images/inline/01684bd3400e7fec8efd4a1bff281868ae47872a78ff128560cfdccea892a4a9.svg"   />
+ and <img  class="latexmath"  src="images/inline/e1964683dfa874f6eeada28cf0c3b035114ae227c3d41501dc154abe7678ec72.svg" alt="images/inline/e1964683dfa874f6eeada28cf0c3b035114ae227c3d41501dc154abe7678ec72.svg"   />
+ are independent, just compute the derivative about <img  class="latexmath"  src="images/inline/01684bd3400e7fec8efd4a1bff281868ae47872a78ff128560cfdccea892a4a9.svg" alt="images/inline/01684bd3400e7fec8efd4a1bff281868ae47872a78ff128560cfdccea892a4a9.svg"   />
+ over function Y.</p>
+</li><li class=" "><p   
+>if <img  class="latexmath"  src="images/inline/01684bd3400e7fec8efd4a1bff281868ae47872a78ff128560cfdccea892a4a9.svg" alt="images/inline/01684bd3400e7fec8efd4a1bff281868ae47872a78ff128560cfdccea892a4a9.svg"   />
+ and <img  class="latexmath"  src="images/inline/e1964683dfa874f6eeada28cf0c3b035114ae227c3d41501dc154abe7678ec72.svg" alt="images/inline/e1964683dfa874f6eeada28cf0c3b035114ae227c3d41501dc154abe7678ec72.svg"   />
+ are correlated, we can project Y into the null space of <img  class="latexmath"  src="images/inline/b89dd3c05fe7cbc4de4e99ad8b72c2f4030bb5b7ad1621f8529dec73bc887234.svg" alt="images/inline/b89dd3c05fe7cbc4de4e99ad8b72c2f4030bb5b7ad1621f8529dec73bc887234.svg"   />
+</p>
+<ul class=" "><li class=" "><p   
+>we will find a normalized/unitary matrix A which fulfill the equation <img  class="latexmath"  src="images/inline/d8eabe33bdfd74c6df34e5033cb963b22c9e4df538d29c991b6e68be4d7aa3d8.svg" alt="images/inline/d8eabe33bdfd74c6df34e5033cb963b22c9e4df538d29c991b6e68be4d7aa3d8.svg"   />
+</p>
+</li><li class=" "><p   
+>we apply the matrix <img  class="latexmath"  src="images/inline/1021784424c75458d57e3cdb064764ba9ba367a85927910e240aaf22ffe818c4.svg" alt="images/inline/1021784424c75458d57e3cdb064764ba9ba367a85927910e240aaf22ffe818c4.svg"   />
+ on both side, we have <img  class="latexmath"  src="images/inline/cedb839e55c44256344db8ed3daa2428b2b43f53330c82eee1d44506b616ca9f.svg" alt="images/inline/cedb839e55c44256344db8ed3daa2428b2b43f53330c82eee1d44506b616ca9f.svg"   />
+ is independent of <img  class="latexmath"  src="images/inline/e1964683dfa874f6eeada28cf0c3b035114ae227c3d41501dc154abe7678ec72.svg" alt="images/inline/e1964683dfa874f6eeada28cf0c3b035114ae227c3d41501dc154abe7678ec72.svg"   />
+</p>
+</li></ul></li></ul><p   
+>The unitary matrix A can be computed with "<a  class="external-link" href="https://zhuanlan.zhihu.com/p/136551885">Given Rotation</a>" method.</p>
+        </div>
+    </div>
+<p   
+>If we let A denote the unitary matrix (<img  class="latexmath"  src="images/inline/b05ec5daf9cb27d9f93f132f0e9983f3de8ea1dc89d50ce6e4045a9500802c6a.svg" alt="images/inline/b05ec5daf9cb27d9f93f132f0e9983f3de8ea1dc89d50ce6e4045a9500802c6a.svg"   />
+) whose columns form the basis of the left null space of <img  class="latexmath"  src="images/inline/e87bcd79f20b85134300947d0e3d132caa85ff7174956e13cb0f5bfbac4ee346.svg" alt="images/inline/e87bcd79f20b85134300947d0e3d132caa85ff7174956e13cb0f5bfbac4ee346.svg"   />
+, we obtain,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_14-45-11-version-1-modificationdate-1642661111000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_14-45-11-version-1-modificationdate-1642661111000-api-v2.png" width="600"  />
+    </p>
+<p   
+>This expresses all the available information that the measurements <img  class="latexmath"  src="images/inline/e3605dd3cdda3ea6a4bc9327689ef3ad6c225e5c09f4bfb1e45c66d7f91af1e4.svg" alt="images/inline/e3605dd3cdda3ea6a4bc9327689ef3ad6c225e5c09f4bfb1e45c66d7f91af1e4.svg"   />
+ provided for the camera pose state (no feature position any more), and thus the resulting EKF update is optimal, except for the inaccuracies caused by linearization. Additionally, since the matrix A is unitary, the covariance matrix of the noise vector <img  class="latexmath"  src="images/inline/191a2a99370d2832dafaea60b527e7a50d55aa44cb9489f258ab3f7cdaa15120.svg" alt="images/inline/191a2a99370d2832dafaea60b527e7a50d55aa44cb9489f258ab3f7cdaa15120.svg"   />
+ is given by,</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_15-12-44-version-1-modificationdate-1642662765000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_15-12-44-version-1-modificationdate-1642662765000-api-v2.png" width="400"  />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2084531245_MSCKFforVINSStudy-VisualMeasurementUpdateandKalmanGain">
+        <h2 class="heading "><span>Visual Measurement Update and Kalman Gain</span></h2>
+<p   
+><u class=" "><strong class=" ">QR Decomposition of Jacobian Matrix</strong></u></p>
+<p   
+>Usually the size of Matrix <img  class="latexmath"  src="images/inline/19e8305739b9ac5a599f1c715e477e77fbe1ab10e1dd11b0529e70fdf15e9644.svg" alt="images/inline/19e8305739b9ac5a599f1c715e477e77fbe1ab10e1dd11b0529e70fdf15e9644.svg"   />
+ is large, in order to reduce the computation effort, we'll execute the QR decomposition over it.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_22-36-38-version-1-modificationdate-1642689399000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_22-36-38-version-1-modificationdate-1642689399000-api-v2.png" width="350"  />
+    </p>
+<p   
+>where <img  class="latexmath"  src="images/inline/7669b74838eb911814c00a1b8bca5f4dea4c5bd2fbf838df909e42f661084a94.svg" alt="images/inline/7669b74838eb911814c00a1b8bca5f4dea4c5bd2fbf838df909e42f661084a94.svg"   />
+ and <img  class="latexmath"  src="images/inline/53b65bc78447c0c514add7477edfcee4f60c22812b38cb5f8aaf850e7aed49f4.svg" alt="images/inline/53b65bc78447c0c514add7477edfcee4f60c22812b38cb5f8aaf850e7aed49f4.svg"   />
+ are o    <span style="color: #000000;">
+rthogonal matrix, <img  class="latexmath"  src="images/inline/eb75605de7650a0afdc94fad5433870af2a7135b635ed2dffb53946ecd4de822.svg" alt="images/inline/eb75605de7650a0afdc94fad5433870af2a7135b635ed2dffb53946ecd4de822.svg"   />
+ is     <span style="color: #000000;">
+upper triangular matrix and <img  class="latexmath"  src="images/inline/88887b3d2718fc7c8fde5e114994dd600cb5ab348a48dff7daab80fdf715ee1b.svg" alt="images/inline/88887b3d2718fc7c8fde5e114994dd600cb5ab348a48dff7daab80fdf715ee1b.svg"   />
+.    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+Then we can rewrite the residual equation of null space as,    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_22-43-22-version-1-modificationdate-1642689802000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_22-43-22-version-1-modificationdate-1642689802000-api-v2.png" width="350"  />
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+If we ignore the noise term <img  class="latexmath"  src="images/inline/4fc9f12ac36e529e37dba53a9b0f11e53753d766d5b73bdf889f1796654c31f9.svg" alt="images/inline/4fc9f12ac36e529e37dba53a9b0f11e53753d766d5b73bdf889f1796654c31f9.svg"   />
+, the final measurement equation could be,    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_22-45-20-version-1-modificationdate-1642689921000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_22-45-20-version-1-modificationdate-1642689921000-api-v2.png" width="350"  />
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+The covariance matrix of <img  class="latexmath"  src="images/inline/16c91565f2ec3ec78ef78a28a75e70d6d6458a3a63ceca14b9f7c3f8c7d3a3c1.svg" alt="images/inline/16c91565f2ec3ec78ef78a28a75e70d6d6458a3a63ceca14b9f7c3f8c7d3a3c1.svg"   />
+ (also the measurement noise) is,    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-20_22-48-8-version-1-modificationdate-1642690089000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-20_22-48-8-version-1-modificationdate-1642690089000-api-v2.png" width="200"  />
+    </span>
+    </span>
+</p>
+<p   
+><br/></p>
+<p   
+><u class=" "><strong class=" ">    <span style="color: #000000;">
+    <span style="color: #000000;">
+Kalman Filter Measurement Update    </span>
+    </span>
+</strong></u></p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+The EKF update proceeds by computing the Kalman gain,    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_22-54-19-version-1-modificationdate-1642690459000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_22-54-19-version-1-modificationdate-1642690459000-api-v2.png" width="350"  />
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+while the correction to the state is given by the vector, don't forget to update the nominal state with this error state.    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2084531245/image2022-1-20_22-55-5-version-1-modificationdate-1642690506000-api-v2.png" alt="images/confluence/download/thumbnails/2084531245/image2022-1-20_22-55-5-version-1-modificationdate-1642690506000-api-v2.png" width="120"  />
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+Finally, the state covariance matrix is updated according to,    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2084531245/image2022-1-20_22-55-46-version-1-modificationdate-1642690547000-api-v2.png" alt="images/confluence/download/attachments/2084531245/image2022-1-20_22-55-46-version-1-modificationdate-1642690547000-api-v2.png" width="600"  />
+    </span>
+    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    <span style="color: #000000;">
+where <img  class="latexmath"  src="images/inline/a24f9205ec7c7b9ab5be4ec09d5e817d4803a4851b9d30c424334a4460bd6d90.svg" alt="images/inline/a24f9205ec7c7b9ab5be4ec09d5e817d4803a4851b9d30c424334a4460bd6d90.svg"   />
+ is the dimension of the covariance matrix.    </span>
+    </span>
+</p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2084531245_MSCKFforVINSStudy-CodeStudy">
+        <h1 class="heading "><span>Code Study</span></h1>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2074196616_Error_State_Extend_Kalman_Filter_Study.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Error State Extend Kalman Filter Study</span>
+        </a>
+                <a href="2132608655_Orb-Slamv3_Front-End_Improvement_Study.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Orb-Slamv3 Front-End Improvement Study</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

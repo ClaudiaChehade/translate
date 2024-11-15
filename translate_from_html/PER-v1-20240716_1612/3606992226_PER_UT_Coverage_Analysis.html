@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PER UT Coverage Analysis - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3606992226"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="3538248818_PER_MISRA_and_UT.html">PER MISRA and UT</a></li>
+                                                                                     <li><a href="3606990227_1102_Code_Freeze_CAT4_Release.html">1102 Code Freeze CAT4 Release</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3606992226"> <span>PER UT Coverage Analysis</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>    <span style="color: #0000ff;">
+UT ASW_PER:    </span>
+</p>
+<p   
+>    <span style="color: #0000ff;">
+<a  class="external-link" href="https://rb-cmbinex-sghk-p1.apac.bosch.com/ui/repos/tree/General/wave3-repos/W3_UT/ASW/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar.gz">https://rb-cmbinex-sghk-p1.apac.bosch.com/ui/repos/tree/General/wave3-repos/W3_UT/ASW/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar.gz</a>    </span>
+</p>
+<p   
+><strong class=" ">Safety related modules in xPER department are: odom, vhm and safety fusion, as show table below. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MMO3SZH">MAO Max (XC-AS/PJ-WIN-PER3)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~CAN3WX">CHANG Haohua (BCSC/EPA1, XC-AS/PJ-WIN-PER2)</a></strong></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Modules</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Files</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>C0 Coverage</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>C1 Coverage</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Test Pass Rate</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Link to Proof</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Odom</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>per_odom.cpp</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>100%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>100%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>10/10</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-cmbinex-sghk-p1.apac.bosch.com/ui/repos/tree/General/wave3-repos/W3_UT/ASW/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT.tar.gz">Artifacts - Artifactory-SGHK (bosch.com)</a></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>per_odom_handler.cpp</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>100%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>100%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-cmbinex-sghk-p1.apac.bosch.com/ui/repos/tree/General/wave3-repos/W3_UT/ASW/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT.tar.gz">Artifacts - Artifactory-SGHK (bosch.com)</a></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>VHM</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Vhm_handler.cpp</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>100%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>100%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>23/23</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-cmbinex-sghk-p1.apac.bosch.com/ui/repos/tree/General/wave3-repos/W3_UT/ASW/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT.tar.gz">Artifacts - Artifactory-SGHK (bosch.com)</a></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Safety fusion</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Safety fusion in total</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>100%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>100%</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>85/85</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<p  class="auto-cursor-target" 
+><strong class=" ">All the UT coverage for satefty modules within 1st SOP scope has reached 100%.</strong></p>
+<p  class="auto-cursor-target" 
+><strong class=" ">Belows are the files which UT coverage has not reached 100%. Analysis has been provided on the safety related files, and those are all not 1st SOP related.</strong></p>
+<p  class="auto-cursor-target" 
+> Hint: Statistically write the granularity of each module to runnable </p>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">Perception C0C1 UT Coverage</span>
+        </div>
+        <div class="scroll-expand-content">
+<p  class="auto-cursor-target" 
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FHY1SZH">ZHUANG Yu (XC-AS/PJ-WIN-PER5)</a></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Path</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C0 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C1 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test Pass Rate</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T2_1_0.html">pj_w3-root</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_2_1_0.html">asw</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_3_2_1_0.html">asw</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T4_3_3_2_1_0.html">perception</a>/parking</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>63.678% (1264/1985)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>63.745% (2822/4427)</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>115/115</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+></p>
+        </div>
+    </div>
+<p   
+><br/></p>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">LOC C0C1 UT Coverage</span>
+        </div>
+        <div class="scroll-expand-content">
+<p  class="auto-cursor-target" 
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MMO3SZH">MAO Max (XC-AS/PJ-WIN-PER3)</a></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Runnable</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C0 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C1 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test Pass Rate</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T2_1_0.html">pj_w3-root</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_2_1_0.html">asw</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_3_2_1_0.html">asw</a>/loc/</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 "> 99.081% (647/653)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 "> 98.033% (1445/1474)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>168/168</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">Calibration</span>
+        </div>
+        <div class="scroll-expand-content">
+<p  class="auto-cursor-target" 
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MMO3SZH">MAO Max (XC-AS/PJ-WIN-PER3)</a></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Runnable</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C0 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C1 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test Pass Rate</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T2_1_0.html">pj_w3-root</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_2_1_0.html">asw</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_3_2_1_0.html">asw</a>/calibration</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">52.586% (244/464)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">49.830% (587/1178)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1/1</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+        </div>
+    </div>
+<p   
+><br/></p>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">Static Fusion</span>
+        </div>
+        <div class="scroll-expand-content">
+<p  class="auto-cursor-target" 
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WMN5SGH">WAN Mingchao (XC-AS/PJ-WIN-PER7)</a></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Runnable</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C0 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C1 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test Pass Rate</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T2_1_0.html">pj_w3-root</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_2_1_0.html">asw</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_3_2_1_0.html">asw</a>/fusionst/runnables/static_fusion/lane_fusion</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">65.066% (149/229)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">66.851% (363/543)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>40/40</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T2_1_0.html">pj_w3-root</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_2_1_0.html">asw</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_3_2_1_0.html">asw</a>/fusionst/runnables/static_fusion/freespace_fusion</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">71.859% (143/199)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">70.243% (347/494)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>65/65</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T2_1_0.html">pj_w3-root</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_2_1_0.html">asw</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_3_2_1_0.html">asw</a>/fusionst/runnables/static_fusion/contour_fusion</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N/A</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N/A</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N/A</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+        </div>
+    </div>
+<p   
+><br/></p>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">Dynamic Fusion</span>
+        </div>
+        <div class="scroll-expand-content">
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~CAN3WX">CHANG Haohua (BCSC/EPA1, XC-AS/PJ-WIN-PER2)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WUE5SGH">WU Ye (XC-AS/PJ-WIN-PER2)</a></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Runnable</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C0 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C1 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test Pass Rate</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T2_1_0.html">pj_w3-root</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_2_1_0.html">asw</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_3_2_1_0.html">asw</a>/fusiondy/runnables/dynamic_fusion</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">98.684% (150/152)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">98.722% (309/313)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>18/18</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T2_1_0.html">pj_w3-root</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_2_1_0.html">asw</a>/<a  class="external-link" href="file:///C:/Users/FHY1SZH/Downloads/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT.tar/WAVE3-ASW_PER-202311030202CST-16493f0667ecb5a8b4f24a5446706c6ae6199fd0_UT/ASW_PER_ut_coverage_C1_html/source_tree.p1D1T3_3_2_1_0.html">asw</a>/fusiondy/runnables/safety_fusion</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (861/861)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (1673/1673)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20/20</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+        </div>
+    </div>
+<p   
+><br/></p>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">HD Map</span>
+        </div>
+        <div class="scroll-expand-content">
+<p  class="auto-cursor-target" 
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~SUE8SZH">SUN Hecheng (XC-AS/PJ-WIN-PER7)</a></p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Runnable</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C0 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>C1 Coverage</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Test Pass Rate</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///home/sue8szh/Desktop/CAT4/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT/ASW_PER_ut_coverage_C0_html/source_87.html">horizon_entry.cpp</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (30/30)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (76/76)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2/2</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///home/sue8szh/Desktop/CAT4/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT/ASW_PER_ut_coverage_C0_html/source_89.html">guide_recon_config_yaml_impl.cpp</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (21/21)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (21/21)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1/1</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///home/sue8szh/Desktop/CAT4/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT/ASW_PER_ut_coverage_C0_html/source_90.html">guidance_entry.cpp</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (22/22)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (58/58)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2/2</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///home/sue8szh/Desktop/CAT4/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT/ASW_PER_ut_coverage_C0_html/source_92.html">ehp_parser_config_yaml_impl.cpp</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (23/23)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (23/23)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1/1</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///home/sue8szh/Desktop/CAT4/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT/ASW_PER_ut_coverage_C0_html/source_94.html">common_config_yaml_impl.cpp</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (6/6)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (6/6)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1/1</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///home/sue8szh/Desktop/CAT4/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT/ASW_PER_ut_coverage_C0_html/source_96.html">around_car_recon_config_yaml_impl.cpp</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (2/2)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (2/2)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1/1</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///home/sue8szh/Desktop/CAT4/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT/ASW_PER_ut_coverage_C0_html/source_98.html">along_route_recon_config_yaml_impl.cpp</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (7/7)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">100.000% (7/7)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1/1</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="file:///home/sue8szh/Desktop/CAT4/WAVE3-ASW_PER-202311040202CST-63c61b48922f607f0c3c048f54deb6dc4f61f3a3_UT/ASW_PER_ut_coverage_C0_html/source_99.html">MapSrvProviderUserImpl.cpp</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">93.750% (30/32)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <pre class="prg2 ">85.938% (55/64)</pre>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2/2</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+        </div>
+    </div>
+<p   
+><br/></p>
+<p   
+>ASW approach for your reference: <a   href="https://inside-docupedia.bosch.com/confluence/display/wave3/ASW+UT+Coverage+Analysis">ASW UT Coverage Analysis - wave 3 development - Docupedia (bosch.com)</a></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3606990227_1102_Code_Freeze_CAT4_Release.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>1102 Code Freeze CAT4 Release</span>
+        </a>
+                <a href="3606990869_xPER_QAC%2CComplier_warning%2CCoverity_high_warnings_risk_assessment_summary.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>xPER QAC,Complier warning,Coverity high warnings risk assessment summary</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

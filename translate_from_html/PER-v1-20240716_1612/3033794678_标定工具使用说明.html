@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Prerequisite  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3033794678"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113873_xcalib_eng.html">xcalib_eng</a></li>
+                                                                                                         <li class="shortcut"><a href="2916353596_calibration_tool_release.html">calibration_tool_release</a></li>
+                                                                                     <li><a href="2759767640_V1.1.0.html">V1.1.0</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3033794678"> <span> Prerequisite </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<ol class=" "><li class=" "><p   
+><strong class=" ">    <span style="color: #ff00ff;"> Whether the vehicle stops correctly on the opposite agency and starts the opposite agency!IntersectionIntersection </span>
+</strong></p>
+</li><li class=" "><p   
+><strong class=" ">    <span style="color: #ff00ff;"> Whether the back door of the calibration room is closed correctly!IntersectionIntersection </span>
+</strong></p>
+</li></ol><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3033794678/2023-03-23_11h33_52-version-1-modificationdate-1684065986000-api-v2.png" alt="images/confluence/download/attachments/3033794678/2023-03-23_11h33_52-version-1-modificationdate-1684065986000-api-v2.png" width="400"  />
+    </p>
+<p   
+>    <span style="color: #ff0000;">
+<strong class=" "> Vehicle coordinate system is defined as a projection point from the center of the rear axis to the ground </strong>    </span>
+</p>
+<p   
+> 1. Update ground target 3D true value </p>
+<p   
+> 2. Update T_V_W from the coordinates of the vehicle to the calibration room </p>
+<p   
+> 3. New increase <span style="color: #ff0000;">
+common_config.yaml    </span> , Used to configure wheelbase information (please update when new vehicles are added) </p>
+<p   
+><strong class=" ">    <span style="color: #ff00ff;"> 4. Camera detailed calibration process </span>
+</strong></p>
+<p   
+> (1) Prepare the calibration picture. If it is the configuration of 11 cameras, prepare 11+1 (the data collected at the door); if it is the configuration of 14 cameras, prepare 14+1 (forefront long focus at the door at the doorCollected data) </p>
+<p   
+> (2) Run the calibration program </p>
+<p   
+> Configuration of 11 cameras: bash run_11_camera.sh </p>
+<p   
+> Configuration of 14 cameras: bash run_14_camera.sh </p>
+<p   
+> (3) Abnormal treatment </p>
+<ul class=" "><li class=" "><p   
+> According to the program's error information, check whether there are parameters with error or file lack of files </p>
+</li><li class=" "><p   
+> There is no problem with self-examination, you can try to run 2-3 times to calibrate the script. You can jump directly to the next step. </p>
+</li><li class=" "><p   
+> If it is still not good, take the previous calibration result of the same model and put in Camera_calib/Data_Format/Calib_image/Init_kb8 (OCAM) (Pinhole) _Param </p>
+</li><li class=" "><p   
+> For the specifically, you need to put in the results of the calibration results. </p>
+</li><li class=" "><p   
+> Configuration of 11 cameras: bash run_11_camera_with_param.sh.sh.sh </p>
+</li><li class=" "><p   
+> Configuration of 14 cameras: Bash Run_14_CAMERA_WITH_PARAM.SH </p>
+</li></ul><p   
+> 5. Lidar calibration tool adaptation </p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+<strong class=" ">multi_lidar_calib</strong>    </span>
+</p>
+</li></ul><p   
+>    <span style="color: #000000;">
+<strong class=" "> 1. The result output increases the external parameters of different coordinate systems </strong> : After the calibration is over, two calibration files lidar_extrinsic.yaml & lidar_extrinsic_to_vehicle.yaml The former stored the external parameter T_W_L of lidar at the world coordinate system. <br/> At present, there will be a temporary file lidar_extrinsic_to_vehicle_wr.yaml. This is caused by inconsistency of the coordinate system developed by Weisi and PMT. <br/>    </span>
+</p>
+<p   
+>    <span style="color: #000000;"> * Configure in multi_lidar_calib_config.yaml <span style="color: #3366ff;">
+<i class=" "><strong class=" ">calib_data_folder_path</strong></i>    </span>
+    </span> At this time, ensure that the folder folder in the path is named after the model model. <br/><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3033794678/image2023-2-23_17-10-19-version-1-modificationdate-1684065986000-api-v2.png" alt="images/confluence/download/attachments/3033794678/image2023-2-23_17-10-19-version-1-modificationdate-1684065986000-api-v2.png"  height="127" />
+    </p>
+<p   
+><strong class=" "> 2. Certain performance optimization </strong> : In order to solve the problem of Main & FRONT LIDAR calibration data, due to the lack of the Z and Pitch constraints caused by the lack of ground point cloud data, the new one -stop data is added to optimize the calibration parameter.The collection position of the calibration data is the same. <br/> The data of the station should be used <span style="color: #0000ff;">
+<strong class=" ">main_0.pcd </strong>    <span style="color: #000000;"> and </span>
+<strong class=" "> front_0.pcd</strong>    </span> Let's name it in the calibration data folder. <br/> *At present, according to the test results, the improvement effect of the main lidar is relatively obvious. M1 is not very stable due to the quality of the point cloud itself. <br/><strong class=" "> 3. Increase the judgment of Pandar64 and Ruby128: </strong> It will be in the multi_lidar_calib_config.yaml file <strong class=" ">vehicle_installed_ruby</strong> The model of the inside is used to determine which 360 ° main laser lidar is installed in the car, and then use the corresponding Config file to calibrate. <strong class=" "><br/> <img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3033794678/image-2023-3-20_16-35-31-version-1-modificationdate-1684065986000-api-v2.png" alt="images/confluence/download/attachments/3033794678/image-2023-3-20_16-35-31-version-1-modificationdate-1684065986000-api-v2.png"  height="43" />
+</strong></p>
+<p   
+></p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+<strong class=" ">single_lidar_calib</strong>    </span>
+</p>
+</li></ul><p   
+>    <span style="color: #000000;"> If you want to obtain the external reference under the coordinate system of the car body, add the vehicle number of the calibration vehicle on the basis of the original instruction. Take 11162C as an example: </span>
+</p>
+<ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+<strong class=" "></strong> Get the external reference under the world coordinate system: ./bin/multi_lidar_calib ./config/main_lidar_config.yaml </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Get the external parameters under the coordinate system: ./bin/multi_lidar_calib ./config/main_lidar_config.yaml 11162C </span>
+</p>
+</li></ul></li></ul><p   
+> 6. Compatible with the data before and after the calibration of the Chinese agency, carry out the projection of the point cloud to the image </p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3033794692_%E6%8A%95%E5%BD%B1%E7%BB%93%E6%9E%9C%E6%A3%80%E6%9F%A5%E5%B7%A5%E5%85%B7_V1.0.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Projection results check tool v1.0 </span>
+        </a>
+                <a href="2894682986_%E6%A0%87%E5%AE%9A%E6%B5%81%E7%A8%8B_V1.0.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Calibration process v1.0 </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

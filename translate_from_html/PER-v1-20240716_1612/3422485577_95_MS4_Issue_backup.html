@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>95_MS4 Issue backup - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3422485577"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="3422485372_95_WR_Delivery.html">95_WR Delivery</a></li>
+                                                                                                         <li class="shortcut"><a href="3422485572_95_WR_MS5_%28T0%2B12%29_Check%2C_2023_5_24.html">95_WR_MS5 (T0+12) Check, 2023/5/24</a></li>
+                                                                                     <li><a href="3422485576_95_WR_MS5_Algorithm_Reproduce.html">95_WR_MS5 Algorithm Reproduce</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3422485577"> <span>95_MS4 Issue backup</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>Summary：</p>
+<ol class=" "><li class=" "><p   
+> WR document description is very rough </p>
+</li><li class=" "><p   
+> The design strategy of algorithm pipeline is not clear </p>
+</li><li class=" "><p   
+> The naming of the model is irregular </p>
+</li><li class=" "><p   
+> Part of the requirements are unreasonable </p>
+</li><li class=" "><p   
+> Model design </p>
+</li></ol><p   
+><br/></p>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="4.39137%"/>
+                                    <col  width="11.5714%"/>
+                                    <col  width="10.9304%"/>
+                                    <col  width="17.854%"/>
+                                    <col  width="16.7641%"/>
+                                    <col  width="10.738%"/>
+                                    <col  width="2.9169%"/>
+                                    <col  width="2.01939%"/>
+                                    <col  width="4.29521%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Module</strong></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">issue 0426</strong></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Issue 0427</strong></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Issue 0506</strong></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Issue 0515</strong></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Internal Issue</strong></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Reporter</strong></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Status</strong></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">Comments from WR</strong></p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_id-95_MS4Issuebackup-ImageViewMTCNN" class="heading "><span>Image View MTCNN</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class="ak-ol "><li class=" "><p   
+> The document code does not correspond, the code lacks the FREESPACE module, and the detection network structure does not correspond to it. <strong class=" "> Requires to update the detailed and accurate documentation </strong>。 <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2)</a></p>
+</li><li class=" "><p   
+> Stagea data is not corresponding to the label format entered in the code network, and requires the conversion script of Label and Image. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2)</a></p>
+</li><li class=" "><p   
+> The definition of Angle in label and which coordinate system is Box3D, you need to provide detailed description of the field of Label. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2</a></p>
+</li><li class=" "><p   
+> Analysis of the coding method of yaw and yaw4 in the network?What is the purpose? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2</a></p>
+</li><li class=" "><p   
+> What is the purpose of the Radius_depth output when is_depth_model = true? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2</a></p>
+</li><li class=" "><p   
+> After the focus of depth_scale, it is coupled with img_size. What is the intention? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2</a></p>
+</li><li class=" "><p   
+> Is there any additional data enhancement processing except for the Resize, Normalize and Standard in the code? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2</a></p>
+</li></ol><p   style="text-align:left;"
+>2023-05-19 update: @cangqiong yin</p>
+<ol class="ak-ol "><li class=" "><p   
+>make_package Failed</p>
+</li></ol><p   
+><br/>Preview unavailable<br/>Preview unavailable</p>
+<ol class="ak-ol "><li class=" "><p   
+> Can't find setup.bash </p>
+</li></ol><p   
+><br/>Preview unavailable<br/>Preview unavailable<br/>Preview unavailable</p>
+<ol class="ak-ol "><li class=" "><p   
+> Summary: Find a technology to run with us, otherwise it cannot be accepted. </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class="ak-ol "><li class=" "><p   
+> When will the update document completely corresponding to the delivery code be updated? </p>
+</li></ol><p   style="text-align:left;"
+> The latest code COMMIT: 11984CF5A0E930FEB198AF0C4A3277CDD34AC60e </p>
+<p   
+><img  class="transform-error"  src="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png" alt="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png"   />
+        <br/><span class="caption">com.atlassian.confluence.content.render.xhtml.XhtmlException: Missing required attribute: {http://atlassian.com/resource/identifier}value</span>
+    </p>
+<p   
+>wave3_ms4_Generic_Viper_multi-task_README(2).pdf<br/> 19 5 2023, 02:52 Pent </p>
+<p   style="text-align:left;"
+><br/></p>
+<p   style="text-align:left;"
+> 2. Another round of document self -check and update, thank you @cangqiong yin </p>
+<p   style="text-align:left;"
+> 0518 update documentation </p>
+<p   
+><img  class="transform-error"  src="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png" alt="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png"   />
+        <br/><span class="caption">com.atlassian.confluence.content.render.xhtml.XhtmlException: Missing required attribute: {http://atlassian.com/resource/identifier}value</span>
+    </p>
+<p   
+>wave3_Viper_design_SWE_3_Viper_software_detail_design_image_view_multi-task_delivery(2).pdf<br/> 18 5 2023, 02:33 PM </p>
+<p   style="text-align:left;"
+> Video Connection Solution @v @v v y </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. The architecture description is also very rough and refined to the functional level. <br/> 2. In the Pipeline of Carnet, why do you do 3D Bbox first, and then use 3D projection to calculate 2D Bbox without directly reasoning 2D Bbox?Isn't this lower efficiency? <br/> 3. The input and output in the document should be described clearly. For example, where is the CROP of the input source?The source must be described clearly.It is recommended that all documents reorganize. <br/> 4. All crop is the software CROP? <br/> 5. The processing of non -modeling in theDetection must be clearly described. <br/> 6. The model is called carnet but there is no CAR -related classification. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_id-95_MS4Issuebackup-Lanedetection" class="heading "><span>Lane detection</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class="ak-ol "><li class=" "><p   
+> According to the document, the Lane Detection code has not changed from MS3 </p>
+</li><li class=" "><p   
+> POLE's recall rate, DASH's recall rate, dual -line Precision RECALL indicators are lower than the report value </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. The problem is the same.The architecture diagram and function description are too rough to guide development. The specific functions must be clearly described. <br/> 2. During the definition of the interface, there are too few road lines, and there are only 2 types of road lines. It is recommended to be perfect. <br/> 3. Does Lane Detection share the backbone and FPN in Architecture?Why are the input resolution different? <br/> 4. Is the FEATURE MAP resource allocations used in road line detection and POLE detection uneven? </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_safe-id-aWQtOTVfTVM0SXNzdWViYWNrdXAtQkVWL0NhbWVyYVByZWRpY3Rpb24" class="heading "><span>BEV/Camera Prediction</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> AOS deployment code should provide a corresponding ONX model to verify whether the processing before and after processing is consistent with the training code <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~GES3SZH">GE Shuyu (XC-DX/PJ-W3-PER2)</a> 25 Apr 2023</p>
+</li><li class=" "><p   
+> Does the training code contain the code of the transfer onnx model?There is no relevant introduction in the document. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~GES3SZH">GE Shuyu (XC-DX/PJ-W3-PER2)</a> 25 Apr 2023</p>
+</li><li class=" "><p   
+> The detection result input featured in the document is 40, and the training code is 41?Enter 29 -dimensional @Deng zhonghao 27 APR 2023 in AOS code </p>
+<ul class="ak-ul "><li class=" "><p   
+> Full data training, 3 points for reappearing indicators: @Deng zhonghao 27 APR 2023 </p>
+<ul class="ak-ul "><li class=" "><p   
+> Use the indicators in the document </p>
+</li></ul></li></ul></li><li class=" "><p   
+><br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> Reap indicator (training code: pytorch_model_large) </p>
+</li></ul><p   
+><br/>Preview unavailable<br/> There is no step in the training code that reflects the alignment of 5 frames, but only in the AOS code?@Deng zhonghao 05 May 2023 <br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> When is the current Campred Model training set?@Deng zhonghao 05 May 2023 </p>
+</li><li class=" "><p   
+> About input features <strong class=" ">Object-wise Feature Vector</strong> Among them, Camera Name EmbeDding (4-Dimention Binary Vector) and Object Category Embedding (4-DIMENTION) coded?@Deng zhonghao 05 May 2023 </p>
+</li><li class=" "><p   
+> In AOS code, the target of the Oion's distance is greater than 256m. Why choose a preset of 256M? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~GES3SZH">GE Shuyu (XC-DX/PJ-W3-PER2)</a> 06 May 2023</p>
+</li><li class=" "><p   
+> Explanation of the meaning in MAP?Key and value. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~GES3SZH">GE Shuyu (XC-DX/PJ-W3-PER2)</a> 06 May 2023</p>
+</li></ul></li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_safe-id-aWQtOTVfTVM0SXNzdWViYWNrdXAtQkVWL0xhbmVQcmVkaWN0aW9u" class="heading "><span>BEV/Lane Prediction</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> AOS code BAS_MS4_V4.1_20230310 has a Campred folder in Runnables, but there is no corresponding Campred folder in AI/P8N/, which exists in bas_ms4_v4.0_20230223. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~GES3SZH">GE Shuyu (XC-DX/PJ-W3-PER2)</a> 25 Apr 2023</p>
+</li><li class=" "><p   
+> AOS deployment code should provide a corresponding ONX model to verify whether the processing before and after processing is consistent with the training code <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~GES3SZH">GE Shuyu (XC-DX/PJ-W3-PER2)</a> 25 Apr 2023</p>
+</li><li class=" "><p   
+> Does the training code contain the code of the transfer onnx model?There is no relevant introduction in the document. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~GES3SZH">GE Shuyu (XC-DX/PJ-W3-PER2)</a> 25 Apr 2023</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> AOS deployment code should provide a corresponding ONX model to verify whether the processing before and after processing is consistent with the training code <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~GES3SZH">GE Shuyu (XC-DX/PJ-W3-PER2)</a> 25 Apr 2023</p>
+</li><li class=" "><p   
+> Does the training code contain the code of the transfer onnx model?There is no relevant introduction in the document. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~GES3SZH">GE Shuyu (XC-DX/PJ-W3-PER2)</a> 25 Apr 2023</p>
+</li><li class=" "><p   
+> The detection result input featured in the document is 40, and the training code is 41?@Deng zhonghao 27 APR 2023 </p>
+</li><li class=" "><p   
+> Full data training, 3 points for reappearing indicators: @Deng zhonghao 27 APR 2023 </p>
+<ul class="ak-ul "><li class=" "><p   
+> Use the indicators in the document </p>
+</li></ul></li><li class=" "><p   
+> Reap indicator (training code: pytorch_model_large) </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> The Metric data in the document is exactly the same as MS3, and the correct data needs to be provided </p>
+</li><li class=" "><p   
+> Use the/driving/current/preception_ms4_delivery/code/lanepred/checkpoint to test. The recall precision is 0, Endpoint_err is nan </p>
+</li><li class=" "><p   
+> Train 200,000 ITER with the default Config, EVAL performance is extremely low </p>
+</li></ul><p   
+><br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> The previous two problems may be because/dataset/driving/predeption_ms4_delivery/code/lanepred/data/subsample_table very small data. Do you need to use Sample_table? </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. The lane line prediction and the lane line detection module do not align the category of the road line. <br/> 2. Predicted why the input of 2 cameras is required?Which two cameras are it?What are their requirements and role?The document should be described clearly. <br/> 3. Is the post -processing method described complete?There are only two methods in the article.If there are other methods, it is recommended to be complete. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Ge Shuyu</p>
+<p   
+>Deng Zhonghao</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OPEN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class="ak-ol "><li class=" "><p   
+> 0223 delivery is 1ST delivery, 0310 is the final delivery, there will be some adjustments in the middle </p>
+</li><li class=" "><p   
+> There will be an ONX model in the code Package and the rotating TRT Engine </p>
+</li><li class=" "><p   
+> There are onnx in the training code everywhere </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_id-95_MS4Issuebackup-TrafficLight" class="heading "><span>Traffic Light</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Traffic Light Rosbag analysis, the current red and green light recognition effect is poor, and the specific visible document: </p>
+</li><li class=" "><p   
+> The necessary script lacks the full link: </p>
+<ul class="ak-ul "><li class=" "><p   
+> At present, the script processed from MTCNN to TL_DETECTOR, from TL_DETECTOR to TL_DECIDER script is not provided </p>
+</li><li class=" "><p   
+> There are currently 4 decision -making directions without DIGIT output?(Rosbag has output, but CODE and documents are not) </p>
+</li></ul></li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Traffic Light Rosbag analysis, the current red and green light recognition effect is poor, and the specific visible document: </p>
+</li><li class=" "><p   
+> The necessary script lacks the full link: </p>
+<ul class="ak-ul "><li class=" "><p   
+> At present, the script processed from MTCNN to TL_DETECTOR, from TL_DETECTOR to TL_DECIDER script is not provided </p>
+</li><li class=" "><p   
+> There are errors in design doc, you need to update </p>
+</li><li class=" "><p   style="text-align:center;"
+>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> If the output is not updated, it should be added with DIGIT </p>
+</li></ul></li></ul></li><li class=" "><p   style="text-align:center;"
+>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> What should stage a data red and green lights use </p>
+</li><li class=" "><p   
+> Where is the quantification code? </p>
+</li></ul></li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Traffic Light Rosbag analysis, the current red and green light recognition effect is poor, and the specific visible document: </p>
+</li><li class=" "><p   
+> The necessary script lacks the full link: </p>
+<ul class="ak-ul "><li class=" "><p   
+> At present, the script processed from MTCNN to TL_DETECTOR, from TL_DETECTOR to TL_DECIDER script is not provided </p>
+</li><li class=" "><p   
+> There are errors in design doc, you need to update </p>
+</li><li class=" "><p   style="text-align:center;"
+>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> If the output is not updated, it should be added with DIGIT </p>
+</li></ul></li></ul></li><li class=" "><p   style="text-align:center;"
+>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> What should stage a data red and green lights use </p>
+</li><li class=" "><p   
+> Where is the quantification code? </p>
+</li></ul></li><li class=" "><p   
+> What is the purpose of the TL DeCider model to add Lane Detection Feature? </p>
+</li><li class=" "><p   
+> Pose feature PE will lose the information of the POSE itself. Why do you do this? </p>
+</li></ul><p   
+><br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> There are still errors in the TL DeCider model structure diagram in the latest Design Doc. There is an error in the dimension of this time series PE </p>
+</li></ul><p   
+><br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> What are the two positions circled in the figure? </p>
+</li></ul><p   
+><br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> The latest model Latender is not updated </p>
+</li></ul><p   style="text-align:left;"
+>2023-05-18 update: @cangqiong yin</p>
+<ul class="ak-ul "><li class=" "><p   
+> How is Bulb's labeling? </p>
+</li><li class=" "><p   
+> This test case: Red circular light, expects output Right direction is also red, the red and green light rules that do not meet the actual scene </p>
+</li></ul><p   
+><br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> How is the iScurrenTintersections used in the figure below? </p>
+</li></ul><p   
+><br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> What does it mean not to inference in the figure below? </p>
+</li></ul><p   
+><br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> The number of the same lamp with the "43" of the following two places is not uniform. How can they be marked in the end? </p>
+</li></ul><p   style="text-align:left;"
+><br/></p>
+<p   
+><br/>Preview unavailable<br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> AOS code <a  class="external-link" href="http://locator.cc">locator.cc</a> Is it useless, where is the front processing of the local part? </p>
+</li></ul>    <h4 id="src-3422485577_id-95_MS4Issuebackup-0515issue" class="heading "><span>0515 issue</span></h4>
+<ul class="ak-ul "><li class=" "><p   
+><strong class=" "> AOS code has no DIGIT output </strong></p>
+</li><li class=" "><p   
+><strong class=" "> There is no DIGIT output in the Python model, but there is DIGIT Head, but there is no DIGIT output in Predict </strong></p>
+</li><li class=" "><p   
+><strong class=" "> What is the role of Voting Head? </strong></p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:left;"
+> 0518 Question Update: </p>
+<p   style="text-align:left;"
+>5.1</p>
+<ol class="ak-ol "><li class=" "><p   
+> A light bulb frame in the waiting box is given the label attribute, you can refer to the labeling document </p>
+</li><li class=" "><p   
+> Right is in line with the actual scene for red lights. There is such a traffic light in Guangzhou </p>
+</li><li class=" "><p   
+> IS_CURRENT_INTERSEIN is not currently available. </p>
+</li><li class=" "><p   
+> If you do n’t make inference, you will see what you do, and you will not force him to give him a category. VAGUE is currently doing without digital processing </p>
+</li><li class=" "><p   
+> Do not conflict, one is the outer frame 43, and then the two bulbs are given 4 and 3, respectively </p>
+</li><li class=" "><p   
+> The code is called in AOS/Perception/Runnables/Traffic_light/Traffic_light_Detector.CPP. </p>
+</li></ol><p   style="text-align:left;"
+>5.2</p>
+<ol class="ak-ol "><li class=" "><p   
+> 0418's code should be added with DIGIT's output </p>
+</li><li class=" "><p   
+> Above </p>
+</li><li class=" "><p   
+> Voting Head is an auxiliary LOSS, helping learning => Direction </p>
+</li></ol>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:left;"
+> 1. The same problem, the module function description is too rough and refined into specific functions.What you do to do pre -processing, and what you do later, you must describe it in detail. <br/> 2.Traffic light detection.Can 1 and 2 cameras run?Does it involve engineering modification? <br/> 3. Is the FPN in the model shared with the system or running another instance alone?Is there too much head?How many models are mounted? <br/> 4. Does the plan contain a multi -row of red and green light detection scene under the complex intersection? <br/> 5. Is there a design plan for the combination of traffic lights and start -stop lines? <br/> 6. Color HEAD, Shape Head, etc. need to draw network design. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Shang Yan</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OPEN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class="ak-ol "><li class=" "><p   
+> Testing on the Sensor of Stage_b is very different from the data of Stage_a, so it is not performed. The model is represented. LONG TAIL currently has no training data support. The demand has provided a numbernot support </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_id-95_MS4Issuebackup-TrafficSign" class="heading "><span>Traffic Sign</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Container environment lacks Pydot and Graphviz, and cannot be installed. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong(BCSC-EPA1, XC-DX/PJ-W3-PER2)</a></p>
+</li><li class=" "><p   
+> The path in the Train_Demo.list file is the absolute path output output output, which needs to be replaced.Wang Cong (BCSC-EPA1, XC-DX/PJ-W3-Per2) </p>
+<p   style="text-align:center;"
+>Preview unavailable</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Container environment lacks Pydot and Graphviz, and cannot be installed. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong(BCSC-EPA1, XC-DX/PJ-W3-PER2)</a></p>
+</li><li class=" "><p   
+> The path in the Train_Demo.list file is the absolute path output output output, which needs to be replaced.Wang Cong (BCSC-EPA1, XC-DX/PJ-W3-Per2) </p>
+</li><li class=" "><p   style="text-align:center;"
+>Preview unavailable</p>
+</li><li class=" "><p   
+> Use DEMO data to reproduce three points of AVERAGE PRECISION, Recall, F1 score, 2-3 points.@lichen </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Container environment lacks Pydot and Graphviz, and cannot be installed. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong(BCSC-EPA1, XC-DX/PJ-W3-PER2)</a></p>
+</li><li class=" "><p   
+> The path in the Train_Demo.list file is the absolute path output output output, which needs to be replaced.Wang Cong (BCSC-EPA1, XC-DX/PJ-W3-Per2) </p>
+</li><li class=" "><p   style="text-align:center;"
+>Preview unavailable</p>
+</li><li class=" "><p   
+> Use DEMO data to reproduce three points of AVERAGE PRECISION, Recall, F1 score, 2-3 points.@lichen </p>
+</li><li class=" "><p   style="text-align:center;"
+>Preview unavailable</p>
+<p   
+><br/></p>
+</li><li class=" "><p   
+> DESIGN DOC and code are involved and need to be updated to the latest version. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong(BCSC-EPA1, XC-DX/PJ-W3-PER2)</a></p>
+</li><li class=" "><p   
+> Label doc and code are involved. The ID of the category is based on the code or Label. For example, the ID58 is arrow_right_with_uturn in the label doc, but it is not in the code. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~HLC2SGH">LI Chen (XC-DX/PJ-W3-PER2)</a></p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1.Trafficsign classification is still incomplete.For example, there are many signs such as one -way lane, straight lanes, bus lanes, and many variable lanes in Shanghai, which are not included in it.So does not include the functional implementation of these scenes? <br/> 2. What is the relationship between Mapdl and Image View Multi Task Module? There is a lack of introductions. <br/> 3. There are no road line definitions in the interface definition. <br/> 4. The classification network uses a simple model structure with a simple resnet18. Are there any other advanced improvements? <br/> 5. Is there a backbone with the overall system?The architecture introduces regnet 400m. This article also mentions the Model: Classification Model, 200m regnet as backbone.Still do each function, each Backbone? <br/> 6. The labeling content of the labeling document does not match the description of the Traffic Sign interface. The labeling content is many and the types of detection in the interface are much less. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OPEN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class="ak-ol "><li class=" "><p   
+> Does CONTAINER apply for it?You need to depend on the three -party library according to the corresponding dependence </p>
+</li><li class=" "><p   
+> WR modified in the documentation </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_id-95_MS4Issuebackup-CarNet" class="heading "><span>CarNet</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Carnet code is not updated from MS2 to MS4, the problem is as follows; <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~UDO1SZH">GUO Dashan (XC-DX/PJ-W3-PER2)</a></p>
+<ul class="ak-ul "><li class=" "><p   
+> If you only verify on a given small -scale dataset, you can only confirm that the code is not obvious: </p>
+<ul class="ak-ul "><li class=" "><p   
+> Can refer to the results of MS3 acceptance results <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=2602605261">WR_MS3(T0+6) Checks - PJ-W3-PER - Docupedia (bosch.com)</a>；</p>
+</li></ul></li><li class=" "><p   
+> Config Question: When MS3 communicates WR, it means that the remaining categories of Head are not needed except the brake light classification. </p>
+<ul class="ak-ul "><li class=" "><p   
+> But last time, I also said that the Light_orientation classification in the door detection head actually did not gain any gain. This time is still there?Do you need to delete it? </p>
+</li></ul></li><li class=" "><p   
+> Data training problem: </p>
+<ul class="ak-ul "><li class=" "><p   
+> At present, the door and light detection in the code are read two DataSet classes, which are hybrid training in a certain sampling ratio; </p>
+</li><li class=" "><p   
+> But a picture generally has door and lights at the same time. If you read it separately, then a sample only calculates the door (or car light) detection LOSS during training. </p>
+<ul class="ak-ul "><li class=" "><p   
+> Is there a problem with this training method?In fact, do you use the car data set training like this? </p>
+</li></ul></li></ul></li></ul></li><li class=" "><p   
+> If you want to verify on the StageA dataset, it may depend on the frame results of the upstream multi -tasking detection of upstream multi -tasking detection: </p>
+<ul class="ak-ul "><li class=" "><p   
+> Do you use the car GT box training directly, or use multiple task output training; </p>
+</li><li class=" "><p   
+> If it is a multi -task output car frame training, can Wen Yuan provide multi -tasking training models, multi -tasking output to Carnet input processing script? </p>
+</li></ul></li><li class=" "><p   
+> Wen Yuan saw the code of the FP16 conversion this time, but did not see the code deployed to the int8 accuracy. Can it be provided? </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Carnet code is not updated from MS2 to MS4, the problem is as follows; <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~UDO1SZH">GUO Dashan (XC-DX/PJ-W3-PER2)</a></p>
+<ul class="ak-ul "><li class=" "><p   
+> It is known that the code and data are not updated: in the mirror 0310 packaging code in the CONFIG has been deleted by the class category other than BRAKE; </p>
+<ul class="ak-ul "><li class=" "><p   
+> Yesterday, the meeting said that the bitbucket branch is subject to it, but the config file above retains these categories. </p>
+</li></ul></li></ul></li><li class=" "><p   
+> If you want to verify on the StageA dataset, it may depend on the frame results of the upstream multi -tasking detection of upstream multi -tasking detection: </p>
+<ul class="ak-ul "><li class=" "><p   
+> Do you use the car GT box training directly, or use multiple task output training; </p>
+</li><li class=" "><p   
+> If it is a multi -task output car frame training, can Wen Yuan provide multi -tasking training models, multi -tasking output to Carnet input processing script? </p>
+</li></ul></li><li class=" "><p   
+> Wen Yuan saw the code of the FP16 conversion this time, but did not find the code deployed to the int8 accuracy. Can it be provided? </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Carnet code is not updated from MS2 to MS4: <u class=" "> 0426 I have replied and did not update </u>；<a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~UDO1SZH">GUO Dashan (XC-DX/PJ-W3-PER2)</a></p>
+<ul class="ak-ul "><li class=" "><p   
+> The problem of the lamp+door detection module is as follows: </p>
+<ul class="ak-ul "><li class=" "><p   
+> It is known that the CONFIG in the 0310 packing code deleted the classification head other than BRAKE BRAKE. The problem is as follows: </p>
+<ul class="ak-ul "><li class=" "><p   
+> 0426 During the meeting <u class=" "> CANGQING said </u> , But the config file under this branch retains left_right/front_tail/light_on/door_status: </p>
+<ul class="ak-ul "><li class=" "><p   
+><strong class=" "> 0508 has replied, </strong> The state after the next delivery is deleted; </p>
+</li></ul></li><li class=" "><p   
+> Regarding the other four deleted classification heads, the question is as follows: </p>
+<ul class="ak-ul "><li class=" "><p   
+> If the DOOR_STATUS classification head is deleted, how can the door be judged in the carnet of the car? </p>
+</li><li class=" "><p   
+> If the Front_tail classification head is deleted, but the minimum requirements for the labeled ( <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/wave3/20230105+MS3+acceptance+verification+issues+meeting">20230105 MS3 acceptance verification issues meeting - wave 3 development - Docupedia (bosch.com)</a>）：</p>
+<ul class="ak-ul "><li class=" "><p   
+> Is there any labeling in the data in the data? </p>
+</li></ul></li></ul></li></ul></li></ul></li><li class=" "><p   style="text-align:center;"
+>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> 0426 When communicating <u class=" "> CANGQING replies retains the door detection of Light Orientation in Head, the purpose is to filter the light of the non -target vehicle </u>；</p>
+<ul class="ak-ul "><li class=" "><p   
+> So where is the code for filtering non -target vehicles?Please explain. </p>
+</li></ul></li><li class=" "><p   
+> Regarding the door detection category, there are four categories in the labeling document: Normal DOOR/Slide Door/Trunk Door/Special Door, but only two categories are detected in the code: Normal Door and Trunk Door; </p>
+<ul class="ak-ul "><li class=" "><p   
+> This question was passed in the MS3 before, but there was no positive reply at that time, but the verbally promised to confirm it; </p>
+</li><li class=" "><p   
+> Is there two categories of Slide Door and Special Door in the labeling data? </p>
+</li><li class=" "><p   
+> Previous MS3 conference text recorded in <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/wave3/20221222+MS3+acceptance+verification+issues+meeting">20221222 MS3 acceptance verification issues meeting - wave 3 development - Docupedia (bosch.com)</a>；</p>
+</li></ul></li></ul></li></ul></li><li class=" "><p   
+> Wen Yuan saw the code of the FP16 conversion this time, but did not find the code deployed to the int8 accuracy. Can it be provided? </p>
+<ul class="ak-ul "><li class=" "><p   
+><u class=" "> Wenyuan has replied to this time without changing INT8, only the model to switch to FP16 </u>；</p>
+</li><li class=" "><p   
+> So can Wen Yuan give the time -consuming test results in different precision models in the report? </p>
+</li></ul></li><li class=" "><p   
+> How can I deploy it in AOS after training the carnet model? </p>
+<ul class="ak-ul "><li class=" "><p   
+> At present, there is only a model training part in the Python code, but the data is not clear, and the documentation is not explained. <br/><br/></p>
+<ul class="ak-ul "><li class=" "><p   
+> Whether it can explain the C ++ code such as the front/post -processing/calling reasoning, which path is roughly to find the corresponding. </p>
+</li><li class=" "><p   
+><strong class=" "> 0508 has replied: </strong> The deployment is to replace all the model file names.Previous processing AI/P8N/UndersTanding/CSDETECT/Preprocessor, Model reasoning AI/P8N/UNDERSTANDINGING/CSDETECT/DETECTOR model. <a  class="external-link" href="http://signal_detector.cc/">signal_detector.cc</a> built_result function `` </p>
+</li></ul></li><li class=" "><p   
+> Questions about AOS code: </p>
+<ul class="ak-ul "><li class=" "><p   
+><strong class=" "> Carnet input pre -processing: </strong> In the documentation, the target is screened according to the car category (car/truck), but watch the preprocessor/ <a  class="external-link" href="http://vehicle_selector.cc">vehicle_selector.cc</a> The logic is quite complicated. Can it be explained in the document? </p>
+<ul class="ak-ul "><li class=" "><p   
+> For example, what is the coordinate system in the picture on the right, and what special processing did Truck do? Do you need to care about the turning light for other types of cars? </p>
+</li><li class=" "><p   
+> As shown on the right <br/>Preview unavailable</p>
+<p   
+><br/></p>
+</li></ul></li><li class=" "><p   
+><strong class=" "> Turn_input Pre -processing: </strong> The document mentioned that the input sequence is stacked according to the Unique Light ID, and the AOS code <tt class="code css-z5oxh7 ">cameras_merged_light</tt> Use <tt class="code css-z5oxh7 ">vechicle_id + LightType + left_right as unique light id</tt> , But when judging Last_turn_inputs/Preds, it is based on <tt class="code css-z5oxh7 ">track_id + LightType + left_right</tt> Does the track_id and very_id here be completely corresponding? </p>
+</li></ul></li></ul></li><li class=" "><p   
+> 0519 update: @cangqiong yin </p>
+<ul class="ak-ul "><li class=" "><p   
+> CARNET has been added in the document. Regarding Filter Out the Headlights of Non-Target Vehicles: It refers to the lights of the filtering angle "Greater than 180 Degrees", but see AI/P8N/UndersTanding/CSDETECT/Conf/LIGHTDEDE Parameters in t.jsonLight_orientation_angle_threshold is set to 60, not 180.What are the parameters of the car? </p>
+</li></ul></li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:left;"
+>1）<strong class=" "> Please provide a script to FP16 </strong> , Time -consuming and performance code, and test without bug; </p>
+<p   style="text-align:left;"
+>@cangqiong yin <strong class=" "> Please update the document, delete the part that has nothing to do with the content </strong></p>
+<p   style="text-align:left;"
+> - The path Carnet/GENERIC/ObjectDL/Tools exists with similar functional code, but directly calls an error. We have no obligation to give you a debug; </p>
+<p   style="text-align:left;"
+> 2) Please explain the complete front/rear processing logic in the design document; </p>
+<p   style="text-align:left;"
+> - Example: If the network output is how to process it to brake_signal: Only the network output brake_on classification is displayed in the document, but the AOS code will also use the light to detect the TAIL_MIDDLE_ON detection results to judge. </p>
+<p   style="text-align:left;"
+>– <strong class=" "> Wen Yuan, please give the key logic to the key logic in the design document, otherwise where is the verification basis? </strong></p>
+<p   style="text-align:left;"
+>@cangqiong yin</p>
+<p   style="text-align:left;"
+> Design document update 0517: </p>
+<p   
+><img  class="transform-error"  src="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png" alt="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png"   />
+        <br/><span class="caption">com.atlassian.confluence.content.render.xhtml.XhtmlException: Missing required attribute: {http://atlassian.com/resource/identifier}value</span>
+    </p>
+<p   
+>wave3_Viper_design_SWE_3_Viper_software_detail_design_CarNet_delivery.pdf<br/> 18 5 2023, 01:06 morning </p>
+<p   style="text-align:left;"
+><br/></p>
+<p   style="text-align:left;"
+> 0519 Question Reply: </p>
+<p   style="text-align:left;"
+> The actual use is 60, there are errors in the document, and you need to modify it to 60 </p>
+<p   
+><img  class="transform-error"  src="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png" alt="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png"   />
+        <br/><span class="caption">com.atlassian.confluence.content.render.xhtml.XhtmlException: Missing required attribute: {http://atlassian.com/resource/identifier}value</span>
+    </p>
+<p   
+>wave3_Viper_design_SWE_3_Viper_software_detail_design_CarNet_delivery(1).pdf<br/> 19 5 2023, 02:49 PM </p>
+<p   style="text-align:left;"
+>deleted: ai/p8n/understanding/carnet/generic/objectdl/tools/eval_trt.py<br/>deleted: ai/p8n/understanding/carnet/generic/objectdl/tools/onnx_to_engine.py<br/>deleted: ai/p8n/understanding/carnet/generic/objectdl/tools/savedmodel2trt.py<br/>deleted: ai/p8n/understanding/carnet/generic/objectdl/tools/tf_profiling.py<br/>deleted: ai/p8n/understanding/carnet/generic/objectdl/tools/trt_profiling.py<br/>deleted: ai/p8n/understanding/carnet/generic/objectdl/tools/trtutils/__init__.py<br/>deleted: ai/p8n/understanding/carnet/generic/objectdl/tools/trtutils/engine.py<br/>deleted: ai/p8n/understanding/carnet/generic/objectdl/tools/trtutils/trt_inferer.py</p>
+<p   style="text-align:left;"
+> The next code submission will be updated simultaneously </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:left;"
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OPEN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Light Orientation's regression mission is still useful. It is used to filter the lights of non -target vehicles and do not need to be deleted.Multi -task training data training problems, at the same time, doors and car lights, only calculate a single LOSS, because the two heads and lights of the door are independent, are training separately. One head is updated.EssenceIn fact, the car data is also trained like this </p>
+<p   
+> 2. STAGE A dataset verification. You can use the GT box of the car+the Augmentation of some positions to simplify the process. You can also use multiple task output training.If the multi -task output car frame needs to be matched with the labeled car frame, an error will be introduced. </p>
+<p   
+> 3. At present, the model does not have int8 quantification, USE FP16 </p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_id-95_MS4Issuebackup-RoadMarker" class="heading "><span>Road Marker</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> In the RoadMarker Readme delivered by MS4, only the instructions and results of the SEGMENTATION sub -task are not the sub -task.Please make up for Wenyuan as soon as possible. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong(BCSC-EPA1, XC-DX/PJ-W3-PER2)</a></p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> In the RoadMarker Readme delivered by MS4, only the instructions and results of the SEGMENTATION sub -task are not the sub -task.Please make up for Wenyuan as soon as possible. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong(BCSC-EPA1, XC-DX/PJ-W3-PER2)</a></p>
+</li><li class=" "><p   
+> The last part of Readme is not reflected in the code.Wang Cong (BCSC-EPA1, XC-DX/PJ-W3-Per2) Readme: </p>
+</li></ul><p   
+><br/><img  class="transform-error"  src="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png" alt="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png"   />
+        <br/><span class="caption">com.atlassian.confluence.content.render.xhtml.XhtmlException: Missing required attribute: {http://atlassian.com/resource/identifier}value</span>
+    </p>
+<p   style="text-align:left;"
+><br/></p>
+<p   style="text-align:left;"
+>codes:<br/><img  class="transform-error"  src="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png" alt="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png"   />
+        <br/><span class="caption">com.atlassian.confluence.content.render.xhtml.XhtmlException: Missing required attribute: {http://atlassian.com/resource/identifier}value</span>
+    </p>
+<p   style="text-align:left;"
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> In the RoadMarker Readme delivered by MS4, only the instructions and results of the SEGMENTATION sub -task are not the sub -task.Please make up for Wenyuan as soon as possible. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong(BCSC-EPA1, XC-DX/PJ-W3-PER2)</a></p>
+</li><li class=" "><p   
+> The last part of Readme is not reflected in the code.Wang Cong (BCSC-EPA1, XC-DX/PJ-W3-Per2) Readme: </p>
+</li></ul><p   
+><br/><img  class="transform-error"  src="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png" alt="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png"   />
+        <br/><span class="caption">com.atlassian.confluence.content.render.xhtml.XhtmlException: Missing required attribute: {http://atlassian.com/resource/identifier}value</span>
+    </p>
+<p   style="text-align:left;"
+><br/></p>
+<p   style="text-align:left;"
+>codes:<br/><img  class="transform-error"  src="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png" alt="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png"   />
+        <br/><span class="caption">com.atlassian.confluence.content.render.xhtml.XhtmlException: Missing required attribute: {http://atlassian.com/resource/identifier}value</span>
+    </p>
+<p   style="text-align:left;"
+><strong class=" ">20230518 update:</strong> @cangqiong yin</p>
+<ul class="ak-ul "><li class=" "><p   
+> Is there a radius during key points?Yang Chen (XC-DX/PJ-W3-Per1) </p>
+</li><li class=" "><p   
+> Mapdl is a simple multi -task, but the sampling ratio of the SEGMENTATION and DETECTION training files in the configuration file is 1: 1. Has this ratio has been verified?What proportion is taken? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong(BCSC-EPA1, XC-DX/PJ-W3-PER2)</a><br/> Wen Yuan replied: The sampling ratio did not deliberately match.The task correlation is not great. </p>
+</li><li class=" "><p   
+> The key point of SIGN is not classified, and unity is regarded as a class.Does this meet the demand of RB? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~WCO2SGH">WANG Cong(BCSC-EPA1, XC-DX/PJ-W3-PER2)</a><br/> Wen Yuan replied: The demand finally Align becomes a category. </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:left;"
+><strong class=" "> ONBOARD METRIC, please provide as soon as possible </strong> @cangqiong yin DD:</p>
+<p   style="text-align:left;"
+> Readme gives @cangqiong yin today </p>
+<p   style="text-align:left;"
+> 0516 Update: </p>
+<p   
+><img  class="transform-error"  src="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png" alt="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png"   />
+        <br/><span class="caption">com.atlassian.confluence.content.render.xhtml.XhtmlException: Missing required attribute: {http://atlassian.com/resource/identifier}value</span>
+    </p>
+<p   
+>wave3_ms4_Generic_Viper_Roadmarker_README.pdf<br/> 16 5 2023, 09:48 PM </p>
+<p   style="text-align:left;"
+><br/></p>
+<p   style="text-align:left;"
+> 0518 Question Reply: </p>
+<p   style="text-align:left;"
+> Question 1: There is a radius on Heatmap. </p>
+<p   style="text-align:left;"
+> Question 2, 3: The last meeting should have been replied </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:left;"
+><strong class=" "> 1. The output object uses the case clearly, and the frequency of the output message?Where can the objects jump between the detection between the frame and the frame? </strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OPEN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> MS4 is urgent due to the insertion and delivery of the 418 task, without writing this part of the Metric, MS5 will add </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_id-95_MS4Issuebackup-ImageODD" class="heading "><span>Image ODD</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Detail_design indicates the IMAGE ODD C ++ interface, and no examples of calling the interface are not given. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~UNJ1SZH">YANG Junyan (XC-DX/PJ-W3-PER1)</a> 26 Apr 2023</p>
+</li></ul><p   
+><br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> Explanation is too simple to directly understand the corresponding relationship between changes and system requirements </p>
+</li><li class=" "><p   
+> Is there a clear definition of the ODD input camera?Do you use fish eyes or forward view?Does the data set cover the input type? </p>
+<ul class="ak-ul "><li class=" "><p   
+> According to the test set, it is mainly the front vision. The test results do not cover the ODD of fish eyes. Do not consider this problem when designing a data set? </p>
+</li></ul></li><li class=" "><p   
+> The IMAGE path in JSON is written to death.You need to provide a script to generate JSON or provide DataSet_root options to configure.It is currently not trained. </p>
+</li><li class=" "><p   
+> FACE_SUN_LIGHT, FACE_C AR_LIGHT, WATER_ON_GROUND length is 3, and only two options are given in the document: Yes NO.sorry </p>
+</li><li class=" "><p   
+> Why do some 2 yuan category give three categories and some give 2 categories?How to understand the purpose of such design? </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Detail_design indicates the IMAGE ODD C ++ interface, and no examples of calling the interface are not given. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~UNJ1SZH">YANG Junyan (XC-DX/PJ-W3-PER1)</a> 26 Apr 2023</p>
+</li><li class=" "><p   style="text-align:center;"
+>Preview unavailable</p>
+</li><li class=" "><p   
+> Explanation is too simple to directly understand the changes in the category and the corresponding relationship of system requirements. </p>
+</li><li class=" "><p   
+> Is there a clear definition of the ODD input camera?Do you use fish eyes or forward view?Does the data set cover the input type? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~UNJ1SZH">YANG Junyan (XC-DX/PJ-W3-PER1)</a> 26 Apr 2023</p>
+<ul class="ak-ul "><li class=" "><p   
+> According to the test set, it is mainly the front vision. The test results do not cover the ODD of fish eyes. Do not consider this problem when designing a data set? </p>
+</li></ul></li><li class=" "><p   
+> The IMAGE path in JSON is written to death.You need to provide a script to generate JSON or provide DataSet_root options to configure.It is currently not trained. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~UNJ1SZH">YANG Junyan (XC-DX/PJ-W3-PER1)</a> 26 Apr 2023</p>
+</li><li class=" "><p   
+> FACE_SUN_LIGHT, FACE_C </p>
+</li><li class=" "><p   
+> AR_LIGHT, Water_ON_GROUND length is 3, and only two options are given in the document: yes no.Not 26 APR 2023 </p>
+</li><li class=" "><p   
+> Why do some 2 yuan category give three categories and some give 2 categories?How to understand the purpose of such design?  26 Apr 2023</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> Detail_design indicates the IMAGE ODD C ++ interface, and no examples of calling the interface are not given. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~UNJ1SZH">YANG Junyan (XC-DX/PJ-W3-PER1)</a> 26 Apr 2023</p>
+</li><li class=" "><p   style="text-align:center;"
+>Preview unavailable</p>
+</li><li class=" "><p   
+> Explanation is too simple to directly understand the changes in the category and the corresponding relationship of system requirements. </p>
+</li><li class=" "><p   
+> Is there a clear definition of the ODD input camera?Do you use fish eyes or forward view?Does the data set cover the input type? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~UNJ1SZH">YANG Junyan (XC-DX/PJ-W3-PER1)</a> 26 Apr 2023</p>
+<ul class="ak-ul "><li class=" "><p   
+> According to the test set, it is mainly the front vision. The test results do not cover the ODD of fish eyes. Do not consider this problem when designing a data set? </p>
+</li></ul></li><li class=" "><p   
+> The IMAGE path in JSON is written to death.You need to provide a script to generate JSON or provide DataSet_root options to configure.It is currently not trained. <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~UNJ1SZH">YANG Junyan (XC-DX/PJ-W3-PER1)</a> 26 Apr 2023</p>
+</li><li class=" "><p   
+> FACE_SUN_LIGHT, FACE_C </p>
+</li><li class=" "><p   
+> AR_LIGHT, Water_ON_GROUND length is 3, and only two options are given in the document: yes no.Not 26 APR 2023 </p>
+</li><li class=" "><p   
+> Why do some 2 yuan category give three categories and some give 2 categories?How to understand the purpose of such design?  26 Apr 2023</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>@JUNYAN YANG</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OPEN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> WR side rectification propo is defined as the RB interface corresponding format </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_id-95_MS4Issuebackup-Liper3DWhitebox" class="heading "><span>Liper3D Whitebox</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:left;"
+> The following problems are available in LIPER Stagea data acceptance: <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NHE1SZH">CHENG Changhao (XC-DX/PJ-W3-PER2)</a> 27 Apr 2023</p>
+<ul class="ak-ul "><li class=" "><p   
+> The total amount of the data rebate data is very large, the compressed packet is superimposed, it is impossible to distinguish each labeling task. </p>
+</li><li class=" "><p   
+> The label list is only refreshed until November 22nd, and now it has been delivered to April 23rd </p>
+</li><li class=" "><p   
+> The number of delivery frames is unknown, and the number of frames is unknown. </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:left;"
+> The following problems are available in LIPER Stagea data acceptance: <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NHE1SZH">CHENG Changhao (XC-DX/PJ-W3-PER2)</a> 27 Apr 2023</p>
+<ul class="ak-ul "><li class=" "><p   
+> The total amount of the data rebate data is very large, the compressed packet is superimposed, it is impossible to distinguish each labeling task. </p>
+</li><li class=" "><p   
+> The label list is only refreshed until November 22nd, and now it has been delivered to April 23rd </p>
+</li><li class=" "><p   
+> The number of delivery frames is unknown, and the number of frames is unknown. </p>
+</li><li class=" "><p   
+><strong class=" "> You need to confirm whether this acceptance contains full -capacity Stagea data </strong></p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class="ak-ol "><li class=" "><p   
+> Give data delivery instructions (the corresponding instructions of the label and data) @cangqiong yin </p>
+</li><li class=" "><p   
+> The amount of data delivered </p>
+</li></ol><p   style="text-align:left;"
+> 0518: WeChat group communication clarification </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_id-95_MS4Issuebackup-3Dtracking" class="heading "><span>3D tracking</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> There is only 2D Tracking under Tracking. I haven't seen the 3D Tracking module. Is it transferred to BEV without considering Z and Height information? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~IXS1SGH">XIA Sijun (XC-DX/PJ-W3-PER2)</a> 25 Apr 2023</p>
+</li><li class=" "><p   
+> User Manual did not see the relevant mirror and Run information. Can Demo and Data 3D Tracking modules run? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~IXS1SGH">XIA Sijun (XC-DX/PJ-W3-PER2)</a> 25 Apr 2023</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> User Manual did not see the relevant mirror and Run information. Can Demo and Data 3D Tracking modules run? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~IXS1SGH">XIA Sijun (XC-DX/PJ-W3-PER2)</a> 27 Apr 2023</p>
+</li><li class=" "><p   
+> Need to provide specific quantitative indicators of the Tracking module (MOTA IDS, etc.) <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~IXS1SGH">XIA Sijun (XC-DX/PJ-W3-PER2)</a> 27 Apr 2023</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class="ak-ul "><li class=" "><p   
+> User Manual did not see the relevant mirror and Run information. Can Demo and Data 3D Tracking modules run? <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~IXS1SGH">XIA Sijun (XC-DX/PJ-W3-PER2)</a> 27 Apr 2023</p>
+</li><li class=" "><p   
+> Need to provide specific quantitative indicators of the Tracking module (MOTA IDS, etc.) <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~IXS1SGH">XIA Sijun (XC-DX/PJ-W3-PER2)</a> 27 Apr 2023</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. The text mentioned in the text that the processing module contains scheduling, status machine, etc., but the full text does not describe the details of these functions.It is recommended to replenish. <br/> 2. Definition of the type of obstacles, only the five types of goals of pedestrians, bicycles, cars, tricycles, and trucks are a bit less. <br/> 3. In Message Obstacle definition, the default value of classification is 7, and enum seems to have no definition of this value.Is it misunderstanding or the message type? <br/> 4. Look at the 3D Tracking document definition processing process from the C ++ program processing. Does this piece do not require the AI ​​model processing? </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OPEN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Yes, consider 2D under BEV </p>
+<p   
+> 2. The Tracking module is not like other models. It is a separate training.He only runs in the onboard environment, directly connects the message from AOS Runnable, and does not run alone. </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+        <h3 id="src-3422485577_id-95_MS4Issuebackup-Muti-task" class="heading "><span>Muti-task</span></h3>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Readme's first step says that you can use Deeplearning-V3 mirror directly, but the second step is to guide the re-pull image in the second step 'How to Package Training Code'.PULL operation. <br/>Preview unavailable</p>
+<p   
+><br/></p>
+<p   
+> (2) In the Deeplearning-V3 mirror environment, copy MS4 to the site training Subset DataSet, and modify the config.py path as the local path according to 4.2.1 to explain the code.In addition to the config.py path to modify, what other files need to modify the configuration path. </p>
+<p   
+><br/></p>
+<p   
+> a. CONFIG.PY content has been modified <br/>Preview unavailable<br/>Preview unavailable</p>
+<p   
+><br/></p>
+<p   
+> b. Error LOG </p>
+<p   
+><br/><br/>Preview unavailable</p>
+<p   
+><br/></p>
+<ul class="ak-ul "><li class=" "><p   
+> Can't find the corresponding file: <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2)</a></p>
+</li></ul><p   
+><br/>Preview unavailable</p>
+<ul class="ak-ul "><li class=" "><p   
+> Description of the corresponding field of the detection label file: <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2)</a></p>
+</li></ul><p   
+><br/>Preview unavailable</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;"> Readme's first step says that you can use Deeplearning-V3 mirror directly, but the second step is to guide the re-pull image in the second step 'How to Package Training Code'.PULL operation. </span>
+</p>
+<p   style="text-align:left;"
+> (2) In the Deeplearning-V3 mirror environment, copy MS4 to the site training Subset DataSet, and modify the config.py path as the local path according to 4.2.1 to explain the code.In addition to the config.py path to modify, what other files need to modify the configuration path. </p>
+<p   style="text-align:left;"
+><br/></p>
+<p   style="text-align:left;"
+> a. CONFIG.PY content has been modified </p>
+<p   style="text-align:left;"
+>    <span style="color: #172b4d;"> b. Error LOG </span>
+</p>
+<ul class="ak-ul "><li class=" "><p   
+> Can't find the corresponding file: <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2)</a></p>
+</li></ul><p   style="text-align:left;"
+>    <span style="color: #172b4d;">
+<br/>Preview unavailable    </span>
+</p>
+<ul class="ak-ul "><li class=" "><p   
+> Description of the corresponding field of the detection label file: <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2)</a></p>
+</li><li class=" "><p   style="text-align:center;"
+>Preview unavailable</p>
+</li></ul><p   style="text-align:left;"
+><strong class=" ">2023.04.27</strong></p>
+<p   style="text-align:left;"
+> According to the implementation requirements <a  class="external-link" href="http://readme.md">readme.md</a> The structure of the Chinese file is inconsistent </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   style="text-align:left;"
+> Readme's first step says that you can use Deeplearning-V3 mirror directly, but the second step is to guide the re-pull image in the second step 'How to Package Training Code'.PULL operation. </p>
+<p   
+><br/>Preview unavailable</p>
+<p   style="text-align:left;"
+><br/></p>
+<p   style="text-align:left;"
+> (2) In the Deeplearning-V3 mirror environment, copy MS4 to the site training Subset DataSet, and modify the config.py path as the local path according to 4.2.1 to explain the code.In addition to the config.py path to modify, what other files need to modify the configuration path. </p>
+<p   style="text-align:left;"
+><br/></p>
+<p   style="text-align:left;"
+> a. CONFIG.PY content has been modified </p>
+<p   style="text-align:left;"
+> (3) No Data Model described in the documentation </p>
+<p   
+><br/>Preview unavailable</p>
+<p   style="text-align:left;"
+> (4) There are errors in design documents about depth </p>
+<p   
+><br/>Preview unavailable</p>
+<p   style="text-align:left;"
+><br/></p>
+<p   style="text-align:left;"
+><br/></p>
+<ul class="ak-ul "><li class=" "><p   
+> Need to supplement the instructions of the corresponding field of Label file: <a  class="css-tgpl01" href="https://inside-docupedia.bosch.com/confluence/display/~NWY1SZH">WANG Yanan (XC-DX/PJ-W3-PER2)</a></p>
+</li></ul><p   
+><br/>Preview unavailable</p>
+<p   style="text-align:left;"
+>2023.04.27</p>
+<p   style="text-align:left;"
+> According to the implementation requirements <a  class="external-link" href="http://readme.md">readme.md</a> The structure of the Chinese file is inconsistent </p>
+<p   style="text-align:left;"
+>2023.04.28</p>
+<p   style="text-align:left;"
+> For the problem (1), after the search method is replaced one by one, there are the following problems </p>
+<p   
+><br/>Preview unavailable</p>
+<p   style="text-align:left;"
+>2023.5.18 update: @cangqiong yin</p>
+<p   style="text-align:left;"
+> (7) About FreeSpace (Drivable) </p>
+<p   style="text-align:left;"
+> About num_point_dim = 6 </p>
+<p   style="text-align:left;"
+> U/V/FLAG/X/Y/Z meaning of each variable </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Requires the corresponding code of the corresponding code to provide the corresponding code of the corresponding code. Party A can reproduce the indicators provided by WR according to the document operation, including environmental description, and WR needs to provide running environmental containers.If the data path modification is involved, the document needs to be explained. </p>
+<p   
+> 2. WR needs to correct the obvious errors in the design document, and the code structure and design document should be strictly corresponding.Pay attention to problems such as low -level replication errors and document format errors. <br/><img  class="transform-error"  src="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png" alt="images/confluence/plugins/servlet/confluence/placeholder/error-i18nkey-editor-placeholder-broken-image-locale-en_us-version-2.png"   />
+        <br/><span class="caption">com.atlassian.confluence.content.render.xhtml.XhtmlException: Missing required attribute: {http://atlassian.com/resource/identifier}value</span>
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>OPEN</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ol class="ak-ol "><li class=" "><p   
+> Surgery, do not need to run Docker Pull in Container </p>
+</li><li class=" "><p   
+> If you move the data </p>
+</li></ol>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. The error mechanism has no detailed design plan, which is too general.Recommended details, including error codes, details of the operation of the error mechanism. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>overall question</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> MS4 acceptance is based on 3.10 input or 418 at this stage SW ?? @Cangqiong yin @xiang guo </p>
+<ul class="ak-ul "><li class=" "><p   
+> Algorithm reproduction acceptance </p>
+</li><li class=" "><p   
+> Engineering code acceptance: </p>
+</li><li class=" "><p   
+> Data acceptance: </p>
+</li><li class=" "><p   
+> Feature acceptance: </p>
+</li><li class=" "><p   
+> KPI acceptance: </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. The description is very rough. It is recommended to refine it to functional descriptions. For example, after the image ISP comes in, there are functional modules such as cutting, rotation, and translation.Document description of granularity should play a role in guiding development. <br/> 2. What does the pre -processing module contain?What is the function process of post -processing?Both must be described in detail.It should not just say "do the necessary preparatory work." <br/> 3. What did Bird View Model do?How to do it?It must be clearly described.Lack of introductions in the document. <br/> 4. M1-M5 architecture is recommended to re-organize.Each level of input, output content, attributes, scale, etc. must be described in detail. <br/> 5. There are too few and rough detection target classification categories.It is recommended to be perfect. </p>
+<p   
+><br/></p>
+<p   
+> The definition of Wenyuan's documentation, the style and traces of the MSG definition, etc.Is it in line with actual projects? </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Acceptance data set? </p>
+<p   
+> At present, the data is constantly collecting, labeling and training, MS4 acceptance data set requires both parties definition </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>@<a  class="external-link" href="http://lei.la">lei.la</a></p>
+<p   
+>@Xiang Guo</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3422485576_95_WR_MS5_Algorithm_Reproduce.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR_MS5 Algorithm Reproduce</span>
+        </a>
+                <a href="3422485578_95_WR_MS5_Detail_Design_Docs.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>95_WR MS5 Detail Design Docs</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

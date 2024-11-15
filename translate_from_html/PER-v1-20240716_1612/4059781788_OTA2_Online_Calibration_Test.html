@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>OTA2 Online Calibration Test - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4059781788"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                     <li><a href="2754796745_xcalib_prod.html">xcalib_prod</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4059781788"> <span>OTA2 Online Calibration Test</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-4059781788_OTA2OnlineCalibrationTest-TestCaseDescription">
+        <h1 class="heading "><span>Test Case Description</span></h1>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> If the following description is too subjective, the confidence of the 2D lane detection can be used as an objective standard </span>
+</p>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+> Road conditions </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> High -speed, elevated, urban fast roads (flat roads) </p>
+</li><li class=" "><p   
+> The three lanes live in the middle, and the lane is clear </p>
+</li><li class=" "><p   
+> Non -congestion period </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>bad</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> General urban roads (bumpy roads) </p>
+</li><li class=" "><p   
+> Below the three lanes (parking lots), the lane line is unclear </p>
+</li><li class=" "><p   
+> Morning and evening peaks, congestion periods (there are many surrounding vehicles, lane lines are blocked) </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+> Weather conditions </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Sunny and cloudy days </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>bad</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> At night, rainy days (small/medium/large), heavy fog, backlight </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="2" colspan="1">
+    <p   
+> Driving habit </p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> The speed 40 ~ 100 km/h </p>
+</li><li class=" "><p   
+> Driving smoothly, try to go straight to avoid changing lanes </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>bad</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> Too low or too high </p>
+</li><li class=" "><p   
+> Frequent changes, rapid acceleration, rapid deceleration, sudden braking, rapid turning </p>
+</li></ul>            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<ul class=" "><li class="auto-cursor-target "><p   
+> The Test Case listed below is not fully covered. If the test time allows it to be supplemented <span style="color: #ff0000;"> (Test at night 1, 5 and 7 at night) </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> The inter -group test is independent and cannot be carried out within the same power -on cycle </span>
+</p>
+</li><li class="auto-cursor-target "><p   
+>    <span style="color: #ff0000;"> Each group of test duration requires a single camera convergence of more than 3 times </span> (Full Good is expected to be 30 minutes, when the bad or yaw disturbance is large, convergence will take time to increase) </p>
+</li><li class="auto-cursor-target "><p   
+><strong class=" ">    <span style="color: #ff0000;"> Based on the Office Calib disturbing YAW, you must remove the online calib parameter in Persistency before each test </span>
+</strong></p>
+</li><li class="auto-cursor-target "><p   
+><strong class=" ">    <span style="color: #ff0000;"> Turn off Wenyuan's online correction module before testing </span>
+</strong></p>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="highlight-grey confluenceTh" rowspan="1" colspan="1">
+    <p   
+>test case</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front wide camera</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front tele camera</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Road conditions </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Weather conditions </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Driving habit </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 0.3°</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff0000;">
+bad    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 0.3°</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff0000;">
+bad    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 0.3°</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 0.3°</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 0.5°</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff0000;">
+bad    </span>
+</strong></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 0.5°</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff0000;">
+bad    </span>
+</strong></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>6</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 0.5°</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 0.5°</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>7</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 1.0°</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff0000;">
+bad    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>8</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 1.0°</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><strong class=" ">    <span style="color: #ff0000;">
+bad    </span>
+</strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>9</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 1.0°</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 1.0°</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 3.0°</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>11</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 3.0°</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>12</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 3.0°</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>yaw + 3.0°</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+                <td  class="highlight-grey confluenceTd" rowspan="1" colspan="1">
+    <p   
+>good</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-1" id="src-4059781788_OTA2OnlineCalibrationTest-DataRecordRequirement">
+        <h1 class="heading "><span>Data Record Requirement</span></h1>
+<p   
+> 1. During the current power -on cycle, recording Rosbag needs to include the following topic <span style="color: #ff0000;"> (Record the information applied to the YAW disturbance value, road and Weather Conditions, driving behavior and other information) </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #339966;">
+/C/Camera/FrontTele    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/C/Camera/FrontWide    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/viper_driving/xper_viper_lane_and_edge_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/local_msf/xper_local_loc_result_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/ara_com_gateway/sensor_calib_parameter_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/ara_com_gateway.offline_sensor_calib_parameter_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/ara_com_gateway.online_sensor_calib_parameter_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/online_calibration/online_calib_result_senderport    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+/A/online_calibration/on_line_key_info_debug     <span style="color: #ff0000;"> (You need to modify the startup file to the DEBG mode) </span>
+    </span>
+</p>
+</li></ul><p   
+>    <span style="color: #000000;"> 2. Perform 3 times the interval between the test process 3 times </span>
+    <span style="color: #ff0000;"> on -P 100 Tracelogger -W -S3 -F Online_Calibration.kev (record screenshot) </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+3、    </span>
+    <span style="color: #000000;"> Re -call, </span>
+    <span style="color: #000000;"> Read the offline and online calibration parameters in Persistency, perform comparative analysis and record </span>
+</p>
+<p   
+>    <span style="color: #000000;"> 4. When you do not make any changes, restart the ADCC, and then turn on the TJA function to observe the neutrality and record it </span>
+</p>
+<p   
+>    <span style="color: #000000;"> 5. Clear the online_calib parameter, refresh the Office disturbance value, start a new round of test </span>
+</p>
+<p   
+> 6. Group 3, 6, 9 and 12, please provide debug data for algorithm analysis </p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Modify the log level of log_info copying the log <span style="color: #339966;">
+online_calibration.json    </span>
+    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Modify the configuration file online_monitor_config.yaml in save_debug: true copy /data /call </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #339966;">
+vehicle_movement_status.txt    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+side_view_camera_front_wide.txt    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #339966;">
+side_view_camera_front_tele.txt    </span>
+</p>
+</li></ul></li></ul>    </div>
+    <div class="section section-1" id="src-4059781788_OTA2OnlineCalibrationTest-Others">
+        <h1 class="heading "><span>Others</span></h1>
+<p   
+><strong class=" "> 1. How to disturb <span style="color: #000000;">
+offline calib    </span> parameter </strong></p>
+<p   
+><a   href="attachments/4064436922/1/disturb_calib_param.py">disturb_calib_param.py</a></p>
+<ul class=" "><li class=" "><p   
+>python disturb_calib_param.py --folder_path=[xxtriniic_folder] --sensor_name=[sensor_name] --delta_yaw=0.0 --delta_pitch=0.0 --delta_roll=0.0</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> When the t_v_c in the calibration parameter rotates in order of Euler Corner XYZ, the pitch angle under the coordinate system of the vehicle corresponds to ROLL, so the disturbance of Pitch needs to be applied to the delta_roll; </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> The script is the calibration file in the folder. It is best to copy a calibration parameter folder to run the script every time you disturb; </span>
+</p>
+</li></ul><p   
+><strong class=" ">    <span style="color: #000000;"> 2. How to compare the analysis of online call and offline call parameters </span>
+</strong></p>
+<p   
+>    <span style="color: #ff0000;">
+<a   href="attachments/4140794998/1/calculate_euler_angle_difference.py">calculate_euler_angle_difference.py</a>    </span>
+</p>
+<p   
+><strong class=" "> 3. Reference materials </strong></p>
+<ul class=" "><li class="with-breadcrumbs "><p   
+><a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=4010991492"> Online monitoring test based on lane -based front -view camera </a></p>
+</li><li class="with-breadcrumbs "><p   
+><a   href="https://inside-docupedia.bosch.com/confluence/display/CWI/4.09.3+Ocal+validation">4.09.3 Ocal validation</a></p>
+</li><li class="with-breadcrumbs "><p   
+><a   href="attachments/4059782368/1/C2W_SVS_EOL_OCAL_Validation_GUIDE_20210126.pptx">C2W_SVS_EOL_OCAL_Validation_GUIDE_20210126.pptx</a></p>
+</li></ul>    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4140799420_Online_Calibration_Design_Specification.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Online Calibration Design Specification</span>
+        </a>
+                <a href="4150765973_Disturbance_Test.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Disturbance Test</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

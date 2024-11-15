@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CF problem summary - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3493196019"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2495263431_Static_Fusion_-_PER.html">Static Fusion - PER</a></li>
+                                                                                                         <li class="shortcut"><a href="2498326801_SF-APA.html">SF-APA</a></li>
+                                                                                     <li><a href="3493196014_CF_doc.html">CF doc</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3493196019"> <span>CF problem summary</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div  class="tablewrap">
+        <table class="relative-table confluenceTable">
+                    <colgroup>
+                                    <col  width="5.63247%"/>
+                                    <col  width="32.8909%"/>
+                                    <col  width="21.8345%"/>
+                                    <col  width="11.4103%"/>
+                                    <col  width="5.98016%"/>
+                                    <col  width="22.2517%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Serial number </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> TR link </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Problem Description </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Can it be solved with DEMO software </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Owner</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Latest state </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-63450?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -63450] [DEMO_0921] [Parking] [OT No.1] Pedestrians have not invaded the parking trajectory, triggering parking pause, and the APA Weisch.com (bosch.com) after the pedestrian walks away. </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> After the pedestrian walked away, the USS signal disappeared, but Contour continued to exist, the duration of about 8s. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Guo Hongming </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> PR has been in DEMO <u class=" ">_</u> Chery_e0x_0926_v1 software </p>
+</li><li class=" "><p   
+> TR status has been perfected </p>
+<ul class=" "><li class=" "><p   
+>Analized</p>
+</li><li class=" "><p   
+>resolved by: <a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-63730?src=confmacro">CNWVIII-63730</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+</li><li class=" "><p   
+>fix version: Demo<u class=" ">_</u>Chery_E0X_0926_V1</p>
+</li></ul></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-62602?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -62602] [DEMO_0917] [Parking] [OT No.1] Stop Distance During the parking process, severe jumps -tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Contour is unstable, suddenly appears and invades the parking space, resulting in the Stop Distance of the APA: </p>
+<ul class=" "><li class=" "><p   
+> The USS detection of cone barrel is low instead of HIGH, and it must be solved from upstream </p>
+</li><li class=" "><p   
+> Object1's unstable problem, theoretically, can improve or solve after joining the FEATUR </p>
+</li><li class=" "><p   
+> The problem of disappearing the outline of the right side of the parking space </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Guo Hongming </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> You need to enter the breakpoint for visualization to further investigate </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-62467?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -62467] [DEV_0915] [Parking] [OT NO.1] Polyalonic space is released to vertical parking space- tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The output attribute of the road along the road is LOW, Contour is currently only fusion of high attribute obstacles </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Guo Hongming </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> The integration of the high degree of channels needs to be developed. The current software version cannot be solved </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-61726?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX">[CNWVIII-61726] [DEV Parking]VER::ASW APA ego car cannot stop to avoid collision during target object is running - tracker08 (bosch.com)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> 1. Contour does not identify dynamic obstacles </p>
+<p   
+> 2. Some scenarios appear a USS signal, but there is no contour. You need to download the data packet for further testing </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Guo Hongming </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> After getting down the data packet, use the latest DEMO software to re -test to observe whether the contour appears. </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-61181?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII-61181] [DEV] [Parking] [OT NO.1] In not only the B-electric cycle of B, the contourFusion launch is significantly slower than other Activity. The data output is visualized or even slow than VIPER for2 minutes.) - tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Not only did the BCD cycle of B, the Contourfusion started significantly slower than other Activity, or even VIPER with higher resource consumption.The reason is unknown. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Guo Hongming </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> To be determined </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>6</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-61180?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII-61180] [DEV] [Parking] [OT NO.1] There is a fusion parking space of a car in one side. The parking vehicle is not in the parking space, and even part of the front wheels are outside the front line.There are obvious abnormal jumps in the contribution results of the rear obstacles. Compared with the USS point cloud Sensorabst result, there is a delay -tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The rear obstacle information feedback from the USS Sensorabst disappears around the 85th, but the error obstacle information feedback from the ContourFUTION did not disappear until the 90s.It is expected that DEMO can be solved, waiting to download the data package test. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Pan Songlei </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> PR has been in DEMO <u class=" ">_</u> Chery_e0x_0926_v1 software </p>
+</li><li class=" "><p   
+> TR status has been perfected </p>
+<ul class=" "><li class=" "><p   
+>Analized</p>
+</li><li class=" "><p   
+>resolved by: <a   href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-63730?src=confmacro">CNWVIII-63730</a> - Jira issue doesn't exist or you don't have permission to view it.</p>
+</li><li class=" "><p   
+>fix version: Demo<u class=" ">_</u>Chery_E0X_0926_V1</p>
+</li></ul></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>7</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-61179?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -61179] [DEV] [Parking] [OT No.4] 0908_DEV software, after HPA switch APA </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> After using the 2.0 software reinstation, the following two conclusions are obtained: </p>
+<ul class=" "><li class=" "><p   
+> The problem of obstacles high and low attributes have been solved </p>
+</li><li class=" "><p   
+> The problem of disappearing from the left and rear outline of the parking space </p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Pan Songlei </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+> You need to enter the breakpoint for visualization to further investigate </p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>8</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-61112?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [Cnwviiii -61112] [Parking] [OT No.1] 0908 DEV, APA parking distance is too close, artificial step and stop -Contour detection problem- tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The reason is uncertain for the time being, you need to open the specific analysis of the data packet </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Guo Hongming </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>9</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-60765?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -60765] [DEV] [Parking] [OT NO.4] 0906_DEV Software, Rubbing Process Planning Error- Tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The downstream is caused by Contour's instability?2.0 software, the specific reason is unknown, to open the specific analysis of the data packet. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Guo Hongming </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-59835?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -59835] [Release] [Esme] [Parking] [OT No.1] 0831_release software, the parking space of obstacles is obviously released -tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Still from: <span style="color: #172b4d;"> 1) Object height type is wrong; 2) Node ID is the same and the coordinates are different; 3) Node ID is different, the coordinates are the same; 4) Node ID is 0; 5) Node does not send these problems in a certain order.Contourfusion 1.0 The Above Proplems Have Been Solved in the Latest Demo Software of Contourfusion 2.0. </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Pan Songlei </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Has been solved, no re -test is required </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>11</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-58083?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -58083] [607 dev] [Parking] [OT No.1] Mistake release is more released (the occupied parking space is released as Parkable) -Tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #172b4d;"> 1) Object height type is wrong; 2) Node ID is the same and the coordinates are different; 3) Node ID is different, the coordinates are the same; </span>
+</p>
+<p   
+> Contourfusion 1.0 The above problems have been solved in the latest DEMO software of Contourfusion 2.0. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Guo Hongming </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Has been solved, no re -test is required </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>12</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-58080?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -58080] [607 dev] [Parking] [OT No.1] After the APA enters Guidance, the DistanceTostop multiple changes during the reversing process -tracker08 (bosch.com) (bosch.com) (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Contour's order problem, test it with the latest DEMO software </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Guo Hongming </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Has been solved, no re -test is required </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>13</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-57310?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -57310] [607 dev] [Parking] [OT NO.1] Poor space for vertical car, MOVE1 rear parking interruption -tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The problems measured by Contourfusion 1.0, because there is no tracking, so the contribution of the Contour is not stable 。</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Pan Songlei </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Test it with demo software, whether the Contour is more stable 。</p>
+<p   
+> Test questions: There is no USS signal in the original package, which makes it impossible to re -test the Contour. </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>14</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-57031?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -57031] [607 dev] [Parking] [OT NO.1] PSS OBJ2 position error causes parking failure -tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> PSS has modified the release parameters in advance. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Pan Songlei </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Has been solved, no re -test is required </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>15</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-56777?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -56777] [Parking] [OT No.1] 0812 DEV, APA Passing Disorders sometimes did not -tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The problems measured by Contourfusion 1.0, because the tracking of the Contour is not stable because it is not tracked.Inside 5 packs need to be tested. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Pan Songlei </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Test it with demo software, whether the Contour is more stable </p>
+<p   
+> Test questions: There is no USS signal in the original package, which makes it impossible to re -test the Contour. </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>16</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-54558?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII-54558] [607 dev] [Parking] [Pt No.2] 0727 dev, APA activates that the car will remain when the distance is closer to other cars.(bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The problems measured by Contourfusion 1.0, because there is no trace, so there is a shake on the Contour point </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Pan Songlei </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Test it with demo software, whether the Contour is more stable </p>
+<p   
+> Test results: Contour's stability has been significantly improved, and it has commented under the list. </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>17</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-53426?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20GUH3WX"> [CNWVIII -53426] [Parking] [OT No.1] The occupied parking space is still released into parking space -tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The space parking space is released by mistake, the Contour repeat point, the ID is 0, and the sequential problem is caused </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Guo Hongming </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Has been solved, no re -test is required </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>18</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-63512?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20PSA1WX"> [CNWVIII -63512] [DEMO_0924] [Parking] [OT No.1] During the parking process of APA, the small space (pillars in the middle) of the right side (pillars) were released as perpoper space parking space- tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The pillar exceeds the effective FOV of the USS point cloud, and can only be supplemented by vision </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>N</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Guo Hongming </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Need to develop Contour2.1 </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>19</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-60721?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20PSA1WX"> [CNWVIII-60721] [607 dev] [Driving-PAKING] [OT7 Vehicle] Wing-in-one script, more than 30kphph in Central, TJA function, Contour Fusion_Activity CPU is close to 3%-tracker08 (bosch.com) (bosch.com) (bosch.com) (bosch.com) (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The problem of adaptation of integrated architecture, to be verified </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Pan Songlei </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> It has been tested in the car in the car in the car. After the subsequent entry into the Develop_chery, then turn off this list </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>20</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-54560?jql=(project%20%3D%20CNWVIII%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed%20AND%20component%20in%20(Calibration%2C%20Dynamic_Fusion%2C%20Dynamic_PER_Parking%2C%20Loc_Driving%2C%20Loc_Parking%2C%20Map_Loc_Slam_Parking%2C%20Map_Service_Driving%2C%20Map_Service_Parking%2C%20PER%2C%20PER_driving%2C%20PER_Eng%2C%20Static_Fusion_Driving%2C%20Static_Fusion_Parking%2C%20Static_PER_Parking)%20OR%20project%20%3D%20CNWVIII%20AND%20assignee%20in%20(ZXO5SZH%2C%20GJJ1SZH%2C%20BAY1CNG%2C%20JNS2SZH%2C%20YCA4SZH%2C%20YCH6SZH%2C%20LOH9SZH%2C%20ISH3SZH%2C%20IHY1SGH%2C%20UNJ1SZH%2C%20NWY1SZH%2C%20LGL1SZH%2C%20FEI3SZH%2C%20CWH8SZH%2C%20YLL2SZH%2C%20UAW2SZH%2C%20XQU2SZH%2C%20XLA5SZH%2C%20MIJ4SZH%2C%20DZE2SZH%2C%20SAA4SZH%2C%20OIY1SZH%2C%20THA3SZH%2C%20HLC2SGH%2C%20TYN3SZH%2C%20HPA4SZH%2C%20ZAB3SZH%2C%20LAE7SZH%2C%20SBO2SZH%2C%20AWA4SZH%2C%20UXZ2SGH%2C%20HQI2SZH%2C%20ILK2SZH%2C%20USY2SZH%2C%20INZ2SZH%2C%20MMO3SZH%2C%20HIC2SGH%2C%20WUG8SGH%2C%20IIT1SZH%2C%20PGU1SZH%2C%20WHA7SGH%2C%20WGS5SGH%2C%20CNJ9SZH%2C%20NHE1SZH%2C%20SUE8SZH%2C%20WWU5SGH%2C%20AIW3SZH%2C%20IXS1SGH%2C%20JNI8SZH%2C%20UHD1SZH%2C%20GES3SZH%2C%20FAU2SGH%2C%20YUG6SZH%2C%20SIY8SZH%2C%20WMN5SGH%2C%20LAC7SZH%2C%20GWG1SGH%2C%20XHB1SZH%2C%20NJB1SZH%2C%20ASD1SZH%2C%20UDO1SZH%2C%20FIH1SZH%2C%20IXF1SZH%2C%20ILD2SGH%2C%20FHY1SZH%2C%20AYY4SZH%2C%20AMA2SZH%2C%20MYN1SZH%2C%20ZXO5SZH%2C%20AJA1SZH%2C%20AAA3KOR%2C%20SHN6SZH%2C%20WUE5SGH%2C%20LKA4SZH%2C%20ZALCSZH%2C%20IYL9SZH%2C%20MADCSZH%2C%20HTU2SGH%2C%20HTU2SGH%2C%20UGN1SZH%2C%20ZIV1SGH%2C%20ABY1WX%2C%20BIY4SGH%2C%20WCO2SGH%2C%20CAN3WX%2C%20HEH7SGH%2C%20WZI2WX%2C%20XRO3SGH%2C%20GUH3WX%2C%20OCR1SGH%2C%20PSA1WX)%20AND%20issuetype%20in%20(Problem)%20AND%20status%20!%3D%20Closed)%20AND%20assignee%20%3D%20PSA1WX"> [CNWVIII-54560] [607 dev] [Parking] [Pt No.2] 0727 Dev, APA activates when the distance is close to other cars, the car will remain motionAfter a minute, the car continues to park-tracker08 (bosch.com) </a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The problems measured by Contourfusion 1.0, because there is no tracking, so the contribution of the Contour is not stable </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Y</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Pan Songlei </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Test it with demo software, whether the Contour is more stable </p>
+<p   
+> Test results: Contour's stability is significantly improved, but the left corner of the vehicle is still unstable. </p>
+<ul class=" "><li class=" "><p   
+> You need to enter the breakpoint for visualization to further investigate </p>
+</li></ul>            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3508464921_CF_Plan_2023.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>CF Plan 2023</span>
+        </a>
+                <a href="4477630569_CF_taskforce_2407.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>CF taskforce 2407</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

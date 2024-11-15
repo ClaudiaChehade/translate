@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Image Chain System Architecture - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2040895221"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                     <li><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2040895221"> <span>Image Chain System Architecture</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-2040895221_ImageChainSystemArchitecture-GeneralInformation">
+        <h1 class="heading "><span>General Information</span></h1>
+<p   
+>This page aims to construct the image chain system architecture and what are next steps.</p>
+<p   
+>References are from XC-DA existing products' experience. Mainly from FVG3 & NRCS2.</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Contact</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Status</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status yellow " >REVIEW</span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Link to System Architecture</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://xc-ea.de.bosch.com/WebEA?m=54&o=B27301E5-1A9C-434f-819D-5E49CB45E7F2">WebEA dashboard</a></p>
+<p   
+><a   href="1751254717_System_architecture.html">System architecture</a></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<hr>
+    </div>
+    <div class="section section-1" id="src-2040895221_ImageChainSystemArchitecture-ReviewStatus">
+        <h1 class="heading "><span>Review Status</span></h1>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Date</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Participates</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Comments</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8aba638a7d844de0017da329d6900103">user-94007</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Update the responsible persons, and following up actions.</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a> Invite meeting with Alex & Liu Ge next Thursday or Friday.</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>16 Dec 2021</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~UAW2SZH">WU Alex (XC-AS/PJ-WIN-PER)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~YAI2SGH">YANG Liu (XC-AS/PJ-WIN-PER)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MYN1SZH">MENG Yafei (XC-AS/PJ-WIN-PMT)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Align the tasks and following up actions with management.</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<hr>
+    </div>
+    <div class="section section-1" id="src-2040895221_ImageChainSystemArchitecture-ComponentDescriptions">
+        <h1 class="heading "><span>Component Descriptions</span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="19.2037%"/>
+                                    <col  width="80.7963%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Acronym</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Full name</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>IMP</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Image preparation</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>SCE</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Sight Condition Estimation</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>SIPL</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Safe Image Processing Library from Nvidia</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<hr>
+    </div>
+    <div class="section section-1" id="src-2040895221_ImageChainSystemArchitecture-StaticArchitecture">
+        <h1 class="heading "><span>Static Architecture</span></h1>
+<p   
+>07 Dec 2021 Draft version.</p>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/2040895221/imc_draft_sw_archi-version-5-modificationdate-1638867306000-api-v2.png" alt="images/confluence/download/attachments/2040895221/imc_draft_sw_archi-version-5-modificationdate-1638867306000-api-v2.png" width="1422"  />
+    </p>
+    </div>
+    <div class="section section-1" id="src-2040895221_ImageChainSystemArchitecture-ToBeClarified">
+        <h1 class="heading "><span>To Be Clarified</span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="7.68789%"/>
+                                    <col  width="3.44234%"/>
+                                    <col  width="14.6299%"/>
+                                    <col  width="15.6627%"/>
+                                    <col  width="8.37636%"/>
+                                    <col  width="8.37636%"/>
+                                    <col  width="14.4578%"/>
+                                    <col  width="8.37636%"/>
+                                    <col  width="18.9902%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Aspects</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>No.</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Topics</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Options</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Priority</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Status</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Resp.</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Support needed</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Tracking</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="6" colspan="1">
+    <p   
+>Functionality<br/><br/><br/><br/><br/><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>How we <strong class=" ">get</strong> the <strong class=" ">video stream</strong> from cameras? Including camera device drivers & SIPL pipeline.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1: Vendor to provide all the low layer implementation.</p>
+</li><li class=" "><p   
+>Opt2: Require BSW team fulfill NvMedia API, SIPL framework.</p>
+</li><li class=" "><p   
+>Opt3: PER team implement basing on NvMedia API, SIPL framework.</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status red " >HIGH</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status yellow " >ONGOING</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Vendor</p>
+</li><li class=" "><p   
+>BSW team</p>
+</li><li class=" "><p   
+>SYS team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Opt1 to clarify the feasibility<a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>Opt2 to clarify BSW status <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>Opt3 need to research for the premise of development. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+</li></ul><p   
+>16 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Discuss with interfaces. Meeting invited already.<a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li></ul><p   
+>22 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Confirmed from BSW team:</p>
+<ul class=" "><li class=" "><p   
+>BSW will handle camera drivers, and prepare NvMedia API. But will not implement the logic.</p>
+</li><li class=" "><p   
+>BSW team will finish camera drivers & Nvidia API basing on HW+ earliest in mid of May in 2022.</p>
+</li></ul></li><li class=" "><p   
+>Firstly contact with MW team (not confirmed officially):</p>
+<ul class=" "><li class=" "><p   
+><del class=" ">Handling Nvidia related interface implementation</del></p>
+</li><li class=" "><p   
+><del class=" ">NvMedia is currently ready in AOS</del></p>
+</li><li class=" "><p   
+>Need other teams to send related requirements.</p>
+</li></ul></li></ul><p   
+>30 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Discuss with MW team：</p>
+<ul class=" "><li class=" "><p   
+>AOS has not included NvMedia API. Currently have no integration timeline.</p>
+</li><li class=" "><p   
+>Need further discussion about handling NvMedia in MW or PER team</p>
+</li></ul></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>What kind of information should be in EEPROM data?</p>
+<p   
+>And how can we get them? Including Camera intrinsic.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1: PER team provides requirement. BSW team to implement logic with SIPL.</p>
+</li><li class=" "><p   
+>Opt2: PER team handles all the implementation.</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status yellow " >MEDIUM</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status yellow " >ONGOING</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>PER team</p>
+</li><li class=" "><p   
+>BSW team</p>
+</li><li class=" "><p   
+>SYS team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>CAM EOL test list. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~8aba638a7d844de0017da329d6900103">user-94007</a></p>
+</li><li class=" "><p   
+>The method to get EEPROM intrinsic data. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-DA/PJ-W3-PER</a>16 Dec 2021</p>
+</li><li class=" "><p   
+>BSW & HW+ provides solutions to get the infrastructure. Meeting with BSW & HW+ on Dec.17th</p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li></ul><p   
+>22 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Confirmed from BSW team:</p>
+<ul class=" "><li class=" "><p   
+>Same as No.1</p>
+</li></ul></li></ul><p   
+>30 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Discussion with MW team:</p>
+<ul class=" "><li class=" "><p   
+>Same as No.1</p>
+</li></ul></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>How we <strong class=" ">control </strong>the <strong class=" ">video stream flow? </strong>Such as send buffer to algorithm & ASW components.<strong class=" "><br/></strong></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1: BSW use NvStreams to handle video stream buffers</p>
+</li><li class=" "><p   
+>Opt2: MW team use AOS with wrapped NvSci* structures</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status red " >HIGH</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status yellow " >ONGOING</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>PER team</p>
+</li><li class=" "><p   
+>BSW team</p>
+</li><li class=" "><p   
+>MW team</p>
+</li><li class=" "><p   
+>SYS team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Need to figure out requirements internally of PER team <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+</li><li class=" "><p   
+>After requirements confirmed, need to align with BSW & MW team <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>16 Dec 2021</p>
+</li><li class=" "><p   
+>Investigate the AOS&NvStreams solutions. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+</li></ul><p   
+>22 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Confirmed from BSW team:</p>
+<ul class=" "><li class=" "><p   
+>Currently not considered</p>
+</li></ul></li><li class=" "><p   
+>Firstly contact with MW team (not confirmed officially):</p>
+<ul class=" "><li class=" "><p   
+>Sven's team will handle NvStreams.</p>
+</li><li class=" "><p   
+>NvStream is partial supported in AOS.</p>
+</li></ul></li></ul><p   
+>30 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Discussion with MW team:</p>
+<ul class=" "><li class=" "><p   
+>AOS only integrated the taking NvStreams buffer to AOS, no other implementation. Which means the NvStreams main functionality is not integrated.</p>
+</li><li class=" "><p   
+>Need further discussion about handling NvMedia in MW or PER team</p>
+</li></ul></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>What should we do about the <strong class=" ">image preparation</strong>? Such as SCE, harmonization, self-glare, blindness, etc.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1: ISP handle</p>
+</li><li class=" "><p   
+>Opt2: DL handle</p>
+</li><li class=" "><p   
+>Opt3: A middle component IMP to handle</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status yellow " >MEDIUM</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status yellow " >ONGOING</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>PER team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>List the needed functions.<a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+</li><li class=" "><p   
+>Review with management make sense or not.</p>
+</li><li class=" "><p   
+>16 Dec 2021</p>
+</li><li class=" "><p   
+>Plan to run in PVA. Need to discuss with HW+ the feasibiliy. (Do we have the PVA avaibable?)</p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>Need to list the function list. And keep following the technicocal solution.</p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Should we handle the <strong class=" ">re-computing</strong>? Such as replay in HIL, SIL, validation, debugging.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>PMT team implements the solution</p>
+</li><li class=" "><p   
+>PER team supports to research the special requirements (such as bypass mode)</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status yellow " >MEDIUM</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status green " >CLOSED</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>PMT team</p>
+</li><li class=" "><p   
+>SYS team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Which team (SYS&PMT) will handle the video stream to HIL, SIL, VIL? <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li></ul><p   
+>13 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>F2F meeting with Jin ning,     <span style="color: #00ff00;">
+    <span style="color: #008080;">
+<strong class=" ">PMT department already planned system level recomputing</strong>    </span>
+,    </span>
+ ISP team need to provide camera configuration infor. eg. ser-des，if additional needed, contact Jin ning and Jay.</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>6</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Should we consider the video stream <strong class=" ">output</strong>?</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1: PER team to handle this requirement, and cooperate with BSW team.</p>
+</li><li class=" "><p   
+>Opt2: Parking ASW team to handle this requirement, and cooperate with BSW team.</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status green " >LOW</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status grey " >TODO</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>BSW team</p>
+</li><li class=" "><p   
+>Parking team</p>
+</li><li class=" "><p   
+>SYS team</p>
+</li><li class=" "><p   
+>BSW team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>List the workpackages of video stream output. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+</li><li class=" "><p   
+>16 Dec 2021</p>
+</li><li class=" "><p   
+>Low priority, to be discussed in the future.</p>
+</li></ul><p   
+>22 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Confirmed from BSW team:</p>
+<ul class=" "><li class=" "><p   
+>Currently no requirements from SYS team</p>
+</li></ul></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+>Quality<br/><br/></p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>7</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>What is our image quality <strong class=" ">criteria</strong>? Including objective & subjective.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1: PER team provides the criteria basing on existing experience.</p>
+</li><li class=" "><p   
+>Opt2: Vendor provides the criteria for reference.</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status yellow " >MEDIUM</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status yellow " >ONGOING</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>PER team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Objective criteria is preparing, not block point. Vendor needs to provide Lab. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>Subjective for DL: check the open dataset. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>Subjective summary for NRCS2. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+</li><li class=" "><p   
+>Subjective criteria from vendor. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+</li></ul><p   
+>16 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Following up internally in PER team.</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>8</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>How to <strong class=" ">tune</strong> in <strong class=" ">lab & real vehicle environment </strong>with subjective scenarios? Mainly about tooling of tuning.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1: Vendor provides the tooling to PER team, PER team take the resp.</p>
+</li><li class=" "><p   
+>Opt2: Vendor refuses to provide the tooling, we have to pay for them.</p>
+</li><li class=" "><p   
+>Opt3: PER along with BSW team to develop the tooling basing on Nvidia API.</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status red " >HIGH</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status yellow " >ONGOING</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Vendor</p>
+</li><li class=" "><p   
+>BSW team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>RFI for ISP: check with vendor if they can provide tooling & service: including baseline tuning in lab, performance tuning in vehicle, joint test with customer, aftermarket support.</p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>List the tuning requirements in the above 4 phases. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>16 Dec 2021</p>
+</li><li class=" "><p   
+>Optimize the ISP RFI.</p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>9</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>How to <strong class=" ">debug image quality</strong>?</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1: Vendor provides the tooling to PER team, PER team take the resp.</p>
+</li><li class=" "><p   
+>Opt2: Vendor refuses to provide the tooling, we have to pay for them.</p>
+</li><li class=" "><p   
+>Opt3: PER along with BSW team to develop the tooling basing on Nvidia API.</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status green " >LOW</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status grey " >TODO</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>SYS team</p>
+</li><li class=" "><p   
+>BSW team</p>
+</li><li class=" "><p   
+>Vendor</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Inform SYS team to consult how PER team can support. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>16 Dec 2021</p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a> please keep tracking with Tao after discussion with German.</p>
+</li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+>Stability</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>How do we consider the hardware <strong class=" ">monitoring</strong>? Including failure (or status info, such as temperature) of Cam, SerDes, Harness, ISP, System.</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1:</p>
+</li><li class=" "><p   
+>Opt2:</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status green " >LOW</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status grey " >TODO</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>SYS team</p>
+</li><li class=" "><p   
+>BSW team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Inform SYS team to consult how PER team can support. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>16 Dec 2021</p>
+</li><li class=" "><p   
+>Discuss with HW+ & BSW on Dec.17th.</p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li></ul><p   
+>22 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Confirmed from BSW team:</p>
+<ul class=" "><li class=" "><p   
+>Need SYS team to provide requirements</p>
+</li></ul></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>11</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>How could we <strong class=" ">synchronize</strong> the 11 cameras' frames?</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1:</p>
+</li><li class=" "><p   
+>Opt2:</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status red " >HIGH</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status green " >CLOSED</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>SYS team</p>
+</li><li class=" "><p   
+>MW team</p>
+</li><li class=" "><p   
+>BSW team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Need to inverstigate . <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+</li><li class=" "><p   
+>16 Dec 2021</p>
+</li><li class=" "><p   
+>Inverstigate with Athenna, NRCS2 solutions.</p>
+</li><li class=" "><p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~MADCSZH">MAO Donny (XC-AS/PJ-WIN-PER5)</a></p>
+</li><li class=" "><p   
+>Same as No.10.</p>
+</li></ul><p   
+>22 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Confirmed from BSW team:</p>
+<ul class=" "><li class=" "><p   
+>Currently not considered</p>
+</li><li class=" "><p   
+>BSW team will handle this topic, need SYS team support</p>
+</li></ul></li></ul><p   
+>17 Jan 2022</p>
+<p   
+><a   href="https://inside-docupedia.bosch.com/confluence/display/wave3/TimeSync+system+requirement+and+architecture">TimeSync system requirement and architecture</a></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>12</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>„How to <strong class=" ">recognize </strong>different <strong class=" ">trim level</strong>? How to figure out how many cameras are connected to ISP?</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1:</p>
+</li><li class=" "><p   
+>Opt2:</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status green " >LOW</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status green " >CLOSED</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>SYS team</p>
+</li><li class=" "><p   
+>BSW team</p>
+</li><li class=" "><p   
+>MW team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Inform SYS team to consult how PER team can support. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>Proposal from PER team. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~FEI3SZH">FEI Yanjia (XC-AS/PJ-WIN-PER6)</a></p>
+</li><li class=" "><p   
+>16 Dec 2021</p>
+</li><li class=" "><p   
+>Same as No.10</p>
+</li></ul><p   
+>22 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Confirmed from BSW team:</p>
+<ul class=" "><li class=" "><p   
+><strong class=" ">    <span style="color: #008000;">
+BSW team will handle this topic.    </span>
+</strong></p>
+</li></ul></li></ul>            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>13</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>Do we need to consider the <strong class=" ">fusa</strong> requirements?</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>Opt1:</p>
+</li><li class=" "><p   
+>Opt2:</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status green " >LOW</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><span class="status grey " >TODO</span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <ul class=" "><li class=" "><p   
+>SYS team</p>
+</li></ul>            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Need clear & specific fusa requirement on each camera from SYS team. <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~AJA1SZH">WANG Jay (XC-AS/PJ-WIN-PER6)</a></p>
+</li></ul><p   
+>16 Dec 2021</p>
+<ul class=" "><li class=" "><p   
+>Same as No.10</p>
+</li></ul>            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+<hr>
+    </div>
+    <div class="section section-1" id="src-2040895221_ImageChainSystemArchitecture-Reference">
+        <h1 class="heading "><span>Reference</span></h1>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">Front Video SW Architecture</span>
+        </div>
+        <div class="scroll-expand-content">
+<p   
+><a   href="https://inside-docupedia.bosch.com/confluence/display/NGVW/SW-Arch%3A+Views%3A+Image+Preparation+%28IMP%29+Architecture">SW-Arch: Views: Image Preparation (IMP) Architecture</a></p>
+<p   
+>IG (Image generation)</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2040895221/image2021-12-6_14-20-53-version-1-modificationdate-1638771933000-api-v2.png" alt="images/confluence/download/attachments/2040895221/image2021-12-6_14-20-53-version-1-modificationdate-1638771933000-api-v2.png"  height="400" />
+    </p>
+<p   
+>SCE (Sight Condition Estimation)</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2040895221/image2021-12-6_14-21-19-version-1-modificationdate-1638771933000-api-v2.png" alt="images/confluence/download/attachments/2040895221/image2021-12-6_14-21-19-version-1-modificationdate-1638771933000-api-v2.png"  height="400" />
+    </p>
+        </div>
+    </div>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">NRCS2 IMC SW architecture</span>
+        </div>
+        <div class="scroll-expand-content">
+<p   
+><a   href="https://inside-docupedia.bosch.com/confluence/display/PWNRCSG2/IMC%3A+Video-In+Software+Architecture">IMC: Video-In Software Architecture</a></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2040895221/image2021-12-6_14-24-16-version-1-modificationdate-1638771933000-api-v2.png" alt="images/confluence/download/attachments/2040895221/image2021-12-6_14-24-16-version-1-modificationdate-1638771933000-api-v2.png"  height="400" />
+    </p>
+        </div>
+    </div>
+    <div class="scroll-expand-container collapsed">
+        <div class="scroll-expand-control">
+            <span class="scroll-expand-control-icon"> </span>
+            <span class="scroll-expand-control-text">NVIDIA DRIVE</span>
+        </div>
+        <div class="scroll-expand-content">
+<p   
+><a   href="https://inside-docupedia.bosch.com/confluence/display/2019IoTDSM/NVIDIA+DRIVE">NVIDIA DRIVE</a></p>
+<p   
+><img  class="confluence-embedded-image cp-img confluence-external-resource"  src="images/download/attachments/1888977507/image2021-8-8_19-51-41-version-1-modificationdate-1628423501000-api-v2.png" alt="images/download/attachments/1888977507/image2021-8-8_19-51-41-version-1-modificationdate-1628423501000-api-v2.png"  height="400" />
+    </p>
+<p   
+>DRIVE OS is a kind of foundational software stack for autonomous vehicles (AV) consists of an embedded real-time operating system (RTOS), NVIDIA Hypervisor, <a  class="external-link" href="https://developer.nvidia.com/cuda-zone">NVIDIA<sup class=" ">®</sup> CUDA<sup class=" ">®</sup></a> libraries, <a  class="external-link" href="https://developer.nvidia.com/tensorrt">NVIDIA TensorRT™</a>, NvMedia, NvStream and other components optimized to provide direct access to DRIVE AGX hardware acceleration engines.</p>
+<p   
+><strong class=" ">NvMedia</strong> is a set of highly optimized APIs providing direct access to hardware-accelerated compute engines and sensors, including encoders/decoders, sensor input processing, image manipulation and more.</p>
+<p   
+><strong class=" ">NvMedia</strong> provides the following key benefits:</p>
+<ul class=" "><li class=" "><p   
+>Capture of up to 16 camera sensors</p>
+</li><li class=" "><p   
+>Up to two processed outputs from Xavier ISP HW and raw captures</p>
+</li><li class=" "><p   
+>Proprietary auto exposure (AE) and auto white balance (AWB) algorithms optimized for NVIDIA-recommended camera modules</p>
+</li><li class=" "><p   
+>Heterogeneous sensor configuration within the same quad/trio/duo SERDES</p>
+</li></ul><p   
+><strong class=" ">NvStreams</strong> is a highly efficient API that provides access to high-speed data transports, enabling the complex processing pipelines required for autonomous vehicles.</p>
+<p   
+><strong class=" ">NvStreams</strong> provides the following key benefits:</p>
+<ul class=" "><li class=" "><p   
+>Efficient sharing of buffers between engines and their respective APIs</p>
+</li><li class=" "><p   
+>Synchronization and data flow control</p>
+</li><li class=" "><p   
+>Data dependency input and output buffer availability</p>
+</li><li class=" "><p   
+>Control dependency task ordering, non-interference and time-synchronization</p>
+</li><li class=" "><p   
+>Intra-thread, inter-thread, inter-process and inter-VM</p>
+</li></ul><p   
+><br/></p>
+<p   
+>Over speaking, DRIVE OS includes NvMedia (configuration&capture), NvStream (sharing buffers, data flow control), CUDA, cuDNN, TensorRT, along with development tools (secure boot. OTA, OS).</p>
+<p   
+><strong class=" ">SIPL</strong> framework is implemented in C++ on top of the NvMedia API.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2040895221/image2021-12-6_16-50-17-version-1-modificationdate-1638780617000-api-v2.png" alt="images/confluence/download/attachments/2040895221/image2021-12-6_16-50-17-version-1-modificationdate-1638780617000-api-v2.png"  height="400" />
+    </p>
+        </div>
+    </div>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2012270923_Installation.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Installation</span>
+        </a>
+                <a href="2130643681_Image_Chain_Application.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Image Chain Application</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

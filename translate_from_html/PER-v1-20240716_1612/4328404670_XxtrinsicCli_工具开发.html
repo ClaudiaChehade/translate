@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> XXTRINSICLI Tool Defelop  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4328404670"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                     <li><a href="2754796745_xcalib_prod.html">xcalib_prod</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4328404670"> <span> XXTRINSICLI Tool Defelop </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-4328404670_safe-id-WHh0cmluc2ljQ2xp5bel5YW35byA5Y-RLeiDjOaZrw">
+        <h1 class="heading "><span> background </span></h1>
+<p   
+> Make a car end calibration parameter update tool that can adapt to various needs </p>
+<p   
+> Requirement document: <a   href="4274359232_XxtrinsicCli_Software_Deveopment_Specification.html">XxtrinsicCli Software Deveopment Specification - wave 3 development - Docupedia (bosch.com)</a></p>
+    </div>
+    <div class="section section-1" id="src-4328404670_safe-id-WHh0cmluc2ljQ2xp5bel5YW35byA5Y-RLeW8gOWPkQ">
+        <h1 class="heading "><span> Develop </span></h1>
+<p   
+> Because there are more updates you want to support, it will appear bloated in the parameters when the function calls, so a configuration file is constructed. According to the configuration file </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">%YAML:</code><code class="value">1.0</code></div>
+<div class="line"><code class="plain">---</code></div>
+<div class="line"><code class="plain">data_path: </code><code class="string">"/home/inz2szh/zhangyichi/xper_stitch/update_yaml_xxtrinsics/dump/xxtrinsic/"</code></div>
+<div class="line"><code class="plain"> </code></div>
+<div class="line"><code class="plain"> # Whether to use the internal parameters in YAML to update the internal reference in Persist </code></div>
+<div class="line"><code class="plain">update_intrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain"> # Whether to use the external parameters in YAML to update the external parameters in Persist </code></div>
+<div class="line"><code class="plain">update_extrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain"> # Whether to extend the existing sensor SN number in Persist, otherwise the SN number will be set to </code><code class="value">0</code></div>
+<div class="line"><code class="plain">use_origin_sn: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain"># regularize_sn: </code><code class="keyword">true</code><code class="plain"> # Whether to standardize the sensor SN (invalid position 0) in Persist, if it is not configured, the default is </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain"># regularize_intrinsic: </code><code class="keyword">true</code><code class="plain"> # Whether to standardize the sensor internal parameters (invalid position 0) in Persist, if it is not configured, the default is </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain"> </code></div>
+<div class="line"><code class="plain"># </code><code class="value">0</code><code class="plain">: front_lidar</code></div>
+<div class="line"><code class="plain"># </code><code class="value">1</code><code class="plain">: side_view_camera_front_wide</code></div>
+<div class="line"><code class="plain"># </code><code class="value">2</code><code class="plain">: side_view_camera_front_tele</code></div>
+<div class="line"><code class="plain"># </code><code class="value">3</code><code class="plain">: side_view_camera_front_left</code></div>
+<div class="line"><code class="plain"># </code><code class="value">4</code><code class="plain">: side_view_camera_front_right</code></div>
+<div class="line"><code class="plain"># </code><code class="value">5</code><code class="plain">: side_view_camera_rear</code></div>
+<div class="line"><code class="plain"># </code><code class="value">6</code><code class="plain">: side_view_camera_rear_left</code></div>
+<div class="line"><code class="plain"># </code><code class="value">7</code><code class="plain">: side_view_camera_rear_right</code></div>
+<div class="line"><code class="plain"># </code><code class="value">8</code><code class="plain">: surround_view_camera_front</code></div>
+<div class="line"><code class="plain"># </code><code class="value">9</code><code class="plain">: surround_view_camera_rear</code></div>
+<div class="line"><code class="plain"># </code><code class="value">10</code><code class="plain">: surround_view_camera_left</code></div>
+<div class="line"><code class="plain"># </code><code class="value">11</code><code class="plain">: surround_view_camera_right</code></div>
+<div class="line"><code class="plain">sensor_ids: [</code><code class="value">0</code><code class="plain">,</code><code class="value">1</code><code class="plain">,</code><code class="value">2</code><code class="plain"> ] # List of sensor that need to be processed </code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-4328404670_safe-id-WHh0cmluc2ljQ2xp5bel5YW35byA5Y-RLeiHqua1iw">
+        <h1 class="heading auto-cursor-target"><span> Self -test </span></h1>
+    <div class="section section-2" id="src-4328404670_safe-id-WHh0cmluc2ljQ2xp5bel5YW35byA5Y-RLVRFU1RfQ0FTRV8x5pu05paw5YaF5aSW5Y-C5bm25L-d5oyBc27kuI3lj5g">
+        <h2 class="heading auto-cursor-target"><span> Test_case_1 update inside and outside participation and keep SN unchanged </span></h2>
+<p   
+> Use the pre -prepared YAML to update the internal and external participation of all sensors in the Persist, and keep the SN number the same (the non -effective position 0 in the SN number 0 in the default definition, see the table below) </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Sn total length </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Effective position </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>front_wide/front_tele</p>
+            </td>
+                <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+>20</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>18</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>front_left/front_right</p>
+<p   
+>rear_left/rear_right</p>
+<p   
+>rear</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>8</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>nrcs_front/nrcs_rear</p>
+<p   
+>nrcs_left/nrcs_right</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>12</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>lidar</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>16</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p  class="auto-cursor-target" 
+> The configuration file is as follows </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain"> # According to the actual situation, change </code></div>
+<div class="line"><code class="plain">data_path: </code><code class="string">"/home/inz2szh/zhangyichi/xper_stitch/update_yaml_xxtrinsics/new_dump/"</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">update_intrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">update_extrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">use_origin_sn: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">sensor_ids: [</code><code class="value">0</code><code class="plain">,</code><code class="value">1</code><code class="plain">,</code><code class="value">2</code><code class="plain">,</code><code class="value">3</code><code class="plain">,</code><code class="value">4</code><code class="plain">,</code><code class="value">5</code><code class="plain">,</code><code class="value">6</code><code class="plain">,</code><code class="value">7</code><code class="plain">,</code><code class="value">8</code><code class="plain">,</code><code class="value">9</code><code class="plain">,</code><code class="value">10</code><code class="plain">,</code><code class="value">11</code><code class="plain">]</code></div>
+</div>
+    </div>
+<p  class="auto-cursor-target" 
+> Test results in different cases </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Before running status </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Before running </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> After running </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> XXTRINSIC full empty </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="attachments/4328407572/1/empty_persist_before.txt">empty_persist_before.txt</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="attachments/4328407666/1/empty_persist_after.txt">empty_persist_after.txt</a></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Sensor_id in XXTRINSIC is all si_not_support </p>
+<p   
+> The corresponding internal and external ginseng is 0 (the scene of the corresponding replacement) </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="attachments/4328408352/1/uninitialized_persist_before.txt">uninitialized_persist_before.txt</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="attachments/4328408815/1/uninitialized_persist_after.txt">uninitialized_persist_after.txt</a></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> XXTRINSIC is the storage state after normal EOL </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="attachments/4328407473/1/normal_eol_before.txt">normal_eol_before.txt</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a   href="attachments/4328407478/1/normal_eol_after.txt">normal_eol_after.txt</a></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-4328404670_safe-id-WHh0cmluc2ljQ2xp5bel5YW35byA5Y-RLVRFU1RfQ0FTRV8y5pu05paw5YaF5aSW5Y-C5bm25oqKc27lhajpg6jnva7kuLow">
+        <h2 class="heading auto-cursor-target"><span> TEST_CASE_2 updates the inside and outside participation and sets all the SN to 0 </span></h2>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain"> # According to the actual situation, change </code></div>
+<div class="line"><code class="plain">data_path: </code><code class="string">"/home/inz2szh/zhangyichi/xper_stitch/update_yaml_xxtrinsics/new_dump/"</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">update_intrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">update_extrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">use_origin_sn: </code><code class="keyword">false</code></div>
+<div class="line"><code class="plain">sensor_ids: [</code><code class="value">0</code><code class="plain">,</code><code class="value">1</code><code class="plain">,</code><code class="value">2</code><code class="plain">,</code><code class="value">3</code><code class="plain">,</code><code class="value">4</code><code class="plain">,</code><code class="value">5</code><code class="plain">,</code><code class="value">6</code><code class="plain">,</code><code class="value">7</code><code class="plain">,</code><code class="value">8</code><code class="plain">,</code><code class="value">9</code><code class="plain">,</code><code class="value">10</code><code class="plain">,</code><code class="value">11</code><code class="plain">]</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-4328404670_safe-id-WHh0cmluc2ljQ2xp5bel5YW35byA5Y-RLVRFU1RfQ0FTRV8z5Y-q5pu05paw5aSW5Y-C">
+        <h2 class="heading auto-cursor-target"><span> Test_case_3 only update external parameters </span></h2>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain"> # According to the actual situation, change </code></div>
+<div class="line"><code class="plain">data_path: </code><code class="string">"/home/inz2szh/zhangyichi/xper_stitch/update_yaml_xxtrinsics/new_dump/"</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">update_intrinsic: </code><code class="keyword">false</code></div>
+<div class="line"><code class="plain">update_extrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">use_origin_sn: </code><code class="keyword">false</code></div>
+<div class="line"><code class="plain">sensor_ids: [</code><code class="value">0</code><code class="plain">,</code><code class="value">1</code><code class="plain">,</code><code class="value">2</code><code class="plain">,</code><code class="value">3</code><code class="plain">,</code><code class="value">4</code><code class="plain">,</code><code class="value">5</code><code class="plain">,</code><code class="value">6</code><code class="plain">,</code><code class="value">7</code><code class="plain">,</code><code class="value">8</code><code class="plain">,</code><code class="value">9</code><code class="plain">,</code><code class="value">10</code><code class="plain">,</code><code class="value">11</code><code class="plain">]</code></div>
+</div>
+    </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-4328404670_safe-id-WHh0cmluc2ljQ2xp5bel5YW35byA5Y-RLeWPsOaetuS4iueahOiHquWKqOajgOafpeW3peWFtw">
+        <h1 class="heading auto-cursor-target"><span> Automatic inspection tools on the table frame </span></h1>
+<p  class="auto-cursor-target" 
+> Due to the participation of SN inside and outside, there are many parameters, and the results of human eye examination are time -consuming and laborious. Provide a set of tools for automation results. </p>
+<p  class="auto-cursor-target" 
+> The configuration file when transmitted to the update and the current read parameter read the update value will be automatically compared </p>
+    <div class="section section-2" id="src-4328404670_safe-id-WHh0cmluc2ljQ2xp5bel5YW35byA5Y-RLeWujOaVtOa1i-ivleaWueazlQ">
+        <h2 class="heading auto-cursor-target"><span> Complete test method </span></h2>
+<p   
+> Put the toolkit on the table: <a   href="attachments/4335604907/1/test_xxtrinsic_cli.zip">test_xxtrinsic_cli.zip</a></p>
+<p   
+> (1) Operation tool: Modify the configuration in YAML and call the interface for parameter update </p>
+<p   
+> (2) Perform parameter verification after update </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="functions">chmod</code><code class="plain"> 777 auto_check_result</code></div>
+<div class="line"><code class="plain">sh auto_check.sh</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-4328404670_safe-id-WHh0cmluc2ljQ2xp5bel5YW35byA5Y-RLeajgOmqjOWksei0peaXtg">
+        <h2 class="heading auto-cursor-target"><span> When the test fails </span></h2>
+<p   
+> The value of the red word printing the verification fails, and immediately exit </p>
+<p  class="auto-cursor-target" 
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4328404670/2024-06-06_15h37_34-version-1-modificationdate-1717659458000-api-v2.png" alt="images/confluence/download/thumbnails/4328404670/2024-06-06_15h37_34-version-1-modificationdate-1717659458000-api-v2.png"  height="36" />
+    </p>
+    </div>
+    <div class="section section-2" id="src-4328404670_safe-id-WHh0cmluc2ljQ2xp5bel5YW35byA5Y-RLeagoemqjOaIkOWKn-aXtg">
+        <h2 class="heading auto-cursor-target"><span> When the verification is successful </span></h2>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/4328404670/2024-06-06_15h37_08-version-1-modificationdate-1717659432000-api-v2.png" alt="images/confluence/download/thumbnails/4328404670/2024-06-06_15h37_08-version-1-modificationdate-1717659432000-api-v2.png"  height="26" />
+    </p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-4328404670_safe-id-WHh0cmluc2ljQ2xp5bel5YW35byA5Y-RLea1i-ivleeUqOS-iw">
+        <h1 class="heading "><span> Test case </span></h1>
+    <div  class="tablewrap">
+        <table class="relative-table wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="10.8678%"/>
+                                    <col  width="2.91971%"/>
+                                    <col  width="61.6383%"/>
+                                    <col  width="24.5742%"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> Test steps </p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+> expected outcome </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="4" colspan="1">
+    <p   
+> Write parameter after changing parts </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Put the internal and external ginseng in the Persist on the table, imitate the change of the change of the scene </p>
+<p   
+>export LD_LIBRARY_PATH=$<a  class="external-link" href="http://LD_LIBRARY_PATH/opt/vrte/lib/:/opt/app/:/usr/local/lib3rd/usr/lib/:/asw/lib_w3/perception/">LD_LIBRARY_PATH:/opt/vrte/lib/:/opt/app/:/usr/local/lib3rd/usr/lib/:/asw/lib_w3/perception/</a></p>
+<p   
+> /opt/app/variantserver/bin/xcalib_cli -w/data/(/data/can be changed to any address without the calibration result yaml) <br/>/opt/app/variantServer/bin/xcalib_cli -r</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Enter the current PERSIST's internal and external participation, all have been emptied </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The yaml file of the configuration parameter update tool is changed to the following configuration </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">data_path: </code><code class="string"> "Actual Internal and Examination Address" </code></div>
+<div class="line"><code class="plain">update_intrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">update_extrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">use_origin_sn: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">sensor_ids: [</code><code class="value">0</code><code class="plain">,</code><code class="value">1</code><code class="plain">]</code></div>
+</div>
+    </div>
+<p   
+>    <span style="color: #ff0000;">
+<strong class=" "> Calling tool </strong>    </span> And read parameters in persist </p>
+<p   
+>/opt/app/variantServer/bin/xcalib_cli -r</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FRONT_LIDAR and FRONT_WIDE are written in Persist, Sn is all 0 </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Run 1 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Enter the current PERSIST's internal and external participation, all have been emptied </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The yaml file of the configuration parameter update tool is changed to the following configuration </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">data_path: </code><code class="string"> "Actual Internal and Examination Address" </code></div>
+<div class="line"><code class="plain">update_intrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">update_extrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">use_origin_sn: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">sensor_ids: [</code><code class="value">0</code><code class="plain">,</code><code class="value">1</code><code class="plain">,</code><code class="value">2</code><code class="plain">,</code><code class="value">3</code><code class="plain">,</code><code class="value">4</code><code class="plain">,</code><code class="value">5</code><code class="plain">,</code><code class="value">6</code><code class="plain">,</code><code class="value">7</code><code class="plain">,</code><code class="value">8</code><code class="plain">,</code><code class="value">9</code><code class="plain">,</code><code class="value">10</code><code class="plain">,</code><code class="value">11</code><code class="plain">]</code></div>
+</div>
+    </div>
+<p   
+><strong class=" ">    <span style="color: #ff0000;"> Calling tool </span>
+</strong> And read parameters in persist </p>
+<p   
+>/opt/app/variantServer/bin/xcalib_cli -r</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The inside and outside of all sensors are written into the persist, SN is all 0 </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="6" colspan="1">
+    <p   
+> Normal update parameters </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Use the soft bottom tool to brush a portion of the inner and outer ginseng with the full SN number to the tablet. </p>
+<p   
+>/opt/app/variantServer/bin/xcalib_cli -r</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Read the sensor parameter in Persist with SN number </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>6</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Run 2 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> FRONT_LIDAR and FRONT_WIDE are written in Persist, SN is unchanged </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>7</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Run 5 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Read the sensor parameter in Persist with SN number </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>8</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Run 4 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The inside and outside of all sensors are written into persist, SN is unchanged </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>9</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Run 5 </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Read the sensor parameter in Persist with SN number </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>10</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The yaml file of the configuration parameter update tool is changed to the following configuration </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">data_path: </code><code class="string"> "Actual Internal and Examination Address" </code></div>
+<div class="line"><code class="plain">update_intrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">update_extrinsic: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">use_origin_sn: </code><code class="keyword">false</code></div>
+<div class="line"><code class="plain">sensor_ids: [</code><code class="value">0</code><code class="plain">,</code><code class="value">1</code><code class="plain">,</code><code class="value">2</code><code class="plain">,</code><code class="value">3</code><code class="plain">,</code><code class="value">4</code><code class="plain">,</code><code class="value">5</code><code class="plain">,</code><code class="value">6</code><code class="plain">,</code><code class="value">7</code><code class="plain">,</code><code class="value">8</code><code class="plain">,</code><code class="value">9</code><code class="plain">,</code><code class="value">10</code><code class="plain">,</code><code class="value">11</code><code class="plain">]</code></div>
+</div>
+    </div>
+<p   
+><strong class=" ">    <span style="color: #ff0000;"> Calling tool </span>
+</strong> And read parameters in persist </p>
+<p   
+>/opt/app/variantServer/bin/xcalib_cli -r</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The inside and outside of all sensors are written into the persist, SN is all 0 </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Remark </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="3">
+    <p   
+> Calling TOOL (has been bald in red in the table above), manually compares the workload of inside and outside. You can use the inspection tool to automatically check. Just check whether the SN number SN is in line with the expected (keep/clear zero) </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2788378311_windshield_calibration_experiment.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>windshield calibration experiment</span>
+        </a>
+                <a href="3557826001_%E4%BA%A7%E7%BA%BF_SomeIP_%26_VehicleInfo_%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Someip & VehicleICLEINFO test report </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

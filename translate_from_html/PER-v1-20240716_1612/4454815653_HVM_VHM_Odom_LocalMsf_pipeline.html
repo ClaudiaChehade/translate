@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HVM/VHM/Odom/LocalMsf pipeline - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4454815653"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                     <li><a href="1834779718_00_Localization.html">00_Localization</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4454815653"> <span>HVM/VHM/Odom/LocalMsf pipeline</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/4454815653/VHM_HVM_ODOM_LocalMsf-version-2-modificationdate-1720161215000-api-v2.png" alt="images/confluence/download/attachments/4454815653/VHM_HVM_ODOM_LocalMsf-version-2-modificationdate-1720161215000-api-v2.png" width="1626"  />
+    </p>
+    <div class="section section-1" id="src-4454815653_safe-id-SFZNL1ZITS9PZG9tL0xvY2FsTXNmcGlwZWxpbmUtSFZN5qih5Z2X">
+        <h1 class="heading "><span> HVM module </span></h1>
+<p   
+>    <span style="color: #172b4d;"> HVM is the ASIL-B functional security module.The input is the vehicle CAN signal + Vehicle Parameters + Vehicle Specific Parameters. CAN signals mainly include ACU2 (Yawrate, horizontal acceleration), ACU3 (longitudinal acceleration), Onebox1 (one -speed) (wheel pulse and wheel direction), and SAS1 ( Vocket turntable corner)And VCUVOM10 (gear) signal. </span>
+</p>
+<p   
+>    <span style="color: #172b4d;"> The output of this module is for reference <a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=3030256355"> HVM signal layer conversion relationship Detailed design </a>：    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>Current trajectory.</p>
+</li><li class=" "><p   
+>Wheel angle</p>
+</li><li class=" "><p   
+>Longitudinal acceleration sensor / road slope estimation</p>
+</li><li class=" "><p   
+>Lateral acceleration.</p>
+</li><li class=" "><p   
+>Yaw rate.</p>
+</li><li class=" "><p   
+>Oval course detection.</p>
+</li><li class=" "><p   
+>Wheels standstill.</p>
+</li><li class=" "><p   
+>Vehicle Parameter (e.g. wheel base, wheel track).</p>
+</li></ul><p   
+>    <span style="color: #ff6600;"> Compared with the platform code, HVM adds 2 functions, as follows: </span>
+</p>
+<ol class=" "><li class=" "><p   
+>    <span style="color: #ff6600;"> Output a UINT64 size with a accuracy of 1MS for downstream use; </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff6600;"> Use CAN acceleration signal+HVM PME algorithm estimation acceleration BIAS fusion new acceleration signal for downstream use; </span>
+</p>
+</li></ol>    </div>
+    <div class="section section-1" id="src-4454815653_safe-id-SFZNL1ZITS9PZG9tL0xvY2FsTXNmcGlwZWxpbmUtVkhN5qih5Z2X">
+        <h1 class="heading "><span> VHM module </span></h1>
+<p   
+>    <span style="color: #172b4d;"> VHM is the ASIL-B functional security module.The input is the vehicle CAN signal + Vehicle Parameters + Vehicle Specific Parameters. CAN signals mainly include ACU2 (Yawrate, horizontal acceleration), ACU3 (longitudinal acceleration), Onebox1 (one -speed) (wheel pulse and wheel direction), and SAS1 ( Vocket turntable corner)And VCUVOM10 (gear) signal. </span>
+</p>
+<p   
+>    <span style="color: #000000;"> Pose information output vehicle and sports information of the vehicle. </span>
+    <span style="color: #000000;"> The VHM output interface is mainly: <span style="color: #003366;"> The XY value of the output location, yaw, the absolute value of the driving distance, driving distance, front wheel rotation, speed xy value, acceleration xy value, driving direction, output state, output signal quality, etc. </span>
+    </span>
+</p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-4454815653_safe-id-SFZNL1ZITS9PZG9tL0xvY2FsTXNmcGlwZWxpbmUtT0RPTeaooeWdlw">
+        <h1 class="heading "><span> ODOM module </span></h1>
+<p   
+>    <span style="color: #172b4d;"> ODOM is the ASIL-B functional security module.Under the three modes of ParkingActive/DrivingActive/Manual, the input is always Output of VHM and HVM. </span>
+</p>
+<p   
+> The output is divided into POSE, VEHICLE DYNAMICS, Others,, <span style="color: #000000;">
+Always from HVM    </span>
+、    <span style="color: #000000;">
+Always from VHM    </span> There are obvious changes in the source. </p>
+<p   
+> ODOM's Pose, Vehicle Dynamics, Others, <span style="color: #000000;">
+Always from HVM    </span>
+、    <span style="color: #000000;">
+Always from VHM    </span> The definition is as follows: </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+Vehicle Dynamics    </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+Others    </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+Always from HVM<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+Always from VHM<br/>    </span>
+</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+m_output.m_velocity    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.m_acceleration    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.m_yaw_rate    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.m_curvature    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.m_front_wheel_angle    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.m_rear_wheel_angle    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.m_steering_wheel_angle    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.m_move_direction    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+m_output.m_timestamp    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.m_r5_timestamp    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.m_update_state    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+m_output.m_road_slope_acceleration    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+m_output.m_reinit_coordinate_system_origin    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output_buffer    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.m_position    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.m_rotation    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.AbsoluteDrivenDistance_mm_u32    </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+m_output.SignedDrivenDistance_mm_s32    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+>    <span style="color: #ff6600;"> In summary, it can be seen that the results of Vehicle Dynamics need to be switched according to the current scene, and the switching logic combines speed information based on the status machine mode sent by the FCT. </span>
+</p>
+<p   
+>    <span style="color: #ff6600;"> ODOM integrates the output results of VHM and HVM, such as filling the lack of XY field for HVM, and at the same time provides an output that is available to ASIL-B downstream.According to the output of downstream demand such as Planning, reduce the signal required by the downstream switching VHM and HVM to find modules. </span>
+</p>
+<p   
+>    <span style="color: #ff6600;"> ODOM integrates the implementation of VHM ABST of W1 Parking, which is responsible for the calculation and output of some functional security information. </span>
+</p>
+    </div>
+    <div class="section section-1" id="src-4454815653_safe-id-SFZNL1ZITS9PZG9tL0xvY2FsTXNmcGlwZWxpbmUtTG9jYWxNc2bmqKHlnZc">
+        <h1 class="heading "><span> LOCALMSF module </span></h1>
+<p   
+>    <span style="color: #172b4d;"> QM module, input as a 6 -axis high -precision IMU, RTK/INS POSE, speed, acceleration and other information.QM levels can match more and better solutions for IMU/GNSS sensor hardware selection, RTK differential service, RTK/INS algorithm and other selection. </span>
+</p>
+<p   
+> The output includes working mode, 3D position and attitude, line speed and angle speed, acceleration, etc.Local Loc relies on high -precision IMU, which can output high -precision 3D positions and postures. <strong class=" "> HPA cross -layer high -speed information </strong> Important information source. </p>
+<p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3606973206_HPA_%E6%BF%80%E5%85%89%E5%9C%B0%E5%9B%BE%E6%96%B9%E6%A1%88%E8%AF%84%E5%AE%A1.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> HPA laser map scheme review </span>
+        </a>
+                <a href="3819956223_HVM_Detailed_Design.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>HVM Detailed Design</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

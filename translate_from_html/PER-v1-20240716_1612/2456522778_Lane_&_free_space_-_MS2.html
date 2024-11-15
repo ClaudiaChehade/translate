@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lane & free space - MS2 - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2456522778"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2375894193_02_xSLAM.html">02_xSLAM</a></li>
+                                                                                                         <li class="shortcut"><a href="2456522731_Milestone-xSLAM.html">Milestone-xSLAM</a></li>
+                                                                                     <li><a href="2456522737_MS2-xSLAM.html">MS2-xSLAM</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2456522778"> <span>Lane & free space - MS2</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>10/11/2022</p>
+<p   
+>10:00-10:30 meeting: HPA map service for MS2</p>
+<p   
+> Participants: yang liu, liuyong, he qiang, zhong michael, he song, song yang, li xiaopeng, zheng zhengxing, etc. </p>
+<ul class=" "><li class=" "><p   
+>Lane Model</p>
+<ul class=" "><li class=" "><p   
+> VIPER's Lane & Roaddge Detection output has not yet reached a available state. The data labeling Delay's training model has not achieved the expected effect. </p>
+<ul class=" "><li class=" "><p   
+> Training Stage: HPA MAPPING module cannot build Lane & Roaddge Map </p>
+</li><li class=" "><p   
+> Replay Stage: Static Fusion cannot integrate Lane & Roadge information of VIPER & HPA MAP.--- Static Fusion </p>
+</li></ul></li><li class=" "><p   
+> HPA Map Service interface and services will be aligned with HD Map Service. It is under development and the submission time is to be determined (about late October). </p>
+</li><li class=" "><p   
+> MS2 strategy: </p>
+<ul class=" "><li class=" "><p   
+> Reference Path is Training Stage Vehicle Trajectory </p>
+</li><li class=" "><p   
+> LANE LINE & Roaddge is generated by editing software through prior rules or map editing software. </p>
+</li><li class=" "><p   
+> Reference Path, Road Edge, Lane Line indicates that they are in the same map coordinate system </p>
+</li><li class=" "><p   
+><strong class=" "> Data interaction MS2 preliminary debugging temporary use </strong><strong class=" ">MS1</strong><strong class=" "> The way, </strong><strong class=" ">Reference path, roadedge, lane line</strong><strong class=" "> Save to </strong><strong class=" ">jason</strong><strong class=" "> In the format file, </strong><strong class=" ">P&C</strong><strong class=" "> Read the entire file; MS2 uses a normal (SOP) interface method later </strong></p>
+</li></ul></li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2456522778/lane-roadedge-MS2-20221010-version-1-modificationdate-1665452977000-api-v2.png" alt="images/confluence/download/attachments/2456522778/lane-roadedge-MS2-20221010-version-1-modificationdate-1665452977000-api-v2.png"  height="400" />
+    </p>
+<ul class=" "><li class=" "><p   
+>Free space</p>
+<ul class=" "><li class=" "><p   
+> VIPER currently provides PolyLine Based Free Space, which is a front -aid wide -angle camera. The data label delayer that the training model has not achieved the expected effect. </p>
+</li><li class=" "><p   
+> Polyline can not be converged into a convex bag. Waiting for Weride's module code to avoid repeated development </p>
+</li><li class=" "><p   
+> MS2 strategy: </p>
+<ul class=" "><li class=" "><p   
+> In the RBCN parking lot, there are walls, pillars and vehicles in the parking lot. </p>
+</li><li class=" "><p   
+> The Free Space information of the walls and pillars can be given through the RoadDge, that is, the walls and pillars are outside the RoadDge, and the rootdge is full of free span. </p>
+</li><li class=" "><p   
+> Objects such as vehicles and pedestrians are given through Dynamic Fusion. </p>
+</li></ul></li></ul></li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2456522778/free_space-MS2-20221010-version-1-modificationdate-1665452977000-api-v2.png" alt="images/confluence/download/attachments/2456522778/free_space-MS2-20221010-version-1-modificationdate-1665452977000-api-v2.png"  height="400" />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2456522778/free_space_example_2022-07-01y-version-2-modificationdate-1665453142000-api-v2.png" alt="images/confluence/download/attachments/2456522778/free_space_example_2022-07-01y-version-2-modificationdate-1665453142000-api-v2.png"  height="400" />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2456522778/free_space_example_2022-07-01-label-version-1-modificationdate-1665453290000-api-v2.jpg" alt="images/confluence/download/attachments/2456522778/free_space_example_2022-07-01-label-version-1-modificationdate-1665453290000-api-v2.jpg"  height="400" />
+    </p>
+<p   
+><br/></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2456522737_MS2-xSLAM.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>MS2-xSLAM</span>
+        </a>
+                <a href="2375894199_xslam_aos_deployment_solutions.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>xslam aos deployment solutions</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

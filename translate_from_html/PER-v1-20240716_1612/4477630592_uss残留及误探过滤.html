@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> USS residue and misunderstanding of filtration -Wave 3 Development </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=4477630592"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2495263431_Static_Fusion_-_PER.html">Static Fusion - PER</a></li>
+                                                                                                         <li class="shortcut"><a href="2498326801_SF-APA.html">SF-APA</a></li>
+                                                                                                         <li class="shortcut"><a href="3493196014_CF_doc.html">CF doc</a></li>
+                                                                                     <li><a href="4477630569_CF_taskforce_2407.html">CF taskforce 2407</a></li>
+                                                            </ul>
+</div>            <h1 id="src-4477630592"> <span> USS residue and misunderstanding filtering </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+><br/></p>
+<p   
+>Solution:</p>
+<ul class=" "><li class=" "><p   
+>uss fov-based prune</p>
+<ul class=" "><li class=" "><p   
+><strong class=" "> Only keep nodes in the USS FOV and remove the USS Tracking Node.Reduce the projection deviation caused by the long -term operation of USS. </strong></p>
+</li><li class=" "><p   
+>LI Cheng</p>
+</li><li class=" "><p   
+>node level processing</p>
+</li><li class=" "><p   
+>remove out-of-view node</p>
+</li><li class=" "><p   
+>4 fov ROI or 1 fov-ROI ?</p>
+</li><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4477630592/image-2024-7-11_16-31-40-version-1-modificationdate-1720697330000-api-v2.png" alt="images/confluence/download/attachments/4477630592/image-2024-7-11_16-31-40-version-1-modificationdate-1720697330000-api-v2.png"   />
+    </li><li class=" "><p   
+> Set the call switch, Parameter Instance in CF </p>
+</li><li class=" "><p   
+> risk: </p>
+<ul class=" "><li class=" "><p   
+> After the USS performs FOV-BASED PRUNE, there will be no USS NODES if it is blocked/distant obstacle. At this time, these outlines do not have USS and VIPER observations, and CF Contour attenuation will become faster. </p>
+</li></ul></li></ul></li><li class=" "><p   
+>viper-fs based filter</p>
+<ul class=" "><li class=" "><p   
+> After the USS cluster </p>
+</li><li class=" "><p   
+>voxel based association</p>
+</li><li class=" "><p   
+>removing uss node which is not matched with viper-fs & uss-object</p>
+</li><li class=" "><p   
+> Mainly delete and misunderstand; deceleration bands, ground locks, ceiling pipes, rolling door </p>
+</li><li class=" "><p   
+><strong class=" ">solution</strong></p>
+<ul class=" "><li class=" "><p   
+><strong class=" "> VIPER-FS multi-frame label Mask and USS Object label Mask.Mask Region's USS retains, other USS delete. </strong></p>
+<ul class=" "><li class=" "><p   
+> Single -frame USS misunderstandings will not enter the FUSION </p>
+</li><li class=" "><p   
+> VIPER-FS delay 5 frames (multi-frame Mask), and the USS Point in the neighboring domain 20cm is directly retained; otherwise, enter the second round of verification. </p>
+<ul class=" "><li class=" "><p   
+> Viper-Fs is centered on EGO VOXEL on a VOX; regardless of Ego Voxel, it is expanded with 2 Voxel (20cm). </p>
+</li></ul></li><li class=" "><p   
+> Check test 2: If the pre -deleted USS Point is in the Traversable area, delete it directly.Otherwise, use USS Object to check, and retain in the USS Object Roi Bbox, otherwise delete it </p>
+</li><li class=" "><p   
+> USS Object Roi Bbox: USS Object does not expand in the direction of the line (length).In the direction of the law line, expand 20cm each. </p>
+</li></ul></li><li class=" "><p   
+><strong class=" "> The USS in the structured Pillar, Vehicle, and CURB neighboring domain will be deleted without a general voxful. </strong></p>
+</li></ul></li><li class=" "><p   
+> Dynamic residue </p>
+<ul class=" "><li class=" "><p   
+> The USS Node residue of the exercise target may also have a corresponding USS Object residue; it cannot be filtered by USS Object </p>
+</li><li class=" "><p   
+> Df bbox trajectory mask ===> In principle, this area is a passable area </p>
+</li><li class=" "><p   
+> BEV-fs semantics </p>
+</li><li class=" "><p   
+> Communication information before synchronization with Michael </p>
+</li></ul></li><li class=" "><p   
+> Visual Debonce 5 frame, use Viper-FS multi-frame observation to check, VIPER-FS multi-frame leakage probability is low </p>
+</li><li class=" "><p   
+> Risk: The texture of the texture is sparse area, and the VIPER-FS omissions can cause USS to delete it by mistake, and there is a collision risk. </p>
+</li><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/4477630592/image-2024-7-11_20-47-44-version-1-modificationdate-1720702065000-api-v2.png" alt="images/confluence/download/attachments/4477630592/image-2024-7-11_20-47-44-version-1-modificationdate-1720702065000-api-v2.png" width="800"  />
+    </li></ul></li><li class=" "><p   
+> USS Unknown Node is considered Low Node </p>
+<ul class=" "><li class=" "><p   
+> The current unknown node is regarded as high node </p>
+</li></ul></li><li class=" "><p   
+>uss reset</p>
+<ul class=" "><li class=" "><p   
+> Reset does not affect the USS PP function; PP function is in another link? </p>
+</li><li class=" "><p   
+> Reset cycle? </p>
+</li><li class=" "><p   
+> Do a test and communicate with Freyo </p>
+</li></ul></li></ul><p   
+><br/></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="4492703419_Pillar_Vehicle_fitting_filter_solution.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Pillar/Vehicle fitting filter solution</span>
+        </a>
+                <a href="4492712391_uss%E6%AE%8B%E7%95%99%E5%8F%8A%E8%AF%AF%E6%8E%A2%E8%BF%87%E6%BB%A4%E6%B5%8B%E8%AF%95_240715.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> USS Residue and Misundrsestanding Filtering Test 240715 </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

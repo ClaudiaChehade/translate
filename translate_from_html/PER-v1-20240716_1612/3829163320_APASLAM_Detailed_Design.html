@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>APASLAM Detailed Design - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3829163320"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                     <li><a href="1834779718_00_Localization.html">00_Localization</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3829163320"> <span>APASLAM Detailed Design</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3829163320_safe-id-QVBBU0xBTURldGFpbGVkRGVzaWduLeS4gOOAgeeul-azleWKn-iDveS4juWOn-eQhg">
+        <h1 class="heading "><span> 1. Algorithm function and principle </span></h1>
+<p   
+> Apaslam is a map and positioning algorithm.The output of Apaslam is shown in Figure 1.The main function of this algorithm is to realize the short -range map of the APA scene on the parking lot library, and can output the position information of the vehicle more accurately.Provide the system to provide a more robust line library library local map information. </p>
+<p   
+> The main functions of Apaslam are as follows: </p>
+<p   
+> 1. Optimize your own positioning with the library information around the vehicle. </p>
+<p   
+> 2. Use the optimized positioning information to establish a local library chart. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3829163320/2023-12-26_15h44_49-version-1-modificationdate-1705029645000-api-v2.png" alt="images/confluence/download/attachments/3829163320/2023-12-26_15h44_49-version-1-modificationdate-1705029645000-api-v2.png"  height="400" />
+    </p>
+<p   
+> Figure 1 Local diagram established by Apaslam </p>
+    </div>
+    <div class="section section-1" id="src-3829163320_safe-id-QVBBU0xBTURldGFpbGVkRGVzaWduLeS6jOOAgeaetuaehA">
+        <h1 class="heading "><span> Second, architecture </span></h1>
+<p   
+> The APASLAM algorithm architecture and system frame diagram are shown in Figure 2. </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3829163320/image-2023-12-26_16-5-24-version-1-modificationdate-1705029645000-api-v2.png" alt="images/confluence/download/attachments/3829163320/image-2023-12-26_16-5-24-version-1-modificationdate-1705029645000-api-v2.png"  height="400" />
+    </p>
+<p   
+> Figure 2 APASLAM algorithm architecture and system frame diagram </p>
+<p   
+> This algorithm inputs the library detection information and mileage information. After the time is synchronized, the EKF (extended Karman filter algorithm) is used for prediction and update.And post -processing and inspection of the output, finally output a more accurate positioning information, and provide the bureau's ministry diagram. </p>
+<p   
+> Apaslam's input has ODOM information.Mainly use the timestamp information in ODOM, POSE information (X Y YAW), driving direction information. </p>
+<p   
+> Apaslam's input has PSDMOT results.Mainly use the warehouse output in PSDMOT, including: timestamp, warehouse type (parallel, horizontal, oblique), warehouse trust, warehouse occupation information, warehouse position position (x, y), warehouse point confidence settingsProfit. </p>
+<p   
+> TimesStamPSync is synchronized with ODOM information with the input of PSDMOT.Specifically, to ensure that when a frame of PSDMOT is used, ODOM has used the nearest data that does not exceed the PSDMOT timestamp to ensure that the ODOM data and PSDMOT data time are synchronized. </p>
+<p   
+> Motionupdate is a link of the EKFSLAM algorithm.This step is mainly using ODOM mileage meter <img  class="latexmath"  src="images/inline/6fb780628b3ec10423b7cc4933a7ff5bfb9323c99bd6dd97bae968214a12b0ce.svg" alt="images/inline/6fb780628b3ec10423b7cc4933a7ff5bfb9323c99bd6dd97bae968214a12b0ce.svg"   /> The prediction steps of the information as the algorithm roughly speculate that the vehicle's position under the Apaslam coordinate system at this time. </p>
+<p   
+> ParkingsLotupDate is a link of the EKFSLAM algorithm.This step is mainly to use the EKF algorithm to observe with the results of the input PSDMOT, optimize the position under the Apaslam coordinate system, and build a local map. </p>
+<p   
+> PostProcessing & RANGECHECK, mainly post -processing and range detection.PostProcessing is mainly to optimize the vertical warehouse, horizontal warehouse, and the lattice point of the two warehouses.RANGECHECK is to detect whether the vertical warehouse, horizontal warehouse, and the length, width, and angle of the length, width, and angle of the position of the position of the warehouse are within a reasonable range and whether there is a overlapping warehouse. </p>
+<p   
+> Precise Location & Optimized Map.APASLAM mainly outputs accurate positioning results, including (X Y YAW).And the sub -map under the self -car coordinate system, including the type of the warehouse (parallel, horizontal, oblique), warehouse occupation information, warehouse ID, and four corner points. </p>
+    </div>
+    <div class="section section-1" id="src-3829163320_safe-id-QVBBU0xBTURldGFpbGVkRGVzaWduLeS4ieOAgVRpbWVTdGFtcFN5bmM">
+        <h1 class="heading "><span> 3. Timestampsync </span></h1>
+<p   
+><br/></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3829163320/2024-01-02_16h07_48-version-1-modificationdate-1705029645000-api-v2.png" alt="images/confluence/download/attachments/3829163320/2024-01-02_16h07_48-version-1-modificationdate-1705029645000-api-v2.png"  height="250" />
+    </p>
+<p   
+> Figure 3 Apaslam's timestamp synchronization algorithm </p>
+<p   
+> This chapter mainly introduces the timestamp synchronization algorithm.See Figure 3 in detail. </p>
+<p   
+> At the time of the system time, APASLAM received Odom1 and PSD1 frames. </p>
+<p   
+> At the time of the system time, Apaslam received PSD2 and ODOM12 frames.At this time, because the timestamp of the PSD2 in the data is the closest to the timestamp of ODOM10, it is generated at the same time.At the time of the system T2, in Apaslam, use ODOM1 to ODOM10 data to do MotionUpdate. Odom11 and ODOM12 are placed in the buffer without processing.After the MotionUpdate is executed, then use PSD2 to do ParkingsLotupDate. </p>
+    </div>
+    <div class="section section-1" id="src-3829163320_safe-id-QVBBU0xBTURldGFpbGVkRGVzaWduLeWbm-OAgU1vdGlvblVwZGF0ZQ">
+        <h1 class="heading "><span> Fourth, motionupdate </span></h1>
+<p   
+> That is, the prediction part of Apaslam. </p>
+<p   
+> Mileage meter input ODOM <img  class="latexmath"  src="images/inline/6fb780628b3ec10423b7cc4933a7ff5bfb9323c99bd6dd97bae968214a12b0ce.svg" alt="images/inline/6fb780628b3ec10423b7cc4933a7ff5bfb9323c99bd6dd97bae968214a12b0ce.svg"   /> The input is used as a predicted quantity of the Apaslam filter POSE.ODOM <img  class="latexmath"  src="images/inline/6fb780628b3ec10423b7cc4933a7ff5bfb9323c99bd6dd97bae968214a12b0ce.svg" alt="images/inline/6fb780628b3ec10423b7cc4933a7ff5bfb9323c99bd6dd97bae968214a12b0ce.svg"   /> The larger, the greater the POSE POSE prediction of the EKFSLAM filter. At the same time, the greater the noise, the greater the uncertainty of the collaborative party.vice versa. </p>
+    </div>
+    <div class="section section-1" id="src-3829163320_safe-id-QVBBU0xBTURldGFpbGVkRGVzaWduLeS6lOOAgVBhcmtpbmdTbG90VXBkYXRl">
+        <h1 class="heading "><span> 5. ParkingsLotupdate </span></h1>
+<p   
+><strong class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3829163320/2023-12-26_19h48_29-version-1-modificationdate-1705029645000-api-v2.png" alt="images/confluence/download/attachments/3829163320/2023-12-26_19h48_29-version-1-modificationdate-1705029645000-api-v2.png"  height="250" />
+<br/></strong></p>
+<p   
+><strong class=" "></strong> Figure 4 ParkingsLotupDate algorithm flowchart <strong class=" "><br/></strong></p>
+<p   
+> Filter Out Low-Quality Parking Slot.The input PSDMOT library is filtered out of the low -quality library of misunderstanding and confident bottom. </p>
+<p   
+> Same Parking Slot Match Between PSD and Map.What are the section of the input PSDMOT result.If you match, take the route of Y above.If there is no match, take the route below n. </p>
+<p   
+> Point Matching Between PSD and Map. Robust Point Generation. Due to the map library and PSD matching of the Apaslam maintenance, the matching point of the matching PSDMOT point is generated. </p>
+<p   
+> Associate New PSD POINTS and Map Points. Robust Point Generation. Since the map library position maintained by Apaslam is not matched with PSD, the new PSDMOT point of viewing points are generated. </p>
+<p   
+> Do ekffiltering, optimizing pose and map points.For the new map point, add to the filter.For some map points, optimize the position and position of the location of the gallery. </p>
+<p   
+> Add observation points to map. Add Relationship Between New Map Points and Ekf Filter. Add the observation point to the map point.Establish a map point and EKF filter. </p>
+<p   
+> Update Map Points uservice.Update Relationship Between Map Points and Ekf Filter. Use the observation point to update the map point.Update the correlation between the map point and the EKF filter. </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3829163320_safe-id-QVBBU0xBTURldGFpbGVkRGVzaWduLeWFreOAgVBvc3RQcm9jZXNzaW5nJlJhbmdlQ2hlY2s">
+        <h1 class="heading "><span> 6. PostProcessing & RangeCheck </span></h1>
+<p   
+> PostProcessing.Because the bottom point of the warehouse is often not observed.So sometimes it is not very neat.Apaslam will be treated at the back of the library at this step, so that the library is as rectangular or parallel to the parallel. </p>
+<p   
+> RangeCheck.The output warehouse length, width, angle, and whether there are overlap for inspection.When a problem is found, do the corresponding fault treatment according to the need. </p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2909736530_Review_Findings_for_PI_2306_SW_Arch_Release.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Review Findings for PI 2306 SW Arch Release</span>
+        </a>
+                <a href="2742796067_Cross-Compiling.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Cross-Compiling</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

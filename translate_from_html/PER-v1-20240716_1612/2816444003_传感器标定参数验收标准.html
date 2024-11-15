@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Sensor calibration parameter acceptance standard -Wave 3 DEVELOPMENT </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2816444003"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                     <li><a href="2515113873_xcalib_eng.html">xcalib_eng</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2816444003"> <span> Sensor calibration parameter acceptance standard </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLeS4gOOAgeagh-WumuaVsOaNrumHh-mbhibmoIflrprlt6Xlhbfkvb_nlKjopoHmsYI">
+        <h1 class="heading "><span> 1. Calculation data collection & calibration tool use requirements </span></h1>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLTHjgIHmoIflrprliY3nva7pobnmo4Dmn6U">
+        <h2 class="heading "><span> 1. Calculate the front item check </span></h2>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Confirm that the door is closed, the hood is closed, the trunk is turned off, the exterior mirror is expanded, the high beam is turned off, the wiper is turned off, and the tire pressure is normal </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Block the roof glass to avoid interference caused by laser beam reflexes, affecting Main-Lidar (pandar_64) calibration </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Dianyun's top and lower ends exceed the top and bottom of the calibration room </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> The point clouds hitting on the wall seriously affect the calibration accuracy </span>
+</p>
+</li></ul></li></ul><p   
+>    <span style="color: #000000;">
+<strong class=" "><img  class="confluence-embedded-image cp-img panning confluence-external-resource"  src="images/download/attachments/2788360211/image2023-2-25_18-52-23-version-1-modificationdate-1677322344000-api-v2.png" alt="images/download/attachments/2788360211/image2023-2-25_18-52-23-version-1-modificationdate-1677322344000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image cp-img panning confluence-thumbnail confluence-external-resource"  src="images/download/attachments/2788360211/image2023-2-25_19-3-56-version-1-modificationdate-1677323037000-api-v2.png" alt="images/download/attachments/2788360211/image2023-2-25_19-3-56-version-1-modificationdate-1677323037000-api-v2.png"  height="250" />
+</strong>    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> After starting the intermediate device, confirm that the vehicle dies to the middle and front wheel card (remarks: calibration has strict requirements on the positioning of the vehicle. The central device can achieve the driving process of the vehicle, and the location calibration after the vehicle's four -wheel stop of the vehicle is stopped.. </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Except for drivers and operators, avoid other personnel from getting on the car </span>
+    <span style="color: #000000;">
+    </span>
+</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLTLjgIHlnKjmoIflrprpl7TlhoXph4fpm4bigJzkuKTluKfmoIflrprmlbDmja7igJ3vvIzov5vooYzmoIflrpo">
+        <h2 class="heading "><span> 2. Collect "two -frame calibration data" in the calibration room to calibrate </span></h2>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Frame 1 Data: At the door of the calibration, collect Front-Tele-Camera image, Main-Lidar and Front-Lidar </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Frame 2 Data: On the middle device, collect the vehicle sensor data </span>
+</p>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Frame 1 </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-7_21-15-2-version-1-modificationdate-1678684844000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-7_21-15-2-version-1-modificationdate-1678684844000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-7_21-14-10-version-1-modificationdate-1678684846000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-7_21-14-10-version-1-modificationdate-1678684846000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-7_21-14-45-version-1-modificationdate-1678684846000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-7_21-14-45-version-1-modificationdate-1678684846000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Frame 2 </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-7_21-15-27-version-1-modificationdate-1678684846000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-7_21-15-27-version-1-modificationdate-1678684846000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-7_21-16-31-version-1-modificationdate-1678684846000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-7_21-16-31-version-1-modificationdate-1678684846000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-7_21-16-1-version-1-modificationdate-1678684847000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-7_21-16-1-version-1-modificationdate-1678684847000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLTPjgIHlnKjlvIDmlL7pgZPot6_ph4fpm4bigJzkuInluKfpqozor4HmlbDmja7igJ3vvIzov5vooYzpnZnmgIHmo4Dmn6U">
+        <h2 class="heading "><span> 3. Collect the "Three -frame Verification Data" on an open road and conduct static inspection </span></h2>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> The collection time interval of calibration data and verification data is as short as possible </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Static </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Avoid dynamic objects such as other vehicles and pedestrians around </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> The street light pole, traffic rod, signal light, transportation card, fence, power distribution box, building, static vehicles are rich (all must, try to be as much as possible) </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> The ground is flat, the parking line is rich in texture (only for the surrounding camera, the underground garage can be selected) </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Except for drivers and operators, avoid other personnel from getting on the car </span>
+</p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-1" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLeS6jOOAgWNhbWVyYSZsaWRhcumqjOaUtuagh-WHhu-8iOS4jeWQq-eOr-inhuebuOacuu-8iQ">
+        <h1 class="heading "><span> 2. Camera & Lidar Acceptance Standard (excluding a surrounding camera) </span></h1>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLTHjgIHmipXlvbHor7TmmI4">
+        <h2 class="heading "><span> 1. Projection description </span></h2>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> According to the optimal camera model (for example, select the FISHEYE model from the front -view wide -angle camera) to project the point cloud to the image, check the degree of matching </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> In order to quantify projection errors, increase the auxiliary grid with a resolution of 10pixel </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> In order to distinguish the prospects and the back -gallery objects, coloring according to "close, medium and long distance" </span>
+</p>
+</li></ul><p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/MicrosoftTeams-image-version-2-modificationdate-1678759557000-api-v2.png" alt="images/confluence/download/attachments/2816444003/MicrosoftTeams-image-version-2-modificationdate-1678759557000-api-v2.png" width="1000"  />
+    </span>
+</p>
+    </div>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLTLjgIHph43ngrnmo4Dmn6XpobnvvIjoi6XmlbTkvZPlgY_lt67ovoPlpKfvvIznm7TmjqXph43mlrDmoIflrprvvIzkuI3lho3mo4Dmn6Xnu4boioLvvIk">
+        <h2 class="heading "><span> 2. Key inspection items (if the overall deviation is large, it is directly calibrated and no longer check the details) </span></h2>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Image intermediate wire beam dense area: check the outline and road along the static vehicle, the power distribution box and the fence (the blind radar) <br/>    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> The upper side of the image on the top of the image: Check the left and right edges of the light pole, trunk, and traffic signs </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> The front -aid wide -angle camera is affected by the windshield distortion of the windshield. The edge of the image is large and the alignment deviations are large. You can check the judgment of the left and right sides (very state, the investigation direction is as follows) </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> If the edge of the front-to-line projection image is poor, the projection images on the left and right sides are better, the Main/Front Lidar calibration is accurate, and the Front-Wide-Camera internal reference is not allowed </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> If the front, left, and right projection images are poor, the mAIN/Front lidar calibration is not allowed to calibrate. </span>
+</p>
+</li></ul></li><li class=" "><p   
+>    <span style="color: #000000;"> In front and sides <span style="color: #ff0000;"> Static vehicle </span> , The outer contour is consistent with the point cloud distribution (> 100M is not strong) </span>
+</p>
+</li></ul><p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-7_15-49-20-version-1-modificationdate-1678175360000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-7_15-49-20-version-1-modificationdate-1678175360000-api-v2.png" width="1000"  />
+    </span>
+</p>
+    </div>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLWNoZWNrbGlzdO-8iOmcgOaPkOS-m-WxgOmDqOaIquWbvu-8iQ">
+        <h2 class="heading "><span> CheckList (need to provide local screenshots) </span></h2>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #ff0000;"> The white light rod and the vehicle are high -counter -objects, which may cause unusual expansion, deformation, distortion, etc. If other frames are not wrong, it can be considered to be OK </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> M1 laser radar left and right sub -point cloud data quality problems are large, not in -depth (under the development of quality inspection tools) </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> There is a problem with a single POS, and other POS is normal, ignore </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #ff0000;"> Local problem, normal as a whole, ignore </span>
+</p>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> describe </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> European distance </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> color </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Circuit beam dense area projection requirements </span>
+</p>
+<p   
+>    <span style="color: #000000;"> (95%can reach the standard) </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> legend </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Line beam thin area projection requirements </span>
+</p>
+<p   
+>    <span style="color: #000000;"> (90%can reach the standard) </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> legend </span>
+</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Close </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+< 50m    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Yellow Orange and Red Gravity </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> up down left right < 10pixel/1格    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2816444003/image2023-3-13_17-1-30-version-1-modificationdate-1678698092000-api-v2.png" alt="images/confluence/download/thumbnails/2816444003/image2023-3-13_17-1-30-version-1-modificationdate-1678698092000-api-v2.png" width="300"  />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> about < 10pixel/1格    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="2" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2816444003/image2023-3-13_17-9-16-version-1-modificationdate-1678698557000-api-v2.png" alt="images/confluence/download/thumbnails/2816444003/image2023-3-13_17-9-16-version-1-modificationdate-1678698557000-api-v2.png" width="300"  />
+    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Mid -range </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+<br/>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+50 - 100m    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Turf </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> up down left right < 20pixel/2格    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2816444003/image2023-3-13_17-13-44-version-1-modificationdate-1678698825000-api-v2.png" alt="images/confluence/download/thumbnails/2816444003/image2023-3-13_17-13-44-version-1-modificationdate-1678698825000-api-v2.png" width="300"  />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> about < 20pixel/2格    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Long distance </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+> 100m    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Blue </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Dianyun contour covers the objects roughly </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2816444003/image2023-3-13_17-2-40-version-1-modificationdate-1678698161000-api-v2.png" alt="images/confluence/download/thumbnails/2816444003/image2023-3-13_17-2-40-version-1-modificationdate-1678698161000-api-v2.png" width="300"  />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;"> Not check </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLTHjgIFtYWluLWxpZGFyKHBhbmRhcl82NClGT1Y9MzYw">
+        <h2 class="heading "><span>1、main-lidar (pandar_64) FOV = 360 </span></h2>
+<p   
+>    <span style="color: #000000;"> forward: </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+ Check Front_wide_camera     </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Check Front_LeFT_CAMERA and Front_right_camera </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;">
+ Check the area to look at the area     </span>
+</p>
+</li></ul><p   
+>    <span style="color: #000000;"> Back direction: </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Check Rear_Camera </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Check Rear_left_Camera and Rear_right_camera </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;">
+ Check the area to look at the area     </span>
+</p>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">front_left_camera</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">front_wide_camera</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">front_right_camera</strong>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-17-50-version-1-modificationdate-1678154010000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-17-50-version-1-modificationdate-1678154010000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-12-9-version-1-modificationdate-1678154010000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-12-9-version-1-modificationdate-1678154010000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-19-43-version-1-modificationdate-1678154010000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-19-43-version-1-modificationdate-1678154010000-api-v2.png"  height="250" />
+    </span>
+</p>
+<p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">rear_left_camera</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">rear_camera</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">rear_right_camera</strong>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-31-26-version-1-modificationdate-1678154010000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-31-26-version-1-modificationdate-1678154010000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-15-34-version-1-modificationdate-1678154010000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-15-34-version-1-modificationdate-1678154010000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-32-1-version-1-modificationdate-1678154010000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-32-1-version-1-modificationdate-1678154010000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLTLjgIFmcm9udC1pZGFyKE0xKUZPVj0xMjA">
+        <h2 class="heading auto-cursor-target"><span>2、front-idar (M1) FOV = 120</span></h2>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;">
+ Check Front_wide_camera     </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> Check Front_LeFT_CAMERA and Front_right_camera </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;">
+ Check the area to look at the area     </span>
+</p>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+front_left_camera    </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+front_wide_camera    </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+front_right_camera    </span>
+</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-37-21-version-1-modificationdate-1678154011000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-37-21-version-1-modificationdate-1678154011000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-36-33-version-1-modificationdate-1678154010000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-36-33-version-1-modificationdate-1678154010000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-38-36-version-1-modificationdate-1678154011000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-38-36-version-1-modificationdate-1678154011000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+>    <span style="color: #000000;">
+<strong class=" "> Special Instructions: </strong>    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> M1 Front-Lidar single-frame point cloud data is composed of five pieces of cloud. </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #000000;"> The alignment deviation of the two pieces of the two pieces of the outer side during projection may be large, and it can be relaxed to twice the original standard appropriately. </span>
+</p>
+</li></ul><p   
+>    <span style="color: #000000;">
+<a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/secure/attachment/2342473/2342473_2023-03-10_17h31_46.png"><img  class="confluence-embedded-image confluence-external-resource"  src="images/rb-tracker.bosch.com/tracker08/secure/thumbnail/2342473/_thumb_2342473.png" alt="images/rb-tracker.bosch.com/tracker08/secure/thumbnail/2342473/_thumb_2342473.png"  height="250" />
+</a><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/secure/attachment/2342483/2342483_2023-03-10_17h34_20.png"><img  class="confluence-embedded-image confluence-external-resource"  src="images/rb-tracker.bosch.com/tracker08/secure/thumbnail/2342483/_thumb_2342483.png" alt="images/rb-tracker.bosch.com/tracker08/secure/thumbnail/2342483/_thumb_2342483.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2816444003/image2023-3-13_17-26-23-version-1-modificationdate-1678699584000-api-v2.png" alt="images/confluence/download/thumbnails/2816444003/image2023-3-13_17-26-23-version-1-modificationdate-1678699584000-api-v2.png"  height="250" />
+</a>    </span>
+</p>
+    </div>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLQ">
+        <h2 class="heading "><span></span></h2>
+    </div>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLTPjgIFibGluZC1saWRhcg">
+        <h2 class="heading "><span>3、blind-lidar</span></h2>
+<ul class=" "><li class=" "><p   
+> Check Front_wide_camera </p>
+</li><li class=" "><p   
+> Check Front_Left_Camera, Front_right_Camera, Rear_Left_Camera and Rear_Right_Camera </p>
+</li><li class=" "><p   
+> Check the area to look at the area </p>
+</li></ul>    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">front_left_camera</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">front_wide_camera</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">front_right_camera</strong>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-43-46-version-1-modificationdate-1678154011000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-43-46-version-1-modificationdate-1678154011000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="3" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-49-18-version-1-modificationdate-1678154011000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-49-18-version-1-modificationdate-1678154011000-api-v2.png"  height="400" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-42-33-version-1-modificationdate-1678154011000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-42-33-version-1-modificationdate-1678154011000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">rear_left_camera</strong>    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<strong class=" ">rear_right_camera</strong>    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-45-1-version-1-modificationdate-1678154011000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-45-1-version-1-modificationdate-1678154011000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-6_18-48-42-version-1-modificationdate-1678154011000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-6_18-48-42-version-1-modificationdate-1678154011000-api-v2.png"  height="250" />
+    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLeS4ieOAgeeOr-inhuebuOacuumqjOaUtuagh-WHhg">
+        <h1 class="heading "><span> 3. View Camera Acceptance Standard </span></h1>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLTHjgIHmoIflrprpl7RCRVbmi7zlm74">
+        <h2 class="heading "><span> 1. BEV puzzle between calibration </span></h2>
+<p   
+> After the calibration is completed, the output 45 degrees and 90 degrees 2 stitching diagrams and hit a grid with a resolution of 10pixel. For 1000*1000 resolution stitching diagram </p>
+<p   
+> (1) Observe the pixel area of ​​continuous characteristics at the seams </p>
+<p   
+> (2) The average error of stitching is required < 2pixel，且最大误差 <= 3pixel</p>
+<p   
+> (3) The above accuracy acceptance standards are also applicable to the underground garage BEV puzzle </p>
+<p   
+>    <span style="color: #339966;">
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2816444003/grid_atlas_2d-version-1-modificationdate-1678772601000-api-v2.png" alt="images/confluence/download/thumbnails/2816444003/grid_atlas_2d-version-1-modificationdate-1678772601000-api-v2.png"  height="250" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2816444003/grid_45_atlas_2d-version-1-modificationdate-1678777613000-api-v2.png" alt="images/confluence/download/thumbnails/2816444003/grid_45_atlas_2d-version-1-modificationdate-1678777613000-api-v2.png"  height="250" />
+    </span>
+</p>
+<p   
+>    <span style="color: #003366;"> (4) The location of the ground identification that needs to be added in the calibration of the ground is as follows </span>
+</p>
+<p   
+>    <span style="color: #003366;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/2023-03-14_16h00_35-version-1-modificationdate-1678780898000-api-v2.png" alt="images/confluence/download/attachments/2816444003/2023-03-14_16h00_35-version-1-modificationdate-1678780898000-api-v2.png" width="700"  />
+    </span>
+</p>
+    </div>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLTLjgIHlnLDkuIvovablupNCRVbmi7zlm77vvIjoi6XmoIflrprpl7TmnKrpqozmlLbpgJrov4fvvIznm7TmjqXph43mlrDmoIflrprvvIzkuI3lho3mir3luKfmo4Dmn6XvvIk">
+        <h2 class="heading "><span> 2. Underground garage BEV puzzle (if the calibration is not accepted, the calibration is directly calibrated, and the frame check will not be drawn) </span></h2>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> Considering factors such as acceleration and deceleration during the normal driving of the vehicle and the time of the time of view of the camera, the alignment error of the splicing of the parking space segmentation line < 1/5 线宽（请换算成 pixel）    </span>
+</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-13_18-12-40-version-1-modificationdate-1678702360000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-13_18-12-40-version-1-modificationdate-1678702360000-api-v2.png"  height="250" />
+    </p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #000000;"> The linear should not be distorted to a curve (related to the acceleration of the vehicle and the internal reference of the camera): restricting both ends of the line of the line (please be converted to Pixel) </span>
+</p>
+</li></ul><p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/image2023-3-13_18-13-7-version-1-modificationdate-1678702388000-api-v2.png" alt="images/confluence/download/attachments/2816444003/image2023-3-13_18-13-7-version-1-modificationdate-1678702388000-api-v2.png"  height="250" />
+    </span>
+</p>
+    </div>
+    <div class="section section-2" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLTPjgIHpqozor4HmlbDmja7ph4fpm4blu7rorq7vvIjmmoLkuI3lhbflpIfmnaHku7bvvIk">
+        <h2 class="heading "><span> 3. Verify data collection suggestion (not conditions for the time being) </span></h2>
+<p   
+>    <span style="color: #000000;"> There are non -rigorous co -coexistence on the middle device and the calibration of the ground, and the real vehicle is driving on the flat ground. There is an error in the vision camera through the calibration of the BEV puzzle of the calibration. It is recommended to construct the scene shown in the figure below: </span>
+</p>
+<p   
+>    <span style="color: #000000;">
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2816444003/2023-03-07_19h18_29-version-1-modificationdate-1678187918000-api-v2.png" alt="images/confluence/download/attachments/2816444003/2023-03-07_19h18_29-version-1-modificationdate-1678187918000-api-v2.png" width="800"  />
+    </span>
+</p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2816444003_safe-id-aWQt5Lyg5oSf5Zmo5qCH5a6a5Y-C5pWw6aqM5pS25qCH5YeGLeWbm-OAgeS8oOaEn-WZqOWuieijhQ">
+        <h1 class="heading "><span> Four, sensor installation </span></h1>
+<p   
+>    <span style="color: #000000;"> If you are not qualified, you need to adjust the sensor position and re -calibrate </span>
+</p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col  width="165.0"/>
+                                    <col  width="131.0"/>
+                                    <col  width="164.0"/>
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>sensor</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+euler angle    </span>
+</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+threshold （degree）    </span>
+</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+main-lidar & front-lidar    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+roll & pitch & yaw    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+±1°    </span>
+</p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+front-wide-camera    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+pitch    </span>
+</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>    <span style="color: #000000;">
+±1°    </span>
+</p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2924157606_calibration_TR.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>calibration TR</span>
+        </a>
+                <a href="2754796745_xcalib_prod.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>xcalib_prod</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Feature Number vs. Vehicle Velocity based on VINS-Mono - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2103372775"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                                         <li class="shortcut"><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                                                     <li><a href="2069603815_Benchmark_Tooling_between_VINS-Mono_and_Open-VINS.html">Benchmark Tooling between VINS-Mono and Open-VINS</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2103372775"> <span>Feature Number vs. Vehicle Velocity based on VINS-Mono</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>This page will discuss the relationship between tracked feature number and vehicle forward velocity when using VINS-Mono. The performance of VINS Mono on KITTI dataset is not the best, just make sure the algorithm can run from start to end without reset.</p>
+<p   
+>The conclusion → faster speed will have less tracked feature points on highway.</p>
+<p   
+></p>
+    <div class="section section-1" id="src-2103372775_FeatureNumbervs.VehicleVelocitybasedonVINSMono-Introduction">
+        <h1 class="heading "><span>Introduction</span></h1>
+<ul class=" "><li class=" "><p   
+>Rosbag Convertor</p>
+<ul class=" "><li class=" "><p   
+>based on the tutorial of "<a  class="external-link" href="https://zhuanlan.zhihu.com/p/75672946"> Qiu Shaochen Zhihu </a>", we need the raw + unsync data which contains 100HZ IMU measurements.</p>
+<ul class=" "><li class=" "><p   
+>github: <a  class="external-link" href="https://github.com/PetWorm/kitti_to_rosbag_for_vio">PetWorm/kitti_to_rosbag_for_vio: a modified version based on ethz-asl/kitti_to_rosbag to record image and imu data for running VIOs (github.com)</a></p>
+</li></ul></li><li class=" "><p   
+>be careful about IMU timing disorder.</p>
+</li><li class=" "><p   
+>be careful about IMU time jumping since it's not hard sync with video data</p>
+<ul class=" "><li class=" "><p   
+>Interpolate and re-sync IMU data to give KITTI a 100 Hz IMU and GNSS data and correct the timestamps with vision image. You need <strong class=" ">synced+rectified data </strong>and <strong class=" ">unsynced+unrectified data</strong></p>
+</li><li class=" "><p   
+><a  class="external-link" href="https://github.com/gauxonz/KITTI-interp">gauxonz/KITTI-interp (github.com)</a> (not tried)</p>
+</li></ul></li><li class=" "><p   
+>catkin_simple is quite old and inconvenient for usage. You have to put each component parallel with the kitti_to_rosbag_for_vio repo.</p>
+</li></ul></li></ul><p   style="margin-left:90px;"
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2103372775/image2022-1-25_14-48-25-version-1-modificationdate-1643095867000-api-v2.png" alt="images/confluence/download/attachments/2103372775/image2022-1-25_14-48-25-version-1-modificationdate-1643095867000-api-v2.png" width="600"  />
+    </p>
+<ul class=" "><li class=" "><p   
+>Camera and IMU Calibration Parameters</p>
+<ul class=" "><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2103372775/image2022-1-25_14-52-8-version-1-modificationdate-1643095867000-api-v2.png" alt="images/confluence/download/attachments/2103372775/image2022-1-25_14-52-8-version-1-modificationdate-1643095867000-api-v2.png"  height="400" />
+    </li><li class=" "><p   
+>Given the transformation from "IMU to Lidar" and "Lidar to Camera", it's feasible to compute the transformation from "Camera to IMU"</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">from</code><code class="plain"> numpy </code><code class="keyword">import</code><code class="plain"> </code><code class="keyword">*</code></div>
+<div class="line"><code class="keyword">import</code><code class="plain"> numpy as np</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">T_imu_to_lidar </code><code class="keyword">=</code><code class="plain"> np.mat([[</code><code class="value">9.999976e</code><code class="keyword">-</code><code class="value">01</code><code class="plain">, </code><code class="value">7.553071e</code><code class="keyword">-</code><code class="value">04</code><code class="plain">, </code><code class="keyword">-</code><code class="value">2.035826e</code><code class="keyword">-</code><code class="value">03</code><code class="plain">, </code><code class="keyword">-</code><code class="value">8.086759e</code><code class="keyword">-</code><code class="value">01</code><code class="plain">],</code></div>
+<div class="line"><code class="plain">                         [</code><code class="keyword">-</code><code class="value">7.854027e</code><code class="keyword">-</code><code class="value">04</code><code class="plain">, </code><code class="value">9.998898e</code><code class="keyword">-</code><code class="value">01</code><code class="plain">, </code><code class="keyword">-</code><code class="value">1.482298e</code><code class="keyword">-</code><code class="value">02</code><code class="plain">, </code><code class="value">3.195559e</code><code class="keyword">-</code><code class="value">01</code><code class="plain">],</code></div>
+<div class="line"><code class="plain">                         [</code><code class="value">2.024406e</code><code class="keyword">-</code><code class="value">03</code><code class="plain">, </code><code class="value">1.482454e</code><code class="keyword">-</code><code class="value">02</code><code class="plain">, </code><code class="value">9.998881e</code><code class="keyword">-</code><code class="value">01</code><code class="plain">, </code><code class="keyword">-</code><code class="value">7.997231e</code><code class="keyword">-</code><code class="value">01</code><code class="plain">],</code></div>
+<div class="line"><code class="plain">                         [</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">]])</code></div>
+<div class="line"><code class="plain">                         </code></div>
+<div class="line"><code class="comments">#camera 0, gray</code></div>
+<div class="line"><code class="plain">T_lidar_to_camera </code><code class="keyword">=</code><code class="plain"> np.mat([[</code><code class="value">7.967514e</code><code class="keyword">-</code><code class="value">03</code><code class="plain">, </code><code class="keyword">-</code><code class="value">9.999679e</code><code class="keyword">-</code><code class="value">01</code><code class="plain">, </code><code class="keyword">-</code><code class="value">8.462264e</code><code class="keyword">-</code><code class="value">04</code><code class="plain">, </code><code class="keyword">-</code><code class="value">1.377769e</code><code class="keyword">-</code><code class="value">02</code><code class="plain">],</code></div>
+<div class="line"><code class="plain">                            [</code><code class="keyword">-</code><code class="value">2.771053e</code><code class="keyword">-</code><code class="value">03</code><code class="plain">, </code><code class="value">8.241710e</code><code class="keyword">-</code><code class="value">04</code><code class="plain">, </code><code class="keyword">-</code><code class="value">9.999958e</code><code class="keyword">-</code><code class="value">01</code><code class="plain">, </code><code class="keyword">-</code><code class="value">5.542117e</code><code class="keyword">-</code><code class="value">02</code><code class="plain">],</code></div>
+<div class="line"><code class="plain">                            [</code><code class="value">9.999644e</code><code class="keyword">-</code><code class="value">01</code><code class="plain">, </code><code class="value">7.969825e</code><code class="keyword">-</code><code class="value">03</code><code class="plain">, </code><code class="keyword">-</code><code class="value">2.764397e</code><code class="keyword">-</code><code class="value">03</code><code class="plain">, </code><code class="keyword">-</code><code class="value">2.918589e</code><code class="keyword">-</code><code class="value">01</code><code class="plain">],</code></div>
+<div class="line"><code class="plain">                            [</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">, </code><code class="value">1</code><code class="plain">]])</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">T_camera_to_imu </code><code class="keyword">=</code><code class="plain"> T_lidar_to_camera.I </code><code class="keyword">*</code><code class="plain"> T_imu_to_lidar.I</code></div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">print</code><code class="plain">(T_camera_to_imu)</code></div>
+<div class="line"><code class="plain">'''</code></div>
+<div class="line"><code class="plain">[[ </code><code class="value">0.00592965</code><code class="plain"> </code><code class="keyword">-</code><code class="value">0.01759945</code><code class="plain">  </code><code class="value">0.99982751</code><code class="plain">  </code><code class="value">1.10180905</code><code class="plain">]</code></div>
+<div class="line"><code class="plain"> [</code><code class="keyword">-</code><code class="value">0.99998119</code><code class="plain">  </code><code class="value">0.00149132</code><code class="plain">  </code><code class="value">0.00595681</code><code class="plain"> </code><code class="keyword">-</code><code class="value">0.81577896</code><code class="plain">]</code></div>
+<div class="line"><code class="plain"> [</code><code class="keyword">-</code><code class="value">0.0015959</code><code class="plain">  </code><code class="keyword">-</code><code class="value">0.99984405</code><code class="plain"> </code><code class="keyword">-</code><code class="value">0.01759028</code><code class="plain">  </code><code class="value">0.24790873</code><code class="plain">]</code></div>
+<div class="line"><code class="plain"> [ </code><code class="value">0.</code><code class="plain">          </code><code class="value">0.</code><code class="plain">          </code><code class="value">0.</code><code class="plain">          </code><code class="value">1.</code><code class="plain">        ]]</code></div>
+<div class="line"><code class="plain">'''</code></div>
+</div>
+    </div>
+</li></ul></li><li class=" "><p   
+>Little Tricks on Tuning VINS-Mono</p>
+<ul class=" "><li class=" "><p   
+>dynamic calibration will make the result worse.</p>
+</li><li class=" "><p   
+>dynamic time offset estimation will make the result worse.</p>
+</li><li class=" "><p   
+>acc noise and gyro noise is quite important. High value</p>
+</li><li class=" "><p   
+>suppress the sanity check when necessary in case of failure reset</p>
+</li></ul></li></ul>    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">%YAML:</code><code class="value">1.0</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#common parameters</code></div>
+<div class="line"><code class="plain">imu_topic: </code><code class="string">"/imu_data"</code></div>
+<div class="line"><code class="plain">image_topic: </code><code class="string">"/cam00/image_raw"</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#camera calibration </code></div>
+<div class="line"><code class="plain">model_type: PINHOLE</code></div>
+<div class="line"><code class="plain">camera_name: camera</code></div>
+<div class="line"><code class="plain">image_width: </code><code class="value">1392</code></div>
+<div class="line"><code class="plain">image_height: </code><code class="value">512</code></div>
+<div class="line"><code class="plain">distortion_parameters:</code></div>
+<div class="line"><code class="plain">   k1: -</code><code class="value">3</code><code class="plain">.745594e-</code><code class="value">01</code></div>
+<div class="line"><code class="plain">   k2: </code><code class="value">2</code><code class="plain">.049385e-</code><code class="value">01</code></div>
+<div class="line"><code class="plain">   p1: </code><code class="value">1</code><code class="plain">.379375e-</code><code class="value">03</code></div>
+<div class="line"><code class="plain">   p2: -</code><code class="value">7</code><code class="plain">.084798e-</code><code class="value">02</code></div>
+<div class="line"><code class="plain">projection_parameters:</code></div>
+<div class="line"><code class="plain">   fx: </code><code class="value">7</code><code class="plain">.188560e+</code><code class="value">02</code></div>
+<div class="line"><code class="plain">   fy: </code><code class="value">7</code><code class="plain">.188560e+</code><code class="value">02</code></div>
+<div class="line"><code class="plain">   cx: </code><code class="value">6</code><code class="plain">.071928000000e+</code><code class="value">02</code></div>
+<div class="line"><code class="plain">   cy: </code><code class="value">1</code><code class="plain">.852157000000e+</code><code class="value">02</code></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><code class="plain"># Extrinsic parameter between IMU and Camera.</code></div>
+<div class="line"><code class="plain">estimate_extrinsic:</code><code class="value">0</code><code class="plain">   # </code><code class="value">0</code><code class="plain">  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.</code></div>
+<div class="line"><code class="plain">                        # </code><code class="value">1</code><code class="plain">  Have an initial guess about extrinsic parameters. We will optimize around your initial guess.</code></div>
+<div class="line"><code class="plain">                        # </code><code class="value">2</code><code class="plain">  Don</code><code class="string">'t know anything about extrinsic parameters. You don'</code><code class="plain">t need to give R,T. We will </code><code class="keyword">try</code><code class="plain"> to calibrate it. Do some rotation movement at beginning.                        </code></div>
+<div class="line"><code class="plain">#If you choose </code><code class="value">0</code><code class="plain"> or </code><code class="value">1</code><code class="plain">, you should write down the following matrix.</code></div>
+<div class="line"><code class="plain">#Rotation from camera frame to imu frame, imu^R_cam</code></div>
+<div class="line"><code class="plain">extrinsicRotation: !!opencv-matrix</code></div>
+<div class="line"><code class="plain">   rows: </code><code class="value">3</code></div>
+<div class="line"><code class="plain">   cols: </code><code class="value">3</code></div>
+<div class="line"><code class="plain">   dt: d</code></div>
+<div class="line"><code class="plain">   data: [</code><code class="value">0.00592965</code><code class="plain">, -</code><code class="value">0.01759945</code><code class="plain">,  </code><code class="value">0.99982751</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">          -</code><code class="value">0.99998119</code><code class="plain">,  </code><code class="value">0.00149132</code><code class="plain">,  </code><code class="value">0.00595681</code><code class="plain">, </code></div>
+<div class="line"><code class="plain">          -</code><code class="value">0.0015959</code><code class="plain">,  -</code><code class="value">0.99984405</code><code class="plain">, -</code><code class="value">0.01759028</code><code class="plain">]</code></div>
+<div class="line"><code class="plain">#Translation from camera frame to imu frame, imu^T_cam</code></div>
+<div class="line"><code class="plain">extrinsicTranslation: !!opencv-matrix</code></div>
+<div class="line"><code class="plain">   rows: </code><code class="value">3</code></div>
+<div class="line"><code class="plain">   cols: </code><code class="value">1</code></div>
+<div class="line"><code class="plain">   dt: d</code></div>
+<div class="line"><code class="plain">   data: [</code><code class="value">1.10180905</code><code class="plain">,-</code><code class="value">0.81577896</code><code class="plain">, </code><code class="value">0.24790873</code><code class="plain">]</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#feature traker paprameters</code></div>
+<div class="line"><code class="plain">max_cnt: </code><code class="value">300</code><code class="plain">            # max feature number in feature tracking</code></div>
+<div class="line"><code class="plain">min_dist: </code><code class="value">30</code><code class="plain">            # min distance between two features </code></div>
+<div class="line"><code class="plain">freq: </code><code class="value">10</code><code class="plain">                # frequence (Hz) of publish tracking result. At least 10Hz </code><code class="keyword">for</code><code class="plain"> good estimation. If set </code><code class="value">0</code><code class="plain">, the frequence will be same as raw image </code></div>
+<div class="line"><code class="plain">F_threshold: </code><code class="value">1.0</code><code class="plain">        # ransac threshold (pixel)</code></div>
+<div class="line"><code class="plain">show_track: </code><code class="value">1</code><code class="plain">           # publish tracking image as topic</code></div>
+<div class="line"><code class="plain">equalize: </code><code class="value">1</code><code class="plain">             # </code><code class="keyword">if</code><code class="plain"> image is too dark or light, trun on equalize to find enough features</code></div>
+<div class="line"><code class="plain">fisheye: </code><code class="value">0</code><code class="plain">              # </code><code class="keyword">if</code><code class="plain"> using fisheye, trun on it. A circle mask will be loaded to remove edge noisy points</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#optimization parameters</code></div>
+<div class="line"><code class="plain">max_solver_time: </code><code class="value">0.04</code><code class="plain">  # max solver itration time (ms), to guarantee real time</code></div>
+<div class="line"><code class="plain">max_num_iterations: </code><code class="value">10</code><code class="plain">   # max solver itrations, to guarantee real time</code></div>
+<div class="line"><code class="plain">keyframe_parallax: </code><code class="value">10.0</code><code class="plain"> # keyframe selection threshold (pixel)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#imu parameters       The more accurate parameters you provide, the better performance</code></div>
+<div class="line"><code class="plain">#acc_n: </code><code class="value">2</code><code class="plain">.0000e-</code><code class="value">3</code><code class="plain">      # accelerometer measurement noise standard deviation. #</code><code class="value">0.2</code><code class="plain">   </code><code class="value">0.04</code></div>
+<div class="line"><code class="plain">#gyr_n: </code><code class="value">1</code><code class="plain">.6968e-</code><code class="value">04</code><code class="plain">     # gyroscope measurement noise standard deviation.     #</code><code class="value">0.05</code><code class="plain">  </code><code class="value">0.004</code></div>
+<div class="line"><code class="plain">#acc_w: </code><code class="value">5</code><code class="plain">.0000e-</code><code class="value">3</code><code class="plain">      # accelerometer bias random work noise standard deviation.  #</code><code class="value">0.02</code></div>
+<div class="line"><code class="plain">#gyr_w: </code><code class="value">0.003491</code><code class="plain">       # gyroscope bias random work noise standard deviation.     #</code><code class="value">4</code><code class="plain">.0e-</code><code class="value">5</code></div>
+<div class="line"><code class="plain">acc_n: </code><code class="value">0.8</code><code class="plain">          # accelerometer measurement noise standard deviation. #</code><code class="value">0.2</code><code class="plain">   </code><code class="value">0.04</code></div>
+<div class="line"><code class="plain">gyr_n: </code><code class="value">0.04</code><code class="plain">         # gyroscope measurement noise standard deviation.     #</code><code class="value">0.05</code><code class="plain">  </code><code class="value">0.004</code></div>
+<div class="line"><code class="plain">acc_w: </code><code class="value">5</code><code class="plain">.0000e-</code><code class="value">3</code><code class="plain">         # accelerometer bias random work noise standard deviation.  #</code><code class="value">0.02</code></div>
+<div class="line"><code class="plain">gyr_w: </code><code class="value">0.003491</code><code class="plain">       # gyroscope bias random work noise standard deviation.     #</code><code class="value">4</code><code class="plain">.0e-</code><code class="value">5</code></div>
+<div class="line"><code class="plain">g_norm: </code><code class="value">9.81007</code><code class="plain">       # gravity magnitude</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#loop closure parameters</code></div>
+<div class="line"><code class="plain">loop_closure: </code><code class="value">0</code><code class="plain">                    # start loop closure</code></div>
+<div class="line"><code class="plain">load_previous_pose_graph: </code><code class="value">0</code><code class="plain">        # load and reuse previous pose graph; load from </code><code class="string">'pose_graph_save_path'</code></div>
+<div class="line"><code class="plain">fast_relocalization: </code><code class="value">0</code><code class="plain">             # useful in real-time and large project</code></div>
+<div class="line"><code class="plain">pose_graph_save_path: </code><code class="string">"/home/maploc/workspace/output/pose_graph/"</code><code class="plain"> # save and load path</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#unsynchronization parameters</code></div>
+<div class="line"><code class="plain">estimate_td: </code><code class="value">0</code><code class="plain">                      # online estimate time offset between camera and imu</code></div>
+<div class="line"><code class="plain">td: </code><code class="value">0.08</code><code class="plain">                             # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#rolling shutter parameters</code></div>
+<div class="line"><code class="plain">rolling_shutter: </code><code class="value">0</code><code class="plain">                  # </code><code class="value">0</code><code class="plain">: global shutter camera, </code><code class="value">1</code><code class="plain">: rolling shutter camera</code></div>
+<div class="line"><code class="plain">rolling_shutter_tr: </code><code class="value">0</code><code class="plain">               # unit: s. rolling shutter read out time per frame (from data sheet). </code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">#visualization parameters</code></div>
+<div class="line"><code class="plain">save_image: </code><code class="value">1</code><code class="plain">                   # save image in pose graph </code><code class="keyword">for</code><code class="plain"> visualization prupose; you can close </code><code class="keyword">this</code><code class="plain"> function by setting </code><code class="value">0</code><code class="plain"> </code></div>
+<div class="line"><code class="plain">visualize_imu_forward: </code><code class="value">0</code><code class="plain">        # output imu forward propogation to achieve low latency and high frequence results</code></div>
+<div class="line"><code class="plain">visualize_camera_size: </code><code class="value">0.4</code><code class="plain">      # size of camera marker in RVIZ</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2103372775_FeatureNumbervs.VehicleVelocitybasedonVINSMono-DataAnalysis">
+        <h1 class="heading "><span>Data Analysis</span></h1>
+<p   
+>Video Link:</p>
+<p   
+>\\<a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\04_PER\05_maploc\00_dataset\KITTI\unsync\online_video</p>
+    <div class="section section-2" id="src-2103372775_FeatureNumbervs.VehicleVelocitybasedonVINSMono-UrbaninGermany">
+        <h2 class="heading "><span>Urban in Germany</span></h2>
+    <div class="section section-3" id="src-2103372775_safe-id-RmVhdHVyZU51bWJlcnZzLlZlaGljbGVWZWxvY2l0eWJhc2Vkb25WSU5TTW9uby10cmFjazIwMTFfMDlfMzBfMjdkdXJhdGlvbjoxOjU1">
+        <h3 class="heading "><span>track 2011_09_30_27 duration: 1:55</span></h3>
+<p   
+>acc_noise: 0.8</p>
+<p   
+>gyro_noise: 0.04</p>
+<p   
+>The red test below is the optical flow tracked points for single frame.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2103372775/image2022-1-25_15-19-23-version-1-modificationdate-1643095867000-api-v2.png" alt="images/confluence/download/attachments/2103372775/image2022-1-25_15-19-23-version-1-modificationdate-1643095867000-api-v2.png"  height="400" />
+    </p>
+<p   
+>The red dots below is the total feature number of feature manager from previous frame.</p>
+<p   
+>The blue dots below is the incoming feature points which are required to be tracked at least twice. Hence smaller than 300.</p>
+<p   
+>Th green line below is the vehicle forward velocity.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2103372775/image2022-1-25_15-20-52-version-1-modificationdate-1643095867000-api-v2.png" alt="images/confluence/download/attachments/2103372775/image2022-1-25_15-20-52-version-1-modificationdate-1643095867000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-3" id="src-2103372775_safe-id-RmVhdHVyZU51bWJlcnZzLlZlaGljbGVWZWxvY2l0eWJhc2Vkb25WSU5TTW9uby10cmFjazIwMTFfMTBfMDNfMjdkdXJhdGlvbjo3OjUx">
+        <h3 class="heading "><span>track 2011_10_03_27 duration: 7:51</span></h3>
+<p   
+>acc_noise: 0.8</p>
+<p   
+>gyro_noise: 0.04</p>
+<p   
+>The red test below is the optical flow tracked points for single frame.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2103372775/image2022-1-25_15-25-0-version-1-modificationdate-1643095867000-api-v2.png" alt="images/confluence/download/attachments/2103372775/image2022-1-25_15-25-0-version-1-modificationdate-1643095867000-api-v2.png"  height="400" />
+    </p>
+<p   
+>The red dots below is the total feature number of feature manager from previous frame.</p>
+<p   
+>The blue dots below is the incoming feature points which are required to be tracked at least twice. Hence smaller than 300.</p>
+<p   
+>Th green line below is the vehicle forward velocity.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2103372775/image2022-1-25_15-25-30-version-1-modificationdate-1643095867000-api-v2.png" alt="images/confluence/download/attachments/2103372775/image2022-1-25_15-25-30-version-1-modificationdate-1643095867000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2103372775_FeatureNumbervs.VehicleVelocitybasedonVINSMono-HighwayinGermany">
+        <h2 class="heading "><span>Highway in Germany</span></h2>
+    <div class="section section-3" id="src-2103372775_safe-id-RmVhdHVyZU51bWJlcnZzLlZlaGljbGVWZWxvY2l0eWJhc2Vkb25WSU5TTW9uby10cmFjazIwMTFfMTBfMDNfNDJkdXJhdGlvbjoyOjAx">
+        <h3 class="heading "><span>track 2011_10_03_42 duration: 2:01</span></h3>
+<p   
+>acc_noise: 0.04</p>
+<p   
+>gyro_noise: 0.004</p>
+<p   
+>The VINS Mono has failed at the beginning right turn and get reset later.</p>
+<p   
+>The red test below is the optical flow tracked points for single frame.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2103372775/image2022-1-25_15-26-27-version-1-modificationdate-1643095867000-api-v2.png" alt="images/confluence/download/attachments/2103372775/image2022-1-25_15-26-27-version-1-modificationdate-1643095867000-api-v2.png"  height="400" />
+    </p>
+<p   
+>The red dots below is the total feature number of feature manager from previous frame.</p>
+<p   
+>The blue dots below is the incoming feature points which are required to be tracked at least twice. Hence smaller than 300.</p>
+<p   
+>Th green line below is the vehicle forward velocity.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2103372775/image2022-1-25_15-27-3-version-1-modificationdate-1643095867000-api-v2.png" alt="images/confluence/download/attachments/2103372775/image2022-1-25_15-27-3-version-1-modificationdate-1643095867000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-3" id="src-2103372775_safe-id-RmVhdHVyZU51bWJlcnZzLlZlaGljbGVWZWxvY2l0eWJhc2Vkb25WSU5TTW9uby10cmFjazIwMTFfMTBfMDNfNDdkdXJhdGlvbjoxOjI3">
+        <h3 class="heading "><span>track 2011_10_03_47 duration: 1:27</span></h3>
+<p   
+>acc_noise: 0.4</p>
+<p   
+>gyro_noise: 0.01</p>
+<p   
+>The VINS Mono has failed at right turn in the end. The camera orientation is totally wrong.</p>
+<p   
+>The red test below is the optical flow tracked points for single frame.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2103372775/image2022-1-25_15-28-32-version-1-modificationdate-1643095867000-api-v2.png" alt="images/confluence/download/attachments/2103372775/image2022-1-25_15-28-32-version-1-modificationdate-1643095867000-api-v2.png"  height="400" />
+    </p>
+<p   
+>The red dots below is the total feature number of feature manager from previous frame.</p>
+<p   
+>The blue dots below is the incoming feature points which are required to be tracked at least twice. Hence smaller than 300.</p>
+<p   
+>Th green line below is the vehicle forward velocity.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2103372775/image2022-1-25_15-29-0-version-1-modificationdate-1643095866000-api-v2.png" alt="images/confluence/download/attachments/2103372775/image2022-1-25_15-29-0-version-1-modificationdate-1643095866000-api-v2.png"  height="400" />
+    </p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2069603815_Benchmark_Tooling_between_VINS-Mono_and_Open-VINS.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Benchmark Tooling between VINS-Mono and Open-VINS</span>
+        </a>
+                <a href="2080690720_Open_Dataset_Benchmark.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Open Dataset Benchmark</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VSLAM - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=1810422489"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                     <li><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                            </ul>
+</div>            <h1 id="src-1810422489"> <span>VSLAM</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+>15 Nov 2021</p>
+<p   
+>topics:</p>
+<ol class=" "><li class=" "><p   
+>architecture session review.<a  class="external-link" href="https://inside-share-hosted-apps.bosch.com/DMS/GetDocumentService/Document.svc/GetDocumentURL?documentID=P12S131675-1629884519-1570">https://inside-share-hosted-apps.bosch.com/DMS/GetDocumentService/Document.svc/GetDocumentURL?documentID=P12S131675-1629884519-1570</a></p>
+</li><li class=" "><p   
+>BMW VSLAM info share</p>
+</li></ol><p   
+>Open point :</p>
+<ol class=" "><li class=" "><p   
+>Currently HPA architecture is fully based on snapshot pipeline solution, we need to check the SLAM pipeline which include the map format / localization strategy and interface and so on. Only we confirm the gap between HPA and Vslam, then we can re-design our HPA arch with VSLAM.</p>
+</li><li class=" "><p   
+>wave3 use case with VSLAM, if we only implement the Training with Replay solution, why we need VSALM tech solution with high risk. we can add advanced visual features to improve the Gridloc performance.</p>
+</li></ol><p   
+>participants:</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~pac2lr">Pampus Christian (XC-AS/EPF)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HAM9AN">Hagedorn Matthias (CR/AEL CE-RAD)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WLA6SZH">WANG Alfred (XC-AS/EPF-CN)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WUC9SZH">WU Chenxu (XC-AS/EPF-CN)</a></p>
+<p   
+>08 Nov 2021</p>
+<p   
+>participants:</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~pac2lr">Pampus Christian (XC-AS/EPF)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WLA6SZH">WANG Alfred (XC-AS/EPF-CN)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WUC9SZH">WU Chenxu (XC-AS/EPF-CN)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~LOR2SZH">LI Rory (XC-AS/EPY-CN XC-AS/EPY1-CN)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HAA1SZH">HAI Aicheng (XC-AS/EPW2-CN)</a></p>
+<p   
+>go through the requirement in RFI.</p>
+<p   
+>20 Oct 2021</p>
+<p   
+>paticipants:</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~pac2lr">Pampus Christian (XC-AS/EPF)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WLA6SZH">WANG Alfred (XC-AS/EPF-CN)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WUC9SZH">WU Chenxu (XC-AS/EPF-CN)</a></p>
+<ol class=" "><li class=" "><p   
+>revied the RFI reponse of MMT:</p>
+<p   
+><a  class="external-link" href="https://sites.inside-share.bosch.com/sites/154667/Documents/01_Project%20management/Procurement_Management/RFI/Momenta/RFI%20Response/VSLAM/1.%20RFI%20ADAS%20L2%20%20%20ASW%20%20VSLAM%20for%20Parking%20%20Momenta%20Proposal.pdf">https://sites.inside-share.bosch.com/sites/154667/Documents/01_Project%20management/Procurement_Management/RFI/Momenta/RFI%20Response/VSLAM/1.%20RFI%20ADAS%20L2%20%20%20ASW%20%20VSLAM%20for%20Parking%20%20Momenta%20Proposal.pdf</a></p>
+</li><li class=" "><p   
+>NDS for parking</p>
+</li></ol><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/1810422489/NDS_parking-version-1-modificationdate-1634745840000-api-v2.png" alt="images/confluence/download/attachments/1810422489/NDS_parking-version-1-modificationdate-1634745840000-api-v2.png"  height="250" />
+    </p>
+<p   
+>27 Sep 2021</p>
+<p   
+>paticipants:</p>
+<p   
+><a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~pac2lr">Pampus Christian (XC-AS/EPF)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HAM9AN">Hagedorn Matthias (CR/AEL CE-RAD)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~HAA1SZH">HAI Aicheng (XC-AS/EPW2-CN)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WLA6SZH">WANG Alfred (XC-AS/EPF-CN)</a> <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WUC9SZH">WU Chenxu (XC-AS/EPF-CN)</a></p>
+<ol class=" "><li class=" "><p   
+>reviewd the RFI and progress: <a  class="external-link" href="https://inside-share-hosted-apps.bosch.com/DMS/GetDocumentService/Document.svc/GetDocumentURL?documentID=P01S154667-1908420289-1569">https://inside-share-hosted-apps.bosch.com/DMS/GetDocumentService/Document.svc/GetDocumentURL?documentID=P01S154667-1908420289-1569</a></p>
+</li><li class=" "><p   
+>main folder of the VSLAM: <a  class="external-link" href="https://sites.inside-share.bosch.com/sites/154667/Documents/Forms/AllItems.aspx?RootFolder=%2Fsites%2F154667%2FDocuments%2F01%5FProject%20management%2FProcurement%5FManagement%2FPreRFQ%2FVSLAM">https://sites.inside-share.bosch.com/sites/154667/Documents/Forms/AllItems.aspx?RootFolder=%2Fsites%2F154667%2FDocuments%2F01%5FProject%20management%2FProcurement%5FManagement%2FPreRFQ%2FVSLAM</a></p>
+</li></ol><p   
+>2. Map update：</p>
+<ul class=" "><li class=" "><p   
+>what is the detail of the map, occupicay grid map? confidence?</p>
+</li><li class=" "><p   
+>standard of map: NDS(Navigation Data Standard): semantic elements, general features(eg. SIFT), ADAS V3?...</p>
+</li></ul><p   
+><br/></p>
+<p   
+>3. multi-floor issue:</p>
+<p   
+>- any IMU requirement.</p>
+<p   
+><a   href="https://inside-docupedia.bosch.com/confluence/display/ultraschallwiki/Characterization+of+input+signals">Characterization of input signals</a></p>
+<p   
+></p>
+<p   
+><br/></p>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2263468108_Dataset_Tracking_Table.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Dataset Tracking Table</span>
+        </a>
+                <a href="2019165093_VSLAM_handover.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>VSLAM handover</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

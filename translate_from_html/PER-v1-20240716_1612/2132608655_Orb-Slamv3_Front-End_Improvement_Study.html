@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Orb-Slamv3 Front-End Improvement Study - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2132608655"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="1834779678_01_Map.html">01_Map</a></li>
+                                                                                     <li><a href="2047122521_Knowledge_center.html">Knowledge center</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2132608655"> <span>Orb-Slamv3 Front-End Improvement Study</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+></p>
+    <div class="section section-1" id="src-2132608655_OrbSlamv3FrontEndImprovementStudy-Motivation">
+        <h1 class="heading "><span>Motivation</span></h1>
+<p   
+>Based on the following <u class=" "><strong class=" ">assumption</strong></u>, this page will first discuss the solution about orbslamv3 frontend improvement and then show the experiment result over the same dataset in origin paper.</p>
+<ul class=" "><li class=" "><p   
+>The FAST + optical flow will generate more tracked feature point pair than the matched pair based on orb descriptor.</p>
+<ul class=" "><li class=" "><p   
+>more candidates → more chance to be stable</p>
+</li><li class=" "><p   
+>may help in texture-less case for HPA system.</p>
+</li></ul></li><li class=" "><p   
+>The ORB descriptor extraction is computational expensive. And the FAST + optical flow is faster and shall have the same accuracy performance in HPA system.</p>
+<ul class=" "><li class=" "><p   
+>ORB key points are allowed to be matched from wide baselines.</p>
+<ul class=" "><li class=" "><p   
+>HPA system is working under low speed rather than wide baseline mode</p>
+<ul class=" "><li class=" "><p   
+>FAST + optical flow works under limited motion → same accuracy performance</p>
+</li></ul></li></ul></li></ul></li></ul>    </div>
+    <div class="section section-1" id="src-2132608655_OrbSlamv3FrontEndImprovementStudy-OtherFront-EndStudy">
+        <h1 class="heading "><span>Other Front-End Study</span></h1>
+    <div class="section section-2" id="src-2132608655_OrbSlamv3FrontEndImprovementStudy-VINS-Mono">
+        <h2 class="heading "><span>VINS-Mono</span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2132608655/image2022-2-17_17-7-22-version-1-modificationdate-1645088842000-api-v2.png" alt="images/confluence/download/attachments/2132608655/image2022-2-17_17-7-22-version-1-modificationdate-1645088842000-api-v2.png"  height="400" />
+    </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2132608655/image2022-2-17_17-7-47-version-1-modificationdate-1645088868000-api-v2.png" alt="images/confluence/download/attachments/2132608655/image2022-2-17_17-7-47-version-1-modificationdate-1645088868000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2132608655_OrbSlamv3FrontEndImprovementStudy-Open-VINS">
+        <h2 class="heading "><span>Open-VINS</span></h2>
+<p   
+>Loop closure is not supported.</p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2132608655/image2022-2-17_17-8-36-version-1-modificationdate-1645088918000-api-v2.png" alt="images/confluence/download/attachments/2132608655/image2022-2-17_17-8-36-version-1-modificationdate-1645088918000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2132608655_OrbSlamv3FrontEndImprovementStudy-Ov2slam">
+        <h2 class="heading "><span>Ov2slam</span></h2>
+<p   
+>Paper:</p>
+<ul class=" "><li class=" "><p   
+>OV2SLAM : A Fully Online and Versatile Visual SLAM for Real-Time Applications</p>
+</li></ul><p   
+>Code:</p>
+<ul class=" "><li class=" "><p   
+><a  class="external-link" href="https://github.com/ov2slam/ov2slam">https://github.com/ov2slam/ov2slam</a></p>
+</li></ul><p   
+>Liu Kai has already summarized, <a   href="https://inside-docupedia.bosch.com/confluence/display/PJW3PER/OV2SLAM">OV2SLAM - PJ-W3-PER - Docupedia (bosch.com)</a>. This page will be more focus on the visual front-end thread and part of mapping thread.</p>
+<p   
+>The paper defines the front-end tasks as follows: image pre-processing, keypoint tracking, outlier filtering, pose estimation and keyframe creation triggering. The frontend pipeline is fully monocular, limiting all its operations to frames provided by the left camera with stereo setups.</p>
+<ul class=" "><li class=" "><p   
+>Image Pre-Processing</p>
+<ul class=" "><li class=" "><p   
+>contrast enhancement by CLAHE, increase dynamic range and limits the intensity changes due to exposure adaption.</p>
+</li></ul></li><li class=" "><p   
+>Keypoint Tracking</p>
+<ul class=" "><li class=" "><p   
+>Keypoints tracked individually with pyramidal inverse compositional Lucas-Kanade (LK)<br/></p>
+<ul class=" "><li class=" "><p   
+>window size: 9*9 (assume same pixel motion inside this window)</p>
+</li><li class=" "><p   
+>pyramid scale factor: 2 (resize factor for each pyramid image level)</p>
+</li></ul></li><li class=" "><p   
+>2D Keypoint (not triangulated yet)</p>
+<ul class=" "><li class=" "><p   
+>initial guess: keypoint position from previous frame</p>
+</li><li class=" "><p   
+>track with 4 level pyramidal inverse LK</p>
+</li></ul></li><li class=" "><p   
+>3D keypoint (already triangulated)</p>
+<ul class=" "><li class=" "><p   
+>project the 3D keypoint into current frame (given projection matrix and current camera pose)</p>
+</li><li class=" "><p   
+>track the projected 2D keypoints with 2 level pyramidal inverse LK, if failed use 4 level</p>
+</li></ul></li><li class=" "><p   
+>Avoid error track with backward tracking</p>
+<ul class=" "><li class=" "><p   
+>only on the origin image (level=1)</p>
+</li><li class=" "><p   
+>remove false keypoints whose position is more than 0.5 pixels away from their original position</p>
+</li></ul></li></ul></li><li class=" "><p   
+>Outlier Filtering</p>
+<ul class=" "><li class=" "><p   
+>RANSAC filtering + Epipolar constraint</p>
+</li><li class=" "><p   
+>only use 3D keypoints for essential matrix estimation</p>
+</li></ul></li><li class=" "><p   
+>Pose Estimation</p>
+<ul class=" "><li class=" "><p   
+>minimization of the 3D keypoints reprojection errors with Huber kernel</p>
+</li><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2132608655/image2022-2-18_11-41-10-version-1-modificationdate-1645155670000-api-v2.png" alt="images/confluence/download/attachments/2132608655/image2022-2-18_11-41-10-version-1-modificationdate-1645155670000-api-v2.png" width="400"  />
+    </li><li class=" "><p   
+>if there are less than half of tracked 3D keypoints, reject the predicted pose under constant speed motion.</p>
+</li></ul></li><li class=" "><p   
+>Keyframe Creation Trigger</p>
+<ul class=" "><li class=" "><p   
+>timing: tracked 3D keypoints of last frame is less than 85% or large parallax is detected (avg of 15 pixel)</p>
+</li><li class=" "><p   
+>add new feature keypoint + BRIEF descriptors from a grid strategy (35x35 window)</p>
+</li></ul></li></ul><p   
+>The mapping thread is in charge of processing every new keyframe to create new 3D map points by triangulation and to track the current local map in order to minimize drift.</p>
+<ul class=" "><li class=" "><p   
+>Local Map Tracking</p>
+<ul class=" "><li class=" "><p   
+>The goal of the local map tracking</p>
+<ul class=" "><li class=" "><p   
+>it is to find out if 3D map points belonging to this local map and not observed in Ki can be matched to keypoints of Ki. Such ”re-tracking” operations can be considered as elementary loop closures, limiting the accumulation of drift.</p>
+</li></ul></li><li class=" "><p   
+>candidate match strategy</p>
+<ul class=" "><li class=" "><p   
+>3D map point projection on the Ki less than 2 pixel away from keypoint of Ki</p>
+</li><li class=" "><p   
+>each map point has multiple BRIEF descriptor.</p>
+</li><li class=" "><p   
+>compare the descriptor with each descriptor of map point, if the lowest computed distance is under a threshold → matched</p>
+</li></ul></li></ul></li></ul><p   
+>another information:</p>
+<p   
+>In OV2SLAM, we heavily reduce the computational load by limiting the extraction of features to keyframes and track them in subsequent frames by minimization of a photometric error. Yet, in opposition to pure direct methods, we use the extracted descriptors for the means of local map tracking such as in ORB-SLAM but only performing this step for keyframes.</p>
+<p   
+>the local map tracking is only used for keyframes? or only extract descriptor of keyframes?</p>
+<p   
+>JST Comment: based on the description about local mapping, the local mapping tracking only performs on the keyframes.</p>
+    </div>
+    <div class="section section-2" id="src-2132608655_safe-id-T3JiU2xhbXYzRnJvbnRFbmRJbXByb3ZlbWVudFN0dWR5LVNWT1JlbGF0ZWQoT1JCLVlHWik">
+        <h2 class="heading "><span>SVO Related(ORB-YGZ)</span></h2>
+<p   
+>Code:</p>
+<ul class=" "><li class=" "><p   
+><a  class="external-link" href="https://github.com/gaoxiang12/ORB-YGZ-SLAM">gaoxiang12/ORB-YGZ-SLAM (github.com)</a> High </p>
+</li></ul><p   
+>    <span style="color: #24292f;">
+The YGZ SLAM is a faster version forked from ORB-SLAM2, the author put the direct tracking in SVO to accelerate the feature matching in ORB-SLAM2. They can get an average 3x speed up and keep almost same accuracy. In addition they also support monocular Visual-Inertial SLAM (VI-SLAM), following idea proposed in Raul's paper.    </span>
+</p>
+<p   
+>    <span style="color: #24292f;">
+Here we're more interested in the function "    </span>
+    <span style="color: #7a3e9d;">
+Tracking    </span>
+    <span style="color: #777777;">
+::    </span>
+    <span style="color: #aa3731;">
+SearchLocalPointsDirect    </span>
+    <span style="color: #24292f;">
+"    </span>
+    <span style="color: #24292f;">
+, it will project the local map points into current frame, then search with direct align method and no feature descriptor is used.    </span>
+</p>
+<p   
+>    <span style="color: #24292f;">
+Matching Process:    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #24292f;">
+    <span style="color: #24292f;">
+iterate each 3D map point and search whether it's visible from current frame (see Frame    <span style="color: #7a3e9d;">
+::    </span>
+    <span style="color: #7a3e9d;">
+isIn    </span>
+    <span style="color: #aa3731;">
+Frustum    </span>
+    </span>
+    </span>
+    <span style="color: #24292f;">
+).    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #24292f;">
+get the keyframes which see the same 3D map point with current frame. Among them, select N nearest keyframe sort by keyframe ID (ID in d    <span style="color: #000000;">
+escending    </span>
+    <span style="color: #000000;">
+ order, larger ID means more fresh    </span>
+)    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #24292f;">
+iterate these N keyframes and find matched feature points of keyframe based on direct projection (see     <span style="color: #7a3e9d;">
+ORBmatcher    </span>
+    <span style="color: #777777;">
+::    </span>
+    <span style="color: #aa3731;">
+FindDirectProjection    </span>
+)    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #24292f;">
+transform the image patch around feature locations in keyframe at certain image level (    <span style="color: #000000;">
+pyramid    </span>
+    <span style="color: #000000;">
+ structure    </span>
+) into the top level image of current frame.    </span>
+</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #7a3e9d;">
+ORBmatcher    </span>
+    <span style="color: #777777;">
+::    </span>
+    <span style="color: #aa3731;">
+GetWarpAffineMatrix,     </span>
+    <span style="color: #aa3731;">
+GetBestSearchLevel,     </span>
+    <span style="color: #7a3e9d;">
+ORBmatcher    </span>
+    <span style="color: #777777;">
+::    </span>
+    <span style="color: #aa3731;">
+WarpAffine    </span>
+</p>
+</li></ul></li><li class=" "><p   
+>search the best matching position of image patch between keyframe and current frame with "ygz    <span style="color: #777777;">
+::    </span>
+    <span style="color: #aa3731;">
+Align2D    </span>
+", algorithm like SSD (Sum of Squared Differences, template matching algorithm)</p>
+<ul class=" "><li class=" "><p   
+>return the matched feature locations in current frame (given feature locations in keyframe)</p>
+</li></ul></li></ul></li></ul><p   
+>JST comment:</p>
+<p   
+>This matching process needs to store the image for each keyframe.</p>
+<ul class=" "><li class=" "><p   
+>    <span style="color: #7a3e9d;">
+curr    </span>
+    <span style="color: #777777;">
+->    </span>
+    <span style="color: #7a3e9d;">
+mvImagePyramid    </span>
+    <span style="color: #777777;">
+[    </span>
+    <span style="color: #333333;">
+search_level    </span>
+    <span style="color: #777777;">
+]    </span>
+</p>
+</li><li class=" "><p   
+>    <span style="color: #7a3e9d;">
+ref    </span>
+    <span style="color: #777777;">
+->    </span>
+    <span style="color: #7a3e9d;">
+mvImagePyramid    </span>
+    <span style="color: #777777;">
+[    </span>
+    <span style="color: #7a3e9d;">
+kp    </span>
+    <span style="color: #777777;">
+.    </span>
+    <span style="color: #7a3e9d;">
+octave    </span>
+    <span style="color: #777777;">
+]    </span>
+</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-2132608655_OrbSlamv3FrontEndImprovementStudy-SOFT-SLAM">
+        <h2 class="heading "><span>SOFT-SLAM</span></h2>
+<p   
+>It's the No.1 solution on KITTI benchmark which is extremely fast and accurate.</p>
+<p   
+>Paper:</p>
+<ul class=" "><li class=" "><p   
+>StereoScan: Dense 3d Reconstruction in Real-time</p>
+</li><li class=" "><p   
+>Stereo odometry based on careful feature selection and tracking</p>
+</li><li class=" "><p   
+>SOFT-SLAM: Computationally Efficient Stereo Visual SLAM for Autonomous UAVs</p>
+</li></ul><p   
+>Code:</p>
+<ul class=" "><li class=" "><p   
+><a  class="external-link" href="https://github.com/Mayankm96/Stereo-Odometry-SOFT">https://github.com/Mayankm96/Stereo-Odometry-SOFT</a></p>
+</li></ul><p   
+><u class=" "><strong class=" ">Feature Extraction:</strong></u></p>
+<ul class=" "><li class=" "><p   
+>input: four images, namely the left and right images of two consecutive frames.</p>
+</li><li class=" "><p   
+>find stable feature locations:</p>
+<ul class=" "><li class=" "><p   
+>filter gradient image with two different 5*5 mask, called corner mask and blob mask</p>
+</li><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2132608655/image2022-2-17_12-1-56-version-1-modificationdate-1645070516000-api-v2.png" alt="images/confluence/download/attachments/2132608655/image2022-2-17_12-1-56-version-1-modificationdate-1645070516000-api-v2.png" width="350"  />
+    </li><li class=" "><p   
+>non-maximum and non-minimum suppression on the filtered image</p>
+<ul class=" "><li class=" "><p   
+>generate 4 categories features, blob max, blob min, corner max, corner min</p>
+</li></ul></li></ul></li><li class=" "><p   
+>Extract feature descriptors</p>
+<ul class=" "><li class=" "><p   
+>filter the image around the key points with 11*11 block windows of horizontal and vertical Sobel filter</p>
+</li><li class=" "><p   
+>get the descriptors from a sparse set of 16 locations from 11*11 Sobel response.</p>
+</li><li class=" "><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2132608655/image2022-2-17_12-21-46-version-1-modificationdate-1645071706000-api-v2.png" alt="images/confluence/download/thumbnails/2132608655/image2022-2-17_12-21-46-version-1-modificationdate-1645071706000-api-v2.png" width="150"  />
+    </li><li class=" "><p   
+>each point will have 2*16 vector as feature descriptor (horizontal and vertical)</p>
+</li></ul></li></ul><p   
+><br/></p>
+<p   
+><u class=" "><strong class=" ">Feature Matching:</strong></u></p>
+<ul class=" "><li class=" "><p   
+>Given two feature points, compare the feature descriptors (2*16 vector) with SAD(sum of absolute differences). The SAD below thresholds are matched.</p>
+</li><li class=" "><p   
+>remove outlier with circular matching. Each feature has to be matched between left and right images of two consecutive frames, requiring four matches per feature.</p>
+</li><li class=" "><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2132608655/image2022-2-17_13-36-30-version-1-modificationdate-1645076190000-api-v2.png" alt="images/confluence/download/attachments/2132608655/image2022-2-17_13-36-30-version-1-modificationdate-1645076190000-api-v2.png" width="350"  />
+    </li><li class=" "><p   
+>If the feature is correctly matched in all frames of the above sequence, the circle is closed and the feature in the last frame of the sequence coincides with the feature in the first frame. Otherwise, reject the feature points as outlier.</p>
+</li><li class=" "><p   
+>additional check with normalized cross correlation (NCC) on a 25×25 pixels patch around the above surviving feature position.</p>
+</li><li class=" "><p   
+>additional check with Epiploar constraint will also be used to filter the matched feature points.</p>
+</li></ul><p   
+>JST comment:</p>
+<p   
+>After this step, features from the left and right image at time k and k-1 are matched and relative reliable. The matching process will be continued between time k and k+1 as part of feature tracking process.</p>
+<p   
+><br/></p>
+<p   
+><u class=" "><strong class=" ">Feature Selection:</strong></u></p>
+<p   
+>Precise estimation of the ego-motion requires that both far and near features are used in calculation of ego-motion, and that features are uniformly distributed over the image.</p>
+<p   
+>How to selection feature pair for ego-motion estimation after feature matching,</p>
+<ul class=" "><li class=" "><p   
+>divide image into 50×50 pixels sized rectangles, called buckets</p>
+</li><li class=" "><p   
+>retain the feature with same limit number for each buckets and the others are discarded</p>
+</li><li class=" "><p   
+>classify the feature points into four distinct classes (corner max, corner min, blob max and blob min)</p>
+</li><li class=" "><p   
+>sort the feature inside each class "select(f1,f2)" by strength and age. The strength means the response after filtering the image with blob and corner masks. The age means the lifetime the feature is tracked.</p>
+</li></ul><p   style="margin-left:30px;"
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2132608655/image2022-2-17_16-9-21-version-1-modificationdate-1645085363000-api-v2.png" alt="images/confluence/download/attachments/2132608655/image2022-2-17_16-9-21-version-1-modificationdate-1645085363000-api-v2.png" width="800"  />
+    </p>
+<ul class=" "><li class=" "><p   
+>push the strongest feature from each class into the final list. Repeated this step until all features are pushed into the final list.</p>
+</li><li class=" "><p   
+>First n features from the final list are selected for ego-motion estimation.</p>
+</li></ul><p   
+>JST comment:</p>
+<p   
+>The above method is better than straightforward sorting of all features together. Otherwise, the first n features may all belong to the same class, which could cause bias in remaining stages of the algorithm.</p>
+<p   
+><br/></p>
+<p   
+><u class=" "><strong class=" ">Feature Tracking:</strong></u></p>
+<p   
+>Tips:</p>
+<p   
+><u class=" "><i class=" ">This section is not described clearly in the paper.</i></u></p>
+<p   
+><u class=" "><i class=" ">E.g.</i></u></p>
+<p   
+><u class=" "><i class=" ">no idea about how to do sub-pixel refinement via parabolic fitting and vein of a Markov process to further improve feature localization???</i></u></p>
+<p   
+><u class=" "><i class=" ">how to use refinement patch during tracking???</i></u></p>
+<p   
+><u class=" "><i class=" ">how to propagate the refined position???</i></u></p>
+<p   
+>Generally, features that are tracked for longer period of time are considered to be more reliable, with lower probability of being an outlier. Therefore one should always chose the older feature for the next tracking iteration.</p>
+<p   
+>Each feature is represented by the following properties:</p>
+<ul class=" "><li class=" "><p   
+>unique identifier (ID)</p>
+</li><li class=" "><p   
+>age</p>
+</li><li class=" "><p   
+>refined current position in the image → how?</p>
+</li><li class=" "><p   
+>feature strength → response from corner or blob mask filter</p>
+</li><li class=" "><p   
+>belonging class</p>
+</li><li class=" "><p   
+>initial descriptor → a sparse set of 16 locations</p>
+</li></ul><p   
+>If the feature match process is passed, the age of a matched feature point is increased by one. As long as the feature is alive, the same initial descriptor is used for feature position refinement.</p>
+<p   
+>Tracking algorithm steps,</p>
+<ul class=" "><li class=" "><p   
+>the initial step, where a unique identifier and a descriptor are joined to the pertaining feature, and the age of the feature is set to 0.</p>
+</li><li class=" "><p   
+>the tracking, where in each iteration the position of the feature in the current frame is refined on a subpixel level with respect to the feature position in the initial frame, using the refinement patch???</p>
+</li></ul><p   
+>In order to retain as much tracks as possible and to further decrease the number of outliers, two pass matching is implemented.</p>
+<ul class=" "><li class=" "><p   
+>select one feature from each bucket and estimate initial rotation and translation.</p>
+</li><li class=" "><p   
+>check more feature pair with initially estimated rotation and translation constraint.</p>
+</li></ul><p   
+>JST comment,</p>
+<p   
+>The tracking step is a kind of feature management. It will verify the feature pair after matching process and make sure there are no outlier pair left. However, details are lost in the paper.</p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2132608655_OrbSlamv3FrontEndImprovementStudy-ProposedSolution">
+        <h1 class="heading "><span>Proposed Solution</span></h1>
+    <div class="section section-2" id="src-2132608655_OrbSlamv3FrontEndImprovementStudy-Briefsummaryofaboverelatedwork">
+        <h2 class="heading "><span>Brief summary of above related work</span></h2>
+<ul class=" "><li class=" "><p   
+>As for front-end between VINS-Mono and OpenVINS, there is no big difference between them, except the mask of feature extraction.</p>
+</li><li class=" "><p   
+>SVO method requires to hold image for each keyframes and may cause memory issue for long term mapping.</p>
+</li><li class=" "><p   
+>SOFT-SLAM has designed new feature and descriptors with kinds of filter to remove outlier and mismatch, maybe quite nice but not meet our target.</p>
+</li><li class=" "><p   
+>Ov2slam is the most promising solution and very close to our assumption. And the local map tracking is only for keyframe which is consistent with another two paper below.</p>
+</li></ul>    </div>
+    <div class="section section-2" id="src-2132608655_OrbSlamv3FrontEndImprovementStudy-StateMachineofORBSLAMv3">
+        <h2 class="heading "><span>State Machine of ORBSLAMv3</span></h2>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/2132608655/orbslam3_state_machine-version-8-modificationdate-1647326890000-api-v2.png" alt="images/confluence/download/attachments/2132608655/orbslam3_state_machine-version-8-modificationdate-1647326890000-api-v2.png" width="761"  />
+    </p>
+    </div>
+    <div class="section section-2" id="src-2132608655_safe-id-T3JiU2xhbXYzRnJvbnRFbmRJbXByb3ZlbWVudFN0dWR5LU15U29sdXRpb25bRGVwcmVjYXRlZF0">
+        <h2 class="heading "><span>My Solution [Deprecated]</span></h2>
+<ul class=" "><li class=" "><p   
+>need to hold the image for keyframe<br/></p>
+<ul class=" "><li class=" "><p   
+>as for local map tracking, keep the index of image for each map point</p>
+</li><li class=" "><p   
+>use FLK to get the matched feature point from current frame</p>
+</li></ul></li></ul><p   
+>The image below shows the main idea,</p>
+<ul class=" "><li class=" "><p   
+>for the keyframe, we extract the keypoints and descriptors, and get the map points and pose according to the descriptor matching triangulation and pose solution</p>
+</li><li class=" "><p   
+>for non-keyframes, the optical flow is used to solve the matching and only solve the pose, which has no contribution to the map</p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2132608655/image2022-2-21_9-4-13-version-1-modificationdate-1645405455000-api-v2.png" alt="images/confluence/download/attachments/2132608655/image2022-2-21_9-4-13-version-1-modificationdate-1645405455000-api-v2.png"  height="250" />
+    </p>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/2132608655/tracking_thread-version-8-modificationdate-1646127791000-api-v2.png" alt="images/confluence/download/attachments/2132608655/tracking_thread-version-8-modificationdate-1646127791000-api-v2.png" width="1671"  />
+    </p>
+<p   
+>State machine of above solution</p>
+<p   
+><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/2132608655/optical_flow_state_machine-version-7-modificationdate-1647327303000-api-v2.png" alt="images/confluence/download/attachments/2132608655/optical_flow_state_machine-version-7-modificationdate-1647327303000-api-v2.png" width="761"  />
+    </p>
+<p   
+><br/></p>
+<p   
+>Track Reference Key Frame,</p>
+<p   
+>tips: reference key frame is either the keyframe who has the<u class=" "><strong class=" "> most common visual map point</strong></u> with current frame or just the <u class=" "><strong class=" ">last keyframe</strong></u>.</p>
+<ul class=" "><li class=" "><p   
+>predict current frame with IMU</p>
+</li><li class=" "><p   
+>project the map point from reference keyframe into current frame as prior</p>
+</li><li class=" "><p   
+>execute feature point matching with optical flow</p>
+</li><li class=" "><p   
+>estimate the pose of current frame with reprojection error + IMU pre-integration residual</p>
+</li></ul><p   
+>Track Local Map for optical flow (TBD),</p>
+<ul class=" "><li class=" "><p   
+>find all map points from keyframes who have common vision with current frame</p>
+</li><li class=" "><p   
+>filter the map points out of window for current frame</p>
+</li><li class=" "><p   
+>iterative each keyframe image and find matching between each map points of key frame and feature points of current image.</p>
+<ul class=" "><li class=" "><p   
+>since there are multiple keyframe see the same map point, ignore the map point if it has already matched with current frame.</p>
+</li></ul></li></ul><p   
+><br/></p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2084531245_MSCKF_for_VINS_Study.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>MSCKF for VINS Study</span>
+        </a>
+                <a href="2204679021_Front-End_Benchmark_Optical_Flow_vs._ORB3.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Front-End Benchmark Optical Flow vs. ORB3</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

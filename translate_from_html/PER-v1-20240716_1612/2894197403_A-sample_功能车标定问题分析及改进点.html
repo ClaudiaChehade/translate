@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> A-SAMPLE function vehicle calibration problem analysis and improvement point  - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2894197403"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113873_xcalib_eng.html">xcalib_eng</a></li>
+                                                                                                         <li class="shortcut"><a href="2916353596_calibration_tool_release.html">calibration_tool_release</a></li>
+                                                                                     <li><a href="2759767640_V1.1.0.html">V1.1.0</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2894197403"> <span> A-SAMPLE function vehicle calibration problem analysis and improvement point </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-2894197403_safe-id-QXNhbXBsZeWKn-iDvei9puagh-WumumXrumimOWIhuaekOWPiuaUuei_m-eCuS04I-WKn-iDvei9pg">
+        <h1 class="heading "><span> 8#Function car </span></h1>
+<ul class=" "><li class=" "><p   
+> Vehicle number: 11117c </p>
+</li><li class=" "><p   
+> Calm Time: 20230327 </p>
+</li><li class=" "><p   
+> Calibration personnel: zhang zihan (BCSC-EPA1, XC-DA/PJ-W3-VER) </p>
+</li><li class=" "><p   
+> Calibration data: \\\ <a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\04_PER\05_maploc\00_dataset\data_format\dongshahu\11117c\20230327</p>
+</li><li class=" "><p   
+> Acceptance report: <a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=2894679462">11117C Cali Parameter Release Note（VER done, PER calib optimized, wating for PER user confirm)</a></p>
+</li></ul><p   
+><strong class=" ">    <span style="color: #ff0000;"> Question 1: Verification Data POS2 FRONT-Left-Camera and Front-Right-Camera image error (dangerous operation !!! Future calibration/verification data collection will also occur similar problems) </span>
+</strong></p>
+<p   
+> Reason: When using the NVIDIA driver to capture the image, some cameras have failed to collect, historical data has not been covered, and copies wrongly </p>
+<p   
+> Optimization: Use script automation, the reference process is as follows </p>
+<ul class=" "><li class=" "><p   
+> Clear the platform camera image grab temporary folder </p>
+</li><li class=" "><p   
+> Catch the platform camera image </p>
+</li><li class=" "><p   
+> Copy to the target folder </p>
+</li><li class=" "><p   
+> Check image naming & suffering, data integrity, image quantity, size, etc. </p>
+</li></ul><p   
+>    <span style="color: #ff0000;">
+<strong class=" "> Question 2: Use error calibration tool version </strong>    </span>
+</p>
+<p   
+> Optimized: update through bitbuket, label, release </p>
+<p   
+><a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3_eng_calib_tools/browse">https://sourcecode01.de.bosch.com/projects/PJW3/repos/w3_eng_calib_tools/browse</a></p>
+<p   
+>    <span style="color: #ff0000;">
+<strong class=" "> Question 3: M1-Lidar data abnormalities (in batch analysis, special discussion) <br/></strong>    </span>
+</p>
+<p   
+> Optimized: first quality inspection, then calibration </p>
+<p   
+><strong class=" ">front-lidar OK</strong></p>
+<ul class=" "><li class=" "><p   
+> From top to bottom, POS1 POS3 POS4 (POS2 verification data is abnormal and does not participate in verification) </p>
+</li><li class=" "><p   
+> The projection problem on the left side of the POS3 is normal in POS1 and POS4. <span style="color: #ff0000;"> M1-LIDAR's left most dot cloud area data abnormality </span> Cause (analysis) </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/11117C_20230327_front_lidar_kb8_pos1-version-1-modificationdate-1680141503000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/11117C_20230327_front_lidar_kb8_pos1-version-1-modificationdate-1680141503000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/11117C_20230327_front_lidar_kb8_pos3-version-1-modificationdate-1680141580000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/11117C_20230327_front_lidar_kb8_pos3-version-1-modificationdate-1680141580000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/11117C_20230327_front_lidar_kb8_pos4-version-1-modificationdate-1680141661000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/11117C_20230327_front_lidar_kb8_pos4-version-1-modificationdate-1680141661000-api-v2.jpg"  height="150" />
+</p>
+<p   
+><strong class=" ">left/right-lidar OK</strong></p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg"  height="150" />
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg"  height="150" />
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg"  height="150" />
+</p>
+<p   
+><strong class=" ">front-tele-camera OK</strong></p>
+<p   
+> A total of 4 sets of data, two groups uploaded in this interface, the remaining visible: \\ <a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\04_PER\05_maploc\00_dataset\data_format\dongshahu\11117c\20230327\evaluation</p>
+<p   
+> BEFORE is the result of using the traditional one -stop method. </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left-tele-before</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left-tele-after</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>right-tele-before</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>right-tele-after</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front-tele-before</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front-tele-after</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>pos1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_left_lidar2front_tele_pos1_before-version-1-modificationdate-1680091872000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_left_lidar2front_tele_pos1_before-version-1-modificationdate-1680091872000-api-v2.jpg"  height="150" />
+</p>
+<p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_left_lidar2front_tele_pos1_after-version-1-modificationdate-1680092031000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_left_lidar2front_tele_pos1_after-version-1-modificationdate-1680092031000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_right_lidar2front_tele_pos1_before-version-1-modificationdate-1680091929000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_right_lidar2front_tele_pos1_before-version-1-modificationdate-1680091929000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_right_lidar2front_tele_pos1_after-version-1-modificationdate-1680092088000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_right_lidar2front_tele_pos1_after-version-1-modificationdate-1680092088000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_front_lidar2front_tele_pos1_before-version-1-modificationdate-1680091806000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_front_lidar2front_tele_pos1_before-version-1-modificationdate-1680091806000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_front_lidar2front_tele_pos1_after-version-1-modificationdate-1680092141000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_front_lidar2front_tele_pos1_after-version-1-modificationdate-1680092141000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>pos2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_left_lidar2front_tele_pos2_before-version-1-modificationdate-1680092360000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_left_lidar2front_tele_pos2_before-version-1-modificationdate-1680092360000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_left_lidar2front_tele_pos2_after-version-1-modificationdate-1680092493000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_left_lidar2front_tele_pos2_after-version-1-modificationdate-1680092493000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_right_lidar2front_tele_pos2_before-version-1-modificationdate-1680092422000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_right_lidar2front_tele_pos2_before-version-1-modificationdate-1680092422000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_right_lidar2front_tele_pos2_after-version-1-modificationdate-1680092617000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_right_lidar2front_tele_pos2_after-version-1-modificationdate-1680092617000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_front_lidar2front_tele_pos2_before-version-1-modificationdate-1680092283000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_front_lidar2front_tele_pos2_before-version-1-modificationdate-1680092283000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/pinhole_front_lidar2front_tele_pos2_after-version-1-modificationdate-1680092668000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/pinhole_front_lidar2front_tele_pos2_after-version-1-modificationdate-1680092668000-api-v2.jpg"  height="150" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><strong class=" ">surround-view-camera BEV OK</strong></p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/0-0-version-2-modificationdate-1680086894000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/0-0-version-2-modificationdate-1680086894000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/0-2-version-2-modificationdate-1680086929000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/0-2-version-2-modificationdate-1680086929000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/1-0-version-2-modificationdate-1680086966000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/1-0-version-2-modificationdate-1680086966000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/1-2-version-2-modificationdate-1680087001000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/1-2-version-2-modificationdate-1680087001000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/2-0-version-2-modificationdate-1680087037000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/2-0-version-2-modificationdate-1680087037000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/2-2-version-2-modificationdate-1680087075000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/2-2-version-2-modificationdate-1680087075000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/3-0-version-2-modificationdate-1680087110000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/3-0-version-2-modificationdate-1680087110000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/3-2-version-2-modificationdate-1680087147000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/3-2-version-2-modificationdate-1680087147000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/4-0-version-2-modificationdate-1680087182000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/4-0-version-2-modificationdate-1680087182000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/4-2-version-2-modificationdate-1680087218000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/4-2-version-2-modificationdate-1680087218000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/5-0-version-2-modificationdate-1680087253000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/5-0-version-2-modificationdate-1680087253000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/5-2-version-2-modificationdate-1680087287000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/5-2-version-2-modificationdate-1680087287000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/7-0-version-1-modificationdate-1680083609000-api-v2.png" alt="images/confluence/download/thumbnails/2894197403/7-0-version-1-modificationdate-1680083609000-api-v2.png" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/8-0-version-1-modificationdate-1680083679000-api-v2.png" alt="images/confluence/download/thumbnails/2894197403/8-0-version-1-modificationdate-1680083679000-api-v2.png" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/9-0-version-1-modificationdate-1680083749000-api-v2.png" alt="images/confluence/download/thumbnails/2894197403/9-0-version-1-modificationdate-1680083749000-api-v2.png" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/10-0-version-1-modificationdate-1680083819000-api-v2.png" alt="images/confluence/download/thumbnails/2894197403/10-0-version-1-modificationdate-1680083819000-api-v2.png" width="300"  />
+</p>
+    </div>
+    <div class="section section-1" id="src-2894197403_safe-id-QXNhbXBsZeWKn-iDvei9puagh-WumumXrumimOWIhuaekOWPiuaUuei_m-eCuS05I-WKn-iDvei9pg">
+        <h1 class="heading "><span> 9#Function vehicle </span></h1>
+<ul class=" "><li class=" "><p   
+> Vehicle number: 11118C </p>
+</li><li class=" "><p   
+> Calm Time: 20230328 </p>
+</li><li class=" "><p   
+> Calibration personnel: zhang zihan (BCSC-EPA1, XC-DA/PJ-W3-VER) </p>
+</li><li class=" "><p   
+> Calibration data: \\\ <a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\04_PER\05_maploc\00_dataset\data_format\dongshahu\11118C</p>
+</li><li class=" "><p   
+> Acceptance report: <a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=2894679909">11118C Cali Parameter Release Note（VER done, PER calib optimization not need, waiting for PER user confirm)</a></p>
+</li></ul><p   
+><strong class=" ">front-lidar OK</strong></p>
+<ul class=" "><li class=" "><p   
+> From top to bottom, POS1 POS2 POS3 POS4 </p>
+</li><li class=" "><p   
+> POS1-POS4's left point cloud data is obviously abnormal, other areas projection is normal, calibration passes, suspecting is suspected <span style="color: #ff0000;"> M1-LIDAR's left most dot cloud area data abnormality </span> Cause (analysis) </p>
+</li></ul><p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/11118C_20230328_front_lidar_kb8_pos1-version-1-modificationdate-1680142106000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/11118C_20230328_front_lidar_kb8_pos1-version-1-modificationdate-1680142106000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/11118C_20230328_front_lidar_kb8_pos2-version-1-modificationdate-1680142115000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/11118C_20230328_front_lidar_kb8_pos2-version-1-modificationdate-1680142115000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/11118C_20230328_front_lidar_kb8_pos3-version-1-modificationdate-1680142125000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/11118C_20230328_front_lidar_kb8_pos3-version-1-modificationdate-1680142125000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/11118C_20230328_front_lidar_kb8_pos4-version-1-modificationdate-1680142134000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/11118C_20230328_front_lidar_kb8_pos4-version-1-modificationdate-1680142134000-api-v2.jpg"  height="150" />
+</p>
+<p   
+><strong class=" ">left/right-lidar OK</strong></p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg"  height="150" />
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg"  height="150" />
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg"  height="150" />
+</p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_left-version-7-modificationdate-1680144293000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_left_lidar2front_wide-version-7-modificationdate-1680144307000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_wide-version-7-modificationdate-1680144328000-api-v2.jpg"  height="150" />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/kb8_right_lidar2front_right-version-10-modificationdate-1680144365000-api-v2.jpg"  height="150" />
+</p>
+<p   
+><strong class=" ">front-tele-camera OK<br/></strong></p>
+<p   
+> A total of 4 sets of data, two groups uploaded in this interface, the remaining visible: \\ <a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\04_PER\05_maploc\00_dataset\data_format\dongshahu\11118c\20230328\evaluation</p>
+<p   
+> BEFORE is the result of using the traditional one -stop method. </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left-tele-before</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>left-tele-after</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>right-tele-before</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>right-tele-after</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front-tele-before</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>front-tele-after</p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>pos3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_left_lidar2front_tele_pos3_before-version-1-modificationdate-1680093767000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_left_lidar2front_tele_pos3_before-version-1-modificationdate-1680093767000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_left_lidar2front_tele_pos3_after-version-1-modificationdate-1680093889000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_left_lidar2front_tele_pos3_after-version-1-modificationdate-1680093889000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_right_lidar2front_tele_pos3_before-version-1-modificationdate-1680093808000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_right_lidar2front_tele_pos3_before-version-1-modificationdate-1680093808000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_right_lidar2front_tele_pos3_after-version-1-modificationdate-1680093849000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_right_lidar2front_tele_pos3_after-version-1-modificationdate-1680093849000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_front_lidar2front_tele_pos3_before-version-1-modificationdate-1680093726000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_front_lidar2front_tele_pos3_before-version-1-modificationdate-1680093726000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_front_lidar2front_tele_pos3_after-version-1-modificationdate-1680093931000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_front_lidar2front_tele_pos3_after-version-1-modificationdate-1680093931000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>pos4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_left_lidar2front_tele_pos4_before-version-1-modificationdate-1680094139000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_left_lidar2front_tele_pos4_before-version-1-modificationdate-1680094139000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_left_lidar2front_tele_pos4_after-version-1-modificationdate-1680094262000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_left_lidar2front_tele_pos4_after-version-1-modificationdate-1680094262000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_right_lidar2front_tele_pos4_before-version-1-modificationdate-1680094180000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_right_lidar2front_tele_pos4_before-version-1-modificationdate-1680094180000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_right_lidar2front_tele_pos4_after-version-1-modificationdate-1680094222000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_right_lidar2front_tele_pos4_after-version-1-modificationdate-1680094222000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_front_lidar2front_tele_pos4_before-version-1-modificationdate-1680094095000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_front_lidar2front_tele_pos4_before-version-1-modificationdate-1680094095000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/2894197403/pinhole_front_lidar2front_tele_pos4_after-version-1-modificationdate-1680094305000-api-v2.jpg" alt="images/confluence/download/attachments/2894197403/pinhole_front_lidar2front_tele_pos4_after-version-1-modificationdate-1680094305000-api-v2.jpg"  height="250" />
+    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><strong class=" ">surround-view-camera BEV OK</strong></p>
+<p   
+><img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/0-0-version-2-modificationdate-1680086894000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/0-0-version-2-modificationdate-1680086894000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/0-2-version-2-modificationdate-1680086929000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/0-2-version-2-modificationdate-1680086929000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/1-0-version-2-modificationdate-1680086966000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/1-0-version-2-modificationdate-1680086966000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/1-2-version-2-modificationdate-1680087001000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/1-2-version-2-modificationdate-1680087001000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/2-0-version-2-modificationdate-1680087037000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/2-0-version-2-modificationdate-1680087037000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/2-2-version-2-modificationdate-1680087075000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/2-2-version-2-modificationdate-1680087075000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/3-0-version-2-modificationdate-1680087110000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/3-0-version-2-modificationdate-1680087110000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/3-2-version-2-modificationdate-1680087147000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/3-2-version-2-modificationdate-1680087147000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/4-0-version-2-modificationdate-1680087182000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/4-0-version-2-modificationdate-1680087182000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/4-2-version-2-modificationdate-1680087218000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/4-2-version-2-modificationdate-1680087218000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/5-0-version-2-modificationdate-1680087253000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/5-0-version-2-modificationdate-1680087253000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/5-2-version-2-modificationdate-1680087287000-api-v2.jpg" alt="images/confluence/download/thumbnails/2894197403/5-2-version-2-modificationdate-1680087287000-api-v2.jpg" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/7-2-version-2-modificationdate-1680087762000-api-v2.png" alt="images/confluence/download/thumbnails/2894197403/7-2-version-2-modificationdate-1680087762000-api-v2.png" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/8-2-version-2-modificationdate-1680087797000-api-v2.png" alt="images/confluence/download/thumbnails/2894197403/8-2-version-2-modificationdate-1680087797000-api-v2.png" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/9-2-version-2-modificationdate-1680087831000-api-v2.png" alt="images/confluence/download/thumbnails/2894197403/9-2-version-2-modificationdate-1680087831000-api-v2.png" width="300"  />
+<img  class="confluence-embedded-image confluence-thumbnail"  src="images/confluence/download/thumbnails/2894197403/10-2-version-2-modificationdate-1680087865000-api-v2.png" alt="images/confluence/download/thumbnails/2894197403/10-2-version-2-modificationdate-1680087865000-api-v2.png" width="300"  />
+</p>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2759767640_V1.1.0.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>V1.1.0</span>
+        </a>
+                <a href="2788360211_lidar_%E6%A0%87%E5%AE%9A%E5%B7%A5%E5%85%B7%E8%AF%84%E4%BC%B0_%26_%E6%9B%B4%E6%96%B0.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> lidar calibration tool evaluation & update </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

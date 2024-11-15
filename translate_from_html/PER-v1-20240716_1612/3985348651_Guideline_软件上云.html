@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Guideline_ Software on Cloud -Wave 3 DEVELOPMENT </title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3985348651"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2495263431_Static_Fusion_-_PER.html">Static Fusion - PER</a></li>
+                                                                                                         <li class="shortcut"><a href="2782679446_SF-LaneModel.html">SF-LaneModel</a></li>
+                                                                                     <li><a href="3865231860_SF_Cloudization.html">SF Cloudization</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3985348651"> <span> Guideline_ software on the cloud </span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+    <div class="section section-1" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS1BT1Pku5PlupPnvJbor5HmiJDlip_mraXpqqTlj4rms6jmhI_kuovpobk">
+        <h1 class="heading "><span> AOS warehouse compile successful steps and precautions </span></h1>
+    <div class="section section-2" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS0xLuWuieijhWNvbmFu77yaMS41Ny4w">
+        <h2 class="heading "><span> 1. Install Conan: 1.57.0 </span></h2>
+<p   
+> (Or the ROOT warehouse is available at 1.45.0 that supported by the default) </p>
+    </div>
+    <div class="section section-2" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS0yLuWuieijhUFPU-eOr-Wigw">
+        <h2 class="heading "><span> 2. Install the AOS environment </span></h2>
+<p   
+> 1) The currently used AOS1030, it is recommended to use it <a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/aos-workspace/browse">AOS Workspace</a> Master branch, not tag: mwaos_1.0.3.0_release </p>
+<p   
+> 2) Reference link: <a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=2233960014">MW Release Note [Quick Start]</a></p>
+<p   
+> Note: The main difference between the BGN is the execution script command: ./ Install.sh <strong class=" ">-a</strong> -c 'pwd'</p>
+<p   
+> 3) PMT students also need some permissions: </p>
+<p   
+>pjw3_conan_release_local: <a  class="external-link" href="https://artifactory.prod.boscharena.ai:443/artifactory/api/conan/pjw3_conan_release_local">https://artifactory.prod.boscharena.ai:443/artifactory/api/conan/pjw3_conan_release_local</a><br/>adc-conan-io:: <a  class="external-link" href="https://artifactory.prod.boscharena.ai:443/artifactory/api/conan/bosch_pjw3_conan_public_remote">https://artifactory.prod.boscharena.ai:443/artifactory/api/conan/bosch_pjw3_conan_public_remote</a></p>
+<p   
+>conan-config： <a  class="external-link" href="https://bitbucket.prod.boscharena.ai/projects/PJW3/repos/conan-config/browse">https://bitbucket.prod.boscharena.ai/projects/PJW3/repos/conan-config/browse</a></p>
+<p   
+> 4) In the prompt, the problem is encountered according to the prompt: PIP Install LXML </p>
+<p   
+> (If you can't pip first, PIP is in Conda) </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3985348651/image-2024-2-23_13-28-11-version-1-modificationdate-1708666092000-api-v2.png" alt="images/confluence/download/attachments/3985348651/image-2024-2-23_13-28-11-version-1-modificationdate-1708666092000-api-v2.png"  height="250" />
+    </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS0zLuaLieWPluebuOW6lOi9r-S7tg">
+        <h2 class="heading "><span> 3. Pull the corresponding software </span></h2>
+<p   
+> SF warehouse divided into two steps: AOS warehouse compilation & algorithm warehouse compilation </p>
+<p   
+>PJW3:</p>
+<p   
+>staticfusion： <a  class="external-link" href="https://bitbucket.prod.boscharena.ai/projects/PJW3/repos/staticfusion/browse">https://bitbucket.prod.boscharena.ai/projects/PJW3/repos/staticfusion/browse</a></p>
+<p   
+> Third -party library: Easy_profiler: <a  class="external-link" href="https://bitbucket.prod.boscharena.ai/projects/PJW3/repos/easy_profiler/browse">https://bitbucket.prod.boscharena.ai/projects/PJW3/repos/easy_profiler/browse</a></p>
+<p   
+>PJW3_ALG:</p>
+<p   
+>lanelmodel: <a  class="external-link" href="https://bitbucket.prod.boscharena.ai/projects/PJW3_ALG/repos/lanemodel/browse">https://bitbucket.prod.boscharena.ai/projects/PJW3_ALG/repos/lanemodel/browse</a></p>
+<p   
+>Xper:<a  class="external-link" href="https://bitbucket.prod.boscharena.ai/projects/PJW3_ALG/repos/xper/browse">https://bitbucket.prod.boscharena.ai/projects/PJW3_ALG/repos/xper/browse</a></p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS00Lue8luivkXNm5aSn5LuT77ya">
+        <h2 class="heading "><span> 4. Compile sf big warehouse: </span></h2>
+<p   
+>PC: ./per_build.sh</p>
+<p   
+> I will encounter the problem that the CAMKE version does not match </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3985348651/image-2024-2-23_16-22-21-version-1-modificationdate-1708676542000-api-v2.png" alt="images/confluence/download/attachments/3985348651/image-2024-2-23_16-22-21-version-1-modificationdate-1708676542000-api-v2.png"  height="250" />
+    </p>
+<p   
+>solution：</p>
+<pre class="language-plaintext "><tt class=" ">pip install cmake==3.22.0</tt></pre><pre class="language-plaintext "><tt class=" "> vi ~/.bashrc Add Export Path =/Home/XRO3SGH_T/.Local/Bin: $ Pathsource ~/.bashrc Check CMAKE version number: cmake -version compilation passed </tt></pre><p   
+>QNX: ./per_build.sh -o qnx</p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-2" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS3kvb_nlKjov4fnqIvkuK3nmoTnl5vngrnmgLvnu5PvvJo">
+        <h2 class="heading "><span> Summary of pain points during use: </span></h2>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Items</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The content on the local PC cannot be copied to the work environment on the cloud, nor can CTRIX be copied to Mobaxterm </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>2</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> AOS1030 Environmental suggestion is recommended to upgrade and configure it in the image unified image </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>3</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> Conan1.57.0 Environmental suggestion is recommended to upgrade and configure in the unified mirror </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>4</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> CMAKE's environmental suggestion is recommended to uniformly upgrade to 3.22.0 in the mirror image </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>5</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> The opening of VSCODE, it is recommended to get from code. --no-sandbox to code. </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+> 1) According to AOS, it is much faster than BGN </p>
+<p   
+> 1) Can't copy </p>
+    </div>
+    <div class="section section-2" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS3kvb_nlKjov4fnqIvkuK3nmoTkvJjngrnmgLvnu5PvvJo">
+        <h2 class="heading "><span> Summary in the process of use: </span></h2>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+                    <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                            </colgroup>
+        <thead class=" ">    <tr>
+            <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+>Items</p>
+            </td>
+                <td  class="confluenceTh" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+>1</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+> AOS installation on the cloud is much faster than the local area, saving about 2 hours </p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><br/></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+><br/></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS3nrpfms5Xku5PlupPnvJbor5HmiJDlip_mraXpqqTlj4rms6jmhI_kuovpobk">
+        <h1 class="heading "><span> Successful steps and precautions for compiling algorithm warehouse </span></h1>
+    <div class="section section-2" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS3lnKjmiafooYznrpfms5Xku5PnvJbor5HvvJouL3hwZXIucHktLWRpc2tjbGVhbi0tY29uZmlndXJlLS1yZWxlYXNl5pe277yM">
+        <h2 class="heading "><span> When compiling the algorithm warehouse: ./ xper.py --diskclean -configure -regs,, </span></h2>
+    <div class="section section-3" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS0x77yJ5oql6L-e5o6l6ZSZ6K-v77yM5Zug5Li66buY6K6k5pe25LuOQkdO6YeM5ouJ5Y-W">
+        <h3 class="heading "><span> 1) Report the connection error, because the default </span></h3>
+<p   
+> This is why AOS -related warehouses can be compiled and passed, mainly because the Master branch of AOS has made ADC adaptation, and the TAG branch is still the configuration of BGN: </p>
+    <div  class="tablewrap">
+        <table class="wrapped confluenceTable">
+        <thead class=" "></thead><tfoot class=" "></tfoot><tbody class=" ">    <tr>
+            <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://sourcecode01.de.bosch.com/users/esn1szh">W3-MW2)</a></p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/aos-workspace/commits/3f691f74385d167b3c591006a526de2db30de784">3f691f74385</a>ci: update install.sh for adc conan remote</p>
+            </td>
+                <td  class="confluenceTd" rowspan="1" colspan="1">
+    <p   
+><a  class="external-link" href="https://sourcecode01.de.bosch.com/projects/PJW3/repos/aos-workspace/commits/3f691f74385d167b3c591006a526de2db30de784">ci: update install.sh for adc conan remote</a></p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+<p   
+> Therefore, the files under XPER also need to be adapted by ADC as follows: </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3985348651/image-2024-2-23_22-12-14-version-1-modificationdate-1708697534000-api-v2.png" alt="images/confluence/download/attachments/3985348651/image-2024-2-23_22-12-14-version-1-modificationdate-1708697534000-api-v2.png"  height="400" />
+    </p>
+    </div>
+    <div class="section section-3" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS0y77yJ5Lya5oql6ZSZ57y65bCR55u45YWz55qE5L6d6LWW5YyF">
+        <h3 class="heading "><span> 2) I will report an error lack of relevant dependencies </span></h3>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3985348651/image-2024-2-23_22-5-42-version-1-modificationdate-1708697143000-api-v2.png" alt="images/confluence/download/attachments/3985348651/image-2024-2-23_22-5-42-version-1-modificationdate-1708697143000-api-v2.png"  height="250" />
+    </p>
+    </div>
+    <div class="section section-3" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS3nu5PorrrvvJp4cGVy566X5rOV5LuT57yW6K-R57y65bCRcGp3My9kZXbnmoTmmKDlsITvvIzlhYnmnIlwanczL3JlbGVhc2XmmK_kuI3lpJ_nmoQ">
+        <h3 class="heading "><span> Conclusion: The compilation of the Xper algorithm warehouse lacks the mapping of PJW3/DEV. It is not enough to have PJW3/Release </span></h3>
+<p   
+> Overall combing, there are currently at least 9 packs of packaging on PJW3/DEV, as shown below: </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3985348651/image-2024-2-23_22-7-0-version-1-modificationdate-1708697220000-api-v2.png" alt="images/confluence/download/attachments/3985348651/image-2024-2-23_22-7-0-version-1-modificationdate-1708697220000-api-v2.png" width="470"  />
+    </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS3kuIDkupvlsJ3or5XvvJo">
+        <h2 class="heading "><span> Some attempts: </span></h2>
+<p   
+> For the package dependent on XPER, you can temporarily upload it to the ADC: </p>
+    <div class="section section-3" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS3lnKjkupHkuIrmlrDlu7rkuIDkuKphZGNfcmVsZWFzZQ">
+        <h3 class="heading "><span> Create a new adc_release on the cloud </span></h3>
+<p   
+>conan remote add adc_release <a  class="external-link" href="https://artifactory.prod.boscharena.ai/artifactory/api/conan/pjw3_conan_release_local/">https://artifactory.prod.boscharena.ai/artifactory/api/conan/pjw3_conan_release_local/</a></p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3985348651/image-2024-2-23_21-58-44-version-1-modificationdate-1708696725000-api-v2.png" alt="images/confluence/download/attachments/3985348651/image-2024-2-23_21-58-44-version-1-modificationdate-1708696725000-api-v2.png"  height="133" />
+    </p>
+    </div>
+    <div class="section section-3" id="src-3985348651_safe-id-R3VpZGVsaW5lX-i9r-S7tuS4iuS6kS3miormiYDpnIBCR07nmoTkvp3otZbljIXkuIrkvKDliLBBREPkuK3vvJo">
+        <h3 class="heading "><span> Upload the dependencies of the required BGN to ADC: </span></h3>
+<p   
+> 1) Add domain name analysis </p>
+<p   
+> 2) Bypass Bosch agent </p>
+<p   
+> 3) Conan https certificate configuration </p>
+<p   
+><a   href="https://inside-docupedia.bosch.com/confluence/pages/viewpage.action?pageId=3012003118"> 12_ Upload/download conan package from the exclusive cloud product warehouse through Office/VPN -WAVE 3 Development </a></p>
+<p   
+>export no_proxy=$no_proxy,boscharena.ai</p>
+<p   
+>cp /home/xro3sgh/w3-pc/xper/.conan/cacert.pem /home/xro3sgh/w3-pc/xper/.conan/cacert.pem.backup</p>
+<p   
+>cp /etc/ssl/certs/ca-certificates.crt /home/xro3sgh/w3-pc/xper/.conan/cacert.pem</p>
+<p   
+>conan user -r adc_release xro3sgh_t -p</p>
+<p   
+>conan download w3_boost/1.63.0b@pjw3/dev -r w3-dev</p>
+<p   
+> --9 </p>
+<p   
+>conan upload w3_boost/1.63.0b@pjw3/dev -r adc_release --all</p>
+<p   
+> --9 </p>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3985348651/image-2024-2-23_22-2-11-version-1-modificationdate-1708696931000-api-v2.png" alt="images/confluence/download/attachments/3985348651/image-2024-2-23_22-2-11-version-1-modificationdate-1708696931000-api-v2.png"  height="400" />
+    </p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3873302720_Guideline_%E4%BA%91%E4%B8%8A%E4%BB%BF%E7%9C%9F%E6%95%B0%E6%8D%AE.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Guideline_ g g g g </span>
+        </a>
+                <a href="3872394276_%E4%BA%91%E4%B8%8A%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE%E5%8F%8D%E9%A6%88.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span> Analysis data feedback on the cloud </span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

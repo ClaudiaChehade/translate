@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Viper only lane Requirements created in June - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=3048949406"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913005_Perception_and_Fusion.html">Perception and Fusion</a></li>
+                                                                                                         <li class="shortcut"><a href="2495263431_Static_Fusion_-_PER.html">Static Fusion - PER</a></li>
+                                                                                     <li><a href="2782679446_SF-LaneModel.html">SF-LaneModel</a></li>
+                                                            </ul>
+</div>            <h1 id="src-3048949406"> <span>Viper only lane Requirements created in June</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p   
+></p>
+    <div class="section section-1" id="src-3048949406_safe-id-VmlwZXJvbmx5bGFuZVJlcXVpcmVtZW50c2NyZWF0ZWRpbkp1bmUtQmFja2dyb3VuZO-8mg">
+        <h1 class="heading "><span>Background：</span></h1>
+<p   
+> Initially, Lane Model's design was designed to complete the high -end L2 ++ E2E function, that is, it provided a more robust and more information lane line model that fixed MAP+VIPER. Therefore, we use interfaces similar to HDMAP format as SF final output. </p>
+<p   
+> Because it is needed in PI2306, it is said that in addition to doing the function of E2E, it is also necessary to support ordinary L2 functions, that is, when MAP is invalid, the interface of Viper only separately is output. </p>
+<p   
+><strong class=" "> This has a problem: how to better output the information of Viper only? </strong></p>
+<p   
+> The following analysis: </p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3048949406_safe-id-VmlwZXJvbmx5bGFuZVJlcXVpcmVtZW50c2NyZWF0ZWRpbkp1bmUtUmVxdWlyZW1lbnRBbmFseXNpc2Zyb21kb3duc3RyZWFt77ya">
+        <h1 class="heading "><span>Requirement Analysis from downstream：</span></h1>
+    <div class="section section-2" id="src-3048949406_ViperonlylaneRequirementscreatedinJune-Orignalfile">
+        <h2 class="heading "><span>Orignal file</span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3048949406/image-2023-5-19_16-29-38-version-1-modificationdate-1684484979000-api-v2.png" alt="images/confluence/download/attachments/3048949406/image-2023-5-19_16-29-38-version-1-modificationdate-1684484979000-api-v2.png"   />
+    </p>
+    </div>
+    <div class="section section-2" id="src-3048949406_safe-id-VmlwZXJvbmx5bGFuZVJlcXVpcmVtZW50c2NyZWF0ZWRpbkp1bmUtU3ViLXJlcVN1bW1hcnnvvJo">
+        <h2 class="heading "><span>Sub-req Summary：</span></h2>
+<p   
+><strong class=" "> What SF sees is the income, try to spread the real environmental information as much as possible, instead of not knowing the situation of the back -end behavior. </strong></p>
+<ul class="inline-task-list "><li class="checked "><p   
+> Coordinates: EGO → Local </p>
+</li><li class="checked "><p   
+> Output lane line range: -10m ~ 100m </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>-10 depends on viper input (Viper use Rear camera)</p>
+</li></ul></li></ul><ul class="inline-task-list "><li class="checked "><p   
+> Output 5 lanes, 6 car lines </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>depends on viper input</p>
+</li></ul></li></ul><ul class="inline-task-list "><li class=" "><p   
+> The confidence of the output lane (not for the time being) </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>new dev. for viper only,</p>
+</li></ul></li></ul><ul class="inline-task-list "><li class="checked "><p   
+> Output LANE BORDER's points, color, type, confidence </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>new dev. for viper only</p>
+</li></ul></li></ul><ul class="inline-task-list "><li class="checked "><p   
+> Output center line (x, y) </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>only viper lane just transfer points(x,y), other attributes need calculate in ENV.</p>
+</li></ul></li></ul><ul class="inline-task-list "><li class=" "><p   
+> The output center line (Heading Angle, Curvature, the width from the center line to the left and right borders) </p>
+</li></ul><ul class=" "><li class=" "><p   
+>new dev. for viper only</p>
+</li></ul><ul class="inline-task-list "><li class=" "><p   
+> The valid range of the output center line (the effective range of the central line, or the effective range of Lane Border DX_START, DX_END?)? </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>new dev. for viper only</p>
+</li></ul></li></ul><ul class="inline-task-list "><li class="checked "><p   
+> The horizontal difference between the central line of the adjacent frame should be less than 10cm (KPI) </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>negotiate, tbd</p>
+</li></ul></li></ul><ul class="inline-task-list "><li class="checked "><p   
+> The two points of the adjacent center line Heading Change should be less than 2 ° (KPI) </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>sample interval constraint, tbd</p>
+</li></ul></li></ul><ul class="inline-task-list "><li class="checked "><p   
+> The two points of the adjacent center line should be less than 5m (KPI) </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>bandwidth constraint, tbd</p>
+</li></ul></li></ul><ul class="inline-task-list "><li class="checked "><p   
+> The point and type of the output Road Edge </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>conversion work</p>
+</li></ul></li></ul><ul class="inline-task-list "><li class="checked "><p   
+> If lane occurs, Merge or SPILT, cutsession </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>depends on viper input</p>
+</li></ul></li></ul><ul class="inline-task-list "><li class="checked "><p   
+> If you exceed one RoadSection, you need to provide a connection relationship of LANE in different sections </p>
+</li></ul><ul class=" "><li class=" "><ul class=" "><li class=" "><p   
+>depends on viper input</p>
+</li><li class=" "><p   
+>new dev. task</p>
+</li></ul></li></ul>    </div>
+    </div>
+    <div class="section section-1" id="src-3048949406_ViperonlylaneRequirementscreatedinJune-AnalysisDiagram">
+        <h1 class="heading "><span>Analysis Diagram</span></h1>
+    <div class="section section-2" id="src-3048949406_safe-id-VmlwZXJvbmx5bGFuZVJlcXVpcmVtZW50c2NyZWF0ZWRpbkp1bmUt5pa55qGIMe-8mkwyIEUyReS4jkwy5L2_55So5LiA5aWX5o6l5Y-j">
+        <h2 class="heading "><span> Scheme 1: L2+ E2E and L2 use a set of interfaces </span></h2>
+<p   
+> That is, the L2 interface is converted to the L2+ E2E interface to the downstream </p>
+    </div>
+    <div class="section section-2" id="src-3048949406_safe-id-VmlwZXJvbmx5bGFuZVJlcXVpcmVtZW50c2NyZWF0ZWRpbkp1bmUt5pa55qGIMu-8mkwyIEUyReaOpeWPo-S4jkwy5o6l5Y-j5ZCE55So6Ieq5bex6YCC5ZCI55qE5o6l5Y-j">
+        <h2 class="heading "><span> Scheme 2: L2+ E2E interface and L2 interface each use your own interface with your own suitable interface </span></h2>
+<p   
+><br/></p>
+<p   
+> The introduction of the two schemes is as shown below: </p>
+<p   
+><strong class=" "><img  class="drawio-diagram-image drawio-image-border"  src="images/confluence/download/attachments/3048949406/lane_model_scheme_2-version-11-modificationdate-1684484687000-api-v2.png" alt="images/confluence/download/attachments/3048949406/lane_model_scheme_2-version-11-modificationdate-1684484687000-api-v2.png" width="1566"  />
+</strong></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3048949406_ViperonlylaneRequirementscreatedinJune-SpecificInterface">
+        <h1 class="heading "><span>Specific Interface</span></h1>
+    <div class="section section-2" id="src-3048949406_safe-id-VmlwZXJvbmx5bGFuZVJlcXVpcmVtZW50c2NyZWF0ZWRpbkp1bmUtU0bnm67liY3ovpPlh7rnmoTmjqXlj6PvvJo">
+        <h2 class="heading "><span> SF currently output interface: </span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3048949406/image-2023-5-18_22-56-52-version-1-modificationdate-1684421812000-api-v2.png" alt="images/confluence/download/attachments/3048949406/image-2023-5-18_22-56-52-version-1-modificationdate-1684421812000-api-v2.png"   />
+    </p>
+    </div>
+    <div class="section section-2" id="src-3048949406_safe-id-VmlwZXJvbmx5bGFuZVJlcXVpcmVtZW50c2NyZWF0ZWRpbkp1bmUtU09DX1ZpcGVyX0xhbmXmjqXlj6PvvJo">
+        <h2 class="heading "><span> SOC_VIPER_LANE interface: </span></h2>
+<p   
+><img  class="confluence-embedded-image"  src="images/confluence/download/attachments/3048949406/image-2023-5-18_22-59-54-version-1-modificationdate-1684421994000-api-v2.png" alt="images/confluence/download/attachments/3048949406/image-2023-5-18_22-59-54-version-1-modificationdate-1684421994000-api-v2.png" width="900"  />
+    </p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-3048949406_ViperonlylaneRequirementscreatedinJune-Agenda">
+        <h1 class="heading "><span>Agenda</span></h1>
+<ul class=" "><li class=" "><p   
+> PI2306 Feature Development & Compilation & Parking 5/1 ~ 6/30 </p>
+<ul class=" "><li class=" "><p   
+> Parking Lane Model first got on the car (orin) </p>
+</li><li class=" "><p   
+> Driving Lane Model first got on the car (orin) </p>
+</li><li class=" "><p   
+>traffic light review & upgrade (depends on WR viper & NI map)</p>
+</li></ul></li><li class=" "><p   
+> Demand discussions and clarification. 5/25 </p>
+<ul class=" "><li class=" "><p   
+> Double -line representation: HDMAP (SINGLE LINE) and Viper (Two Lines) </p>
+</li><li class=" "><p   
+>KPI</p>
+</li></ul></li><li class=" "><p   
+> Analysis and conversion scheme design of VIPER and Lane Model interface 5/30 </p>
+</li><li class=" "><p   
+> Viper only lane code development 6/15 </p>
+</li><li class=" "><p   
+> PI2306 Lane Model joint </p>
+</li><li class=" "><p   
+> Viper only lane code debugging and verification 6/30 (RISK) </p>
+</li></ul><p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3048949406_ViperonlylaneRequirementscreatedinJune-Taskforce">
+        <h1 class="heading "><span>Task force </span></h1>
+<p   
+> Time period: 5/29 ~ 6/15 </p>
+<p   
+><strong class=" "> Task: </strong></p>
+<ul class=" "><li class=" "><p   
+> 530 Highway Lane Model's support and debugging <strong class=" ">0.8 HC</strong></p>
+<ul class=" "><li class=" "><p   
+> Adapt to the new architecture (integrated in line) </p>
+</li><li class=" "><p   
+> Grid debugging </p>
+</li><li class=" "><p   
+> Come on the car debug </p>
+</li></ul></li><li class=" "><p   
+> Viper-only lane model code development and debugging <strong class=" ">1.7 HC</strong></p>
+<ul class=" "><li class=" "><p   
+>agenda</p>
+<ul class=" "><li class=" "><p   
+> 5/29 ~ 6/12 code development </p>
+</li><li class=" "><p   
+> 6/13 ~ 6/11 debug/verification </p>
+</li></ul></li><li class=" "><p   
+>lane boundary processing</p>
+</li><li class=" "><p   
+>centerline extraction & information-</p>
+</li><li class=" "><p   
+>road section parsing</p>
+</li><li class=" "><p   
+>split & merge point processing</p>
+</li><li class=" "><p   
+>intersection processing, stop line, crosswalk, traffic light</p>
+</li><li class=" "><p   
+>road edge processing</p>
+</li><li class=" "><p   
+><strong class=" ">single frame only process</strong></p>
+</li></ul></li><li class=" "><p   
+>Others <strong class=" ">0.5 HC</strong></p>
+<ul class=" "><li class=" "><p   
+> Parking E2e Lane Model debugging </p>
+</li><li class=" "><p   
+> The performance analysis of the WR Viper input (515 ROSBAG) and the analysis summary of the problem to be optimized </p>
+</li></ul></li><li class=" "><p   
+>pending</p>
+<ul class=" "><li class=" "><p   
+><del class=" "> Lane Model algorithm upgrade </del></p>
+</li><li class=" "><p   
+><del class=" "> Design and finishing of the relegation plan strategy </del></p>
+</li><li class=" "><p   
+><del class=" "> Discussion and refinement of subsystem requirements </del></p>
+</li><li class=" "><p   
+><del class=" "> CAT3, QAC, UT and other work advancement </del></p>
+</li><li class=" "><p   
+><del class=" "> Parking Per1 new interface alignment and upgrade: Lane, Road Edge, Road Marker </del></p>
+</li><li class=" "><p   
+><del class=" "> ROAD ELEMENTS (Stop Line, Traffic Light) association </del><br/><br/></p>
+</li></ul></li></ul><p   
+><strong class=" ">viper-only lane model dependency:</strong></p>
+<ul class=" "><li class=" "><p   
+>Weride viper input:</p>
+<ul class=" "><li class=" "><p   
+>current states</p>
+<ul class=" "><li class=" "><p   
+>road marker: stop line, crosswalk ?? <a  class="confluence-userlink user-mention" href="https://inside-docupedia.bosch.com/confluence/display/~WMN5SGH">WAN Mingchao (XC-AS/PJ-WIN-PER7)</a></p>
+</li><li class=" "><p   
+>No split, merge point</p>
+</li><li class=" "><p   
+> Only 3 lanes, 4 car lane lines </p>
+</li></ul></li><li class=" "><p   
+>new version update: 6/24</p>
+</li></ul></li><li class=" "><p   
+>Local Loc:</p>
+<ul class=" "><li class=" "><p   
+> Current State: Link Downsy, Output To be verified </p>
+</li><li class=" "><p   
+> Expectation date: 6/5 </p>
+</li></ul></li><li class=" "><p   
+> Rosbag packet </p>
+<ul class=" "><li class=" "><p   
+> You can provide a packet in 6/5 </p>
+</li></ul></li></ul><p   
+><br/></p>
+<p   
+><br/></p>
+    </div>
+    <div class="section section-1" id="src-3048949406_ViperonlylaneRequirementscreatedinJune-Appendix">
+        <h1 class="heading "><span>Appendix</span></h1>
+<ul class=" "><li class=" "><p   
+><a  class="external-link" href="https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-39209">https://rb-tracker.bosch.com/tracker08/browse/CNWVIII-39209</a></p>
+</li><li class=" "><p   
+><a   href="https://inside-docupedia.bosch.com/confluence/display/PJW3PER/PI2306-lane-model">PI2306-lane-model - PJ-W3-PER - Docupedia (bosch.com)</a></p>
+</li></ul>    <div class="section section-2" id="src-3048949406_ViperonlylaneRequirementscreatedinJune-PI2306tasks">
+        <h2 class="heading "><span>PI2306 tasks</span></h2>
+<ul class=" "><li class=" "><p   
+><strong class=" "> Software integration, algorithm upgrades/adjustments in the unified architecture, interface adaptation </strong></p>
+</li><li class=" "><p   
+><strong class=" "> Debugging and optimization of STAGE2 of SOP1 solution </strong></p>
+</li><li class=" "><p   
+><strong class=" "> The performance analysis of the WR Viper input (515 ROSBAG) and the analysis summary of the problem to be optimized </strong></p>
+</li><li class=" "><p   
+><strong class=" "> Viper only lane's demand for the development of and algorithm </strong></p>
+</li><li class=" "><p   
+> Test the classification and sorting of data sets </p>
+</li><li class=" "><p   
+> Development of multi -frame fusion schemes in Urban scenarios </p>
+</li><li class=" "><p   
+> Design and finishing of the relegation plan strategy </p>
+</li><li class=" "><p   
+> Discussion and refinement of subsystem requirements </p>
+</li><li class=" "><p   
+> CAT3, QAC, UT and other work advancement </p>
+</li><li class=" "><p   
+> The adaptation of the temporary demand of WR joint </p>
+</li><li class=" "><p   
+> Alignment and upgrade of PER1 new interface: Lane, Road Edge, Road Marker </p>
+</li><li class=" "><p   
+> ROAD ELEMENTS (Stop Line, Traffic Light) association </p>
+</li><li class=" "><p   
+> The needs of upstream and downstream visualization dock with WITH PMT </p>
+</li></ul><p   
+><br/></p>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="3774781723_LaneFusion_Introduction.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>LaneFusion Introduction</span>
+        </a>
+                <a href="2887722502_WR_viper_lanes.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>WR viper lanes</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

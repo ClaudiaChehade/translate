@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>w3_trans_helper API - wave 3 development</title>
+
+    
+    <link rel="stylesheet" href="assets/css/expand-macro.css">
+
+            <meta name="scroll-content-language-key" content="">
+    
+    <meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.scrollTo.min.js"></script>
+
+
+<script type="text/javascript" src="assets/js/translate.js"></script>
+
+<script type="text/javascript" src="assets/js/theme.main.js"></script>
+
+    <script type="text/javascript" src="assets/js/iframeResizer.min.js"></script>
+
+<link rel="stylesheet" href="assets/css/content-style.css">
+
+<link rel="stylesheet" href="assets/css/theme.main.css">
+<link rel="stylesheet" href="assets/css/theme.colors.css">
+
+    </head>
+
+<body pageid="2458153956">
+
+<div id="ht-loader">
+    <noscript>
+        <p style="width: 100%; text-align:center; position: absolute; margin-top: 200px;">This content cannot be displayed without JavaScript.<br>Please enable JavaScript and reload the page.</p>
+    </noscript>
+</div>
+
+<div>
+   	<header id="ht-headerbar">
+    <div class="ht-headerbar-left">
+        <a href="" id="ht-menu-toggle" class="sp-aui-icon-small sp-aui-iconfont-appswitcher"></a>
+    </div>
+    <div class="ht-headerbar-right">
+    </header>   	<aside id="ht-sidebar">
+    <div class="ht-sidebar-content">
+        <div class="ht-sidebar-content-scroll-container">
+            <header class="ht-sidebar-header">
+                <h1 class="ht-logo">
+                    <span class="ht-logo-label">wave3</span>
+                    <img class="space-logo" src="global.logo" />
+                </h1>
+                <a href="2458153956_PER.html" class="ht-space-link">
+                    <h2>wave 3 development</h2>
+                </a>
+            </header>
+                            <iframe id="ht-nav" src="toc.html?pageId=2711844407"></iframe>
+                <script>
+                    $('iframe#ht-nav').iFrameResize(
+                            { 'log': true, 'autoResize': true, 'heightCalculationMethod': 'lowestElement', 'checkOrigin': false });
+                </script>
+                    </div>
+    </div>
+
+</aside></div>
+
+<div id="ht-wrap-container">
+
+            
+    <div id="ht-sidebar-dragbar">
+    <div class="ht-sidebar-drag-handle">
+        <span class="drag-handle-1"></span>
+        <span class="drag-handle-2"></span>
+        <span class="drag-handle-3"></span>
+    </div>
+</div>
+    <article id="ht-content" class="ht-content">
+        <header class="ht-content-header">
+            <div id="ht-breadcrumb">
+    <ul>
+        <li><a href="2458153956_PER.html">wave 3 development</a></li>
+                                                                                                             <li><a href="" onclick="$('.shortcut').each(function(){$(this).removeClass('shortcut')}); $(this).parent().addClass('shortcut'); return false;">...</a> </li>
+                                        <li class="shortcut"><a href="1741913013_Map_and_Loc.html">Map and Loc</a></li>
+                                                                                                         <li class="shortcut"><a href="2453670978_03_Calibration.html">03_Calibration</a></li>
+                                                                                                         <li class="shortcut"><a href="2515113871_09_Release.html">09 Release</a></li>
+                                                                                     <li><a href="2716338005_w3_trans_helper.html">w3_trans_helper</a></li>
+                                                            </ul>
+</div>            <h1 id="src-2711844407"> <span>w3_trans_helper API</span></h1>
+        </header>
+
+        <div id="main-content" class="wiki-content sp-grid-section" data-index-for-search="true">
+
+<p  class="auto-cursor-target" 
+> For some basic settings and instructions and version update logs, see another document: <a   href="2711844173_Introduction_%26_tag_log.html">Introduction & tag log - wave 3 development - Docupedia (bosch.com)</a></p>
+    <div class="section section-1" id="src-2711844407_w3_trans_helperAPI-Enum">
+        <h1 class="heading auto-cursor-target"><span>Enum</span></h1>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-1.EReferenceFrame">
+        <h2 class="heading "><span>1.EReferenceFrame</span></h2>
+<p   
+>    <span style="color: #003366;"> Coordinate system enumeration category </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">enum</code><code class="plain"> </code><code class="keyword">class</code><code class="plain"> EReferenceFrame</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    CAMERA_FRONT_WIDE,            </code><code class="comments"> // Foreign Vision wide -angle camera coordinate system (3D) </code></div>
+<div class="line"><code class="plain">    CAMERA_NRCS_FRONT,            </code><code class="comments">// //Ahead of the Fish Eye Camera Corridor (3D) </code></div>
+<div class="line"><code class="plain">    CAMERA_NRCS_LEFT,             </code><code class="comments"> // Left -view fish eye camera coordinate system (3 dimensional) </code></div>
+<div class="line"><code class="plain">    CAMERA_NRCS_RIGHT,            </code><code class="comments"> // Right -view fish eye camera coordinate system (3 dimensional) </code></div>
+<div class="line"><code class="plain">    CAMERA_NRCS_REAR,             </code><code class="comments"> // Relaxing fish eye camera coordinate system (3 dimensional) </code></div>
+<div class="line"><code class="plain">    CAMERA_FRONT_TELE,            </code><code class="comments"> // Foreign long -focus camera coordinate system (3 dimensional) </code></div>
+<div class="line"><code class="plain">    CAMERA_FRONT_LEFT,            </code><code class="comments"> // Previous left weekly camera coordinate system (3 dimensional) </code></div>
+<div class="line"><code class="plain">    CAMERA_FRONT_RIGHT,           </code><code class="comments"> // phase /////// (3d) </code></div>
+<div class="line"><code class="plain">    CAMERA_REAR_LEFT,             </code><code class="comments"> // After Zuo Zhou's camera coordinate system (3D) </code></div>
+<div class="line"><code class="plain">    CAMERA_REAR_RIGHT,            </code><code class="comments"> // Houyou Zhou Shi Camera Coordinate Series (3D) </code></div>
+<div class="line"><code class="plain">    CAMERA_REAR,                  </code><code class="comments">// //Rear view camera coordinate system (3D) </code></div>
+<div class="line"><code class="plain">    LIDAR_MAIN,                   </code><code class="comments"> // 360 main laser coordinate system (3D) </code></div>
+<div class="line"><code class="plain">    LIDAR_FRONT,                  </code><code class="comments"> // Pre -M1 laser coordinate system (3D) </code></div>
+<div class="line"><code class="plain">    LIDAR_LEFT,                   </code><code class="comments"> // Left m1 laser coordinate system (3D) </code></div>
+<div class="line"><code class="plain">    LIDAR_RIGHT,                  </code><code class="comments"> // Right m1 laser coordinate system (3D) </code></div>
+<div class="line"><code class="plain">    BODY,                         </code><code class="comments">// //Car body coordinate system & rear shaft center is projected on the ground projection coordinate system (3 dimensional) </code></div>
+<div class="line"><code class="plain">    BEV,                          </code><code class="comments"> // View pixel coordinate system of stitching diagram (2 dimensions) </code></div>
+<div class="line"><code class="plain">    CAMERA_PIXEL_FRONT_WIDE,      </code><code class="comments"> // Foreign Vision wide -angle pixel coordinate system (2 dimensions) </code></div>
+<div class="line"><code class="plain">    CAMERA_PIXEL_NRCS_FRONT,      </code><code class="comments"> // Front -visual fish eye pixel coordinate system (2 dimensions) </code></div>
+<div class="line"><code class="plain">    CAMERA_PIXEL_NRCS_LEFT,       </code><code class="comments"> // Left -view fish eye pixel coordinate system (2 dimensions) </code></div>
+<div class="line"><code class="plain">    CAMERA_PIXEL_NRCS_RIGHT,      </code><code class="comments"> // Right -view fish eye pixel coordinate system (2 dimensional) </code></div>
+<div class="line"><code class="plain">    CAMERA_PIXEL_NRCS_REAR,       </code><code class="comments"> // After that, the fish eye pixel coordinate system (2 dimensions) </code></div>
+<div class="line"><code class="plain">    CAMERA_PIXEL_FRONT_TELE,      </code><code class="comments"> // Foreign long focal pixel coordinate system (2 dimensions) </code></div>
+<div class="line"><code class="plain">    CAMERA_PIXEL_FRONT_LEFT,      </code><code class="comments"> // The video pixel coordinate system of the front left week (2 dimensions) </code></div>
+<div class="line"><code class="plain">    CAMERA_PIXEL_FRONT_RIGHT,     </code><code class="comments"> // The front right week video coordinate system (2 dimensions) </code></div>
+<div class="line"><code class="plain">    CAMERA_PIXEL_REAR_LEFT,       </code><code class="comments"> // After the left week, the video pixel coordinate system (2 dimensions) </code></div>
+<div class="line"><code class="plain">    CAMERA_PIXEL_REAR_RIGHT,      </code><code class="comments"> // Rear Right Week Video Coordinates (2D) </code></div>
+<div class="line"><code class="plain">    CAMERA_PIXEL_REAR,            </code><code class="comments"> // Rear visual pixel coordinate system (2 dimensions) </code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-2.EINTRINSIC_TYPE">
+        <h2 class="heading "><span>2.EINTRINSIC_TYPE</span></h2>
+<p   
+> Camera classification type enumeration category </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">enum</code><code class="plain"> </code><code class="keyword">class</code><code class="plain"> EINTRINSIC_TYPE</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    UNKNOWN = -1,</code></div>
+<div class="line"><code class="plain">    PINHOLE,</code></div>
+<div class="line"><code class="plain">    FISHEYE,</code></div>
+<div class="line"><code class="plain">    OCAM,</code></div>
+<div class="line"><code class="plain">    MEI,</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-3.EEULER_ORDER">
+        <h2 class="heading "><span>3.EEULER_ORDER</span></h2>
+<p   
+>    <span style="color: #003366;"> Euler Corner Rotation Sequence Extracelel Category </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">enum</code><code class="plain"> </code><code class="keyword">class</code><code class="plain"> EEULER_ORDER</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    XYZ,</code></div>
+<div class="line"><code class="plain">    XZY,</code></div>
+<div class="line"><code class="plain">    YXZ,</code></div>
+<div class="line"><code class="plain">    YZX,</code></div>
+<div class="line"><code class="plain">    ZXY,</code></div>
+<div class="line"><code class="plain">    ZYX,</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-4.EFILE_TYPE">
+        <h2 class="heading "><span>4.EFILE_TYPE</span></h2>
+<p   
+>    <span style="color: #003366;"> Reading file type enumeration class </span>
+</p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">enum</code><code class="plain"> </code><code class="keyword">class</code><code class="plain"> EFILE_TYPE</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    YAML,</code></div>
+<div class="line"><code class="plain">    ALL_IN_ONE_JSON</code></div>
+<div class="line"><code class="plain">};</code></div>
+</div>
+    </div>
+<p   
+><br/></p>
+    </div>
+    </div>
+    <div class="section section-1" id="src-2711844407_w3_trans_helperAPI-Function">
+        <h1 class="heading auto-cursor-target"><span>Function</span></h1>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-1.setCalibrationDataPath">
+        <h2 class="heading auto-cursor-target"><span>1.setCalibrationDataPath</span></h2>
+    <div class="section section-3" id="src-2711844407_w3_trans_helperAPI-API">
+        <h3 class="heading "><span>API</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">setCalibrationDataPath</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="setCalibrationDataPath" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">/**</code></div>
+<div class="line"><code class="comments">* @brief Set the Calibration Data Path object</code></div>
+<div class="line"><code class="comments">* </code></div>
+<div class="line"><code class="comments">* @param f_path </code></div>
+<div class="line"><code class="comments">*/</code><code class="plain"> </code><code class="keyword">static</code><code class="plain"> </code><code class="keyword">void</code><code class="plain"> setCalibrationDataPath(</code><code class="keyword">const</code><code class="plain"> </code><code class="color1">char</code><code class="plain"> *f_path, EFILE_TYPE f_file_type = EFILE_TYPE::YAML);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeiwg-eUqOekuuS-iw">
+        <h3 class="heading "><span> Call example </span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">/**</code></div>
+<div class="line"><code class="comments"> * @brief Storage location of calibration files, generally contains all or part of the following calibration files</code></div>
+<div class="line"><code class="comments"> * Camera calibration results</code></div>
+<div class="line"><code class="comments"> * ------front_wide.yaml</code></div>
+<div class="line"><code class="comments"> * ------nrcs_front.yaml</code></div>
+<div class="line"><code class="comments"> * ------nrcs_left.yaml</code></div>
+<div class="line"><code class="comments"> * ------nrcs_right.yaml</code></div>
+<div class="line"><code class="comments"> * ------nrcs_rear.yaml</code></div>
+<div class="line"><code class="comments"> * ------front_tele.yaml</code></div>
+<div class="line"><code class="comments"> * ------front_left.yaml</code></div>
+<div class="line"><code class="comments"> * ------front_right.yaml</code></div>
+<div class="line"><code class="comments"> * ------rear_left.yaml</code></div>
+<div class="line"><code class="comments"> * ------rear_right.yaml</code></div>
+<div class="line"><code class="comments"> * ------rear.yaml</code></div>
+<div class="line"><code class="comments"> * Lidar calibration results</code></div>
+<div class="line"><code class="comments"> * ------lidar_to_vehicle_extrinsic.yaml</code></div>
+<div class="line"><code class="comments"> */</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::setCalibrationDataPath(</code><code class="string">"../config/"</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::setCalibrationDataPath(</code><code class="string">"../config/test.json"</code><code class="plain">, xcalib::EFILE_TYPE::ALL_IN_ONE_JSON);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeS9v-eUqOivtOaYjg">
+        <h3 class="heading auto-cursor-target"><span> Instructions for use </span></h3>
+<p   
+> If you do not set, the default path is/data/callib/ </p>
+<p   
+> Call this function before calling other interfaces, and configure the address of the calibration parameter file to facilitate the reading later. You only need to place the files related to your own. </p>
+<p   
+> Certain file Placement Address: \\ <a  class="external-link" href="http://bosch.com">bosch.com</a>\dfsrb\DfsCN\DIV\XC\Engineering\domain\WAVE3\04_PER\05_maploc\00_dataset\data_format\dongshahu</p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-2.setBevParam">
+        <h2 class="heading auto-cursor-target"><span>2.setBevParam</span></h2>
+    <div class="section section-3" id="src-2711844407_w3_trans_helperAPI-API.1">
+        <h3 class="heading "><span>API</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                    <div class="title">setCalibrationDataPath</div>
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-title="setCalibrationDataPath" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="keyword">static</code><code class="plain"> </code><code class="keyword">void</code><code class="plain"> setBevParam(vfc::int32_t f_atlas_width, vfc::int32_t f_atlas_height, </code><code class="color1">double</code><code class="plain"> f_mm_per_pixel);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeiwg-eUqOekuuS-iy4x">
+        <h3 class="heading "><span> Call example </span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">xcalib::CTransformInterface::setBevParam(1000,1000,15);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeS9v-eUqOivtOaYji4x">
+        <h3 class="heading auto-cursor-target"><span> Instructions for use </span></h3>
+<p   
+> If the settings are not explicitly set, the default is (1000, 1000, 15) </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-3.getTransform">
+        <h2 class="heading auto-cursor-target"><span>3.getTransform</span></h2>
+    <div class="section section-3" id="src-2711844407_w3_trans_helperAPI-API.2">
+        <h3 class="heading "><span>API</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">/**</code></div>
+<div class="line"><code class="comments"> * @brief Get extrinsic from f_src_frame to f_dst_frame，dont support BEV and CAMERA_PIXEL type</code></div>
+<div class="line"><code class="comments"> * </code></div>
+<div class="line"><code class="comments"> * @param f_src_frame Current reference</code></div>
+<div class="line"><code class="comments"> * @param f_dst_frame Target reference</code></div>
+<div class="line"><code class="comments"> * @param f_order euler angle order</code></div>
+<div class="line"><code class="comments"> * @param f_euler in the order of f_order</code></div>
+<div class="line"><code class="comments"> * @param f_translation in the order of trans_x, trans_y, trans_z</code></div>
+<div class="line"><code class="comments"> * @return true success</code></div>
+<div class="line"><code class="comments"> * @return false fail</code></div>
+<div class="line"><code class="comments"> */</code></div>
+<div class="line"><code class="color1">bool</code><code class="plain"> getTransform(EReferenceFrame f_src_frame, EReferenceFrame f_dst_frame, </code><code class="keyword">const</code><code class="plain"> CEULER_ORDER& f_order,</code></div>
+<div class="line"><code class="plain">                    Eigen::Vector3d &f_euler, Eigen::Vector3d &f_translation);</code></div>
+<div class="line"><code class="comments">/**</code></div>
+<div class="line"><code class="comments"> * @brief Get extrinsic from f_src_frame to f_dst_frame，dont support BEV and CAMERA_PIXEL type</code></div>
+<div class="line"><code class="comments"> *</code></div>
+<div class="line"><code class="comments"> * @param f_src_frame Current reference</code></div>
+<div class="line"><code class="comments"> * @param f_dst_frame Target reference</code></div>
+<div class="line"><code class="comments"> * @param f_transform extrinsic</code></div>
+<div class="line"><code class="comments"> * @return true success</code></div>
+<div class="line"><code class="comments"> * @return false fail</code></div>
+<div class="line"><code class="comments"> */</code></div>
+<div class="line"><code class="color1">bool</code><code class="plain"> getTransform(EReferenceFrame f_src_frame, EReferenceFrame f_dst_frame, Eigen::Matrix4d &f_transform);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeiwg-eUqOekuuS-iy4y">
+        <h3 class="heading "><span> Call example </span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">Eigen::Matrix4d transform;</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::getInstance().getTransform(xcalib::EReferenceFrame::CAMERA_FRONT_WIDE,</code></div>
+<div class="line"><code class="plain">                                                        xcalib::EReferenceFrame::LIDAR_MAIN, transform);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">Eigen::Vector3d euler, translation;</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::getInstance().getTransform(xcalib::EReferenceFrame::CAMERA_FRONT_WIDE,</code></div>
+<div class="line"><code class="plain">                                                        xcalib::EReferenceFrame::LIDAR_MAIN, </code></div>
+<div class="line"><code class="plain">                                                        xcalib::CEULER_ORDER::ZXY,</code></div>
+<div class="line"><code class="plain">                                                        euler, translation);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeS9v-eUqOivtOaYji4y">
+        <h3 class="heading auto-cursor-target"><span> Instructions for use </span></h3>
+<p   
+> You can only get the conversion relationship between the 3 -dimensional coordinate system, support the two types of return format, EIGEN :: MATRIX4D type matrix and (EIGEN :: vector3D's EIGEN :: vector3D translation) of the EIGEN :: vector3d) </p>
+<p   
+> The sequence of the Euler Horn arrangement is the same as the given Cruler_ORDER, that is, <span style="color: #172b4d;"> If f_order = zxy, f_euler = [rot_z, rot_x, rot_y] </span>
+</p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-4.convertPoint">
+        <h2 class="heading auto-cursor-target"><span>4.convertPoint</span></h2>
+    <div class="section section-3" id="src-2711844407_w3_trans_helperAPI-API.3">
+        <h3 class="heading "><span>API</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">/**</code></div>
+<div class="line"><code class="comments"> * @brief Convert point from one reference system to another</code></div>
+<div class="line"><code class="comments"> * support convertion:</code></div>
+<div class="line"><code class="comments"> * 1. point in 3d coordinate (camera/lidar/body)</code></div>
+<div class="line"><code class="comments"> * 2. point from 3d coordinate (camera/lidar/body) to camera pixel</code></div>
+<div class="line"><code class="comments"> * 3. point from 3d coordinate (camera/lidar/body) to bev</code></div>
+<div class="line"><code class="comments"> * 4. point from camera pixel to itself camera normalized sphere</code></div>
+<div class="line"><code class="comments"> * 5. point from camera pixel to bev</code></div>
+<div class="line"><code class="comments"> * 6. point from bev to 3d coordinate (camera/lidar/body)</code></div>
+<div class="line"><code class="comments"> * 7. point from bev to camera pixel</code></div>
+<div class="line"><code class="comments"> *</code></div>
+<div class="line"><code class="comments"> * Be careful：</code></div>
+<div class="line"><code class="comments"> * 1. if f_dst_frame is camera pixel，point back of camera may project to pixel</code></div>
+<div class="line"><code class="comments"> * 2. if f_dst_frame is camera pixel or bev, don't judge if f_dst_point is on image</code></div>
+<div class="line"><code class="comments"> * 3. if f_src_frame is 3d coordinate, f_dst_frame is bev, will get f_src_point vertical projection point</code></div>
+<div class="line"><code class="comments"> *</code></div>
+<div class="line"><code class="comments"> * @param f_src_frame Current reference of the point</code></div>
+<div class="line"><code class="comments"> * @param f_dst_frame Target reference of the point</code></div>
+<div class="line"><code class="comments"> * @param f_src_point point in f_src_frame</code></div>
+<div class="line"><code class="comments"> * @param f_dst_point point in f_dst_frame</code></div>
+<div class="line"><code class="comments"> * @return true success</code></div>
+<div class="line"><code class="comments"> * @return false fail</code></div>
+<div class="line"><code class="comments"> */</code></div>
+<div class="line"><code class="color1">bool</code><code class="plain"> convertPoint(EReferenceFrame f_src_frame, EReferenceFrame f_dst_frame,</code></div>
+<div class="line"><code class="plain">                    </code><code class="keyword">const</code><code class="plain"> Eigen::Vector3d &f_src_point, Eigen::Vector3d &f_dst_point);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeiwg-eUqOekuuS-iy4z">
+        <h3 class="heading "><span> Call example </span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">// convert point from camera_front_wide to lidar_main</code></div>
+<div class="line"><code class="plain">Eigen::Vector3d src(1,2,3);</code></div>
+<div class="line"><code class="plain">Eigen::Vector3d dst;</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::getInstance().convertPoint(xcalib::EReferenceFrame::CAMERA_FRONT_WIDE,</code></div>
+<div class="line"><code class="plain">                                                        xcalib::EReferenceFrame::LIDAR_MAIN, src, dst);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// convert point from lidar_main to camera_pixel_front_wide</code></div>
+<div class="line"><code class="plain">Eigen::Vector3d src(3,2,-1);</code></div>
+<div class="line"><code class="plain">Eigen::Vector3d dst;</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::getInstance().convertPoint(xcalib::EReferenceFrame::LIDAR_MAIN,</code></div>
+<div class="line"><code class="plain">                                                        xcalib::EReferenceFrame::CAMERA_PIXEL_FRONT_WIDE, src, dst);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// convert point from nrcs_right to bev</code></div>
+<div class="line"><code class="plain">Eigen::Vector3d src(0.35344,-0.347407,1.71717);</code></div>
+<div class="line"><code class="plain">Eigen::Vector3d dst;</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::getInstance().convertPoint(xcalib::EReferenceFrame::CAMERA_NRCS_RIGHT,</code></div>
+<div class="line"><code class="plain">                                                        xcalib::EReferenceFrame::BEV, src, dst);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// convert point from bev to camera_pixel_nrcs_right</code></div>
+<div class="line"><code class="plain">Eigen::Vector3d src(485, 336, 0);</code></div>
+<div class="line"><code class="plain">Eigen::Vector3d dst;</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::getInstance().convertPoint(xcalib::EReferenceFrame::BEV,</code></div>
+<div class="line"><code class="plain">                                                        xcalib::EReferenceFrame::CAMERA_PIXEL_NRCS_RIGHT, src, dst);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// convert point from bev to camera_nrcs_right</code></div>
+<div class="line"><code class="plain">Eigen::Vector3d src(485, 336, 0);</code></div>
+<div class="line"><code class="plain">Eigen::Vector3d dst;</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::getInstance().convertPoint(xcalib::EReferenceFrame::BEV,</code></div>
+<div class="line"><code class="plain">                                                        xcalib::EReferenceFrame::CAMERA_NRCS_RIGHT, src, dst);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeS9v-eUqOivtOaYji4z">
+        <h3 class="heading auto-cursor-target"><span> Instructions for use </span></h3>
+<p   
+> It is used to convert the specified point between different coordinate systems. You can convert the point from the 3 -dimensional coordinate system to the 3/2 dimension coordinate system.The pixel coordinate system (2 dimensions) can only be transformed into a normalized spherical (3 dimensional) or BEV (2D) coordinate system of its own camera coordinate system. </p>
+<p   
+> It should be noted that if you want to convert a ground point on the image to the Body system, the current process of Pixel-> Bev-> Body is carried out </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-5.convertPoints">
+        <h2 class="heading auto-cursor-target"><span>5.convertPoints</span></h2>
+    <div class="section section-3" id="src-2711844407_w3_trans_helperAPI-API.4">
+        <h3 class="heading "><span>API</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">/**</code></div>
+<div class="line"><code class="comments"> * @brief Batch form of ConvertPoint</code></div>
+<div class="line"><code class="comments"> *</code></div>
+<div class="line"><code class="comments"> * @param f_src_frame Current reference of the point</code></div>
+<div class="line"><code class="comments"> * @param f_dst_frame Target reference of the point</code></div>
+<div class="line"><code class="comments"> * @param f_src_points point in f_src_frame</code></div>
+<div class="line"><code class="comments"> * @param f_dst_points point in f_dst_frame</code></div>
+<div class="line"><code class="comments"> * @return true success</code></div>
+<div class="line"><code class="comments"> * @return false fail</code></div>
+<div class="line"><code class="comments"> */</code></div>
+<div class="line"><code class="keyword">template</code><code class="plain"> <vfc::int32_t N></code></div>
+<div class="line"><code class="color1">bool</code><code class="plain"> convertPoints(EReferenceFrame f_src_frame, EReferenceFrame f_dst_frame,</code></div>
+<div class="line"><code class="plain">                    </code><code class="keyword">const</code><code class="plain"> Vector<Eigen::Vector3d, N> &f_src_points, Vector<Eigen::Vector3d, N> &f_dst_points)</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeiwg-eUqOekuuS-iy40">
+        <h3 class="heading "><span> Call example </span></h3>
+<p   
+> slightly </p>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeS9v-eUqOivtOaYji40">
+        <h3 class="heading auto-cursor-target"><span> Instructions for use </span></h3>
+<p   
+> Convertpoint's batch form </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-6.getSensorPose">
+        <h2 class="heading auto-cursor-target"><span>6.getSensorPose</span></h2>
+    <div class="section section-3" id="src-2711844407_w3_trans_helperAPI-API.5">
+        <h3 class="heading "><span>API</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">/**</code></div>
+<div class="line"><code class="comments"> * @brief According to localization buffer，compute at f_time_stamp，f_dst_frame's pose in local</code></div>
+<div class="line"><code class="comments"> *</code></div>
+<div class="line"><code class="comments"> * @param f_local_pose localization buffer</code></div>
+<div class="line"><code class="comments"> * @param f_time_stamp target time</code></div>
+<div class="line"><code class="comments"> * @param f_dst_frame target coordinate</code></div>
+<div class="line"><code class="comments"> * @param f_transform target pose in local</code></div>
+<div class="line"><code class="comments"> * @return true success</code></div>
+<div class="line"><code class="comments"> * @return false fail</code></div>
+<div class="line"><code class="comments"> */</code></div>
+<div class="line"><code class="color1">bool</code><code class="plain"> getSensorPose(PoseBuffer f_local_pose, vfc::uint64_t f_time_stamp, EReferenceFrame f_dst_frame, Eigen::Matrix4d &f_transform);</code></div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">struct</code><code class="plain"> CXCalibPose</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    vfc::uint64_t m_timestamp;</code></div>
+<div class="line"><code class="plain">    CXCalibPoint3f m_position;</code></div>
+<div class="line"><code class="plain">    CXCalibQuaternion m_orientation;</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"><code class="keyword">using</code><code class="plain"> PoseBuffer = Vector<CXCalibPose, MAX_POSE_BUFFER_SIZE>;</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeiwg-eUqOekuuS-iy41">
+        <h3 class="heading "><span> Call example </span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">// construct local pose buffer</code></div>
+<div class="line"><code class="plain">xcalib::PoseBuffer test_buffer;</code></div>
+<div class="line"><code class="plain">test_buffer.resize(4);</code></div>
+<div class="line"><code class="plain">xcalib::CXCalibPose temp;</code></div>
+<div class="line"><code class="plain">Eigen::AngleAxisd rotation_vector0(1, Eigen::Vector3d(0, 0, 1));</code></div>
+<div class="line"><code class="plain">Eigen::Quaterniond quaternion0(rotation_vector0);</code></div>
+<div class="line"><code class="plain">temp.m_timestamp = 0;</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_x = quaternion0.x();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_y = quaternion0.y();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_z = quaternion0.z();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_w = quaternion0.w();</code></div>
+<div class="line"><code class="plain">temp.m_position.m_x = 0.1;</code></div>
+<div class="line"><code class="plain">temp.m_position.m_y = 0.2;</code></div>
+<div class="line"><code class="plain">temp.m_position.m_z = 0.3;</code></div>
+<div class="line"><code class="plain">test_buffer[0] = temp;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">temp.m_timestamp = 3;</code></div>
+<div class="line"><code class="plain">Eigen::AngleAxisd rotation_vector1(2, Eigen::Vector3d(0, 0, 1));</code></div>
+<div class="line"><code class="plain">Eigen::Quaterniond quaternion1(rotation_vector1);</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_x = quaternion1.x();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_y = quaternion1.y();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_z = quaternion1.z();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_w = quaternion1.w();</code></div>
+<div class="line"><code class="plain">temp.m_position.m_x = 0.2;</code></div>
+<div class="line"><code class="plain">temp.m_position.m_y = 0.3;</code></div>
+<div class="line"><code class="plain">temp.m_position.m_z = 0.4;</code></div>
+<div class="line"><code class="plain">test_buffer[1] = temp;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">temp.m_timestamp = 60;</code></div>
+<div class="line"><code class="plain">Eigen::AngleAxisd rotation_vector2(3, Eigen::Vector3d(0, 0, 1));</code></div>
+<div class="line"><code class="plain">Eigen::Quaterniond quaternion2(rotation_vector2);</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_x = quaternion2.x();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_y = quaternion2.y();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_z = quaternion2.z();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_w = quaternion2.w();</code></div>
+<div class="line"><code class="plain">temp.m_position.m_x = 0.5;</code></div>
+<div class="line"><code class="plain">temp.m_position.m_y = 0.6;</code></div>
+<div class="line"><code class="plain">temp.m_position.m_z = 0.7;</code></div>
+<div class="line"><code class="plain">test_buffer[2] = temp;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">temp.m_timestamp = 80;</code></div>
+<div class="line"><code class="plain">Eigen::AngleAxisd rotation_vector3(4, Eigen::Vector3d(0, 0, 1));</code></div>
+<div class="line"><code class="plain">Eigen::Quaterniond quaternion3(rotation_vector3);</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_x = quaternion3.x();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_y = quaternion3.y();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_z = quaternion3.z();</code></div>
+<div class="line"><code class="plain">temp.m_orientation.m_w = quaternion3.w();</code></div>
+<div class="line"><code class="plain">temp.m_position.m_x = 0.8;</code></div>
+<div class="line"><code class="plain">temp.m_position.m_y = 0.9;</code></div>
+<div class="line"><code class="plain">temp.m_position.m_z = 1.0;</code></div>
+<div class="line"><code class="plain">test_buffer[3] = temp;</code></div>
+<div class="line"> </div>
+<div class="line"><code class="plain">Eigen::Matrix4d transform;</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::getInstance().getSensorPose(test_buffer, 76,</code></div>
+<div class="line"><code class="plain">                                                         xcalib::EReferenceFrame::CAMERA_NRCS_RIGHT, transform);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeS9v-eUqOivtOaYji41">
+        <h3 class="heading auto-cursor-target"><span> Instructions for use </span></h3>
+<p   
+> According to the local positioning of the car body for a period of time, when the time point is calculated, the position of the specified sensor in the local coordinate system </p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-7.getCameraIntrinsic">
+        <h2 class="heading auto-cursor-target"><span>7.getCameraIntrinsic</span></h2>
+    <div class="section section-3" id="src-2711844407_w3_trans_helperAPI-API.6">
+        <h3 class="heading "><span>API</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">/**</code></div>
+<div class="line"><code class="comments"> * @brief Get the Camera Intrinsic object</code></div>
+<div class="line"><code class="comments"> * </code></div>
+<div class="line"><code class="comments"> * @param f_frame camera coordinate</code></div>
+<div class="line"><code class="comments"> * @param f_intrinsic fixed length = 32, parameters are sorted by convention</code></div>
+<div class="line"><code class="comments"> * @return EINTRINSIC_TYPE return UNKNOWN means fail</code></div>
+<div class="line"><code class="comments"> */</code></div>
+<div class="line"><code class="plain">EINTRINSIC_TYPE getCameraIntrinsic(EReferenceFrame f_frame, Vector<</code><code class="color1">double</code><code class="plain">, 32> &f_intrinsic);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeiwg-eUqOekuuS-iy42">
+        <h3 class="heading "><span> Call example </span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">vfc::TFixedVector<</code><code class="color1">double</code><code class="plain">, 32> intrinsic;</code></div>
+<div class="line"><code class="plain">intrinsic.resize(32);</code></div>
+<div class="line"><code class="plain">xcalib::EINTRINSIC_TYPE result = xcalib::CTransformInterface::getInstance().getCameraIntrinsic(xcalib::EReferenceFrame::CAMERA_PIXEL_FRONT_WIDE, intrinsic);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeS9v-eUqOivtOaYji42">
+        <h3 class="heading auto-cursor-target"><span> Instructions for use </span></h3>
+<p   
+> Get the internal reference of the specified camera. F_frame is all Camera_* or Camera_pixel_*, and the results are the same.If Eintrinsic_type :: unknown is a failure, it may be that the internal parameter file may not be loaded. </p>
+<p   
+> The storage of the internal reference in the array, the first two are Image_width and Image_height. From the third number, the convention is as follows: </p>
+<p   
+>    <span style="color: #003366;"> (1) UNKNOWN: Obtain failure </span>
+<br/>    <span style="color: #003366;">
+（2）PINHOLE：k1 k2 k3 k4 k5 k6 p1 p2 fx fy cx cy     </span>
+<br/>    <span style="color: #003366;">
+（3）FISHEYE：k1 k2 k3 k4 fx fy cx cy     </span>
+<br/>    <span style="color: #003366;">
+（4）OCAM：c d e cx cy poly[5] inv_poly[20]     </span>
+<br/>    <span style="color: #003366;">
+（5）MEI：xi k1 k2 p1 p2 fx fy cx cy    </span>
+</p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-8.undistortPixel">
+        <h2 class="heading auto-cursor-target"><span>8.undistortPixel</span></h2>
+    <div class="section section-3" id="src-2711844407_w3_trans_helperAPI-API.7">
+        <h3 class="heading "><span>API</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">/**</code></div>
+<div class="line"><code class="comments"> * @brief turn origin pixel to undistort point</code></div>
+<div class="line"><code class="comments"> * </code></div>
+<div class="line"><code class="comments"> * @param f_frame camera frame</code></div>
+<div class="line"><code class="comments"> * @param f_dist_point input</code></div>
+<div class="line"><code class="comments"> * @param f_undist_fx virtual camera fx</code></div>
+<div class="line"><code class="comments"> * @param f_undist_fy virtual camera fy</code></div>
+<div class="line"><code class="comments"> * @param f_undist_cx virtual camera cx</code></div>
+<div class="line"><code class="comments"> * @param f_undist_cy virtual camera cy</code></div>
+<div class="line"><code class="comments"> * @param f_undist_point output</code></div>
+<div class="line"><code class="comments"> * @return true success</code></div>
+<div class="line"><code class="comments"> * @return false fail</code></div>
+<div class="line"><code class="comments"> */</code></div>
+<div class="line"><code class="color1">bool</code><code class="plain"> undistortPixel(EReferenceFrame f_frame, </code><code class="keyword">const</code><code class="plain"> Eigen::Vector2d& f_dist_point,</code></div>
+<div class="line"><code class="plain">                    </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain">& f_undist_fx, </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain">& f_undist_fy,</code></div>
+<div class="line"><code class="plain">                    </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain">& f_undist_cx, </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain">& f_undist_cy,</code></div>
+<div class="line"><code class="plain">                    Eigen::Vector2d& f_undist_point);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeiwg-eUqOekuuS-iy43">
+        <h3 class="heading "><span> Call example </span></h3>
+<p   
+> slightly </p>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeS9v-eUqOivtOaYji43">
+        <h3 class="heading auto-cursor-target"><span> Instructions for use </span></h3>
+<p   
+>    <span style="color: #003366;"> Specify the internal reference and real images of the virtual camera to disturb the pixels.If you want to disturb the whole image, please refer to the distortpixel function </span>
+</p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-9.distortPixel">
+        <h2 class="heading auto-cursor-target"><span>9.distortPixel</span></h2>
+    <div class="section section-3" id="src-2711844407_w3_trans_helperAPI-API.8">
+        <h3 class="heading "><span>API</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">/**</code></div>
+<div class="line"><code class="comments"> * @brief </code></div>
+<div class="line"><code class="comments"> * </code></div>
+<div class="line"><code class="comments"> * @param f_frame camera frame</code></div>
+<div class="line"><code class="comments"> * @param f_undist_point input</code></div>
+<div class="line"><code class="comments"> * @param f_undist_fx virtual camera fx</code></div>
+<div class="line"><code class="comments"> * @param f_undist_fy virtual camera fy</code></div>
+<div class="line"><code class="comments"> * @param f_undist_cx virtual camera cx</code></div>
+<div class="line"><code class="comments"> * @param f_undist_cy virtual camera cy</code></div>
+<div class="line"><code class="comments"> * @param f_dist_point output</code></div>
+<div class="line"><code class="comments"> * @return true success</code></div>
+<div class="line"><code class="comments"> * @return false fail</code></div>
+<div class="line"><code class="comments"> */</code></div>
+<div class="line"><code class="color1">bool</code><code class="plain"> distortPixel(EReferenceFrame f_frame, </code><code class="keyword">const</code><code class="plain"> Eigen::Vector2d& f_undist_point,</code></div>
+<div class="line"><code class="plain">                    </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain">& f_undist_fx, </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain">& f_undist_fy,</code></div>
+<div class="line"><code class="plain">                    </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain">& f_undist_cx, </code><code class="keyword">const</code><code class="plain"> </code><code class="color1">double</code><code class="plain">& f_undist_cy,</code></div>
+<div class="line"><code class="plain">                    Eigen::Vector2d& f_dist_point);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeiwg-eUqOekuuS-iy44">
+        <h3 class="heading "><span> Call example </span></h3>
+<p   
+> Take the dement of the entire picture as an example as an example </p>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">cv::Mat input = cv::imread(</code><code class="string">"../config/nrcs_front.jpg"</code><code class="plain">);</code></div>
+<div class="line"><code class="color1">double</code><code class="plain"> new_fx = 500;</code></div>
+<div class="line"><code class="color1">double</code><code class="plain"> new_fy = 500;</code></div>
+<div class="line"><code class="color1">double</code><code class="plain"> new_cx = 960;</code></div>
+<div class="line"><code class="color1">double</code><code class="plain"> new_cy = 540;</code></div>
+<div class="line"><code class="color1">double</code><code class="plain"> new_image_width = 1920;</code></div>
+<div class="line"><code class="color1">double</code><code class="plain"> new_image_height = 1080;</code></div>
+<div class="line"><code class="plain">cv::Mat output(new_image_height, new_image_width, CV_8UC3,cv::Scalar(255,255,255));</code></div>
+<div class="line"><code class="plain">cv::Mat interpolate_output(new_image_height, new_image_width, CV_8UC3,cv::Scalar(255,255,255));</code></div>
+<div class="line"> </div>
+<div class="line"><code class="keyword">for</code><code class="plain"> (</code><code class="color1">int</code><code class="plain"> i = 0; i < new_image_width; i++)</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">for</code><code class="plain"> (</code><code class="color1">int</code><code class="plain"> j = 0; j < new_image_height; j++)</code></div>
+<div class="line"><code class="plain">    {</code></div>
+<div class="line"><code class="plain">        Eigen::Vector2d dist_pixel;</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> (xcalib::CTransformInterface::getInstance().distortPixel(xcalib::EReferenceFrame::CAMERA_NRCS_FRONT,</code></div>
+<div class="line"><code class="plain">            Eigen::Vector2d(i, j), new_fx, new_fy, new_cx, new_cy, dist_pixel))</code></div>
+<div class="line"><code class="plain">        {</code></div>
+<div class="line"><code class="plain">            </code><code class="comments">// without interpolate</code></div>
+<div class="line"><code class="plain">            output.at<cv::Vec3b>(j, i) = input.at<cv::Vec3b>(dist_pixel.y(), dist_pixel.x());</code></div>
+<div class="line"><code class="plain">        }</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">// with interpolate</code></div>
+<div class="line"><code class="plain">        cv::Vec3b up_left = input.at<cv::Vec3b>(std::</code><code class="functions">floor</code><code class="plain">(dist_pixel.y()), std::</code><code class="functions">floor</code><code class="plain">(dist_pixel.x()));</code></div>
+<div class="line"><code class="plain">        cv::Vec3b up_right = input.at<cv::Vec3b>(std::</code><code class="functions">floor</code><code class="plain">(dist_pixel.y()), std::</code><code class="functions">ceil</code><code class="plain">(dist_pixel.x()));</code></div>
+<div class="line"><code class="plain">        cv::Vec3b down_left = input.at<cv::Vec3b>(std::</code><code class="functions">ceil</code><code class="plain">(dist_pixel.y()), std::</code><code class="functions">floor</code><code class="plain">(dist_pixel.x()));</code></div>
+<div class="line"><code class="plain">        cv::Vec3b down_right = input.at<cv::Vec3b>(std::</code><code class="functions">ceil</code><code class="plain">(dist_pixel.y()), std::</code><code class="functions">ceil</code><code class="plain">(dist_pixel.x()));</code></div>
+<div class="line"><code class="plain">    </code></div>
+<div class="line"><code class="plain">        cv::Vec3b temp_1 = (1.0*std::</code><code class="functions">ceil</code><code class="plain">(dist_pixel.x()) - dist_pixel.x())*down_left + (dist_pixel.x() - 1.0*std::</code><code class="functions">floor</code><code class="plain">(dist_pixel.x()))*down_right;</code></div>
+<div class="line"><code class="plain">        cv::Vec3b temp_2 = (1.0*std::</code><code class="functions">ceil</code><code class="plain">(dist_pixel.x()) - dist_pixel.x())*up_left + (dist_pixel.x() - 1.0*std::</code><code class="functions">floor</code><code class="plain">(dist_pixel.x()))*up_right;</code></div>
+<div class="line"><code class="plain">        cv::Vec3b temp = (std::</code><code class="functions">ceil</code><code class="plain">(dist_pixel.y()) - dist_pixel.y())*temp_2 + (dist_pixel.y() - std::</code><code class="functions">floor</code><code class="plain">(dist_pixel.y()))*temp_1;</code></div>
+<div class="line"><code class="plain">        interpolate_output.at<cv::Vec3b>(j, i) = temp;</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"><code class="plain">cv::imwrite(</code><code class="string">"testDistPixel.jpg"</code><code class="plain">, output);                                </code><code class="comments"> // Use the recent removal image that is worthy of the neighboring neighborhood </code></div>
+<div class="line"><code class="plain">cv::imwrite(</code><code class="string">"interpolate_testDistPixel.jpg"</code><code class="plain">, interpolate_output);        </code><code class="comments"> // Use the removal image obtained by the interpolation method. </code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeS9v-eUqOivtOaYji44">
+        <h3 class="heading auto-cursor-target"><span> Instructions for use </span></h3>
+<p   
+>    <span style="color: #003366;"> Specify the pixel coordinates on the internal reference and virtual images of the virtual camera to obtain the pixel coordinates on the real picture. You can use this function to realize the function of the entire image </span>
+</p>
+    </div>
+    </div>
+    <div class="section section-2" id="src-2711844407_w3_trans_helperAPI-10.addUserCamera">
+        <h2 class="heading auto-cursor-target"><span>10.addUserCamera</span></h2>
+    <div class="section section-3" id="src-2711844407_w3_trans_helperAPI-API.9">
+        <h3 class="heading "><span>API</span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="comments">/**</code></div>
+<div class="line"><code class="comments"> * @brief create user define camera</code></div>
+<div class="line"><code class="comments"> * </code></div>
+<div class="line"><code class="comments"> * @param f_model_type user camera intrinsic type</code></div>
+<div class="line"><code class="comments"> * @param f_intrinsic user camera intrinsic</code></div>
+<div class="line"><code class="comments"> * @param f_T_base_camera transform from base_frame to current_camera</code></div>
+<div class="line"><code class="comments"> * @param f_extrin_base_frame extrinsic base_frame</code></div>
+<div class="line"><code class="comments"> * @param f_camera_frame return new camera frame</code></div>
+<div class="line"><code class="comments"> * @param f_pixel_frame return new camera_pixel frame</code></div>
+<div class="line"><code class="comments"> * @param f_is_bev don't need to set, default false</code></div>
+<div class="line"><code class="comments"> * @return true </code></div>
+<div class="line"><code class="comments"> * @return false </code></div>
+<div class="line"><code class="comments"> */</code></div>
+<div class="line"><code class="color1">bool</code><code class="plain"> addUserCamera(xcamodocal::Camera::ModelType f_model_type,</code></div>
+<div class="line"><code class="plain">                </code><code class="keyword">const</code><code class="plain"> Vector<</code><code class="color1">double</code><code class="plain">, 32> &f_intrinsic, </code><code class="keyword">const</code><code class="plain"> Eigen::Matrix4d &f_T_base_camera, </code></div>
+<div class="line"><code class="plain">                EReferenceFrame f_extrin_base_frame, EReferenceFrame& f_camera_frame,</code></div>
+<div class="line"><code class="plain">                EReferenceFrame& f_pixel_frame, </code><code class="color1">bool</code><code class="plain"> f_is_bev = </code><code class="keyword">false</code><code class="plain">);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeiwg-eUqOekuuS-iy45">
+        <h3 class="heading "><span> Call example </span></h3>
+    <div  class="confbox programlisting" style="counter-reset: scroll-code-numbering 1">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="defaultnew syntaxhighlighter scroll-html-formatted-code" data-linenumbers="false" data-firstline="1">
+<div class="line"><code class="plain">xcalib::EReferenceFrame new_camera_frame, new_pixel_frame;</code></div>
+<div class="line"><code class="plain">Eigen::Matrix4d T_tele_added_camera << (to set extrinsic from front_tele(or any other 3d frame) to added_camera);</code></div>
+<div class="line"><code class="keyword">if</code><code class="plain"> (xcalib::CTransformInterface::getInstance().addUserCamera(xcamodocal::Camera::ModelType::KANNALA_BRANDT,</code></div>
+<div class="line"><code class="plain">                        intrinsic, T_tele_added_camera, </code></div>
+<div class="line"><code class="plain">                        xcalib::EReferenceFrame::CAMERA_FRONT_TELE, new_camera_frame, new_pixel_frame))</code></div>
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">	</code><code class="comments">// add new camera success</code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"> </div>
+<div class="line"><code class="comments">// you can use this new camera as other cameras by new_camera_frame and new_pixel_frame</code></div>
+<div class="line"><code class="comments">// get intrinsic</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::getInstance().getCameraIntrinsic(new_camera_frame, intrinsic)</code></div>
+<div class="line"><code class="comments">// get extrinsic</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::getInstance().getTransform(new_camera_frame, xcalib::EReferenceFrame::LIDAR_MAIN, transform);</code></div>
+<div class="line"><code class="comments">// convert point</code></div>
+<div class="line"><code class="plain">xcalib::CTransformInterface::getInstance().convertPoint(new_camera_frame, new_pixel_frame, src, dst);</code></div>
+</div>
+    </div>
+    </div>
+    <div class="section section-3" id="src-2711844407_safe-id-dzNfdHJhbnNfaGVscGVyQVBJLeS9v-eUqOivtOaYji45">
+        <h3 class="heading auto-cursor-target"><span> Instructions for use </span></h3>
+<p   
+> By manually passing into the inside and outside of the camera, customize a new camera, and can achieve projection, anti -projection and other functions like other real cameras; the new_camera_frame and new_pixel_frame returned by the function is to allocate to the new camera xcalib :: EREFERENCEFRAME coordinate coordinate coordinatesTie </p>
+<p   
+> At the same time, a BEV virtual camera is constructed by default. </p>
+<p   
+><br/></p>
+    </div>
+    </div>
+    </div>
+        </div>
+
+    </article>
+
+
+            <nav id="ht-post-nav">
+                <a href="2711844173_Introduction_%26_tag_log.html" class="ht-post-nav-prev">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-prev" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-45.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>Introduction & tag log</span>
+        </a>
+                <a href="2515113873_xcalib_eng.html" class="ht-post-nav-next">
+            <svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="ht-icon-next" sketch:type="MSArtboardGroup">
+                    <path fill="#000000" d="M16,8 L16,6 L6,6 L6,16 L8,16 L8,8 L16,8 Z" id="Rectangle-2"
+                          sketch:type="MSShapeGroup"
+                          transform="translate(11.000000, 11.000000) rotate(-225.000000) translate(-11.000000, -11.000000) "></path>
+                </g>
+            </svg>
+            <span>xcalib_eng</span>
+        </a>
+    </nav>    
+            
+    <footer id="ht-footer">
+    <a href="#" id="ht-jump-top" class="sp-aui-icon-small sp-aui-iconfont-arrows-up"></a>
+</footer></div>
+
+<div>
+    <div id="ht-mq-detect"></div>
+</div>
+
+
+    <script src="assets/js/expand-macro.js"></script>
+</body>
+</html>

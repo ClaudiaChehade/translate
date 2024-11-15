@@ -1,0 +1,161 @@
+
+sensor_id: SI_SIDE_VIEW_CAMERA_FRONT_TELE
+sensor extrinsic: 
+0.00701 0.00564 0.99996 1.95633 -0.9999 0.01197 0.00695 0.03224 -0.01193 -0.99991 0.00572 1.31965 0 0 0 1 
+sensor intrinsic: 
+sn: 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+width: 3840, height: 2160
+camera_model: PINHOLE
+fx: 7352.39, fy: 7383.04
+cx: 1868.39, cy: 1083.26
+parameter: -0.217484 -1.27053 5.40182 0 0 0 -0.000164607 -0.000436424 
+sensor_id: SI_SIDE_VIEW_CAMERA_FRONT_WIDE
+sensor extrinsic: 
+0.00658 0.0046 0.99997 1.93575 -0.99992 0.01124 0.00653 -0.03341 -0.01121 -0.99993 0.00467 1.33579 0 0 0 1 
+sensor intrinsic: 
+sn: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+width: 3840, height: 2160
+camera_model: FISHEYE
+fx: 1906.55, fy: 1914.56
+cx: 1915.01, cy: 1074.42
+parameter: -0.0260557 -0.0167376 0.013625 -0.0048029 
+sensor_id: SI_SIDE_VIEW_CAMERA_FRONT_LEFT
+sensor extrinsic: 
+0.78049 -0.01535 0.62498 2.17234 -0.62495 0.00746 0.78063 0.93982 -0.01665 -0.99985 -0.00377 0.99391 0 0 0 1 
+sensor intrinsic: 
+sn: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+width: 1920, height: 1280
+camera_model: FISHEYE
+fx: 1113.44, fy: 1113.35
+cx: 957.552, cy: 640.547
+parameter: -0.0692837 -0.0302085 0.0370529 -0.0155225 
+sensor_id: SI_SIDE_VIEW_CAMERA_FRONT_RIGHT
+sensor extrinsic: 
+-0.75149 0.03843 0.65863 2.16198 -0.65848 0.01803 -0.75238 -0.95242 -0.04079 -0.9991 0.01175 0.98856 0 0 0 1 
+sensor intrinsic: 
+sn: 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+width: 1920, height: 1280
+camera_model: FISHEYE
+fx: 1117.92, fy: 1115.58
+cx: 959.554, cy: 640.621
+parameter: -0.0853033 0.0208693 -0.0307372 0.0135404 
+sensor_id: SI_SIDE_VIEW_CAMERA_REAR_LEFT
+sensor extrinsic: 
+0.76195 0.00123 -0.64763 2.51088 0.64762 -0.00825 0.76192 0.97251 -0.0044 -0.99997 -0.00708 0.80449 0 0 0 1 
+sensor intrinsic: 
+sn: 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+width: 1920, height: 1280
+camera_model: FISHEYE
+fx: 1119.75, fy: 1117.77
+cx: 955.081, cy: 641.164
+parameter: -0.0870855 0.0179873 -0.0193687 0.0069013 
+sensor_id: SI_SIDE_VIEW_CAMERA_REAR_RIGHT
+sensor extrinsic: 
+-0.76811 0.00439 -0.6403 2.5055 0.64029 -0.00364 -0.76813 -0.98763 -0.00571 -0.99998 -2e-05 0.79007 0 0 0 1 
+sensor intrinsic: 
+sn: 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 
+width: 1920, height: 1280
+camera_model: FISHEYE
+fx: 1114.87, fy: 1114.35
+cx: 957.087, cy: 640.304
+parameter: -0.0814396 0.014135 -0.0282115 0.0166362 
+sensor_id: SI_SIDE_VIEW_CAMERA_REAR
+sensor extrinsic: 
+-0.01645 0.00323 -0.99986 -1.02431 0.99949 0.02755 -0.01635 0.018 0.02749 -0.99962 -0.00368 0.79344 0 0 0 1 
+sensor intrinsic: 
+sn: 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 
+width: 1920, height: 1280
+camera_model: PINHOLE
+fx: 1952.62, fy: 1951.14
+cx: 955.408, cy: 642.542
+parameter: -0.500508 0.262707 -0.0822731 0 0 0 2.52847e-05 0.000464858 
+sensor_id: SI_SURROUND_VIEW_CAMERA_FRONT
+sensor extrinsic: 
+-0.00463 -0.218 0.97594 3.85804 -0.99991 0.01347 -0.00174 -0.00499 -0.01277 -0.97586 -0.21804 0.62845 0 0 0 1 
+sensor intrinsic: 
+sn: 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+width: 1920, height: 1536
+camera_model: SCARAMUZZA
+fx: 0, fy: 0
+cx: 967.814, cy: 753.571
+parameter: 0.99941 -0.00195476 0.00114027 -573.416 0 0.00073548 -5.64962e-07 6.31265e-10 886.001 512.424 -38.744 69.3927 49.6928 -20.3154 25.2664 29.985 -28.9413 -19.9688 16.248 15.2465 3.23076 0 0 0 0 0 0 0 
+sensor_id: SI_SURROUND_VIEW_CAMERA_REAR
+sensor extrinsic: 
+-0.03042 0.21321 -0.97653 -1.03866 0.99951 0.01431 -0.02801 -0.02797 0.008 -0.9769 -0.21354 0.7872 0 0 0 1 
+sensor intrinsic: 
+sn: 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+width: 1920, height: 1536
+camera_model: SCARAMUZZA
+fx: 0, fy: 0
+cx: 964.844, cy: 753.08
+parameter: 1.00073 0.000242082 -0.000479523 -569.254 0 0.000685101 -4.18422e-07 5.26631e-10 884.784 523.906 -22.4846 67.7004 47.8072 -15.6768 20.1371 39.4205 -6.35429 -26.6347 -12.3954 -1.81794 0 0 0 0 0 0 0 0 
+sensor_id: SI_SURROUND_VIEW_CAMERA_LEFT
+sensor extrinsic: 
+0.99984 0.01734 -0.00316 2.04828 0.01113 -0.48177 0.87623 1.07555 0.01367 -0.87613 -0.48189 1.04477 0 0 0 1 
+sensor intrinsic: 
+sn: 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
+width: 1920, height: 1536
+camera_model: SCARAMUZZA
+fx: 0, fy: 0
+cx: 961.461, cy: 750.398
+parameter: 1.00079 0.000145655 -0.000296093 -572.402 0 0.000827662 -7.74522e-07 7.69689e-10 878.685 502.302 -52.0049 68.9956 53.6297 -33.4461 26.4198 46.8043 -31.5183 -32.7611 13.6389 17.6229 4.04318 0 0 0 0 0 0 0 
+sensor_id: SI_SURROUND_VIEW_CAMERA_RIGHT
+sensor extrinsic: 
+-0.99939 0.00855 0.03372 2.03724 -0.02513 0.49266 -0.86986 -1.08278 -0.02405 -0.87018 -0.49214 1.00644 0 0 0 1 
+sensor intrinsic: 
+sn: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+width: 1920, height: 1536
+camera_model: SCARAMUZZA
+fx: 0, fy: 0
+cx: 961.957, cy: 753.939
+parameter: 1.00069 -0.000843526 0.000721408 -577.148 0 0.000879379 -8.8709e-07 8.32801e-10 880.713 500.281 -58.4242 68.8451 53.0721 -38.1205 44.5914 60.1544 -71.8152 -74.4003 31.5942 60.2969 25.6247 3.67204 0 0 0 0 0 0 
+sensor_id: SI_FRONT_LIDAR
+sensor extrinsic: 
+1 0 0 1.8672 0 1 0 0 0 0 1 1.64514 0 0 0 1 
+sensor intrinsic: 
+sn: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+width: 0, height: 0
+camera_model: CM_NOT_SUPPORT
+fx: 0, fy: 0
+cx: 0, cy: 0
+parameter: 
+sensor_id: SI_NOT_SUPPORT
+sensor extrinsic: 
+
+sensor intrinsic: 
+sn: 
+width: 0, height: 0
+camera_model: CM_NOT_SUPPORT
+fx: 0, fy: 0
+cx: 0, cy: 0
+parameter: 
+sensor_id: SI_IMU
+sensor extrinsic: 
+
+sensor intrinsic: 
+sn: 
+width: 0, height: 0
+camera_model: CM_NOT_SUPPORT
+fx: 0, fy: 0
+cx: 0, cy: 0
+parameter: 
+sensor_id: SI_LEFT_LIDAR
+sensor extrinsic: 
+
+sensor intrinsic: 
+sn: 
+width: 0, height: 0
+camera_model: CM_NOT_SUPPORT
+fx: 0, fy: 0
+cx: 0, cy: 0
+parameter: 
+sensor_id: SI_RIGHT_LIDAR
+sensor extrinsic: 
+
+sensor intrinsic: 
+sn: 
+width: 0, height: 0
+camera_model: CM_NOT_SUPPORT
+fx: 0, fy: 0
+cx: 0, cy: 0
+parameter: 

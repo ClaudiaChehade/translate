@@ -1,0 +1,321 @@
+I am worker 0/1
+2022-10-12 12:20:55.830101: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-10-12 12:20:56.438226: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 79113 MB memory:  -> device: 0, name: NVIDIA A100-SXM4-80GB, pci bus id: 0000:e1:00.0, compute capability: 8.0
+2022-10-12 12:20:56.514174: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2022-10-12 12:20:56.514208: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2022-10-12 12:20:56.514243: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1614] Profiler found 2 GPUs
+2022-10-12 12:20:56.755011: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2022-10-12 12:20:56.756540: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1748] CUPTI activity buffer flushed
+Epoch 1/5
+WARNING:tensorflow:From /usr/local/lib/python3.8/site-packages/tensorflow/python/util/deprecation.py:617: calling map_fn_v2 (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+2022-10-12 12:21:09.888676: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2022-10-12 12:21:12.507473: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1151] Starting fuel: infinity
+2022-10-12 12:21:12.507548: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1156] sorted_nodes.size() = 6195
+2022-10-12 12:21:12.513325: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/camdetect_iou_0/write_summary/summary_cond/then/_8/bvnetmodel/camdetect_iou_0/write_summary/summary_cond/encode_each_image/while/loop_body_control/_4966: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.513910: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/camdetect_iou_1/write_summary/summary_cond/then/_26/bvnetmodel/camdetect_iou_1/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5004: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.514405: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/camdetect_iou_2/write_summary/summary_cond/then/_44/bvnetmodel/camdetect_iou_2/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5042: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.519014: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/center_target/write_summary/summary_cond/then/_173/bvnetmodel/center_target/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5080: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.519651: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/center_pred/write_summary/summary_cond/then/_191/bvnetmodel/center_pred/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5118: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.520302: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/original_lidar_feature/write_summary/summary_cond/then/_201/bvnetmodel/original_lidar_feature/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5156: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.520964: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/predictions/write_summary/summary_cond/then/_211/bvnetmodel/predictions/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5194: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.521605: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/labels/write_summary/summary_cond/then/_221/bvnetmodel/labels/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5232: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.522089: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/lidar_feature_0/write_summary/summary_cond/then/_231/bvnetmodel/lidar_feature_0/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5270: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.522620: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/lidar_feature_1/write_summary/summary_cond/then/_241/bvnetmodel/lidar_feature_1/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5308: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.526521: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/lidar_feature_2/write_summary/summary_cond/then/_251/bvnetmodel/lidar_feature_2/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5346: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.533894: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/freespace_estimate/write_summary/summary_cond/then/_261/bvnetmodel/freespace_estimate/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5384: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.534241: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/freespace_target/write_summary/summary_cond/then/_279/bvnetmodel/freespace_target/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5422: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.534580: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/freespace_weight/write_summary/summary_cond/then/_297/bvnetmodel/freespace_weight/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5460: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.534920: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1301] Rejecting bvnetmodel/drivable_target/write_summary/summary_cond/then/_315/bvnetmodel/drivable_target/write_summary/summary_cond/encode_each_image/while/loop_body_control/_5498: including it can create dependencies between while loop condition and body computations with runtime overhead.
+2022-10-12 12:21:12.535146: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1311] compilation_candidates_.size() = 3699
+2022-10-12 12:21:12.544391: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:625] DeadnessAnalysis time: 6.04 ms (cumulative: 6.04 ms, max: 6.04 ms, #called: 1)
+2022-10-12 12:21:12.590477: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:832] Checking idempotence
+2022-10-12 12:21:12.591818: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1483] *** Clustering info for graph of size 6197
+2022-10-12 12:21:12.591834: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1484]  Built 0 clusters, size 0 / 6197 (0.00%)
+2022-10-12 12:21:12.591850: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1503]  Unclustered nodes: 6197 / 6197 (100.00%)
+2022-10-12 12:21:12.593209: I tensorflow/compiler/jit/mark_for_compilation_pass.cc:1428] MarkForCompilationPassImpl::Run time: 90.2 ms (cumulative: 90.2 ms, max: 90.2 ms, #called: 1)
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I1012 12:21:12.854763  2598 data_loader_op.cc:144] A total of 4077 examples
+F1012 12:21:12.855111  2598 index.cc:20] Check failed: fs::exists(path) path: /mnt/training/per/perception/bvnet/bvnet_small_dataset
+*** Check failure stack trace: ***
+2022-10-12 12:21:12.855143682 FATAL 2598   2598 - [:] : Caught abnormal signal: 6
+2022-10-12 12:21:12.855152348 FATAL 2598   2598 - [:] : Fault addr: 0XA26
+[STACKTRACE BEGIN]: If there is no file name or line number from addr2line, please refer to https://werideai.feishu.cn/wiki/wikcnRg0UfAILj5HqKPincxMTLh?table=tblNOQyKPegCgowp&view=vewUIIwxDi
+[Coredump Collection Debug][Not Related to This Crash] Found wrong core pattern: core, length: 4, if this is onboard or sil env, please report at #mariana
+STACKTRACE   1 >>> corelib::DumpStacktrace(char*, unsigned long)(+0x6a) <lib/libbvnet.so> [0x7ff5e54c319a]
+addr2line -e lib/libbvnet.so cd319a -ifCpa
+0x0000000000cd319a: corelib::DumpStacktrace(char*, unsigned long) at /proc/self/cwd/corelib/signals/stack_trace.cc:164
+
+STACKTRACE   2 >>> lib/libbvnet.so(+0xcbd135) [0x7ff5e54ad135]
+addr2line -e lib/libbvnet.so cbd135 -ifCpa
+0x0000000000cbd135: corelib::wrlog::(anonymous namespace)::PrintStacktrace() at /proc/self/cwd/corelib/logging/wrlog/wrlog.cc:244
+
+STACKTRACE   3 >>> lib/libbvnet.so(+0xcbcc38) [0x7ff5e54acc38]
+addr2line -e lib/libbvnet.so cbcc38 -ifCpa
+0x0000000000cbcc38: corelib::wrlog::(anonymous namespace)::SignalHandler(int, siginfo_t*) at /proc/self/cwd/corelib/logging/wrlog/wrlog.cc:?
+
+STACKTRACE   4 >>> corelib::SignalManager::ProcessSignal(bool, int, siginfo_t*, void*)(+0x129) <lib/libbvnet.so> [0x7ff5e54c0d39]
+addr2line -e lib/libbvnet.so cd0d39 -ifCpa
+0x0000000000cd0d39: bool __gnu_cxx::operator==<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > >(__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > const&, __gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > const&) at /usr/gcc_toolchain/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator.h:893
+ (inlined by) bool std::operator==<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > >(std::reverse_iterator<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > > const&, std::reverse_iterator<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > > const&) at /usr/gcc_toolchain/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator.h:327
+ (inlined by) bool std::operator!=<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > >(std::reverse_iterator<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > > const&, std::reverse_iterator<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > > const&) at /usr/gcc_toolchain/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator.h:339
+ (inlined by) corelib::SignalManager::ProcessSignal(bool, int, siginfo_t*, void*) at /proc/self/cwd/corelib/signals/signals.cc:305
+
+STACKTRACE   5 >>> corelib::SignalManager::ProcessInternalSignal(int, siginfo_t*, void*)(+0x23) <lib/libbvnet.so> [0x7ff5e54c0c03]
+addr2line -e lib/libbvnet.so cd0c03 -ifCpa
+0x0000000000cd0c03: corelib::SignalManager::ProcessInternalSignal(int, siginfo_t*, void*) at /proc/self/cwd/corelib/signals/signals.cc:132
+
+STACKTRACE   6 >>> /lib/x86_64-linux-gnu/libpthread.so.0(+0x11390) [0x7ff6625d4390]
+addr2line -e /lib/x86_64-linux-gnu/libpthread.so.0 11390 -ifCpa
+0x0000000000011390: __restore_rt at ??:?
+
+STACKTRACE   7 >>> gsignal(+0x38) </lib/x86_64-linux-gnu/libc.so.6> [0x7ff661b1e438]
+addr2line -e /lib/x86_64-linux-gnu/libc.so.6 35438 -ifCpa
+0x0000000000035438: gsignal at ??:?
+
+STACKTRACE   8 >>> abort(+0x16a) </lib/x86_64-linux-gnu/libc.so.6> [0x7ff661b2003a]
+addr2line -e /lib/x86_64-linux-gnu/libc.so.6 3703a -ifCpa
+0x000000000003703a: abort at ??:?
+
+STACKTRACE   9 >>> lib/libbvnet.so(+0xdb0459) [0x7ff5e55a0459]
+addr2line -e lib/libbvnet.so db0459 -ifCpa
+0x0000000000db0459: google::logging_fail() at logging.cc:?
+
+STACKTRACE  10 >>> google::LogMessage::SendToLog()(+0x43a) <lib/libbvnet.so> [0x7ff5e559f26a]
+addr2line -e lib/libbvnet.so daf26a -ifCpa
+0x0000000000daf26a: google::LogMessage::SendToLog() at /proc/self/cwd/external/glog/src/logging.cc:?
+
+STACKTRACE  11 >>> google::LogMessage::Flush()(+0xc8) <lib/libbvnet.so> [0x7ff5e559f808]
+addr2line -e lib/libbvnet.so daf808 -ifCpa
+0x0000000000daf808: google::LogMessage::Flush() at /proc/self/cwd/external/glog/src/logging.cc:1363
+
+STACKTRACE  12 >>> google::LogMessageFatal::~LogMessageFatal()(+0xf) <lib/libbvnet.so> [0x7ff5e55a41af]
+addr2line -e lib/libbvnet.so db41af -ifCpa
+0x0000000000db41af: google::LogMessage::Fail() at /proc/self/cwd/external/glog/src/logging.cc:1536
+ (inlined by) ~LogMessageFatal at /proc/self/cwd/external/glog/src/logging.cc:2113
+
+STACKTRACE  13 >>> ai::infra::ridata::FrameIndex::init(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)(+0x3bd) <lib/libbvnet.so> [0x7ff5e534794d]
+STACKTRACE  14 >>> ai::infra::ridata::load_frame_index(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)(+0xf7) <lib/libbvnet.so> [0x7ff5e53499f7]
+STACKTRACE  15 >>> ai::infra::ridata::Table::load_index(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)(+0x17) <lib/libbvnet.so> [0x7ff5e5349717]
+STACKTRACE  16 >>> ai::infra::ridata::Table::load_accessor(ai::infra::ridata::TableAccessorProto const&)(+0x21) <lib/libbvnet.so> [0x7ff5e534a1b1]
+STACKTRACE  17 >>> ai::infra::ridata::Table::load_accessor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)(+0x73) <lib/libbvnet.so> [0x7ff5e534a2c3]
+STACKTRACE  18 >>> ai::infra::ridata::open_table_from_accessor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)(+0x11e) <lib/libbvnet.so> [0x7ff5e5353dce]
+STACKTRACE  19 >>> ai::p8n::bvnet::DataLoaderOp::init_data()(+0x135) <lib/libbvnet.so> [0x7ff5e507f035]
+STACKTRACE  20 >>> ai::p8n::bvnet::DataLoaderOp::DataLoaderOp(tensorflow::OpKernelConstruction*)(+0xc8) <lib/libbvnet.so> [0x7ff5e507ecd8]
+STACKTRACE  21 >>> lib/libbvnet.so(+0x88ebe2) [0x7ff5e507ebe2]
+STACKTRACE  22 >>> tensorflow::CreateOpKernel(tensorflow::DeviceType, tensorflow::DeviceBase*, tensorflow::Allocator*, tensorflow::FunctionLibraryRuntime*, tensorflow::ResourceMgr*, std::shared_ptr<tensorflow::NodeProperties const> const&, int, tensorflow::OpKernel**)(+0x4bd) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6181009fd]
+STACKTRACE  23 >>> tensorflow::CreateNonCachedKernel(tensorflow::Device*, tensorflow::FunctionLibraryRuntime*, std::shared_ptr<tensorflow::NodeProperties const> const&, int, tensorflow::OpKernel**)(+0x167) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6183c2187]
+STACKTRACE  24 >>> tensorflow::FunctionLibraryRuntimeImpl::CreateKernel(std::shared_ptr<tensorflow::NodeProperties const> const&, tensorflow::FunctionLibraryRuntime*, tensorflow::OpKernel**)(+0x967) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6183569a7]
+STACKTRACE  25 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2(+0x8d3d0b) [0x7ff618356d0b]
+STACKTRACE  26 >>> tensorflow::ImmutableExecutorState::Initialize(tensorflow::Graph const&)(+0x552) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6183dd122]
+STACKTRACE  27 >>> tensorflow::NewLocalExecutor(tensorflow::LocalExecutorParams const&, tensorflow::Graph const&, tensorflow::Executor**)(+0x1e4) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6183c40b4]
+STACKTRACE  28 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2(+0x94132c) [0x7ff6183c432c]
+STACKTRACE  29 >>> tensorflow::NewExecutor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, tensorflow::LocalExecutorParams const&, tensorflow::Graph const&, std::unique_ptr<tensorflow::Executor, std::default_delete<tensorflow::Executor> >*)(+0x4e) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6183d12fe]
+STACKTRACE  30 >>> tensorflow::FunctionLibraryRuntimeImpl::CreateItem(tensorflow::FunctionLibraryRuntimeImpl::Item**)(+0xb43) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff618353213]
+STACKTRACE  31 >>> tensorflow::FunctionLibraryRuntimeImpl::GetOrCreateItem(unsigned long, tensorflow::FunctionLibraryRuntimeImpl::Item**)(+0x10e) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff61835396e]
+STACKTRACE  32 >>> tensorflow::FunctionLibraryRuntimeImpl::Run(tensorflow::FunctionLibraryRuntime::Options const&, unsigned long, absl::lts_20210324::Span<tensorflow::Tensor const>, std::vector<tensorflow::Tensor, std::allocator<tensorflow::Tensor> >*, std::function<void (tensorflow::Status const&)>)(+0x2ff) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff618353cbf]
+STACKTRACE  33 >>> tensorflow::ProcessFunctionLibraryRuntime::RunMultiDevice(tensorflow::FunctionLibraryRuntime::Options const&, unsigned long, std::vector<absl::lts_20210324::variant<tensorflow::Tensor, tensorflow::TensorShape>, std::allocator<absl::lts_20210324::variant<tensorflow::Tensor, tensorflow::TensorShape> > >*, std::vector<std::unique_ptr<tensorflow::ProcessFunctionLibraryRuntime::CleanUpItem, std::default_delete<tensorflow::ProcessFunctionLibraryRuntime::CleanUpItem> >, std::allocator<std::unique_ptr<tensorflow::ProcessFunctionLibraryRuntime::CleanUpItem, std::default_delete<tensorflow::ProcessFunctionLibraryRuntime::CleanUpItem> > > >*, std::function<void (tensorflow::Status const&)>, std::function<tensorflow::Status (tensorflow::ProcessFunctionLibraryRuntime::ComponentFunctionData const&, tensorflow::ProcessFunctionLibraryRuntime::InternalArgs*)>) const(+0x152d) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff61836d60d]
+STACKTRACE  34 >>> tensorflow::ProcessFunctionLibraryRuntime::Run(tensorflow::FunctionLibraryRuntime::Options const&, unsigned long, absl::lts_20210324::Span<tensorflow::Tensor const>, std::vector<tensorflow::Tensor, std::allocator<tensorflow::Tensor> >*, std::function<void (tensorflow::Status const&)>) const(+0x565) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff61836e625]
+STACKTRACE  35 >>> tensorflow::ProcessFunctionLibraryRuntime::RunSync(tensorflow::FunctionLibraryRuntime::Options const&, unsigned long, absl::lts_20210324::Span<tensorflow::Tensor const>, std::vector<tensorflow::Tensor, std::allocator<tensorflow::Tensor> >*) const(+0xbf) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff61836f00f]
+STACKTRACE  36 >>> tensorflow::KernelAndDeviceFunc::Run(tensorflow::ScopedStepContainer*, tensorflow::EagerKernelArgs const&, std::vector<absl::lts_20210324::variant<tensorflow::Tensor, tensorflow::TensorShape>, std::allocator<absl::lts_20210324::variant<tensorflow::Tensor, tensorflow::TensorShape> > >*, tensorflow::CancellationManager*, absl::lts_20210324::optional<tensorflow::EagerRemoteFunctionParams> const&, absl::lts_20210324::optional<tensorflow::ManagedStackTrace> const&)(+0x26c) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff624191adc]
+STACKTRACE  37 >>> tensorflow::EagerKernelExecute(tensorflow::EagerContext*, absl::lts_20210324::InlinedVector<tensorflow::TensorHandle*, 4ul, std::allocator<tensorflow::TensorHandle*> > const&, absl::lts_20210324::optional<tensorflow::EagerRemoteFunctionParams> const&, std::unique_ptr<tensorflow::KernelAndDevice, tensorflow::core::RefCountDeleter> const&, tensorflow::GraphCollector*, tensorflow::CancellationManager*, absl::lts_20210324::Span<tensorflow::TensorHandle*>, absl::lts_20210324::optional<tensorflow::ManagedStackTrace> const&)(+0x274) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61df4d874]
+STACKTRACE  38 >>> tensorflow::ExecuteNode::Run()(+0x164) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61df4e244]
+STACKTRACE  39 >>> tensorflow::EagerExecutor::SyncExecute(tensorflow::EagerNode*)(+0x439) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff6246c79e9]
+STACKTRACE  40 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so(+0x4a71532) [0x7ff61df49532]
+STACKTRACE  41 >>> tensorflow::EagerExecute(tensorflow::EagerOperation*, tensorflow::TensorHandle**, int*)(+0x180) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61df4d1b0]
+STACKTRACE  42 >>> tensorflow::EagerOperation::Execute(absl::lts_20210324::Span<tensorflow::AbstractTensorHandle*>, int*)(+0x212) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61dc94982]
+STACKTRACE  43 >>> tensorflow::CustomDeviceOpHandler::Execute(tensorflow::ImmediateExecutionOperation*, tensorflow::ImmediateExecutionTensorHandle**, int*)(+0x4dc) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff62419d5ac]
+STACKTRACE  44 >>> TFE_Execute(+0x63) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61d714873]
+STACKTRACE  45 >>> TFE_Py_ExecuteCancelable(TFE_Context*, char const*, char const*, absl::lts_20210324::InlinedVector<TFE_TensorHandle*, 4ul, std::allocator<TFE_TensorHandle*> >*, _object*, TFE_CancellationManager*, absl::lts_20210324::InlinedVector<TFE_TensorHandle*, 2ul, std::allocator<TFE_TensorHandle*> >*, TF_Status*)(+0x6d5) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61d682be5]
+STACKTRACE  46 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tfe.so(+0x2ca47) [0x7ff6171fea47]
+STACKTRACE  47 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tfe.so(+0x2ce06) [0x7ff6171fee06]
+STACKTRACE  48 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tfe.so(+0x39bc2) [0x7ff61720bbc2]
+STACKTRACE  49 >>> PyCFunction_Call(+0x12f) <python3.8> [0x43ccbf]
+STACKTRACE  50 >>> _PyObject_MakeTpCall(+0xa4) <python3.8> [0x439cf4]
+STACKTRACE  51 >>> _PyEval_EvalFrameDefault(+0x8adc) <python3.8> [0x42b70c]
+STACKTRACE  52 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+STACKTRACE  53 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+STACKTRACE  54 >>> _PyEval_EvalFrameDefault(+0x5533) <python3.8> [0x428163]
+STACKTRACE  55 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+STACKTRACE  56 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+STACKTRACE  57 >>> python3.8() [0x5d25c0]
+STACKTRACE  58 >>> _PyEval_EvalFrameDefault(+0x5533) <python3.8> [0x428163]
+STACKTRACE  59 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+STACKTRACE  60 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+STACKTRACE  61 >>> python3.8() [0x5d25c0]
+STACKTRACE  62 >>> _PyEval_EvalFrameDefault(+0x5533) <python3.8> [0x428163]
+STACKTRACE  63 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+STACKTRACE  64 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+STACKTRACE  65 >>> _PyObject_FastCallDict(+0xc5) <python3.8> [0x43c675]
+STACKTRACE  66 >>> _PyObject_Call_Prepend(+0xca) <python3.8> [0x43c84a]
+STACKTRACE  67 >>> python3.8() [0x495ef1]
+STACKTRACE  68 >>> PyObject_Call(+0x71) <python3.8> [0x43ca91]
+STACKTRACE  69 >>> _PyEval_EvalFrameDefault(+0xc2e) <python3.8> [0x42385e]
+STACKTRACE  70 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+STACKTRACE  71 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+STACKTRACE  72 >>> python3.8() [0x5d2524]
+STACKTRACE  73 >>> PyVectorcall_Call(+0x6f) <python3.8> [0x43c8ef]
+STACKTRACE  74 >>> _PyEval_EvalFrameDefault(+0xc2e) <python3.8> [0x42385e]
+STACKTRACE  75 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+STACKTRACE  76 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+STACKTRACE  77 >>> _PyObject_FastCallDict(+0x1b2) <python3.8> [0x43c762]
+STACKTRACE  78 >>> _PyObject_Call_Prepend(+0xca) <python3.8> [0x43c84a]
+STACKTRACE  79 >>> python3.8() [0x495ef1]
+STACKTRACE  80 >>> _PyObject_MakeTpCall(+0xa4) <python3.8> [0x439cf4]
+STACKTRACE  81 >>> _PyEval_EvalFrameDefault(+0x8adc) <python3.8> [0x42b70c]
+STACKTRACE  82 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+STACKTRACE  83 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+STACKTRACE  84 >>> python3.8() [0x5d2524]
+STACKTRACE  85 >>> PyVectorcall_Call(+0x6f) <python3.8> [0x43c8ef]
+STACKTRACE  86 >>> _PyEval_EvalFrameDefault(+0xc2e) <python3.8> [0x42385e]
+STACKTRACE  87 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+STACKTRACE  88 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+STACKTRACE  89 >>> python3.8() [0x5d25c0]
+STACKTRACE  90 >>> _PyEval_EvalFrameDefault(+0x5533) <python3.8> [0x428163]
+STACKTRACE  91 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+STACKTRACE  92 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+STACKTRACE  93 >>> _PyEval_EvalFrameDefault(+0x5533) <python3.8> [0x428163]
+STACKTRACE  94 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+STACKTRACE  95 >>> PyEval_EvalCode(+0x23) <python3.8> [0x4ead73]
+STACKTRACE  96 >>> python3.8() [0x52b265]
+STACKTRACE  97 >>> PyRun_SimpleFileExFlags(+0x166) <python3.8> [0x52dbb6]
+STACKTRACE  98 >>> Py_RunMain(+0x80a) <python3.8> [0x42d14a]
+STACKTRACE  99 >>> Py_BytesMain(+0x54) <python3.8> [0x42d574]
+STACKTRACE 100 >>> __libc_start_main(+0xf0) </lib/x86_64-linux-gnu/libc.so.6> [0x7ff661b09840]
+STACKTRACE 101 >>> _start(+0x29) <python3.8> [0x42c229]
+[STACKTRACE END](5432 ms)
+2022-10-12 12:21:18.287803679 FATAL 2598   2598 - [:] : [STACKTRACE BEGIN]: If there is no file name or line number from addr2line, please refer to https://werideai.feishu.cn/wiki/wikcnRg0UfAILj5HqKPincxMTLh?table=tblNOQyKPegCgowp&view=vewUIIwxDi
+2022-10-12 12:21:18.287815231 FATAL 2598   2598 - [:] : [Coredump Collection Debug][Not Related to This Crash] Found wrong core pattern: core, length: 4, if this is onboard or sil env, please report at #mariana
+2022-10-12 12:21:18.287815622 FATAL 2598   2598 - [:] : STACKTRACE   1 >>> corelib::DumpStacktrace(char*, unsigned long)(+0x6a) <lib/libbvnet.so> [0x7ff5e54c319a]
+2022-10-12 12:21:18.287815993 FATAL 2598   2598 - [:] : addr2line -e lib/libbvnet.so cd319a -ifCpa
+2022-10-12 12:21:18.287816383 FATAL 2598   2598 - [:] : 0x0000000000cd319a: corelib::DumpStacktrace(char*, unsigned long) at /proc/self/cwd/corelib/signals/stack_trace.cc:164
+2022-10-12 12:21:18.287817175 FATAL 2598   2598 - [:] : STACKTRACE   2 >>> lib/libbvnet.so(+0xcbd135) [0x7ff5e54ad135]
+2022-10-12 12:21:18.287817375 FATAL 2598   2598 - [:] : addr2line -e lib/libbvnet.so cbd135 -ifCpa
+2022-10-12 12:21:18.287817656 FATAL 2598   2598 - [:] : 0x0000000000cbd135: corelib::wrlog::(anonymous namespace)::PrintStacktrace() at /proc/self/cwd/corelib/logging/wrlog/wrlog.cc:244
+2022-10-12 12:21:18.287817866 FATAL 2598   2598 - [:] : STACKTRACE   3 >>> lib/libbvnet.so(+0xcbcc38) [0x7ff5e54acc38]
+2022-10-12 12:21:18.287818057 FATAL 2598   2598 - [:] : addr2line -e lib/libbvnet.so cbcc38 -ifCpa
+2022-10-12 12:21:18.287818287 FATAL 2598   2598 - [:] : 0x0000000000cbcc38: corelib::wrlog::(anonymous namespace)::SignalHandler(int, siginfo_t*) at /proc/self/cwd/corelib/logging/wrlog/wrlog.cc:?
+2022-10-12 12:21:18.287818558 FATAL 2598   2598 - [:] : STACKTRACE   4 >>> corelib::SignalManager::ProcessSignal(bool, int, siginfo_t*, void*)(+0x129) <lib/libbvnet.so> [0x7ff5e54c0d39]
+2022-10-12 12:21:18.287818738 FATAL 2598   2598 - [:] : addr2line -e lib/libbvnet.so cd0d39 -ifCpa
+2022-10-12 12:21:18.287826553 FATAL 2598   2598 - [:] : 0x0000000000cd0d39: bool __gnu_cxx::operator==<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > >(__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > const&, __gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > const&) at /usr/gcc_toolchain/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator.h:893
+2022-10-12 12:21:18.287832013 FATAL 2598   2598 - [:] :  (inlined by) bool std::operator==<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > >(std::reverse_iterator<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > > const&, std::reverse_iterator<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > > const&) at /usr/gcc_toolchain/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator.h:327
+2022-10-12 12:21:18.287844797 FATAL 2598   2598 - [:] :  (inlined by) bool std::operator!=<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > >(std::reverse_iterator<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > > const&, std::reverse_iterator<__gnu_cxx::__normal_iterator<corelib::SignalHandlerFuncInfo*, std::vector<corelib::SignalHandlerFuncInfo, std::allocator<corelib::SignalHandlerFuncInfo> > > > const&) at /usr/gcc_toolchain/lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_iterator.h:339
+2022-10-12 12:21:18.287846330 FATAL 2598   2598 - [:] :  (inlined by) corelib::SignalManager::ProcessSignal(bool, int, siginfo_t*, void*) at /proc/self/cwd/corelib/signals/signals.cc:305
+2022-10-12 12:21:18.287846711 FATAL 2598   2598 - [:] : STACKTRACE   5 >>> corelib::SignalManager::ProcessInternalSignal(int, siginfo_t*, void*)(+0x23) <lib/libbvnet.so> [0x7ff5e54c0c03]
+2022-10-12 12:21:18.287846931 FATAL 2598   2598 - [:] : addr2line -e lib/libbvnet.so cd0c03 -ifCpa
+2022-10-12 12:21:18.287847222 FATAL 2598   2598 - [:] : 0x0000000000cd0c03: corelib::SignalManager::ProcessInternalSignal(int, siginfo_t*, void*) at /proc/self/cwd/corelib/signals/signals.cc:132
+2022-10-12 12:21:18.287847452 FATAL 2598   2598 - [:] : STACKTRACE   6 >>> /lib/x86_64-linux-gnu/libpthread.so.0(+0x11390) [0x7ff6625d4390]
+2022-10-12 12:21:18.287847673 FATAL 2598   2598 - [:] : addr2line -e /lib/x86_64-linux-gnu/libpthread.so.0 11390 -ifCpa
+2022-10-12 12:21:18.287847863 FATAL 2598   2598 - [:] : 0x0000000000011390: __restore_rt at ??:?
+2022-10-12 12:21:18.287848073 FATAL 2598   2598 - [:] : STACKTRACE   7 >>> gsignal(+0x38) </lib/x86_64-linux-gnu/libc.so.6> [0x7ff661b1e438]
+2022-10-12 12:21:18.287848254 FATAL 2598   2598 - [:] : addr2line -e /lib/x86_64-linux-gnu/libc.so.6 35438 -ifCpa
+2022-10-12 12:21:18.287849446 FATAL 2598   2598 - [:] : 0x0000000000035438: gsignal at ??:?
+2022-10-12 12:21:18.287849686 FATAL 2598   2598 - [:] : STACKTRACE   8 >>> abort(+0x16a) </lib/x86_64-linux-gnu/libc.so.6> [0x7ff661b2003a]
+2022-10-12 12:21:18.287849887 FATAL 2598   2598 - [:] : addr2line -e /lib/x86_64-linux-gnu/libc.so.6 3703a -ifCpa
+2022-10-12 12:21:18.287850037 FATAL 2598   2598 - [:] : 0x000000000003703a: abort at ??:?
+2022-10-12 12:21:18.287850227 FATAL 2598   2598 - [:] : STACKTRACE   9 >>> lib/libbvnet.so(+0xdb0459) [0x7ff5e55a0459]
+2022-10-12 12:21:18.287850418 FATAL 2598   2598 - [:] : addr2line -e lib/libbvnet.so db0459 -ifCpa
+2022-10-12 12:21:18.287850628 FATAL 2598   2598 - [:] : 0x0000000000db0459: google::logging_fail() at logging.cc:?
+2022-10-12 12:21:18.287850829 FATAL 2598   2598 - [:] : STACKTRACE  10 >>> google::LogMessage::SendToLog()(+0x43a) <lib/libbvnet.so> [0x7ff5e559f26a]
+2022-10-12 12:21:18.287850989 FATAL 2598   2598 - [:] : addr2line -e lib/libbvnet.so daf26a -ifCpa
+2022-10-12 12:21:18.287851209 FATAL 2598   2598 - [:] : 0x0000000000daf26a: google::LogMessage::SendToLog() at /proc/self/cwd/external/glog/src/logging.cc:?
+2022-10-12 12:21:18.287851981 FATAL 2598   2598 - [:] : STACKTRACE  11 >>> google::LogMessage::Flush()(+0xc8) <lib/libbvnet.so> [0x7ff5e559f808]
+2022-10-12 12:21:18.287852141 FATAL 2598   2598 - [:] : addr2line -e lib/libbvnet.so daf808 -ifCpa
+2022-10-12 12:21:18.287852351 FATAL 2598   2598 - [:] : 0x0000000000daf808: google::LogMessage::Flush() at /proc/self/cwd/external/glog/src/logging.cc:1363
+2022-10-12 12:21:18.287852582 FATAL 2598   2598 - [:] : STACKTRACE  12 >>> google::LogMessageFatal::~LogMessageFatal()(+0xf) <lib/libbvnet.so> [0x7ff5e55a41af]
+2022-10-12 12:21:18.287852732 FATAL 2598   2598 - [:] : addr2line -e lib/libbvnet.so db41af -ifCpa
+2022-10-12 12:21:18.287852933 FATAL 2598   2598 - [:] : 0x0000000000db41af: google::LogMessage::Fail() at /proc/self/cwd/external/glog/src/logging.cc:1536
+2022-10-12 12:21:18.287853143 FATAL 2598   2598 - [:] :  (inlined by) ~LogMessageFatal at /proc/self/cwd/external/glog/src/logging.cc:2113
+2022-10-12 12:21:18.287853424 FATAL 2598   2598 - [:] : STACKTRACE  13 >>> ai::infra::ridata::FrameIndex::init(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)(+0x3bd) <lib/libbvnet.so> [0x7ff5e534794d]
+2022-10-12 12:21:18.287853714 FATAL 2598   2598 - [:] : STACKTRACE  14 >>> ai::infra::ridata::load_frame_index(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)(+0xf7) <lib/libbvnet.so> [0x7ff5e53499f7]
+2022-10-12 12:21:18.287853985 FATAL 2598   2598 - [:] : STACKTRACE  15 >>> ai::infra::ridata::Table::load_index(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)(+0x17) <lib/libbvnet.so> [0x7ff5e5349717]
+2022-10-12 12:21:18.287854846 FATAL 2598   2598 - [:] : STACKTRACE  16 >>> ai::infra::ridata::Table::load_accessor(ai::infra::ridata::TableAccessorProto const&)(+0x21) <lib/libbvnet.so> [0x7ff5e534a1b1]
+2022-10-12 12:21:18.287855127 FATAL 2598   2598 - [:] : STACKTRACE  17 >>> ai::infra::ridata::Table::load_accessor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)(+0x73) <lib/libbvnet.so> [0x7ff5e534a2c3]
+2022-10-12 12:21:18.287855397 FATAL 2598   2598 - [:] : STACKTRACE  18 >>> ai::infra::ridata::open_table_from_accessor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)(+0x11e) <lib/libbvnet.so> [0x7ff5e5353dce]
+2022-10-12 12:21:18.287855618 FATAL 2598   2598 - [:] : STACKTRACE  19 >>> ai::p8n::bvnet::DataLoaderOp::init_data()(+0x135) <lib/libbvnet.so> [0x7ff5e507f035]
+2022-10-12 12:21:18.287855858 FATAL 2598   2598 - [:] : STACKTRACE  20 >>> ai::p8n::bvnet::DataLoaderOp::DataLoaderOp(tensorflow::OpKernelConstruction*)(+0xc8) <lib/libbvnet.so> [0x7ff5e507ecd8]
+2022-10-12 12:21:18.287856058 FATAL 2598   2598 - [:] : STACKTRACE  21 >>> lib/libbvnet.so(+0x88ebe2) [0x7ff5e507ebe2]
+2022-10-12 12:21:18.287858603 FATAL 2598   2598 - [:] : STACKTRACE  22 >>> tensorflow::CreateOpKernel(tensorflow::DeviceType, tensorflow::DeviceBase*, tensorflow::Allocator*, tensorflow::FunctionLibraryRuntime*, tensorflow::ResourceMgr*, std::shared_ptr<tensorflow::NodeProperties const> const&, int, tensorflow::OpKernel**)(+0x4bd) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6181009fd]
+2022-10-12 12:21:18.287862461 FATAL 2598   2598 - [:] : STACKTRACE  23 >>> tensorflow::CreateNonCachedKernel(tensorflow::Device*, tensorflow::FunctionLibraryRuntime*, std::shared_ptr<tensorflow::NodeProperties const> const&, int, tensorflow::OpKernel**)(+0x167) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6183c2187]
+2022-10-12 12:21:18.287864595 FATAL 2598   2598 - [:] : STACKTRACE  24 >>> tensorflow::FunctionLibraryRuntimeImpl::CreateKernel(std::shared_ptr<tensorflow::NodeProperties const> const&, tensorflow::FunctionLibraryRuntime*, tensorflow::OpKernel**)(+0x967) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6183569a7]
+2022-10-12 12:21:18.287865787 FATAL 2598   2598 - [:] : STACKTRACE  25 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2(+0x8d3d0b) [0x7ff618356d0b]
+2022-10-12 12:21:18.287866618 FATAL 2598   2598 - [:] : STACKTRACE  26 >>> tensorflow::ImmutableExecutorState::Initialize(tensorflow::Graph const&)(+0x552) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6183dd122]
+2022-10-12 12:21:18.287868742 FATAL 2598   2598 - [:] : STACKTRACE  27 >>> tensorflow::NewLocalExecutor(tensorflow::LocalExecutorParams const&, tensorflow::Graph const&, tensorflow::Executor**)(+0x1e4) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6183c40b4]
+2022-10-12 12:21:18.287869835 FATAL 2598   2598 - [:] : STACKTRACE  28 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2(+0x94132c) [0x7ff6183c432c]
+2022-10-12 12:21:18.287872710 FATAL 2598   2598 - [:] : STACKTRACE  29 >>> tensorflow::NewExecutor(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, tensorflow::LocalExecutorParams const&, tensorflow::Graph const&, std::unique_ptr<tensorflow::Executor, std::default_delete<tensorflow::Executor> >*)(+0x4e) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff6183d12fe]
+2022-10-12 12:21:18.287873943 FATAL 2598   2598 - [:] : STACKTRACE  30 >>> tensorflow::FunctionLibraryRuntimeImpl::CreateItem(tensorflow::FunctionLibraryRuntimeImpl::Item**)(+0xb43) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff618353213]
+2022-10-12 12:21:18.287875285 FATAL 2598   2598 - [:] : STACKTRACE  31 >>> tensorflow::FunctionLibraryRuntimeImpl::GetOrCreateItem(unsigned long, tensorflow::FunctionLibraryRuntimeImpl::Item**)(+0x10e) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff61835396e]
+2022-10-12 12:21:18.287879803 FATAL 2598   2598 - [:] : STACKTRACE  32 >>> tensorflow::FunctionLibraryRuntimeImpl::Run(tensorflow::FunctionLibraryRuntime::Options const&, unsigned long, absl::lts_20210324::Span<tensorflow::Tensor const>, std::vector<tensorflow::Tensor, std::allocator<tensorflow::Tensor> >*, std::function<void (tensorflow::Status const&)>)(+0x2ff) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff618353cbf]
+2022-10-12 12:21:18.287883561 FATAL 2598   2598 - [:] : STACKTRACE  33 >>> tensorflow::ProcessFunctionLibraryRuntime::RunMultiDevice(tensorflow::FunctionLibraryRuntime::Options const&, unsigned long, std::vector<absl::lts_20210324::variant<tensorflow::Tensor, tensorflow::TensorShape>, std::allocator<absl::lts_20210324::variant<tensorflow::Tensor, tensorflow::TensorShape> > >*, std::vector<std::unique_ptr<tensorflow::ProcessFunctionLibraryRuntime::CleanUpItem, std::default_delete<tensorflow::ProcessFunctionLibraryRuntime::CleanUpItem> >, std::allocator<std::unique_ptr<tensorflow::ProcessFunctionLibraryRuntime::CleanUpItem, std::default_delete<tensorflow::ProcessFunctionLibraryRuntime::CleanUpItem> > > >*, std::function<void (tensorflow::Status const&)>, std::function<tensorflow::Status (tensorflow::ProcessFunctionLibraryRuntime::ComponentFunctionData const&, tensorflow::ProcessFunctionLibraryRuntime::InternalArgs*)>) const(+0x152d) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff61836d60d]
+2022-10-12 12:21:18.287887388 FATAL 2598   2598 - [:] : STACKTRACE  34 >>> tensorflow::ProcessFunctionLibraryRuntime::Run(tensorflow::FunctionLibraryRuntime::Options const&, unsigned long, absl::lts_20210324::Span<tensorflow::Tensor const>, std::vector<tensorflow::Tensor, std::allocator<tensorflow::Tensor> >*, std::function<void (tensorflow::Status const&)>) const(+0x565) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff61836e625]
+2022-10-12 12:21:18.287888941 FATAL 2598   2598 - [:] : STACKTRACE  35 >>> tensorflow::ProcessFunctionLibraryRuntime::RunSync(tensorflow::FunctionLibraryRuntime::Options const&, unsigned long, absl::lts_20210324::Span<tensorflow::Tensor const>, std::vector<tensorflow::Tensor, std::allocator<tensorflow::Tensor> >*) const(+0xbf) </usr/local/lib/python3.8/site-packages/tensorflow/python/../libtensorflow_framework.so.2> [0x7ff61836f00f]
+2022-10-12 12:21:18.287893469 FATAL 2598   2598 - [:] : STACKTRACE  36 >>> tensorflow::KernelAndDeviceFunc::Run(tensorflow::ScopedStepContainer*, tensorflow::EagerKernelArgs const&, std::vector<absl::lts_20210324::variant<tensorflow::Tensor, tensorflow::TensorShape>, std::allocator<absl::lts_20210324::variant<tensorflow::Tensor, tensorflow::TensorShape> > >*, tensorflow::CancellationManager*, absl::lts_20210324::optional<tensorflow::EagerRemoteFunctionParams> const&, absl::lts_20210324::optional<tensorflow::ManagedStackTrace> const&)(+0x26c) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff624191adc]
+2022-10-12 12:21:18.287897397 FATAL 2598   2598 - [:] : STACKTRACE  37 >>> tensorflow::EagerKernelExecute(tensorflow::EagerContext*, absl::lts_20210324::InlinedVector<tensorflow::TensorHandle*, 4ul, std::allocator<tensorflow::TensorHandle*> > const&, absl::lts_20210324::optional<tensorflow::EagerRemoteFunctionParams> const&, std::unique_ptr<tensorflow::KernelAndDevice, tensorflow::core::RefCountDeleter> const&, tensorflow::GraphCollector*, tensorflow::CancellationManager*, absl::lts_20210324::Span<tensorflow::TensorHandle*>, absl::lts_20210324::optional<tensorflow::ManagedStackTrace> const&)(+0x274) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61df4d874]
+2022-10-12 12:21:18.287898549 FATAL 2598   2598 - [:] : STACKTRACE  38 >>> tensorflow::ExecuteNode::Run()(+0x164) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61df4e244]
+2022-10-12 12:21:18.287898920 FATAL 2598   2598 - [:] : STACKTRACE  39 >>> tensorflow::EagerExecutor::SyncExecute(tensorflow::EagerNode*)(+0x439) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff6246c79e9]
+2022-10-12 12:21:18.287899160 FATAL 2598   2598 - [:] : STACKTRACE  40 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so(+0x4a71532) [0x7ff61df49532]
+2022-10-12 12:21:18.287899451 FATAL 2598   2598 - [:] : STACKTRACE  41 >>> tensorflow::EagerExecute(tensorflow::EagerOperation*, tensorflow::TensorHandle**, int*)(+0x180) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61df4d1b0]
+2022-10-12 12:21:18.287899771 FATAL 2598   2598 - [:] : STACKTRACE  42 >>> tensorflow::EagerOperation::Execute(absl::lts_20210324::Span<tensorflow::AbstractTensorHandle*>, int*)(+0x212) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61dc94982]
+2022-10-12 12:21:18.287901715 FATAL 2598   2598 - [:] : STACKTRACE  43 >>> tensorflow::CustomDeviceOpHandler::Execute(tensorflow::ImmediateExecutionOperation*, tensorflow::ImmediateExecutionTensorHandle**, int*)(+0x4dc) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff62419d5ac]
+2022-10-12 12:21:18.287903559 FATAL 2598   2598 - [:] : STACKTRACE  44 >>> TFE_Execute(+0x63) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61d714873]
+2022-10-12 12:21:18.287905482 FATAL 2598   2598 - [:] : STACKTRACE  45 >>> TFE_Py_ExecuteCancelable(TFE_Context*, char const*, char const*, absl::lts_20210324::InlinedVector<TFE_TensorHandle*, 4ul, std::allocator<TFE_TensorHandle*> >*, _object*, TFE_CancellationManager*, absl::lts_20210324::InlinedVector<TFE_TensorHandle*, 2ul, std::allocator<TFE_TensorHandle*> >*, TF_Status*)(+0x6d5) </usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so> [0x7ff61d682be5]
+2022-10-12 12:21:18.287907095 FATAL 2598   2598 - [:] : STACKTRACE  46 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tfe.so(+0x2ca47) [0x7ff6171fea47]
+2022-10-12 12:21:18.287907336 FATAL 2598   2598 - [:] : STACKTRACE  47 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tfe.so(+0x2ce06) [0x7ff6171fee06]
+2022-10-12 12:21:18.287907576 FATAL 2598   2598 - [:] : STACKTRACE  48 >>> /usr/local/lib/python3.8/site-packages/tensorflow/python/_pywrap_tfe.so(+0x39bc2) [0x7ff61720bbc2]
+2022-10-12 12:21:18.287907776 FATAL 2598   2598 - [:] : STACKTRACE  49 >>> PyCFunction_Call(+0x12f) <python3.8> [0x43ccbf]
+2022-10-12 12:21:18.287907977 FATAL 2598   2598 - [:] : STACKTRACE  50 >>> _PyObject_MakeTpCall(+0xa4) <python3.8> [0x439cf4]
+2022-10-12 12:21:18.287908167 FATAL 2598   2598 - [:] : STACKTRACE  51 >>> _PyEval_EvalFrameDefault(+0x8adc) <python3.8> [0x42b70c]
+2022-10-12 12:21:18.287908368 FATAL 2598   2598 - [:] : STACKTRACE  52 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+2022-10-12 12:21:18.287908568 FATAL 2598   2598 - [:] : STACKTRACE  53 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+2022-10-12 12:21:18.287908758 FATAL 2598   2598 - [:] : STACKTRACE  54 >>> _PyEval_EvalFrameDefault(+0x5533) <python3.8> [0x428163]
+2022-10-12 12:21:18.287908939 FATAL 2598   2598 - [:] : STACKTRACE  55 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+2022-10-12 12:21:18.287909831 FATAL 2598   2598 - [:] : STACKTRACE  56 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+2022-10-12 12:21:18.287910001 FATAL 2598   2598 - [:] : STACKTRACE  57 >>> python3.8() [0x5d25c0]
+2022-10-12 12:21:18.287910181 FATAL 2598   2598 - [:] : STACKTRACE  58 >>> _PyEval_EvalFrameDefault(+0x5533) <python3.8> [0x428163]
+2022-10-12 12:21:18.287910361 FATAL 2598   2598 - [:] : STACKTRACE  59 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+2022-10-12 12:21:18.287910542 FATAL 2598   2598 - [:] : STACKTRACE  60 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+2022-10-12 12:21:18.287910702 FATAL 2598   2598 - [:] : STACKTRACE  61 >>> python3.8() [0x5d25c0]
+2022-10-12 12:21:18.287910882 FATAL 2598   2598 - [:] : STACKTRACE  62 >>> _PyEval_EvalFrameDefault(+0x5533) <python3.8> [0x428163]
+2022-10-12 12:21:18.287911063 FATAL 2598   2598 - [:] : STACKTRACE  63 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+2022-10-12 12:21:18.287911243 FATAL 2598   2598 - [:] : STACKTRACE  64 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+2022-10-12 12:21:18.287911423 FATAL 2598   2598 - [:] : STACKTRACE  65 >>> _PyObject_FastCallDict(+0xc5) <python3.8> [0x43c675]
+2022-10-12 12:21:18.287912155 FATAL 2598   2598 - [:] : STACKTRACE  66 >>> _PyObject_Call_Prepend(+0xca) <python3.8> [0x43c84a]
+2022-10-12 12:21:18.287912315 FATAL 2598   2598 - [:] : STACKTRACE  67 >>> python3.8() [0x495ef1]
+2022-10-12 12:21:18.287912496 FATAL 2598   2598 - [:] : STACKTRACE  68 >>> PyObject_Call(+0x71) <python3.8> [0x43ca91]
+2022-10-12 12:21:18.287912676 FATAL 2598   2598 - [:] : STACKTRACE  69 >>> _PyEval_EvalFrameDefault(+0xc2e) <python3.8> [0x42385e]
+2022-10-12 12:21:18.287912866 FATAL 2598   2598 - [:] : STACKTRACE  70 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+2022-10-12 12:21:18.287913057 FATAL 2598   2598 - [:] : STACKTRACE  71 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+2022-10-12 12:21:18.287913207 FATAL 2598   2598 - [:] : STACKTRACE  72 >>> python3.8() [0x5d2524]
+2022-10-12 12:21:18.287913387 FATAL 2598   2598 - [:] : STACKTRACE  73 >>> PyVectorcall_Call(+0x6f) <python3.8> [0x43c8ef]
+2022-10-12 12:21:18.287913587 FATAL 2598   2598 - [:] : STACKTRACE  74 >>> _PyEval_EvalFrameDefault(+0xc2e) <python3.8> [0x42385e]
+2022-10-12 12:21:18.287913768 FATAL 2598   2598 - [:] : STACKTRACE  75 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+2022-10-12 12:21:18.287914539 FATAL 2598   2598 - [:] : STACKTRACE  76 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+2022-10-12 12:21:18.287914720 FATAL 2598   2598 - [:] : STACKTRACE  77 >>> _PyObject_FastCallDict(+0x1b2) <python3.8> [0x43c762]
+2022-10-12 12:21:18.287914910 FATAL 2598   2598 - [:] : STACKTRACE  78 >>> _PyObject_Call_Prepend(+0xca) <python3.8> [0x43c84a]
+2022-10-12 12:21:18.287915070 FATAL 2598   2598 - [:] : STACKTRACE  79 >>> python3.8() [0x495ef1]
+2022-10-12 12:21:18.287915271 FATAL 2598   2598 - [:] : STACKTRACE  80 >>> _PyObject_MakeTpCall(+0xa4) <python3.8> [0x439cf4]
+2022-10-12 12:21:18.287915461 FATAL 2598   2598 - [:] : STACKTRACE  81 >>> _PyEval_EvalFrameDefault(+0x8adc) <python3.8> [0x42b70c]
+2022-10-12 12:21:18.287915642 FATAL 2598   2598 - [:] : STACKTRACE  82 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+2022-10-12 12:21:18.287915822 FATAL 2598   2598 - [:] : STACKTRACE  83 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+2022-10-12 12:21:18.287915982 FATAL 2598   2598 - [:] : STACKTRACE  84 >>> python3.8() [0x5d2524]
+2022-10-12 12:21:18.287916152 FATAL 2598   2598 - [:] : STACKTRACE  85 >>> PyVectorcall_Call(+0x6f) <python3.8> [0x43c8ef]
+2022-10-12 12:21:18.287916894 FATAL 2598   2598 - [:] : STACKTRACE  86 >>> _PyEval_EvalFrameDefault(+0xc2e) <python3.8> [0x42385e]
+2022-10-12 12:21:18.287917154 FATAL 2598   2598 - [:] : STACKTRACE  87 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+2022-10-12 12:21:18.287917345 FATAL 2598   2598 - [:] : STACKTRACE  88 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+2022-10-12 12:21:18.287917505 FATAL 2598   2598 - [:] : STACKTRACE  89 >>> python3.8() [0x5d25c0]
+2022-10-12 12:21:18.287917695 FATAL 2598   2598 - [:] : STACKTRACE  90 >>> _PyEval_EvalFrameDefault(+0x5533) <python3.8> [0x428163]
+2022-10-12 12:21:18.287917886 FATAL 2598   2598 - [:] : STACKTRACE  91 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+2022-10-12 12:21:18.287918076 FATAL 2598   2598 - [:] : STACKTRACE  92 >>> _PyFunction_Vectorcall(+0xa8) <python3.8> [0x43a718]
+2022-10-12 12:21:18.287918256 FATAL 2598   2598 - [:] : STACKTRACE  93 >>> _PyEval_EvalFrameDefault(+0x5533) <python3.8> [0x428163]
+2022-10-12 12:21:18.287918447 FATAL 2598   2598 - [:] : STACKTRACE  94 >>> _PyEval_EvalCodeWithName(+0xa35) <python3.8> [0x4eabf5]
+2022-10-12 12:21:18.287918617 FATAL 2598   2598 - [:] : STACKTRACE  95 >>> PyEval_EvalCode(+0x23) <python3.8> [0x4ead73]
+2022-10-12 12:21:18.287919378 FATAL 2598   2598 - [:] : STACKTRACE  96 >>> python3.8() [0x52b265]
+2022-10-12 12:21:18.287919569 FATAL 2598   2598 - [:] : STACKTRACE  97 >>> PyRun_SimpleFileExFlags(+0x166) <python3.8> [0x52dbb6]
+2022-10-12 12:21:18.287919749 FATAL 2598   2598 - [:] : STACKTRACE  98 >>> Py_RunMain(+0x80a) <python3.8> [0x42d14a]
+2022-10-12 12:21:18.287919930 FATAL 2598   2598 - [:] : STACKTRACE  99 >>> Py_BytesMain(+0x54) <python3.8> [0x42d574]
+2022-10-12 12:21:18.287920120 FATAL 2598   2598 - [:] : STACKTRACE 100 >>> __libc_start_main(+0xf0) </lib/x86_64-linux-gnu/libc.so.6> [0x7ff661b09840]
+2022-10-12 12:21:18.287920310 FATAL 2598   2598 - [:] : STACKTRACE 101 >>> _start(+0x29) <python3.8> [0x42c229]
+2022-10-12 12:21:18.287920481 FATAL 2598   2598 - [:] : [STACKTRACE END](5432 ms)
+[1665577278289935189]: Signal   6 received - on PID 2598, TID 2598
